@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+    
+<mapper namespace = "spring.mvc.teamProject.persistence.MembersDAO">
+	<insert id="insertMember" parameterType="spring.mvc.teamProject.vo.MembersVO">
+		INSERT INTO members(id,pw,name,jumin,job,address,postnum,d_address,phone,email,authority)
+		VALUES(#{id},#{pw},#{name},#{jumin},#{job},#{address},#{postnum},#{d_address},#{phone},#{email},#{authority})
+	</insert>
+	
+	<select id ="getMemberInfo" parameterType="String" resultType="spring.mvc.teamProject.vo.MembersVO">
+		SELECT * 
+		FROM members
+		WHERE id=#{id}
+	</select>
+</mapper>
