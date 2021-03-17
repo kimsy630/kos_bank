@@ -9,6 +9,7 @@
 </head>
 <body>
 <h1>계좌조회</h1>
+AccountCheck.jsp 테스트
 <%@ include file = "../header.jsp" %>
 <img src = "/teamProject/resources/testimage/계좌조회.jpg" style="margin:0 auto;">
 <%@ include file = "../footer.jsp" %>
