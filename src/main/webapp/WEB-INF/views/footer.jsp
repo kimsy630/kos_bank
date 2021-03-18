@@ -2,76 +2,80 @@
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 
-  <!-- ======= Footer ======= -->
-  <footer id="footer" class="footer">
-
-
-    <div class="footer-top">
-      <div class="container">
-        <div class="row gy-4">
-          <div class="col-lg-5 col-md-12 footer-info">
-            <a href="index.html" class="logo d-flex align-items-center">
-              <%-- <img src="${path}assets/img/logo.png" alt="">
-              <span>FlexStart</span> --%>
-        		<img src="${path}assets/img/logo2.png">
-            </a>
-            <p>Cras fermentum odio eu feugiat lide par naso tierra. Justo eget nada terra videa magna derita valies darta donna mare fermentum iaculis eu non diam phasellus.</p>
-            <div class="social-links mt-3">
-              <a href="#" class="twitter"><i class="bi bi-twitter"></i></a>
-              <a href="#" class="facebook"><i class="bi bi-facebook"></i></a>
-              <a href="#" class="instagram"><i class="bi bi-instagram bx bxl-instagram"></i></a>
-              <a href="#" class="linkedin"><i class="bi bi-linkedin bx bxl-linkedin"></i></a>
+      <footer class="section footer-1">
+        <div class="container">
+          <div class="row row-40 wow fadeIn">
+            <div class="col-md-6 col-lg-4">
+              <h5 class="title">About Us</h5>
+              <p>Dot Bank is the leading financial establishment providing high-quality international banking services. Our success is attributed to our loyal customers and to the talent and dedication of our professional and skilled employees. We are always ready to partner with you by offering full financial support to our clients worldwide.</p><a class="footer-logo" href="index.html"><img src="${path}images/logo-inverse-145x39.png" alt="" width="145" height="39"/></a>
+            </div>
+            <div class="col-md-6 col-lg-4">
+              <h5 class="title">Twitter Feed</h5>
+              <!-- RD Twitter Feed-->
+              <div class="twitter" data-twitter-username="templatemonster" data-twitter-date-hours=" hours ago" data-twitter-date-minutes=" minutes ago">
+                <div class="tweet" data-twitter-type="tweet">
+                  <div class="tweet-left">
+                    <div class="icon fa-twitter"></div>
+                  </div>
+                  <div class="tweet-right">
+                    <div class="twitter-text text-dark" data-tweet="text"></div>
+                    <div class="twitter-meta">
+                      <div class="twitter-name" data-screen_name="text"></div>
+                    </div>
+                  </div>
+                </div>
+                <div class="tweet" data-twitter-type="tweet">
+                  <div class="tweet-left">
+                    <div class="icon fa-twitter"></div>
+                  </div>
+                  <div class="tweet-right">
+                    <div class="twitter-text text-dark" data-tweet="text"></div>
+                    <div class="twitter-meta">
+                      <div class="twitter-name" data-screen_name="text"></div>
+                    </div>
+                  </div>
+                </div>
+                <div class="tweet" data-twitter-type="tweet">
+                  <div class="tweet-left">
+                    <div class="icon fa-twitter"></div>
+                  </div>
+                  <div class="tweet-right">
+                    <div class="twitter-text text-dark" data-tweet="text"></div>
+                    <div class="twitter-meta">
+                      <div class="twitter-name" data-screen_name="text"></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-10 col-lg-4">
+              <h5 class="title">Get in Touch</h5>
+              <!-- RD Mailform-->
+              <form class="rd-form rd-mailform" data-form-output="form-output-global" data-form-type="contact" method="post" action="bat/rd-mailform.php">
+                <div class="form-wrap">
+                  <input class="form-input" id="contact-name-footer" type="text" name="name" data-constraints="@Required">
+                  <label class="form-label" for="contact-name-footer">Name</label>
+                </div>
+                <div class="form-wrap">
+                  <input class="form-input" id="contact-email-footer" type="email" name="email" data-constraints="@Email @Required">
+                  <label class="form-label" for="contact-email-footer">E-mail</label>
+                </div>
+                <div class="form-wrap">
+                  <label class="form-label" for="contact-message-footer">Message</label>
+                  <textarea class="form-input" id="contact-message-footer" name="message" data-constraints="@Required"></textarea>
+                </div>
+                <button class="button button-primary" type="submit">Send</button>
+              </form>
             </div>
           </div>
-
-          <div class="col-lg-2 col-6 footer-links">
-            <h4>Useful Links</h4>
-            <ul>
-              <li><i class="bi bi-chevron-right"></i> <a href="#">Home</a></li>
-              <li><i class="bi bi-chevron-right"></i> <a href="#">About us</a></li>
-              <li><i class="bi bi-chevron-right"></i> <a href="#">Services</a></li>
-              <li><i class="bi bi-chevron-right"></i> <a href="#">Terms of service</a></li>
-              <li><i class="bi bi-chevron-right"></i> <a href="#">Privacy policy</a></li>
-            </ul>
-          </div>
-
-          <div class="col-lg-2 col-6 footer-links">
-            <h4>Our Services</h4>
-            <ul>
-              <li><i class="bi bi-chevron-right"></i> <a href="#">Web Design</a></li>
-              <li><i class="bi bi-chevron-right"></i> <a href="#">Web Development</a></li>
-              <li><i class="bi bi-chevron-right"></i> <a href="#">Product Management</a></li>
-              <li><i class="bi bi-chevron-right"></i> <a href="#">Marketing</a></li>
-              <li><i class="bi bi-chevron-right"></i> <a href="#">Graphic Design</a></li>
-            </ul>
-          </div>
-
-          <div class="col-lg-3 col-md-12 footer-contact text-center text-md-start">
-            <h4>Contact Us</h4>
-            <p>
-              A108 Adam Street <br>
-              New York, NY 535022<br>
-              United States <br><br>
-              <strong>Phone:</strong> +1 5589 55488 55<br>
-              <strong>Email:</strong> info@example.com<br>
-            </p>
-
-          </div>
-
+          <!-- Rights-->
+          <p class="rights"><span>&copy;&nbsp; </span><span class="copyright-year"></span><span>&nbsp;</span><span>All rights reserved</span><span>.&nbsp;</span><a href="privacy-policy.html">Privacy Policy</a></p>
         </div>
-      </div>
-    </div>
-
-    <div class="container">
-      <div class="copyright">
-        &copy; Copyright <strong><span>FlexStart</span></strong>. All Rights Reserved
-      </div>
-      <div class="credits">
-        <!-- All the links in the footer should remain intact. -->
-        <!-- You can delete the links only if you purchased the pro version. -->
-        <!-- Licensing information: https://bootstrapmade.com/license/ -->
-        <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/flexstart-bootstrap-startup-template/ -->
-        Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
-      </div>
-    </div>
-  </footer><!-- End Footer -->
+      </footer>
+      
+      <!-- PANEL-->
+    <!-- Global Mailform Output-->
+    <div class="snackbars" id="form-output-global"></div>
+    <!-- Javascript-->
+    <script src="${path}js/core.min.js"></script>
+    <script src="${path}js/script.js"></script>

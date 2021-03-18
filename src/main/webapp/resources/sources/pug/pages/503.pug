@@ -1,0 +1,26 @@
+extends  ../_skeleton
+
+block variables
+	- var activeCategory = 'pages'
+	- var pageName = '503'
+
+block page 
+	// Page content
+	section.section.one-screen-page.bg-primary-dark
+		.one-screen-page-inner
+			.page-header: .container
+				// Brand
+				+logo
+
+			.page-content
+				.container
+					.row.justify-content-center
+						.col-md-10.col-lg-8.col-xl-11
+							.one-screen-page-box
+								.page-title 503
+								h1.page-subtitle Service is Temporary Unavailable
+								p.heading-6.page-description Sorry, we're offline right now to make our site even better. Please, come back later and check what we've been up to.
+								a.button.button-lg.button-primary(href='index.html') Back to home page
+
+			.page-footer: .container
+				+rights

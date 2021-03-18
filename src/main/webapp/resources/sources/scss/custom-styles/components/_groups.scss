@@ -1,0 +1,66 @@
+/*
+* Element groups
+*/
+
+html {
+	.group {
+		@include group(16px, 10px);
+	}
+
+	.group-sm {
+		@include group(20px, 10px);
+	}
+
+	.group-md {
+		@include group(16px, 10px);
+
+		// Extra large ≥1200px
+		@include media-breakpoint-up(xl) {
+			@include group-media(25px, 10px);
+		}
+	}
+
+	.group-xl {
+		@include group(30px, 20px);
+	}
+
+	.group-sm-justify {
+		.button {
+			padding-left: 20px;
+			padding-right: 20px;
+		}
+
+		@include media-breakpoint-up(md) {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+
+			> * {
+				flex-grow: 1;
+				flex-shrink: 0;
+			}
+
+			.button {
+				min-width: 130px;
+				padding-left: 20px;
+				padding-right: 20px;
+			}
+		}
+	}
+
+	// Mods
+	.group-middle {
+		display: inline-table;
+		vertical-align: middle;
+
+		> * {
+			vertical-align: middle;
+		}
+	}
+}
+
+* + .group { margin-top: 20px; }
+
+@include media-breakpoint-up(xxl) {
+	* + .group { margin-top: 33px; }
+}

@@ -1,0 +1,54 @@
+footer.section.footer-1
+	.container
+		.row.row-40.wow.fadeIn
+			.col-md-6.col-lg-4
+				h5.title About Us
+				p Dot Bank is the leading financial establishment providing high-quality international banking services. Our success is attributed to our loyal customers and to the talent and dedication of our professional and skilled employees. We are always ready to partner with you by offering full financial support to our clients worldwide.
+				a.footer-logo(href="index.html")
+					+png(logo.inverseBig)
+			.col-md-6.col-lg-4
+				h5.title Twitter Feed
+				// RD Twitter Feed
+				.twitter(data-twitter-username='templatemonster' data-twitter-date-hours=" hours ago" data-twitter-date-minutes=" minutes ago")
+					.tweet(data-twitter-type='tweet')
+						.tweet-left
+							.icon.fa-twitter
+						.tweet-right
+							.twitter-text.text-dark(data-tweet='text')
+							.twitter-meta
+								div.twitter-name(data-screen_name='text')
+
+					.tweet(data-twitter-type='tweet')
+						.tweet-left
+							.icon.fa-twitter
+						.tweet-right
+							.twitter-text.text-dark(data-tweet='text')
+							.twitter-meta
+								div.twitter-name(data-screen_name='text')
+
+					.tweet(data-twitter-type='tweet')
+						.tweet-left
+							.icon.fa-twitter
+						.tweet-right
+							.twitter-text.text-dark(data-tweet='text')
+							.twitter-meta
+								div.twitter-name(data-screen_name='text')
+
+			.col-md-10.col-lg-4
+				h5.title Get in Touch
+				// RD Mailform
+				form.rd-form.rd-mailform(data-form-output='form-output-global', data-form-type='contact', method='post', action='bat/rd-mailform.php')
+					.form-wrap
+						input#contact-name-footer.form-input(type='text' name='name' data-constraints='@Required')
+						label.form-label(for='contact-name-footer') Name
+
+					.form-wrap
+						input#contact-email-footer.form-input(type='email' name='email' data-constraints='@Email @Required')
+						label.form-label(for='contact-email-footer') E-mail
+
+					.form-wrap
+						label.form-label(for='contact-message-footer') Message
+						textarea#contact-message-footer.form-input(name='message' data-constraints='@Required')
+
+					button.button.button-primary(type='submit') Send
+		+rights

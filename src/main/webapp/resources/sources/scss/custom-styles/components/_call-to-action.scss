@@ -1,0 +1,19 @@
+/*
+*
+* Call to action
+*/
+
+.box-cta {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-wrap: wrap;
+	margin-top: -20px;
+
+	> * {
+		margin-top: 20px;
+		padding-left: 20px;
+		padding-right: 20px;
+		text-align: center;
+	}
+}

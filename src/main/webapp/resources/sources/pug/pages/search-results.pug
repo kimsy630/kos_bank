@@ -1,0 +1,32 @@
+extends  ../_skeleton
+
+block variables
+	- var activeCategory = 'pages'
+	- var pageName = 'Search Results'
+
+block page 
+	// Page Header
+	include ../sections/_header-transparent
+
+	+breadcrumbs({
+		category: activeCategory,
+		path: [pageName]
+	})
+
+	// Search results
+	section.section-md.bg-default
+		.container
+			.row.justify-content-center
+				.col-lg-9
+					// RD Search
+					form.rd-form.rd-search.rd-form-inline(action='search-results.html' method='GET')
+						.form-wrap
+							label.form-label(for='rd-search-form-input') Search...
+							input.form-input(id='rd-search-form-input' type='text' name='s' autocomplete='off')
+						.form-button
+							button.button.button-primary.button-round(type="submit") Search
+
+					.rd-search-results
+
+	// Page Footer
+	include ../sections/_footer-1

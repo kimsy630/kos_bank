@@ -1,0 +1,80 @@
+extends  ../_skeleton
+
+//- Includes
+include ../components/_ui-inline-subscribe-form
+include ../components/_ui-progress-bar-linear
+
+block variables
+	- var activeCategory = 'Pages'
+	- var pageName = 'Login/Registration'
+
+block page 
+	section.section.one-screen-page.bg-primary-dark
+		.one-screen-page-inner
+			include ../sections/_header-transparent
+
+			.page-content.text-center
+				.container
+					.row.justify-content-center
+						.col-md-10.col-lg-8.col-xl-4
+							// Tabs
+							#tabs-1.tabs-custom.tabs-horizontal.tabs-line
+								// Nav tabs
+								ul.nav.nav-tabs.nav-tabs-inline
+									li.nav-item(role='presentation'): a.nav-link.active(href='#tabs-1-1' data-toggle='tab') Login
+									li.nav-item(role='presentation'): a.nav-link(href='#tabs-1-2' data-toggle='tab') Registration
+
+								// Tab panes
+								.tab-content
+									div#tabs-1-1.tab-pane.fade.show.active
+										h3 Login
+
+										// RD Mailform
+										form.rd-form.form-lg.rd-mailform
+											.form-wrap
+												input#login-email.form-input(type='email' name='email' data-constraints='@Email @Required')
+												label.form-label(for='login-email') E-mail
+
+											.form-wrap
+												input#login-password.form-input(type='password' name='password' data-constraints='@Required')
+												label.form-label(for='login-password') Password
+
+											button.button.button-lg.button-round.button-block.button-primary(type='submit') Register
+
+										.group-sm.group-sm-justify.group-middle.social-items
+											span or use
+											a.icon.icon-lg.icon-gray-100.novi-icon.fa.fa-facebook(href='#')
+											a.icon.icon-lg.icon-gray-100.novi-icon.fa.fa-twitter(href='#')
+
+									div#tabs-1-2.tab-pane.fade
+										h3 Registration
+
+										// RD Mailform
+										form.rd-form.form-lg.rd-mailform
+											.form-wrap
+												input#register-name.form-input(type='text' name='username' data-constraints='@Required')
+												label.form-label(for='register-name') Username
+
+											.form-wrap
+												input#register-email.form-input(type='email' name='email' data-constraints='@Email @Required')
+												label.form-label(for='register-email') E-mail
+
+											.form-wrap
+												input#register-password.form-input(type='password' name='password' data-constraints='@Required')
+												label.form-label(for='register-password') Password
+
+											.form-wrap
+												input#register-confirm-password.form-input(type='password' name='confirm-password' data-constraints='@Required')
+												label.form-label(for='register-confirm-password') Confirm Password
+
+											button.button.button-lg.button-round.button-block.button-primary(type='submit') Register
+
+										.group-sm.group-sm-justify.group-middle.social-items
+											span or use
+											a.icon.icon-lg.icon-gray-100.novi-icon.fa.fa-facebook(href='#')
+											a.icon.icon-lg.icon-gray-100.novi-icon.fa.fa-twitter(href='#')
+
+			.page-footer: .container
+				+rights
+
+

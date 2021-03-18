@@ -1,0 +1,42 @@
+header.section.page-header
+	// RD Navbar
+	.rd-navbar-wrap.rd-navbar-absolute
+		nav.rd-navbar.rd-navbar-transparent(
+		data-layout=                'rd-navbar-fixed'
+		data-sm-layout=             'rd-navbar-fixed'
+		data-md-layout=             'rd-navbar-fixed'
+		data-md-device-layout=      'rd-navbar-fixed'
+		data-lg-layout=             'rd-navbar-static'
+		data-lg-device-layout=      'rd-navbar-fixed'
+		data-xl-layout=             'rd-navbar-static'
+		data-xl-device-layout=      'rd-navbar-static'
+		data-lg-stick-up-offset=    '20px'
+		data-xl-stick-up-offset=    '20px'
+		data-xxl-stick-up-offset=   '20px'
+		data-lg-stick-up=           'true'
+		data-xl-stick-up=           'true'
+		data-xxl-stick-up=          'true')
+			.rd-navbar-main-outer
+				.rd-navbar-main
+					// RD Navbar Panel
+					.rd-navbar-panel
+						// RD Navbar Toggle
+						button.rd-navbar-toggle(data-rd-navbar-toggle='.rd-navbar-nav-wrap'): span
+
+						// RD Navbar Brand
+						.rd-navbar-brand
+							+logo
+
+					.rd-navbar-main-element
+						.rd-navbar-nav-wrap
+							include ../includes/_navigation
+
+						// RD Navbar Search
+						.rd-navbar-search
+							button.rd-navbar-search-toggle.rd-navbar-fixed-element-1(data-rd-navbar-toggle='.rd-navbar-search'): span
+							form.rd-search(action='search-results.html' data-search-live='rd-search-results-live' method='GET')
+								.form-wrap
+									label.form-label(for='rd-navbar-search-form-input') Search
+									input(class='rd-navbar-search-form-input form-input' id='rd-navbar-search-form-input' type='text' name='s' autocomplete="off")
+									#rd-search-results-live.rd-search-results-live
+								button.rd-search-form-submit.mdi.mdi-magnify(type='submit')

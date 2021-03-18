@@ -1,0 +1,104 @@
+extends  ../_skeleton
+
+//- Includes
+include ../components/_ui-inline-subscribe-form
+
+block variables
+	- var activeCategory = 'about'
+	- var pageName = 'Pricing'
+
+block page 
+	// Page Header
+	include ../sections/_header-transparent
+
+	+breadcrumbs({
+		category: activeCategory,
+		path: [pageName]
+	})
+
+	// Pricing
+	section.section.section-lg
+		.container.text-center
+			h2 Pricing
+			.row.no-gutters.justify-content-center
+				.col-md-4
+					+price-box-1({
+						imageName: "pricing-1-202x162",
+						title: "Basic",
+						exeption: "Lorem ipsum dolor sit amet, scripta legim us quaerendum ex vis, audire nonumes his an. Decore tamquam insolens usu, an.",
+						price: "Free",
+						link: "#"
+					})
+				.col-md-4
+					+price-box-1({
+						boxClass: "price-box-1-primary",
+						imageName: "pricing-2-202x162",
+						title: "Standard",
+						exeption: "Lorem ipsum dolor sit amet, scripta legim us quaerendum ex vis, audire nonumes his an. Decore tamquam insolens usu, an.",
+						price: "$99.00/mo",
+						link: "#"
+					})
+				.col-md-4
+					+price-box-1({
+						imageName: "pricing-3-202x162",
+						title: "Premium",
+						exeption: "Lorem ipsum dolor sit amet, scripta legim us quaerendum ex vis, audire nonumes his an. Decore tamquam insolens usu, an.",
+						price: "$199.00/mo",
+						link: "#"
+					})
+
+	// Pricing
+	section.section.section-lg.bg-gray-100
+		.container.text-center
+			h2 Pricing
+			.owl-carousel(data-items='1', data-sm-items='2', data-lg-items='3', data-xl-items='4', data-dots='true' data-nav='false' data-stage-padding='15', data-loop='false', data-margin='30', data-mouse-drag="false")
+				+price-box-2({
+					imageName: "pricing-4-163x127",
+					title: "Basic",
+					price: "Free Card",
+					link: "#"
+				})
+					ul.list-sm
+						li No Service Charges
+						li 24/7 Online Support
+						li Free Online Banking
+						li No Balance Requirement
+
+				+price-box-2({
+					imageName: "pricing-5-163x127",
+					title: "Standard",
+					price: "$99.00/mo",
+					link: "#"
+				})
+					ul.list-sm
+						li 24/7 Phone & Online Support
+						li Mobile Banking Apps
+						li Custom Card Design
+						li Free Deposit Account
+
+				+price-box-2({
+					imageName: "pricing-6-163x127",
+					title: "Premium",
+					price: "$199.00/mo",
+					link: "#"
+				})
+					ul.list-sm
+						li Personal Banking Assistant
+						li Free Mobile Banking
+						li Discounts on Online Purchases
+						li 10% Cashback
+
+				+price-box-2({
+					imageName: "pricing-7-163x127",
+					title: "Ultimate",
+					price: "$299.00/mo",
+					link: "#"
+				})
+					ul.list-sm
+						li Full Online & Offline Support
+						li 25% Interest Rate
+						li Special Online Offers
+						li 30% Cashback
+
+	// Page Footer
+	include ../sections/_footer-1

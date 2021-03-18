@@ -1,0 +1,77 @@
+/*
+*
+* Breadcrumbs
+* --------------------------------------------------
+*/
+
+//== Breadcrumbs variables
+//
+//##
+
+$bread-color: rgba($white, .4);
+$bread-active-color: $secondary;
+$bread-arrow-color: rgba($white, .4);
+
+// section bredcrumbs
+.section-bredcrumbs {
+	padding-top: 60px;
+	padding-bottom: 31px;
+	position: relative;
+	background: $primary-dark;
+
+	> * {
+		position: relative;
+		z-index: 1;
+	}
+
+	@include media-breakpoint-up(lg) {
+		.desktop & { padding-top: 125px; }
+	}
+
+	@include media-breakpoint-up(xl) {
+		.desktop & { padding-top: 158px; }
+	}
+
+	@include media-breakpoint-up(xxl) {
+		.desktop & { padding-top: 195px; }
+	}
+}
+
+.breadcrumb-wrapper {
+}
+
+.breadcrumbs-custom {
+	list-style: none;
+
+	> li {
+		display: inline-block;
+		color: $bread-color;
+
+		> a {
+			color: $bread-color;
+
+			&:hover {
+				color: $bread-active-color;
+			}
+		}
+
+		&:not(:last-child):after {
+			padding: 0 16px 0 10px;
+			font-family: $mdi;
+			content: "\f238";
+			color: $bread-arrow-color;
+		}
+	}
+}
+
+* + .breadcrumbs-custom { margin-top: 60px; }
+
+// Extra large ≥1200px
+@include media-breakpoint-up(xl) {
+	* + .breadcrumbs-custom { margin-top: 91px; }
+}
+
+// Extra large ≥1600px
+@include media-breakpoint-up(xxl) {
+	* + .breadcrumbs-custom { margin-top: 112px; }
+}

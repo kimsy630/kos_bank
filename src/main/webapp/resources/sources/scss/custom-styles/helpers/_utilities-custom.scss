@@ -1,0 +1,169 @@
+/*
+*
+* Utilities custom
+*/
+.height-fill {
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	align-items: stretch;
+
+	> * {
+		flex-grow: 1;
+		flex-shrink: 0;
+	}
+}
+
+// Object inline 
+.object-inline {
+	white-space: nowrap;
+	> * {
+		display: inline-block;
+		min-width: 20px;
+		vertical-align: top;
+		white-space: normal;
+	}
+
+	> * + * {
+		margin-left: 5px;
+	}
+}
+
+.oh {
+	position: relative;
+	overflow: hidden;
+}
+
+// Text decorations
+.text-decoration-lines {
+	position: relative;
+	overflow: hidden;
+	width: 100%;
+
+	&-content {
+		position: relative;
+		display: inline-block;
+		min-width: 170px;
+		font-size: 13px;
+		text-transform: uppercase;
+
+		&::before,
+		&::after {
+			content: '';
+			position: absolute;
+			height: 1px;
+			background: $gray-200;
+			top: 50%;
+			width: 100vw;
+		}
+
+		&::before {
+			left: 0;
+			transform: translate3d(-100%, 0, 0);
+		}
+
+		&::after {
+			right: 0;
+			transform: translate3d(100%, 0, 0);
+		}
+	}
+}
+
+* + .text-decoration-lines {
+	margin-top: 30px;
+}
+
+// Rights
+.rights {
+	color: $body-color;
+	a {
+		color: inherit;
+
+		&:hover {
+			color: $primary;
+		}
+	}
+}
+
+%context-dark {
+	.rights {
+		color: rgba($gray-400, .3);
+		a {
+			color: inherit;
+
+			&:hover {
+				color: rgba($gray-400, 1);
+			}
+		}
+	}
+}
+
+// JSColor Workaround
+[style*='z-index: 1000;'] {
+	z-index: $zindex-layout-panel + 1 !important;
+}
+
+.text-block {
+	> * {
+		margin-left: .125em;
+		margin-right: .125em;
+	}
+}
+
+.text-block-2 {
+	h6 + p { margin-top: 10px; }
+	* + .button { margin-top: 20px; }
+
+	// Large ≥992px
+	@include media-breakpoint-up(lg) {
+		h6 + p { margin-top: 20px; }
+		* + .button { margin-top: 30px; }
+	}
+}
+
+.text-block-3 {
+	* + h6 { margin-top: 20px; }
+	* + p { margin-top: 12px; }
+
+	// Extra large ≥1200px
+	@include media-breakpoint-up(xl) {
+		* + h6 { margin-top: 48px; }
+		* + p { margin-top: 18px; }
+	}
+}
+
+.text-block-4 {
+	* + h6 { margin-top: 20px; }
+	* + p { margin-top: 6px; }
+
+	// Extra large ≥1200px
+	@include media-breakpoint-up(xl) {
+		* + h6 { margin-top: 33px; }
+		* + p { margin-top: 11px; }
+	}
+
+	// Extra large ≥1600px
+	@include media-breakpoint-up(xxl) {
+		* + h6 { margin-top: 40px; }
+		* + p { margin-top: 13px; }
+	}
+}
+
+.text-block-lined {
+	border-left: 1px solid $gray-400;
+	padding-left: 15px;
+
+	p { color: $gray-600; }
+
+	.title + p { margin-top: 9px; }
+	p + .title { margin-top: 30px; }
+
+	// Large ≥992px
+	@include media-breakpoint-up(lg) {
+		padding-left: 40px;
+		padding-right: 25px;
+
+		.title + p { margin-top: 18px; }
+		p + .title { margin-top: 55px; }
+	}
+}

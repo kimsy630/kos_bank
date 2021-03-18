@@ -1,0 +1,140 @@
+extends  ../_skeleton
+
+//- Includes
+include ../components/_ui-inline-subscribe-form
+include ../components/_ui-progress-bar-linear
+
+block variables
+	- var activeCategory = 'about'
+	- var pageName = 'About us'
+
+block page 
+	// Page Header
+	include ../sections/_header-transparent
+
+	+breadcrumbs({
+		category: activeCategory,
+		path: [pageName]
+	})
+
+	// Join Our Team
+	section.section.section-lg.custom-image-section
+		.container.relative-container
+			.row.row-30.row-md-60.justify-content-between
+				.col-md-12
+					h2 Overview
+				.col-md-6
+					.heading-6 Lorem ipsum dolor sit amet, scripta legimus quaerendum ex vis, audire nonumes his an. Decore tamquam insolens usu.
+					p Lorem ipsum dolor sit amet, scripta legimus quaerendum ex vis, audire nonumes his an. Decore tamquam insolens usu, an duo omnium debitis adipiscing, ne postulant. Lorem ipsum dolor sit amet, scripta legimus quaerendum ex vis, audire nonumes his an. Decore tamquam insolens usu, an duo omnium debitis adipiscing, ne postulant.
+					a.button.button-lg.button-primary(href='services.html') Read More About Us
+				.col-md-6.col-lg-5
+					.progress-linear-wrap
+						+progress-bar-linear({
+							title: "Financial Consulting",
+							valueTo: "75"
+						})
+						+progress-bar-linear({
+							title: "Online Reporting",
+							valueTo: "50"
+						})
+						+progress-bar-linear({
+							title: "Online Banking",
+							valueTo: "75"
+						})
+						+progress-bar-linear({
+							title: "24/7 Support",
+							valueTo: "75"
+						})
+			+jpg("about-1-470x312", "img-bordered image-item")
+
+	// Your Career Starts Here
+	section.section.section-lg.bg-gray-100
+		.container.text-center
+			h2.custom-title: span History
+			// Owl Carousel
+			.owl-carousel.text-left(data-items='1', data-sm-items='2', data-md-items='3', data-lg-items='4', data-dots='false' data-nav='false' data-stage-padding='15', data-loop='false', data-margin='30', data-mouse-drag="true")
+				+timeline({
+					date: 'June 2018',
+					imageName: 'timeline-1-100x72',
+					link: '#',
+					title: 'Lorem ipsum dolor sit amet, scripta legimus',
+					exeption: 'Lorem ipsum dolor sit amet, scripta legimus quaerendum ex vis, audire nonumes his an. Decore tamquam insolens usu, an duo omnium debitis adipiscing, ne postulant.'
+				})
+
+				+timeline({
+					date: 'April 2015',
+					imageName: 'timeline-2-100x72',
+					link: '#',
+					title: 'Lorem ipsum dolor sit amet, scripta legimus dolor sit amet, scripta',
+					exeption: 'Lorem ipsum dolor sit amet, scripta legimus quaerendum ex vis, audire nonumes his an. Decore tamquam insolens usu, an duo omnium debitis adipiscing, ne postulant.'
+				})
+
+				+timeline({
+					date: 'December 2012',
+					imageName: 'timeline-3-100x72',
+					link: '#',
+					title: 'Lorem ipsum dolor sit amet, scripta legimus',
+					exeption: 'Lorem ipsum dolor sit amet, scripta legimus quaerendum ex vis, audire nonumes his an. Decore tamquam insolens usu, an duo omnium debitis adipiscing, ne postulant.'
+				})
+
+				+timeline({
+					date: 'October 2010',
+					imageName: 'timeline-4-100x72',
+					link: '#',
+					title: 'Lorem ipsum dolor sit amet, scripta legimus',
+					exeption: 'Lorem ipsum dolor sit amet, scripta legimus quaerendum ex vis, audire nonumes his an. Decore tamquam insolens usu, an duo omnium debitis adipiscing, ne postulant.'
+				})
+
+				+timeline({
+					date: 'August 2005',
+					imageName: 'timeline-5-100x72',
+					link: '#',
+					title: 'Lorem ipsum dolor sit amet, scripta legimus',
+					exeption: 'Lorem ipsum dolor sit amet, scripta legimus quaerendum ex vis, audire nonumes his an. Decore tamquam insolens usu, an duo omnium debitis adipiscing, ne postulant.'
+				})
+
+				+timeline({
+					date: 'April 1999',
+					imageName: 'timeline-6-100x72',
+					link: '#',
+					title: 'Lorem ipsum dolor sit amet, scripta legimus',
+					exeption: 'Lorem ipsum dolor sit amet, scripta legimus quaerendum ex vis, audire nonumes his an. Decore tamquam insolens usu, an duo omnium debitis adipiscing, ne postulant.'
+				})
+
+				+timeline({
+					date: 'March 1998',
+					imageName: 'timeline-7-100x72',
+					link: '#',
+					title: 'Lorem ipsum dolor sit amet, scripta legimus',
+					exeption: 'Lorem ipsum dolor sit amet, scripta legimus quaerendum ex vis, audire nonumes his an. Decore tamquam insolens usu, an duo omnium debitis adipiscing, ne postulant.'
+				})
+
+	// Testimonials
+	section.section.section-lg
+		.container.text-center
+			h2.custom-title: span Testimonials
+			// Owl Carousel
+			.owl-carousel.owl-carousel-1(data-items='1', data-dots='true' data-nav='true' data-md-stage-padding='0', data-loop='false', data-margin='30', data-mouse-drag="false")
+				+blockquote-large({
+					authorImage: "index-1-3-220x220",
+					authorName: "Mildred Bates",
+					authorPosition: "Jewelry Shop Owner",
+					quote: "When I needed financial assistance to expand my shop, I went directly to Dot Bank. Securing financing helped us renovate and expand my jewelry shop and attract more clients."
+				})
+
+				+blockquote-large({
+					authorImage: "index-1-4-220x220",
+					authorName: "Marie Hanson",
+					authorPosition: "Charity Organization Manager",
+					quote: "I chose Dot Bank because I know they share my values of putting community first. Not only do they make banking easy, I see them out volunteering and investing in our community."
+				})
+
+				+blockquote-large({
+					authorImage: "index-1-5-220x220",
+					authorName: "Ann Smith",
+					authorPosition: "International Company Owner",
+					quote: "Finding Dot Bank, a reliable bank with the international reputation and specialized lending programs allowed me to finance my business and open a new office in California. Thank you!"
+				})
+
+	// Page Footer
+	include ../sections/_footer-1

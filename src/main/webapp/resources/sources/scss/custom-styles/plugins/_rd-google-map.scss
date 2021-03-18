@@ -1,0 +1,45 @@
+/*
+* @subsection Google Map
+* @description Describes style declarations for RD Google Map extension
+* @version     1.0.0
+*/
+$map-height: 200px;
+$map-sm-height: 300px;
+$map-xl-height: 400px;
+
+$map-height-sm: 330px;
+
+.google-map-markers{
+	display: none;
+}
+
+.google-map-container {
+	width: 100%;
+}
+.google-map {
+	height: $map-height;
+	width: 100%;
+
+	// Medium ≥768px
+	@include media-breakpoint-up(md) {
+		height: $map-sm-height;
+	}
+
+	// Extra large ≥1200px
+	@include media-breakpoint-up(xl) {
+		height: $map-xl-height;
+	}
+}
+
+.google-map-align {
+	display: flex;
+	min-height: $map-height-sm;
+	height: auto;
+
+	.google-map { height: auto; }
+}
+
+.gm-style-iw > div > div {
+	padding-right: 10px;
+	font-size: 13px;
+}

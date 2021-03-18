@@ -1,0 +1,89 @@
+/*
+*
+* Services
+*/
+
+.service-list {
+	.service-item {
+		img {
+			border-radius: $border-radius-sm;
+		}
+	}
+
+	* + .exeption { margin-top: 8px; }
+	* + .button { margin-top: 25px; }
+
+	.service-item + .service-item {
+		margin-top: 50px;
+	}
+
+	// Medium ≥768px
+	@include media-breakpoint-up(md) {
+		.service-item + .service-item { margin-top: 60px; }
+	}
+
+	// Large ≥992px
+	@include media-breakpoint-up(lg) {
+		* + .exeption { margin-top: 26px; }
+		* + .button { margin-top: 30px; }
+
+		.service-item + .service-item { margin-top: 80px; }
+	}
+
+	// Extra large ≥1200px
+	@include media-breakpoint-up(xl) {
+		.service-item + .service-item { margin-top: 97px; }
+	}
+
+	// Mega large ≥1600px
+	@include media-breakpoint-up(xxl) {
+		* + .exeption { margin-top: 33px; }
+		.service-item + .service-item { margin-top: 120px; }
+	}
+}
+
+.service-list-1 {
+	li + li { margin-top: 40px; }
+
+	// Extra large ≥1200px
+	@include media-breakpoint-up(xl) {
+		li + li { margin-top: 79px; }
+	}
+}
+
+.service-item-1 {
+	flex-direction: column;
+	text-align: center;
+	@include unit-responsive-custom(10px, 10px);
+
+	.icon {
+		font-size: 70px;
+		line-height: 1;
+		@include icon-gradient($primary, $secondary)
+	}
+
+	.title { font-weight: 400; }
+
+	p {
+		color: $gray-400;
+	}
+
+	* + p { margin-top: 8px; }
+
+	@include media-breakpoint-up(lg) {
+		flex-direction: row;
+		text-align: left;
+
+		@include unit-spacing(15px, 15px);
+
+		&-right {
+			text-align: right;
+
+			.unit-item { order: 1; }
+		}
+	}
+
+	@include media-breakpoint-up(xxl) {
+		@include unit-spacing(30px, 15px);
+	}
+}

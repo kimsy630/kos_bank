@@ -1,0 +1,148 @@
+extends  ../_skeleton
+
+//- Includes
+include ../components/_ui-inline-subscribe-form
+
+block variables
+	- var activeCategory = 'pages'
+	- var pageName = 'Forms'
+
+block page 
+	// Page Header
+	include ../sections/_header-transparent
+
+	+breadcrumbs({
+		category: activeCategory,
+		path: [pageName]
+	})
+
+	// Contact us
+	section.section.section-lg.bg-default
+		.container
+			.row
+				.col-md-8.col-lg-5.col-xxl-4
+					h2 Get in Touch
+					// RD Mailform
+					form.rd-form.rd-mailform(data-form-output='form-output-global', data-form-type='contact', method='post', action='bat/rd-mailform.php')
+						.form-wrap
+							input#contact-name.form-input(type='text' name='name' data-constraints='@Required')
+							label.form-label(for='contact-name') Name
+
+						.form-wrap
+							input#contact-email.form-input(type='email' name='email' data-constraints='@Email @Required')
+							label.form-label(for='contact-email') E-mail
+
+						.form-wrap
+							label.form-label(for='contact-message') Message
+							textarea#contact-message.form-input(name='message' data-constraints='@Required')
+
+						button.button.button-primary(type='submit') Send
+
+	// Subscribe to Our Newsletter
+	section.section.section-sm.bg-primary-gradient.context-dark.text-center
+		.container
+			.row.row-20.justify-content-md-center
+				.col-md-9.col-lg-6.col-xxl-7
+					h3 Subscribe for #[span.font-weight-bold News and Updates]
+				.col-md-8.col-lg-5.col-xxl-4
+					+inline-subscribe-form-2({})
+
+	// Newsletter
+	section.section.section-lg.bg-default
+		.container
+			.row
+				.col-md-8.col-lg-6.col-xxl-3
+					h5 Newsletter
+					p Keep up with our always upcoming financial news. Enter your e-mail and subscribe to our newsletter to get all updates right into your inbox.
+					// RD Mailform
+					form.rd-form.form-sm.rd-mailform(data-form-output='form-output-global', data-form-type='contact', method='post', action='bat/rd-mailform.php')
+						.form-wrap
+							input#newsletter-email.form-input(type='email' name='email' data-constraints='@Email @Required')
+							label.form-label(for='newsletter-email') Enter your e-mail
+
+						button.button.button-sm.button-primary(type='submit') Subscribe
+
+	// Register Form
+	section.section.section-lg.bg-default.text-center
+		.container
+			.row
+				.col-md-8.col-lg-6.col-xxl-4
+					h3 Registration
+
+					// RD Mailform
+					form.rd-form.form-lg.rd-mailform
+						.form-wrap
+							input#register-name.form-input(type='email' name='email' data-constraints='@Email @Required')
+							label.form-label(for='register-name') Username
+
+						.form-wrap
+							input#register-email.form-input(type='email' name='email' data-constraints='@Email @Required')
+							label.form-label(for='register-email') E-mail
+
+						.form-wrap
+							input#register-password.form-input(type='password' name='password' data-constraints='@Required')
+							label.form-label(for='register-password') Password
+
+						.form-wrap
+							input#register-confirm-password.form-input(type='password' name='confirm-password' data-constraints='@Required')
+							label.form-label(for='register-confirm-password') Confirm Password
+
+						button.button.button-lg.button-round.button-block.button-primary(type='submit') Register
+
+					.group-sm.group-sm-justify.group-middle.social-items
+						span or use
+						a.icon.icon-lg.icon-gray-400.novi-icon.fa.fa-facebook(href='#')
+						a.icon.icon-lg.icon-gray-400.novi-icon.fa.fa-twitter(href='#')
+
+	// Login Form
+	section.section.section-lg.bg-default.text-center
+		.container
+			.row
+				.col-md-8.col-lg-6.col-xxl-4
+					h3 Login
+
+					// RD Mailform
+					form.rd-form.form-lg.rd-mailform
+						.form-wrap
+							input#login-email.form-input(type='email' name='email' data-constraints='@Email @Required')
+							label.form-label(for='login-email') E-mail
+
+						.form-wrap
+							input#login-password.form-input(type='password' name='password' data-constraints='@Required')
+							label.form-label(for='login-password') Password
+
+						button.button.button-lg.button-round.button-block.button-primary(type='submit') Sign In
+
+					.group-sm.group-sm-justify.group-middle.social-items
+						span or enter with
+						a.icon.icon-lg.icon-gray-400.novi-icon.fa.fa-facebook(href='#')
+						a.icon.icon-lg.icon-gray-400.novi-icon.fa.fa-twitter(href='#')
+
+	// Contact Us (with reCAPTCHA)
+	section.section.section-lg.bg-default
+		.container
+			.row
+				.col-md-9.col-lg-7.col-xxl-4
+					h3 Contact Us (with reCAPTCHA)
+					// RD Mailform
+					form.rd-form.rd-mailform(data-form-output='form-output-global', data-form-type='contact', method='post', action='bat/rd-mailform.php')
+						.form-wrap
+							input#contact-2-name.form-input(type='text' name='name' data-constraints='@Required')
+							label.form-label(for='contact-2-name') Name
+
+						.form-wrap
+							input#contact-2-email.form-input(type='email' name='email' data-constraints='@Email @Required')
+							label.form-label(for='contact-2-email') E-mail
+
+						.form-wrap
+							label.form-label(for='contact-2-message') Message
+							textarea#contact-2-message.form-input(name='message' data-constraints='@Required')
+
+						.form-wrap.form-wrap-recaptcha
+							// Google captcha
+							.recaptcha#captcha1(data-sitekey='6LfZlSETAAAAAC5VW4R4tQP8Am_to4bM3dddxkEt')
+
+						button.button.button-primary(type='submit') Send
+
+	// Page Footer
+	include ../sections/_footer-1

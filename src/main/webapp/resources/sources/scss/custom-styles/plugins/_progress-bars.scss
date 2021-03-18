@@ -1,0 +1,68 @@
+/*
+*
+* Progress Bars
+*/
+
+//
+// Linear Progress Bars
+//
+
+.progress-linear {
+	position: relative;
+	text-align: left;
+
+	.progress-header {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		@include spacing(10px);
+	}
+
+	.progress-bar-linear-wrap {
+		height: 2px;
+		background: $gray-100;
+	}
+
+	.progress-bar-linear {
+		width: 0;
+		height: inherit;
+		background: $primary;
+		transition: .5s all ease-in-out;
+	}
+
+	.progress-value {
+		&::after {
+			content: "%";
+		}
+	}
+}
+
+%context-dark .progress-linear {
+	.progress-value {
+		font-weight: 100;
+	}
+}
+
+* + .progress-linear-wrap { margin-top: 20px; }
+* + .progress-bar-linear-wrap { margin-top: 8px; }
+p + .progress-linear-wrap { margin-top: 12px; }
+.progress-linear + .progress-linear { margin-top: 15px; }
+
+@include media-breakpoint-up(lg) {
+	* + .progress-linear-wrap { margin-top: 46px; }
+	p + .progress-linear-wrap { margin-top: 22px; }
+	.progress-linear + .progress-linear { margin-top: 25px; }
+}
+
+%context-dark {
+	.progress-linear {
+		.progress-bar-linear-wrap { background: $primary-dark-1; }
+		.progress-bar-linear { background: $secondary; }
+	}
+}
+
+.bg-gray-100 {
+	.progress-linear {
+		.progress-bar-linear-wrap { background: rgba($black, .05); }
+	}
+}

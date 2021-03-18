@@ -1,0 +1,141 @@
+//- Thumbnail Small
+mixin thumbnail-small(obj)
+	- var imageSize = getImageSize(obj.filename)
+	a.thumbnail-small(href=obj.link)
+		.thumbnail-small-image
+			img(src='images/layout-panel/' + obj.filename + '.jpg' alt='' width=imageSize[0] height=imageSize[1])
+		.thumbnail-small-hover-image
+			img(src='images/layout-panel/' + obj.filename + '.jpg' alt='' width=imageSize[0] height=imageSize[1])
+
+		.thumbnail-small-caption
+			p.thumbnail-small-header=obj.title
+
+//- Layout Panel 
+.layout-panel-wrap
+	.layout-panel
+		button.layout-panel-toggle(data-custom-toggle='.layout-panel-wrap'): span
+
+		.layout-panel-content.scroll-wrap
+			.layout-panel-inner
+				.layout-panel-header
+					a.button.button-primary.button-icon.button-icon-left(href=links.getTemplate)
+						span.icon.mdi.mdi-cart-outline
+						| Buy template
+					.layout-panel-element
+						+logo
+
+				.layout-panel-controls
+					.layout-panel-row
+						p Wide / Boxed Layout 
+						label: input.toggle-custom.layout-toggle(name='page-boxed-toggle' value='toggle-1' type='checkbox')
+
+					.layout-panel-row
+						p Choose Color Scheme
+						.theme-switcher-group
+							button.theme-switcher-group-item(data-theme-name='default') Default
+							button.theme-switcher-group-item(data-theme-name='style-1') Style 1
+
+					.layout-panel-row.layout-panel-row-button-wrap
+						button.button.button-gray-100(data-theme-reset='') Reset 
+
+				// Isotope 
+				.layout-panel-isotope-wrap
+					.isotope-filters
+						ul.isotope-filters-list
+							li: a.active(data-isotope-filter='*', data-isotope-group='layouts', href='#') All
+							li: a(data-isotope-filter='templates', data-isotope-group='layouts', href='#') Templates
+							li: a(data-isotope-filter='headers', data-isotope-group='layouts', href='#') Headers
+							li: a(data-isotope-filter='footers', data-isotope-group='layouts', href='#') Footers
+
+					// Isotope Content 
+					.isotope(data-isotope-layout='fitRows', data-isotope-group='layouts')
+						.isotope-item(data-filter='templates')
+							+thumbnail-small({
+								filename: 'trunk-layout-panel-placeholder-380x280',
+								title: 'Creative',
+								link: 'home-creative.html'
+							})
+
+						.isotope-item(data-filter='templates')
+							+thumbnail-small({
+								filename: 'trunk-layout-panel-placeholder-380x280',
+								title: 'Classic',
+								link: 'home-classic.html'
+							})
+
+						.isotope-item(data-filter='templates')
+							+thumbnail-small({
+								filename: 'trunk-layout-panel-placeholder-380x280',
+								title: 'Modern',
+								link: 'home-modern.html'
+							})
+
+						.isotope-item(data-filter='templates')
+							+thumbnail-small({
+								filename: 'trunk-layout-panel-placeholder-380x280',
+								title: 'Variant 4',
+								link: 'home-variant-4.html'
+							})
+
+						.isotope-item(data-filter='templates')
+							+thumbnail-small({
+								filename: 'trunk-layout-panel-placeholder-380x280',
+								title: 'Variant 5',
+								link: 'home-variant-5.html'
+							})
+
+						.isotope-item(data-filter='templates')
+							+thumbnail-small({
+								filename: 'trunk-layout-panel-placeholder-380x280',
+								title: 'Variant 6',
+								link: 'home-variant-6.html'
+							})
+
+						.isotope-item(data-filter='templates')
+							+thumbnail-small({
+								filename: 'trunk-layout-panel-placeholder-380x280',
+								title: 'Variant 7',
+								link: 'home-variant-7.html'
+							})
+
+						.isotope-item(data-filter='templates')
+							+thumbnail-small({
+								filename: 'trunk-layout-panel-placeholder-380x280',
+								title: 'Variant 8',
+								link: 'home-variant-8.html'
+							})
+
+						.isotope-item(data-filter='headers')
+							+thumbnail-small({
+								filename: 'trunk-layout-panel-placeholder-380x280',
+								title: 'Header Minimal',
+								link: 'header-minimal.html'
+							})
+
+						.isotope-item(data-filter='headers')
+							+thumbnail-small({
+								filename: 'trunk-layout-panel-placeholder-380x280',
+								title: 'Header Fullwidth',
+								link: 'header-fullwidth.html'
+							})
+
+						.isotope-item(data-filter='headers')
+							+thumbnail-small({
+								filename: 'trunk-layout-panel-placeholder-380x280',
+								title: 'Header Sidebar',
+								link: 'header-sidebar.html'
+							})
+
+						.isotope-item(data-filter='footers')
+							+thumbnail-small({
+								filename: 'trunk-layout-panel-placeholder-380x280',
+								title: 'Footer Centered',
+								link: 'footer-centered.html'
+							})
+
+						.isotope-item(data-filter='footers')
+							+thumbnail-small({
+								filename: 'trunk-layout-panel-placeholder-380x280',
+								title: 'Footer Minimal',
+								link: 'footer-minimal.html'
+							})

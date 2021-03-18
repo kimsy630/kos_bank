@@ -1,0 +1,91 @@
+extends  ../_skeleton
+
+//- Includes
+include ../components/_ui-pagination
+
+block variables
+	- var activeCategory = 'pages'
+	- var pageName = 'Classic blog'
+
+block page 
+	// Page Header
+	include ../sections/_header-transparent
+
+	+breadcrumbs({
+		category: activeCategory,
+		path: [pageName]
+	})
+
+	// Overview
+	section.section.section-lg
+		.container
+			.row.justify-content-sm-center
+				.col-md-10.col-xl-8
+					+post-classic(
+					{
+						imageName: "classic-blog-1-770x456",
+						title: "7 Services That Can Save Retirees Money",
+						link: "single-post.html",
+						exeption: "Lorem ipsum dolor sit amet, qui tollit laoreet ocurreret id, ne vis melius offendit appetere, ius timeam percipit argumentum id. His mutat nostrum ad, ei qui nostro aeterno recteque, aperiam quaerendum id has. Quod tantas volumus eu eum, mei appetere honestatis an. Dico apeirian qui ad, pri eu munere menandri maluisset."
+					},
+					{
+						date: "2 days ago",
+						author: "Martha Ryan",
+						authorLink: "single-post.html"
+					},
+
+					[{"title": "News", "href": "single-post.html"}]
+					)
+
+					+post-classic(
+					{
+						imageName: "classic-blog-2-770x456",
+						title: "Stocks Could Surge Another 10% Between Now And 2018, Financial Experts Say",
+						link: "single-post.html",
+						exeption: "Lorem ipsum dolor sit amet, qui tollit laoreet ocurreret id, ne vis melius offendit appetere, ius timeam percipit argumentum id. His mutat nostrum ad, ei qui nostro aeterno recteque, aperiam quaerendum id has. Quod tantas volumus eu eum, mei appetere honestatis an. Dico apeirian qui ad, pri eu munere menandri maluisset."
+					},
+					{
+						date: "2 days ago",
+						author: "Martha Ryan",
+						authorLink: "single-post.html"
+					},
+
+					[{"title": "News", "href": "single-post.html"}]
+					)
+
+					+post-classic(
+					{
+						imageName: "classic-blog-3-770x456",
+						title: "Wall Street Analysts Are Nailing It This Year",
+						link: "single-post.html",
+						exeption: "Lorem ipsum dolor sit amet, qui tollit laoreet ocurreret id, ne vis melius offendit appetere, ius timeam percipit argumentum id. His mutat nostrum ad, ei qui nostro aeterno recteque, aperiam quaerendum id has. Quod tantas volumus eu eum, mei appetere honestatis an. Dico apeirian qui ad, pri eu munere menandri maluisset."
+					},
+					{
+						date: "2 days ago",
+						author: "Martha Ryan",
+						authorLink: "single-post.html"
+					},
+
+					[{"title": "News", "href": "single-post.html"}]
+					)
+
+					+post-classic(
+					{
+						imageName: "classic-blog-4-770x456",
+						title: "Cash Faces a New Challenger in Zelle, a Mobile Banking Service",
+						link: "single-post.html",
+						exeption: "Lorem ipsum dolor sit amet, qui tollit laoreet ocurreret id, ne vis melius offendit appetere, ius timeam percipit argumentum id. His mutat nostrum ad, ei qui nostro aeterno recteque, aperiam quaerendum id has. Quod tantas volumus eu eum, mei appetere honestatis an. Dico apeirian qui ad, pri eu munere menandri maluisset."
+					},
+					{
+						date: "2 days ago",
+						author: "Martha Ryan",
+						authorLink: "single-post.html"
+					},
+
+					[{"title": "News", "href": "single-post.html"}]
+					)
+
+					+pagination-bootstrap("", 1, 4)
+
+	// Page Footer
+	include ../sections/_footer-1

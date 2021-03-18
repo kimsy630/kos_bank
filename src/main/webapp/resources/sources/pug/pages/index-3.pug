@@ -1,0 +1,341 @@
+extends  ../_skeleton
+
+//- Includes
+include ../components/_ui-progress-bar-linear
+include ../components/_ui-inline-subscribe-form
+
+block variables
+	- var activeCategory = 'home'
+	- var pageName = 'Home 3'
+
+block page
+	// Page Header
+	include ../sections/_header-classic
+
+	// Swiper
+	section.block-preview
+		.cover-image(style="background-image: url(images/index-3-1-1144x912.jpg)")
+		.container
+			.brand.mobile-brand
+				a(href="index.html")
+					+png("logo-big-117x33")
+			h1.title The Brightest Card in Your Wallet
+			h6.exeption Dot Bank is your #1 provider of reliable credit & debit cards, secure deposits, loans, and other financial services available worldwide.
+			a.button.button-lg.button-primary(href="about.html") Learn More
+
+	// Advantages
+	section.section.section-sm.section-sm-1.bg-gray-100
+		.container.text-center
+			.row.row-40
+				.col-md-4
+					+counter-vertical({
+						imageName: "progress-1-92x84",
+						subtitle: "More than",
+						value: "23754",
+						title: "Issued Cards",
+						exeption: "Our bank is an acknowledged leader in credit card distribution. We issue more than 5000 cards every year."
+					})
+
+				.col-md-4
+					+counter-vertical({
+						imageName: "progress-2-92x84",
+						subtitle: "Up to",
+						value: "30",
+						valueSub: "%",
+						title: "Cashback",
+						exeption: "We offer amazing amount of cashback for payments made with one of our credit cards - Blue, Green, or Orange."
+					})
+
+				.col-md-4
+					+counter-vertical({
+						imageName: "progress-3-92x84",
+						subtitle: "Up to",
+						value: "25",
+						valueSub: "%",
+						title: "for Deposit",
+						exeption: "Dot Bank offers various deposit offers in all international currencies with interest rate up to 25% for all regular clients."
+					})
+
+	// Testimonials
+	section.section.section-lg
+		.container.text-center
+			h2 Testimonials
+			.row.row-30.justify-content-center.text-left
+				.col-md-10.col-lg-7.col-xl-8.wow.fadeIn
+					+video-box({
+						"background": "video-preview-1.jpg",
+						"link": "https://www.youtube.com/watch?v=EUVRzyzrF3U"
+					})
+				.col-md-10.col-lg-5.col-xl-4
+					.owl-carousel.owl-carousel-2(data-items='1', data-dots='true' data-nav='false' data-stage-padding='10', data-loop='true', data-margin='30', data-mouse-drag="false", data-autoplay="true")
+						+blockquote-custom({
+							quote: "Finding Dot Bank, a reliable bank with international reputation and specialized lending programs allowed me to finance my business and open a new office in California. I will definitely recomend you to my friends and partners. Thank you!",
+							authorImg: "user-1-80x80",
+							authorName: "Ann Smith",
+							authorPosition: "International Company Owner"
+						})
+							ul.list-rating
+								li: .icon-rating.mdi.mdi-star
+								li: .icon-rating.mdi.mdi-star
+								li: .icon-rating.mdi.mdi-star
+								li: .icon-rating.mdi.mdi-star
+								li: .icon-rating.mdi.mdi-star-half
+
+						+blockquote-custom({
+							quote: "When I needed financial assistance to expand my shop, I went directly to Dot Bank. Securing financing helped us renovate and expand my jewelry shop and attract more clients. They also help me manage my bank account without any stress.",
+							authorImg: "user-2-80x80",
+							authorName: "Mildred Bates",
+							authorPosition: "Jewelry Shop Owner"
+						})
+							ul.list-rating
+								li: .icon-rating.mdi.mdi-star
+								li: .icon-rating.mdi.mdi-star
+								li: .icon-rating.mdi.mdi-star
+								li: .icon-rating.mdi.mdi-star
+								li: .icon-rating.mdi.mdi-star-half
+
+						+blockquote-custom({
+							quote: "I chose Dot Bank because I know they share my values of putting community first. Not only do they make banking easy, I see them out volunteering and investing in our community, which is very important for me and everything I do.",
+							authorImg: "user-3-80x80",
+							authorName: "Marie Hanson",
+							authorPosition: "Charity Organization Manager"
+						})
+							ul.list-rating
+								li: .icon-rating.mdi.mdi-star
+								li: .icon-rating.mdi.mdi-star
+								li: .icon-rating.mdi.mdi-star
+								li: .icon-rating.mdi.mdi-star
+								li: .icon-rating.mdi.mdi-star-half
+
+	// Advantages
+	section.section.section-sm.section-sm-2.bg-primary-dark
+		.container.text-center
+			.row.row-30
+				.col-md-6.col-lg-3.wow.fadeInRight
+					+list-icon({
+						addClass: "list-icon-gradient",
+						icon: "mercury-icon-globe-marker",
+						title: "Various Locations",
+						content: "We have offices in many countries including the USA, the UK, Norway, France, Spain, Japan, and China."
+					})
+				.col-md-6.col-lg-3.wow.fadeInRight(data-wow-delay="0.1s")
+					+list-icon({
+						addClass: "list-icon-gradient",
+						icon: "mercury-icon-touch",
+						title: "Mobile Banking Apps",
+						content: "Get instant access to your account on any device using our banking apps and browser solutions."
+					})
+				.col-md-6.col-lg-3.wow.fadeInRight(data-wow-delay="0.2s")
+					+list-icon({
+						addClass: "list-icon-gradient",
+						icon: "mercury-icon-social",
+						title: "Family Programs",
+						content: "Our Bank has special programs with financial benefits for all your family members."
+					})
+				.col-md-6.col-lg-3.wow.fadeInRight(data-wow-delay="0.3s")
+					+list-icon({
+						addClass: "list-icon-gradient",
+						icon: "mercury-icon-phone-24",
+						title: "24/7 Support",
+						content: "Our Support team is always ready to help you solve any banking and financial issues you may have."
+					})
+
+	// Call to action
+	section.section.section-xs.bg-primary-gradient
+		.container
+			.box-cta
+				.box-cta-inner
+					h3 Choose Your #[span.font-weight-bold Bank Card] Now!
+				.box-cta-inner
+					a.button.button-lg.button-primary-dark(href='#') Order Card
+
+	// A Few Words About Us
+	section.section.section-lg.section-image-relative.bg-gray-100
+		.container.text-center.text-xl-left
+			.row.justify-content-center.justify-content-xl-start
+				.col-md-10.col-xl-6
+					.text-block-3
+						h2.wow.fadeIn A Few Words About Us
+						h6.wow.fadeIn Dot Bank was founded in 1999 to introduce the new level of financial services worldwide.
+						p.wow.fadeIn At Dot Bank, we are guided by a common purpose to help make financial lives better by connecting clients and communities to the resource they need to be successful. We are driving growth – helping to create jobs, develop communities, foster economic mobility; while managing risk and providing a return to our clients.
+					.row.row-xs-center.row-30.text-center
+						.col-6.col-sm-4
+							// Circle Progress Bar
+							.progress-bar-circle(data-value='0.25' data-gradient=colors.primary data-empty-fill='rgba(0,0,0,.1)' data-size='96' data-thickness='2')
+								span
+							p.progress-bar-circle-title Economy
+						.col-6.col-sm-4
+							// Circle Progress Bar
+							.progress-bar-circle(data-value='0.5' data-gradient=colors.primary data-empty-fill='rgba(0,0,0,.1)' data-size='96' data-thickness='2')
+								span
+							p.progress-bar-circle-title Cashback
+						.col-sm-4
+							// Circle Progress Bar
+							.progress-bar-circle(data-value='0.75' data-gradient=colors.primary data-empty-fill='rgba(0,0,0,.1)' data-size='96' data-thickness='2')
+								span
+							p.progress-bar-circle-title Stability
+					a.button.button-primary.button-lg(href="about.html") Learn More
+
+		+png("index-3-1-959x808", "img-custom")
+
+	// Our Team
+	section.section.section-lg
+		.container.text-center
+			h2 Our Team
+			// Owl Carousel
+			.owl-carousel.owl-carousel-3.text-left.wow.fadeInUp(data-items='1', data-sm-items='2', data-lg-items='3', data-xl-items='4', data-dots='true' data-nav='false' data-stage-padding='0', data-loop='false', data-margin='30', data-mouse-drag="false")
+
+				+thumbnail-1({
+					imageName: "team-1-270x270",
+					title: "Samuel Chapman",
+					link: "#",
+					position: "CEO & Founder of Dot Bank",
+					exeption: "Mr. Chapman founded Dot Bank in 1999 and he currently holds a position of CEO. Previously, Samuel was an investment professional."
+				})
+					.group.group-middle.social-items
+						a.icon.icon-md.icon-gray-400.novi-icon.mdi.mdi-facebook(href='#')
+						a.icon.icon-md.icon-gray-400.novi-icon.mdi.mdi-twitter(href='#')
+						a.icon.icon-md.icon-gray-400.novi-icon.mdi.mdi-instagram(href='#')
+						a.icon.icon-md.icon-gray-400.novi-icon.mdi.mdi-facebook-messenger(href='#')
+						a.icon.icon-md.icon-gray-400.novi-icon.mdi.mdi-linkedin(href='#')
+						a.icon.icon-md.icon-gray-400.novi-icon.mdi.mdi-snapchat(href='#')
+
+				+thumbnail-1({
+					imageName: "team-2-270x270",
+					title: "Stephen Rose",
+					link: "#",
+					position: "CTO of Dot Bank",
+					exeption: "Stephen is Dot Bank’s CTO and is responsible for the bank’s technology and operations. He has over 20 years of technical experience."
+				})
+					.group.group-middle.social-items
+						a.icon.icon-md.icon-gray-400.novi-icon.mdi.mdi-facebook(href='#')
+						a.icon.icon-md.icon-gray-400.novi-icon.mdi.mdi-twitter(href='#')
+						a.icon.icon-md.icon-gray-400.novi-icon.mdi.mdi-instagram(href='#')
+						a.icon.icon-md.icon-gray-400.novi-icon.mdi.mdi-facebook-messenger(href='#')
+						a.icon.icon-md.icon-gray-400.novi-icon.mdi.mdi-linkedin(href='#')
+						a.icon.icon-md.icon-gray-400.novi-icon.mdi.mdi-snapchat(href='#')
+
+				+thumbnail-1({
+					imageName: "team-3-270x270",
+					title: "Catherine White",
+					link: "#",
+					position: "Finance Director",
+					exeption: "Catherine White is our Finance Director and a qualified member of Certified Public Accountants Organization."
+				})
+					.group.group-middle.social-items
+						a.icon.icon-md.icon-gray-400.novi-icon.mdi.mdi-facebook(href='#')
+						a.icon.icon-md.icon-gray-400.novi-icon.mdi.mdi-twitter(href='#')
+						a.icon.icon-md.icon-gray-400.novi-icon.mdi.mdi-instagram(href='#')
+						a.icon.icon-md.icon-gray-400.novi-icon.mdi.mdi-facebook-messenger(href='#')
+						a.icon.icon-md.icon-gray-400.novi-icon.mdi.mdi-linkedin(href='#')
+						a.icon.icon-md.icon-gray-400.novi-icon.mdi.mdi-snapchat(href='#')
+
+				+thumbnail-1({
+					imageName: "team-4-270x270",
+					title: "Danielle Gray",
+					link: "#",
+					position: "Marketing Director",
+					exeption: "Danielle Gray is Dot Bank’s Marketing Director, responsible for our marketing operations. Previously, she was responsible for brand promotion."
+				})
+					.group.group-middle.social-items
+						a.icon.icon-md.icon-gray-400.novi-icon.mdi.mdi-facebook(href='#')
+						a.icon.icon-md.icon-gray-400.novi-icon.mdi.mdi-twitter(href='#')
+						a.icon.icon-md.icon-gray-400.novi-icon.mdi.mdi-instagram(href='#')
+						a.icon.icon-md.icon-gray-400.novi-icon.mdi.mdi-facebook-messenger(href='#')
+						a.icon.icon-md.icon-gray-400.novi-icon.mdi.mdi-linkedin(href='#')
+						a.icon.icon-md.icon-gray-400.novi-icon.mdi.mdi-snapchat(href='#')
+
+			.button-wrap-lg
+				a.button.button-lg.button-primary(href="our-team.html") View All Team
+
+	// Latest Blog Posts
+	section.section.section-lg.bg-gray-100
+		.container.text-center
+			h2 Latest Blog Posts
+			.row.row-30.row-offset-4.text-left
+				.col-md-6.col-lg-4.wow.fadeInRight
+					+post-boxed(
+					{
+						imageName: "grid-blog-1-370x272",
+						title: "7 Banking Services That Can Save Retirees Money",
+						link: "single-post.html",
+						exeption: "Long gone are the days in which you need to visit a branch to do your banking. Today, banks offer an array of services that allow consumers to make deposits, transfers..."
+					},
+					{
+						date: "2 days ago",
+						author: "Martha Ryan",
+						authorLink: "single-post.html"
+					},
+
+					[{"title": "News", "href": "single-post.html"}]
+					)
+
+				.col-md-6.col-lg-4.wow.fadeInRight(data-wow-delay="0.1s")
+					+post-boxed(
+					{
+						imageName: "grid-blog-2-370x272",
+						title: "Stocks Could Surge Another 10% Between Now And 2018",
+						link: "single-post.html",
+						exeption: "Experts point out that the next couple of months could become bumpy as the markets deal with uncertainty over factors such as tax reform, which is currently advancing..."
+					},
+					{
+						date: "2 days ago",
+						author: "Martha Ryan",
+						authorLink: "single-post.html"
+					},
+
+					[{"title": "News", "href": "single-post.html"}]
+					)
+
+				.col-md-6.col-lg-4.wow.fadeInRight(data-wow-delay="0.2s")
+					+post-boxed(
+					{
+						imageName: "grid-blog-3-370x272",
+						title: "Wall Street Analysts Are Nailing It This Year",
+						link: "single-post.html",
+						exeption: "Wall Street analysts have made the right calls so far this year. Analysts' 50 most loved stocks at the start of the year are up an average 11.37 percent year-to-date..."
+					},
+					{
+						date: "2 days ago",
+						author: "Martha Ryan",
+						authorLink: "single-post.html"
+					},
+
+					[{"title": "News", "href": "single-post.html"}]
+					)
+
+			.button-wrap-lg
+				a.button.button-lg.button-primary(href="modern-blog.html") View All Blog Posts
+
+	// Latest Statistical Information
+	section.section
+		.container
+			.row.row-fix.align-items-end
+				.col-lg-8
+					.section-lg
+						h2 Latest Statistical Information
+						.row.row-offset-4.row-fix
+							.col-md-6
+								+svg-gradient()
+								.d3-chart#spline-chart(style='width:100%; margin: 0 auto')
+
+							.col-md-6.col-xl-5
+								p.text-gray-600 Our Bank regularly compiles and publishes a range of monetary and financial statistics. These include domestic banking statistics, external finance statistics, and international banking statistics. This information is frequently updated.
+								a.button.button-1.button-lg.button-primary(href="#") Read more
+				.col-lg-4.d-none.d-lg-block
+					.wrap
+						+png("index-3-2-338x507", "d-block")
+
+
+	// Subscribe to Our Newsletter
+	section.section.section-sm.bg-primary-gradient.context-dark.text-center
+		.container
+			.row.row-20.justify-content-md-center
+				.col-md-9.col-lg-6.col-xxl-7
+					h3 Subscribe for #[span.font-weight-bold News and Updates]
+				.col-md-8.col-lg-5.col-xxl-4
+					+inline-subscribe-form-2({})
+
+
+	// Page Footer
+	include ../sections/_footer-3
