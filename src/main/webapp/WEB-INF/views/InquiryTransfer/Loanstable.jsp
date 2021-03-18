@@ -3,18 +3,20 @@
 <%@ include file = "../setting.jsp"%>
 <!DOCTYPE html>
 <html class="wide wow-animation" lang="en">
+   <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
   <head>
     <title>Home</title>
     <meta name="format-detection" content="telephone=no">
     <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta charset="utf-8">
-    <link rel="icon" href="${csspath}images/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="${path}images/favicon.ico" type="image/x-icon">
     <!-- Stylesheets-->
     <link rel="stylesheet" type="pathtext/css" href="//fonts.googleapis.com/css?family=Roboto:100,300,300i,400,700,900">
-    <link rel="stylesheet" href="${csspath}css/bootstrap.css">
-    <link rel="stylesheet" href="${csspath}css/fonts.css">
-    <link rel="stylesheet" href="${csspath}css/style.css" id="main-styles-link">
+    <link rel="stylesheet" href="${path}css/bootstrap.css">
+    <link rel="stylesheet" href="${path}css/fonts.css">
+    <link rel="stylesheet" href="${path}css/style.css" id="main-styles-link">
     <!--[if lt IE 10]>
     <div style="background: #212121; padding: 10px 0; box-shadow: 3px 3px 5px 0 rgba(0,0,0,.3); clear: both; text-align:center; position: relative; z-index:1;"><a href="http://windows.microsoft.com/en-US/internet-explorer/"><img src="images/ie8-panel/warning_bar_0000_us.jpg" border="0" height="42" width="820" alt="You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today."></a></div>
     <script src="js/html5shiv.min.js"></script>
@@ -54,67 +56,12 @@
   </style>
   
   <body>
-    <div class="preloader">
-      <div class="preloader-body">
-        <div class="cssload-container">
-          <div class="cssload-speeding-wheel"></div>
-        </div>
-        <p>Loading...</p>
-      </div>
-    </div>
-    <div class="page">
-      <%@include file="../header.jsp" %>
-      
       <!-- 주석 친 부분에 사용하고싶은 <section> 긁어와서 쓰면 됩니다!! -->
-      <!--  -->
-
- 	<section class="section section-bredcrumbs">
-        <div class="container context-dark breadcrumb-wrapper">
-          <h2>계좌조회</h2>
-          <br>
-         
-          <ul class="breadcrumbs-custom">
-            <li><a href="index.html">개인</a></li>
-            <li><a href="#">조회</a></li>
-            <li class="active">계죄조회</li>
-          </ul>
-        </div>
-      </section>
       <section class="section section-lg bg-default">
         <div class="container">
-          <h3>계좌조회</h3>
-          <br><hr><br>
-          
-           <div id="accountInfo">
-           <table>
-				<tr>
-					<td>출금 계좌번호 : 110-451-550731</td>
-					<td>최종 접속일자 : 2021-03-18 13:20</td>
-					<td>계좌 상태 : 정상</td>
-				</tr>
-				<tr>
-					<td>최종 거래일자 : 2021-03-18 09:20</td>
-					<td></td>
-					<td></td>
-				</tr>
-           </table>
-          </div>
-          <br>
-          <br>
-       		<div class="tabs-custom tabs-horizontal tabs-line" id="tabs-1">
-	           <ul class="nav nav-tabs">
-	             <li class="nav-item" role="presentation"><a class="nav-link active" href="#tabs-1-1" data-toggle="tab">예금/신탁</a></li>
-	             <li class="nav-item" role="presentation"><a class="nav-link" href="#tabs-1-2" data-toggle="tab" onclick="location='Loanstable.cc'">대출</a></li>
-	             <li class="nav-item" role="presentation"><a class="nav-link" href="#tabs-1-3" data-toggle="tab" onclick="location='SleepTable.cc'">휴면</a></li>
-	             <li class="nav-item" role="presentation"><a class="nav-link" href="#tabs-1-4" data-toggle="tab">펀드</a></li>
-	             <li class="nav-item" role="presentation"><a class="nav-link" href="#tabs-1-5" data-toggle="tab">휴면계좌</a></li>
-	             <li class="nav-item" role="presentation"><a class="nav-link" href="#tabs-1-6" data-toggle="tab">정지계좌</a></li>
-	             <li class="nav-item" role="presentation"><a class="nav-link" href="#tabs-1-7" data-toggle="tab">전체계좌</a></li>
-	           </ul>
-           </div>
            <br>
         
-          <h6>입/출금 계좌</h6>
+          <h6>대출 계좌</h6>
           <div style="background-color: blue; width:1170px; height:2px;"> </div>
           
           <div>
@@ -128,9 +75,9 @@
                     <tr>
                       <th>계좌명</th>
                       <th>계좌번호</th>
-                      <th>신규일</th>
-                      <th>최근거래일자</th>
-                      <th>잔액(원)</th>
+                      <th>승인한도</th>
+                      <th>만기일</th>
+                      <th>대출잔액(원)</th>
                       <th>업무</th>
                     </tr>
                   </thead>
@@ -142,8 +89,8 @@
                       <td>2021.03.18</td>
                       <td><fmt:formatNumber value="1231231" pattern="#,###" />원</td>
                       <td> 
-                      	<div class="button button-round" style= "padding:10px; width:60px; height:40px; font-size:15px; text-align:center; background-color:olive; display:inline;" onclick="location.href='TransactionDetails.cc'">조회</div>  
-                      	<div class="button button-round" style="padding:10px; width:60px; height:40px; font-size:15px; text-align:center; background-color: orange; display:inline;">이체</div>
+                      	<div class="button button-round" style= "padding:10px; width:80px; height:40px; font-size:12px; text-align:center; background-color:olive; display:inline;" onclick="location.href='TransactionDetails.cc'">상환내역</div>  
+                      	<div class="button button-round" style="padding:10px; width:80px; height:40px; font-size:12px; text-align:center; background-color: orange; display:inline;">원금상환</div>
                       
                       </td>
                     </tr>
@@ -203,60 +150,6 @@
           </div>
         </div>
       </section>
-      
-
-      <section class="section section-lg bg-default">
-        <div class="container">
-          <h3>해지된 계좌</h3>
-          <br><hr><br>
-          
-          <br>
-          <br>
-       	
-        
-          <h6>해지된 계좌</h6>
-          <div style="background-color: blue; width:1170px; height:2px;"> </div>
-          
-          <div>
-          	조회건수 | 총[1건]
-          </div>
-          <div class="row row-offset-1">
-            <div class="col-lg-10 col-xxl-9">
-              <div class="table-custom-responsive">
-                <table class="table-custom table-custom-secondary table-custom-hovered" id="acc_table">
-                  <thead>
-                    <tr>
-                      <th>계좌명</th>
-                      <th>계좌번호</th>
-                      <th>신규일</th>
-                      <th>최근거래일자</th>
-                      <th>잔액(원)</th>
-                      <th>업무</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <td>저축예금</td>
-                      <td>110-451-550731</td>
-                      <td>신규일</td>
-                      <td>2021.03.18</td>
-                      <td><fmt:formatNumber value="1231231" pattern="#,###" />원</td>
-                      <td> 
-                      	<div class="button button-round" style= "padding:10px; width:60px; height:40px; font-size:15px; text-align:center; background-color:olive; display:inline;" onclick="location.href='TransactionDetails.cc'">조회</div>  
-                      	<div class="button button-round" style="padding:10px; width:60px; height:40px; font-size:15px; text-align:center; background-color: orange; display:inline;">이체</div>
-                      </td>
-                    </tr>
-                   
-                </table>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-       
-      
-      <%@include file="../footer.jsp" %>
-      </div>
  <!-- PANEL-->
     <!-- Global Mailform Output-->
     <div class="snackbars" id="form-output-global"></div>

@@ -18,6 +18,25 @@ public class InquiryTransferController {
 		logger.info("url ==> /AccountCheck");
 		return "InquiryTransfer/AccountCheck";
 	}
+	//거래내역 조회 TransactionDetails.do
+	@RequestMapping("/TransactionDetails.cc")// 로그인영역으로 변경할 것!!!
+	public String TransactionDetails(HttpServletRequest req,Model model) {
+		logger.info("url ==> /TransactionDetails");
+		return "InquiryTransfer/TransactionDetails";
+	}
+	//대출 테이블 Loanstable.do
+	@RequestMapping("/Loanstable.cc")// ajax에 들어갈 페이지
+	public String Loanstable(HttpServletRequest req,Model model) {
+		logger.info("url ==> /Loanstable");
+		return "InquiryTransfer/Loanstable";
+	}
+	//휴면계좌 테이블 SleepTable.do
+	@RequestMapping("/SleepTable.cc")// ajax에 들어갈 페이지
+	public String SleepTable(HttpServletRequest req,Model model) {
+		logger.info("url ==> /SleepTable");
+		return "InquiryTransfer/SleepTable";
+	}
+	
 	//계좌이체 AccountTransfer.cc
 	@RequestMapping("/AccountTransfer.cc")
 	public String AccountTransfer(HttpServletRequest req,Model model) {
