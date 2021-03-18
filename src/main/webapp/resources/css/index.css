@@ -91,14 +91,14 @@
 }
 
 .rd-navbar-fixed .rd-navbar-nav-wrap::-webkit-scrollbar-thumb {
-	background: #baa8e7;
+	background: #435ebe;
 	border: none;
 	border-radius: 0;
 	opacity: .2;
 }
 
 .rd-navbar-fixed .rd-navbar-nav-wrap::-webkit-scrollbar-track {
-	background: #7b59d0;
+	background: #435ebe;
 	border: none;
 	border-radius: 0;
 }
@@ -431,7 +431,7 @@
 
 .rd-navbar-fixed .rd-nav-item:hover .rd-nav-link, .rd-navbar-fixed .rd-nav-item.focus .rd-nav-link, .rd-navbar-fixed .rd-nav-item.active .rd-nav-link, .rd-navbar-fixed .rd-nav-item.opened .rd-nav-link {
 	color: #ffffff;
-	background: #7b59d0;
+	background: #435ebe;
 }
 
 .rd-navbar-fixed .rd-nav-item:hover > .rd-navbar-submenu-toggle, .rd-navbar-fixed .rd-nav-item.focus > .rd-navbar-submenu-toggle, .rd-navbar-fixed .rd-nav-item.active > .rd-navbar-submenu-toggle, .rd-navbar-fixed .rd-nav-item.opened > .rd-navbar-submenu-toggle {
@@ -456,7 +456,7 @@
 .rd-navbar-fixed .rd-navbar-dropdown > li.active > a,
 .rd-navbar-fixed .rd-navbar-dropdown > li.opened > a {
 	color: #ffffff;
-	background: #7b59d0;
+	background: #435ebe;
 }
 
 .rd-navbar-fixed .rd-navbar-megamenu .rd-megamenu-title {
@@ -472,7 +472,7 @@
 }
 
 .rd-navbar-fixed .rd-navbar-megamenu .rd-megamenu-title a:hover {
-	color: #7b59d0;
+	color: #435ebe;
 }
 
 .rd-navbar-fixed .rd-navbar-submenu-toggle {
@@ -484,7 +484,7 @@
 }
 
 .rd-navbar-fixed .rd-navbar-search .rd-search-form-submit:hover {
-	color: #7b59d0;
+	color: #435ebe;
 }
 
 .rd-navbar-fixed .rd-navbar-search-toggle {
@@ -492,7 +492,7 @@
 }
 
 .rd-navbar-fixed .rd-navbar-search-toggle:hover {
-	color: #7b59d0;
+	color: #435ebe;
 }
 
 .rd-navbar-fixed .rd-navbar-collapse {
@@ -518,21 +518,21 @@ html.rd-navbar-fixed-linked .page {
 }
 
 .rd-navbar-static .rd-nav-item.focus .rd-nav-link, .rd-navbar-static .rd-nav-item.opened .rd-nav-link {
-	color: #7b59d0;
+	color: #435ebe;
 	background: transparent;
 }
 
 .rd-navbar-static .rd-nav-item.focus > .rd-navbar-submenu-toggle, .rd-navbar-static .rd-nav-item.opened > .rd-navbar-submenu-toggle {
-	color: #7b59d0;
+	color: #435ebe;
 }
 
 .rd-navbar-static .rd-nav-item.active .rd-nav-link {
-	color: #7b59d0;
+	color: #435ebe;
 	background: transparent;
 }
 
 .rd-navbar-static .rd-nav-item.active > .rd-navbar-submenu-toggle {
-	color: #7b59d0;
+	color: #435ebe;
 }
 
 .rd-navbar-static .rd-nav-item.focus > .rd-navbar-submenu-toggle::before,
@@ -558,7 +558,7 @@ html.rd-navbar-fixed-linked .page {
 }
 
 .rd-navbar-static .rd-nav-item > .rd-navbar-submenu-toggle:hover {
-	color: #7b59d0;
+	color: #435ebe;
 }
 
 .rd-navbar-static .rd-nav-item > .rd-navbar-submenu {
@@ -579,7 +579,7 @@ html.rd-navbar-fixed-linked .page {
 }
 
 .rd-navbar-static .rd-nav-link:hover {
-	color: #7b59d0;
+	color: #435ebe;
 }
 
 .rd-navbar-static .rd-menu {
@@ -631,7 +631,7 @@ html.rd-navbar-fixed-linked .page {
 }
 
 .rd-navbar-static .rd-dropdown-item.focus .rd-dropdown-link, .rd-navbar-static .rd-dropdown-item.opened .rd-dropdown-link {
-	color: #7b59d0;
+	color: #435ebe;
 }
 
 .rd-navbar-static .rd-dropdown-item + .rd-dropdown-item {
@@ -643,7 +643,7 @@ html.rd-navbar-fixed-linked .page {
 }
 
 .rd-navbar-static .rd-dropdown-link:hover {
-	color: #7b59d0;
+	color: #435ebe;
 }
 
 .rd-navbar-static .rd-navbar-dropdown li > a,
@@ -660,7 +660,7 @@ html.rd-navbar-fixed-linked .page {
 .rd-navbar-static .rd-megamenu-list li > a,
 .rd-navbar-static .rd-megamenu-list li > a:focus,
 .rd-navbar-static .rd-megamenu-list li > a:active {
-	color: #7b59d0;
+	color: #435ebe;
 }
 
 .rd-navbar-static .rd-navbar-dropdown li > a:hover,
@@ -747,7 +747,7 @@ html.rd-navbar-fixed-linked .page {
 }
 
 .rd-navbar-static .rd-megamenu-list-link:hover {
-	color: #7b59d0;
+	color: #435ebe;
 	background: transparent;
 }
 
@@ -853,7 +853,7 @@ html.rd-navbar-fixed-linked .page {
 }
 
 .rd-navbar-static .rd-navbar-search-toggle:hover {
-	color: #7b59d0;
+	color: #435ebe;
 }
 
 .rd-navbar-static.rd-navbar--is-clone {
@@ -881,7 +881,7 @@ html.rd-navbar-fixed-linked .page {
 }
 
 .rd-navbar-static .rd-dropdown-item.focus .rd-dropdown-link, .rd-navbar-static .rd-dropdown-item.opened .rd-dropdown-link {
-	color: #7b59d0;
+	color: #435ebe;
 }
 
 .rd-navbar-static .rd-dropdown-item + .rd-dropdown-item {
