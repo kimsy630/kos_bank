@@ -119,19 +119,24 @@
                           <li class="rd-dropdown-item"><a class="rd-dropdown-link" href="#">환율정보</a></li>
                         </ul>
                       </li>
-                      <li class="rd-nav-item"><a class="rd-nav-link" href="#">펀딩.</a>
+                      <li class="rd-nav-item"><a class="rd-nav-link" href="#">펀딩</a>
                         <!-- RD Navbar Dropdown-->
                         <ul class="rd-menu rd-navbar-dropdown">
-                          <li class="rd-dropdown-item"><a class="rd-dropdown-link" href="#">펀드조회.</a></li>
-                          <li class="rd-dropdown-item"><a class="rd-dropdown-link" href="#">펀드등록.</a></li>
+                          <li class="rd-dropdown-item"><a class="rd-dropdown-link" href="FundList.cc">펀드조회</a></li>
+                          <li class="rd-dropdown-item"><a class="rd-dropdown-link" href="FundAdd.cc">펀드등록</a></li>
+                          <li class="rd-dropdown-item"><a class="rd-dropdown-link" href="AdminFund.cc">(관리자)펀드승인요청리스트</a></li>
                         </ul>
                       </li>
                       <li class="rd-nav-item">
-	                     <a class="rd-nav-link" href="#">고객센터.</a>
+	                     <a class="rd-nav-link" href="#">고객센터</a>
                         <!-- RD Navbar Dropdown-->
                         <ul class="rd-menu rd-navbar-dropdown">
-                          <li class="rd-dropdown-item"><a class="rd-dropdown-link" href="Chatbot.cc">챗봇상담.</a></li>
-                          <li class="rd-dropdown-item"><a class="rd-dropdown-link" href="EmailCounseling.cc">이메일 상담.</a></li>
+                          <li class="rd-dropdown-item"><a class="rd-dropdown-link" href="Chatbot.cc">챗봇상담</a></li>
+                          <li class="rd-dropdown-item"><a class="rd-dropdown-link" href="EmailCounseling.cc">이메일 상담</a></li>
+                          <li class="rd-dropdown-item"><a class="rd-dropdown-link" href="Notice.cc">(관리자)공지사항</a></li>
+                          <li class="rd-dropdown-item"><a class="rd-dropdown-link" href="AdminChatbot.cc">(관리자)챗봇</a></li>
+                          <li class="rd-dropdown-item"><a class="rd-dropdown-link" href="SendEmailCounseling.cc">(관리자)이메일 상담 리스트</a></li>
+                          <li class="rd-dropdown-item"><a class="rd-dropdown-link" href="ReminderMail.cc">(관리자)대출상품</a></li>
                         </ul>
                       </li>
                       <c:if test="${id==null}">
