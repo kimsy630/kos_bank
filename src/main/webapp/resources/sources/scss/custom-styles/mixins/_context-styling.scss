@@ -1,0 +1,20 @@
+/*
+*
+* Contexts
+*/
+
+@mixin context-dark {
+	&,
+	#{headings()} {
+		color: $white;
+	}
+}
+
+@mixin context-light {
+	color: $body-color;
+
+	#{headings()} {
+		color: $headings-color;
+	}
+}
+

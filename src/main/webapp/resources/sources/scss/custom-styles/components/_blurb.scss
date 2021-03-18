@@ -1,0 +1,341 @@
+/*
+*
+* Blurb
+*/
+
+/*
+* Blurb-image
+*/
+.blurb-image {
+	max-width: 290px;
+	margin-left: auto;
+	margin-right: auto;
+	text-align: center;
+
+	.icon {
+		position: relative;
+		z-index: 1;
+		font-size: 70px;
+		line-height: 1.15;
+		color: $primary;
+
+		&:after {
+			content: "";
+			position: absolute;
+			right: 0;
+			bottom: 0;
+			z-index: -1;
+			width: 59px;
+			height: 60px;
+			background: url("../images/icon-bg.png") no-repeat center;
+			background-size: cover;
+		}
+	}
+
+	.title { font-weight: 400; }
+
+	.exeption { color: $gray-600; }
+
+	* + .title { margin-top: 6px; }
+	* + .exeption { margin-top: 5px; }
+
+	// Large ≥992px
+	@include media-breakpoint-up(xl) {
+		* + .title { margin-top: 12px; }
+		* + .exeption { margin-top: 9px; }
+	}
+}
+
+/*
+* Blurb boxed
+*/
+.blurb-boxed {
+	max-width: 290px;
+	margin-left: auto;
+	margin-right: auto;
+	padding: 20px 15px;
+	text-align: center;
+	color: $gray-600;
+	background: $white;
+	border-radius: $border-radius-sm;
+
+	.icon {
+		position: relative;
+		z-index: 1;
+		font-size: 90px;
+		line-height: 1.1;
+		color: $primary;
+	}
+
+	.title { font-weight: 400; }
+
+	* + .title { margin-top: 7px; }
+	* + .exeption { margin-top: 6px; }
+
+	// Large ≥992px
+	@include media-breakpoint-up(xl) {
+		padding: 37px 20px;
+
+		* + .title { margin-top: 14px; }
+		* + .exeption { margin-top: 10px; }
+	}
+}
+
+/*
+* Blurb boxed 2
+*/
+.blurb-boxed-2 {
+	position: relative;
+	padding: 25px;
+	background: rgba($black, 0);
+
+	&:before {
+	content: "";
+		position: absolute;
+		left: 0;
+		top: 0;
+		right: 0;
+		bottom: 0;
+		z-index: -1;
+		background: $primary;
+}
+
+	.icon {
+		font-size: 50px;
+		line-height: 1;
+	}
+
+	.exeption {
+		opacity: 0.6;
+	}
+
+	&.blurb-boxed-dark { background: rgba($black, .2); }
+	&.blurb-boxed-darker { background: rgba($black, .4); }
+	&.blurb-boxed-darkest { background: rgba($black, .6); }
+
+	* + .title { margin-top: 11px; }
+	* + .exeption { margin-top: 5px; }
+	* + .button { margin-top: 13px; }
+
+	// Extra large ≥1200px
+	@include media-breakpoint-up(xxl) {
+		padding: 64px 84px;
+
+		* + .title { margin-top: 22px; }
+		* + .exeption { margin-top: 10px; }
+		* + .button { margin-top: 27px; }
+	}
+}
+
+/*
+* Blurb boxed 3
+*/
+.blurb-boxed-3 {
+	padding: 20px 15px;
+	text-align: center;
+	color: $gray-600;
+	background: $white;
+	border-radius: $border-radius-sm;
+	transition: .3s;
+
+	.icon {
+		position: relative;
+		z-index: 1;
+		font-size: 60px;
+		line-height: 1.1;
+		color: $primary;
+	}
+
+	.title { font-weight: 400; }
+
+	&:hover {
+		box-shadow: 0 2px 12px 3px rgba($gray-300, .3);
+	}
+
+	* + .title { margin-top: 7px; }
+	* + .exeption { margin-top: 6px; }
+
+	// Large ≥992px
+	@include media-breakpoint-up(xl) {
+		padding: 41px 20px;
+
+		* + .title { margin-top: 18px; }
+		* + .exeption { margin-top: 10px; }
+	}
+}
+
+/*
+* Blurb icon bordered
+*/
+.blurb-icon-bordered {
+	.icon {
+		position: relative;
+		width: 100px;
+		height: 100px;
+		font-size: 60px;
+		line-height: 100px;
+		color: $primary;
+		background: $white;
+		border: 2px solid $gray-200;
+		border-radius: 50%;
+		transition: .3s;
+
+		> span {
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 30px;
+			height: 30px;
+			font-size: 15px;
+			font-weight: 700;
+			line-height: 30px;
+			color: $white;
+			background: $primary;
+			border-radius: 50%;
+		}
+	}
+
+	p {
+		color: $gray-600;
+	}
+
+	&:hover {
+		.icon {
+			border-color: transparent;
+			box-shadow: 0 0 12px 3px rgba($gray-200, .5);
+		}
+	}
+
+	* + .title { margin-top: 10px; }
+	* + .exeption { margin-top: 10px; }
+
+	// Extra large ≥1200px
+	@include media-breakpoint-up(xl) {
+		.icon {
+			width: 168px;
+			height: 168px;
+			font-size: 90px;
+			line-height: 168px;
+
+			> span {
+				top: 5px;
+				left: 5px;
+				width: 40px;
+				height: 40px;
+				font-size: 20px;
+				line-height: 40px;
+			}
+		}
+
+	  * + .title { margin-top: 37px; }
+	  * + .exeption { margin-top: 17px; }
+	}
+
+	// Mega large ≥1600px
+	@include media-breakpoint-up(xxl) {
+		* + .title { margin-top: 45px; }
+		* + .exeption { margin-top: 21px; }
+	}
+}
+
+.blurb-icon-bordered-wrap {
+	// Large ≥992px
+	@include media-breakpoint-up(lg) {
+		.icon-wrap {
+			position: relative;
+			z-index: 0;
+
+			&:before,
+			&:after {
+				content: '';
+				position: absolute;
+				top: 50%;
+				width: calc(50% + 16px);
+				height: 2px;
+				transform: translateY(-50%);
+				background: $gray-200;
+				z-index: -1;
+			}
+
+			&:before { right: 50%; }
+			&:after { left: 50%; }
+
+		}
+
+		[class*="col-"]:first-child .icon-wrap:before { display: none; }
+		[class*="col-"]:last-child .icon-wrap:after { display: none; }
+	}
+}
+
+/*
+* Blurb icon fill
+*/
+.blurb-icon-fill {
+	.icon {
+		position: relative;
+		width: 100px;
+		height: 100px;
+		font-size: 60px;
+		line-height: 100px;
+		color: $white;
+		background: $primary-light;
+		border-radius: 50%;
+
+		&:before {
+			position: relative;
+			z-index: 1;
+		}
+
+		&:after {
+			content: "";
+			position: absolute;
+			left: 0;
+			top: 0;
+			right: 0;
+			bottom: 0;
+			z-index: 0;
+			background: linear-gradient(to bottom, transparent, $primary);
+			transition: inherit;
+			border-radius: inherit;
+		}
+
+		> span {
+			position: absolute;
+			top: -3px;
+			right: -25px;
+			z-index: -1;
+			font-size: 40px;
+			font-weight: 900;
+			line-height: 1;
+			color: $gray-100;
+		}
+	}
+
+	.exeption { color: $gray-600; }
+
+	* + .title { margin-top: 15px; }
+	* + .exeption { margin-top: 8px; }
+
+	// Extra large ≥1200px
+	@include media-breakpoint-up(xl) {
+		.icon {
+			width: 130px;
+			height: 130px;
+			font-size: 90px;
+			line-height: 130px;
+
+			> span {
+				top: -8px;
+				right: -41px;
+				font-size: 60px;
+			}
+		}
+
+		* + .title { margin-top: 30px; }
+		* + .exeption { margin-top: 17px; }
+	}
+}
+
+.img-bordered {
+	border-radius: $border-radius-sm;
+}

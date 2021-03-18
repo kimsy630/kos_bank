@@ -1,0 +1,17 @@
+/*
+*
+* Tooltop Custom
+*/
+
+//
+// Base class
+//
+.tooltip {
+	font-size: $font-size-base;
+	line-height: 1.2;
+	z-index: 1000;
+
+	.tooltip-inner {
+		padding: 8px 24px;
+	}
+}

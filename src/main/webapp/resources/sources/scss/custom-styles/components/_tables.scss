@@ -1,0 +1,138 @@
+/*
+*
+* Tables custom
+*/
+
+$table-cell-padding: 16px 24px;
+$table-condensed-cell-padding: 5px;
+
+$table-bg: $white;
+$table-bg-accent: $gray-100;
+$table-bg-hover: $primary;
+$table-bg-active: $table-bg-hover;
+
+$table-border-color: $gray-100;
+$table-border-head-color: $gray-600;
+
+
+.table-custom {
+	width: 100%;
+	max-width: 100%;
+	text-align: left;
+	background: $table-bg;
+	border-collapse: collapse;
+
+	th,
+	td {
+		color: $gray-700;
+		background: $table-bg;
+
+		@include media-breakpoint-down(sm) {
+			min-width: 130px;
+		}
+	}
+
+	th {
+		font-size: 14px;
+		font-weight: 700;
+		letter-spacing: .05em;
+
+		@include media-breakpoint-down(md) {
+			padding-top: 20px;
+			padding-bottom: 20px;
+		}
+	}
+
+	td,
+	th {
+		padding: $table-cell-padding;
+	}
+
+	td,
+	th {
+		border-bottom: 1px solid $table-border-color;
+	}
+
+	th {
+		border-bottom: 1px solid $table-border-head-color;
+	}
+}
+
+* + .table-custom-responsive {
+	margin-top: 30px;
+}
+
+@include media-breakpoint-up(md) {
+	* + .table-custom-responsive {
+		margin-top: 40px;
+	}
+}
+
+//
+// Table Custom styles variants
+//
+.table-custom.table-custom-primary {
+	thead th {
+		color: $white;
+		background: $primary;
+		border: 0;
+	}
+	tbody tr:hover td {
+		background: $table-bg-accent;
+	}
+}
+
+.table-custom.table-custom-hovered {
+	tr:hover td {
+		background: $table-bg-accent;
+	}
+}
+
+.table-custom.table-custom-bordered {
+	tr {
+	}
+	td,
+	th {
+		border: 1px solid $table-border-color;
+	}
+
+	th {
+		border-bottom: 1px solid $table-border-head-color;
+	}
+}
+
+.table-custom.table-custom-striped {
+	border-bottom: 1px solid $table-border-color;
+	tbody tr:nth-of-type(odd) td {
+		background: transparent;
+	}
+
+	tbody tr:nth-of-type(even) td {
+		background: $table-bg-accent;
+	}
+
+	tbody td {
+		border: 0;
+	}
+
+	tfoot td:not(:first-child) {
+		border-left: 0;
+	}
+}
+
+//
+// Table Custom Additional
+//
+.table-custom-responsive {
+	@include media-breakpoint-down(md) {
+		display: block;
+		width: 100%;
+		overflow-x: auto;
+		-ms-overflow-style: -ms-autohiding-scrollbar; // See https://github.com/twbs/bootstrap/pull/10057
+
+		// Prevent double border on horizontal scroll due to use of `display: block;`
+		&.table-bordered {
+			border: 0;
+		}
+	}
+}

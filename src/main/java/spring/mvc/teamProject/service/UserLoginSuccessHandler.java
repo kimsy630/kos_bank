@@ -53,7 +53,8 @@ public class UserLoginSuccessHandler implements AuthenticationSuccessHandler{
 		request.getSession().setAttribute("authority", authority);
 		
 		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/views/common/index.jsp");
-
+		
+		System.out.println("왜안가 ");
 		//List<CategorysVo> menu =categoryDao.categoryView(null);
 		//request.setAttribute("menu", menu);
 		

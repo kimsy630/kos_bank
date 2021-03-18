@@ -1,0 +1,128 @@
+extends  ../_skeleton
+
+//- Includes
+include ../components/_ui-pagination
+
+block variables
+	- var activeCategory = 'pages'
+	- var pageName = 'Grid blog'
+
+block page 
+	// Page Header
+	include ../sections/_header-transparent
+
+	+breadcrumbs({
+		category: activeCategory,
+		path: [pageName]
+	})
+
+	// Overview
+	section.section.section-lg.bg-gray-100
+		.container
+			.row.row-40.justify-content-sm-center
+				.col-md-6.col-lg-4
+					+post-boxed(
+					{
+						imageName: "grid-blog-1-370x272",
+						title: "7 Banking Services That Can Save Retirees Money",
+						link: "single-post.html",
+						exeption: "Lorem ipsum dolor sit amet, scripta legimus quaerendum ex vis, audire nonumes his an. Decore tamquam insolens usu, an duo omnium debitis."
+					},
+					{
+						date: "2 days ago",
+						author: "Martha Ryan",
+						authorLink: "single-post.html"
+					},
+
+					[{"title": "News", "href": "single-post.html"}]
+					)
+
+				.col-md-6.col-lg-4
+					+post-boxed(
+					{
+						imageName: "grid-blog-2-370x272",
+						title: "Stocks Could Surge Another 10% Between Now And 2018",
+						link: "single-post.html",
+						exeption: "Lorem ipsum dolor sit amet, scripta legimus quaerendum ex vis, audire nonumes his an. Decore tamquam insolens usu, an duo omnium debitis."
+					},
+					{
+						date: "2 days ago",
+						author: "Martha Ryan",
+						authorLink: "single-post.html"
+					},
+
+					[{"title": "News", "href": "single-post.html"}]
+					)
+
+				.col-md-6.col-lg-4
+					+post-boxed(
+					{
+						imageName: "grid-blog-1-370x272",
+						title: "Wall Street Analysts Are Nailing It This Year",
+						link: "single-post.html",
+						exeption: "Lorem ipsum dolor sit amet, scripta legimus quaerendum ex vis, audire nonumes his an. Decore tamquam insolens usu, an duo omnium debitis."
+					},
+					{
+						date: "2 days ago",
+						author: "Martha Ryan",
+						authorLink: "single-post.html"
+					},
+
+					[{"title": "News", "href": "single-post.html"}]
+					)
+
+				.col-md-6.col-lg-4
+					+post-boxed(
+					{
+						imageName: "grid-blog-4-370x272",
+						title: "Cash Faces a New Challenger in Zelle, a Mobile Banking Service",
+						link: "single-post.html",
+						exeption: "Lorem ipsum dolor sit amet, scripta legimus quaerendum ex vis, audire nonumes his an. Decore tamquam insolens usu, an duo omnium debitis."
+					},
+					{
+						date: "2 days ago",
+						author: "Martha Ryan",
+						authorLink: "single-post.html"
+					},
+
+					[{"title": "News", "href": "single-post.html"}]
+					)
+
+				.col-md-6.col-lg-4
+					+post-boxed(
+					{
+						imageName: "grid-blog-5-370x272",
+						title: "US Senators Renew Effort to Outlaw Shell Companies",
+						link: "single-post.html",
+						exeption: "Lorem ipsum dolor sit amet, scripta legimus quaerendum ex vis, audire nonumes his an. Decore tamquam insolens usu, an duo omnium debitis."
+					},
+					{
+						date: "2 days ago",
+						author: "Martha Ryan",
+						authorLink: "single-post.html"
+					},
+
+					[{"title": "News", "href": "single-post.html"}]
+					)
+
+				.col-md-6.col-lg-4
+					+post-boxed(
+					{
+						imageName: "grid-blog-6-370x272",
+						title: "Bankers Say Election will not Affect Brexit Plans",
+						link: "single-post.html",
+						exeption: "Lorem ipsum dolor sit amet, scripta legimus quaerendum ex vis, audire nonumes his an. Decore tamquam insolens usu, an duo omnium debitis."
+					},
+					{
+						date: "2 days ago",
+						author: "Martha Ryan",
+						authorLink: "single-post.html"
+					},
+
+					[{"title": "News", "href": "single-post.html"}]
+					)
+
+			+pagination-bootstrap("", 1, 4)
+
+	// Page Footer
+	include ../sections/_footer-1

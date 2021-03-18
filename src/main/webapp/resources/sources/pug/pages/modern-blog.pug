@@ -1,0 +1,101 @@
+extends  ../_skeleton
+
+//- Includes
+include ../components/_ui-pagination
+
+block variables
+	- var activeCategory = 'pages'
+	- var pageName = 'Modern blog'
+
+block page 
+	// Page Header
+	include ../sections/_header-transparent
+
+	+breadcrumbs({
+		category: activeCategory,
+		path: [pageName]
+	})
+
+	// Overview
+	section.section.section-lg.bg-gray-100
+		.container
+			.post-modern-wrap
+				.post-modern-left
+					.post-modern-item
+						+post-modern(
+						{
+							imageName: "modern-blog-1-370x240",
+							title: "7 Banking Services That Can Save Retirees Money",
+							link: "single-post.html",
+							exeption: "Lorem ipsum dolor sit amet, scripta legim us quaerendum ex vis, audire nonumes his an. Decore tamquam insolens usu, an."
+						},
+						{
+							date: "May, 23 2018, at 8:49 am",
+							authorImage: "modern-author-1-72x72",
+							author: "Martha Ryan",
+							authorLink: "single-post.html"
+						},
+
+						[{"title": "News", "href": "single-post.html"}]
+						)
+
+					.post-modern-item
+						+post-modern(
+						{
+							imageName: "modern-blog-2-370x240",
+							title: "Wall Street Analysts Are Nailing It This Year",
+							link: "single-post.html",
+							exeption: "Lorem ipsum dolor sit amet, scripta legim us quaerendum ex vis, audire nonumes his an. Decore tamquam insolens usu, an."
+						},
+						{
+							date: "May, 23 2018, at 8:49 am",
+							authorImage: "modern-author-2-72x72",
+							author: "Theresa Simpson",
+							authorLink: "single-post.html"
+						},
+
+						[{"title": "Banks", "href": "single-post.html"}]
+						)
+
+				.post-modern-right
+					.post-modern-item
+						+post-modern(
+						{
+							imageName: "modern-blog-3-370x240",
+							title: "Stocks Could Surge Another 10% Between Now And 2018",
+							link: "single-post.html",
+							exeption: "Lorem ipsum dolor sit amet, scripta legim us quaerendum ex vis, audire nonumes his an. Decore tamquam insolens usu, an."
+						},
+						{
+							date: "May, 23 2018, at 8:49 am",
+							authorImage: "modern-author-3-72x72",
+							author: "Lawrence Kelly",
+							authorLink: "single-post.html"
+						},
+
+						[{"title": "Finance", "href": "single-post.html"}]
+						)
+
+					.post-modern-item
+						+post-modern(
+						{
+							imageName: "modern-blog-4-370x240",
+							title: "Cash Faces a New Challenger in Zelle, a Mobile Banking Service",
+							link: "single-post.html",
+							exeption: "Lorem ipsum dolor sit amet, scripta legim us quaerendum ex vis, audire nonumes his an. Decore tamquam insolens usu, an."
+						},
+						{
+							date: "May, 23 2018, at 8:49 am",
+							authorImage: "modern-author-4-72x72",
+							author: "Theresa Simpson",
+							authorLink: "single-post.html"
+						},
+
+						[{"title": "Banks", "href": "single-post.html"}]
+						)
+
+			.post-button-wrap.text-center
+				a.button.button-lg.button-primary(href="#") Load More Blog Posts
+
+	// Page Footer
+	include ../sections/_footer-1

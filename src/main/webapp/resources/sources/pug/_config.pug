@@ -1,0 +1,128 @@
+-
+	var
+		html_class = "wide wow-animation",
+		fonts = "//fonts.googleapis.com/css?family=Roboto:100,300,300i,400,700,900",
+		layoutPanel = false,
+		subscribeFormCounter = 0,
+		logo = {
+			default: 'logo-84x23',
+			inverse: 'logo-inverse-84x23',
+			inverseBig: 'logo-inverse-145x39',
+			white: 'logo-white-145x40',
+			name: 'Bank'
+		},
+		links = {
+			post: 'blog-post.html',
+			getTemplate:'#get-template'
+		},
+		colors = {
+			primary: '#7b59d0',
+			secondary: '#36f1f8'
+		},
+		menu = [
+			{
+				title: 'Home',
+				category: 'home', 
+				link: 'index.html',
+				dropdown: [
+					{
+						title: 'Home 1',
+						link: 'index-1.html'
+					},
+					{
+						title: 'Home 2',
+						link: 'index-2.html'
+					},
+					{
+						title: 'Home 3',
+						link: 'index-3.html'
+					}
+				]
+			},
+			{
+				title: 'About',
+				category: 'about',
+				dropdown: [
+					{
+						title: 'Pricing',
+						link: 'pricing.html'
+					},
+					{
+						title: 'Our team',
+						link: 'our-team.html'
+					},
+					{
+						title: 'Single job',
+						link: 'single-job.html'
+					}
+				]
+			},
+			{
+				title: 'Services',
+				category: 'services',
+				link: 'services.html',
+				dropdown: [
+					{
+						title: 'Single service',
+						link: 'single-service.html'
+					}
+				]
+			},
+			{
+			title: 'Careers',
+				category: 'careers',
+				link: 'careers.html'
+			},
+			{
+				title: 'Pages',
+				category: 'pages',
+				link: '#',
+				megamenu: [
+					{
+						title: 'Elements',
+						list: [
+							{ title: 'Typography' },
+							{ title: 'Buttons' },
+							{ title: 'Forms' },
+							{ title: 'Tabs and accordions' },
+							{ title: 'Progress bars' },
+							{ title: 'Grid' },
+							{ title: 'Tables' }
+						]
+					},
+					{
+						title: 'Blog',
+						list: [
+							{ title: 'Classic blog' },
+							{ title: 'Grid blog' },
+							{ title: 'Masonry blog' },
+							{ title: 'Modern blog' },
+							{ title: 'Single post' }
+						]
+					},
+					{
+						title: 'Gallery',
+						list: [
+							{ title: 'Grid gallery' },
+							{ title: 'Masonry gallery' },
+							{ title: 'Single product' }
+						]
+					},
+					{
+						title: 'Extras',
+						list: [
+							{ title: '404 Page', link: '404.html' },
+							{ title: '503 Page', link: '503.html' },
+							{ title: 'Coming soon' },
+							{ title: 'Login/Registration', link: 'login.html' },
+							{ title: 'Privacy policy' },
+							{ title: 'Search results' }
+						]
+					}
+				]
+			},
+			{
+				title: 'Contacts',
+				category: 'contacts'
+			}
+		];

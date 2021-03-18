@@ -1,0 +1,203 @@
+/*
+*
+* Typography
+*/
+
+//
+// Body
+//
+body {
+	font-family: $font-family-base;
+	font-size: $font-size-base;
+	line-height: $line-height-base;
+	font-weight: $font-weight-base;
+	color: $body-color;
+	letter-spacing: 0.05em;
+	background-color: $body-bg;
+	-webkit-text-size-adjust: none;
+	-webkit-font-smoothing: subpixel-antialiased;
+}
+
+//
+// Headings
+//
+#{headings()} {
+	margin-top: 0;
+	margin-bottom: 0;
+	font-weight: $headings-font-weight;
+	color: $headings-color;
+	letter-spacing: 0;
+
+	a {
+		color: inherit;
+
+		&:hover {
+			color: $primary;
+		}
+	}
+}
+
+h1,
+.heading-1 {
+	font-size: 32px;
+	line-height: 1.1;
+	font-weight: 100;
+
+	@include media-breakpoint-up(md) {
+		font-size: 40px;
+	}
+
+	@include media-breakpoint-up(xl) {
+		font-size: 57px;
+	}
+
+	@include media-breakpoint-up(xxl) {
+		font-size: $h1-font-size;
+		line-height: $h1-line-height;
+	}
+}
+
+h2,
+.heading-2 {
+	font-size: 28px;
+	line-height: 1.1;
+
+	@include media-breakpoint-up(md) {
+		font-size: 30px;
+	}
+
+	@include media-breakpoint-up(xl) {
+		font-size: 39px;
+	}
+
+	@include media-breakpoint-up(xxl) {
+		font-size: $h2-font-size;
+		line-height: $h2-line-height;
+	}
+}
+
+h3,
+.heading-3 {
+	font-size: 24px;
+	line-height: 1.2;
+
+	@include media-breakpoint-up(md) {
+		font-size: 27px;
+	}
+
+	@include media-breakpoint-up(xl) {
+		font-size: 29px;
+	}
+
+	@include media-breakpoint-up(xxl) {
+		font-size: $h3-font-size;
+		line-height: $h3-line-height;
+	}
+}
+
+h4,
+.heading-4 {
+	font-size: 22px;
+	line-height: 1.3;
+
+	@include media-breakpoint-up(xxl) {
+		font-size: $h4-font-size;
+		line-height: $h4-line-height;
+	}
+}
+
+h5,
+.heading-5 {
+	font-size: 20px;
+	line-height: 1.5;
+
+	@include media-breakpoint-up(xxl) {
+		font-size: $h5-font-size;
+		line-height: $h5-line-height;
+	}
+}
+
+h6,
+.heading-6 {
+	font-size: 18px;
+	line-height: 1.5;
+
+	@include media-breakpoint-up(xxl) {
+		font-size: $h6-font-size;
+		line-height: $h6-line-height;
+	}
+}
+
+// Custom title
+.custom-title {
+	> span {
+		position: relative;
+		display: inline-block;
+		padding-top: 1.5em;
+
+		&:before {
+			content: "";
+			position: absolute;
+			left: 50%;
+			top: 0;
+			width: 2px;
+			height: 1em;
+			background: $gray-400;
+		}
+	}
+
+}
+
+//
+// Emphasis
+//
+small,
+.small {
+	display: block;
+	font-size: $font-size-sm;
+	line-height: $line-height-sm;
+}
+
+mark,
+.mark {
+	padding: 3px 5px;
+	color: $white-invariable;
+	background: $primary;
+}
+
+// Big text
+.big {
+	font-size: $font-size-lg;
+	line-height: $line-height-lg;
+}
+
+.lead {
+	font-size: $lead-font-size;
+	line-height: $lead-line-height;
+	font-weight: $lead-font-weight;
+}
+
+code {
+	padding: $code-padding-y $code-padding-x;
+	border-radius: $border-radius-sm;
+	font-size: $code-font-size;
+	color: $code-color;
+	background: $code-bg;
+}
+
+//
+// Paragraph
+//
+p {
+	[data-toggle='tooltip'] {
+		padding-left: .25em;
+		padding-right: .25em;
+		color: $primary;
+	}
+
+	[style*='max-width'] {
+		display: inline-block;
+	}
+}
+
+.text-gray-600 { color: $gray-600; }

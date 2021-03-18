@@ -1,0 +1,171 @@
+extends  ../_skeleton
+
+//- Includes
+include ../components/_ui-pagination
+
+block variables
+	- var activeCategory = 'home'
+	- var pageName = 'Home'
+
+block page
+	// Page Header
+	include ../sections/_header-transparent
+
+	// Swiper
+	section.section.swiper-container.swiper-slider.swiper-slider-3(data-loop='true' data-autoplay='false' data-simulate-touch="false" data-slide-effect="fade")
+		.swiper-wrapper
+			.swiper-slide.context-dark(data-slide-bg='images/slider-1-1920x879.jpg')
+				.swiper-slide-caption
+					.container
+						.row
+							.col-md-10.col-lg-7
+								h1(data-caption-animate='fadeInUp' data-caption-delay='100') Banking & Financial Theme
+								p.lead(data-caption-animate='fadeInUp' data-caption-delay='250') A universal solution for Banking and Financial establishments designed by professionals.
+								a.button.button-lg.button-primary(href='#' data-caption-animate='fadeInUp' data-caption-delay='450') Buy It Now
+
+			.swiper-slide.context-dark(data-slide-bg='images/slider-2-1920x879.jpg' style='background-position: 50% 50%')
+				.swiper-slide-caption
+					.container
+						.row
+							.col-md-10.col-lg-7
+								h1(data-caption-animate='fadeInUp' data-caption-delay='100') Fully Customizable Web Solution
+								p.lead(data-caption-animate='fadeInUp' data-caption-delay='250') Built on Bootstrap Framework, .Bank offers a variety of ways to customize your future website.
+								a.button.button-lg.button-primary.button-icon.button-icon-left(href='#' data-caption-animate='fadeInUp' data-caption-delay='450') Buy It Now
+
+			.swiper-slide.context-dark(data-slide-bg='images/slider-3-1920x879.jpg' style='background-position: 50% 50%')
+				.swiper-slide-caption
+					.container
+						.row
+							.col-md-10.col-lg-7
+								h1(data-caption-animate='fadeInUp' data-caption-delay='100') Flawless Design & Useful Features
+								p.lead(data-caption-animate='fadeInUp' data-caption-delay='250') This theme offers everything you may need - from responsiveness to free updates and even more!
+								a.button.button-lg.button-primary.button-icon.button-icon-left(href='#' data-caption-animate='fadeInUp' data-caption-delay='450') Buy It Now
+
+		// Swiper Pagination
+		.container.swiper-pagination-wrap
+			.swiper-pagination
+
+	// Layouts
+	section.section.section-md
+		.container.text-center
+			h2.custom-title: span Layouts
+			.row.row-30(data-lightgallery="group")
+				.col-sm-4.wow.fadeInUp
+					a.gallery-item-1(href='index-1.html')
+						+jpg("layout-1-370x550")
+				.col-sm-4.wow.fadeInUp(data-wow-delay="0.1s")
+					a.gallery-item-1(href='index-2.html')
+						+jpg("layout-2-370x550")
+				.col-sm-4.wow.fadeInUp(data-wow-delay="0.2s")
+					a.gallery-item-1(href='index-3.html')
+						+jpg("layout-3-370x550")
+
+	// What You Get
+	section.section.section-lg.bg-gray-100
+		.container.text-center
+			h2.custom-title: span What You Get
+			.row.row-30.row-flex
+				.col-md-6.col-lg-3.wow.fadeInRight
+					+blurb-boxed-3({
+						icon: "mdi mdi-television-guide",
+						title: "Advanced UI Kit",
+						exeption: "Make the pages of your website look more attractive with our new Advanced UI Kit."
+					})
+				.col-md-6.col-lg-3.wow.fadeInRight(data-wow-delay="0.1s")
+					+blurb-boxed-3({
+						icon: "mdi mdi-sync",
+						title: "Free Updates",
+						exeption: "We provide all our customers with free lifetime updates for this template."
+					})
+				.col-md-6.col-lg-3.wow.fadeInRight(data-wow-delay="0.2s")
+					+blurb-boxed-3({
+						icon: "mdi mdi-format-bold",
+						title: "Bootstrap Toolkit",
+						exeption: "Intuitive and powerful Bootstrap toolkit offers endless website customization."
+					})
+				.col-md-6.col-lg-3.wow.fadeInRight(data-wow-delay="0.3s")
+					+blurb-boxed-3({
+						icon: "mdi mdi-cellphone-link",
+						title: "Full Responsiveness",
+						exeption: "This theme can be displayed on any device due to its responsive technology"
+					})
+
+	// What You Get
+	section.section.section-sm.bg-primary-gradient
+		.container.text-center.text-lg-left
+			.row.row-30.justify-content-center
+				.col-sm-6.col-lg-3
+					.counter-minimal
+						.counter-wrap
+							.counter.heading-2 24
+							.heading-2 +
+						.title.heading-5 Years of Experience
+
+				.col-sm-6.col-lg-3
+					.counter-minimal
+						.counter-wrap
+							.counter.heading-2 3
+						.title.heading-5 Different Layouts
+
+				.col-sm-6.col-lg-3
+					.counter-minimal
+						.counter-wrap
+							.counter.heading-2 30
+							.heading-2 +
+						.title.heading-5 HTML Pages
+
+				.col-sm-6.col-lg-3
+					.counter-minimal
+						.counter-wrap
+							.counter.heading-2 4
+						.title.heading-5 Blog Layouts
+
+	// Different Header and Footer Variations
+	section.section.section-md.bg-primary-dark
+		.container.text-center
+			h2.custom-title: span Different Header and Footer Variations
+			.row.row-30
+				.col-sm-6.col-md-4.col-lg-2.wow.fadeIn
+					a.link-image(href="#"): +png("variations-1-170x112")
+				.col-sm-6.col-md-4.col-lg-2.wow.fadeIn
+					a.link-image(href="#"): +png("variations-2-170x112")
+				.col-sm-6.col-md-4.col-lg-2.wow.fadeIn
+					a.link-image(href="#"): +png("variations-3-170x112")
+				.col-sm-6.col-md-4.col-lg-2.wow.fadeIn
+					a.link-image(href="#"): +png("variations-4-170x112")
+				.col-sm-6.col-md-4.col-lg-2.wow.fadeIn
+					a.link-image(href="#"): +png("variations-5-170x112")
+				.col-sm-6.col-md-4.col-lg-2.wow.fadeIn
+					a.link-image(href="#"): +png("variations-6-170x112")
+
+	// Niche Adapted Pages
+	section.section
+		.container.text-center.text-xl-left.wow.fadeIn
+			.row.row-fix.justify-content-center.align-items-end
+				.col-md-10.col-xl-4
+					.section-lg
+						h2 Niche Adapted Pages
+						p.text-gray-600 We have prepared different pages for your website that  will perfectly fit any niche of financial & banking business. You can use them to describe your services, special offers, or any benefits you have for your potential clients and regular customers.
+						a.button.button-lg.button-primary(href="#") Buy Theme Now
+				.col-md-10.col-xl-8
+					+png("landing-1-748x531")
+
+	// Portfolio & Blog Layouts
+	section.section.section-md.section-bottom-0.bg-gray-100
+		.container.text-center.wow.fadeIn
+			h2.custom-title: span Portfolio & Blog Layouts
+			.row.row-offset-4
+				.col-12
+					+png("landing-2-1071x337")
+
+	// Support
+	section.section.section-sm.bg-primary-gradient
+		.container
+			.box-inline
+				.box-inline-inner
+					.icon.mdi.mdi-headphones
+				.box-inline-inner
+					.heading-2 Dedicated 24/7 Support
+
+	// Page Footer
+	include ../sections/_footer-1

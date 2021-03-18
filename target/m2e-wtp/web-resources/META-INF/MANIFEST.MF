@@ -1,9 +1,5 @@
 Manifest-Version: 1.0
-<<<<<<< HEAD
 Built-By: USER
-=======
-Built-By: skymo
->>>>>>> 76bc4ed0cc29eb2ed41baf7659902ceb04d138c3
 Build-Jdk: 1.8.0_241
 Created-By: Maven Integration for Eclipse
 

@@ -1,0 +1,126 @@
+extends  ../_skeleton
+
+//- Includes
+include ../components/_ui-inline-subscribe-form
+
+block variables
+	- var activeCategory = 'about'
+	- var pageName = 'Our team'
+
+block page 
+	// Page Header
+	include ../sections/_header-transparent
+
+	+breadcrumbs({
+		category: activeCategory,
+		path: [pageName]
+	})
+
+	// 4 Column Layout
+	section.section.section-lg
+		.container.text-center
+			h2 4 Column Layout
+			// Owl Carousel
+			.owl-carousel.text-left(data-items='1', data-sm-items='2', data-lg-items='3', data-xl-items='4', data-dots='true' data-nav='false' data-stage-padding='15', data-loop='false', data-margin='30', data-mouse-drag="false")
+
+				+thumbnail-1({
+					imageName: "team-1-270x270",
+					title: "Samuel Chapman",
+					link: "#",
+					position: "CEO & Founder of Dot Bank",
+					exeption: "Lorem ipsum dolor sit amet, scripta legimus quaerendum ex vis, audire nonumes his an. Decore tamquam insolens usu, an duo omnium debitis."
+				})
+					.group.group-middle.social-items
+						a.icon.icon-md.icon-gray-400.novi-icon.mdi.mdi-facebook(href='#')
+						a.icon.icon-md.icon-gray-400.novi-icon.mdi.mdi-twitter(href='#')
+						a.icon.icon-md.icon-gray-400.novi-icon.mdi.mdi-instagram(href='#')
+						a.icon.icon-md.icon-gray-400.novi-icon.mdi.mdi-facebook-messenger(href='#')
+						a.icon.icon-md.icon-gray-400.novi-icon.mdi.mdi-linkedin(href='#')
+						a.icon.icon-md.icon-gray-400.novi-icon.mdi.mdi-snapchat(href='#')
+
+				+thumbnail-1({
+					imageName: "team-2-270x270",
+					title: "Stephen Rose",
+					link: "#",
+					position: "CTO of Dot Bank",
+					exeption: "Lorem ipsum dolor sit amet, scripta legimus quaerendum ex vis, audire nonumes his an. Decore tamquam insolens usu, an duo omnium debitis."
+				})
+					.group.group-middle.social-items
+						a.icon.icon-md.icon-gray-400.novi-icon.mdi.mdi-facebook(href='#')
+						a.icon.icon-md.icon-gray-400.novi-icon.mdi.mdi-twitter(href='#')
+						a.icon.icon-md.icon-gray-400.novi-icon.mdi.mdi-instagram(href='#')
+						a.icon.icon-md.icon-gray-400.novi-icon.mdi.mdi-facebook-messenger(href='#')
+						a.icon.icon-md.icon-gray-400.novi-icon.mdi.mdi-linkedin(href='#')
+						a.icon.icon-md.icon-gray-400.novi-icon.mdi.mdi-snapchat(href='#')
+
+				+thumbnail-1({
+					imageName: "team-3-270x270",
+					title: "Catherine White",
+					link: "#",
+					position: "Finance Director",
+					exeption: "Lorem ipsum dolor sit amet, scripta legimus quaerendum ex vis, audire nonumes his an. Decore tamquam insolens usu, an duo omnium debitis."
+				})
+					.group.group-middle.social-items
+						a.icon.icon-md.icon-gray-400.novi-icon.mdi.mdi-facebook(href='#')
+						a.icon.icon-md.icon-gray-400.novi-icon.mdi.mdi-twitter(href='#')
+						a.icon.icon-md.icon-gray-400.novi-icon.mdi.mdi-instagram(href='#')
+						a.icon.icon-md.icon-gray-400.novi-icon.mdi.mdi-facebook-messenger(href='#')
+						a.icon.icon-md.icon-gray-400.novi-icon.mdi.mdi-linkedin(href='#')
+						a.icon.icon-md.icon-gray-400.novi-icon.mdi.mdi-snapchat(href='#')
+
+				+thumbnail-1({
+					imageName: "team-4-270x270",
+					title: "Danielle Gray",
+					link: "#",
+					position: "Marketing Director",
+					exeption: "Lorem ipsum dolor sit amet, scripta legimus quaerendum ex vis, audire nonumes his an. Decore tamquam insolens usu, an duo omnium debitis."
+				})
+					.group.group-middle.social-items
+						a.icon.icon-md.icon-gray-400.novi-icon.mdi.mdi-facebook(href='#')
+						a.icon.icon-md.icon-gray-400.novi-icon.mdi.mdi-twitter(href='#')
+						a.icon.icon-md.icon-gray-400.novi-icon.mdi.mdi-instagram(href='#')
+						a.icon.icon-md.icon-gray-400.novi-icon.mdi.mdi-facebook-messenger(href='#')
+						a.icon.icon-md.icon-gray-400.novi-icon.mdi.mdi-linkedin(href='#')
+						a.icon.icon-md.icon-gray-400.novi-icon.mdi.mdi-snapchat(href='#')
+
+	// 3 Column Layout
+	section.section.section-lg.bg-gray-100
+		.container.text-center
+			h2 3 Column Layout
+			// Owl Carousel
+			.owl-carousel(data-items='1', data-sm-items='2', data-lg-items='3', data-dots='true', data-nav='false', data-stage-padding='15', data-loop='false', data-margin='30', data-mouse-drag="false")
+				+thumbnail-2({
+					imageName: "team-5-149x149",
+					title: "Samuel Chapman",
+					link: "#",
+					position: "CEO & Founder of Dot Bank"
+				})
+					.group.group-middle.social-items
+						a.icon.icon-md.icon-gray-400.novi-icon.mdi.mdi-facebook(href='#')
+						a.icon.icon-md.icon-gray-400.novi-icon.mdi.mdi-twitter(href='#')
+						a.icon.icon-md.icon-gray-400.novi-icon.mdi.mdi-instagram(href='#')
+
+				+thumbnail-2({
+					imageName: "team-6-149x149",
+					title: "Stephen Rose",
+					link: "#",
+					position: "CTO of Dot Bank"
+				})
+					.group.group-middle.social-items
+						a.icon.icon-md.icon-gray-400.novi-icon.mdi.mdi-facebook(href='#')
+						a.icon.icon-md.icon-gray-400.novi-icon.mdi.mdi-twitter(href='#')
+						a.icon.icon-md.icon-gray-400.novi-icon.mdi.mdi-instagram(href='#')
+
+				+thumbnail-2({
+					imageName: "team-7-149x149",
+					title: "Catherine White",
+					link: "#",
+					position: "Finance Director"
+				})
+					.group.group-middle.social-items
+						a.icon.icon-md.icon-gray-400.novi-icon.mdi.mdi-facebook(href='#')
+						a.icon.icon-md.icon-gray-400.novi-icon.mdi.mdi-twitter(href='#')
+						a.icon.icon-md.icon-gray-400.novi-icon.mdi.mdi-instagram(href='#')
+
+	// Page Footer
+	include ../sections/_footer-1

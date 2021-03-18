@@ -1,0 +1,26 @@
+/*
+*
+* RD Twitter
+* --------------------------------------------------
+*/
+
+.twitter {
+	.tweet {
+		display: flex;
+
+		.icon {
+			color: $secondary;
+			font-size: 20px;
+			line-height: .8;
+		}
+
+		a {
+			color: $secondary;
+			&:hover { color: inherit; }
+		}
+	}
+
+	.tweet-left { padding-right: 11px; }
+
+	.tweet + .tweet { margin-top: 16px; }
+}

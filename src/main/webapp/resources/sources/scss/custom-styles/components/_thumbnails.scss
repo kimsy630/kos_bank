@@ -1,0 +1,129 @@
+/*
+*
+* Thumbnails
+*/
+
+// 
+// Table of Contents
+// 
+// Figure Light
+//
+
+//
+// Figure Light
+//
+.figure-light figcaption {
+	padding-top: 20px;
+	color: $gray-600;
+}
+
+.thumbnail-1 {
+	.media-wrap {
+		overflow: hidden;
+		border-radius: $border-radius-sm;
+
+		img { width: 100%; }
+	}
+
+	.title {
+		font-size: 18px;
+		line-height: 1.5;
+	}
+
+	.position {
+		font-style: italic;
+		color: $gray-600;
+	}
+
+	* + .title { margin-top: 10px; }
+	* + .position { margin-top: 3px; }
+	* + .exeption { margin-top: 10px; }
+	* + .group { margin-top: 12px; }
+
+	@include media-breakpoint-up(xl) {
+		.title {
+			font-size: $h6-font-size;
+			line-height: $h6-line-height;
+		}
+
+		* + .title { margin-top: 15px; }
+		* + .position { margin-top: 5px; }
+		* + .exeption { margin-top: 16px; }
+		* + .group { margin-top: 19px; }
+	}
+
+	@include media-breakpoint-up(xxl) {
+		* + .title { margin-top: 18px; }
+		* + .position { margin-top: 6px; }
+		* + .exeption { margin-top: 20px; }
+		* + .group { margin-top: 23px; }
+	}
+}
+
+.thumbnail-2 {
+	position: relative;
+	z-index: 1;
+	width: 100%;
+	padding: 0 30px 30px;
+
+	&:before {
+		content: "";
+		position: absolute;
+		top: 60px;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		z-index: -1;
+		background: $white;
+		border-radius: $border-radius-sm;
+	}
+
+	.media-wrap {
+		display: inline-block;
+		overflow: hidden;
+		border-radius: 50%;
+		padding: 10px;
+		background: #fff;
+		box-shadow: 0 5px 21px 3px rgba($gray-600, .2);
+
+		img {
+			border-radius: 50%;
+			max-width: 100px;
+		}
+	}
+
+	.title {
+		font-size: 18px;
+		line-height: 1.5;
+	}
+
+	.position {
+		font-style: italic;
+		color: $gray-600;
+	}
+
+	* + .title { margin-top: 12px; }
+	* + .divider { margin-top: 9px; }
+	* + .position { margin-top: 10px; }
+	* + .group { margin-top: 14px; }
+
+	@include media-breakpoint-up(md) {
+		padding: 0 36px 36px;
+
+		&:before { top: 85px; }
+
+		.media-wrap {
+			img { max-width: 150px; }
+		}
+
+		.title {
+			font-size: $h6-font-size;
+			line-height: $h6-line-height;
+		}
+
+		* + .title { margin-top: 18px; }
+		* + .divider { margin-top: 14px; }
+		* + .position { margin-top: 17px; }
+		* + .group { margin-top: 23px; }
+	}
+}

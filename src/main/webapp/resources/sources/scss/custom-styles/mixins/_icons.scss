@@ -1,0 +1,9 @@
+// Icon mixins
+// --------------------------------------------------
+@mixin icon-gradient($first-color, $second-color) {
+	background: linear-gradient(90deg, transparent, transparent);
+	background: -webkit-linear-gradient(90deg, $first-color, $second-color);
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+	color: $second-color;
+}
