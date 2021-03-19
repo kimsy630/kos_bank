@@ -39,6 +39,7 @@ public class CommonController extends HttpServlet {
 
 	@RequestMapping("/signUp.cc")
 	public String signUp(HttpServletRequest req,Model model) {
+		
 		return "common/signUp";
 	}
 	@RequestMapping("/signUpAction.cc")
@@ -47,7 +48,6 @@ public class CommonController extends HttpServlet {
 		memberService.signUpAction(req, model);
 		return "common/signUpAction";
 	}
-	
 	@RequestMapping("/idChk.cc")
 	public String idChk(HttpServletRequest req,Model model) {
 		logger.info("url ==> /idChk");

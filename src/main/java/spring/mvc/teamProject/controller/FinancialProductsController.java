@@ -13,7 +13,7 @@ public class FinancialProductsController {
 	private static final Logger logger = LoggerFactory.getLogger(FinancialProductsController.class);
 	
 	
-	// 박서하
+	
 	//개인대출
 	@RequestMapping("/personalLoan.cc")
 	public String personalLoan(HttpServletRequest req,Model model) {
@@ -21,7 +21,6 @@ public class FinancialProductsController {
 		return "financialProducts/personalLoan";
 	}
 	
-	// 박서하
 	//대출상품
 	@RequestMapping("/LoansProducts.cc")
 	public String LoansProducts(HttpServletRequest req,Model model) {
@@ -29,14 +28,6 @@ public class FinancialProductsController {
 		return "financialProducts/LoansProducts";
 	}
 	
-	// 박서하
-	//대출상품 상세
-	@RequestMapping("/LoansDetail.cc")
-	public String LoansDetail(HttpServletRequest req,Model model) {
-		logger.info("url ==> /LoansDetail");
-		return "financialProducts/LoansDetail";
-	}
-		
 	//적금상품
 	@RequestMapping("/ISP.cc")
 	public String ISP(HttpServletRequest req,Model model) {
