@@ -111,18 +111,13 @@
 	                          </li>
                           </ul>
                       </li>
+                      
                       <li class="rd-nav-item"><a class="rd-nav-link" href="#">환전</a>
                         <!-- RD Navbar Dropdown-->
                         <ul class="rd-menu rd-navbar-dropdown">
-<<<<<<< HEAD
-                          <li class="rd-dropdown-item"><a class="rd-dropdown-link" href="#">환전서비스??</a></li>
-                          <li class="rd-dropdown-item"><a class="rd-dropdown-link" href="#">환율계산기??</a></li>
-                          <li class="rd-dropdown-item"><a class="rd-dropdown-link" href="#">환율정보??</a></li>
-=======
-                          <li class="rd-dropdown-item"><a class="rd-dropdown-link" href="exchange.cc">환전서비스</a></li>
+                          <li class="rd-dropdown-item"><a class="rd-dropdown-link" href="#">환전서비스</a></li>
                           <li class="rd-dropdown-item"><a class="rd-dropdown-link" href="#">환율계산기</a></li>
-                          <li class="rd-dropdown-item"><a class="rd-dropdown-link" href="exchangeList.cc">환율정보</a></li>
->>>>>>> dev_ksy
+                          <li class="rd-dropdown-item"><a class="rd-dropdown-link" href="#">환율정보</a></li>
                         </ul>
                       </li>
                       <li class="rd-nav-item"><a class="rd-nav-link" href="#">펀딩</a>
@@ -146,16 +141,16 @@
                         </ul>
                       </li>
                       <c:if test="${id==null}">
-                         <li class="rd-nav-item"><a class="rd-nav-link" href="login.cc">로그인</a>
-                   </c:if>
-                  <c:if test="${id!=null}">
-                         <li class="rd-nav-item">
-                            <a class="rd-nav-link" href="document.logoutForm.submit()">로그아웃</a>
-                         <form action = "logout.cc" name="logoutForm" method = 'post'>
-                        <input type = "hidden" name = "${_csrf.parameterName }" value = "${_csrf.token }"/>
-                     </form>
-                      </li>
-                   </c:if>
+                      	<li class="rd-nav-item"><a class="rd-nav-link" href="login.cc">로그인</a>
+			          </c:if>
+			         <c:if test="${id!=null}">
+                      	<li class="rd-nav-item">
+                      		<a class="rd-nav-link" href="" onclick="document.logoutForm.submit()">로그아웃</a>
+			          		<form action = "logout.cc" name="logoutForm" method = 'post'>
+								<input type = "hidden" name = "${_csrf.parameterName }" value = "${_csrf.token }"/>
+							</form>
+			          	</li>
+			          </c:if>
                       </li>
                     </ul>
                   </div>
