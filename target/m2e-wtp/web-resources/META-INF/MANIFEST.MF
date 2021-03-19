@@ -1,13 +1,5 @@
 Manifest-Version: 1.0
-<<<<<<< HEAD
-<<<<<<< HEAD
-Built-By: kosmo_10
-=======
 Built-By: skymo
->>>>>>> dev_SKY
-=======
-Built-By: kosmo_16
->>>>>>> b4c55a25545667bc9e137b9499cec4da438b19e5
 Build-Jdk: 1.8.0_241
 Created-By: Maven Integration for Eclipse
 
