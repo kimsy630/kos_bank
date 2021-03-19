@@ -27,32 +27,54 @@ public class FinancialProductsController {
 		logger.info("url ==> /LoansProducts");
 		return "financialProducts/LoansProducts";
 	}
-	
-	//적금상품
+	// 최문수
+	//적금상품(Install Savings Product)
 	@RequestMapping("/ISP.cc")
 	public String ISP(HttpServletRequest req,Model model) {
 		logger.info("url ==> /ISP");
 		return "financialProducts/ISP";
 	}
-	
-	//정기예금
-	@RequestMapping("/FixedDeposit.cc")
-	public String FixedDeposit(HttpServletRequest req,Model model) {
-		logger.info("url ==> /FixedDeposit");
-		return "financialProducts/FixedDeposit";
+	// 최문수
+	//정기예금(Fixed Deposit Product)
+	@RequestMapping("/FDP.cc")
+	public String FDP(HttpServletRequest req,Model model) {
+		logger.info("url ==> /FDP");
+		return "financialProducts/FDP";
+	}
+	// 최문수
+	//자유입출금(Checking Deposit Product)
+	@RequestMapping("/CDP.cc")
+	public String CDP(HttpServletRequest req,Model model) {
+		logger.info("url ==> /CDP");
+		return "financialProducts/CDP";
+	}
+	// 최문수
+	// 적금상품 상세페이지
+	@RequestMapping("/ISPdetail.cc")
+	public String ISPdetail(HttpServletRequest req,Model model) {
+		logger.info("url ==> /ISPdetail");
+		return "financialProducts/ISPdetail";
+	}
+	// 최문수
+	// 정기예금상품 상세페이지
+	@RequestMapping("/FDPdetail.cc")
+	public String FDPdetail(HttpServletRequest req,Model model) {
+		logger.info("url ==> /FDPdetail");
+		return "financialProducts/FDPdetail";
+	}
+	// 최문수
+	// 자유입출금 상세페이지
+	@RequestMapping("/CDPdetail.cc")
+	public String CDPdetail(HttpServletRequest req,Model model) {
+		logger.info("url ==> /CDPdetail");
+		return "financialProducts/CDPdetail";
+	}
+	// 최문수
+	// 적금상품 가입페이지(Install Savings Product)
+	@RequestMapping("/regISP.cc")
+	public String regISP(HttpServletRequest req,Model model) {
+		logger.info("url ==> /regISP");
+		return "financialProducts/regISP";
 	}
 	
-	//예금상품
-	@RequestMapping("/DepositProduct.cc")
-	public String DepositProduct(HttpServletRequest req,Model model) {
-		logger.info("url ==> /DepositProduct");
-		return "financialProducts/DepositProduct";
-	}
-	
-	//예금상품 신청페이지
-	@RequestMapping("/DepositApplication.cc")
-	public String DepositApplication(HttpServletRequest req,Model model) {
-		logger.info("url ==> /DepositApplication");
-		return "financialProducts/DepositApplication";
-	}
 }
