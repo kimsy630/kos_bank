@@ -39,7 +39,6 @@ public class CommonController extends HttpServlet {
 
 	@RequestMapping("/signUp.cc")
 	public String signUp(HttpServletRequest req,Model model) {
-		
 		return "common/signUp";
 	}
 	@RequestMapping("/signUpAction.cc")
