@@ -144,7 +144,7 @@ KosBank은 고객이 통신 아래에서 정의됨 을 발송하고 기타 행�
 자 수수료 및 기타 부채액을 지급할 수 있는 충분한 금액의 즉시사용가능한 자 ,
 금을 KosBank에 이체하여야 합니다.
 
-                        </textarea>
+                     </textarea>
 	                 	<div class="radio" >
 	                    	 <input type="radio" name="agree" value="yes">
 		               			<label for="agree">동의합니다.</label>
