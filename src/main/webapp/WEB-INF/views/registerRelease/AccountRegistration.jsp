@@ -1,7 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ include file = "../setting.jsp"%>
+<%@ include file="../setting.jsp" %>
 <!DOCTYPE html>
+<<<<<<< HEAD
 <html class="wide wow-animation" lang="en">
   <head>
     <title>Home</title>
@@ -568,5 +569,17 @@ PC웹, 모바일 웹/앱 이용 과정에서 단말기정보(OS, 화면사이즈
             
         </div>
         
+=======
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<h1>계좌등록</h1>
+<%@ include file = "../header.jsp" %>
+<img src = "/teamProject/resources/testimage/계좌등록.png">
+<%@ include file = "../footer.jsp" %>
+>>>>>>> d9d218ae0add3cb0d2d6b9204bff8d659ecb577b
 </body>
 </html>
