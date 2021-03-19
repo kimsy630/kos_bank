@@ -123,20 +123,49 @@
 				<div style="display:inline-block; width:80%;">
 					<div class="form-group" id="newAmount">
                     <div class="col-sm-1">
-                        <br><input type="email" class="form-control" id="email" data-rule-required="true" maxlength="40">
+                        <br><input type="password" class="form-control" id="pw" data-rule-required="true" maxlength="30">
                     </div>
                 	</div>
+                	
+                	<div class="form-group" id="divPassword">
+                    <div class="col-lg-5">
+                        <input type="password" class="form-control" id="pw" name="excludeHangul" data-rule-required="true" maxlength="30">
+                    </div>
+                </div>
 				</div>
 				<hr></hr>
 				<div style="display:inline; width:30%; text-align:center; margin-right:130px;">비밀번호확인</div>
 				<div style="display:inline-block; width:70%;">
 					<div class="form-group" id="newAmount">
                     <div class="col-sm-1">
-                        <br><input type="email" class="form-control" id="email" data-rule-required="true" maxlength="40">
+                        <br><input type="password" class="form-control" id="pwChk" data-rule-required="true" maxlength="30">
                     </div>
                 	</div>
 				</div>
-				<hr></hr>
+				<hr></hr><br><br>
+				<h3>출금정보</h3><br>
+				<hr></hr><br>
+				<p style="display:inline; margin-right:140px;">출금계좌번호</p>
+                <select class="form-select form-select-lg mb-4" aria-label="Default select example">
+				  <option selected>계좌번호를 선택해주세요.</option>
+				  <option value="1">6</option>
+				  <option value="2">7</option>
+				  <option value="3">8</option>
+				  <option value="4">9</option>
+				  <option value="5">10</option>
+				  <option value="6">11</option>
+				  <option value="6">12</option>
+				</select>
+				<br><hr></hr>
+				<div style="display:inline; width:30%; text-align:center; margin-right:130px;">출금계좌비밀번호</div>
+				<div style="display:inline-block; width:70%;">
+					<div class="form-group" id="newAmount">
+                    <div class="col-sm-1">
+                        <br><input type="password" class="form-control" id="pwChk" data-rule-required="true" maxlength="30">
+                    </div>
+                	</div>
+				</div>
+				
               </div>
             </div>
           </div>
