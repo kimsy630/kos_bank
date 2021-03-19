@@ -105,9 +105,9 @@
 	           <ul class="nav nav-tabs">
 	             <li class="nav-item" role="presentation"><a class="nav-link active" href="#tabs-1-1" data-toggle="tab">예금/신탁</a></li>
 	             <li class="nav-item" role="presentation"><a class="nav-link" href="#tabs-1-2" data-toggle="tab" onclick="location='Loanstable.cc'">대출</a></li>
-	             <li class="nav-item" role="presentation"><a class="nav-link" href="#tabs-1-3" data-toggle="tab" onclick="location='SleepTable.cc'">휴면</a></li>
-	             <li class="nav-item" role="presentation"><a class="nav-link" href="#tabs-1-4" data-toggle="tab">펀드</a></li>
-	             <li class="nav-item" role="presentation"><a class="nav-link" href="#tabs-1-5" data-toggle="tab">휴면계좌</a></li>
+	             <li class="nav-item" role="presentation"><a class="nav-link" href="#tabs-1-3" data-toggle="tab" >휴면</a></li>
+	             <li class="nav-item" role="presentation"><a class="nav-link" href="#tabs-1-4" data-toggle="tab">환금내역</a></li>
+	             <li class="nav-item" role="presentation"><a class="nav-link" href="#tabs-1-5" data-toggle="tab" onclick="location='SleepTable.cc'">휴면계좌</a></li>
 	             <li class="nav-item" role="presentation"><a class="nav-link" href="#tabs-1-6" data-toggle="tab">정지계좌</a></li>
 	             <li class="nav-item" role="presentation"><a class="nav-link" href="#tabs-1-7" data-toggle="tab">전체계좌</a></li>
 	           </ul>
