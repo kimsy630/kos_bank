@@ -146,11 +146,5 @@
           </div>
         </div>
       </section>
- <!-- PANEL-->
-    <!-- Global Mailform Output-->
-    <div class="snackbars" id="form-output-global"></div>
-    <!-- Javascript-->
-    <script src="${csspath}js/core.min.js"></script>
-    <script src="${csspath}js/script.js"></script>
   </body>
 </html>
