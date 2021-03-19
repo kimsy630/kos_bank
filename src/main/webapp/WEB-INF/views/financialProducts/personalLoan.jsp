@@ -42,7 +42,7 @@
 					<section class="section section-lg bg-default">
 				    	<div class="container">
 				        	<div class="row">
-				            	<div class="col-lg-9 col-xl-8-2">
+				            	<div class="col-lg-9 col-xl-8">
 				              		<p>총<em>1</em>개의 상품</p>
 				              		<!-- Bootstrap collapse-->
 				              		<div class="card-group-custom card-group-corporate" id="accordion1" role="tablist" aria-multiselectable="false">

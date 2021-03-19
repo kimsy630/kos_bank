@@ -93,7 +93,6 @@
                           </ul>
                       </li>
                       <li class="rd-nav-item"><a class="rd-nav-link" href="#">금융상품.</a>
-<<<<<<< HEAD
 	                       <ul class="rd-menu rd-navbar-megamenu">
 	                          <li class="rd-megamenu-item">
 	                            <h6 class="rd-megamenu-title">예금상품</h6>
@@ -110,26 +109,9 @@
 	                              <li class="rd-megamenu-list-item"><a class="rd-megamenu-list-link" href="LoansProducts.cc">대출상품</a></li>
 	                            </ul>
 	                          </li>
-=======
-                          <ul class="rd-menu rd-navbar-megamenu">
-                             <li class="rd-megamenu-item">
-                               <h6 class="rd-megamenu-title">예금상품</h6>
-                               <ul class="rd-megamenu-list">
-                                 <li class="rd-megamenu-list-item"><a class="rd-megamenu-list-link" href="ISP.cc">적금상품</a></li>
-                                 <li class="rd-megamenu-list-item"><a class="rd-megamenu-list-link" href="FixedDeposit.cc">정기예금</a></li>
-                               </ul>
-                             </li>
-                             <li class="rd-megamenu-item">
-                               <h6 class="rd-megamenu-title">대출상품</h6>
-                               <ul class="rd-megamenu-list">
-                                 <li class="rd-megamenu-list-item"><a class="rd-megamenu-list-link" href="personalLoan.cc">개인대출</a></li>
-                                 <li class="rd-megamenu-list-item"><a class="rd-megamenu-list-link" href="LoansProducts.cc">대출상품</a></li>
-                               </ul>
-                             </li>
->>>>>>> develop_park
                           </ul>
                       </li>
-                      <li class="rd-nav-item"><a class="rd-nav-link" href="#">환전??</a>
+                      <li class="rd-nav-item"><a class="rd-nav-link" href="#">환전</a>
                         <!-- RD Navbar Dropdown-->
                         <ul class="rd-menu rd-navbar-dropdown">
                           <li class="rd-dropdown-item"><a class="rd-dropdown-link" href="#">환전서비스??</a></li>
@@ -146,11 +128,7 @@
                         </ul>
                       </li>
                       <li class="rd-nav-item">
-<<<<<<< HEAD
 	                     <a class="rd-nav-link" href="#">고객센터</a>
-=======
-                        <a class="rd-nav-link" href="#">고객센터.</a>
->>>>>>> develop_park
                         <!-- RD Navbar Dropdown-->
                         <ul class="rd-menu rd-navbar-dropdown">
                           <li class="rd-dropdown-item"><a class="rd-dropdown-link" href="Chatbot.cc">챗봇상담</a></li>
