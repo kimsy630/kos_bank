@@ -93,30 +93,29 @@
                           </ul>
                       </li>
                       <li class="rd-nav-item"><a class="rd-nav-link" href="#">금융상품.</a>
-	                       <ul class="rd-menu rd-navbar-megamenu">
-	                          <li class="rd-megamenu-item">
-	                            <h6 class="rd-megamenu-title">예금상품</h6>
-	                            <ul class="rd-megamenu-list">
-	                              <li class="rd-megamenu-list-item"><a class="rd-megamenu-list-link" href="ISP.cc">적금상품</a></li>
-	                              <li class="rd-megamenu-list-item"><a class="rd-megamenu-list-link" href="FixedDeposit.cc">정기예금</a></li>
-	                            </ul>
-	                          </li>
-	                          <li class="rd-megamenu-item">
-	                            <h6 class="rd-megamenu-title">대출상품</h6>
-	                            <ul class="rd-megamenu-list">
-	                              <li class="rd-megamenu-list-item"><a class="rd-megamenu-list-link" href="personalLoan.cc">개인대출</a></li>
-	                              <li class="rd-megamenu-list-item"><a class="rd-megamenu-list-link" href="LoansProducts.cc">대출상품</a></li>
-	                            </ul>
-	                          </li>
+                          <ul class="rd-menu rd-navbar-megamenu">
+                             <li class="rd-megamenu-item">
+                               <h6 class="rd-megamenu-title">예금상품</h6>
+                               <ul class="rd-megamenu-list">
+                                 <li class="rd-megamenu-list-item"><a class="rd-megamenu-list-link" href="ISP.cc">적금상품</a></li>
+                                 <li class="rd-megamenu-list-item"><a class="rd-megamenu-list-link" href="FixedDeposit.cc">정기예금</a></li>
+                               </ul>
+                             </li>
+                             <li class="rd-megamenu-item">
+                               <h6 class="rd-megamenu-title">대출상품</h6>
+                               <ul class="rd-megamenu-list">
+                                 <li class="rd-megamenu-list-item"><a class="rd-megamenu-list-link" href="personalLoan.cc">개인대출</a></li>
+                                 <li class="rd-megamenu-list-item"><a class="rd-megamenu-list-link" href="LoansProducts.cc">대출상품</a></li>
+                               </ul>
+                             </li>
                           </ul>
                       </li>
-                      
-                      <li class="rd-nav-item"><a class="rd-nav-link" href="#">환전</a>
+                      <li class="rd-nav-item"><a class="rd-nav-link" href="#">환전??</a>
                         <!-- RD Navbar Dropdown-->
                         <ul class="rd-menu rd-navbar-dropdown">
-                          <li class="rd-dropdown-item"><a class="rd-dropdown-link" href="#">환전서비스</a></li>
-                          <li class="rd-dropdown-item"><a class="rd-dropdown-link" href="#">환율계산기</a></li>
-                          <li class="rd-dropdown-item"><a class="rd-dropdown-link" href="#">환율정보</a></li>
+                          <li class="rd-dropdown-item"><a class="rd-dropdown-link" href="#">환전서비스??</a></li>
+                          <li class="rd-dropdown-item"><a class="rd-dropdown-link" href="#">환율계산기??</a></li>
+                          <li class="rd-dropdown-item"><a class="rd-dropdown-link" href="#">환율정보??</a></li>
                         </ul>
                       </li>
                       <li class="rd-nav-item"><a class="rd-nav-link" href="#">펀딩.</a>
@@ -127,7 +126,7 @@
                         </ul>
                       </li>
                       <li class="rd-nav-item">
-	                     <a class="rd-nav-link" href="#">고객센터.</a>
+                        <a class="rd-nav-link" href="#">고객센터.</a>
                         <!-- RD Navbar Dropdown-->
                         <ul class="rd-menu rd-navbar-dropdown">
                           <li class="rd-dropdown-item"><a class="rd-dropdown-link" href="Chatbot.cc">챗봇상담.</a></li>
@@ -135,16 +134,16 @@
                         </ul>
                       </li>
                       <c:if test="${id==null}">
-                      	<li class="rd-nav-item"><a class="rd-nav-link" href="login.cc">로그인</a>
-			          </c:if>
-			         <c:if test="${id!=null}">
-                      	<li class="rd-nav-item">
-                      		<a class="rd-nav-link" href="" onclick="document.logoutForm.submit()">로그아웃</a>
-			          		<form action = "logout.cc" name="logoutForm" method = 'post'>
-								<input type = "hidden" name = "${_csrf.parameterName }" value = "${_csrf.token }"/>
-							</form>
-			          	</li>
-			          </c:if>
+                         <li class="rd-nav-item"><a class="rd-nav-link" href="login.cc">로그인</a>
+                   </c:if>
+                  <c:if test="${id!=null}">
+                         <li class="rd-nav-item">
+                            <a class="rd-nav-link" href="document.logoutForm.submit()">로그아웃</a>
+                         <form action = "logout.cc" name="logoutForm" method = 'post'>
+                        <input type = "hidden" name = "${_csrf.parameterName }" value = "${_csrf.token }"/>
+                     </form>
+                      </li>
+                   </c:if>
                       </li>
                     </ul>
                   </div>
