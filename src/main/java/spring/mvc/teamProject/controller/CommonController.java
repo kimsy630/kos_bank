@@ -47,6 +47,7 @@ public class CommonController extends HttpServlet {
 		memberService.signUpAction(req, model);
 		return "common/signUpAction";
 	}
+	
 	@RequestMapping("/idChk.cc")
 	public String idChk(HttpServletRequest req,Model model) {
 		logger.info("url ==> /idChk");
