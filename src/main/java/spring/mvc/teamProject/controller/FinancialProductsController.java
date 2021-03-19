@@ -41,11 +41,18 @@ public class FinancialProductsController {
 		logger.info("url ==> /FixedDeposit");
 		return "financialProducts/FixedDeposit";
 	}
-	//
+	
 	//예금상품
 	@RequestMapping("/DepositProduct.cc")
 	public String DepositProduct(HttpServletRequest req,Model model) {
 		logger.info("url ==> /DepositProduct");
 		return "financialProducts/DepositProduct";
+	}
+	
+	//예금상품 신청페이지
+	@RequestMapping("/DepositApplication.cc")
+	public String DepositApplication(HttpServletRequest req,Model model) {
+		logger.info("url ==> /DepositApplication");
+		return "financialProducts/DepositApplication";
 	}
 }
