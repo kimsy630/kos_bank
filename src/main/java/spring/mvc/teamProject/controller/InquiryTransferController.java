@@ -49,4 +49,11 @@ public class InquiryTransferController {
 		logger.info("url ==> /MultiAccountTransfer");
 		return "InquiryTransfer/MultiAccountTransfer";
 	}
+	//다계좌이체 MultiAccountTransfer.cc
+	@RequestMapping("/ISPAdd.cc")
+	public String ISPAdd(HttpServletRequest req,Model model) {
+		logger.info("url ==> /ISPAdd");
+		return "InquiryTransfer/ISPAdd";
+	}
+		
 }
