@@ -156,7 +156,13 @@
           </div>
         </div>   
       </section>
-
+      
+      <div class="form-group" style="margin-left:700px">
+             <div class="col-lg-offset-2 col-lg-10">
+                <button type="submit" class="btn btn-primary" >이체실행</button>
+             </div>
+        </div>
+<br><br><br>
 <%@ include file = "../footer.jsp" %>
 </body>
 </html>

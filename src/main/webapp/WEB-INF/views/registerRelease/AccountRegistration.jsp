@@ -20,38 +20,6 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
     <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
   </head>
-  <style>
-  	#accountInfo {
-  		width: 1170px;
-  		height: 130px;
-  		background-color: gray;
-		display: inline-block; 
-		list-style: circle;
-		padding:30px;
-	
-	}
-	#accountInfo table td{
-		width:360px;
-		height:30px;
-		font-size:18px;
-	}
-	#acc_table{
-		width:1170px;
-	}
-	#acc_table th{
-		width:300px;
-		text-align: center;
-	}
-	#acc_table td{
-		width:285px;
-		text-align: center;
-	}
-	
-	#tabs-1 li{
-		width:140px;
-	}
-	
-  </style>
     <body>
     <div class="preloader">
       <div class="preloader-body">
@@ -145,11 +113,9 @@ KosBank은 고객이 통신 아래에서 정의됨 을 발송하고 기타 행�
 금을 KosBank에 이체하여야 합니다.
 
                      </textarea>
-	                 	<div class="radio" >
-	                    	 <input type="radio" name="agree" value="yes">
-		               			<label for="agree">동의합니다.</label>
-		               		<input type="radio" name="degree" value="no">
-		               			<label for="degree">동의하지않습니다.</label>
+	                 	<div>
+		                     <input type="radio" name="agree" value="yes">동의합니다.
+		               		<input type="radio" name="degree" value="no">동의하지않습니다.
             			</div>
             		</div>
                 </div>
@@ -215,11 +181,9 @@ PC웹, 모바일 웹/앱 이용 과정에서 단말기정보(OS, 화면사이즈
 
 서비스 간 제휴, 연계 등으로 제3자로부터 개인정보를 제공받고 있습니다.
               </textarea>
-                        <div class="radio" >
-		                     <input type="checkbox" name="agree" value="yes">
-		               			<label for="agree">동의합니다.</label>
-		               		<input type="checkbox" name="degree" value="no">
-		               			<label for="degree">동의하지않습니다.</label>
+                        <div>
+		                     <input type="radio" name="agree" value="yes">동의합니다.
+		               		<input type="radio" name="degree" value="no">동의하지않습니다.
             			</div>
             		</div>
                 </div>
