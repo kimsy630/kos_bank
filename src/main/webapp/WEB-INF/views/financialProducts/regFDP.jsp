@@ -19,18 +19,59 @@
 	    <script src="http://code.jquery.com/jquery.js"></script>
 	    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 	    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-	    <script type="text/javascript">
-	    function bootstrapHandler(element, fn) {
-	    	  return function handler(event) {
-	    	    event.delegateTarget = element
-
-	    	    if (handler.oneOff) {
-	    	      EventHandler.off(element, event.type, fn)
-	    	    }
-
-	    	    return fn.apply(element, [event])
-	    	  }
-	    	}
+	    <script>
+	  		$(function() {
+	  			$("#hundred").on({
+	  				"mouseover" : function() {
+	  					$("#hundred").css({"background-color":"#0d6efd"});
+	  					$("#hundred").css({"color":"white"});
+	  				},
+	  				"mouseout" : function() {
+	  					$("#hundred").css({"background-color":"white"});
+	  					$("#hundred").css({"color":"#0d6efd"});
+	  				}
+	  			});
+	  			$("#fifty").on({
+	  				"mouseover" : function() {
+	  					$("#fifty").css({"background-color":"#0d6efd"});
+	  					$("#fifty").css({"color":"white"});
+	  				},
+	  				"mouseout" : function() {
+	  					$("#fifty").css({"background-color":"white"});
+	  					$("#fifty").css({"color":"#0d6efd"});
+	  				}
+	  			});
+	  			$("#ten").on({
+	  				"mouseover" : function() {
+	  					$("#ten").css({"background-color":"#0d6efd"});
+	  					$("#ten").css({"color":"white"});
+	  				},
+	  				"mouseout" : function() {
+	  					$("#ten").css({"background-color":"white"});
+	  					$("#ten").css({"color":"#0d6efd"});
+	  				}
+	  			});
+	  			$("#five").on({
+	  				"mouseover" : function() {
+	  					$("#five").css({"background-color":"#0d6efd"});
+	  					$("#five").css({"color":"white"});
+	  				},
+	  				"mouseout" : function() {
+	  					$("#five").css({"background-color":"white"});
+	  					$("#five").css({"color":"#0d6efd"});
+	  				}
+	  			});
+	  			$("#one").on({
+	  				"mouseover" : function() {
+	  					$("#one").css({"background-color":"#0d6efd"});
+	  					$("#one").css({"color":"white"});
+	  				},
+	  				"mouseout" : function() {
+	  					$("#one").css({"background-color":"white"});
+	  					$("#one").css({"color":"#0d6efd"});
+	  				}
+	  			});
+	  		});
 	    </script>
 	    <style>
     	.btn-clipboard {
@@ -91,11 +132,11 @@
                     </div>
                 	</div>
                 	<div style="margin-left:15px">
-                	<button type="button" class="btn-clipboard" title="" data-bs-original-title="Copy to clipboard">100만</button>
-                	<button type="button" class="btn-clipboard" title="" data-bs-original-title="Copy to clipboard">50만</button>
-                	<button type="button" class="btn-clipboard" title="" data-bs-original-title="Copy to clipboard">10만</button>
-                	<button type="button" class="btn-clipboard" title="" data-bs-original-title="Copy to clipboard">5만</button>
-                	<button type="button" class="btn-clipboard" title="" data-bs-original-title="Copy to clipboard">1만</button>
+                	<button type="button" id="hundred" class="btn-clipboard" data-bs-original-title="Copy to clipboard">100만</button>
+                	<button type="button" id="fifty" class="btn-clipboard" data-bs-original-title="Copy to clipboard">50만</button>
+                	<button type="button" id="ten" class="btn-clipboard" data-bs-original-title="Copy to clipboard">10만</button>
+                	<button type="button" id="five" class="btn-clipboard" data-bs-original-title="Copy to clipboard">5만</button>
+                	<button type="button" id="one" class="btn-clipboard" data-bs-original-title="Copy to clipboard">1만</button>
                 	</div>
 				</div>
 				<br><br><hr></hr><br>
