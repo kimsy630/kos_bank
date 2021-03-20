@@ -18,8 +18,8 @@
              <h1>입출금자유</h1>
              <ul class="breadcrumbs-custom">
                <li><a href="#">금융상품</a></li>
-               <li><a href="LoansProducts.cc">입출금자유</a></li>
-               <li class="active">WELCOME 직장인사랑 보통예금</li>
+               <li><a href="CDP.cc">입출금자유</a></li>
+               <li class="active">입출금자유상세</li>
              </ul>
            </div>
          </section><!-- Breadcrumbs end -->
@@ -30,7 +30,7 @@
           <div class="container">
             <div class="card-body">
                   <p>
-                        <h2><b>WELCOME 직장인사랑 보통예금</b></h2>
+                        <h2><b>KOS 직장인사랑 보통예금</b></h2>
                         <h5>조건충족 시 우대금리를 드리는 직장인 전용 보통예금</h5>
                   </p>
                   <!-- ======= Button trigger for basic modal ======= -->
