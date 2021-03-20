@@ -36,7 +36,6 @@ public class InquiryTransferController {
 		logger.info("url ==> /SleepTable");
 		return "InquiryTransfer/SleepTable";
 	}
-	
 	//계좌이체 AccountTransfer.cc
 	@RequestMapping("/AccountTransfer.cc")
 	public String AccountTransfer(HttpServletRequest req,Model model) {

@@ -2,11 +2,15 @@ package spring.mvc.teamProject.controller;
 
 import org.springframework.stereotype.Controller;
 
+import javax.servlet.http.HttpServletRequest;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestMapping;
+
 @Controller
 public class LoanCenterController {
-<<<<<<< HEAD
-
-=======
 	private static final Logger logger = LoggerFactory.getLogger(LoanCenterController.class); // 박서하 branch test
 	
 	// 박서하
@@ -24,5 +28,4 @@ public class LoanCenterController {
 		logger.info("url ==> /LoanAccountCheck");
 		return "LoanCenter/LoanAccountCheck";
 	}
->>>>>>> origin/dev_psh
 }

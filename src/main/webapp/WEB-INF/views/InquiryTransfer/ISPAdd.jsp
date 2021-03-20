@@ -64,6 +64,7 @@
 				</tr>
            </table>
           </div>
+      
           
           <br>
           <h4>적금 계좌 조회</h4>
@@ -91,12 +92,11 @@
                     	  <td>2021.03.18</td>
                  	     	<td><fmt:formatNumber value="1231231" pattern="#,###" />원</td>
                     	 	 <td> 
-                      			<div class="button button-round" style= "padding:10px; width:60px; height:40px; font-size:15px; text-align:center; background-color:olive; display:inline;" onclick="location.href='TransactionDetails.cc'">조회</div>  
-                      			<div class="button button-round" style="padding:10px; width:60px; height:40px; font-size:15px; text-align:center; background-color: orange; display:inline;">추가 납입하기</div>
+                      			<div class="button button-round" style= "padding:10px; width:60px; height:40px; font-size:15px; text-align:center; background-color:#fff; display:inline;" onclick="location.href='TransactionDetails.cc'">조회</div>  
+                      			<div class="button button-round" style="padding:10px; width:60px; height:40px; font-size:15px; text-align:center; background-color:#435ebe; display:inline;">추가 납입하기</div>
                       
                      		 </td>
                    		 </tr>
-                 	   </tr>
                 	  </tbody>
       				</table>
       			</div>
@@ -104,39 +104,40 @@
       	</div>
       	
       	<!-- 추가납입 눌렀을때 데려갈곳  -->
-      <section class="section section-lg bg-default">
-          <div class="row row-offset-1">
-            <div class="col-lg-10 col-xxl-9">
-              <div class="table-custom-responsive">
-                <table class="table-custom table-custom-bordered" id="acc_table">
-                  <thead>
-                    <tr>
-                      <th>출금 계좌번호</th>
-                      <td>대상 계좌가 없습니다.</td>
-                    </tr>
-                  </thead>
-                    <tr>
-                    <th>계좌비밀번호</th>
-                      <td><input type="text" id="accountPW" style="width: 100px"></td>
-                    </tr>
-                    <tr>
-                    <th>이체금액</th>
-                      <td><input type="text" id="money" style="width: 150px">
-                      <button input="AddMoney100">100만</button>
-                      <button input="AddMoney50">50만</button>
-                      <button input="AddMoney10">10만</button>
-                      <button input="AddMoney5">5만</button>
-                      <button input="AddMoney1">1만</button>
-                      <button input="AddAllMoney">전액</button><br><br>
-                      <input type="text" id="limitMoney" style="width: 300px">
-                      <button input="limitMoney">이체한도조회</button>
-                      </td>
-             	 </table>
-              </div>
-      		</div>
-          </div>
-        </div>   
-      </section>
+      	<section class="section section-lg bg-default">
+	          <div class="row row-offset-1">
+	            <div class="col-lg-10 col-xxl-9">
+	              <div class="table-custom-responsive">
+	                <table class="table-custom table-custom-bordered" id="acc_table">
+	                  <thead>
+	                    <tr>
+	                      <th>출금 계좌번호</th>
+	                      <td>대상 계좌가 없습니다.</td>
+	                    </tr>
+	                  </thead>
+	                    <tr>
+	                    <th>계좌비밀번호</th>
+	                      <td><input type="text" id="accountPW" style="width: 100px"></td>
+	                    </tr>
+	                    <tr>
+	                    <th>이체금액</th>
+	                      <td><input type="text" id="money" style="width: 150px">
+	                      <input name="AddMoney100" type="button">100만
+	                      <input name="AddMoney50" type="button">50만
+	                      <input name="AddMoney10" type="button">10만
+	                      <input name="AddMoney5" type="button">5만
+	                      <input name="AddMoney1" type="button">1만
+	                      <input name="AddAllMoney" type="button">전액<br><br>
+	                      <input type="text" id="limitMoney" style="width: 300px">
+	                      <input name="limitMoney"  type="button">이체한도조회
+	                      </td>
+	             	 </table>
+	              </div>
+	      		</div>
+	          </div>
+          </section>
+        </div>  
+        </section> 
 	</div>
 	
 	<div class="container">
