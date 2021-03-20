@@ -61,25 +61,15 @@
 		          	<ul class="breadcrumbs-custom">
 		            	<li><a href="#">대출센터</a></li>
 		            	<li><a href="#">대출납부</a></li>
-		            	<li class="active">대출이자 조회</li>
+		            	<li class="active">대출원금 조회</li>
 		          	</ul>
 		        </div>
 		    </section>
 		    
 		    <section class="section section-lg bg-default">
 		    	<div class="container">
-		        	<h3>대출이자 조회</h3><br>
-		        	<section class="section">
-			            <div class="card">
-			                <div class="card-body">
-		                        <h5><p>안내 및 유의사항</p></h5>
-		                        <hr>
-		                        <p>이자납입종료일은 곡객께서 입력하신 날짜까지 포함되어 계산됩니다.</p>
-		                    </div>
-		                </div>
-			        	
-			          	<br>
-			          				          			          
+		        	<h3>대출원금 조회</h3><br>
+		        	<section class="section">		          
 			          	<div class="table-custom-responsive">
 			               	<table class="table-custom table-custom-bordered">
 			                	<colgroup>
@@ -88,20 +78,12 @@
 			                  	</colgroup>
 			                  	<tbody>
 			                    	<tr>
-			                        	<th scope="col">상품 구분</th>
+			                        	<th scope="col">대출계좌</th>
 			                        	<th scope="col">
 											<select name="" lengthtype="length">
 											    <option value="">대상계좌가 없습니다.</option>
-											</select>											
-											<button type="button" class="btn btn-outline-primary block" data-bs-toggle="modal"
-								                data-bs-target="#default" onclick="document.location.href='#'">
-								                	실행번호조회
-								            </button>
+											</select>
 										</th>
-			                     	</tr>
-			                     	<tr>
-			                        	<th scope="col" class="borL">이자납부종료일</th>
-			                        	<th scope="col"><input type="date" value="sysdate"></th>
 			                     	</tr>
 			                     	<tr>
 			                        	<th colspan="2" scope="col" class="borL">
