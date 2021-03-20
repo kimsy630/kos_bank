@@ -34,7 +34,7 @@
       <%@include file="../header.jsp" %>
       <section class="section section-bredcrumbs">
         <div class="container context-dark breadcrumb-wrapper">
-          <h1>입출금자유</h1>
+          <h1>적금상품</h1>
         </div>
      </section>
       <!-- 상품개요  -->
@@ -43,7 +43,7 @@
                <section class="section">
                      <div class="card">
                          <div class="card-body">
-                              <p>KOS뱅크의 입출금이 자유로운 상품을 만나보세요.</p>
+                              <p>KOS뱅크의 모든 적금상품을 만나보세요.</p>
                           </div>
                       </div>
                 </section>
@@ -60,56 +60,56 @@
                 <!-- Bootstrap card-->
                 <article id="article" class="card card-custom card-corporate">
                  <div id="goods" class="goods">
-                 <h4 data-prd-cd="1130313506" data-sys-ds-cd="01"><a href="#none">WELCOME 직장인사랑 보통예금</a></h4>
-                 <p class="desc">조건충족 시 우대금리를 드리는 직장인 전용 보통예금</p>
+                 <h4 data-prd-cd="1130313506" data-sys-ds-cd="01"><a href="#none">웰뱅 든든적금</a></h4>
+                 <p class="desc">신용평점이 낮아도 우대금리를 제공해드리는 웰뱅만의 금융혜택!</p>
+                 </div>
+                 <div id="interests" class="interests">
+				<em>연 <strong style="">6.00</strong><span>%</span></em>
+				<p>(최대세전, 12개월 기준)</p>
+				</div>
+                 <div id="btns" class="button button-primary button-round">가입하기</div>
+                </article>
+                <article id="article" class="card card-custom card-corporate">
+                 <div id="goods" class="goods">
+                 <h4 data-prd-cd="1130313506" data-sys-ds-cd="01"><a href="#none">웰뱅하자 정기적금</a></h4>
+                 <p class="desc">공과금, 카드대금 등 각종 자동납부를 웰컴 입출금통장으로 연결하세요!</p>
+                 </div>
+                 <div id="interests" class="interests">
+				<em>연 <strong style="">5.00</strong><span>%</span></em>
+				<p>(최대세전, 12개월 기준)</p>
+				</div>
+                 <div id="btns" class="button button-primary button-round">가입하기</div>
+                </article>
+                <article id="article" class="card card-custom card-corporate">
+                 <div id="goods" class="goods">
+                 <h4 data-prd-cd="1130313506" data-sys-ds-cd="01"><a href="#none">웰뱅 잔돈자동적금</a></h4>
+                 <p class="desc">입출금계좌의 잔돈을 자동으로 적립하세요!</p>
+                 </div>
+                 <div id="interests" class="interests">
+				<em>연 <strong style="">4.00</strong><span>%</span></em>
+				<p>(최대세전, 12개월 기준)</p>
+				</div>
+                 <div id="btns" class="button button-primary button-round">가입하기</div>
+                </article>
+                <article id="article" class="card card-custom card-corporate">
+                 <div id="goods" class="goods">
+                 <h4 data-prd-cd="1130313506" data-sys-ds-cd="01"><a href="#none">m-정기적금</a></h4>
+                 <p class="desc">목돈 마련, 재테크의 기본! 정기적금으로 부자 되세요.</p>
+                 </div>
+                 <div id="interests" class="interests">
+				<em>연 <strong style="">3.00</strong><span>%</span></em>
+				<p>(최대세전, 12개월 기준)</p>
+				</div>
+                 <div id="btns" class="button button-primary button-round">가입하기</div>
+                </article>
+                <article id="article" class="card card-custom card-corporate">
+                 <div id="goods" class="goods">
+                 <h4 data-prd-cd="1130313506" data-sys-ds-cd="01"><a href="#none">e-정기적금</a></h4>
+                 <p class="desc">목돈 마련, 재테크의 기본! 정기적금으로 부자 되세요.</p>
                  </div>
                  <div id="interests" class="interests">
 				<em>연 <strong style="">2.00</strong><span>%</span></em>
-				<p>(최대세전이율)</p>
-				</div>
-                 <div id="btns" class="button button-primary button-round" >가입하기</div>
-                </article>
-                <article id="article" class="card card-custom card-corporate">
-                 <div id="goods" class="goods">
-                 <h4 data-prd-cd="1130313506" data-sys-ds-cd="01"><a href="#none">WELCOME 비대면 보통예금</a></h4>
-                 <p class="desc">영업점 방문없이 개설 가능한 모바일뱅킹 전용 보통예금</p>
-                 </div>
-                 <div id="interests" class="interests">
-				<em>연 <strong style="">1.50</strong><span>%</span></em>
-				<p>(최대세전이율)</p>
-				</div>
-                 <div id="btns" class="button button-primary button-round">가입하기</div>
-                </article>
-                <article id="article" class="card card-custom card-corporate">
-                 <div id="goods" class="goods">
-                 <h4 data-prd-cd="1130313506" data-sys-ds-cd="01"><a href="#none">WELCOME PLUS 보통예금</a></h4>
-                 <p class="desc">조건충족 시 우대금리를 드리는 수시입출금 통장</p>
-                 </div>
-                 <div id="interests" class="interests">
-				<em>연 <strong style="">1.80</strong><span>%</span></em>
-				<p>(최대세전이율)</p>
-				</div>
-                 <div id="btns" class="button button-primary button-round">가입하기</div>
-                </article>
-                <article id="article" class="card card-custom card-corporate">
-                 <div id="goods" class="goods">
-                 <h4 data-prd-cd="1130313506" data-sys-ds-cd="01"><a href="#none">WELCOME 사장님사랑 보통예금</a></h4>
-                 <p class="desc">조건 충족 시 우대금리를 드리는 사업자 전용 보통예금</p>
-                 </div>
-                 <div id="interests" class="interests">
-				<em>연 <strong style="">2.00</strong><span>%</span></em>
-				<p>(최대세전이율)</p>
-				</div>
-                 <div id="btns" class="button button-primary button-round">가입하기</div>
-                </article>
-                <article id="article" class="card card-custom card-corporate">
-                 <div id="goods" class="goods">
-                 <h4 data-prd-cd="1130313506" data-sys-ds-cd="01"><a href="#none">보통예금</a></h4>
-                 <p class="desc">입출금이 자유로운 보통예금</p>
-                 </div>
-                 <div id="interests" class="interests">
-				<em>연 <strong style="">0.50</strong><span>%</span></em>
-				<p>(최대세전이율)</p>
+				<p>(최대세전, 12개월 기준)</p>
 				</div>
                  <div id="btns" class="button button-primary button-round">가입하기</div>
                 </article>
