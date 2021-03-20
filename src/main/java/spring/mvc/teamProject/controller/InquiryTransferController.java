@@ -24,11 +24,29 @@ public class InquiryTransferController {
 		logger.info("url ==> /TransactionDetails");
 		return "InquiryTransfer/TransactionDetails";
 	}
-	//대출 테이블 Loanstable.do
-	@RequestMapping("/Loanstable.cc")// ajax에 들어갈 페이지
+	//대출 테이블 LoansTable.do
+	@RequestMapping("/LoansTable.cc")// ajax에 들어갈 페이지
 	public String Loanstable(HttpServletRequest req,Model model) {
-		logger.info("url ==> /Loanstable");
-		return "InquiryTransfer/Loanstable";
+		logger.info("url ==> /LoansTable");
+		return "InquiryTransfer/LoansTable";
+	}
+	//적금 테이블 Installment_SavingsTable.do
+	@RequestMapping("/Installment_SavingsTable.cc")// ajax에 들어갈 페이지
+	public String Installment_SavingsTable(HttpServletRequest req,Model model) {
+		logger.info("url ==> /Installment_SavingsTable");
+		return "InquiryTransfer/Installment_SavingsTable";
+	}
+	//펀드계좌 테이블 FundTable.do
+	@RequestMapping("/FundTable.cc")// ajax에 들어갈 페이지
+	public String FundTable(HttpServletRequest req,Model model) {
+		logger.info("url ==> /FundTable");
+		return "InquiryTransfer/FundTable";
+	}
+	//정지계좌 테이블 StopTable.do
+	@RequestMapping("/StopTable.cc")// ajax에 들어갈 페이지
+	public String StopTable(HttpServletRequest req,Model model) {
+		logger.info("url ==> /StopTable");
+		return "InquiryTransfer/StopTable";
 	}
 	//휴면계좌 테이블 SleepTable.do
 	@RequestMapping("/SleepTable.cc")// ajax에 들어갈 페이지
@@ -36,6 +54,13 @@ public class InquiryTransferController {
 		logger.info("url ==> /SleepTable");
 		return "InquiryTransfer/SleepTable";
 	}
+	//전체계좌 테이블 AllTable.do	
+	@RequestMapping("/AllTable.cc")// ajax에 들어갈 페이지
+	public String AllTable(HttpServletRequest req,Model model) {
+		logger.info("url ==> /AllTable");
+		return "InquiryTransfer/AllTable";
+	}
+	
 	//계좌이체 AccountTransfer.cc
 	@RequestMapping("/AccountTransfer.cc")
 	public String AccountTransfer(HttpServletRequest req,Model model) {

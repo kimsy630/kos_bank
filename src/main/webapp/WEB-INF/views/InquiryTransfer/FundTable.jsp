@@ -63,7 +63,7 @@
           <div class="row row-offset-1">
             <div class="col-lg-10 col-xxl-9">
               <div class="table-custom-responsive">
-              	<h6>휴면</h6>
+              	<h6>펀드</h6>
 		          <div style="background-color: #435ebe; color:#fff; width:1170px; height:2px;"> </div>
 		          <br>
                 <table class="table-custom table-custom-secondary table-custom-hovered" id="acc_table">
@@ -74,7 +74,6 @@
                       <th>신규일</th>
                       <th>만기일</th>
                       <th>잔액(원)</th>
-                      <th>종류</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -84,7 +83,6 @@
                       <td>2019.01.01</td>
                       <td>2021.03.18</td>
                       <td><fmt:formatNumber value="1231231" pattern="#,###" />원</td>
-                      <td>고객요청</td>
                     </tr>
                 </table>
               </div>

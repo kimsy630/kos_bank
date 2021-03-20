@@ -104,100 +104,20 @@
        		<div class="tabs-custom tabs-horizontal tabs-line" id="tabs-1">
 	           <ul class="nav nav-tabs">
 	             <li class="nav-item" role="presentation"><a class="nav-link active" href="#tabs-1-1" data-toggle="tab">예금/신탁</a></li>
-	             <li class="nav-item" role="presentation"><a class="nav-link" href="#tabs-1-2" data-toggle="tab" onclick="location='Loanstable.cc'">대출</a></li>
-	             <li class="nav-item" role="presentation"><a class="nav-link" href="#tabs-1-3" data-toggle="tab" onclick="loaction='ISPAdd.cc'">적금</a></li>
-	             <li class="nav-item" role="presentation"><a class="nav-link" href="#tabs-1-4" data-toggle="tab">펀드</a></li>
+	             <li class="nav-item" role="presentation"><a class="nav-link" href="#tabs-1-2" data-toggle="tab" onclick="location='LoansTable.cc'">대출</a></li>
+	             <li class="nav-item" role="presentation"><a class="nav-link" href="#tabs-1-3" data-toggle="tab" onclick="loaction='Installment_SavingsTable.cc'">적금</a></li>
+	             <li class="nav-item" role="presentation"><a class="nav-link" href="#tabs-1-4" data-toggle="tab" onclick="location='FundTable.cc'">펀드</a></li>
 	             <li class="nav-item" role="presentation"><a class="nav-link" href="#tabs-1-5" data-toggle="tab" onclick="location='SleepTable.cc'">휴면계좌</a></li>
-	             <li class="nav-item" role="presentation"><a class="nav-link" href="#tabs-1-6" data-toggle="tab">정지계좌</a></li>
-	             <li class="nav-item" role="presentation"><a class="nav-link" href="#tabs-1-7" data-toggle="tab">전체계좌</a></li>
+	             <li class="nav-item" role="presentation"><a class="nav-link" href="#tabs-1-6" data-toggle="tab" onclick="location='StopTable.cc'">정지계좌</a></li>
+	             <li class="nav-item" role="presentation"><a class="nav-link" href="#tabs-1-7" data-toggle="tab" onclick="location='AllTable.cc'">전체계좌</a></li>
 	           </ul>
            </div>
            <br>
-        
+        	
+        	<%@include file="AccountTable.jsp" %>
           
-          <div class="row row-offset-1">
-            <div class="col-lg-10 col-xxl-9">
-              <div class="table-custom-responsive">
-	              <h6>입/출금 계좌</h6>
-		          <div style="background-color: #435ebe; color:#fff; width:1170px; height:2px;"> </div>
-		          <br>
-                <table class="table-custom table-custom-secondary table-custom-hovered" id="acc_table">
-                  <thead>
-                    <tr>
-                      <th>계좌명</th>
-                      <th>계좌번호</th>
-                      <th>신규일</th>
-                      <th>최근거래일자</th>
-                      <th>잔액(원)</th>
-                      <th>업무</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <td>저축예금</td>
-                      <td>110-451-550731</td>
-                      <td>신규일</td>
-                      <td>2021.03.18</td>
-                      <td><fmt:formatNumber value="1231231" pattern="#,###" />원</td>
-                      <td> 
-                      	<div class="button button-round" style= "padding:10px 20px; width:60px; height:40px; font-size:15px; text-align:center; background-color:#fff; display:inline;" onclick="location.href='TransactionDetails.cc'">조회</div>&nbsp;&nbsp;
-                      	<div class="button button-round" style= "padding:10px 20px; width:60px; height:40px; font-size:15px; text-align:center; background-color: #435ebe; color:#fff; display:inline;" onclick="location.href='AccountTransfer.cc'">이체</div>
-                      
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>저축예금</td>
-                      <td>110-451-550731</td>
-                      <td>신규일</td>
-                      <td>2021.03.18</td>
-                      <td><fmt:formatNumber value="1231231" pattern="#,###" />원</td>
-                      <td> 
-                      	<div class="button button-round" style= "padding:10px 20px; width:60px; height:40px; font-size:15px; text-align:center; background-color:#fff; display:inline;" >조회</div>&nbsp;&nbsp;
-                      	<div class="button button-round" style= "padding:10px 20px; width:60px; height:40px; font-size:15px; text-align:center; background-color: #435ebe; color:#fff; display:inline;">이체</div>
-                      
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>저축예금</td>
-                      <td>110-451-550731</td>
-                      <td>신규일</td>
-                      <td>2021.03.18</td>
-                      <td><fmt:formatNumber value="1231231" pattern="#,###" />원</td>
-                      <td> 
-                      	<div class="button button-round" style= "padding:10px 20px; width:60px; height:40px; font-size:15px; text-align:center; background-color:#fff; display:inline;">조회</div>&nbsp;&nbsp;
-                      	<div class="button button-round" style= "padding:10px 20px; width:60px; height:40px; font-size:15px; text-align:center; background-color: #435ebe; color:#fff; display:inline;">이체</div>
-                      
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>저축예금</td>
-                      <td>110-451-550731</td>
-                      <td>신규일</td>
-                      <td>2021.03.18</td>
-                      <td><fmt:formatNumber value="1231231" pattern="#,###" />원</td>
-                      <td> 
-                      	<div class="button button-round" style= "padding:10px 20px; width:60px; height:40px; font-size:15px; text-align:center; background-color:#fff; display:inline;">조회</div>&nbsp;&nbsp;
-                      	<div class="button button-round" style= "padding:10px 20px; width:60px; height:40px; font-size:15px; text-align:center; background-color: #435ebe; color:#fff; display:inline;">이체</div>
-                      
-                      </td>
-                    </tr>
-                  </tbody>
-                  <tfoot>
-                    <tr>
-                      <td>저축예금</td>
-                      <td>110-451-550731</td>
-                      <td>신규일</td>
-                      <td>2021.03.18</td>
-                      <td><fmt:formatNumber value="1231231" pattern="#,###" />원</td>
-                      <td> 
-                      	<div class="button button-round" style= "padding:10px 20px; width:60px; height:40px; font-size:15px; text-align:center; background-color:#fff; display:inline;">조회</div>&nbsp;&nbsp;
-                      	<div class="button button-round" style= "padding:10px 20px; width:60px; height:40px; font-size:15px; text-align:center; background-color: #435ebe; color:#fff; display:inline;">이체</div>
-                      </td>
-                    </tr>
-                  </tfoot>
-                </table>
-              </div>
-            </div>
+          <div style="width: 1170px; text-align: center;">
+          	<h4>등록된 계좌가 없을때 들어갈 문구 </h4>
           </div>
         </div>
       </section>

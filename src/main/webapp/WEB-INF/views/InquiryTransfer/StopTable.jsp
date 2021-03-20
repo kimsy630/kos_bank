@@ -63,7 +63,7 @@
           <div class="row row-offset-1">
             <div class="col-lg-10 col-xxl-9">
               <div class="table-custom-responsive">
-              	<h6>휴면</h6>
+              	<h6>정지</h6>
 		          <div style="background-color: #435ebe; color:#fff; width:1170px; height:2px;"> </div>
 		          <br>
                 <table class="table-custom table-custom-secondary table-custom-hovered" id="acc_table">
@@ -71,20 +71,20 @@
                     <tr>
                       <th>계좌명</th>
                       <th>계좌번호</th>
-                      <th>신규일</th>
-                      <th>만기일</th>
+                      <th>정지일</th>
+                      <th>최근 결제일</th>
                       <th>잔액(원)</th>
-                      <th>종류</th>
+                      <th>종류</th> <!-- 계좌상태 설명 (왜 정지가 됐는지 -->
                     </tr>
                   </thead>
                   <tbody>
                     <tr>
                       <td>저축예금</td>
                       <td>110-451-550731</td>
-                      <td>2019.01.01</td>
+                      <td>2021.03.20</td>
                       <td>2021.03.18</td>
                       <td><fmt:formatNumber value="1231231" pattern="#,###" />원</td>
-                      <td>고객요청</td>
+                      <td>분실로 인한 요청</td>
                     </tr>
                 </table>
               </div>

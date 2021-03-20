@@ -192,22 +192,22 @@
                 <tr>
                 	<td style="font-weight: 800; text-align: center;">거래일자</td>
                 	<td style="font-weight: 800; text-align: center;">거래시간</td>
-                	<td style="font-weight: 800; text-align: center;">적요</td>
+                	<td style="font-weight: 800; text-align: center;">보낸사람 명</td>
                 	<td style="font-weight: 800; text-align: center;">출금(원)</td>
                 	<td style="font-weight: 800; text-align: center;">입금(원)</td>
                 	<td style="font-weight: 800; text-align: center;">내용</td>
                 	<td style="font-weight: 800; text-align: center;">잔액(원)</td>
-                	<td style="font-weight: 800; text-align: center;">거래점</td>
+                	<td style="font-weight: 800; text-align: center;">받는사람 명</td>
                 </tr>
                 <tr>
                 	<td style="text-align: center;">2021-03-18</td>
                 	<td style="text-align: center;">14:03:56</td>
-                	<td style="text-align: center;">신한체크</td>
+                	<td style="text-align: center;">유재석</td>
                 	<td style="text-align: center;"><fmt:formatNumber value="5000" pattern="#,###" /></td>
-                	<td style="text-align: center;">자금성</td>
                 	<td style="text-align: center;"></td>
+                	<td style="text-align: center;">맛있는고기집</td>
                 	<td style="text-align: center;"><fmt:formatNumber value="505000" pattern="#,###" /></td>
-                	<td style="text-align: center;">뜨거운형제들</td>
+                	<td style="text-align: center;">사장님</td>
                 </tr>
                 </table>
 					<br>

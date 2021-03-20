@@ -56,15 +56,12 @@
   </style>
   
   <body>
-      <section class="section section-lg bg-default">
-        <div class="container">
+      <!-- 주석 친 부분에 사용하고싶은 <section> 긁어와서 쓰면 됩니다!! -->
            <br>
-        
-          
           <div class="row row-offset-1">
             <div class="col-lg-10 col-xxl-9">
               <div class="table-custom-responsive">
-              	<h6>대출계좌</h6>
+	              <h6>입/출금 계좌</h6>
 		          <div style="background-color: #435ebe; color:#fff; width:1170px; height:2px;"> </div>
 		          <br>
                 <table class="table-custom table-custom-secondary table-custom-hovered" id="acc_table">
@@ -72,9 +69,9 @@
                     <tr>
                       <th>계좌명</th>
                       <th>계좌번호</th>
-                      <th>승인한도</th>
-                      <th>만기일</th>
-                      <th>대출잔액(원)</th>
+                      <th>신규일</th>
+                      <th>최근거래일자</th>
+                      <th>잔액(원)</th>
                       <th>업무</th>
                     </tr>
                   </thead>
@@ -86,8 +83,8 @@
                       <td>2021.03.18</td>
                       <td><fmt:formatNumber value="1231231" pattern="#,###" />원</td>
                       <td> 
-                      	<div class="button button-round" style= "padding:10px; width:80px; height:40px; font-size:12px; text-align:center; background-color:#fff; display:inline;" onclick="location.href='TransactionDetails.cc'">상환내역</div>  
-                      	<div class="button button-round" style="padding:10px; width:80px; height:40px; font-size:12px; text-align:center; background-color: #435ebe; color:#fff; display:inline;">원금상환</div>
+                      	<div class="button button-round" style= "padding:10px 20px; width:60px; height:40px; font-size:15px; text-align:center; background-color:#fff; display:inline;" onclick="location.href='TransactionDetails.cc'">조회</div>&nbsp;&nbsp;
+                      	<div class="button button-round" style= "padding:10px 20px; width:60px; height:40px; font-size:15px; text-align:center; background-color: #435ebe; color:#fff; display:inline;" onclick="location.href='AccountTransfer.cc'">이체</div>
                       
                       </td>
                     </tr>
@@ -98,8 +95,8 @@
                       <td>2021.03.18</td>
                       <td><fmt:formatNumber value="1231231" pattern="#,###" />원</td>
                       <td> 
-                      	<div class="button button-round" style= "padding:10px; width:60px; height:40px; font-size:15px; text-align:center; background-color:#fff; display:inline;">조회</div>  
-                      	<div class="button button-round" style="padding:10px; width:60px; height:40px; font-size:15px; text-align:center; background-color: #435ebe; color:#fff; display:inline;">이체</div>
+                      	<div class="button button-round" style= "padding:10px 20px; width:60px; height:40px; font-size:15px; text-align:center; background-color:#fff; display:inline;" >조회</div>&nbsp;&nbsp;
+                      	<div class="button button-round" style= "padding:10px 20px; width:60px; height:40px; font-size:15px; text-align:center; background-color: #435ebe; color:#fff; display:inline;">이체</div>
                       
                       </td>
                     </tr>
@@ -110,8 +107,8 @@
                       <td>2021.03.18</td>
                       <td><fmt:formatNumber value="1231231" pattern="#,###" />원</td>
                       <td> 
-                      	<div class="button button-round" style= "padding:10px; width:60px; height:40px; font-size:15px; text-align:center; background-color:#fff; display:inline;">조회</div>  
-                      	<div class="button button-round" style="padding:10px; width:60px; height:40px; font-size:15px; text-align:center; background-color: #435ebe; color:#fff; display:inline;">이체</div>
+                      	<div class="button button-round" style= "padding:10px 20px; width:60px; height:40px; font-size:15px; text-align:center; background-color:#fff; display:inline;">조회</div>&nbsp;&nbsp;
+                      	<div class="button button-round" style= "padding:10px 20px; width:60px; height:40px; font-size:15px; text-align:center; background-color: #435ebe; color:#fff; display:inline;">이체</div>
                       
                       </td>
                     </tr>
@@ -122,8 +119,8 @@
                       <td>2021.03.18</td>
                       <td><fmt:formatNumber value="1231231" pattern="#,###" />원</td>
                       <td> 
-                      	<div class="button button-round" style= "padding:10px; width:60px; height:40px; font-size:15px; text-align:center; background-color:#fff; display:inline;">조회</div>  
-                      	<div class="button button-round" style="padding:10px; width:60px; height:40px; font-size:15px; text-align:center; background-color: #435ebe; color:#fff; display:inline;">이체</div>
+                      	<div class="button button-round" style= "padding:10px 20px; width:60px; height:40px; font-size:15px; text-align:center; background-color:#fff; display:inline;">조회</div>&nbsp;&nbsp;
+                      	<div class="button button-round" style= "padding:10px 20px; width:60px; height:40px; font-size:15px; text-align:center; background-color: #435ebe; color:#fff; display:inline;">이체</div>
                       
                       </td>
                     </tr>
@@ -136,8 +133,8 @@
                       <td>2021.03.18</td>
                       <td><fmt:formatNumber value="1231231" pattern="#,###" />원</td>
                       <td> 
-                      	<div class="button button-round" style= "padding:10px; width:60px; height:40px; font-size:15px; text-align:center; background-color:#fff; display:inline;">조회</div>  
-                      	<div class="button button-round" style="padding:10px; width:60px; height:40px; font-size:15px; text-align:center; background-color: #435ebe; color:#fff; display:inline;">이체</div>
+                      	<div class="button button-round" style= "padding:10px 20px; width:60px; height:40px; font-size:15px; text-align:center; background-color:#fff; display:inline;">조회</div>&nbsp;&nbsp;
+                      	<div class="button button-round" style= "padding:10px 20px; width:60px; height:40px; font-size:15px; text-align:center; background-color: #435ebe; color:#fff; display:inline;">이체</div>
                       </td>
                     </tr>
                   </tfoot>
@@ -145,7 +142,6 @@
               </div>
             </div>
           </div>
-        </div>
-      </section>
   </body>
 </html>
+
