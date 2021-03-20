@@ -57,8 +57,6 @@
   
   <body>
       <!-- 주석 친 부분에 사용하고싶은 <section> 긁어와서 쓰면 됩니다!! -->
-      <section class="section section-lg bg-default">
-        <div class="container">
            <br>
           <div class="row row-offset-1">
             <div class="col-lg-10 col-xxl-9">
@@ -90,7 +88,5 @@
               </div>
             </div>
           </div>
-        </div>
-      </section>
   </body>
 </html>

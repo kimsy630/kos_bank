@@ -56,11 +56,13 @@
   </style>
   
   <body>
-  <section class="section section-lg bg-default">
-  	<div class="container">
+		<%@include file="AccountTable.jsp" %>  	
   		<%@include file="LoansTable.jsp" %>
-  	</div>
-  </section>
+  		<%@include file="IS_Table.jsp" %>
+  		<%@include file="FundTable.jsp" %>
+  		<%@include file="SleepTable.jsp" %>
+  		<%@include file="StopTable.jsp" %>
+  		<%@include file="FundTable.jsp" %>
   	
   </body>
 </html>

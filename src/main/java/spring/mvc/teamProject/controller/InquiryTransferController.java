@@ -30,11 +30,11 @@ public class InquiryTransferController {
 		logger.info("url ==> /LoansTable");
 		return "InquiryTransfer/LoansTable";
 	}
-	//적금 테이블 Installment_SavingsTable.do
-	@RequestMapping("/Installment_SavingsTable.cc")// ajax에 들어갈 페이지
+	//적금 테이블 IS_Table.do
+	@RequestMapping("/IS_Table.cc")// ajax에 들어갈 페이지   Installment_SavingsTable
 	public String Installment_SavingsTable(HttpServletRequest req,Model model) {
-		logger.info("url ==> /Installment_SavingsTable");
-		return "InquiryTransfer/Installment_SavingsTable";
+		logger.info("url ==> /IS_Table");
+		return "InquiryTransfer/IS_Table";
 	}
 	//펀드계좌 테이블 FundTable.do
 	@RequestMapping("/FundTable.cc")// ajax에 들어갈 페이지

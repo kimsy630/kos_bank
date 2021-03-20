@@ -77,8 +77,6 @@
 
   <body>
    
-        <section class="section section-lg bg-default">
-        <div class="container">
           <div class="row row-offset-1">
             <div class="col-lg-10 col-xxl-9">
               <div class="table-custom-responsive">
@@ -219,8 +217,6 @@
               </div>
             </div>
           </div>
-        </div>
-      </section>
       
   </body>
 </html>

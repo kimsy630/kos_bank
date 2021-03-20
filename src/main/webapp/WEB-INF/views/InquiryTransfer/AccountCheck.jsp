@@ -24,7 +24,7 @@
   	#accountInfo {
   		width: 1170px;
   		height: 130px;
-  		background-color: gray;
+  		background-color:#E0FFFF;
 		display: inline-block; 
 		list-style: circle;
 		padding:30px;
@@ -85,7 +85,7 @@
           <h3>계좌조회</h3>
           <br><hr><br>
           
-           <div id="accountInfo">
+           <div id="accountInfo" style="background-color: #F6F9FE; border:1px solid gray;">
            <table>
 				<tr>
 					<td>출금 계좌번호 : 110-451-550731</td>
@@ -104,12 +104,12 @@
        		<div class="tabs-custom tabs-horizontal tabs-line" id="tabs-1">
 	           <ul class="nav nav-tabs">
 	             <li class="nav-item" role="presentation"><a class="nav-link active" href="#tabs-1-1" data-toggle="tab">예금/신탁</a></li>
-	             <li class="nav-item" role="presentation"><a class="nav-link" href="#tabs-1-2" data-toggle="tab" onclick="location='LoansTable.cc'">대출</a></li>
-	             <li class="nav-item" role="presentation"><a class="nav-link" href="#tabs-1-3" data-toggle="tab" onclick="loaction='Installment_SavingsTable.cc'">적금</a></li>
-	             <li class="nav-item" role="presentation"><a class="nav-link" href="#tabs-1-4" data-toggle="tab" onclick="location='FundTable.cc'">펀드</a></li>
-	             <li class="nav-item" role="presentation"><a class="nav-link" href="#tabs-1-5" data-toggle="tab" onclick="location='SleepTable.cc'">휴면계좌</a></li>
-	             <li class="nav-item" role="presentation"><a class="nav-link" href="#tabs-1-6" data-toggle="tab" onclick="location='StopTable.cc'">정지계좌</a></li>
-	             <li class="nav-item" role="presentation"><a class="nav-link" href="#tabs-1-7" data-toggle="tab" onclick="location='AllTable.cc'">전체계좌</a></li>
+	             <li class="nav-item" role="presentation"><a class="nav-link" href="#tabs-1-2" data-toggle="tab" onclick="location.href='LoansTable.cc'">대출</a></li>
+	             <li class="nav-item" role="presentation"><a class="nav-link" href="#tabs-1-3" data-toggle="tab" onclick="location.href='IS_Table.cc'">적금</a></li><!-- Installment_SavingsTable -->
+	             <li class="nav-item" role="presentation"><a class="nav-link" href="#tabs-1-4" data-toggle="tab" onclick="location.href='FundTable.cc'">펀드</a></li>
+	             <li class="nav-item" role="presentation"><a class="nav-link" href="#tabs-1-5" data-toggle="tab" onclick="location.href='SleepTable.cc'">휴면계좌</a></li>
+	             <li class="nav-item" role="presentation"><a class="nav-link" href="#tabs-1-6" data-toggle="tab" onclick="location.href='StopTable.cc'">정지계좌</a></li>
+	             <li class="nav-item" role="presentation"><a class="nav-link" href="#tabs-1-7" data-toggle="tab" onclick="location.href='AllTable.cc'">전체계좌</a></li>
 	           </ul>
            </div>
            <br>
@@ -126,11 +126,6 @@
       
       <%@include file="../footer.jsp" %>
       </div>
- <!-- PANEL-->
-    <!-- Global Mailform Output-->
-    <div class="snackbars" id="form-output-global"></div>
-    <!-- Javascript-->
-    <script src="${csspath}js/core.min.js"></script>
-    <script src="${csspath}js/script.js"></script>
+
   </body>
 </html>
