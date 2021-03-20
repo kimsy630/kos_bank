@@ -13,7 +13,7 @@ public class LoanCenterController {
 	private static final Logger logger = LoggerFactory.getLogger(LoanCenterController.class); // 박서하 branch test
 	
 	// 박서하
-	//대출신청
+	//대출 신청
 	@RequestMapping("/LoanApplication.cc")
 	public String LoanApplication(HttpServletRequest req,Model model) {
 		logger.info("url ==> /LoanApplication");
@@ -21,10 +21,27 @@ public class LoanCenterController {
 	}
 	
 	// 박서하
-	//대출계좌조회 (대출 테이블 Loanstable.do)
+	//대출계좌 조회
 	@RequestMapping("/LoanAccountCheck.cc")
 	public String LoanAccountCheck(HttpServletRequest req,Model model) {
 		logger.info("url ==> /LoanAccountCheck");
 		return "LoanCenter/LoanAccountCheck";
 	}
+	
+	// 박서하
+	//대출계좌 상세조회
+	@RequestMapping("/LoanAccountDetail.cc")
+	public String LoanAccountDetail(HttpServletRequest req,Model model) {
+		logger.info("url ==> /LoanAccountDetail");
+		return "LoanCenter/LoanAccountDetail";
+	}
+	
+	// 박서하
+	//대출이자 조회
+	@RequestMapping("/LoanRateCheck.cc")
+	public String LoanRateCheck(HttpServletRequest req,Model model) {
+		logger.info("url ==> /LoanRateCheck");
+		return "LoanCenter/LoanRateCheck";
+	}
+	
 }

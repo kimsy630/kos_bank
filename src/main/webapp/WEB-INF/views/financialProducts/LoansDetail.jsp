@@ -156,25 +156,34 @@
 				                	</p>
 				              	</div>
 				            </div>
-				            <div class="col-md-6 col-lg-3 wow fadeInRight" data-wow-delay="0.3s">
-				            	<div class="blurb-boxed-3">
-				                	<button type="button" class="tbtn_gray btnCalc" id="calc2" data-calc="calcDiv3" title="대출상환 계산기 레이어팝업 열기">계산하기</button>
-				              	</div>
-				            </div>
-				        </div>
+	                    </div>
+	                    
+	                  	<div class="row justify-content-lg-center">
+							<a class="button button-round button-primary" href="#" data-caption-animate="fadeInUp" data-caption-delay="450">계산하기</a>
+						</div>
 						
 						<input type="hidden" name="hid_key_data" id="hid_key_data" value=""><input type="hidden" name="hid_enc_data" id="hid_enc_data" value="">
 					</form>
 				</section>
 				<!-- What You Get end -->
 				
-				<br>
+				<br><br>
 				
-				<section>
-					<h4><b>지연 배상율</b></h4>
-					<div class="title_btn">2021. 03. 18 기준</div>
-					<p class="mT5 txtL">지연배상율은 대출금리 + 3%로 최대 연 22.9% 를 초과하지 않습니다.</p>
-				</section>
+				<article class="post-classic">
+	            	<div class="post-meta-main">
+	                	<div class="post-meta-item">
+	                	<h4><b>지연 배상율<b></h4>
+	                    	<div class="post-meta">
+	                      		<div class="post-meta-item">
+	                      		</div>
+	                    		<div class="post-meta-item">
+	                     		</div>
+		                    </div>
+		                </div>
+		                <div class="post-date"><em>2021. 03. 18 기준</em></div>
+					</div>
+				</article>
+				<p class="mT5 txtL">지연배상율은 대출금리 + 3%로 최대 연 22.9% 를 초과하지 않습니다.</p>
 				
 				<br>
 				
