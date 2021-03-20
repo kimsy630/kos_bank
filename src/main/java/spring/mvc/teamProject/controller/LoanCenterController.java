@@ -50,6 +50,14 @@ public class LoanCenterController {
 	}
 	
 	// 박서하
+	//대출원금 정보
+	@RequestMapping("/LoanPrincipalInfo.cc")
+	public String LoanPrincipalInfo(HttpServletRequest req,Model model) {
+		logger.info("url ==> /LoanPrincipalInfo");
+		return "LoanCenter/LoanPrincipalInfo";
+	}
+	
+	// 박서하
 	//대출원금 상환
 	@RequestMapping("/LoanPrincipalPay.cc")
 	public String LoanPrincipalPay(HttpServletRequest req,Model model) {
@@ -63,6 +71,14 @@ public class LoanCenterController {
 	public String LoanRateCheck(HttpServletRequest req,Model model) {
 		logger.info("url ==> /LoanRateCheck");
 		return "LoanCenter/LoanRateCheck";
+	}
+	
+	// 박서하
+	//대출이자 정보
+	@RequestMapping("/LoanRateInfo.cc")
+	public String LoanRateInfo(HttpServletRequest req,Model model) {
+		logger.info("url ==> /LoanRateInfo");
+		return "LoanCenter/LoanRateInfo";
 	}
 	
 	// 박서하

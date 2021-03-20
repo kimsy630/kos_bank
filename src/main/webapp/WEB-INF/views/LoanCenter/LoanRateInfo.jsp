@@ -38,17 +38,9 @@
 		    	<div class="container">
 		        	<h3>대출이자 조회/납부</h3><br>
 		        	
-		        	<section class="section">
-			            <div class="card">
-			                <div class="card-body">
-		                        <h5><p>안내 및 유의사항</p></h5>
-		                        <hr>
-		                        <p>이자납입종료일은 고객께서 입력하신 날짜까지 포함되어 계산됩니다.</p>
-		                    </div>
-		                </div>
-			        	
-			          	<br>
-			          				          			          
+		        	<div class="col-sm-12 d-flex justify-content-end">1 정보입력 2 3</div>
+		        	
+		        	<section class="section">		          			          
 			          	<div class="table-custom-responsive">
 			               	<table class="table-custom table-custom-bordered">
 			                	<colgroup>
@@ -57,30 +49,51 @@
 			                  	</colgroup>
 			                  	<tbody>
 			                    	<tr>
-			                        	<th scope="col">상품 구분</th>
+			                        	<th scope="col">조회계좌</th>
 			                        	<th scope="col">
 											<select name="" lengthtype="length">
 											    <option value="555-555-555555">555-555-555555[<가계>직장인 신용대출(만기일시)]</option>
 											</select>											
 											<button type="button" class="btn btn-outline-primary block" data-bs-toggle="modal"
 								                data-bs-target="#default" onclick="document.location.href='#'">
-								                	실행번호조회
+								                	잔액조회
 								            </button>
 										</th>
 			                     	</tr>
 			                     	<tr>
-			                        	<th scope="col" class="borL">이자납부종료일</th>
-			                        	<th scope="col"><input type="date" value="sysdate"></th>
+			                        	<th scope="col" class="borL">계좌비밀번호</th>
+			                        	<th scope="col"><input type="text" placeholder="숫자4자리"></th>
 			                     	</tr>
 			                     	<tr>
-			                        	<th colspan="2" scope="col" class="borL">
-			                        		<div class="row justify-content-lg-center">
-												<a class="button button-round button-primary" href="LoanRateInfo.cc" data-caption-animate="fadeInUp" data-caption-delay="450">조회</a>
-											</div>
-										</th>
+			                        	<th scope="col" class="borL">대출계좌번호</th>
+			                        	<th scope="col">555-555-555555</th>
+			                     	</tr>
+			                     	<tr>
+			                        	<th scope="col" class="borL">실행번호</th>
+			                        	<th scope="col"></th>
+			                     	</tr>
+			                     	<tr>
+			                        	<th scope="col" class="borL">이자납입기준일</th>
+			                        	<th scope="col">2021.05.01</th>
+			                     	</tr>
+			                     	<tr>
+			                        	<th scope="col" class="borL">정상이자(원)</th>
+			                        	<th scope="col">100,000</th>
+			                     	</tr>
+			                     	<tr>
+			                        	<th scope="col" class="borL">정상이자(원)</th>
+			                        	<th scope="col">0</th>
+			                     	</tr>
+			                     	<tr>
+			                        	<th scope="col" class="borL">이자합계(원)</th>
+			                        	<th scope="col">100,000</th>
 			                     	</tr>
 			                  	</tbody>
 			               	</table>
+			               	
+			               	<div class="row justify-content-lg-center">
+								<a class="button button-round button-primary" href="LoanRatePay.cc" data-caption-animate="fadeInUp" data-caption-delay="450">다음</a>
+							</div>
 			            </div>
 		            </section>	          	
 		        </div>
