@@ -15,11 +15,11 @@
       <!-- ======= Breadcrumbs ======= -->
          <section class="section section-bredcrumbs">
            <div class="container context-dark breadcrumb-wrapper">
-             <h1>입출금자유</h1>
+             <h1>정기예금</h1>
              <ul class="breadcrumbs-custom">
                <li><a href="#">금융상품</a></li>
-               <li><a href="LoansProducts.cc">입출금자유</a></li>
-               <li class="active">WELCOME 직장인사랑 보통예금</li>
+               <li><a href="FDP.cc">정기예금</a></li>
+               <li class="active">정기예금상세</li>
              </ul>
            </div>
          </section><!-- Breadcrumbs end -->
@@ -30,8 +30,8 @@
           <div class="container">
             <div class="card-body">
                   <p>
-                        <h2><b>WELCOME 직장인사랑 보통예금</b></h2>
-                        <h5>조건충족 시 우대금리를 드리는 직장인 전용 보통예금</h5>
+                        <h2><b>m-정기예금(복리)</b></h2>
+                        <h5>이자획득을 목적으로 하는 목돈 운용의 대표상품</h5>
                   </p>
                   <!-- ======= Button trigger for basic modal ======= -->
                   <button type="button" class="btn btn-outline-primary block" data-bs-toggle="modal"

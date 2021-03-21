@@ -19,9 +19,6 @@
 	    <script src="http://code.jquery.com/jquery.js"></script>
 	    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 	    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-	    <script type="text/javascript">
-	    
-	    </script>
 	    <script>
 	  		$(function() {
 	  			$("#hundred").on({
@@ -103,7 +100,7 @@
           <br>
           <ul class="breadcrumbs-custom">
             <li><a href="index.html">금융상품</a></li>
-            <li><a href="#">적금상품</a></li>
+            <li><a href="FDP.cc">예금상품</a></li>
             <li class="active">가입정보</li>
           </ul>
         </div>
@@ -124,17 +121,10 @@
 	  			 <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" checked>
 				</div>
 				<br><br><hr></hr><br>
-                <p style="display:inline; margin-right:175px;">적립방법</p>
-                <select class="form-select" aria-label="Default select example">
-				  <option selected>선택</option>
-				  <option value="1">자유적립식</option>
-				  <option value="2">정액적립식</option>
-				</select>
-				<br><br><hr></hr><br>
-				<p style="display:inline; margin-right:90px;">월 적립 가능 한도금액</p>
-				<p style="display:inline;"><fmt:formatNumber value="1231231" pattern="#,###" />원</p>
+				<p style="display:inline; margin-right:190px;">이자율</p>
+				<p style="display:inline;">6.0%</p>
 				<br><br><hr></hr>
-				<div style="display:inline; width:20%; text-align:center; margin-right:160px; vertical-align:70%">신규금액</div>
+				<div style="display:inline; width:20%; text-align:center; margin-right:160px; vertical-align:70%">가입금액</div>
 				<div style="display:inline-block; width:80%;">
 					<div class="form-group" id="newAmount">
                     <div class="col-sm-2">
@@ -153,14 +143,43 @@
                 <p style="display:inline; margin-right:175px;">가입기간</p>
                 <select class="form-select" aria-label="Default select example">
 				  <option selected>선택</option>
-				  <option value="1">6</option>
-				  <option value="2">7</option>
-				  <option value="3">8</option>
-				  <option value="4">9</option>
-				  <option value="5">10</option>
-				  <option value="6">11</option>
-				  <option value="6">12</option>
-				</select>&nbsp;개월&nbsp;&nbsp;&nbsp;<p style="color:#92969c; display:inline;">(계약월수는 6 ~ 12 개월 범위내에서 가능합니다.)</p>
+				  <option value="1">1</option>
+				  <option value="2">2</option>
+				  <option value="3">3</option>
+				  <option value="4">4</option>
+				  <option value="5">5</option>
+				  <option value="6">6</option>
+				  <option value="7">7</option>
+				  <option value="8">8</option>
+				  <option value="9">9</option>
+				  <option value="10">10</option>
+				  <option value="11">11</option>
+				  <option value="12">12</option>
+				  <option value="13">13</option>
+				  <option value="14">14</option>
+				  <option value="15">15</option>
+				  <option value="16">16</option>
+				  <option value="17">17</option>
+				  <option value="18">18</option>
+				  <option value="19">19</option>
+				  <option value="20">20</option>
+				  <option value="21">21</option>
+				  <option value="22">22</option>
+				  <option value="23">23</option>
+				  <option value="24">24</option>
+				  <option value="25">25</option>
+				  <option value="26">26</option>
+				  <option value="27">27</option>
+				  <option value="28">28</option>
+				  <option value="29">29</option>
+				  <option value="30">30</option>
+				  <option value="31">31</option>
+				  <option value="32">32</option>
+				  <option value="33">33</option>
+				  <option value="34">34</option>
+				  <option value="35">35</option>
+				  <option value="36">36</option>
+				</select>&nbsp;개월&nbsp;&nbsp;&nbsp;<p style="color:#92969c; display:inline;">(계약월수는 1 ~ 36 개월 범위내에서 가능합니다.)</p>
 				<br><br><hr></hr>
 				<div style="display:inline; width:30%; text-align:center; margin-right:160px;">비밀번호</div>
 				<div style="display:inline-block; width:70%;">
@@ -203,13 +222,6 @@
                 	</div>
 				</div>
 				<hr></hr><br>
-				<p style="display:inline; margin-right:140px;">자동이체여부</p>
-                <select class="form-select" aria-label="Default select example">
-				  <option selected>선택하세요</option>
-				  <option value="1">신청</option>
-				  <option value="2">미신청</option>
-				</select>
-				<br><br><hr></hr>
 				<br><br><h3>만기시 해지방법</h3><br>
 				<hr></hr><br>
 				<p style="display:inline">만기자동해지 신청여부</p><br>          

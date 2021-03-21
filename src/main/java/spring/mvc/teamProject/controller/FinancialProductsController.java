@@ -20,7 +20,6 @@ public class FinancialProductsController {
 		logger.info("url ==> /personalLoan");
 		return "financialProducts/personalLoan";
 	}
-	
 	//대출상품
 	@RequestMapping("/LoansProducts.cc")
 	public String LoansProducts(HttpServletRequest req,Model model) {
@@ -42,13 +41,6 @@ public class FinancialProductsController {
 		return "financialProducts/FDP";
 	}
 	// 최문수
-	//자유입출금(Checking Deposit Product)
-	@RequestMapping("/CDP.cc")
-	public String CDP(HttpServletRequest req,Model model) {
-		logger.info("url ==> /CDP");
-		return "financialProducts/CDP";
-	}
-	// 최문수
 	// 적금상품 상세페이지
 	@RequestMapping("/ISPdetail.cc")
 	public String ISPdetail(HttpServletRequest req,Model model) {
@@ -63,18 +55,18 @@ public class FinancialProductsController {
 		return "financialProducts/FDPdetail";
 	}
 	// 최문수
-	// 자유입출금 상세페이지
-	@RequestMapping("/CDPdetail.cc")
-	public String CDPdetail(HttpServletRequest req,Model model) {
-		logger.info("url ==> /CDPdetail");
-		return "financialProducts/CDPdetail";
-	}
-	// 최문수
 	// 적금상품 가입페이지(Install Savings Product)
 	@RequestMapping("/regISP.cc")
 	public String regISP(HttpServletRequest req,Model model) {
 		logger.info("url ==> /regISP");
 		return "financialProducts/regISP";
+	}
+	// 최문수
+	// 적금상품 가입페이지(Install Savings Product)
+	@RequestMapping("/regFDP.cc")
+	public String regFDP(HttpServletRequest req,Model model) {
+		logger.info("url ==> /regFDP");
+		return "financialProducts/regFDP";
 	}
 	
 }
