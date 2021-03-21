@@ -17,7 +17,7 @@
     	<%@ include file="../header.jsp" %>
     	<section class="section section-bredcrumbs">
 	        <div class="container context-dark breadcrumb-wrapper">
-	          <h1>공지사항(리액트)</h1>
+	          <h1>채무 불이행자 목록</h1>
 	        </div>
 	     </section>
 			<main id="main" class="main">
@@ -25,7 +25,7 @@
 			    <br> <br> <br> <br> <br> <br> <br>
 				<form class="form-signin" action="loginAction.cc" method="post" role="form" >
 					<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
-					
+					<img src="resources/images/debtorlist.jpg" />
 			    	
 				</form>
 				</div>
