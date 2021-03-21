@@ -5,8 +5,7 @@
 <html class="wide wow-animation" lang="en">
   <head>
     <title>Home</title>
-  </head>
-  
+  </head>  
 	<body>
 	    <div class="preloader">
 	      <div class="preloader-body">
@@ -22,9 +21,7 @@
       
 		 	<section class="section section-bredcrumbs">
 		    	<div class="container context-dark breadcrumb-wrapper">
-		        	<h2>대출이자 조회/납부</h2>
-		          	
-		          	<br>
+		        	<h2>대출이자 조회/납부</h2><br>
 		          	
 		          	<ul class="breadcrumbs-custom">
 		            	<li><a href="#">대출센터</a></li>
@@ -49,8 +46,8 @@
 			                  	</colgroup>
 			                  	<tbody>
 			                    	<tr>
-			                        	<th scope="col">조회계좌</th>
-			                        	<th scope="col">
+			                        	<td scope="col">조회계좌</td>
+			                        	<td scope="col">
 											<select name="" lengthtype="length">
 											    <option value="555-555-555555">555-555-555555[<가계>직장인 신용대출(만기일시)]</option>
 											</select>											
@@ -58,35 +55,35 @@
 								                data-bs-target="#default" onclick="document.location.href='#'">
 								                	잔액조회
 								            </button>
-										</th>
+										</td>
 			                     	</tr>
 			                     	<tr>
-			                        	<th scope="col" class="borL">계좌비밀번호</th>
-			                        	<th scope="col"><input type="text" placeholder="숫자4자리"></th>
+			                        	<td scope="col" class="borL">계좌비밀번호</td>
+			                        	<td scope="col"><input type="text" placeholder="숫자4자리"></td>
 			                     	</tr>
 			                     	<tr>
-			                        	<th scope="col" class="borL">대출계좌번호</th>
-			                        	<th scope="col">555-555-555555</th>
+			                        	<td scope="col" class="borL">대출계좌번호</td>
+			                        	<td scope="col">555-555-555555</td>
 			                     	</tr>
 			                     	<tr>
-			                        	<th scope="col" class="borL">실행번호</th>
-			                        	<th scope="col"></th>
+			                        	<td scope="col" class="borL">실행번호</td>
+			                        	<td scope="col"></td>
 			                     	</tr>
 			                     	<tr>
-			                        	<th scope="col" class="borL">이자납입기준일</th>
-			                        	<th scope="col">2021.05.01</th>
+			                        	<td scope="col" class="borL">이자납입기준일</td>
+			                        	<td scope="col">2021.05.01</td>
 			                     	</tr>
 			                     	<tr>
-			                        	<th scope="col" class="borL">정상이자(원)</th>
-			                        	<th scope="col">100,000</th>
+			                        	<td scope="col" class="borL">정상이자(원)</td>
+			                        	<td scope="col">100,000</td>
 			                     	</tr>
 			                     	<tr>
-			                        	<th scope="col" class="borL">정상이자(원)</th>
-			                        	<th scope="col">0</th>
+			                        	<td scope="col" class="borL">정상이자(원)</td>
+			                        	<td scope="col">0</td>
 			                     	</tr>
 			                     	<tr>
-			                        	<th scope="col" class="borL">이자합계(원)</th>
-			                        	<th scope="col">100,000</th>
+			                        	<td scope="col" class="borL">이자합계(원)</td>
+			                        	<td scope="col">100,000</td>
 			                     	</tr>
 			                  	</tbody>
 			               	</table>

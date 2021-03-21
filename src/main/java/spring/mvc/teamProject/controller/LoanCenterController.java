@@ -50,7 +50,15 @@ public class LoanCenterController {
 	}
 	
 	// 박서하
-	//대출원금 정보
+	//대출원금 조회(내부)
+	@RequestMapping("/LoanPrincipalCheckIn.cc")
+	public String LoanPrincipalCheckIn(HttpServletRequest req,Model model) {
+		logger.info("url ==> /LoanPrincipalCheckIn");
+		return "LoanCenter/LoanPrincipalCheckIn";
+	}
+	
+	// 박서하
+	//대출원금 상환정보
 	@RequestMapping("/LoanPrincipalInfo.cc")
 	public String LoanPrincipalInfo(HttpServletRequest req,Model model) {
 		logger.info("url ==> /LoanPrincipalInfo");
@@ -74,7 +82,15 @@ public class LoanCenterController {
 	}
 	
 	// 박서하
-	//대출이자 정보
+	//대출이자 조회(내부)
+	@RequestMapping("/LoanRateCheckIn.cc")
+	public String LoanRateCheckIn(HttpServletRequest req,Model model) {
+		logger.info("url ==> /LoanRateCheckIn");
+		return "LoanCenter/LoanRateCheckIn";
+	}
+	
+	// 박서하
+	//대출이자 납부정보
 	@RequestMapping("/LoanRateInfo.cc")
 	public String LoanRateInfo(HttpServletRequest req,Model model) {
 		logger.info("url ==> /LoanRateInfo");
@@ -88,4 +104,7 @@ public class LoanCenterController {
 		logger.info("url ==> /LoanRatePay");
 		return "LoanCenter/LoanRatePay";
 	}
+	
+	// 박서하
+	//대출자동이체
 }
