@@ -73,11 +73,30 @@ public class InquiryTransferController {
 		logger.info("url ==> /MultiAccountTransfer");
 		return "InquiryTransfer/MultiAccountTransfer";
 	}
-	//다계좌이체 MultiAccountTransfer.cc
+	//적금추가납입 ISPAdd.cc
 	@RequestMapping("/ISPAdd.cc")
 	public String ISPAdd(HttpServletRequest req,Model model) {
 		logger.info("url ==> /ISPAdd");
 		return "InquiryTransfer/ISPAdd";
 	}
+	//자동이체신청 AutoTransferRequest.cc
+	@RequestMapping("/AutoTransferRequest.cc")
+	public String AutoTransferRequest(HttpServletRequest req,Model model) {
+		logger.info("url ==> /AutoTransferRequest");
+		return "InquiryTransfer/AutoTransferRequest";
+	}
+	//자동이체조회 AutoTransferList.cc
+	@RequestMapping("/AutoTransferList.cc")
+	public String AutoTransferList(HttpServletRequest req,Model model) {
+		logger.info("url ==> /AutoTransferList");
+		return "InquiryTransfer/AutoTransferList";
+	}
+	//자동이체조회 AutoTransferList.cc
+	@RequestMapping("/AutoTransferChangeRank.cc")
+	public String AutoTransferChangeRank(HttpServletRequest req,Model model) {
+		logger.info("url ==> /AutoTransferChangeRank");
+		return "InquiryTransfer/AutoTransferChangeRank";
+	}
+	
 		
 }
