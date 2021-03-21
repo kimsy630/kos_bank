@@ -28,10 +28,21 @@ public class LoanCenterController {
 		return "LoanCenter/LoanAccountDetail";
 	}
 	
+	// 박서하
+	//대출해지현황 조회
+	@RequestMapping("/LoanCloseCheck.cc")
+	public String LoanCloseCheck(HttpServletRequest req,Model model) {
+		logger.info("url ==> /LoanCloseCheck");
+		return "LoanCenter/LoanCloseCheck";
+	}
 	
 	// 박서하
-	//약정해지
-	
+	//대출해지현황 상세조회
+	@RequestMapping("/LoanCloseDetail.cc")
+	public String LoanCloseDetail(HttpServletRequest req,Model model) {
+		logger.info("url ==> /LoanCloseDetail");
+		return "LoanCenter/LoanCloseDetail";
+	}
 	
 	// 박서하
 	//신규대출 신청
@@ -66,7 +77,7 @@ public class LoanCenterController {
 	}
 	
 	// 박서하
-	//대출원금 상환
+	//대출원금 상환---------------미완성
 	@RequestMapping("/LoanPrincipalPay.cc")
 	public String LoanPrincipalPay(HttpServletRequest req,Model model) {
 		logger.info("url ==> /LoanPrincipalPay");
@@ -98,7 +109,7 @@ public class LoanCenterController {
 	}
 	
 	// 박서하
-	//대출이자 납부
+	//대출이자 납부---------------미완성
 	@RequestMapping("/LoanRatePay.cc")
 	public String LoanRatePay(HttpServletRequest req,Model model) {
 		logger.info("url ==> /LoanRatePay");
@@ -106,5 +117,5 @@ public class LoanCenterController {
 	}
 	
 	// 박서하
-	//대출자동이체
+	//대출자동이체---------------미완성
 }
