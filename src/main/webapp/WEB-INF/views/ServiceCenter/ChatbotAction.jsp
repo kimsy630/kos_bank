@@ -17,16 +17,22 @@
     	<%@ include file="../header.jsp" %>
     	<section class="section section-bredcrumbs">
 	        <div class="container context-dark breadcrumb-wrapper">
-	          <h1>(관리자)이메일 상담 리스트</h1>
+	          <h1>챗봇 상담</h1>
 	        </div>
 	     </section>
-			<main id="main" class="main">
+			<main id="Chatbot" class="Chatbot">
 			    <div class="container">
 			    <br> <br> <br> <br> <br> <br> <br>
-				<form class="form-signin" action="loginAction.cc" method="post" role="form" >
+				<form class="form-signin" action="ChatbotAction.cc" method="post" role="form" >
 					<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
-					<img src="resources/images/emailcounsellist.jpg" />
-			    	
+					
+			    	<!-- Buttons with Shadow-->
+				      <section class="section section-lg bg-default">
+				        <div class="container">
+				          <img src="resources/images/chat.jpg"></img>
+				          
+				        </div>
+				      </section>
 				</form>
 				</div>
 				</main>

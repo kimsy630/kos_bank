@@ -23,7 +23,7 @@
 			<main id="Chatbot" class="Chatbot">
 			    <div class="container">
 			    <br> <br> <br> <br> <br> <br> <br>
-				<form class="form-signin" action="loginAction.cc" method="post" role="form" >
+				<form class="form-signin" action="ChatbotAction.cc" method="post" role="form" >
 					<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
 					
 			    	<!-- Buttons with Shadow-->
@@ -31,7 +31,7 @@
 				        <div class="container">
 				          <h2>KOS BANK 챗봇이 편리하게 상담을 도와드립니다!</h2>
 				          <div class="group-xl group-middle buttons-group">
-				            <div class="button button-lg button-primary button-no-shadow">챗봇 상담 시작하기</div>
+				            <button class="button button-lg button-round button-block button-primary" type="submit">챗봇 상담 시작하기</button> 
 				          </div>
 				        </div>
 				      </section>

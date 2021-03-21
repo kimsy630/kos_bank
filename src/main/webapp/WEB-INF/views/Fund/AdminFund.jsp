@@ -25,7 +25,7 @@
 			    <br> <br> <br> <br> <br> <br> <br>
 				<form class="form-signin" action="loginAction.cc" method="post" role="form" >
 					<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
-					
+					<img src="resources/images/fundapprovelist.jpg" />
 			    	
 				</form>
 				</div>
