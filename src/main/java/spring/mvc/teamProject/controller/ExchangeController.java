@@ -26,4 +26,12 @@ public class ExchangeController {
 		logger.info("url ==> /exchangeList");
 		return "exchange/exchangeList";
 	}
+	
+	//김세엽
+	//환율계산기
+	@RequestMapping("/exchangeCalculator.cc")
+	public String exchangeCalculator(HttpServletRequest req,Model model) {
+		logger.info("url ==> /exchangeCalculator");
+		return "exchange/exchangeCalculator";
+	}
 }

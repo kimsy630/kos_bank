@@ -69,15 +69,16 @@ $(function(){
 </head>
 <body>
 <%@include file="../header.jsp" %>
-	<br><br><br><br><br>
-	
+   	<section class="section section-bredcrumbs">
+        <div class="container context-dark breadcrumb-wrapper">
+          <h1>회원가입</h1>
+        </div>
+    </section>
 	<form action="signUpAction.cc" method="post" class="form-signin" role="form">
 	<input type = "hidden" name = "${_csrf.parameterName}" value = "${_csrf.token}">
 	
 	<div class="container my-5" style="width: 40%; min-width:400px; float:none; margin:0 auto">
-		<div class="form-group justify-content-center text-dark" >		 	
-			<h1>회원가입</h1>
-		</div>
+		
 		<div class="form-group justify-content-center">
 		 	<label for="id"><b>아이디</b></label>
 		 	<input type="text" class="form-control" placeholder="ID" id="id" name="id" ><!--onchange="corfirmId()" -->
