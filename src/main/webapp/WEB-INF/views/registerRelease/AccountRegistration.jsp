@@ -114,8 +114,11 @@ KosBank은 고객이 통신 아래에서 정의됨 을 발송하고 기타 행�
 
                      </textarea>
 	                 	<div>
-		                     <input type="radio" name="agree" value="yes">동의합니다.
-		               		<input type="radio" name="degree" value="no">동의하지않습니다.
+	                 	
+		                     <input type="radio" name="agree1"  value="yes" id="agree1">
+		                     <label for="agree1"> 동의합니다.</label>
+		               		<input type="radio" name="agree1" value="no" id="degree1"><!--  -->
+		               		<label  for="degree1"> 동의하지않습니다.</label>
             			</div>
             		</div>
                 </div>
@@ -182,8 +185,10 @@ PC웹, 모바일 웹/앱 이용 과정에서 단말기정보(OS, 화면사이즈
 서비스 간 제휴, 연계 등으로 제3자로부터 개인정보를 제공받고 있습니다.
               </textarea>
                         <div>
-		                     <input type="radio" name="agree" value="yes">동의합니다.
-		               		<input type="radio" name="degree" value="no">동의하지않습니다.
+		                     <input type="radio" name="agree2"  value="yes" id="agree2">
+		                     <label for="agree2"> 동의합니다.</label>
+		               		<input type="radio" name="agree2" value="no" id="degree2"><!--  -->
+		               		<label  for="degree2"> 동의하지않습니다.</label>
             			</div>
             		</div>
                 </div>
