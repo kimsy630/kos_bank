@@ -84,17 +84,11 @@
                           <li class="rd-megamenu-item">
                             <h6 class="rd-megamenu-title">대출관리</h6>
                             <ul class="rd-megamenu-list">
-<<<<<<< HEAD
-                              <li class="rd-megamenu-list-item"><a class="rd-megamenu-list-link" href="#">대출조회</a></li>
-                              <li class="rd-megamenu-list-item"><a class="rd-megamenu-list-link" href="#">대출이자/원금상환/약정해지</a></li>
-                              <li class="rd-megamenu-list-item"><a class="rd-megamenu-list-link" href="#">예적금담보대출</a></li>
-                              <li class="rd-megamenu-list-item"><a class="rd-megamenu-list-link" href="#">대출자동이체</a></li>
-=======
                               <li class="rd-megamenu-list-item"><a class="rd-megamenu-list-link" href="LoanAccountCheck.cc">대출조회.</a></li>
                               <li class="rd-megamenu-list-item"><a class="rd-megamenu-list-link" href="#">대출이자/원금상환/약정해지.</a></li>
                               <li class="rd-megamenu-list-item"><a class="rd-megamenu-list-link" href="#">예적금담보대출.</a></li>
                               <li class="rd-megamenu-list-item"><a class="rd-megamenu-list-link" href="#">대출자동이체.</a></li>
->>>>>>> origin/dev_psh
+
                             </ul>
                           </li>
                           </ul>
@@ -122,15 +116,9 @@
                       <li class="rd-nav-item"><a class="rd-nav-link" href="#">환전</a>
                         <!-- RD Navbar Dropdown-->
                         <ul class="rd-menu rd-navbar-dropdown">
-<<<<<<< HEAD
-                          <li class="rd-dropdown-item"><a class="rd-dropdown-link" href="#">환전서비스</a></li>
-                          <li class="rd-dropdown-item"><a class="rd-dropdown-link" href="#">환율계산기</a></li>
-                          <li class="rd-dropdown-item"><a class="rd-dropdown-link" href="#">환율정보</a></li>
-=======
                           <li class="rd-dropdown-item"><a class="rd-dropdown-link" href="exchange.cc">환전서비스</a></li>
                           <li class="rd-dropdown-item"><a class="rd-dropdown-link" href="exchangeCalculator.cc">환율계산기</a></li>
                           <li class="rd-dropdown-item"><a class="rd-dropdown-link" href="exchangeList.cc">환율정보</a></li>
->>>>>>> dev_ksy
                         </ul>
                       </li>
                       <li class="rd-nav-item"><a class="rd-nav-link" href="#">펀딩</a>
