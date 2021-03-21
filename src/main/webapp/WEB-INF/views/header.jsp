@@ -115,7 +115,7 @@
                         <!-- RD Navbar Dropdown-->
                         <ul class="rd-menu rd-navbar-dropdown">
                           <li class="rd-dropdown-item"><a class="rd-dropdown-link" href="exchange.cc">환전서비스</a></li>
-                          <li class="rd-dropdown-item"><a class="rd-dropdown-link" href="#">환율계산기</a></li>
+                          <li class="rd-dropdown-item"><a class="rd-dropdown-link" href="exchangeCalculator.cc">환율계산기</a></li>
                           <li class="rd-dropdown-item"><a class="rd-dropdown-link" href="exchangeList.cc">환율정보</a></li>
                         </ul>
                       </li>

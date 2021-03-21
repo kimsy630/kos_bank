@@ -24,37 +24,60 @@
     </section>
     <br>
    	<!-- 여기에 작성하면됨 -->
-   	<div class="table-custom-responsive">
-                <table class="table-custom table-custom-secondary table-custom-hovered" style="margin: 0 auto; width: :50%; text-align: center;">
+   	<!-- 참고사이트
+   		https://yjshin.tistory.com/entry/Python-%EC%9B%B9-%ED%81%AC%EB%A1%A4%EB%A7%81-%EB%84%A4%EC%9D%B4%EB%B2%84-%ED%99%98%EC%9C%A8-%EC%A0%95%EB%B3%B4-%EA%B0%80%EC%A0%B8%EC%98%A4%EA%B8%B0
+   		
+   		웹크롤링 할 주소
+   		https://finance.naver.com/marketindex/ 
+   		view-source:https://finance.naver.com/marketindex/
+   	        -->
+   	<div class="table-custom-responsive" style =" width:70%; margin: 0 auto;">
+                <table class="table-custom table-custom-secondary table-custom-hovered" style=" text-align: center;">
                   <thead >
                     <tr >
-                      <th rowspan="2">구분</th>
-                      <th rowspan="2">통화표시</th>
+                      <th rowspan="2">통화명</th>
                       <th rowspan="2">매매기준율</th>
-                      <th colspan="2" style=" border-left: solid 1px; border-right: solid 1px;">송금</th>
-                      <th colspan="4" style=" border-right: solid 1px;">현찰</th>
-                      <th rowspan="2">대미환산율</th>
+                      <th colspan="2">현찰</th>
+                      <th colspan="2">송금</th>
+                      <th rowspan="2">미화환산율</th>
                     </tr>
                     <tr>
-                      <th>받으실 때</th>
-                      <th>보내실 때</th>
-                      <th>파실 때</th>
-                      <th>파실 때<br>스프레드</th>
-                      <th>사실 떄</th>
-                      <th>사실 때 <br>스프레드</th>
+                    	<th>사실 때</th>
+                    	<th>파실 때</th>
+                    	<th>보내실 떄</th>
+                    	<th>받으실 때</th>
                     </tr>
                   </thead>
                   <tbody>
-                  		<td>미국달러</td>
-                  		<td>USD</td>
-                  		<td>1,125.50</td>
-                  		<td>1,114.70</td>
-                  		<td>1,136.30</td>
-                  		<td>1,105.81</td>
-                  		<td>1.75</td>
-                  		<td>1,145.19</td>
-                  		<td>1.75</td>
-                  		<td>1.0000</td>
+                  	<tr>
+                  		<td>미국 USD</td>
+                  		<td>1,130.00</td>
+                  		<td>1,149.77</td>
+                  		<td>1,110.23</td>
+                  		<td>1,141.00</td>
+                  		<td>1,119.00</td>
+                  		<td>1.000</td>
+                  	</tr>
+                  	
+                  	<tr>
+                  		<td>유럽연합 EUR</td>
+                  		<td>1,344.00</td>
+                  		<td>1,370.93</td>
+                  		<td>1,317.45</td>
+                  		<td>1,141.00</td>
+                  		<td>1,330.75</td>
+                  		<td>1.190</td>
+                  	</tr>
+                  	
+                  	<tr>			
+                  		<td>일본 JPY (100엔)</td>
+                  		<td>1,038.03</td>
+                  		<td>1,056.19</td>
+                  		<td>1,019.87</td>
+                  		<td>1,048.20</td>
+                  		<td>1,027.86</td>
+                  		<td>0.919</td>
+                  	</tr>
                    </tbody>
                 </table>
               </div>
