@@ -81,8 +81,9 @@
 			               	</table>
 			               	
 			               	<div class="row justify-content-lg-center">
+			               		<a style="display:none"></a>
 								<a class="button button-round button-primary" href="#" data-caption-animate="fadeInUp" data-caption-delay="450">취소</a>
-								<a class="button button-round button-primary" href="LoanPrincipalPay.cc" data-caption-animate="fadeInUp" data-caption-delay="450">다음</a>
+								<a class="button button-round button-primary" href="LoanPrincipalPay.cc" data-caption-animate="fadeInUp" data-caption-delay="450" >다음</a>
 							</div>
 			            </div>
 		            </section>	          	
