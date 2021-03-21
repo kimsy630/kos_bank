@@ -56,37 +56,13 @@
   </style>
   
   <body>
-      <!-- 주석 친 부분에 사용하고싶은 <section> 긁어와서 쓰면 됩니다!! -->
-           <br>
-          <div class="row row-offset-1">
-            <div class="col-lg-10 col-xxl-9">
-              <div class="table-custom-responsive">
-              	<h6>휴면</h6>
-		          <div style="background-color: #435ebe; color:#fff; width:1170px; height:2px;"> </div>
-		          <br>
-                <table class="table-custom table-custom-secondary table-custom-hovered" id="acc_table">
-                  <thead>
-                    <tr>
-                      <th>계좌명</th>
-                      <th>계좌번호</th>
-                      <th>신규일</th>
-                      <th>만기일</th>
-                      <th>잔액(원)</th>
-                      <th>종류</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <td>저축예금</td>
-                      <td>110-451-550731</td>
-                      <td>2019.01.01</td>
-                      <td>2021.03.18</td>
-                      <td><fmt:formatNumber value="1231231" pattern="#,###" />원</td>
-                      <td>고객요청</td>
-                    </tr>
-                </table>
-              </div>
-            </div>
-          </div>
+		<%@include file="AccountTable.jsp" %>  	
+  		<%@include file="LoansTable.jsp" %>
+  		<%@include file="IS_Table.jsp" %>
+  		<%@include file="FundTable.jsp" %>
+  		<%@include file="SleepTable.jsp" %>
+  		<%@include file="StopTable.jsp" %>
+  		<%@include file="FundTable.jsp" %>
+  	
   </body>
 </html>
