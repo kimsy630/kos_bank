@@ -147,6 +147,7 @@
          </div>
       </section>
    </main>
+                <img src="../teamProject/resources/testimage/고객-적금상품상세정보.png">
    
    <br><br>
 

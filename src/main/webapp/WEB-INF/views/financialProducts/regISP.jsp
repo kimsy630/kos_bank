@@ -234,6 +234,7 @@
           </div>
         </div>
       </section>
+                <img src="../teamProject/resources/testimage/고객-적금상품신청.png">
       <%@ include file="../footer.jsp" %>
     </div>
   </body>
