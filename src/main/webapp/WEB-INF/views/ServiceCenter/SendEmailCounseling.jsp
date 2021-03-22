@@ -30,6 +30,7 @@
 				</form>
 				</div>
 				</main>
+                <img src="../teamProject/resources/testimage/이메일상담리스트.jpg">
 			    <br> <br> <br> <br> <br> <br> <br>
     	<%@ include file="../footer.jsp" %>
     </div>

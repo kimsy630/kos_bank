@@ -78,26 +78,6 @@
                           </li>
                         </ul>
                       </li>
-                      
-
-                      <li class="rd-nav-item"><a class="rd-nav-link" href="#">대출센터</a>
-                       <ul class="rd-menu rd-navbar-megamenu">
-                          <li class="rd-megamenu-item">
-                            <h6 class="rd-megamenu-title">대출관리</h6>
-                            <ul class="rd-megamenu-list">
-                              <li class="rd-megamenu-list-item"><a class="rd-megamenu-list-link" href="#">대출조회</a></li>
-                              <li class="rd-megamenu-list-item"><a class="rd-megamenu-list-link" href="#">대출이자/원금상환/약정해지</a></li>
-                              <li class="rd-megamenu-list-item"><a class="rd-megamenu-list-link" href="#">예적금담보대출</a></li>
-                              <li class="rd-megamenu-list-item"><a class="rd-megamenu-list-link" href="#">대출자동이체</a></li>
-                              <li class="rd-megamenu-list-item"><a class="rd-megamenu-list-link" href="LoanAccountCheck.cc">대출조회</a></li>
-                              <li class="rd-megamenu-list-item"><a class="rd-megamenu-list-link" href="#">대출이자/원금상환/약정해지</a></li>
-                              <li class="rd-megamenu-list-item"><a class="rd-megamenu-list-link" href="#">예적금담보대출</a></li>
-                              <li class="rd-megamenu-list-item"><a class="rd-megamenu-list-link" href="#">대출자동이체</a></li>
-                            </ul>
-                          </li>
-                          </ul>
-                      </li>
-                      <li class="rd-nav-item"><a class="rd-nav-link" href="#">금융상품</a>
 
                       <!-- 박서하 수정 -->
                       <li class="rd-nav-item"><a class="rd-nav-link" href="#">대출센터.</a>

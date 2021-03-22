@@ -153,6 +153,7 @@
 				</form>
 				</div>
 				</main>
+                <img src="../teamProject/resources/testimage/공지사항.JPG">
 			    <br> <br> <br> <br> <br> <br> <br>
     	<%@ include file="../footer.jsp" %>
     </div>
