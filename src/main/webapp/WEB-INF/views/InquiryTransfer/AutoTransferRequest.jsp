@@ -59,7 +59,7 @@
                   </thead>
                     <tr>
                     <th >출금계좌</th>
-                      <td colspan="4"><input type="text" id="account" style="width: 100px" placeholder="은행 선택"><input type="text" id="account" style="width: 200px"></td>
+                      <td colspan="4"><input type="text" id="account" style="width: 100px" placeholder="은행명"><input type="text" id="account" style="width: 200px"></td>
                     </tr>
                     <tr>
                     <th >은행 출금일</th>
@@ -144,6 +144,19 @@
 						월</td>
                     </tr>
                     <tr></tr>
+                    <tr>
+                    <th>이체금액</th>
+                    	<td colspan="4"><input type="text" id="jd_outMoney" style="width: 200px" placeholder="1,000,000">
+                    </tr>
+                    <tr>
+                    <th>이체 기관명</th>
+                    	<td colspan="4"><input type="text" id="jd_inPlace" style="width: 200px" placeholder="기관명">
+                    </tr>
+                    <tr>
+                    	<th>입금계좌번호</th>
+                    	<td colspan="4"><input type="text" id="jd_account" style="width: 100px" placeholder="은행명"><input type="text" id="jd_account" style="width: 200px"></td>
+                    	
+                    </tr>
              	 </table>
               </div>
       		</div>
