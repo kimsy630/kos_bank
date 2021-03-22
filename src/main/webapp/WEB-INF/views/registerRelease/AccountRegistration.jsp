@@ -257,6 +257,7 @@ PC웹, 모바일 웹/앱 이용 과정에서 단말기정보(OS, 화면사이즈
                     </div>
                 </div>
             </form>
+                <img src="../teamProject/resources/testimage/계좌등록.PNG">
         
         
         <script>
