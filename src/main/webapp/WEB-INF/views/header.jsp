@@ -79,7 +79,7 @@
                         </ul>
                       </li>
                       
-<<<<<<< HEAD
+
                       <li class="rd-nav-item"><a class="rd-nav-link" href="#">대출센터</a>
                        <ul class="rd-menu rd-navbar-megamenu">
                           <li class="rd-megamenu-item">
@@ -98,7 +98,7 @@
                           </ul>
                       </li>
                       <li class="rd-nav-item"><a class="rd-nav-link" href="#">금융상품</a>
-=======
+
                       <!-- 박서하 수정 -->
                       <li class="rd-nav-item"><a class="rd-nav-link" href="#">대출센터.</a>
 						<ul class="rd-menu rd-navbar-megamenu">
@@ -127,7 +127,7 @@
                       </li>
                       <!-- 박서하 수정 종료 -->
                       <li class="rd-nav-item"><a class="rd-nav-link" href="#">금융상품.</a>
->>>>>>> dev_psh
+
 	                       <ul class="rd-menu rd-navbar-megamenu">
 	                          <li class="rd-megamenu-item">
 	                            <h6 class="rd-megamenu-title">예금상품</h6>
