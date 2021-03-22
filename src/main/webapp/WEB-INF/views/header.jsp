@@ -86,7 +86,7 @@
                             	<h6 class="rd-megamenu-title">대출관리.</h6>
                             	<ul class="rd-megamenu-list">
 	                            	<li class="rd-megamenu-list-item"><a class="rd-megamenu-list-link" href="LoanAccountCheck.cc">대출계좌 조회</a></li>
-	                              	<li class="rd-megamenu-list-item"><a class="rd-megamenu-list-link" href="#">약정해지.</a></li>
+	                              	<li class="rd-megamenu-list-item"><a class="rd-megamenu-list-link" href="LoanCloseCheck.cc">대출해지현황 조회</a></li>
 	                              	<li class="rd-megamenu-list-item"><a class="rd-megamenu-list-link" href="#">신규대출</a></li>
 	                            </ul>
                           	</li>
@@ -117,7 +117,7 @@
 	                            </ul>
 	                          </li>
 	                          <li class="rd-megamenu-item">
-	                            <h6 class="rd-megamenu-title">대출상품</h6>
+	                            <h6 class="rd-megamenu-title">대출상품.</h6>
 	                            <ul class="rd-megamenu-list">
 	                              <li class="rd-megamenu-list-item"><a class="rd-megamenu-list-link" href="personalLoan.cc">개인대출</a></li>
 	                              <li class="rd-megamenu-list-item"><a class="rd-megamenu-list-link" href="LoansProducts.cc">대출상품</a></li>

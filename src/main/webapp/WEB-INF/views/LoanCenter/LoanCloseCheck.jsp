@@ -5,7 +5,7 @@
 <html class="wide wow-animation" lang="en">
   <head>
     <title>Home</title>
-  </head> 
+  </head>
 	<body>
 	    <div class="preloader">
 	      <div class="preloader-body">
@@ -21,19 +21,19 @@
       
 		 	<section class="section section-bredcrumbs">
 		    	<div class="container context-dark breadcrumb-wrapper">
-		        	<h2>대출계좌조회</h2><br>
+		        	<h2>대출해지현황 조회</h2><br>
 		          	
 		          	<ul class="breadcrumbs-custom">
 		            	<li><a href="#">대출센터</a></li>
 		            	<li><a href="#">대출관리</a></li>
-		            	<li class="active">대출계좌조회</li>
+		            	<li class="active">대출해지현황 조회</li>
 		          	</ul>
 		        </div>
 		    </section>
 		    
 		    <section class="section section-lg bg-default">
 		    	<div class="container">
-		        	<h3>대출계좌조회</h3>
+		        	<h3>대출해지현황 조회</h3>
 		          	<br><hr><br>
 		          			          
 		          	<h6>대출 계좌</h6>
@@ -44,25 +44,30 @@
 		          	</div>
 		          	
 		          	<table class="table-custom table-custom-bordered">
+	                  	<colgroup>
+	                    	<col style="width: 35%;">
+	                     	<col style="width: 25%;">
+	                     	<col style="width: 15%;">
+	                     	<col style="width: 15%;">
+	                     	<col style="width: 10%;">
+	                  	</colgroup>
 	                  	<thead>
 		                	<tr>
-		                    	<th>대출명</th>
-		                    	<th>계좌번호</th>
-		                      	<th>승인한도</th>
-		                      	<th>만기일</th>
-		                      	<th>대출잔액(원)</th>
-		                      	<th>업무</th>
+		                    	<td>대출명</td>
+		                    	<td>계좌번호</td>
+		                      	<td>최초실행일</td>
+		                      	<td>만기일</td>
+		                      	<td>상세조회</td>
 		                    </tr>
 		                </thead>
 		                <tbody>
 		                	<tr>
-		                    	<td>직장인 신용대출</td>
-		                      	<td>555-555-555555</td>
-		                      	<td>1억원</td>
-		                      	<td>2030.03.18</td>
-		                      	<td><fmt:formatNumber value="1231231" pattern="#,###" />원</td>
+		                    	<td><가계>직장인 신용대출</td>
+		                      	<td>444-444-444444</td>
+		                      	<td>2010.05.01</td>
+		                      	<td>2015.05.01</td>
 		                      	<td> 
-		                      		<div class="button button-round" style= "padding:10px; width:60px; height:40px; font-size:15px; text-align:center; background-color:olive; display:inline;" onclick="location.href='LoanAccountDetail.cc'">조회</div>
+		                      		<div class="button button-round" style= "padding:10px; width:60px; height:40px; font-size:15px; text-align:center; background-color:olive; display:inline;" onclick="location.href='LoanCloseDetail.cc'">조회</div>
 		                      	</td>
 		                    </tr>
 	                  	</tbody>
