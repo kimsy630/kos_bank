@@ -170,6 +170,7 @@
                         <button type="reset" class="btn btn-primary">취소하기</button>
                     </div>
                 </div>
+              <img src="../teamProject/resources/testimage/자동이체신청.png">
 	<br><br><br><br>
 <%@ include file = "../footer.jsp" %>
 </body>
