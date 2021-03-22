@@ -85,6 +85,7 @@
                       </td>
                     </tr>
                 </table>
+                <img src="../teamProject/resources/testimage/계좌조회_대출.png">
               </div>
             </div>
           </div>

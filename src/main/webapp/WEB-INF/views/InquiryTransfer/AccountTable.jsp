@@ -139,6 +139,8 @@
                     </tr>
                   </tfoot>
                 </table>
+                
+                <img src="../teamProject/resources/testimage/계좌조회_예금_신탁.png">
               </div>
             </div>
           </div>

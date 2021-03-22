@@ -44,14 +44,7 @@ public class LoanCenterController {
 		return "LoanCenter/LoanApplication";
 	}
 	
-	// 박서하
-<<<<<<< HEAD
-	//대출계좌조회 (대출 테이블 Loanstable.do)
-	@RequestMapping("/LoanAccountCheck.cc")
-	public String LoanAccountCheck(HttpServletRequest req,Model model) {
-		/* logger.info("url ==> /LoanAccountCheck"); */
-		return "LoanCenter/LoanAccountCheck";
-=======
+
 	//대출원금 조회
 	@RequestMapping("/LoanPrincipalCheck.cc")
 	public String LoanPrincipalCheck(HttpServletRequest req,Model model) {
@@ -65,7 +58,7 @@ public class LoanCenterController {
 	public String LoanPrincipalCheckIn(HttpServletRequest req,Model model) {
 		logger.info("url ==> /LoanPrincipalCheckIn");
 		return "LoanCenter/LoanPrincipalCheckIn";
->>>>>>> dev_psh
+
 	}
 	
 	// 박서하
