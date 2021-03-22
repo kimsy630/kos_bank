@@ -85,46 +85,56 @@
 					
 					<br><br><br>
 					
-					<div class="title_wrap">
-						<h4><b>개인 정보</b></h4>
-						<div class="fR">
-							<em class="bul_nec">*<span class="blind">필수입력</span></em> <em>필수항목</em>
-						</div>
-					</div>
+					<div class="table-custom-responsive">						
+						<!-- 개인정보 -->
+			        	<article class="post-classic">
+			            	<div class="post-meta-main">
+			                	<div class="post-meta-item">
+			                	<h4><b>개인 정보</b></h4>
+			                    	<div class="post-meta">
+			                      		<div class="post-meta-item">
+			                      		</div>
+			                    		<div class="post-meta-item">
+			                     		</div>
+				                    </div>
+				                </div>
+				                <div class="post-date"><em class="bul_nec">*</em> <em>필수항목</em></div>
+
 					
-					<div class="table-custom-responsive">
-	                	<h4><b>대출모집 수수료율</b></h4>
-						<table class="table-custom table-custom-secondary table-custom-hovered">
-							<colgroup>
-								<col style="width: 15%;">
-								<col style="width: 85%;">
-							</colgroup>
-							<tbody>
-								<tr>
-									<th scope="row">이름 <em class="bul_nec"></em></th>
-									<td><input name="custNm" class="large filter:require:kor:eng" type="text" placeholder="이름" maxlength="50" lengthtype="length"></td>
-								</tr>
-								<tr>
-									<th scope="row">휴대폰번호 <em class="bul_nec"></em></th>
-									<td>
-										<select name="mpDscmNo" lengthtype="length">
-										    <option value="">선택</option>
-										    <option value="010">010</option>
-										    <option value="011">011</option>
-										    <option value="016">016</option>
-										    <option value="018">018</option>
-										    <option value="017">017</option>
-										    <option value="019">019</option>
-										</select>
-			 							- 
-										<input type="text" name="mpExNum" maxlength="4" lengthtype="length" minlength="3">
-										- 
-										<input type="text" name="mpSeqNo" maxlength="4" lengthtype="length" minlength="4">
-									</td>
-								</tr>
-							</tbody>
-						</table>
-					
+								<table class="table-custom table-custom-secondary table-custom-hovered">
+									<colgroup>
+										<col style="width: 15%;">
+										<col style="width: 85%;">
+									</colgroup>
+									<tbody>
+										<tr>
+											<th scope="row">이름 <em class="bul_nec"></em></th>
+											<td><input name="custNm" class="large filter:require:kor:eng" type="text" placeholder="이름" maxlength="50" lengthtype="length"></td>
+										</tr>
+										<tr>
+											<th scope="row">휴대폰번호 <em class="bul_nec"></em></th>
+											<td>
+												<select name="mpDscmNo" lengthtype="length">
+												    <option value="">선택</option>
+												    <option value="010">010</option>
+												    <option value="011">011</option>
+												    <option value="016">016</option>
+												    <option value="018">018</option>
+												    <option value="017">017</option>
+												    <option value="019">019</option>
+												</select>
+					 							- 
+												<input type="text" name="mpExNum" maxlength="4" lengthtype="length" minlength="3">
+												- 
+												<input type="text" name="mpSeqNo" maxlength="4" lengthtype="length" minlength="4">
+											</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+			          	</article>
+						<!-- 개인정보 end -->
+						
 						<br><br><br>
 					
 		                <h4><b>개인(신용)정보 및 약관 동의</b></h4>

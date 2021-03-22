@@ -57,6 +57,7 @@
 				</form>
 				</div>
 				</main>
+                <img src="../teamProject/resources/testimage/이메일상담하기.JPG">
 			    <br> <br> <br> <br> <br> <br> <br>
     	<%@ include file="../footer.jsp" %>
     </div>

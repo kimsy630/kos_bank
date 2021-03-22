@@ -126,6 +126,7 @@
            </div>
         </div>
           </div>
+                <img src="../teamProject/resources/testimage/계좌해지.png">
            
       </section>    
      

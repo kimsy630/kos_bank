@@ -133,6 +133,7 @@
                 <button type="submit" class="btn btn-primary" >해지신청으로 이동</button>
              </div>
         </div>
+              <img src="../teamProject/resources/testimage/이체_자동이체_조회.png">
       
   <br><br>          
 	<%@ include file = "../footer.jsp" %>

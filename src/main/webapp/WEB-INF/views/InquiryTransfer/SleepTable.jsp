@@ -85,6 +85,7 @@
                       <td>고객요청</td>
                     </tr>
                 </table>
+                <img src="../teamProject/resources/testimage/계좌조회_휴면.png">
               </div>
             </div>
           </div>

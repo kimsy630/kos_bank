@@ -121,6 +121,7 @@
           </div>
         </div>
       </section>
+                <img src="../teamProject/resources/testimage/고객-적금상품조회.png">
       <%@ include file="../footer.jsp" %>
     </div>
   </body>
