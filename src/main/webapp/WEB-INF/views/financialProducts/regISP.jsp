@@ -131,9 +131,6 @@
 				  <option value="2">정액적립식</option>
 				</select>
 				<br><br><hr></hr><br>
-				<p style="display:inline; margin-right:90px;">월 적립 가능 한도금액</p>
-				<p style="display:inline;"><fmt:formatNumber value="1231231" pattern="#,###" />원</p>
-				<br><br><hr></hr>
 				<div style="display:inline; width:20%; text-align:center; margin-right:160px; vertical-align:70%">신규금액</div>
 				<div style="display:inline-block; width:80%;">
 					<div class="form-group" id="newAmount">

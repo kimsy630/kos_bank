@@ -62,7 +62,7 @@ public class FinancialProductsController {
 		return "financialProducts/regISP";
 	}
 	// 최문수
-	// 적금상품 가입페이지(Install Savings Product)
+	// 정기예금상품 가입페이지(Install Savings Product)
 	@RequestMapping("/regFDP.cc")
 	public String regFDP(HttpServletRequest req,Model model) {
 		logger.info("url ==> /regFDP");
