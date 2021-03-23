@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+    
+<mapper namespace = "spring.mvc.teamProject.persistence.RegisterReleaseDAO">
+	<insert id="insertAccount" parameterType="spring.mvc.teamProject.vo.AccountVO">
+		INSERT INTO account_info(account,ID,accountPW)
+		VALUES('33'||'-'||'01'||'-'||LPAD(SEQ_ACCOUNT.NEXTVAL, 6, 0),#{id},#{accountPW})
+	</insert>
+	
+	<!--  <select id ="deleteAccount" parameterType="String" resultType="spring.mvc.teamProject.vo.MembersVO">
+		SELECT * 
+		FROM members
+		WHERE id=#{id}
+	</select> -->
+</mapper>

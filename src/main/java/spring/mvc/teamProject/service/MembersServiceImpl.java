@@ -17,8 +17,6 @@ import org.springframework.ui.Model;
 import spring.mvc.teamProject.persistence.MembersDAOImpl;
 import spring.mvc.teamProject.vo.MembersVO;
 
-
-
 @Service
 public class MembersServiceImpl implements MembersService{
 

@@ -12,9 +12,9 @@
     <link rel="icon" href="${csspath}images/favicon.ico" type="image/x-icon">
     <!-- Stylesheets-->
     <link rel="stylesheet" type="pathtext/css" href="//fonts.googleapis.com/css?family=Roboto:100,300,300i,400,700,900">
-    <link rel="stylesheet" href="${csspath}css/bootstrap.css">
-    <link rel="stylesheet" href="${csspath}css/fonts.css">
-    <link rel="stylesheet" href="${csspath}css/style.css" id="main-styles-link">
+    <link rel="stylesheet" href="${path}css/bootstrap.css">
+    <link rel="stylesheet" href="${path}css/fonts.css">
+    <link rel="stylesheet" href="${path}css/style.css" id="main-styles-link">
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
     <script src="http://code.jquery.com/jquery.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
@@ -62,7 +62,8 @@
             <!--// 모달창 -->
            
             <!-- 본문 들어가는 부분 -->
-            <form class="form-horizontal" role="form" method="post" action="javascript:alert( 'success!' );">
+            <form class="form-horizontal" role="form" method="post" action="AddAccountAction.cc">
+            <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
                 <div class="form-group">
                     <label for="provision" class="col-lg-2 control-label">계좌개설약관</label>
                     <div class="col-lg-10" id="provision">
@@ -190,38 +191,25 @@ PC웹, 모바일 웹/앱 이용 과정에서 단말기정보(OS, 화면사이즈
                 <div class="form-group" id="divId">
                     <label for="inputId" class="col-lg-2 control-label">아이디</label>
                     <div class="col-lg-10">
-                        <input type="text" class="form-control onlyAlphabetAndNumber" id="id" data-rule-required="true" placeholder="30자이내의 알파벳, 언더스코어(_), 숫자만 입력 가능합니다." maxlength="30">
+                        <input type="text" class="form-control onlyAlphabetAndNumber" id="id" name="id" data-rule-required="true" placeholder="30자이내의 알파벳, 언더스코어(_), 숫자만 입력 가능합니다." maxlength="30">
                     </div>
                 </div>
                 <div class="form-group" id="divPassword">
-                    <label for="inputPassword" class="col-lg-2 control-label">패스워드</label>
+                    <label for="inputPassword" class="col-lg-2 control-label">계좌비밀번호</label>
                     <div class="col-lg-10">
-                        <input type="password" class="form-control" id="pw" name="excludeHangul" data-rule-required="true" placeholder="패스워드" maxlength="30">
+                        <input type="password" class="form-control" id="accountPW" name="accountPW" data-rule-required="true" placeholder="4자리 숫자를 입력해주세요" maxlength="4">
                     </div>
                 </div>
                 <div class="form-group" id="divPasswordCheck">
-                    <label for="inputPasswordCheck" class="col-lg-2 control-label">패스워드 확인</label>
+                    <label for="inputPasswordCheck" class="col-lg-2 control-label">비밀번호 확인</label>
                     <div class="col-lg-10">
-                        <input type="password" class="form-control" id="passwordCheck" data-rule-required="true" placeholder="패스워드 확인" maxlength="30">
+                        <input type="password" class="form-control" id="passwordCheck" data-rule-required="true" placeholder="계좌비밀번호를 확인해주세요" maxlength="4">
                     </div>
                 </div>
                 <div class="form-group" id="divName">
                     <label for="inputName" class="col-lg-2 control-label">이름</label>
                     <div class="col-lg-10">
                         <input type="text" class="form-control onlyHangul" id="name" data-rule-required="true" placeholder="한글만 입력 가능합니다." maxlength="15">
-                    </div>
-                </div>
-                
-                <div class="form-group" id="divEmail">
-                    <label for="inputEmail" class="col-lg-2 control-label">이메일</label>
-                    <div class="col-lg-10">
-                        <input type="email" class="form-control" id="email" data-rule-required="true" placeholder="이메일" maxlength="40">
-                    </div>
-                </div>
-                <div class="form-group" id="divPhoneNumber">
-                    <label for="inputPhoneNumber" class="col-lg-2 control-label">휴대폰 번호</label>
-                    <div class="col-lg-10">
-                        <input type="tel" class="form-control onlyNumber" id="phone" data-rule-required="true" placeholder="-를 제외하고 숫자만 입력하세요." maxlength="11">
                     </div>
                 </div>
                 <div class="form-group">
@@ -252,12 +240,10 @@ PC웹, 모바일 웹/앱 이용 과정에서 단말기정보(OS, 화면사이즈
                     </div>
                 </div>
             </form>
-                <img src="../teamProject/resources/testimage/계좌등록.PNG">
-        
         
         <script>
         
-            $(function(){
+          /*  $(function(){
                 //모달을 전역변수로 선언
                 var modalContents = $(".modal-contents");
                 var modal = $("#defaultModal");
@@ -337,33 +323,6 @@ PC웹, 모바일 웹/앱 이용 과정에서 단말기정보(OS, 화면사이즈
                         divName.addClass("has-success");
                     }
                 });
-                
-                $('#email').keyup(function(event){
-                    
-                    var divEmail = $('#divEmail');
-                    
-                    if($.trim($('#email').val())==""){
-                        divEmail.removeClass("has-success");
-                        divEmail.addClass("has-error");
-                    }else{
-                        divEmail.removeClass("has-error");
-                        divEmail.addClass("has-success");
-                    }
-                });
-                
-                $('#phoneNumber').keyup(function(event){
-                    
-                    var divPhoneNumber = $('#divPhoneNumber');
-                    
-                    if($.trim($('#phoneNumber').val())==""){
-                        divPhoneNumber.removeClass("has-success");
-                        divPhoneNumber.addClass("has-error");
-                    }else{
-                        divPhoneNumber.removeClass("has-error");
-                        divPhoneNumber.addClass("has-success");
-                    }
-                });
-                
                 
                 //------- validation 검사
                 $( "form" ).submit(function( event ) {
@@ -459,7 +418,7 @@ PC웹, 모바일 웹/앱 이용 과정에서 단말기정보(OS, 화면사이즈
                         return false;
                     }else{
                         divPasswordCheck.removeClass("has-error");
-                        divPasswordCheck.addClass("has-success");
+                        denied divPasswordCheck.addClass("has-success");
                     }
                     
                     //이름
@@ -476,37 +435,9 @@ PC웹, 모바일 웹/앱 이용 과정에서 단말기정보(OS, 화면사이즈
                         divName.addClass("has-success");
                     }
                     
-                    
-                    //이메일
-                    if($('#email').val()==""){
-                        modalContents.text("이메일을 입력하여 주시기 바랍니다.");
-                        modal.modal('show');
-                        
-                        divEmail.removeClass("has-success");
-                        divEmail.addClass("has-error");
-                        $('#email').focus();
-                        return false;
-                    }else{
-                        divEmail.removeClass("has-error");
-                        divEmail.addClass("has-success");
-                    }
-                    
-                    //휴대폰 번호
-                    if($('#phoneNumber').val()==""){
-                        modalContents.text("휴대폰 번호를 입력하여 주시기 바랍니다.");
-                        modal.modal('show');
-                        
-                        divPhoneNumber.removeClass("has-success");
-                        divPhoneNumber.addClass("has-error");
-                        $('#phoneNumber').focus();
-                        return false;
-                    }else{
-                        divPhoneNumber.removeClass("has-error");
-                        divPhoneNumber.addClass("has-success");
-                    }
                 });
                 
-            });
+            });*/
             
         </script>
         </div>

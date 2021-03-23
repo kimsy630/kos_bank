@@ -4,13 +4,19 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import spring.mvc.teamProject.service.RegisterReleaseService;
+
 @Controller
 public class RegisterReleaseController {
 
+	@Autowired
+	RegisterReleaseService rService;
+	
 	private static final Logger logger = LoggerFactory.getLogger(RegisterReleaseController.class);
 
 	//계좌등록
@@ -18,6 +24,14 @@ public class RegisterReleaseController {
 	public String AccountRegistration(HttpServletRequest req,Model model) {
 		logger.info("url ==> /AccountRegistration");
 		return "registerRelease/AccountRegistration";
+	}
+	
+	//계좌등록액션
+	@RequestMapping("/AddAccountAction.cc")
+	public String AddAccountAction(HttpServletRequest req,Model model) {
+		logger.info("url ==> /AddAccountAction");
+		rService.AddAccountService(req, model);
+		return "registerRelease/AccountRegistrationAction";
 	}
 	
 	//계좌해지
