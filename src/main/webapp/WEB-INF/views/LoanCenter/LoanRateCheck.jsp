@@ -80,14 +80,10 @@
 			               	<table class="table-custom table-custom-bordered">
 			                	<colgroup>
 			                    	<col style="width: 15%;">
-			                     	<col style="width: 35%;">
-			                     	<col style="width: 15%;">
-			                     	<col style="width: 35%;">
+			                     	<col style="width: 85%;">
 			                  	</colgroup>
 			                  	<tbody>
 			                  		<tr>
-			                        	<td scope="col">이자납부월</td>
-			                        	<td scope="col">2021.05</td>
 			                        	<td scope="col">이자(원)</td>
 			                        	<td scope="col">100,000</td>
 			                     	</tr>

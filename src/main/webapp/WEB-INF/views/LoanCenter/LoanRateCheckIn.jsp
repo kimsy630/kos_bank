@@ -18,20 +18,12 @@
 			               	<table class="table-custom table-custom-bordered">
 			                	<colgroup>
 			                    	<col style="width: 15%;">
-			                     	<col style="width: 35%;">
-			                     	<col style="width: 15%;">
-			                     	<col style="width: 35%;">
+			                     	<col style="width: 85%;">
 			                  	</colgroup>
 			                  	<tbody>
 			                  		<tr>
-			                        	<td scope="col">이자납부일</td>
-			                        	<td scope="col">2021.05.01</td>
 			                        	<td scope="col">이자(원)</td>
 			                        	<td scope="col">100,000</td>
-			                     	</tr>
-			                     	<tr>
-			                        	<td scope="col">실행번호</td>
-			                        	<td scope="col" colspan="3">이자납부에도 실행번호 붙는지 모르겠음</td>
 			                     	</tr>
 			                  	</tbody>
 			               	</table>

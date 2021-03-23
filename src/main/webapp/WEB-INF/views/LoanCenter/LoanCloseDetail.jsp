@@ -62,7 +62,7 @@
 	                        	<td scope="col">5.9%</td>
 	                     	</tr>
 	                     	<tr>
-	                        	<td scope="col">신규일자</td>
+	                        	<td scope="col">실행일자</td>
 	                        	<td scope="col">2010.05.01</td>
 	                        	<td scope="col">만기일자</td>
 	                        	<td scope="col">2015.05.01</td>

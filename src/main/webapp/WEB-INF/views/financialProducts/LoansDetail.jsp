@@ -55,11 +55,11 @@
                         <tbody>
                             <tr>
                                 <td class="text-bold-500">대출기간</td>
-                                <td>1년 ~ 10년</td>
+                                <td>1년 ~ 3년</td>
                             </tr>
                             <tr>
                                 <td class="text-bold-500">대출금리</td>
-                                <td>연 5.9% ~ 연 19.9% 이내(★확인이 필요함-기준치 잡기★)</td>
+                                <td>연 5.0% ~ 연 19.9% 이내(★확인이 필요함-기준치 잡기★)</td>
                             </tr>
                             <tr>
                                 <td class="text-bold-500">대출금액</td>

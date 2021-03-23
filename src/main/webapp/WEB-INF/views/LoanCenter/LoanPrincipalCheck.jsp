@@ -52,13 +52,8 @@
 										</td>
 			                     	</tr>
 			                     	<tr>
-			                        	<td scope="col" class="borL">실행번호</td>
-			                        	<td scope="col">
-			                        		<select name="" lengthtype="length">
-											    <option value="1">실행번호:1, 실행금액:100,000,000, 대출잔액:100,000,000</option>
-											</select>
-											확인 후 빼버릴 예정
-			                        	</td>
+			                        	<td scope="col" class="borL">대출잔액</td>
+			                        	<td scope="col">100,000,000</td>
 			                     	</tr>
 			                     	<tr>
 			                        	<td scope="col">상환방법</td>
@@ -80,7 +75,7 @@
 			                     	<tr>
 			                        	<td scope="col">상환원금</td>
 			                        	<td scope="col">
-			                        		<input type="text" value="10,000,000" readonly>원
+			                        		<input type="text">원
 										</td>
 			                     	</tr>
 			                     	<tr>
