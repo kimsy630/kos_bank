@@ -60,7 +60,7 @@
 		                      	<td>555-555-555555</td>
 		                      	<td>1억원</td>
 		                      	<td>2030.03.18</td>
-		                      	<td><fmt:formatNumber value="1231231" pattern="#,###" />원</td>
+		                      	<td><fmt:formatNumber value="100000000" pattern="#,###" />원</td>
 		                      	<td> 
 		                      		<div class="button button-round" style= "padding:10px; width:60px; height:40px; font-size:15px; text-align:center; background-color:olive; display:inline;" onclick="location.href='LoanAccountDetail.cc'">조회</div>
 		                      	</td>

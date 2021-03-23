@@ -24,26 +24,14 @@
 			                  	</colgroup>
 			                  	<tbody>
 			                  		<tr>
-			                        	<td scope="col">성명</td>
-			                        	<td scope="col">홍길동</td>
 			                        	<td scope="col">이자납부일</td>
 			                        	<td scope="col">2021.05.01</td>
-			                     	</tr>
-			                     	<tr>
-			                        	<td scope="col">이자합계(원)</td>
+			                        	<td scope="col">이자(원)</td>
 			                        	<td scope="col">100,000</td>
-			                        	<td scope="col">정상이자(원)</td>
-			                        	<td scope="col">100,000</td>
-			                     	</tr>
-			                     	<tr>
-			                        	<td scope="col">연체이자(원)</td>
-			                        	<td scope="col">0</td>
-			                        	<td scope="col">거래전 대출잔액(원)</td>
-			                        	<td scope="col">100,000,000</td>
 			                     	</tr>
 			                     	<tr>
 			                        	<td scope="col">실행번호</td>
-			                        	<td scope="col" colspan="3"></td>
+			                        	<td scope="col" colspan="3">이자납부에도 실행번호 붙는지 모르겠음</td>
 			                     	</tr>
 			                  	</tbody>
 			               	</table>

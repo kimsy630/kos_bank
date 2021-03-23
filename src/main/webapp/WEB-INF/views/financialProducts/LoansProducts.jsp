@@ -53,10 +53,9 @@
 					                 			<p class="desc">방문 없이 전화로 간편하게 대출가능. 복잡한 신용대출 절차를 바꾸다!</p>
 					                 		</div>
 					                		<div id="interests" class="interests">
-												<em>최대 <strong style="">1</strong><span>억원</span></em>
+												<em>최대 <strong style="">3</strong><span>억원</span></em>
 											</div>
 					                 		<div id="btns" class="button button-primary button-round"><a href="LoanApplication.cc">신청하기</a></div>
-					                 		<div id="btns" class="button button-primary button-round"><a href="#">상담하기</a></div>
 				                		</article>
 				              		</div>
 				            	</div>

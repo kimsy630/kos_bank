@@ -12,15 +12,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class FinancialProductsController {
 	private static final Logger logger = LoggerFactory.getLogger(FinancialProductsController.class);
 	
-	
-	// 박서하
-	//개인대출
-	@RequestMapping("/personalLoan.cc")
-	public String personalLoan(HttpServletRequest req,Model model) {
-		logger.info("url ==> /personalLoan");
-		return "financialProducts/personalLoan";
-	}
-	
 	// 박서하
 	//대출상품
 	@RequestMapping("/LoansProducts.cc")
@@ -36,7 +27,7 @@ public class FinancialProductsController {
 		logger.info("url ==> /LoansDetail");
 		return "financialProducts/LoansDetail";
 	}
-		
+	
 	//적금상품
 	@RequestMapping("/ISP.cc")
 	public String ISP(HttpServletRequest req,Model model) {

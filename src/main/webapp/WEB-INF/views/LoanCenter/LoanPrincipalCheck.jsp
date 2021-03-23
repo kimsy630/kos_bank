@@ -18,7 +18,7 @@
     	
     	<div class="page">
     		<%@include file="../header.jsp" %>
-      
+      		
 		 	<section class="section section-bredcrumbs">
 		    	<div class="container context-dark breadcrumb-wrapper">
 		        	<h2>대출원금 조회/납부</h2><br>
@@ -47,7 +47,7 @@
 			                        	<td scope="col">조회계좌</td>
 			                        	<td scope="col">
 											<select name="" lengthtype="length">
-											    <option value="555-555-555555">555-555-555555[<가계>직장인 신용대출(만기일시)]</option>
+											    <option value="555-555-555555">555-555-555555[직장인 신용대출(만기일시)]</option>
 											</select>
 										</td>
 			                     	</tr>
@@ -57,6 +57,7 @@
 			                        		<select name="" lengthtype="length">
 											    <option value="1">실행번호:1, 실행금액:100,000,000, 대출잔액:100,000,000</option>
 											</select>
+											확인 후 빼버릴 예정
 			                        	</td>
 			                     	</tr>
 			                     	<tr>
@@ -79,7 +80,7 @@
 			                     	<tr>
 			                        	<td scope="col">상환원금</td>
 			                        	<td scope="col">
-			                        		<input type="text" value="100,000,000" readonly>원 일억 원
+			                        		<input type="text" value="10,000,000" readonly>원
 										</td>
 			                     	</tr>
 			                     	<tr>
@@ -103,32 +104,18 @@
 			                  	</colgroup>
 			                  	<tbody>
 			                  		<tr>
-			                        	<td scope="col">성명</td>
-			                        	<td scope="col">홍길동</td>
-			                        	<td scope="col">상환원금(원)</td>
+			                        	<td scope="col">대출원금(원)</td>
 			                        	<td scope="col">100,000,000</td>
-			                     	</tr>
-			                     	<tr>
-			                        	<td scope="col">상환이자(원)</td>
-			                        	<td scope="col">100,000</td>
-			                        	<td scope="col">정상이자(원)</td>
-			                        	<td scope="col">100,000</td>
-			                     	</tr>
-			                     	<tr>
-			                        	<td scope="col">연체이자(원)</td>
-			                        	<td scope="col">0</td>
-			                        	<td scope="col">환출이자(원)</td>
-			                        	<td scope="col">0</td>
+			                        	<td scope="col">상환원금(원)</td>
+			                        	<td scope="col">10,000,000</td>
 			                     	</tr>
 			                     	<tr>
 			                        	<td scope="col">중도상환 해약금(원)</td>
-			                        	<td scope="col">100,000</td>
-			                        	<td scope="col">상환원금(원)</td>
-			                        	<td scope="col">100,000,000</td>
+			                        	<td scope="col" colspan="3">100,000(중도상환 전액 납부할때만 뜨게)</td>
 			                     	</tr>
 			                     	<tr>
 			                        	<td scope="col">거래 후 대출잔액(원)</td>
-			                        	<td scope="col" colspan="3">200,000</td>
+			                        	<td scope="col" colspan="3">90,000,000</td>
 			                     	</tr>
 			                  	</tbody>
 			               	</table>

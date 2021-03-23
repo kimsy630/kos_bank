@@ -12,7 +12,7 @@
 		    	<div class="container">
 		        	<section class="section">
 			          	<div class="table-custom-responsive">
-			               	<br>
+			               	<br><br>
 			               	
 			               	<table class="table-custom table-custom-bordered">
 			                	<colgroup>
@@ -23,32 +23,18 @@
 			                  	</colgroup>
 			                  	<tbody>
 			                  		<tr>
-			                        	<td scope="col">성명</td>
-			                        	<td scope="col">홍길동</td>
-			                        	<td scope="col">상환원금(원)</td>
+			                        	<td scope="col">대출원금(원)</td>
 			                        	<td scope="col">100,000,000</td>
-			                     	</tr>
-			                     	<tr>
-			                        	<td scope="col">상환이자(원)</td>
-			                        	<td scope="col">100,000</td>
-			                        	<td scope="col">정상이자(원)</td>
-			                        	<td scope="col">100,000</td>
-			                     	</tr>
-			                     	<tr>
-			                        	<td scope="col">연체이자(원)</td>
-			                        	<td scope="col">0</td>
-			                        	<td scope="col">환출이자(원)</td>
-			                        	<td scope="col">0</td>
+			                        	<td scope="col">상환원금(원)</td>
+			                        	<td scope="col">10,000,000</td>
 			                     	</tr>
 			                     	<tr>
 			                        	<td scope="col">중도상환 해약금(원)</td>
-			                        	<td scope="col">100,000</td>
-			                        	<td scope="col">상환원금(원)</td>
-			                        	<td scope="col">100,000,000</td>
+			                        	<td scope="col" colspan="3">100,000(중도상환 전액 납부할때만 뜨게)</td>
 			                     	</tr>
 			                     	<tr>
 			                        	<td scope="col">거래 후 대출잔액(원)</td>
-			                        	<td scope="col" colspan="3">200,000</td>
+			                        	<td scope="col" colspan="3">90,000,000</td>
 			                     	</tr>
 			                  	</tbody>
 			               	</table>
