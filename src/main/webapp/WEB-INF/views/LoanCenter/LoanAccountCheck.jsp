@@ -22,12 +22,6 @@
 		 	<section class="section section-bredcrumbs">
 		    	<div class="container context-dark breadcrumb-wrapper">
 		        	<h2>대출계좌조회</h2><br>
-		          	
-		          	<ul class="breadcrumbs-custom">
-		            	<li><a href="#">대출센터</a></li>
-		            	<li><a href="#">대출관리</a></li>
-		            	<li class="active">대출계좌조회</li>
-		          	</ul>
 		        </div>
 		    </section>
 		    

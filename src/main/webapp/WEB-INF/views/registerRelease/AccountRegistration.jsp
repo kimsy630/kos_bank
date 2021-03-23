@@ -35,11 +35,6 @@
         <div class="container context-dark breadcrumb-wrapper">
           <h2>계좌개설</h2>
           <br>
-          <ul class="breadcrumbs-custom">
-            <li><a href="index.html">개인</a></li>
-            <li><a href="#">등록</a></li>
-            <li class="active">계좌개설</li>
-          </ul>
         </div>
       </section>
       <section class="section section-lg bg-default">

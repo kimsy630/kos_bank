@@ -15,12 +15,7 @@
       <!-- ======= Breadcrumbs ======= -->
          <section class="section section-bredcrumbs">
            <div class="container context-dark breadcrumb-wrapper">
-             <h1>정기예금</h1>
-             <ul class="breadcrumbs-custom">
-               <li><a href="#">금융상품</a></li>
-               <li><a href="FDP.cc">정기예금</a></li>
-               <li class="active">정기예금상세</li>
-             </ul>
+             <h2>정기예금</h2>
            </div>
          </section><!-- Breadcrumbs end -->
       

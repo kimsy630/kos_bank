@@ -19,7 +19,7 @@
    	<%@ include file ="../header.jsp" %>
    	<section class="section section-bredcrumbs">
         <div class="container context-dark breadcrumb-wrapper">
-          <h1>환율조회</h1>
+          <h3>환율조회</h3>
         </div>
     </section>
     <br>
@@ -81,6 +81,7 @@
                    </tbody>
                 </table>
               </div>
+              <br><br><br><br>
    	<%@ include file ="../footer.jsp" %>
     </div>
 </body>

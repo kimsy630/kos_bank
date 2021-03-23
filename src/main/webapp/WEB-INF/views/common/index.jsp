@@ -18,25 +18,25 @@
       <!-- Swiper-->
       <section class="section swiper-container swiper-slider swiper-slider-3" data-loop="true" data-autoplay="false" data-simulate-touch="false" data-slide-effect="fade">
         <div class="swiper-wrapper">
-          <div class="swiper-slide context-dark" data-slide-bg="${path}images/main1.jpg">
+          <div class="swiper-slide context-dark" data-slide-bg="${path}images/main2.jpg">
             <div class="swiper-slide-caption">
               <div class="container">
                 <div class="row">
                   <div class="col-md-10 col-lg-7">
-                    <h1 data-caption-animate="fadeInUp" data-caption-delay="100">Banking & Financial Theme</h1>
-                    <p class="lead" data-caption-animate="fadeInUp" data-caption-delay="250">A universal solution for Banking and Financial establishments designed by professionals.</p><a class="button button-lg button-primary" href="#" data-caption-animate="fadeInUp" data-caption-delay="450">Buy It Now</a>
+                    <h1 data-caption-animate="fadeInUp" data-caption-delay="100" style="color:#435ebe">KOS BANK</h1>
+                    <p class="lead" data-caption-animate="fadeInUp" data-caption-delay="250" style="color:#435ebe">Korea Online Special Bank</p><a class="button button-lg button-primary" href="#" data-caption-animate="fadeInUp" data-caption-delay="450">Show It</a>
                   </div>
                 </div>
               </div>
             </div>
           </div>
-          <div class="swiper-slide context-dark" data-slide-bg="${path}images/main2.jpg" style="background-position: 50% 50%;">
+          <div class="swiper-slide context-dark" data-slide-bg="${path}images/main1.jpg" style="background-position: 50% 50%;">
             <div class="swiper-slide-caption">
               <div class="container">
                 <div class="row">
                   <div class="col-md-10 col-lg-7">
-                    <h1 data-caption-animate="fadeInUp" data-caption-delay="100">Fully Customizable Web Solution</h1>
-                    <p class="lead" data-caption-animate="fadeInUp" data-caption-delay="250">Built on Bootstrap Framework, .Bank offers a variety of ways to customize your future website.</p><a class="button button-lg button-primary button-icon button-icon-left" href="#" data-caption-animate="fadeInUp" data-caption-delay="450">Buy It Now</a>
+                    <h1 data-caption-animate="fadeInUp" data-caption-delay="100" style="color:#435ebe">KOS BANK</h1>
+                    <p class="lead" data-caption-animate="fadeInUp" data-caption-delay="250" style="color:#435ebe">Korea Online Special Bank</p><a class="button button-lg button-primary button-icon button-icon-left" href="#" data-caption-animate="fadeInUp" data-caption-delay="450">Show It</a>
                   </div>
                 </div>
               </div>

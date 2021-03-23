@@ -34,7 +34,7 @@
       <%@include file="../header.jsp" %>
       <section class="section section-bredcrumbs">
         <div class="container context-dark breadcrumb-wrapper">
-          <h1>입출금자유</h1>
+          <h2>입출금자유</h2>
         </div>
      </section>
       <!-- 상품개요  -->

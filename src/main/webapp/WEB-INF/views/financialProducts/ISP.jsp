@@ -37,7 +37,7 @@
       <%@include file="../header.jsp" %>
       <section class="section section-bredcrumbs">
         <div class="container context-dark breadcrumb-wrapper">
-          <h1>적금상품</h1>
+          <h2>적금상품</h2>
         </div>
      </section>
       <!-- 상품개요  -->

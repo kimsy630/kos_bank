@@ -15,11 +15,7 @@
 		<!-- ======= Breadcrumbs ======= -->
       	<section class="section section-bredcrumbs">
 	        <div class="container context-dark breadcrumb-wrapper">
-	          <h1>신규대출</h1>
-	          <ul class="breadcrumbs-custom">
-	            <li><a href="#">대출센터</a></li>
-	            <li class="active">신규대출</li>
-	          </ul>
+	          <h2>신규대출</h2>
 	        </div>
       	</section><!-- Breadcrumbs end -->
 	    

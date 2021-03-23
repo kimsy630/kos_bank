@@ -15,12 +15,7 @@
       <!-- ======= Breadcrumbs ======= -->
          <section class="section section-bredcrumbs">
            <div class="container context-dark breadcrumb-wrapper">
-             <h1>입출금자유</h1>
-             <ul class="breadcrumbs-custom">
-               <li><a href="#">금융상품</a></li>
-               <li><a href="CDP.cc">입출금자유</a></li>
-               <li class="active">입출금자유상세</li>
-             </ul>
+             <h2>입출금자유</h2>
            </div>
          </section><!-- Breadcrumbs end -->
       

@@ -70,11 +70,6 @@
         <div class="container context-dark breadcrumb-wrapper">
           <h2>계좌해지</h2>
           <br>
-          <ul class="breadcrumbs-custom">
-            <li><a href="index.html">개인</a></li>
-            <li><a href="#">해지</a></li>
-            <li class="active">계좌해지</li>
-          </ul>
         </div>
       </section>
       <section class="section section-lg bg-default">

@@ -16,12 +16,7 @@
 		<!-- ======= Breadcrumbs ======= -->
       	<section class="section section-bredcrumbs">
 	        <div class="container context-dark breadcrumb-wrapper">
-	          <h1>개인대출</h1>
-	          <ul class="breadcrumbs-custom">
-	            <li><a href="#">금융상품</a></li>
-	            <li><a href="LoansProducts.cc">대출상품</a></li>
-	            <li class="active">개인대출</li>
-	          </ul>
+	          <h2>개인대출</h2>
 	        </div>
       	</section><!-- Breadcrumbs end -->
 	    
