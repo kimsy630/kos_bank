@@ -62,11 +62,21 @@ public class FinancialProductsController {
 		return "financialProducts/regISP";
 	}
 	// 최문수
-	// 정기예금상품 가입페이지(Install Savings Product)
+	// 정기예금상품 가입페이지(Fixed Deposit Product)
 	@RequestMapping("/regFDP.cc")
 	public String regFDP(HttpServletRequest req,Model model) {
 		logger.info("url ==> /regFDP");
 		return "financialProducts/regFDP";
 	}
+	// 최문수
+	// 정기예금상품 가입처리
+	@RequestMapping("/FDPAction.cc")
+	public String FDPAction(HttpServletRequest req,Model model) {
+		logger.info("url ==> /FDPAction");
+		return "financialProducts/FDPAction";
+	}
+	
+	
+	
 	
 }

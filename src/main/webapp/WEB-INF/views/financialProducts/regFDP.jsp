@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ include file = "../setting.jsp"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html class="wide wow-animation" lang="en">
 	<head>
@@ -20,6 +21,72 @@
 	    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 	    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
 	    <script>
+	    
+	    function checkFDP() {
+	    	if (document.fdpForm.months.value == '선택') {
+	    		alert("가입기간을 선택하세요");
+	    		return false;
+	    	}
+	    	
+	    }
+	    
+	    /* 금액 직접 입력시 해당 input 태그 적용 메서드  */
+		    var tmpNC = "";
+	        function numberComma(obj) {
+	            if (tmpNC == obj.value) return;
+	            tmpNC = obj.value;
+	            obj.value = numberComma2(tmpNC);
+	        }
+	        function numberComma2(s) {
+	            s = s.replace(/\D/g, "");
+	            l = s.length - 3;
+	            while (l > 0) {
+	                s = s.substr(0, l) + "," + s.substr(l);
+	                l -= 3;
+	            }
+	            return s;
+	        }
+	    /* 금액 직접 입력시 적용 메서드  */
+	        
+	        
+	        /* 비밀번호 입력란 문자입력 방지 메서드 */
+	        function numberComma3(obj) {
+	            if (tmpNC == obj.value) return;
+	            tmpNC = obj.value;
+	            obj.value = numberComma4(tmpNC);
+	        }
+	        function numberComma4(s) {
+	            s = s.replace(/\D/g, "");
+	            return s;
+	        }
+	        /* 비밀번호 입력란 문자입력 방지 메서드 */
+	      
+	        
+	      /* 숫자버튼 누를시 적용 메서드  */
+	        function numberComma100(obj) {
+	        	var q = "";
+	        	var w = "";
+	        	var e = "";
+	        	var r = "";
+	        	var t = "";
+	        	q = document.getElementById('money').value;
+	        	if(!document.getElementById('money').value) {
+	        		q = '0';
+	        	}
+	        	w = q.replace(/,/g ,"");
+	        	e = parseInt(w);
+	        	e += obj;
+	        	r = e.toString();
+	        	t = r.toString().length - 3;
+	        	while (t > 0) {
+	                r = r.substr(0, t) + "," + r.substr(t);
+	                t -= 3;
+	            }
+	        	document.getElementById('money').value = r;
+	        }
+	    /* 숫자버튼 누를시 적용 메서드  */   
+	    
+	    /* 숫자버튼 위 마우스 올려놓을시 적용 메서드 */
 	  		$(function() {
 	  			$("#hundred").on({
 	  				"mouseover" : function() {
@@ -72,6 +139,8 @@
 	  				}
 	  			});
 	  		});
+	  	/* 숫자버튼 위 마우스 올려놓을시 적용 메서드 */
+	  	
 	    </script>
 	    <style>
     	.btn-clipboard {
@@ -83,6 +152,8 @@
 	    </style>
 	</head>
   <body>
+  <form name="fdpForm" method="POST" action="FDPAction.cc" onsubmit="return checkFDP()">
+  <input type = "hidden" name = "${_csrf.parameterName}" value = "${_csrf.token}">
     <div class="preloader">
       <div class="preloader-body">
         <div class="cssload-container">
@@ -106,7 +177,6 @@
         </div>
       </section>
       <!-- Page Header 끝-->
-      
       	 <section class="section section-lg bg-default">
         <div class="container">
           <div class="row">
@@ -127,21 +197,22 @@
 				<div style="display:inline; width:20%; text-align:center; margin-right:160px; vertical-align:70%">가입금액</div>
 				<div style="display:inline-block; width:80%;">
 					<div class="form-group" id="newAmount">
-                    <div class="col-sm-2">
-                        <br><input style="padding: 0 0;" type="email" class="form-control" id="email" data-rule-required="true" maxlength="40">
+                    <div style="display:inline-block; padding-right:5px;" class="col-sm-2">
+                        <br><input style="padding: 0 0; display:inline-block; text-align:right;" value="0" type="text" class="form-control" id="money" data-rule-required="true" maxlength="40" onkeyup="JavaScript:numberComma(this);">
                     </div>
+                    	<p style="display:inline-block">원</p>
                 	</div>
                 	<div style="margin-left:15px">
-                	<button type="button" id="hundred" class="btn-clipboard" data-bs-original-title="Copy to clipboard">100만</button>
-                	<button type="button" id="fifty" class="btn-clipboard" data-bs-original-title="Copy to clipboard">50만</button>
-                	<button type="button" id="ten" class="btn-clipboard" data-bs-original-title="Copy to clipboard">10만</button>
-                	<button type="button" id="five" class="btn-clipboard" data-bs-original-title="Copy to clipboard">5만</button>
-                	<button type="button" id="one" class="btn-clipboard" data-bs-original-title="Copy to clipboard">1만</button>
+                	<button type="button" id="hundred" class="btn-clipboard" data-bs-original-title="Copy to clipboard" onclick="JavaScript:numberComma100(1000000);">100만</button>
+                	<button type="button" id="fifty" class="btn-clipboard" data-bs-original-title="Copy to clipboard" onclick="JavaScript:numberComma100(500000);">50만</button>
+                	<button type="button" id="ten" class="btn-clipboard" data-bs-original-title="Copy to clipboard" onclick="JavaScript:numberComma100(100000);">10만</button>
+                	<button type="button" id="five" class="btn-clipboard" data-bs-original-title="Copy to clipboard" onclick="JavaScript:numberComma100(50000);">5만</button>
+                	<button type="button" id="one" class="btn-clipboard" data-bs-original-title="Copy to clipboard" onclick="JavaScript:numberComma100(10000);">1만</button>
                 	</div>
 				</div>
 				<br><br><hr></hr><br>
                 <p style="display:inline; margin-right:175px;">가입기간</p>
-                <select class="form-select" aria-label="Default select example">
+                <select name="months" class="form-select" aria-label="Default select example">
 				  <option selected>선택</option>
 				  <option value="1">1</option>
 				  <option value="2">2</option>
@@ -185,7 +256,7 @@
 				<div style="display:inline-block; width:70%;">
 					<div class="form-group" id="newAmount">
                     <div style="display:inline-block;" class="col-sm-1">
-                        <br><input style="padding: 0 0; " type="password" class="form-control" id="pw" data-rule-required="true" maxlength="30">
+                        <br><input style="padding: 0 0;" name="pw" type="password" class="form-control" id="pw" data-rule-required="true" maxlength="4" onkeyup="JavaScript:numberComma3(this);">
                     </div>
                     <div style="display:inline-block;">
                     <p style="color:#92969c;">(숫자 4자리)</p>
@@ -197,7 +268,7 @@
 				<div style="display:inline-block; width:70%;">
 					<div class="form-group" id="newAmount">
                     <div class="col-sm-1">
-                        <br><input style="padding: 0 0;" type="password" class="form-control" id="pwChk" data-rule-required="true" maxlength="30">
+                        <br><input style="padding: 0 0;" type="password" class="form-control" name="pwChk" id="pwChk" data-rule-required="true" maxlength="4" onkeyup="JavaScript:numberComma3(this);">
                     </div>
                 	</div>
 				</div>
@@ -214,7 +285,7 @@
 				<div style="display:inline-block; width:70%;">
 					<div class="form-group" id="newAmount">
                     <div style="display:inline-block;" class="col-sm-1">
-                        <br><input style="padding: 0 0;" type="password" class="form-control" id="pwChk" data-rule-required="true" maxlength="30">
+                        <br><input style="padding: 0 0;" type="password" class="form-control" id="pwChk" data-rule-required="true" maxlength="4" onkeyup="JavaScript:numberComma3(this);">
                     </div>
                     <div style="display:inline-block;">
                     <p style="color:#92969c;">(숫자 4자리)</p>
@@ -233,21 +304,22 @@
 				  </label>
 				</div>
 				<div class="form-check">
-				  <input class="form-check-input" type="radio" name="flexRadioDefault3" id="flexRadioDefault2" checked>
+				  <input class="form-check-input" type="radio" name="flexRadioDefault2" id="flexRadioDefault2" checked>
 				  <label class="form-check-label" for="flexRadioDefault2">
 				    신청
 				  </label>
 				</div>
 				</div>
 				<br><hr></hr><br><br>
-				<div style="text-align:center;"><button id="btns" class="button button-primary button-round" onclick="regISP()">신청하기</button></div>
+				<div style="text-align:center;"><button id="btns" type="submit" class="button button-primary button-round">신청하기</button></div>
               </div>
             </div>
           </div>
         </div>
       </section>
-                <img src="../teamProject/resources/testimage/고객-예금상품신청.png">
+      <img src="../teamProject/resources/testimage/고객-예금상품신청.png">
       <%@ include file="../footer.jsp" %>
     </div>
+    </form>
   </body>
 </html>
