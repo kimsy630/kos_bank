@@ -57,7 +57,9 @@
 			                        	<td scope="col">조회계좌</td>
 			                        	<td scope="col">
 											<select name="" lengthtype="length">
-											    <option value="555-555-555555">555-555-555555[직장인 신용대출(만기일시)]</option>
+												<c:forEach var="list" items="${list}">
+											    	<option value="${list.account}">${list.account}[${list.d_name}(${list.d_repay})]</option>
+											    </c:forEach>
 											</select>
 										</td>
 			                     	</tr>

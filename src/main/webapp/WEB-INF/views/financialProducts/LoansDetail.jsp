@@ -31,12 +31,12 @@
 				<div class="card-body">
 		            <p>
 						<h6>대출상품</h6>
-		               	<h2><b>직장인 신용대출</b></h2>
-		               	<h5>방문 없이 전화로 간편하게. 복잡한 신용대출 절차를 바꾸다!</h5>
+		               	<h2><b>${vo.d_name}</b></h2>
+		               	<h5>${vo.d_summary}</h5>
 		            </p>
 		            <!-- ======= Button trigger for basic modal ======= -->
 		            <button type="button" class="btn btn-outline-primary block" data-bs-toggle="modal"
-		                data-bs-target="#default" onclick="document.location.href='LoanApplication.cc'">
+		                data-bs-target="#default" onclick="document.location.href='LoanApplication.cc?d_name=${list.d_name}"'">
 		                	신청하기
 		            </button>
 		            <!-- Button trigger for basic modal end -->
@@ -55,27 +55,27 @@
                         <tbody>
                             <tr>
                                 <td class="text-bold-500">대출기간</td>
-                                <td>1년 ~ 3년</td>
+                                <td>${vo.d_min_date} ~ ${vo.d_max_date}년</td>
                             </tr>
                             <tr>
                                 <td class="text-bold-500">대출금리</td>
-                                <td>연 5.0% ~ 연 19.9% 이내(★확인이 필요함-기준치 잡기★)</td>
+                                <td>연 ${vo.d_interest_rate}% 이내(★확인이 필요함-기준치 잡기★)</td>
                             </tr>
                             <tr>
                                 <td class="text-bold-500">대출금액</td>
-                                <td>최대 3억원</td>
+                                <td>${vo.d_min_price} ~ ${vo.d_max_price}억원</td>
                             </tr>
                             <tr>
                                 <td class="text-bold-500">상환방법</td>
-                                <td>만기일시상환방식, 원금균등분할상환방식</td>
+                                <td>${vo.d_explanation1}</td>
                             </tr>
                             <tr>
                                 <td class="text-bold-500">이자납입방법</td>
-                                <td>매월 후취</td>
+                                <td>${vo.d_explanation2}</td>
                             </tr>
                             <tr>
                                 <td class="text-bold-500">중도상환수수료</td>
-                                <td>1.7% 이내(★확인이 필요함-기준치 잡기★)</td>
+                                <td>${vo.d_explanation3}(★확인이 필요함-기준치 잡기★)</td>
                             </tr>
                         </tbody>
                     </table>

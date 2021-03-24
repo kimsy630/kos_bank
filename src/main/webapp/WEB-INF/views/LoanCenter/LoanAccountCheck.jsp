@@ -40,7 +40,7 @@
 		          	<div style="background-color: blue; width:1170px; height:2px;"> </div>
 		          	
 		          	<div>
-		          		조회건수 | 총[1건]
+		          		조회건수 | 총[${count}건]
 		          	</div>
 		          	
 		          	<table class="table-custom table-custom-bordered">
@@ -55,16 +55,18 @@
 		                    </tr>
 		                </thead>
 		                <tbody>
-		                	<tr>
-		                    	<td>직장인 신용대출</td>
-		                      	<td>555-555-555555</td>
-		                      	<td>1억원</td>
-		                      	<td>2030.03.18</td>
-		                      	<td><fmt:formatNumber value="100000000" pattern="#,###" />원</td>
-		                      	<td> 
-		                      		<div class="button button-round" style= "padding:10px; width:60px; height:40px; font-size:15px; text-align:center; background-color:olive; display:inline;" onclick="location.href='LoanAccountDetail.cc'">조회</div>
-		                      	</td>
-		                    </tr>
+			                <c:forEach var="list" items="${list}">
+			                	<tr>
+			                    	<td>${list.d_name}</td>
+			                      	<td>${list.account}</td>
+			                      	<td><fmt:formatNumber value="${list.d_amount}" pattern="#,###" />원</td>
+			                      	<td><fmt:formatDate value="${list.d_end_date}" pattern="yyyy.MM.dd" /></td>
+			                      	<td><fmt:formatNumber value="${list.d_balance}" pattern="#,###" />원</td>
+			                      	<td> 
+			                      		<div class="button button-round" style= "padding:10px; width:60px; height:40px; font-size:15px; text-align:center; background-color:olive; display:inline;" onclick="location.href='LoanAccountDetail.cc?d_name=${list.d_name}'">조회</div>
+			                      	</td>
+			                    </tr>
+			                </c:forEach>
 	                  	</tbody>
                 	</table>
 		        </div>

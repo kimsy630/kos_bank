@@ -43,19 +43,21 @@
 				    	<div class="container">
 				        	<div class="row">
 				            	<div class="col-lg-9 col-xl-8">
-				              		<p>총<em>1</em>개의 상품</p>
+				              		<p>총<em>${count}</em>개의 상품</p>
 				              		<!-- Bootstrap collapse-->
 				              		<div class="card-group-custom card-group-corporate" id="accordion1" role="tablist" aria-multiselectable="false">
 				                		<!-- Bootstrap card-->
 				                		<article id="article" class="card card-custom card-corporate">
-					                 		<div id="goods" class="goods">
-					                 			<h4 data-prd-cd="1130313506" data-sys-ds-cd="01"><a href="LoansDetail.cc">직장인 신용대출</a></h4>
-					                 			<p class="desc">방문 없이 전화로 간편하게 대출가능. 복잡한 신용대출 절차를 바꾸다!</p>
-					                 		</div>
-					                		<div id="interests" class="interests">
-												<em>최대 <strong style="">3</strong><span>억원</span></em>
-											</div>
-					                 		<div id="btns" class="button button-primary button-round"><a href="LoanApplication.cc">신청하기</a></div>
+					                		<c:forEach var="list" items="${list}">
+						                 		<div id="goods" class="goods">
+						                 			<h4 data-prd-cd="1130313506" data-sys-ds-cd="01"><a href="LoansDetail.cc?d_name=${list.d_name}">${list.d_name}</a></h4>
+						                 			<p class="desc">${list.d_summary}</p>
+						                 		</div>
+						                		<div id="interests" class="interests">
+													<em>최대 <strong>${list.d_max_price}</strong><span>억원</span></em>
+												</div>
+						                 		<div id="btns" class="button button-primary button-round"><a href="LoanApplication.cc?d_name=${list.d_name}">신청하기</a></div>
+					                		</c:forEach>
 				                		</article>
 				              		</div>
 				            	</div>

@@ -51,31 +51,65 @@
 	                  	<tbody>
 	                  		<tr>
 	                        	<td scope="col">대출종류</td>
-	                        	<td scope="col" colspan="3">직장인 신용대출(만기일시)</td>
+	                        	<td scope="col" colspan="3">${vo.d_name}(${vo.d_repay})</td>
 	                     	</tr>
 	                     	<tr>
 	                        	<td scope="col">대출원금(원)</td>
-	                        	<td scope="col">100,000,000</td>
+	                        	<td scope="col"><fmt:formatNumber value="${vo.d_amount}" pattern="#,###" /></td>
 	                        	<td scope="col">대출잔액(원)</td>
-	                        	<td scope="col">100,000,000</td>
+	                        	<td scope="col"><fmt:formatNumber value="${vo.d_balance}" pattern="#,###" /></td>
 	                     	</tr>
 	                     	<tr>
 	                        	<td scope="col">계좌번호</td>
-	                        	<td scope="col">555-555-555555</td>
+	                        	<td scope="col">${vo.account}</td>
 	                        	<td scope="col">적용이율</td>
-	                        	<td scope="col" colspan="3">5.0%</td>
+	                        	<td scope="col" colspan="3">${vo.d_rate}%</td>
 	                     	</tr>
 	                     	<tr>
 	                        	<td scope="col">신규일자</td>
-	                        	<td scope="col">2020.05.01</td>
+	                        	<td scope="col"><fmt:formatDate value="${vo.d_start_date}" pattern="yyyy.MM.dd" /></td>
 	                        	<td scope="col">만기일자</td>
-	                        	<td scope="col">2023.05.01</td>
+	                        	<td scope="col"><fmt:formatDate value="${vo.d_end_date}" pattern="yyyy.MM.dd" /></td>
 	                     	</tr>
 	                     	<tr>
 	                        	<td scope="col">이자자동이체계좌</td>
-	                        	<td scope="col">555-555-555555</td>
-	                        	<td scope="col">다음이자내는날</td>
-	                        	<td scope="col">2021.05.01</td>
+	                        	<td scope="col">555-555-555555★확인 필요★</td>
+	                        	<td scope="col">다음이자내는달</td>
+	                        	<td scope="col">${vo.d_next_rate}★실행일자로 바꿀지 고민하기★</td>
+	                     	</tr>
+	                  	</tbody>
+	               	</table>
+	               	
+	               	<br><br>
+	               	
+	               	<h6>거래내역★아직 안건들임★</h6>
+		          	<div style="background-color: blue; width:1170px; height:2px;"> </div>
+		          	
+	               	<table class="table-custom table-custom-bordered">
+	                  	<tbody>
+	                     	<tr>
+	                        	<td scope="col">거래일자</td>
+	                        	<td scope="col">거래내용</td>
+	                        	<td scope="col">원금(원)</td>
+	                        	<td scope="col">이자(원)</td>
+	                        	<td scope="col">대출잔액(원)</td>
+	                        	<td scope="col">이자누계(원)</td>
+	                     	</tr>
+	                     	<tr>
+	                        	<td scope="col">2021.03.01</td>
+	                        	<td scope="col">이자납부</td>
+	                        	<td scope="col"></td>
+	                        	<td scope="col">100,000</td>
+	                        	<td scope="col">100,000,000</td>
+	                        	<td scope="col">100,000</td>
+	                     	</tr>
+	                     	<tr>
+	                        	<td scope="col">2021.03.01</td>
+	                        	<td scope="col">원금상환</td>
+	                        	<td scope="col">10,000,000</td>
+	                        	<td scope="col"></td>
+	                        	<td scope="col">90,000,000</td>
+	                        	<td scope="col">100,000</td>
 	                     	</tr>
 	                  	</tbody>
 	               	</table>

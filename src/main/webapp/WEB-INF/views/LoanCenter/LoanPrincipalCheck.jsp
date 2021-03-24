@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ include file = "../setting.jsp"%>
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.9.0/jquery.js"></script>
 <!DOCTYPE html>
 <html class="wide wow-animation" lang="en">
   <head>
@@ -46,14 +47,23 @@
 			                  		<tr>
 			                        	<td scope="col">조회계좌</td>
 			                        	<td scope="col">
-											<select name="" lengthtype="length">
-											    <option value="555-555-555555">555-555-555555[직장인 신용대출(만기일시)]</option>
-											</select>
+			                        		
+										    <select id="ss" onchange="changeAccount()">
+												<c:forEach var="list" items="${list}">
+											    	<option value="${list.d_balance}">${list.account}[${list.d_name}(${list.d_repay})]</option>
+											    	<option value="${list.d_balance}">${list.account}[${list.d_name}(${list.d_repay})]</option>
+											    </c:forEach>
+										    </select>
+										    <script>
+										    	function changeAccount(){
+													$('#dd').html($('#ss').val());
+										    	}
+										    </script>
 										</td>
 			                     	</tr>
 			                     	<tr>
 			                        	<td scope="col" class="borL">대출잔액</td>
-			                        	<td scope="col">100,000,000</td>
+			                        	<td scope="col" id="dd"></td>
 			                     	</tr>
 			                     	<tr>
 			                        	<td scope="col">상환방법</td>
