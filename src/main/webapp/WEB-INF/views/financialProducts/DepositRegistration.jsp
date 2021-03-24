@@ -25,6 +25,26 @@
 	    function checkFDP() {
 	    	if (document.fdpForm.months.value == '선택') {
 	    		alert("가입기간을 선택하세요");
+	    		document.fdpForm.months.focus();
+	    		return false;
+	    	}
+	    	if (document.fdpForm.pw.value.length != 4) {
+	    		alert("4자리 비밀번호로 입력해주세요.");
+	    		document.fdpForm.pw.focus();
+	    		return false;
+	    	}
+	    	if (document.fdpForm.pw.value != document.fdpForm.pwChk.value) {
+	    		alert('가입 비밀번호를 확인해주세요.');
+	    		document.fdpForm.pw.focus();
+	    		return false;
+	    	}
+	    	if (document.fdpForm.accounts.value == '계좌번호를 선택해주세요.') {
+	    		alert('출금할 계좌번호를 알려주세요.');
+	    		return false;
+	    	}
+	    	if (document.fdpForm.pwWithdraw.value.length != 4) {
+	    		alert("출금용 비밀번호 4자리를 입력해주세요.");
+	    		document.fdpForm.pwWithdraw.focus();
 	    		return false;
 	    	}
 	    	
@@ -192,7 +212,10 @@
 				</div>
 				<br><br><hr></hr><br>
 				<p style="display:inline; margin-right:190px;">이자율</p>
-				<p style="display:inline;">6.0%</p>
+				<p style="display:inline;"><fmt:formatNumber value="${vo.y_interest_rate}"/>%</p>
+				<br><br><hr></hr><br>
+				<p style="display:inline; margin-right:145px;">최소가입금액</p>
+				<p style="display:inline;"><fmt:formatNumber value="${vo.y_min_price}"/>원</p>
 				<br><br><hr></hr>
 				<div style="display:inline; width:20%; text-align:center; margin-right:160px; vertical-align:70%">가입금액</div>
 				<div style="display:inline-block; width:80%;">
@@ -250,7 +273,7 @@
 				  <option value="34">34</option>
 				  <option value="35">35</option>
 				  <option value="36">36</option>
-				</select>&nbsp;개월&nbsp;&nbsp;&nbsp;<p style="color:#92969c; display:inline;">(계약월수는 1 ~ 36 개월 범위내에서 가능합니다.)</p>
+				</select>&nbsp;개월&nbsp;&nbsp;&nbsp;<p style="color:#92969c; display:inline;">(계약월수는  ${vo.y_min_date} ~ ${vo.y_max_date}개월 범위내에서 가능합니다.)</p>
 				<br><br><hr></hr>
 				<div style="display:inline; width:30%; text-align:center; margin-right:160px;">비밀번호</div>
 				<div style="display:inline-block; width:70%;">
@@ -268,7 +291,7 @@
 				<div style="display:inline-block; width:70%;">
 					<div class="form-group" id="newAmount">
                     <div class="col-sm-1">
-                        <br><input style="padding: 0 0;" type="password" class="form-control" name="pwChk" id="pwChk" data-rule-required="true" maxlength="4" onkeyup="JavaScript:numberComma3(this);">
+                        <br><input style="padding: 0 0;" name="pwChk" type="password" class="form-control" id="pwChk" data-rule-required="true" maxlength="4" onkeyup="JavaScript:numberComma3(this);">
                     </div>
                 	</div>
 				</div>
@@ -276,16 +299,20 @@
 				<h3>출금정보</h3><br>
 				<hr></hr><br>
 				<p style="display:inline; margin-right:140px;">출금계좌번호</p>
-                <select class="form-select form-select-lg mb-4" aria-label="Default select example">
+				
+                <select name="accounts" class="form-select form-select-lg mb-4" aria-label="Default select example">
 				  <option selected>계좌번호를 선택해주세요.</option>
-				  <option value="1">123 - 456 - 789012 KOS</option>
+				  <c:forEach items="${list}" var="item">
+				  <option value="${item.account}">${item.account}</option>
+				  </c:forEach>
 				</select>
+				
 				<br><hr></hr>
 				<div style="display:inline; width:30%; text-align:center; margin-right:100px;">출금계좌비밀번호</div>
 				<div style="display:inline-block; width:70%;">
 					<div class="form-group" id="newAmount">
                     <div style="display:inline-block;" class="col-sm-1">
-                        <br><input style="padding: 0 0;" type="password" class="form-control" id="pwChk" data-rule-required="true" maxlength="4" onkeyup="JavaScript:numberComma3(this);">
+                        <br><input style="padding: 0 0;" type="password" class="form-control" name="pwWithdraw" id="pwChk" data-rule-required="true" maxlength="4" onkeyup="JavaScript:numberComma3(this);">
                     </div>
                     <div style="display:inline-block;">
                     <p style="color:#92969c;">(숫자 4자리)</p>
@@ -293,24 +320,6 @@
                 	</div>
 				</div>
 				<hr></hr><br>
-				<br><br><h3>만기시 해지방법</h3><br>
-				<hr></hr><br>
-				<p style="display:inline">만기자동해지 신청여부</p><br>          
-                <div style="display:inline; margin-left:100px;" class="form-check">
-	  			 <div class="form-check">
-				  <input class="form-check-input" type="radio" name="flexRadioDefault2" id="flexRadioDefault1">
-				  <label class="form-check-label" for="flexRadioDefault1">
-				    미신청
-				  </label>
-				</div>
-				<div class="form-check">
-				  <input class="form-check-input" type="radio" name="flexRadioDefault2" id="flexRadioDefault2" checked>
-				  <label class="form-check-label" for="flexRadioDefault2">
-				    신청
-				  </label>
-				</div>
-				</div>
-				<br><hr></hr><br><br>
 				<div style="text-align:center;"><button id="btns" type="submit" class="button button-primary button-round">신청하기</button></div>
               </div>
             </div>

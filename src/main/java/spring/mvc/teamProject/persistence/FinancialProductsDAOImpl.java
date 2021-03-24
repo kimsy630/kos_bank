@@ -12,7 +12,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Repository;
 
+import spring.mvc.teamProject.vo.AccountVO;
+import spring.mvc.teamProject.vo.DepositVO;
 import spring.mvc.teamProject.vo.MembersVO;
+import spring.mvc.teamProject.vo.SavingsVO;
 
 
 
@@ -21,9 +24,57 @@ public class FinancialProductsDAOImpl implements FinancialProductsDAO{
 	
 	@Autowired
 	SqlSession sqlSession;
-	
-	@Autowired
-    private JavaMailSender mailSender; // xml에 등록한 bean autowired
 
+	@Override
+	public List<AccountVO> selectById(String id) {
+		
+		return sqlSession.getMapper(FinancialProductsDAO.class).selectById(id);
+	}
+
+	@Override
+	public List<SavingsVO> getSavingsList() {
+		
+		return sqlSession.getMapper(FinancialProductsDAO.class).getSavingsList();
+	}
+
+	@Override
+	public List<DepositVO> getDepositList() {
+		
+		return sqlSession.getMapper(FinancialProductsDAO.class).getDepositList();
+	}
+
+	@Override
+	public SavingsVO getSavingsDetail(String j_name) {
+		
+		return sqlSession.getMapper(FinancialProductsDAO.class).getSavingsDetail(j_name);
+	}
+
+	@Override
+	public SavingsVO getDepositDetail(String y_name) {
+		
+		return sqlSession.getMapper(FinancialProductsDAO.class).getDepositDetail(y_name);
+	}
+
+	@Override
+	public int insertSavings(SavingsVO vo) {
+		
+		return sqlSession.getMapper(FinancialProductsDAO.class).insertSavings(vo);
+		
+	}
+
+	@Override
+	public int insertDeposit(DepositVO vo) {
+		
+		return sqlSession.getMapper(FinancialProductsDAO.class).insertDeposit(vo);
+		
+	}
+
+
+
+	
+	
+	
+	
+	
 
 }
