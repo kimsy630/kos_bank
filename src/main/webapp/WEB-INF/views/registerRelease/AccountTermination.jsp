@@ -66,6 +66,7 @@
     </div>
     <div class="page">
       <%@include file="../header.jsp" %>
+   
  	<section class="section section-bredcrumbs">
         <div class="container context-dark breadcrumb-wrapper">
           <h2>계좌해지</h2>
@@ -73,6 +74,7 @@
         </div>
       </section>
       <section class="section section-lg bg-default">
+      <form class="form-horizontal" role="form" method="post" action="AccountPWChk.cc">
         <div class="container">
           <h3>계좌해지</h3>
           <br><hr><hr/><br> 
@@ -101,30 +103,38 @@
 		    </div>
 			</div>
 			<div class="row row-offset-1" align="center">
+			<c:forEach items="${list }" var="item">
             <div class="col-lg-10 col-xxl-9">
               <div class="table-custom-responsive">
                 <table class="table-custom table-custom-secondary table-custom-hovered" id="acc_table">
                   <thead>
                     <tr>
                       <th>조회 계좌번호</th>
-                      <td>대상 계좌가 없습니다.</td>
+                      <td>${item.account}</td>
                     </tr>
                   </thead>
                   <tbody>
                     <tr>
                     <th>잔액</th>
-                      <td><fmt:formatNumber value="1231231" pattern="#,###" />원</td>
+                      <td><fmt:formatNumber value="${item.balance}" pattern="#,###" />원</td>
                     </tr>
-              </tbody>
-              </table>
-              </div>
-           </div>
-        </div>
+		              </tbody>
+		              </table>
+              			</div>
+              		</div>
+              		</c:forEach>
+          		 </div>
+      		  </div>
           </div>
-                <img src="../teamProject/resources/testimage/계좌해지.png">
-           
+         
+         		<div class="form-group" style="margin-left:700px">
+            		 <div class="col-lg-offset-2 col-lg-10">
+                	<button type="submit" class="btn btn-primary" >계좌해지</button>
+             	</div>
+        	</div>
+                
       </section>    
-     
+     <br><br><br><br>
 <%@ include file = "../footer.jsp" %>
 </body>
 </html>

@@ -10,9 +10,21 @@
 		VALUES('33'||'-'||'01'||'-'||LPAD(SEQ_ACCOUNT.NEXTVAL, 6, 0),#{id},#{accountPW})
 	</insert>
 	
-	<!--  <select id ="deleteAccount" parameterType="String" resultType="spring.mvc.teamProject.vo.MembersVO">
-		SELECT * 
-		FROM members
-		WHERE id=#{id}
-	</select> -->
+	<update id ="deleteAccount" parameterType="java.util.Map">
+		UPDATE account_info
+		SET accountState='해지'
+		WHERE accountPW=#{accountPW} AND id=#{id}
+	</update>
+	
+	<select id="selectById" resultType="spring.mvc.teamProject.vo.AccountVO" parameterType="String">
+  		select account, ID, accountPW, Balance, accountType, accountState, accountLimit
+  		 from account_info
+  		 where id = #{id}   		 
+  	</select>
+  	
+  	<select id="AccountPwdCheck" parameterType="String" resultType="int">
+  		SELECT accountPW 
+  		FROM account_info 
+  		WHERE id = #{id}
+  	</select>
 </mapper>

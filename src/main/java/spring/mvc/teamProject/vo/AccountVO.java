@@ -15,6 +15,8 @@ public class AccountVO {
 	private Timestamp delete_date;
 	private Timestamp sleep_date;
 	private Timestamp new_date;
+	
+	
 	public String getAccount() {
 		return account;
 	}
