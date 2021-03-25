@@ -7,10 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-LoanRatePay
-
-<br>
-
-계좌이체와 동일 예상
+이자납부 성공 확인페이지<br>
+성공이면 메인페이지로 돌아감
 </body>
 </html>

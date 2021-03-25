@@ -15,4 +15,8 @@
 		FROM members
 		WHERE id=#{id}
 	</select>
+	
+	
+	
+     
 </mapper>

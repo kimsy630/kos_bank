@@ -6,7 +6,6 @@
   <head>
     <title>Home</title>
   </head>
-  
 	<body>
 	    <div class="preloader">
 	      <div class="preloader-body">
@@ -55,20 +54,18 @@
 			                  	</colgroup>
 			                  	<tbody>
 			                    	<tr>
-			                        	<td scope="col">상품 구분</td>
+			                        	<td scope="col">조회계좌</td>
 			                        	<td scope="col">
 											<select name="" lengthtype="length">
-											    <option value="555-555-555555">555-555-555555[<가계>직장인 신용대출(만기일시)]</option>
-											</select>											
-											<button type="button" class="btn btn-outline-primary block" data-bs-toggle="modal"
-								                data-bs-target="#default" onclick="document.location.href='#'">
-								                	실행번호조회
-								            </button>
+												<c:forEach var="list" items="${list}">
+											    	<option value="${list.account}">${list.account}[${list.d_name}(${list.d_repay})]</option>
+											    </c:forEach>
+											</select>
 										</td>
 			                     	</tr>
 			                     	<tr>
-			                        	<td scope="col" class="borL">이자납부종료일</td>
-			                        	<td scope="col"><input type="date" value="sysdate"></td>
+			                        	<td scope="col" class="borL">이자납부종료월</td>
+			                        	<td scope="col"><input type="month" value="month"></td>
 			                     	</tr>
 			                     	<tr>
 			                        	<td colspan="2" scope="col" class="borL">
@@ -85,32 +82,12 @@
 			               	<table class="table-custom table-custom-bordered">
 			                	<colgroup>
 			                    	<col style="width: 15%;">
-			                     	<col style="width: 35%;">
-			                     	<col style="width: 15%;">
-			                     	<col style="width: 35%;">
+			                     	<col style="width: 85%;">
 			                  	</colgroup>
 			                  	<tbody>
 			                  		<tr>
-			                        	<td scope="col">성명</td>
-			                        	<td scope="col">홍길동</td>
-			                        	<td scope="col">이자납부일</td>
-			                        	<td scope="col">2021.05.01</td>
-			                     	</tr>
-			                     	<tr>
-			                        	<td scope="col">이자합계(원)</td>
+			                        	<td scope="col">이자(원)</td>
 			                        	<td scope="col">100,000</td>
-			                        	<td scope="col">정상이자(원)</td>
-			                        	<td scope="col">100,000</td>
-			                     	</tr>
-			                     	<tr>
-			                        	<td scope="col">연체이자(원)</td>
-			                        	<td scope="col">0</td>
-			                        	<td scope="col">거래전 대출잔액(원)</td>
-			                        	<td scope="col">100,000,000</td>
-			                     	</tr>
-			                     	<tr>
-			                        	<td scope="col">실행번호</td>
-			                        	<td scope="col" colspan="3"></td>
 			                     	</tr>
 			                  	</tbody>
 			               	</table>
