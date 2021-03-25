@@ -42,6 +42,13 @@ public class FinancialProductsController {
 	}
 	
 	// 최문수
+	//적금상품(Savings)
+	@RequestMapping("/SavingsList.cc")
+	public String SavingsList(HttpServletRequest req,Model model) {
+		logger.info("url ==> /SavingsList");
+		return "financialProducts/SavingsList";
+	}
+	// 최문수
 	//정기예금(Deposit)
 	@RequestMapping("/DepositList.cc")
 	public String FDP(HttpServletRequest req,Model model) {
@@ -75,6 +82,7 @@ public class FinancialProductsController {
 		
 		return "financialProducts/SavingsRegistration";
 	}
+	
 	// 박서하
 	//대출상품 상세
 	@RequestMapping("/LoansDetail.cc")
