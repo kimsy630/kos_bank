@@ -83,6 +83,7 @@
                       <td><fmt:formatNumber value="1231231" pattern="#,###" />원</td>
                     </tr>
                 </table>
+                <img src="../teamProject/resources/testimage/계좌조회_펀드.PNG">
               </div>
             </div>
           </div>

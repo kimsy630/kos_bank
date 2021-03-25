@@ -4,12 +4,19 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import spring.mvc.teamProject.service.RegisterReleaseService;
+
 @Controller
 public class InquiryTransferController {
+	
+	@Autowired
+	RegisterReleaseService service;
+	
 	private static final Logger logger = LoggerFactory.getLogger(InquiryTransferController.class);
 	
 	//계좌조회 AccountCheck.cc
@@ -65,6 +72,7 @@ public class InquiryTransferController {
 	@RequestMapping("/AccountTransfer.cc")
 	public String AccountTransfer(HttpServletRequest req,Model model) {
 		logger.info("url ==> /AccountTransfer");
+		service.AccountNomalList(req, model);
 		return "InquiryTransfer/AccountTransfer";
 	}
 	//다계좌이체 MultiAccountTransfer.cc
@@ -73,11 +81,30 @@ public class InquiryTransferController {
 		logger.info("url ==> /MultiAccountTransfer");
 		return "InquiryTransfer/MultiAccountTransfer";
 	}
-	//다계좌이체 MultiAccountTransfer.cc
+	//적금추가납입 ISPAdd.cc
 	@RequestMapping("/ISPAdd.cc")
 	public String ISPAdd(HttpServletRequest req,Model model) {
 		logger.info("url ==> /ISPAdd");
 		return "InquiryTransfer/ISPAdd";
 	}
+	//자동이체신청 AutoTransferRequest.cc
+	@RequestMapping("/AutoTransferRequest.cc")
+	public String AutoTransferRequest(HttpServletRequest req,Model model) {
+		logger.info("url ==> /AutoTransferRequest");
+		return "InquiryTransfer/AutoTransferRequest";
+	}
+	//자동이체조회 AutoTransferList.cc
+	@RequestMapping("/AutoTransferList.cc")
+	public String AutoTransferList(HttpServletRequest req,Model model) {
+		logger.info("url ==> /AutoTransferList");
+		return "InquiryTransfer/AutoTransferList";
+	}
+	//자동이체조회 AutoTransferList.cc
+	@RequestMapping("/AutoTransferChangeRank.cc")
+	public String AutoTransferChangeRank(HttpServletRequest req,Model model) {
+		logger.info("url ==> /AutoTransferChangeRank");
+		return "InquiryTransfer/AutoTransferChangeRank";
+	}
+	
 		
 }

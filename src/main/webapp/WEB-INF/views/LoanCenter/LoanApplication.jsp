@@ -15,11 +15,7 @@
 		<!-- ======= Breadcrumbs ======= -->
       	<section class="section section-bredcrumbs">
 	        <div class="container context-dark breadcrumb-wrapper">
-	          <h1>신규대출</h1>
-	          <ul class="breadcrumbs-custom">
-	            <li><a href="#">대출센터</a></li>
-	            <li class="active">신규대출</li>
-	          </ul>
+	          <h2>신규대출</h2>
 	        </div>
       	</section><!-- Breadcrumbs end -->
 	    
@@ -29,105 +25,120 @@
 	    	<div class="container">
 				<h2>신규대출</h2><br>
 				<section class="section">
-		            <div class="card">
+					<div class="card">
 		                <div class="card-body">
-	                        <p>고객님의 정보를 입력해주시면 상담원이 빠르게 연락드리겠습니다.</p>
+	                        <p>제출 후 취소가 되지 않으니 신중하게 신청해주세요.<p>
 	                    </div>
 	                </div>
-	                
-	                <br><br><br>
-      				
-					<!-- What You Get -->
-					<div class="container text-center">
-						<form name="calcForm3" id="calcForm3" action="post" initfrmload="Y" autocomplete="off">
-							<h4><b>Q. 어떤 일을 하고 계신가요?</b></h4>
-							<div class="row row-30 row-flex">
-					        	<div class="col-md-6 col-lg-3 wow fadeInRight">
-					            	<div class="blurb-boxed-3">
-						                <div class="icon-wrap">
-						                  <div class="icon mercury-icon-card"><span class="index-counter"></span></div>
-						                </div>
-					                	<input type="radio" name="jobDcd" id="jobDcd01" onclick="do_jobDcd(this.value);" value="01" checked="checked" data-gtm-vis-first-on-screen-2252179_781="18" data-gtm-vis-total-visible-time-2252179_781="100" data-gtm-vis-has-fired-2252179_781="1"> 
-										<label for="jobDcd01" class="bg01">직장인</label>
-					              	</div>
-					            </div>
-					            <div class="col-md-6 col-lg-3 wow fadeInRight" data-wow-delay="0.1s">
-					            	<div class="blurb-boxed-3">
-						                <div class="icon-wrap">
-						                  <div class="icon mercury-icon-note"><span class="index-counter"></span></div>
-						                </div>
-					                	<input type="radio" name="jobDcd" id="jobDcd02" onclick="do_jobDcd(this.value);" value="02"> 
-										<label for="jobDcd02" class="bg02">자영업자</label> 
-					            	</div>
-					            </div>
-					            <div class="col-md-6 col-lg-3 wow fadeInRight" data-wow-delay="0.2s">
-					            	<div class="blurb-boxed-3">
-						                <div class="icon-wrap">
-						                  <div class="icon mercury-icon-partners"><span class="index-counter"></span></div>
-						                </div>
-					                	<input type="radio" name="jobDcd" id="jobDcd03" onclick="do_jobDcd(this.value);" value="04"> 
-										<label for="jobDcd03" class="bg03">주부</label> 
-					              	</div>
-					            </div>
-					            <div class="col-md-6 col-lg-3 wow fadeInRight" data-wow-delay="0.3s">
-					            	<div class="blurb-boxed-3">
-					            		<div class="icon-wrap">
-						                  <div class="icon mercury-icon-money-3"><span class="index-counter"></span></div>
-						                </div>
-					                	<input type="radio" name="jobDcd" id="jobDcd04" onclick="do_jobDcd(this.value);" value="05"> 
-										<label for="jobDcd04" class="bg04">기타</label>
-					              	</div>
-					            </div>
-					        </div>
-						</form>
-					</div>
-					<!-- What You Get end -->
-					
-					<br><br><br>
-					
-					<div class="title_wrap">
-						<h4><b>개인 정보</b></h4>
-						<div class="fR">
-							<em class="bul_nec">*<span class="blind">필수입력</span></em> <em>필수항목</em>
-						</div>
-					</div>
-					
-					<div class="table-custom-responsive">
-	                	<h4><b>대출모집 수수료율</b></h4>
-						<table class="table-custom table-custom-secondary table-custom-hovered">
-							<colgroup>
-								<col style="width: 15%;">
-								<col style="width: 85%;">
-							</colgroup>
-							<tbody>
-								<tr>
-									<th scope="row">이름 <em class="bul_nec"></em></th>
-									<td><input name="custNm" class="large filter:require:kor:eng" type="text" placeholder="이름" maxlength="50" lengthtype="length"></td>
-								</tr>
-								<tr>
-									<th scope="row">휴대폰번호 <em class="bul_nec"></em></th>
-									<td>
-										<select name="mpDscmNo" lengthtype="length">
-										    <option value="">선택</option>
-										    <option value="010">010</option>
-										    <option value="011">011</option>
-										    <option value="016">016</option>
-										    <option value="018">018</option>
-										    <option value="017">017</option>
-										    <option value="019">019</option>
-										</select>
-			 							- 
-										<input type="text" name="mpExNum" maxlength="4" lengthtype="length" minlength="3">
-										- 
-										<input type="text" name="mpSeqNo" maxlength="4" lengthtype="length" minlength="4">
-									</td>
-								</tr>
-							</tbody>
-						</table>
-					
-						<br><br><br>
-					
-		                <h4><b>개인(신용)정보 및 약관 동의</b></h4>
+					<div class="table-custom-responsive">						
+						<!-- ======= Table with outer spacing ======= -->
+						<div class="table-responsive">
+		                	<h4><b>가입 신청서</b></h4>
+		                    <table class="table table-lg">
+		                    	<colgroup>
+			                    	<col style="width: 25%;">
+			                     	<col style="width: 75%;">
+			                  	</colgroup>
+		                        <tbody>
+		                            <tr>
+		                                <td class="text-bold-500">대출기간</td>
+		                                <td>
+		                                	<select name="year" lengthtype="length">
+											    <option value="1">1</option>
+											    <option value="2">2</option>
+											    <option value="3">3</option>
+											</select>
+		                                	년
+		                                </td>
+		                            </tr>
+		                            <tr>
+		                                <td class="text-bold-500">대출금리</td>
+		                                <td><input type="text" name="" value="5" readonly>%</td>
+		                            </tr>
+		                            <tr>
+		                                <td class="text-bold-500">대출금액</td>
+		                                <td>
+		                                	<select name="amount" lengthtype="length">
+											    <option value="1">1</option>
+											    <option value="2">2</option>
+											    <option value="3">3</option>
+											</select>
+											억원
+		                                </td>
+		                            </tr>
+		                            <tr>
+		                                <td class="text-bold-500">상환방법</td>
+		                                <td>
+		                                	<select name="repay" lengthtype="length">
+											    <option value="만기일시">만기일시상환방식</option>
+											    <option value="원금균등분할">원금균등분할상환방식</option>
+											</select>
+		                                </td>
+		                            </tr>
+		                            <tr>
+		                            	<td class="text-bold-500">이자납입방법</td>
+		                                <td>
+		                                	<select name="rate" lengthtype="length">
+											    <option value="계좌이체">계좌이체</option>
+											    <option value="자동이체">자동이체</option>
+											</select>
+		                                </td>
+		                            </tr>
+		                            <tr>
+		                            	<td>자동이체 출금 계좌번호(자동이체 체크했을 시 뜨게)</td>
+		                            	<td>
+		                            		<select name="account" lengthtype="length">
+											    <option value="555-555-555555">555-555-555555</option>
+											</select>
+										</td>
+		                            </tr>
+		                            <tr>
+		                            	<td>자동이체출금일자 선택하기(자동이체 체크했을 시 뜨게)</td>
+		                            	<td>
+											<select name="date" lengthtype="length">
+											    <option value="1">1</option>
+											    <option value="2">2</option>
+											    <option value="3">3</option>
+											    <option value="4">4</option>
+											    <option value="5">5</option>
+											    <option value="6">6</option>
+											    <option value="7">7</option>
+											    <option value="8">8</option>
+											    <option value="9">9</option>
+											    <option value="10">10</option>
+											    <option value="11">11</option>
+											    <option value="12">12</option>
+											    <option value="13">13</option>
+											    <option value="14">14</option>
+											    <option value="15">15</option>
+											    <option value="16">16</option>
+											    <option value="17">17</option>
+											    <option value="18">18</option>
+											    <option value="19">19</option>
+											    <option value="20">20</option>
+											    <option value="21">21</option>
+											    <option value="22">22</option>
+											    <option value="23">23</option>
+											    <option value="24">24</option>
+											    <option value="25">25</option>
+											    <option value="26">26</option>
+											    <option value="27">27</option>
+											    <option value="28">28</option>
+											    <option value="29">29</option>
+											    <option value="30">30</option>
+											    <option value="31">31</option>
+											</select>
+											일
+		                            	</td>
+		                            </tr>
+		                        </tbody>
+		                    </table>
+		                </div>
+		                <!-- Table with outer spacing end -->
+						
+						<br><br>
+						
+		                <h4><b>개인(신용)정보 및 약관 동의(뺄지말지 고민하기)</b></h4>
 						<table class="table-custom table-custom-secondary table-custom-hovered">
 							<tr>
 								<td>
@@ -183,7 +194,7 @@
 						<br>
 						
 						<div class="row justify-content-lg-center">
-							<a class="button button-round button-primary" href="#" data-caption-animate="fadeInUp" data-caption-delay="450">다음</a>
+							<a class="button button-round button-primary" href="#" data-caption-animate="fadeInUp" data-caption-delay="450">신청</a>
 						</div>
 						
 						<br><br><br>

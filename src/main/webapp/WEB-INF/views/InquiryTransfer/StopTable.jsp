@@ -85,6 +85,7 @@
                       <td>분실로 인한 요청</td>
                     </tr>
                 </table>
+                <img src="../teamProject/resources/testimage/계좌조회_정지.png">
               </div>
             </div>
           </div>

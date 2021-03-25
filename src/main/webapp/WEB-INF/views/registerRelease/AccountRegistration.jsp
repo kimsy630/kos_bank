@@ -12,46 +12,14 @@
     <link rel="icon" href="${csspath}images/favicon.ico" type="image/x-icon">
     <!-- Stylesheets-->
     <link rel="stylesheet" type="pathtext/css" href="//fonts.googleapis.com/css?family=Roboto:100,300,300i,400,700,900">
-    <link rel="stylesheet" href="${csspath}css/bootstrap.css">
-    <link rel="stylesheet" href="${csspath}css/fonts.css">
-    <link rel="stylesheet" href="${csspath}css/style.css" id="main-styles-link">
+    <link rel="stylesheet" href="${path}css/bootstrap.css">
+    <link rel="stylesheet" href="${path}css/fonts.css">
+    <link rel="stylesheet" href="${path}css/style.css" id="main-styles-link">
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
     <script src="http://code.jquery.com/jquery.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
     <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
   </head>
-  <style>
-  	#accountInfo {
-  		width: 1170px;
-  		height: 130px;
-  		background-color: gray;
-		display: inline-block; 
-		list-style: circle;
-		padding:30px;
-	
-	}
-	#accountInfo table td{
-		width:360px;
-		height:30px;
-		font-size:18px;
-	}
-	#acc_table{
-		width:1170px;
-	}
-	#acc_table th{
-		width:300px;
-		text-align: center;
-	}
-	#acc_table td{
-		width:285px;
-		text-align: center;
-	}
-	
-	#tabs-1 li{
-		width:140px;
-	}
-	
-  </style>
     <body>
     <div class="preloader">
       <div class="preloader-body">
@@ -67,11 +35,6 @@
         <div class="container context-dark breadcrumb-wrapper">
           <h2>계좌개설</h2>
           <br>
-          <ul class="breadcrumbs-custom">
-            <li><a href="index.html">개인</a></li>
-            <li><a href="#">등록</a></li>
-            <li class="active">계좌개설</li>
-          </ul>
         </div>
       </section>
       <section class="section section-lg bg-default">
@@ -99,7 +62,8 @@
             <!--// 모달창 -->
            
             <!-- 본문 들어가는 부분 -->
-            <form class="form-horizontal" role="form" method="post" action="javascript:alert( 'success!' );">
+            <form class="form-horizontal" role="form" method="post" action="AddAccountAction.cc">
+            <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
                 <div class="form-group">
                     <label for="provision" class="col-lg-2 control-label">계좌개설약관</label>
                     <div class="col-lg-10" id="provision">
@@ -145,11 +109,12 @@ KosBank은 고객이 통신 아래에서 정의됨 을 발송하고 기타 행�
 금을 KosBank에 이체하여야 합니다.
 
                      </textarea>
-	                 	<div class="radio" >
-	                    	 <input type="radio" name="agree" value="yes">
-		               			<label for="agree">동의합니다.</label>
-		               		<input type="radio" name="degree" value="no">
-		               			<label for="degree">동의하지않습니다.</label>
+	                 	<div>
+	                 	
+		                     <input type="radio" name="agree1"  value="yes" id="agree1">
+		                     <label for="agree1"> 동의합니다.</label>
+		               		<input type="radio" name="agree1" value="no" id="degree1"><!--  -->
+		               		<label  for="degree1"> 동의하지않습니다.</label>
             			</div>
             		</div>
                 </div>
@@ -215,49 +180,36 @@ PC웹, 모바일 웹/앱 이용 과정에서 단말기정보(OS, 화면사이즈
 
 서비스 간 제휴, 연계 등으로 제3자로부터 개인정보를 제공받고 있습니다.
               </textarea>
-                        <div class="radio" >
-		                     <input type="checkbox" name="agree" value="yes">
-		               			<label for="agree">동의합니다.</label>
-		               		<input type="checkbox" name="degree" value="no">
-		               			<label for="degree">동의하지않습니다.</label>
+                        <div>
+		                     <input type="radio" name="agree2"  value="yes" id="agree2">
+		                     <label for="agree2"> 동의합니다.</label>
+		               		<input type="radio" name="agree2" value="no" id="degree2"><!--  -->
+		               		<label  for="degree2"> 동의하지않습니다.</label>
             			</div>
             		</div>
                 </div>
                 <div class="form-group" id="divId">
                     <label for="inputId" class="col-lg-2 control-label">아이디</label>
                     <div class="col-lg-10">
-                        <input type="text" class="form-control onlyAlphabetAndNumber" id="id" data-rule-required="true" placeholder="30자이내의 알파벳, 언더스코어(_), 숫자만 입력 가능합니다." maxlength="30">
+                        <input type="text" class="form-control onlyAlphabetAndNumber" id="id" name="id" data-rule-required="true" placeholder="30자이내의 알파벳, 언더스코어(_), 숫자만 입력 가능합니다." maxlength="30">
                     </div>
                 </div>
                 <div class="form-group" id="divPassword">
-                    <label for="inputPassword" class="col-lg-2 control-label">패스워드</label>
+                    <label for="inputPassword" class="col-lg-2 control-label">계좌비밀번호</label>
                     <div class="col-lg-10">
-                        <input type="password" class="form-control" id="pw" name="excludeHangul" data-rule-required="true" placeholder="패스워드" maxlength="30">
+                        <input type="password" class="form-control" id="accountPW" name="accountPW" data-rule-required="true" placeholder="4자리 숫자를 입력해주세요" maxlength="4">
                     </div>
                 </div>
                 <div class="form-group" id="divPasswordCheck">
-                    <label for="inputPasswordCheck" class="col-lg-2 control-label">패스워드 확인</label>
+                    <label for="inputPasswordCheck" class="col-lg-2 control-label">비밀번호 확인</label>
                     <div class="col-lg-10">
-                        <input type="password" class="form-control" id="passwordCheck" data-rule-required="true" placeholder="패스워드 확인" maxlength="30">
+                        <input type="password" class="form-control" id="passwordCheck" data-rule-required="true" placeholder="계좌비밀번호를 확인해주세요" maxlength="4">
                     </div>
                 </div>
                 <div class="form-group" id="divName">
                     <label for="inputName" class="col-lg-2 control-label">이름</label>
                     <div class="col-lg-10">
                         <input type="text" class="form-control onlyHangul" id="name" data-rule-required="true" placeholder="한글만 입력 가능합니다." maxlength="15">
-                    </div>
-                </div>
-                
-                <div class="form-group" id="divEmail">
-                    <label for="inputEmail" class="col-lg-2 control-label">이메일</label>
-                    <div class="col-lg-10">
-                        <input type="email" class="form-control" id="email" data-rule-required="true" placeholder="이메일" maxlength="40">
-                    </div>
-                </div>
-                <div class="form-group" id="divPhoneNumber">
-                    <label for="inputPhoneNumber" class="col-lg-2 control-label">휴대폰 번호</label>
-                    <div class="col-lg-10">
-                        <input type="tel" class="form-control onlyNumber" id="phone" data-rule-required="true" placeholder="-를 제외하고 숫자만 입력하세요." maxlength="11">
                     </div>
                 </div>
                 <div class="form-group">
@@ -289,10 +241,9 @@ PC웹, 모바일 웹/앱 이용 과정에서 단말기정보(OS, 화면사이즈
                 </div>
             </form>
         
-        
         <script>
         
-            $(function(){
+          /*  $(function(){
                 //모달을 전역변수로 선언
                 var modalContents = $(".modal-contents");
                 var modal = $("#defaultModal");
@@ -372,33 +323,6 @@ PC웹, 모바일 웹/앱 이용 과정에서 단말기정보(OS, 화면사이즈
                         divName.addClass("has-success");
                     }
                 });
-                
-                $('#email').keyup(function(event){
-                    
-                    var divEmail = $('#divEmail');
-                    
-                    if($.trim($('#email').val())==""){
-                        divEmail.removeClass("has-success");
-                        divEmail.addClass("has-error");
-                    }else{
-                        divEmail.removeClass("has-error");
-                        divEmail.addClass("has-success");
-                    }
-                });
-                
-                $('#phoneNumber').keyup(function(event){
-                    
-                    var divPhoneNumber = $('#divPhoneNumber');
-                    
-                    if($.trim($('#phoneNumber').val())==""){
-                        divPhoneNumber.removeClass("has-success");
-                        divPhoneNumber.addClass("has-error");
-                    }else{
-                        divPhoneNumber.removeClass("has-error");
-                        divPhoneNumber.addClass("has-success");
-                    }
-                });
-                
                 
                 //------- validation 검사
                 $( "form" ).submit(function( event ) {
@@ -494,7 +418,7 @@ PC웹, 모바일 웹/앱 이용 과정에서 단말기정보(OS, 화면사이즈
                         return false;
                     }else{
                         divPasswordCheck.removeClass("has-error");
-                        divPasswordCheck.addClass("has-success");
+                        denied divPasswordCheck.addClass("has-success");
                     }
                     
                     //이름
@@ -511,37 +435,9 @@ PC웹, 모바일 웹/앱 이용 과정에서 단말기정보(OS, 화면사이즈
                         divName.addClass("has-success");
                     }
                     
-                    
-                    //이메일
-                    if($('#email').val()==""){
-                        modalContents.text("이메일을 입력하여 주시기 바랍니다.");
-                        modal.modal('show');
-                        
-                        divEmail.removeClass("has-success");
-                        divEmail.addClass("has-error");
-                        $('#email').focus();
-                        return false;
-                    }else{
-                        divEmail.removeClass("has-error");
-                        divEmail.addClass("has-success");
-                    }
-                    
-                    //휴대폰 번호
-                    if($('#phoneNumber').val()==""){
-                        modalContents.text("휴대폰 번호를 입력하여 주시기 바랍니다.");
-                        modal.modal('show');
-                        
-                        divPhoneNumber.removeClass("has-success");
-                        divPhoneNumber.addClass("has-error");
-                        $('#phoneNumber').focus();
-                        return false;
-                    }else{
-                        divPhoneNumber.removeClass("has-error");
-                        divPhoneNumber.addClass("has-success");
-                    }
                 });
                 
-            });
+            });*/
             
         </script>
         </div>

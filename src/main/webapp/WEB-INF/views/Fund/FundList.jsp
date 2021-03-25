@@ -17,7 +17,8 @@
     	<%@ include file="../header.jsp" %>
     	<section class="section section-bredcrumbs">
 	        <div class="container context-dark breadcrumb-wrapper">
-	          <h1>펀드 리스트</h1>
+	          <h2>펀드 리스트</h2>
+	          <br>
 	        </div>
 	     </section>
 			<main id="Chatbot" class="Chatbot">
@@ -213,6 +214,8 @@
 				</form>
 				</div>
 				</main>
+                <img src="../teamProject/resources/testimage/펀드_펀드조회.JPG">
+				
 			    <br> <br> <br> <br> <br> <br> <br>
     	<%@ include file="../footer.jsp" %>
     </div>

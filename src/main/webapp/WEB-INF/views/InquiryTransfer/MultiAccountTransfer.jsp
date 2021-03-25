@@ -38,11 +38,6 @@
      <div class="container context-dark breadcrumb-wrapper">
      <h2>다계좌이체</h2>
           <br>
-          <ul class="breadcrumbs-custom">
-            <li><a href="index.html">개인</a></li>
-            <li><a href="#">이체</a></li>
-            <li class="active">다계좌이체</li>
-          </ul>
         </div>
       </section>
       <section class="section section-lg bg-default">
@@ -156,7 +151,13 @@
           </div>
         </div>   
       </section>
-
+      
+      <div class="form-group" style="margin-left:700px">
+             <div class="col-lg-offset-2 col-lg-10">
+                <button type="submit" class="btn btn-primary" >이체실행</button>
+             </div>
+        </div>
+<br><br><br>
 <%@ include file = "../footer.jsp" %>
 </body>
 </html>

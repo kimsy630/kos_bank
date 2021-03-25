@@ -34,7 +34,7 @@
       <%@include file="../header.jsp" %>
       <section class="section section-bredcrumbs">
         <div class="container context-dark breadcrumb-wrapper">
-          <h1>입출금자유</h1>
+          <h2>입출금자유</h2>
         </div>
      </section>
       <!-- 상품개요  -->
@@ -61,7 +61,7 @@
                 <!-- Bootstrap card-->
                 <article id="article" class="card card-custom card-corporate">
                  <div id="goods" class="goods">
-                 <h4 data-prd-cd="1130313506" data-sys-ds-cd="01"><a href="#none">WELCOME 직장인사랑 보통예금</a></h4>
+                 <h4 data-prd-cd="1130313506" data-sys-ds-cd="01"><a href="CDPdetail.cc">KOS 직장인사랑 보통예금</a></h4>
                  <p class="desc">조건충족 시 우대금리를 드리는 직장인 전용 보통예금</p>
                  </div>
                  <div id="interests" class="interests">
@@ -72,7 +72,7 @@
                 </article>
                 <article id="article" class="card card-custom card-corporate">
                  <div id="goods" class="goods">
-                 <h4 data-prd-cd="1130313506" data-sys-ds-cd="01"><a href="#none">WELCOME 비대면 보통예금</a></h4>
+                 <h4 data-prd-cd="1130313506" data-sys-ds-cd="01"><a href="CDPdetail.cc">KOS 비대면 보통예금</a></h4>
                  <p class="desc">영업점 방문없이 개설 가능한 모바일뱅킹 전용 보통예금</p>
                  </div>
                  <div id="interests" class="interests">
@@ -83,7 +83,7 @@
                 </article>
                 <article id="article" class="card card-custom card-corporate">
                  <div id="goods" class="goods">
-                 <h4 data-prd-cd="1130313506" data-sys-ds-cd="01"><a href="#none">WELCOME PLUS 보통예금</a></h4>
+                 <h4 data-prd-cd="1130313506" data-sys-ds-cd="01"><a href="CDPdetail.cc">KOS PLUS 보통예금</a></h4>
                  <p class="desc">조건충족 시 우대금리를 드리는 수시입출금 통장</p>
                  </div>
                  <div id="interests" class="interests">
@@ -94,7 +94,7 @@
                 </article>
                 <article id="article" class="card card-custom card-corporate">
                  <div id="goods" class="goods">
-                 <h4 data-prd-cd="1130313506" data-sys-ds-cd="01"><a href="#none">WELCOME 사장님사랑 보통예금</a></h4>
+                 <h4 data-prd-cd="1130313506" data-sys-ds-cd="01"><a href="CDPdetail.cc">KOS 사장님사랑 보통예금</a></h4>
                  <p class="desc">조건 충족 시 우대금리를 드리는 사업자 전용 보통예금</p>
                  </div>
                  <div id="interests" class="interests">
@@ -105,7 +105,7 @@
                 </article>
                 <article id="article" class="card card-custom card-corporate">
                  <div id="goods" class="goods">
-                 <h4 data-prd-cd="1130313506" data-sys-ds-cd="01"><a href="#none">보통예금</a></h4>
+                 <h4 data-prd-cd="1130313506" data-sys-ds-cd="01"><a href="CDPdetail.cc">보통예금</a></h4>
                  <p class="desc">입출금이 자유로운 보통예금</p>
                  </div>
                  <div id="interests" class="interests">

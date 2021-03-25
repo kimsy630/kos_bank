@@ -24,6 +24,9 @@
 	</beans:bean>
 	
 	<context:component-scan base-package="spring.mvc.teamProject" />
+	<!-- 박서하 수정 시작 -->
+	<context:component-scan base-package="spring.mvc.loan" />
+	<!-- 박서하 수정 종료 -->
 	
 	<!-- 시큐리티 추가 2. @Secured 어노테이션 활성화, 사용권한 제한 -->
 	<!-- Namespaces 탭에서 security 추가, 오른쪽 5.2 선택 -->

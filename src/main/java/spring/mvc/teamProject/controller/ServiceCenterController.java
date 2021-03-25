@@ -32,6 +32,7 @@ public class ServiceCenterController {
 	@RequestMapping("/Notice.cc")
 	public String Notice(HttpServletRequest req,Model model) {
 		logger.info("url ==> /Notice");
+		model.addAttribute("key111", "222");
 		return "ServiceCenter/Notice";
 	}
 	
@@ -40,6 +41,12 @@ public class ServiceCenterController {
 	public String AdminChatbot(HttpServletRequest req,Model model) {
 		logger.info("url ==> /AdminChatbot");
 		return "ServiceCenter/AdminChatbot";
+	}
+	// 챗봇 - 항목추가 - 챗봇에 대답할 항목 추가
+	@RequestMapping("/ChatbotAction.cc")
+	public String ChatbotAction(HttpServletRequest req,Model model) {
+		logger.info("url ==> /ChatbotAction");
+		return "ServiceCenter/ChatbotAction";
 	}
 	// 이메일 상담 리스트 - 답변으로 연동 - 이메일 상담 답변　
 	@RequestMapping("/SendEmailCounseling.cc")

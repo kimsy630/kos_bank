@@ -17,7 +17,7 @@
     	<%@ include file="../header.jsp" %>
     	<section class="section section-bredcrumbs">
 	        <div class="container context-dark breadcrumb-wrapper">
-	          <h1>공지사항(리액트)</h1>
+	          <h2>(관리자)이메일 상담 리스트</h2><br>
 	        </div>
 	     </section>
 			<main id="main" class="main">
@@ -25,11 +25,12 @@
 			    <br> <br> <br> <br> <br> <br> <br>
 				<form class="form-signin" action="loginAction.cc" method="post" role="form" >
 					<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
-					
+					<img src="resources/images/emailcounsellist.jpg" />
 			    	
 				</form>
 				</div>
 				</main>
+                <img src="../teamProject/resources/testimage/이메일상담리스트.jpg">
 			    <br> <br> <br> <br> <br> <br> <br>
     	<%@ include file="../footer.jsp" %>
     </div>

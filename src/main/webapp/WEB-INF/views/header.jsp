@@ -64,55 +64,55 @@
                             <ul class="rd-megamenu-list">
                               <li class="rd-megamenu-list-item"><a class="rd-megamenu-list-link" href="AccountTransfer.cc">계좌이체</a></li>
                               <li class="rd-megamenu-list-item"><a class="rd-megamenu-list-link" href="MultiAccountTransfer.cc">다 계좌이체</a></li>
-                              <li class="rd-megamenu-list-item"><a class="rd-megamenu-list-link" href="ISPAdd.cc">적금추가납입.</a></li>
+                              <li class="rd-megamenu-list-item"><a class="rd-megamenu-list-link" href="ISPAdd.cc">적금추가납입</a></li>
                             </ul>
                           </li>
                           <li class="rd-megamenu-item">
                             <h6 class="rd-megamenu-title">자동이체</h6>
                             <ul class="rd-megamenu-list">
-                              <li class="rd-megamenu-list-item"><a class="rd-megamenu-list-link" href="#">조회/해지</a></li>
-                              <li class="rd-megamenu-list-item"><a class="rd-megamenu-list-link" href="#">자동이체 신청</a></li>
-                              <li class="rd-megamenu-list-item"><a class="rd-megamenu-list-link" href="#">자동이체 우선순위변경</a></li>
+                              <li class="rd-megamenu-list-item"><a class="rd-megamenu-list-link" href="AutoTransferList.cc">조회/해지</a></li>
+                              <li class="rd-megamenu-list-item"><a class="rd-megamenu-list-link" href="AutoTransferRequest.cc">자동이체 신청</a></li>
+                              <li class="rd-megamenu-list-item"><a class="rd-megamenu-list-link" href="AutoTransferChangeRank.cc">자동이체 우선순위변경</a></li>
                               <li class="rd-megamenu-list-item"><a class="rd-megamenu-list-link" href="#">자동이체 통합관리</a></li>
                             </ul>
                           </li>
                         </ul>
                       </li>
-                      
+
+                      <!-- 박서하 수정 -->
                       <li class="rd-nav-item"><a class="rd-nav-link" href="#">대출센터</a>
-                       <ul class="rd-menu rd-navbar-megamenu">
-                          <li class="rd-megamenu-item">
-                            <h6 class="rd-megamenu-title">대출관리</h6>
-                            <ul class="rd-megamenu-list">
-<<<<<<< HEAD
-                              <li class="rd-megamenu-list-item"><a class="rd-megamenu-list-link" href="#">대출조회</a></li>
-                              <li class="rd-megamenu-list-item"><a class="rd-megamenu-list-link" href="#">대출이자/원금상환/약정해지</a></li>
-                              <li class="rd-megamenu-list-item"><a class="rd-megamenu-list-link" href="#">예적금담보대출</a></li>
-                              <li class="rd-megamenu-list-item"><a class="rd-megamenu-list-link" href="#">대출자동이체</a></li>
-=======
-                              <li class="rd-megamenu-list-item"><a class="rd-megamenu-list-link" href="LoanAccountCheck.cc">대출조회.</a></li>
-                              <li class="rd-megamenu-list-item"><a class="rd-megamenu-list-link" href="#">대출이자/원금상환/약정해지.</a></li>
-                              <li class="rd-megamenu-list-item"><a class="rd-megamenu-list-link" href="#">예적금담보대출.</a></li>
-                              <li class="rd-megamenu-list-item"><a class="rd-megamenu-list-link" href="#">대출자동이체.</a></li>
->>>>>>> origin/dev_psh
-                            </ul>
-                          </li>
-                          </ul>
+						<ul class="rd-menu rd-navbar-megamenu">
+                        	<li class="rd-megamenu-item">
+                            	<h6 class="rd-megamenu-title">대출관리</h6>
+                            	<ul class="rd-megamenu-list">
+	                            	<li class="rd-megamenu-list-item"><a class="rd-megamenu-list-link" href="LoanAccountCheck.cc">대출계좌 조회</a></li>
+	                              	<li class="rd-megamenu-list-item"><a class="rd-megamenu-list-link" href="LoanCloseCheck.cc">대출해지현황 조회</a></li>
+	                              	<li class="rd-megamenu-list-item"><a class="rd-megamenu-list-link" href="#">신규대출</a></li>
+	                            </ul>
+                          	</li>
+                          	<li class="rd-megamenu-item">
+                            	<h6 class="rd-megamenu-title">대출납부</h6>
+                            	<ul class="rd-megamenu-list">
+	                            	<li class="rd-megamenu-list-item"><a class="rd-megamenu-list-link" href="LoanRateCheck.cc">대출이자 조회/납부</a></li>
+	                              	<li class="rd-megamenu-list-item"><a class="rd-megamenu-list-link" href="LoanPrincipalCheck.cc">대출원금 조회/상환</a></li>
+	                            </ul>
+                          	</li>
+                      	</ul>
                       </li>
+                      <!-- 박서하 수정 종료 -->
                       <li class="rd-nav-item"><a class="rd-nav-link" href="#">금융상품</a>
+
 	                       <ul class="rd-menu rd-navbar-megamenu">
 	                          <li class="rd-megamenu-item">
 	                            <h6 class="rd-megamenu-title">예금상품</h6>
 	                            <ul class="rd-megamenu-list">
-	                              <li class="rd-megamenu-list-item"><a class="rd-megamenu-list-link" href="CDP.cc">입출금자유</a></li>
-	                              <li class="rd-megamenu-list-item"><a class="rd-megamenu-list-link" href="ISP.cc">적금상품</a></li>
-	                              <li class="rd-megamenu-list-item"><a class="rd-megamenu-list-link" href="FDP.cc">정기예금</a></li>
+	                              <li class="rd-megamenu-list-item"><a class="rd-megamenu-list-link" href="SavingsList.cc">적금상품</a></li>
+	                              <li class="rd-megamenu-list-item"><a class="rd-megamenu-list-link" href="DepositList.cc">정기예금</a></li>
 	                            </ul>
 	                          </li>
 	                          <li class="rd-megamenu-item">
 	                            <h6 class="rd-megamenu-title">대출상품</h6>
 	                            <ul class="rd-megamenu-list">
-	                              <li class="rd-megamenu-list-item"><a class="rd-megamenu-list-link" href="personalLoan.cc">개인대출</a></li>
 	                              <li class="rd-megamenu-list-item"><a class="rd-megamenu-list-link" href="LoansProducts.cc">대출상품</a></li>
 	                            </ul>
 	                          </li>
@@ -122,9 +122,9 @@
                       <li class="rd-nav-item"><a class="rd-nav-link" href="#">환전</a>
                         <!-- RD Navbar Dropdown-->
                         <ul class="rd-menu rd-navbar-dropdown">
-                          <li class="rd-dropdown-item"><a class="rd-dropdown-link" href="#">환전서비스</a></li>
-                          <li class="rd-dropdown-item"><a class="rd-dropdown-link" href="#">환율계산기</a></li>
-                          <li class="rd-dropdown-item"><a class="rd-dropdown-link" href="#">환율정보</a></li>
+                          <li class="rd-dropdown-item"><a class="rd-dropdown-link" href="exchange.cc">환전서비스</a></li>
+                          <li class="rd-dropdown-item"><a class="rd-dropdown-link" href="exchangeCalculator.cc">환율계산기</a></li>
+                          <li class="rd-dropdown-item"><a class="rd-dropdown-link" href="exchangeList.cc">환율정보</a></li>
                         </ul>
                       </li>
                       <li class="rd-nav-item"><a class="rd-nav-link" href="#">펀딩</a>

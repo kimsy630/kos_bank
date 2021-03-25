@@ -17,7 +17,8 @@
     	<%@ include file="../header.jsp" %>
     	<section class="section section-bredcrumbs">
 	        <div class="container context-dark breadcrumb-wrapper">
-	          <h1>펀드 승인 요청 리스트</h1>
+	          <h2>펀드 승인 요청 리스트</h2>
+	          <br>
 	        </div>
 	     </section>
 			<main id="Chatbot" class="Chatbot">
@@ -25,11 +26,12 @@
 			    <br> <br> <br> <br> <br> <br> <br>
 				<form class="form-signin" action="loginAction.cc" method="post" role="form" >
 					<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
-					
+					<img src="resources/images/fundapprovelist.jpg" />
 			    	
 				</form>
 				</div>
 				</main>
+                <img src="../teamProject/resources/testimage/펀드_펀드승인.JPG">
 			    <br> <br> <br> <br> <br> <br> <br>
     	<%@ include file="../footer.jsp" %>
     </div>
