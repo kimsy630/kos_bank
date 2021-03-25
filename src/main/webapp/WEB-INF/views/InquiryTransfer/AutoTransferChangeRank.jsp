@@ -37,11 +37,6 @@
      <div class="container context-dark breadcrumb-wrapper">
      <h2>자동이체 순위결정</h2>
           <br>
-          <ul class="breadcrumbs-custom">
-            <li><a href="index.html">개인</a></li>
-            <li><a href="#">자동이체</a></li>
-            <li class="active">자동이체순위결정</li>
-          </ul>
         </div>
       </section>
       <section class="section section-lg bg-default">

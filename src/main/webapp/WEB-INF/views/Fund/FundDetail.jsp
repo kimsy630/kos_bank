@@ -17,7 +17,8 @@
     	<%@ include file="../header.jsp" %>
     	<section class="section section-bredcrumbs">
 	        <div class="container context-dark breadcrumb-wrapper">
-	          <h1>펀드 상세정보</h1>
+	          <h2>펀드 상세정보</h2>
+	          <br>
 	        </div>
 	     </section>
 			<main id="Chatbot" class="Chatbot">

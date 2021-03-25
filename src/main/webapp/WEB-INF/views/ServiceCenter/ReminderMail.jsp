@@ -17,7 +17,7 @@
     	<%@ include file="../header.jsp" %>
     	<section class="section section-bredcrumbs">
 	        <div class="container context-dark breadcrumb-wrapper">
-	          <h1>채무 불이행자 목록</h1>
+	          <h2>채무 불이행자 목록</h2><br>
 	        </div>
 	     </section>
 			<main id="main" class="main">

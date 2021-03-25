@@ -36,13 +36,8 @@
      	<%@include file="../header.jsp" %>
  			<section class="section section-bredcrumbs">
      <div class="container context-dark breadcrumb-wrapper">
-     <h3>적금추가납입</h3>
+     <h2>적금추가납입</h2>
           <br>
-          <ul class="breadcrumbs-custom">
-            <li><a href="index.html">개인</a></li>
-            <li><a href="#">이체</a></li>
-            <li class="active">적금추가납입</li>
-          </ul>
         </div>
       </section>
       <section class="section section-lg bg-default">

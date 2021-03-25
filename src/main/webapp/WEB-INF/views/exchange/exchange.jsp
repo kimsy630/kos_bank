@@ -19,7 +19,7 @@
    	<%@ include file ="../header.jsp" %>
    	<section class="section section-bredcrumbs">
         <div class="container context-dark breadcrumb-wrapper">
-          <h1>환전서비스</h1>
+          <h3>환전서비스</h3>
         </div>
     </section>
     <br>

@@ -97,11 +97,24 @@
 	                              	<li class="rd-megamenu-list-item"><a class="rd-megamenu-list-link" href="LoanPrincipalCheck.cc">대출원금 조회/상환</a></li>
 	                            </ul>
                           	</li>
+<<<<<<< HEAD
                       	</ul>
                       </li>
                       <!-- 박서하 수정 종료 -->
 <<<<<<< HEAD
                       <li class="rd-nav-item"><a class="rd-nav-link" href="#">금융상품.</a>
+=======
+                          	<li class="rd-megamenu-item">
+                            	<h6 class="rd-megamenu-title">자동이체.</h6>
+                            	<ul class="rd-megamenu-list">
+	                              	<li class="rd-megamenu-list-item"><a class="rd-megamenu-list-link" href="#">대출자동이체</a></li>
+	                            </ul>
+                          	</li>
+                      	</ul>
+                      </li>
+                      <!-- 박서하 수정 종료 -->
+                      <li class="rd-nav-item"><a class="rd-nav-link" href="#">금융상품</a>
+>>>>>>> dev_ksl3
 
 =======
                       <li class="rd-nav-item"><a class="rd-nav-link" href="#">금융상품</a>

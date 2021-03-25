@@ -11,22 +11,11 @@
 <%@ include file = "../header.jsp" %>
 
    <main id="main">
-   		
-   		
-   		
+   
       <!-- ======= Breadcrumbs ======= -->
          <section class="section section-bredcrumbs">
            <div class="container context-dark breadcrumb-wrapper">
-<<<<<<< HEAD:src/main/webapp/WEB-INF/views/financialProducts/SavingsDetail.jsp
-             <h1>적금상품</h1>
-             <ul class="breadcrumbs-custom">
-               <li><a href="#">금융상품</a></li>
-               <li><a href="ISP.cc">적금상품</a></li>
-               <li class="active">적금상품상세</li>
-             </ul>
-=======
              <h2>입출금자유</h2>
->>>>>>> dev_ksl3:src/main/webapp/WEB-INF/views/financialProducts/ISPdetail.jsp
            </div>
          </section><!-- Breadcrumbs end -->
       
@@ -36,8 +25,8 @@
           <div class="container">
             <div class="card-body">
                   <p>
-                        <h2><b>KOS든든적금</b></h2>
-                        <h5>신용평점이 낮아도 우대금리를 제공해드리는 KOS만의 금융혜택!</h5>
+                        <h2><b>KOS 직장인사랑 보통예금</b></h2>
+                        <h5>조건충족 시 우대금리를 드리는 직장인 전용 보통예금</h5>
                   </p>
                   <!-- ======= Button trigger for basic modal ======= -->
                   <button type="button" class="btn btn-outline-primary block" data-bs-toggle="modal"
@@ -50,10 +39,7 @@
                   </button>
                   <!-- Button trigger for basic modal end -->
                </div>
-                <div><br>
-	           <h4>예금설명</h4>
-	           <h4>유의사항</h4>
-	           </div>   
+                  
             <br><hr><br><br>
             
             <!-- ======= Table with outer spacing ======= -->
@@ -62,23 +48,28 @@
                     <table class="table table-lg">
                         <thead>
                             <tr>
-                                <td class="text-bold-500">적금종류</td>
-                                <td>자유적립/정액적립식</td>
+                                <td class="text-bold-500">예금종류</td>
+                                <td>저축예금</td>
                             </tr>
                         </thead>
                         <tbody>
                             <tr>
-                                <td class="text-bold-500">가입기간</td>
-                                <td>개월 ~ 개월</td>
+                                <td class="text-bold-500">가입대상</td>
+                                <td>만 19세 이상 실명의 개인</td>
 
                             </tr>
                             <tr>
-                                <td class="text-bold-500">적금금액</td>
-                                <td>~원</td>
+                                <td class="text-bold-500">가입기간</td>
+                                <td>제한없음</td>
+
+                            </tr>
+                            <tr>
+                                <td class="text-bold-500">납입금액</td>
+                                <td>제한없음</td>
                             </tr>
                             <tr>
                                 <td class="text-bold-500">이자지급방법</td>
-                                <td>만기일시지급식</td>
+                                <td>매월 셋째주(토요일 기준) 토요일의 직전 영업일에 결산 후 익일에 지급</td>
                             </tr>
                         </tbody>
                     </table>
@@ -94,16 +85,12 @@
                   </colgroup>
                   <tbody>
                      <tr>
-                        <td style="background-color:#d9d9d9; text-align:center;">기간</td>
-                        <td style="text-align:center; background-color:#d9d9d9">금리</td>
+                        <td style="background-color:#d9d9d9"></td>
+                        <td style="text-align:center; background-color:#d9d9d9">구분</td>
                      </tr>
                      <tr>
-                        <td style="text-align:center">개월~개월 미만</td>
-                        <td style="text-align:center">%</td>
-                     </tr>
-                     <tr>
-                        <td style="text-align:center">개월</td>
-                        <td style="text-align:center">%</td>
+                        <td style="text-align:center">기본금리</td>
+                        <td style="text-align:center">연 0.5% (변동금리)</td>
                      </tr>
                   </tbody>
                </table>
@@ -120,11 +107,11 @@
                   <tbody>
                      <tr>
                         <td style="text-align:center; background-color:#d9d9d9">중도해지이율</td>
-                        <td style="text-align:center">기간별%</td>
+                        <td style="text-align:center">해당없음</td>
                      </tr>
                      <tr>
                         <td style="text-align:center; background-color:#d9d9d9">만기 후 이율</td>
-                        <td style="text-align:center">기간별%</td>
+                        <td style="text-align:center">해당없음</td>
                      </tr>
                   </tbody>
                </table>
@@ -145,7 +132,7 @@
                         <input type="hidden" id="fileName" name="fileName" value="여신거래기본약관(2020.12.03).pdf">
                      </li>                  
                      <li>
-                        <span class="fl">적립식예금약관</span>
+                        <span class="fl">예금상품설명서(고객용)</span>
                         <button type="button" class="btn_i_bg fR" data-download="btnDownload" title="대출상품설명서(고객용) 첨부파일 다운로드"><span class="excel"></span>다운로드</button>
                         <input type="hidden" id="fileName" name="fileName" value="대출상품설명서(고객용).pdf">
                      </li>
@@ -155,7 +142,6 @@
          </div>
       </section>
    </main>
-                <img src="../teamProject/resources/testimage/고객-적금상품상세정보.png">
    
    <br><br>
 
