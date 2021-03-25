@@ -35,10 +35,18 @@ public class RegisterReleaseDAOImpl implements RegisterReleaseDAO{
 		
 		return accountList;
 	}
-
+	
+	@Override
+	public List<AccountVO> selectNomalById(String id) {
+		List<AccountVO> accountList = sqlSession.selectList("spring.mvc.teamProject.persistence.RegisterReleaseDAO.selectNomalById", id);
+		return accountList;
+	}
+	
 	@Override
 	public int AccountPwdCheck(String id) {
 		return sqlSession.selectOne("spring.mvc.teamProject.persistence.RegisterReleaseDAO.AccountPwdCheck", id);
 	}
+
+	
 	
 }

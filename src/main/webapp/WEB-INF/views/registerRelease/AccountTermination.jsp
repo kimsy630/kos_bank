@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ include file="../setting.jsp" %>
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.9.0/jquery.js"></script>
 <!DOCTYPE html>
 <html>
 <head>
@@ -103,29 +104,40 @@
 		    </div>
 			</div>
 			<div class="row row-offset-1" align="center">
-			<c:forEach items="${list }" var="item">
             <div class="col-lg-10 col-xxl-9">
               <div class="table-custom-responsive">
                 <table class="table-custom table-custom-secondary table-custom-hovered" id="acc_table">
-                  <thead>
                     <tr>
-                      <th>조회 계좌번호</th>
-                      <td>${item.account}</td>
+                      <td>조회 계좌번호</td>
+                      <td>
+                      <select id="select_account" onchange="changeAccount()">
+                                        <option value="">계좌를 선택해주세요.</option>
+                                      <c:forEach items="${list }" var="item">
+                                        <option value="${item.balance}">${item.account}</option>
+                                     </c:forEach>
+                                  </select>
+                                
+
+						</td>
                     </tr>
-                  </thead>
-                  <tbody>
                     <tr>
-                    <th>잔액</th>
-                      <td><fmt:formatNumber value="${item.balance}" pattern="#,###" />원</td>
-                    </tr>
-		              </tbody>
+                    <td scope="col" class="balance">잔액</td>
+                     	<td scope="col" id="select_balance">원</td>
+
+                  		 
 		              </table>
               			</div>
               		</div>
-              		</c:forEach>
+              		
           		 </div>
       		  </div>
           </div>
+         
+           <script>
+                function changeAccount(){
+                 $('#select_balance').html($('#select_account').val()+"원");
+               }
+          </script>
          
          		<div class="form-group" style="margin-left:700px">
             		 <div class="col-lg-offset-2 col-lg-10">

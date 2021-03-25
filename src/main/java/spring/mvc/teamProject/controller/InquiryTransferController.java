@@ -4,12 +4,19 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import spring.mvc.teamProject.service.RegisterReleaseService;
+
 @Controller
 public class InquiryTransferController {
+	
+	@Autowired
+	RegisterReleaseService service;
+	
 	private static final Logger logger = LoggerFactory.getLogger(InquiryTransferController.class);
 	
 	//계좌조회 AccountCheck.cc
@@ -65,6 +72,7 @@ public class InquiryTransferController {
 	@RequestMapping("/AccountTransfer.cc")
 	public String AccountTransfer(HttpServletRequest req,Model model) {
 		logger.info("url ==> /AccountTransfer");
+		service.AccountNomalList(req, model);
 		return "InquiryTransfer/AccountTransfer";
 	}
 	//다계좌이체 MultiAccountTransfer.cc
