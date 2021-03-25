@@ -43,9 +43,9 @@
 			                        	<td scope="col">
 			                        		
 										    <select id="ss" onchange="changeAccount()">
+										    	<option value="">계좌를 선택하세요.</option>
 												<c:forEach var="list" items="${list}">
-											    	<option value="${list.d_balance}">${list.account}[${list.d_name}(${list.d_repay})]</option>
-											    	<option value="${list.d_balance}">${list.account}[${list.d_name}(${list.d_repay})]</option>
+											    	<option value="${list.d_balance}">${list.account}[${list.d_name}(${list.d_repay})]<input type="hidden" id="aa" value="${list.d_amount}"></option>
 											    </c:forEach>
 										    </select>
 										    <script>
@@ -66,11 +66,11 @@
 				                        		<div class="form-check form-check-primary">
 			                                        <input class="form-check-input" type="radio" name="Primary" id="Primary" checked>
 			                                        <label class="form-check-label" for="Primary">
-			                                        	전액상환
+			                                        	원금균등상환
 			                                        </label>
 			                                        <input class="form-check-input" type="radio" name="Primary" id="Primary">
 			                                        <label class="form-check-label" for="Primary">
-			                                        	부분상환
+			                                        	중도상환
 			                                        </label>
 	                                    		</div>
                                     		</div>

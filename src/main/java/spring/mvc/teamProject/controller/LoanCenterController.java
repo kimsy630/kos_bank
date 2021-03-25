@@ -9,7 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import spring.mvc.teamProject.service.LoanService;
+import spring.mvc.teamProject.service.LoanCenterService;
 
 @Controller
 public class LoanCenterController {
@@ -17,7 +17,7 @@ public class LoanCenterController {
 	private static final Logger logger = LoggerFactory.getLogger(LoanCenterController.class); // 박서하 branch test
 
 	@Autowired
-	LoanService loanservice;
+	LoanCenterService loanservice;
 	
 	// 박서하
 	//대출계좌 조회

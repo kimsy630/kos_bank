@@ -50,7 +50,7 @@
 			                    	<tr>
 			                        	<td scope="col">조회계좌</td>
 			                        	<td scope="col">
-											<select name="" lengthtype="length">
+											<select name="account" lengthtype="length">
 												<c:forEach var="list" items="${list}">
 											    	<option value="${list.account}">${list.account}[${list.d_name}(${list.d_repay})]</option>
 											    </c:forEach>
@@ -73,6 +73,7 @@
 			               	
 			               	<br><br>
 			               	
+			               	<c:if test=""></c:if>
 			               	<table class="table-custom table-custom-bordered">
 			                	<colgroup>
 			                    	<col style="width: 15%;">

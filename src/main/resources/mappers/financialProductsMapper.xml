@@ -6,6 +6,25 @@
     
 <mapper namespace = "spring.mvc.teamProject.persistence.FinancialProductsDAO">
 	
+	<!-- ============================================================================ -->
+	<!-- 박서하 -->
+	<select id="getLoanCount" resultType="int"> <!-- 대출상품 조회 -->
+		SELECT COUNT(*)
+		FROM Loans_product
+	</select>
+	
+	<select id="getLoanList" resultType="spring.mvc.teamProject.vo.Loans_productVO"> <!-- 대출상품 조회 -->
+		SELECT d_name, d_summary, d_max_price
+		 FROM Loans_product
+	</select>
+	
+	<select id="getLoanDetail" resultType="spring.mvc.teamProject.vo.Loans_productVO"> <!-- 대출상품 상세조회 -->
+		SELECT d_name, d_summary, d_min_date, d_max_date, d_interest_rate, d_min_price, d_max_price, d_explanation1, d_explanation2, d_explanation3
+		 FROM Loans_product
+		 WHERE d_name=#{d_name}
+	</select>
+	<!-- ============================================================================ -->
+	
 	<select id="selectById" resultType="spring.mvc.teamProject.vo.AccountVO" >
 		 select *
 		 from account_info

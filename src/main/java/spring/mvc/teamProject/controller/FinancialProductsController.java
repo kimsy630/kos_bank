@@ -6,13 +6,10 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import spring.mvc.teamProject.service.FinancialProductsService;
-import spring.mvc.teamProject.service.FinancialProductsServiceImpl;
-import spring.mvc.teamProject.service.LoanService;
 @Controller
 public class FinancialProductsController {
 	private static final Logger logger = LoggerFactory.getLogger(FinancialProductsController.class);
@@ -20,16 +17,13 @@ public class FinancialProductsController {
 	@Autowired
 	FinancialProductsService service;
 	
-	@Autowired
-	LoanService loanservice;
-	
 	// 박서하
 	//대출상품
 	@RequestMapping("/LoansProducts.cc")
 	public String LoansProducts(HttpServletRequest req,Model model) {
 		logger.info("url ==> /LoansProducts");
 		
-		loanservice.loanProductsList(req, model);
+		service.loanProductsList(req, model);
 		
 		return "financialProducts/LoansProducts";
 	}
@@ -40,7 +34,7 @@ public class FinancialProductsController {
 	public String LoansDetail(HttpServletRequest req,Model model) {
 		logger.info("url ==> /LoansDetail");
 		
-		loanservice.loanProductDetail(req, model);
+		service.loanProductDetail(req, model);
 		
 		return "financialProducts/LoansDetail";
 	}

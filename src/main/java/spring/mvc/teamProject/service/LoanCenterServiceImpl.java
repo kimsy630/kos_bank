@@ -1,6 +1,8 @@
 package spring.mvc.teamProject.service;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -8,57 +10,34 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 
-import spring.mvc.teamProject.persistence.LoanDAOImpl;
-import spring.mvc.teamProject.vo.LoanVO;
+
+import spring.mvc.teamProject.persistence.LoanCenterDAOImpl;
+import spring.mvc.teamProject.vo.LoansVO;
 
 @Service
-public class LoanServiceImpl implements LoanService {
+public class LoanCenterServiceImpl implements LoanCenterService {
 
 	@Autowired
-	LoanDAOImpl dao;
+	LoanCenterDAOImpl dao;
 	
-	// FinancialProductsController
-	@Override
-	public void loanProductsList(HttpServletRequest req, Model model) { // 대출상품 조회
-		int count = dao.getLoanCount();
-		
-		List<LoanVO> list = dao.getLoanList();
-		
-		model.addAttribute("count", count);
-		model.addAttribute("list", list);		
-	}
-
-	@Override
-	public void loanProductDetail(HttpServletRequest req, Model model) { // 대출상품 상세조회
-		String d_name = req.getParameter("d_name");
-		
-		LoanVO vo = dao.getLoanDetail(d_name);
-		
-		model.addAttribute("vo", vo);		
-	}
-
 	// ============================================================================
-	// LoanCenterController
+	// 박서하
 	@Override
 	public void LoanAccountCheck(HttpServletRequest req, Model model) { // 대출계좌 조회
 		String id = "hong";//(String)req.getSession().getAttribute("id");
 		
-		int count = dao.getLoanAccountCount(id);
-		
-		List<LoanVO> list = dao.getLoanAccountList(id);
+		List<LoansVO> list = dao.getLoanAccountList(id);
 
-		model.addAttribute("count", count);
 		model.addAttribute("list", list);
 	}
 
 	@Override
 	public void LoanAccountDetail(HttpServletRequest req, Model model) { // 대출계좌 상세조회
-		LoanVO vo = new LoanVO();
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("id","hong"); //(String)req.getSession().getAttribute("id");
+		map.put("d_name", req.getParameter("d_name"));
 		
-		vo.setId("hong"); //(String)req.getSession().getAttribute("id");
-		vo.setD_name(req.getParameter("d_name"));
-		
-		vo = dao.getLoanAccountDetail(vo);
+		LoansVO vo = dao.getLoanAccountDetail(map);
 		
 		model.addAttribute("vo", vo);
 	}
@@ -67,22 +46,18 @@ public class LoanServiceImpl implements LoanService {
 	public void LoanCloseCheck(HttpServletRequest req, Model model) { // 대출해지현황 조회
 		String id = "hong";//(String)req.getSession().getAttribute("id");
 		
-		int count = dao.getLoanCloseCount(id);
+		List<LoansVO> list = dao.getLoanCloseList(id);
 		
-		List<LoanVO> list = dao.getLoanCloseList(id);
-
-		model.addAttribute("count", count);
 		model.addAttribute("list", list);
 	}
 
 	@Override
 	public void LoanCloseDetail(HttpServletRequest req, Model model) { // 대출해지현황 상세조회
-		LoanVO vo = new LoanVO();
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("id","hong"); //(String)req.getSession().getAttribute("id");
+		map.put("d_name", req.getParameter("d_name"));
 		
-		vo.setId("hong"); //(String)req.getSession().getAttribute("id");
-		vo.setD_name(req.getParameter("d_name"));
-		
-		vo = dao.getLoanCloseDetail(vo);
+		LoansVO vo = dao.getLoanCloseDetail(map);
 		
 		model.addAttribute("vo", vo);
 	}
@@ -91,7 +66,7 @@ public class LoanServiceImpl implements LoanService {
 	public void LoanRateCheck(HttpServletRequest req, Model model) { // 대출이자 조회
 		String id = "hong";//(String)req.getSession().getAttribute("id");
 		
-		List<LoanVO> list = dao.getLoanAccountList(id);
+		List<LoansVO> list = dao.getLoanAccountList(id);
 		
 		model.addAttribute("list", list);
 	}
@@ -100,9 +75,9 @@ public class LoanServiceImpl implements LoanService {
 	public void LoanPrincipalCheck(HttpServletRequest req, Model model) { // 대출원금 조회
 		String id = "hong";//(String)req.getSession().getAttribute("id");
 		
-		List<LoanVO> list = dao.getLoanAccountList(id);
+		List<LoansVO> list = dao.getLoanAccountList(id);
 		
 		model.addAttribute("list", list);
 	} 
-	
+	// ============================================================================
 }

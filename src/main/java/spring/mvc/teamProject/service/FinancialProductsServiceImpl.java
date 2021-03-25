@@ -19,6 +19,7 @@ import spring.mvc.teamProject.persistence.FinancialProductsDAOImpl;
 import spring.mvc.teamProject.persistence.MembersDAOImpl;
 import spring.mvc.teamProject.vo.AccountVO;
 import spring.mvc.teamProject.vo.DepositVO;
+import spring.mvc.teamProject.vo.Loans_productVO;
 import spring.mvc.teamProject.vo.MembersVO;
 import spring.mvc.teamProject.vo.SavingsVO;
 
@@ -29,6 +30,28 @@ public class FinancialProductsServiceImpl implements FinancialProductsService{
 	
 	@Autowired
 	FinancialProductsDAO dao;
+	
+	// ============================================================================
+	// 박서하
+	@Override
+	public void loanProductsList(HttpServletRequest req, Model model) { // 대출상품 조회
+		int count = dao.getLoanCount();
+		
+		List<Loans_productVO> list = dao.getLoanList();
+		
+		model.addAttribute("count", count);
+		model.addAttribute("list", list);		
+	}
+
+	@Override
+	public void loanProductDetail(HttpServletRequest req, Model model) { // 대출상품 상세조회
+		String d_name = req.getParameter("d_name");
+		
+		Loans_productVO vo = dao.getLoanDetail(d_name);
+		
+		model.addAttribute("vo", vo);		
+	}
+	// ============================================================================
 	
 	@Override
 	public void AccountList(HttpServletRequest req, Model model) {
