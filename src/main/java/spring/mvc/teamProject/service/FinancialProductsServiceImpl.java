@@ -88,9 +88,22 @@ public class FinancialProductsServiceImpl implements FinancialProductsService{
 	@Override
 	public void DepositAction(HttpServletRequest req, Model model) {
 		
-		
-		
-		
+		int y_balance = Integer.parseInt(req.getParameter("y_balance").toString());
+		System.out.println("y_balance" + y_balance);
+		double y_rate = Double.parseDouble(req.getParameter("y_rate").toString());
+		System.out.println("y_rate" + y_rate);
+		String ID = req.getParameter("ID").toString();
+		System.out.println("ID" + ID);
+		int y_type = Integer.parseInt(req.getParameter("y_type").toString());
+		System.out.println("y_type" + y_type);
+		int accountPW = Integer.parseInt(req.getParameter("pw").toString());
+		System.out.println("accountPW" + accountPW);
+		int months = Integer.parseInt(req.getParameter("months").toString());
+		System.out.println("months" + months);
+		String accounts = req.getParameter("accounts").toString();
+		System.out.println("accounts" + accounts);
+		int pwWithdraw = Integer.parseInt(req.getParameter("pwWithdraw").toString());
+		System.out.println("pwWithdraw" + pwWithdraw);
 	}
 
 	
