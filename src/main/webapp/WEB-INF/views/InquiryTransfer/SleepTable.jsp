@@ -57,19 +57,13 @@
   
   <body>
       <!-- 주석 친 부분에 사용하고싶은 <section> 긁어와서 쓰면 됩니다!! -->
-      <section class="section section-lg bg-default">
-        <div class="container">
            <br>
-        
-          <h6>휴면 계좌</h6>
-          <div style="background-color: blue; width:1170px; height:2px;"> </div>
-          
-          <div>
-          	조회건수 | 총[1건]
-          </div>
           <div class="row row-offset-1">
             <div class="col-lg-10 col-xxl-9">
               <div class="table-custom-responsive">
+              	<h6>휴면</h6>
+		          <div style="background-color: #435ebe; color:#fff; width:1170px; height:2px;"> </div>
+		          <br>
                 <table class="table-custom table-custom-secondary table-custom-hovered" id="acc_table">
                   <thead>
                     <tr>
@@ -90,61 +84,10 @@
                       <td><fmt:formatNumber value="1231231" pattern="#,###" />원</td>
                       <td>고객요청</td>
                     </tr>
-                    <tr>
-                      <td>저축예금</td>
-                      <td>110-451-550731</td>
-                      <td>신규일</td>
-                      <td>2021.03.18</td>
-                      <td><fmt:formatNumber value="1231231" pattern="#,###" />원</td>
-                      <td> 
-                      	<div class="button button-round" style= "padding:10px; width:60px; height:40px; font-size:15px; text-align:center; background-color:olive; display:inline;">조회</div>  
-                      	<div class="button button-round" style="padding:10px; width:60px; height:40px; font-size:15px; text-align:center; background-color: orange; display:inline;">이체</div>
-                      
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>저축예금</td>
-                      <td>110-451-550731</td>
-                      <td>신규일</td>
-                      <td>2021.03.18</td>
-                      <td><fmt:formatNumber value="1231231" pattern="#,###" />원</td>
-                      <td> 
-                      	<div class="button button-round" style= "padding:10px; width:60px; height:40px; font-size:15px; text-align:center; background-color:olive; display:inline;">조회</div>  
-                      	<div class="button button-round" style="padding:10px; width:60px; height:40px; font-size:15px; text-align:center; background-color: orange; display:inline;">이체</div>
-                      
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>저축예금</td>
-                      <td>110-451-550731</td>
-                      <td>신규일</td>
-                      <td>2021.03.18</td>
-                      <td><fmt:formatNumber value="1231231" pattern="#,###" />원</td>
-                      <td> 
-                      	<div class="button button-round" style= "padding:10px; width:60px; height:40px; font-size:15px; text-align:center; background-color:olive; display:inline;">조회</div>  
-                      	<div class="button button-round" style="padding:10px; width:60px; height:40px; font-size:15px; text-align:center; background-color: orange; display:inline;">이체</div>
-                      
-                      </td>
-                    </tr>
-                  </tbody>
-                  <tfoot>
-                    <tr>
-                      <td>저축예금</td>
-                      <td>110-451-550731</td>
-                      <td>신규일</td>
-                      <td>2021.03.18</td>
-                      <td><fmt:formatNumber value="1231231" pattern="#,###" />원</td>
-                      <td> 
-                      	<div class="button button-round" style= "padding:10px; width:60px; height:40px; font-size:15px; text-align:center; background-color:olive; display:inline;">조회</div>  
-                      	<div class="button button-round" style="padding:10px; width:60px; height:40px; font-size:15px; text-align:center; background-color: orange; display:inline;">이체</div>
-                      </td>
-                    </tr>
-                  </tfoot>
                 </table>
+                <img src="../teamProject/resources/testimage/계좌조회_휴면.png">
               </div>
             </div>
           </div>
-        </div>
-      </section>
   </body>
 </html>

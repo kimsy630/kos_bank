@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+    
+<mapper namespace = "spring.mvc.teamProject.persistence.FinancialProductsDAO">
+	
+	<select id="selectById" resultType="spring.mvc.teamProject.vo.AccountVO" >
+		 select *
+		 from account_info
+         where id = #{id} AND accountType = '입출금' AND accountState = '정상'
+	</select>
+	
+	<select id="getSavingsList" resultType="spring.mvc.teamProject.vo.SavingsVO">
+		select * from savings_product
+	</select>
+	
+	<select id="getDepositList" resultType="spring.mvc.teamProject.vo.DepositVO">
+		select * from deposit_product
+	</select>
+	
+	<select id="getSavingsDetail" resultType="spring.mvc.teamProject.vo.SavingsVO">
+		select * 
+		from savings_product
+		where j_name = #{j_name}
+	</select>
+	
+	<select id="getDepositDetail" resultType="spring.mvc.teamProject.vo.DepositVO">
+		select * 
+		from deposit_product
+		where y_name = #{y_name}
+	</select>
+	
+	<!--  
+	<insert id="insertAccount" parameterType="spring.mvc.teamProject.vo.AccountVO">
+      INSERT INTO account_info(account,ID,accountPW)
+      VALUES('33'||'-'||'01'||'-'||LPAD(SEQ_ACCOUNT.NEXTVAL, 6, 0),#{id},#{accountPW})
+   </insert>
+	-->
+		
+</mapper>

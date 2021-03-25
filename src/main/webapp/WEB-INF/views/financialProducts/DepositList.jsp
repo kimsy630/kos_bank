@@ -18,7 +18,7 @@
 	   	<!-- 버튼이동 -->
 	    <script type="text/javascript">
 	    function regFDP() {
-	    	location.href="regFDP.cc";
+	    	location.href="DepositRegistration.cc?y_name=fdp_simple";
 	    }
 	    </script>
 	    <!-- 버튼이동 -->
@@ -121,6 +121,7 @@
           </div>
         </div>
       </section>
+                <img src="../teamProject/resources/testimage/고객-예금상품조회.png">
       <%@ include file="../footer.jsp" %>
     </div>
   </body>

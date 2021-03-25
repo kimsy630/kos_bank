@@ -213,6 +213,8 @@
 				</form>
 				</div>
 				</main>
+                <img src="../teamProject/resources/testimage/펀드_펀드조회.JPG">
+				
 			    <br> <br> <br> <br> <br> <br> <br>
     	<%@ include file="../footer.jsp" %>
     </div>

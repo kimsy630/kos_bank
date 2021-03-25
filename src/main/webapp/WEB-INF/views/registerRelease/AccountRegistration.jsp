@@ -2,7 +2,6 @@
     pageEncoding="UTF-8"%>
 <%@ include file="../setting.jsp" %>
 <!DOCTYPE html>
-<<<<<<< HEAD
 <html class="wide wow-animation" lang="en">
   <head>
     <title>Home</title>
@@ -21,38 +20,6 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
     <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
   </head>
-  <style>
-  	#accountInfo {
-  		width: 1170px;
-  		height: 130px;
-  		background-color: gray;
-		display: inline-block; 
-		list-style: circle;
-		padding:30px;
-	
-	}
-	#accountInfo table td{
-		width:360px;
-		height:30px;
-		font-size:18px;
-	}
-	#acc_table{
-		width:1170px;
-	}
-	#acc_table th{
-		width:300px;
-		text-align: center;
-	}
-	#acc_table td{
-		width:285px;
-		text-align: center;
-	}
-	
-	#tabs-1 li{
-		width:140px;
-	}
-	
-  </style>
     <body>
     <div class="preloader">
       <div class="preloader-body">
@@ -146,11 +113,12 @@ KosBank은 고객이 통신 아래에서 정의됨 을 발송하고 기타 행�
 금을 KosBank에 이체하여야 합니다.
 
                      </textarea>
-	                 	<div class="radio" >
-	                    	 <input type="radio" name="agree" value="yes">
-		               			<label for="agree">동의합니다.</label>
-		               		<input type="radio" name="degree" value="no">
-		               			<label for="degree">동의하지않습니다.</label>
+	                 	<div>
+	                 	
+		                     <input type="radio" name="agree1"  value="yes" id="agree1">
+		                     <label for="agree1"> 동의합니다.</label>
+		               		<input type="radio" name="agree1" value="no" id="degree1"><!--  -->
+		               		<label  for="degree1"> 동의하지않습니다.</label>
             			</div>
             		</div>
                 </div>
@@ -216,11 +184,11 @@ PC웹, 모바일 웹/앱 이용 과정에서 단말기정보(OS, 화면사이즈
 
 서비스 간 제휴, 연계 등으로 제3자로부터 개인정보를 제공받고 있습니다.
               </textarea>
-                        <div class="radio" >
-		                     <input type="checkbox" name="agree" value="yes">
-		               			<label for="agree">동의합니다.</label>
-		               		<input type="checkbox" name="degree" value="no">
-		               			<label for="degree">동의하지않습니다.</label>
+                        <div>
+		                     <input type="radio" name="agree2"  value="yes" id="agree2">
+		                     <label for="agree2"> 동의합니다.</label>
+		               		<input type="radio" name="agree2" value="no" id="degree2"><!--  -->
+		               		<label  for="degree2"> 동의하지않습니다.</label>
             			</div>
             		</div>
                 </div>
@@ -289,6 +257,7 @@ PC웹, 모바일 웹/앱 이용 과정에서 단말기정보(OS, 화면사이즈
                     </div>
                 </div>
             </form>
+                <img src="../teamProject/resources/testimage/계좌등록.PNG">
         
         
         <script>
@@ -371,19 +340,6 @@ PC웹, 모바일 웹/앱 이용 과정에서 단말기정보(OS, 화면사이즈
                     }else{
                         divName.removeClass("has-error");
                         divName.addClass("has-success");
-                    }
-                });
-                
-                $('#nickname').keyup(function(event){
-                    
-                    var divNickname = $('#divNickname');
-                    
-                    if($.trim($('#nickname').val())==""){
-                        divNickname.removeClass("has-success");
-                        divNickname.addClass("has-error");
-                    }else{
-                        divNickname.removeClass("has-error");
-                        divNickname.addClass("has-success");
                     }
                 });
                 
@@ -553,8 +509,6 @@ PC웹, 모바일 웹/앱 이용 과정에서 단말기정보(OS, 화면사이즈
                         divPhoneNumber.removeClass("has-error");
                         divPhoneNumber.addClass("has-success");
                     }
-                    
-                
                 });
                 
             });
@@ -568,18 +522,5 @@ PC웹, 모바일 웹/앱 이용 과정에서 단말기정보(OS, 화면사이즈
             <%@ include file = "../footer.jsp" %>
             
         </div>
-        
-=======
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-</head>
-<body>
-<h1>계좌등록</h1>
-<%@ include file = "../header.jsp" %>
-<img src = "/teamProject/resources/testimage/계좌등록.png">
-<%@ include file = "../footer.jsp" %>
->>>>>>> d9d218ae0add3cb0d2d6b9204bff8d659ecb577b
 </body>
 </html>

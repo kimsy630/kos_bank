@@ -44,7 +44,10 @@
                   </button>
                   <!-- Button trigger for basic modal end -->
                </div>
-                  
+               <div><br>
+	           <h4>예금설명</h4>
+	           <h4>유의사항</h4>
+	           </div>   
             <br><hr><br><br>
             
             <!-- ======= Table with outer spacing ======= -->
@@ -59,22 +62,17 @@
                         </thead>
                         <tbody>
                             <tr>
-                                <td class="text-bold-500">가입대상</td>
-                                <td>만 19세 이상 실명의 개인</td>
-
-                            </tr>
-                            <tr>
                                 <td class="text-bold-500">가입기간</td>
-                                <td>제한없음</td>
+                                <td>개월 ~ 개월</td>
 
                             </tr>
                             <tr>
-                                <td class="text-bold-500">납입금액</td>
-                                <td>제한없음</td>
+                                <td class="text-bold-500">예금금액</td>
+                                <td>원</td>
                             </tr>
                             <tr>
                                 <td class="text-bold-500">이자지급방법</td>
-                                <td>매월 셋째주(토요일 기준) 토요일의 직전 영업일에 결산 후 익일에 지급</td>
+                                <td>만기일시지급식</td>
                             </tr>
                         </tbody>
                     </table>
@@ -90,12 +88,16 @@
                   </colgroup>
                   <tbody>
                      <tr>
-                        <td style="background-color:#d9d9d9"></td>
-                        <td style="text-align:center; background-color:#d9d9d9">구분</td>
+                        <td style="background-color:#d9d9d9; text-align:center;">기간</td>
+                        <td style="text-align:center; background-color:#d9d9d9">금리</td>
                      </tr>
                      <tr>
-                        <td style="text-align:center">기본금리</td>
-                        <td style="text-align:center">연 0.5% (변동금리)</td>
+                        <td style="text-align:center">개월이상~개월미만</td>
+                        <td style="text-align:center">%</td>
+                     </tr>
+                     <tr>
+                        <td style="text-align:center">개월</td>
+                        <td style="text-align:center">%</td>
                      </tr>
                   </tbody>
                </table>
@@ -112,11 +114,11 @@
                   <tbody>
                      <tr>
                         <td style="text-align:center; background-color:#d9d9d9">중도해지이율</td>
-                        <td style="text-align:center">해당없음</td>
+                        <td style="text-align:center">기간별%</td>
                      </tr>
                      <tr>
                         <td style="text-align:center; background-color:#d9d9d9">만기 후 이율</td>
-                        <td style="text-align:center">해당없음</td>
+                        <td style="text-align:center">기간별%</td>
                      </tr>
                   </tbody>
                </table>
@@ -147,6 +149,7 @@
          </div>
       </section>
    </main>
+                <img src="../teamProject/resources/testimage/고객-예금상품상세정보.png">
    
    <br><br>
 
