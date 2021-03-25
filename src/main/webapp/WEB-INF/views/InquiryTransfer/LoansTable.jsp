@@ -79,7 +79,7 @@
                       <td>2021.03.18</td>
                       <td><fmt:formatNumber value="1231231" pattern="#,###" />원</td>
                       <td> 
-                      	<div class="button button-round" style= "padding:10px; width:80px; height:40px; font-size:12px; text-align:center; background-color:#fff; display:inline;" onclick="location.href='TransactionDetails.cc'">상환내역</div>  
+                      	<div class="button button-round" style= "padding:10px; width:80px; height:40px; font-size:12px; text-align:center; background-color:#fff; display:inline;" onclick="location.href='LoanAccountCheck.cc'">상환내역</div>  
                       	<div class="button button-round" style="padding:10px; width:80px; height:40px; font-size:12px; text-align:center; background-color: #435ebe; color:#fff; display:inline;">원금상환</div>
                       
                       </td>

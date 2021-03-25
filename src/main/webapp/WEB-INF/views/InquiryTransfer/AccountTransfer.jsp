@@ -51,15 +51,10 @@
                   <thead>
                     <tr>
                       <th>출금 계좌번호</th>
-                      <td><select id="account" name="account">
-						<option value="">선택</option>
-						<c:forEach items="${list }" var="item">
-								<option value="${item.account}" onchange="(${item.balance})">${item.account}</option>
-						</c:forEach>
-						</select></td>
+                      <td>대상 계좌가 없습니다.</td>
                     </tr>
                   </thead>
-                   <tr>
+                    <tr>
                     <th>계좌비밀번호</th>
                       <td><input type="text" id="accountPW" style="width: 100px"></td>
                     </tr>
@@ -75,9 +70,9 @@
                       <input type="text" id="limitMoney" style="width: 300px">
                       <button input="limitMoney">이체한도조회</button>
                       </td>
-                    	</tr>
-             		 </table>
-             	 	</div>
+                      
+                    </tr>
+             	 </table>
               </div>
       		</div>
           </div>
@@ -145,6 +140,7 @@
                      	<td><button type="reset">취소</button></td>
                     </tr>
                   </thead>
+                      
              	 </table>
               </div>
       		</div>

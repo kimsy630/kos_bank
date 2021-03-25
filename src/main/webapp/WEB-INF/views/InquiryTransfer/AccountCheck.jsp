@@ -5,6 +5,39 @@
 <html class="wide wow-animation" lang="en">
   <head>
     <title>Home</title>
+    
+    <!-- ajax 스크립트 -->
+    <script src="/teamProject/resources/js/request.js"></script>
+    <script type="text/javascript">
+    
+    	function load(url){
+    					//서버로 요청 후 콜백함수로 돌려받음
+    		sendRequest(load_AccCheck, url, "post", null);
+    	}
+    	
+    	// 콜백함수
+    	function load_AccCheck(){
+    		var result = document.getElementById("acc_result");
+    		
+    		if(httpRequest.readyState == 4){ // 4 : completed => 전체 데이터 취득 완료된 상태
+    			if(httpRequest.status == 200){ // 200 : 정상종료
+    				//result.innerHTML = "정상종료";
+    		
+    				//응답결과가 html이면 responseText로 받고 XML이면 responseXML로 받는다.
+    				result.innerHTML= httpRequest.responseText;
+    				
+    			}else{
+    				result.innerHTML = "에러발생";
+    			}
+    		}else{
+    			result.innerHTML = "상태 : "	+ httpRequest.readyState;
+    		}
+    	}
+    	
+    </script>
+    
+    <!-- ajax 스크립트 끝 -->
+    
     <meta name="format-detection" content="telephone=no">
     <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -53,7 +86,7 @@
 	
   </style>
   
-  <body>
+  <body onload="load('AccountTable.cc')">
     <div class="preloader">
       <div class="preloader-body">
         <div class="cssload-container">
@@ -72,6 +105,12 @@
         <div class="container context-dark breadcrumb-wrapper">
           <h2>계좌조회</h2>
           <br>
+         
+          <ul class="breadcrumbs-custom">
+            <li><a href="index.html">개인</a></li>
+            <li><a href="#">조회</a></li>
+            <li class="active">계죄조회</li>
+          </ul>
         </div>
       </section>
       <section class="section section-lg bg-default">
@@ -97,18 +136,20 @@
           <br>
        		<div class="tabs-custom tabs-horizontal tabs-line" id="tabs-1">
 	           <ul class="nav nav-tabs">
-	             <li class="nav-item" role="presentation"><a class="nav-link active" href="#tabs-1-1" data-toggle="tab">예금/신탁</a></li>
-	             <li class="nav-item" role="presentation"><a class="nav-link" href="#tabs-1-2" data-toggle="tab" onclick="location.href='LoansTable.cc'">대출</a></li>
-	             <li class="nav-item" role="presentation"><a class="nav-link" href="#tabs-1-3" data-toggle="tab" onclick="location.href='IS_Table.cc'">적금</a></li><!-- Installment_SavingsTable -->
-	             <li class="nav-item" role="presentation"><a class="nav-link" href="#tabs-1-4" data-toggle="tab" onclick="location.href='FundTable.cc'">펀드</a></li>
-	             <li class="nav-item" role="presentation"><a class="nav-link" href="#tabs-1-5" data-toggle="tab" onclick="location.href='SleepTable.cc'">휴면계좌</a></li>
-	             <li class="nav-item" role="presentation"><a class="nav-link" href="#tabs-1-6" data-toggle="tab" onclick="location.href='StopTable.cc'">정지계좌</a></li>
-	             <li class="nav-item" role="presentation"><a class="nav-link" href="#tabs-1-7" data-toggle="tab" onclick="location.href='AllTable.cc'">전체계좌</a></li>
+	             <li class="nav-item" role="presentation"><a class="nav-link active" href="#tabs-1-1" data-toggle="tab" onclick="load('AccountTable.cc')">예금/신탁</a></li>
+	             <li class="nav-item" role="presentation"><a class="nav-link" href="#tabs-1-2" data-toggle="tab" onclick="load('LoansTable.cc')">대출</a></li>
+	             <li class="nav-item" role="presentation"><a class="nav-link" href="#tabs-1-3" data-toggle="tab" onclick="load('IS_Table.cc')">적금</a></li><!-- Installment_SavingsTable -->
+	             <li class="nav-item" role="presentation"><a class="nav-link" href="#tabs-1-4" data-toggle="tab" onclick="load('FundTable.cc')">펀드</a></li>
+	             <li class="nav-item" role="presentation"><a class="nav-link" href="#tabs-1-5" data-toggle="tab" onclick="load('SleepTable.cc')">휴면계좌</a></li>
+	             <li class="nav-item" role="presentation"><a class="nav-link" href="#tabs-1-6" data-toggle="tab" onclick="load('StopTable.cc')">정지계좌</a></li>
+	             <li class="nav-item" role="presentation"><a class="nav-link" href="#tabs-1-7" data-toggle="tab" onclick="load('AllTable.cc')">전체계좌</a></li>
 	           </ul>
            </div>
            <br>
+        	<div id="acc_result">
+        		
+        	</div>
         	
-        	<%@include file="AccountTable.jsp" %>
           
           <div style="width: 1170px; text-align: center;">
           	<h4>등록된 계좌가 없을때 들어갈 문구 </h4>

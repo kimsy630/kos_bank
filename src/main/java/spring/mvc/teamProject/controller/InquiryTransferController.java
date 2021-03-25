@@ -25,11 +25,11 @@ public class InquiryTransferController {
 		logger.info("url ==> /AccountCheck");
 		return "InquiryTransfer/AccountCheck";
 	}
-	//거래내역 조회 TransactionDetails.do
-	@RequestMapping("/TransactionDetails.cc")// 로그인영역으로 변경할 것!!!
-	public String TransactionDetails(HttpServletRequest req,Model model) {
-		logger.info("url ==> /TransactionDetails");
-		return "InquiryTransfer/TransactionDetails";
+	//계좌조회 AccountTable.cc
+	@RequestMapping("/AccountTable.cc")
+	public String AccountTable(HttpServletRequest req,Model model) {
+		logger.info("url ==> /AccountTable");
+		return "InquiryTransfer/AccountTable";
 	}
 	//대출 테이블 LoansTable.do
 	@RequestMapping("/LoansTable.cc")// ajax에 들어갈 페이지
@@ -67,7 +67,12 @@ public class InquiryTransferController {
 		logger.info("url ==> /AllTable");
 		return "InquiryTransfer/AllTable";
 	}
-	
+	//거래내역 조회 TransactionDetails.do
+	@RequestMapping("/TransactionDetails.cc")// 로그인영역으로 변경할 것!!!
+	public String TransactionDetails(HttpServletRequest req,Model model) {
+		logger.info("url ==> /TransactionDetails");
+		return "InquiryTransfer/TransactionDetails";
+	}
 	//계좌이체 AccountTransfer.cc
 	@RequestMapping("/AccountTransfer.cc")
 	public String AccountTransfer(HttpServletRequest req,Model model) {

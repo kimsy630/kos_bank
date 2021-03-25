@@ -69,8 +69,8 @@
                     <tr>
                       <th>계좌명</th>
                       <th>계좌번호</th>
-                      <th>신규일</th>
-                      <th>만기일</th>
+                      <th>펀딩목표액</th>
+                      <th>펀딩종료일</th>
                       <th>잔액(원)</th>
                     </tr>
                   </thead>
@@ -78,9 +78,9 @@
                     <tr>
                       <td>저축예금</td>
                       <td>110-451-550731</td>
-                      <td>2019.01.01</td>
+                      <td><fmt:formatNumber value="100000000" pattern="#,###" />원</td>
                       <td>2021.03.18</td>
-                      <td><fmt:formatNumber value="1231231" pattern="#,###" />원</td>
+                      <td><fmt:formatNumber value="50000000" pattern="#,###" />원</td>
                     </tr>
                 </table>
                 <img src="../teamProject/resources/testimage/계좌조회_펀드.PNG">
