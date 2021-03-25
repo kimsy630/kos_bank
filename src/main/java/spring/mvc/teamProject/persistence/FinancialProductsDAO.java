@@ -27,10 +27,12 @@ public interface FinancialProductsDAO{
 	// 적금 상품 정보 (신청서용)
 	public SavingsVO getSavingsDetail(String j_name);
 	// 정기예금 상품 정보 (신청서용)
-	public SavingsVO getDepositDetail(String y_name);
-	// 적금 상품 신청
+	public DepositVO getDepositDetail(String y_name);
+	// 적금 테이블 삽입
 	public int insertSavings(SavingsVO vo);
-	// 적금 상품 신청
+	// 예금 테이블 삽입
 	public int insertDeposit(DepositVO vo);
+	// 예금 계좌 만들기
+	public int insertDepositAccount(AccountVO vo);
 	
 }

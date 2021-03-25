@@ -21,8 +21,14 @@
 	    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 	    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
 	    <script>
-	    
 	    function checkFDP() {
+	    	
+	    	if (document.fdpForm.y_balance.value < ${vo.y_min_price} || !document.fdpForm.money.value) {
+	    		alert("최소가입금액이상을 입력해주세요.");
+				document.fdpForm.y_balance.focus();
+				return false;
+	    	}
+	    	
 	    	if (document.fdpForm.months.value == '선택') {
 	    		alert("가입기간을 선택하세요");
 	    		document.fdpForm.months.focus();
@@ -39,7 +45,7 @@
 	    		return false;
 	    	}
 	    	if (document.fdpForm.accounts.value == '계좌번호를 선택해주세요.') {
-	    		alert('출금할 계좌번호를 알려주세요.');
+	    		alert('출금할 계좌번호를 선택하세요.');
 	    		return false;
 	    	}
 	    	if (document.fdpForm.pwWithdraw.value.length != 4) {
@@ -47,7 +53,6 @@
 	    		document.fdpForm.pwWithdraw.focus();
 	    		return false;
 	    	}
-	    	
 	    }
 	    
 	    /* 금액 직접 입력시 해당 input 태그 적용 메서드  */
@@ -59,6 +64,8 @@
 	        }
 	        function numberComma2(s) {
 	            s = s.replace(/\D/g, "");
+	            q = parseInt(s);
+	            document.fdpForm.y_balance.value = q;
 	            l = s.length - 3;
 	            while (l > 0) {
 	                s = s.substr(0, l) + "," + s.substr(l);
@@ -67,7 +74,8 @@
 	            return s;
 	        }
 	    /* 금액 직접 입력시 적용 메서드  */
-	        
+	    
+	    
 	        
 	        /* 비밀번호 입력란 문자입력 방지 메서드 */
 	        function numberComma3(obj) {
@@ -96,6 +104,7 @@
 	        	w = q.replace(/,/g ,"");
 	        	e = parseInt(w);
 	        	e += obj;
+	        	document.fdpForm.y_balance.value = e;
 	        	r = e.toString();
 	        	t = r.toString().length - 3;
 	        	while (t > 0) {
@@ -160,7 +169,6 @@
 	  			});
 	  		});
 	  	/* 숫자버튼 위 마우스 올려놓을시 적용 메서드 */
-	  	
 	    </script>
 	    <style>
     	.btn-clipboard {
@@ -172,8 +180,12 @@
 	    </style>
 	</head>
   <body>
-  <form name="fdpForm" method="POST" action="FDPAction.cc" onsubmit="return checkFDP()">
+  <form name="fdpForm" method="POST" action="DepositAction.cc" onsubmit="return checkFDP()">
   <input type = "hidden" name = "${_csrf.parameterName}" value = "${_csrf.token}">
+  <input type="hidden" name="y_balance" id="y_balance" value="0">
+  <input type="hidden" name="y_type" value="${vo.y_type}">
+  <input type="hidden" name="ID" value="${sessionScope.id}">
+  <input type="hidden" name="y_rate" value="${vo.y_interest_rate}">
     <div class="preloader">
       <div class="preloader-body">
         <div class="cssload-container">
@@ -221,7 +233,7 @@
 				<div style="display:inline-block; width:80%;">
 					<div class="form-group" id="newAmount">
                     <div style="display:inline-block; padding-right:5px;" class="col-sm-2">
-                        <br><input style="padding: 0 0; display:inline-block; text-align:right;" value="0" type="text" class="form-control" id="money" data-rule-required="true" maxlength="40" onkeyup="JavaScript:numberComma(this);">
+                        <br><input style="padding: 0 0; display:inline-block; text-align:right;" value="0" type="text" class="form-control" name="money" id="money" data-rule-required="true" maxlength="40" onkeyup="JavaScript:numberComma(this);">
                     </div>
                     	<p style="display:inline-block">원</p>
                 	</div>
@@ -235,44 +247,17 @@
 				</div>
 				<br><br><hr></hr><br>
                 <p style="display:inline; margin-right:175px;">가입기간</p>
+                <c:set var="y_min_date" value="${vo.y_min_date}" ></c:set>
+                <c:set var="y_max_date" value="${vo.y_max_date}" ></c:set>
                 <select name="months" class="form-select" aria-label="Default select example">
 				  <option selected>선택</option>
-				  <option value="1">1</option>
-				  <option value="2">2</option>
-				  <option value="3">3</option>
-				  <option value="4">4</option>
-				  <option value="5">5</option>
-				  <option value="6">6</option>
-				  <option value="7">7</option>
-				  <option value="8">8</option>
-				  <option value="9">9</option>
-				  <option value="10">10</option>
-				  <option value="11">11</option>
-				  <option value="12">12</option>
-				  <option value="13">13</option>
-				  <option value="14">14</option>
-				  <option value="15">15</option>
-				  <option value="16">16</option>
-				  <option value="17">17</option>
-				  <option value="18">18</option>
-				  <option value="19">19</option>
-				  <option value="20">20</option>
-				  <option value="21">21</option>
-				  <option value="22">22</option>
-				  <option value="23">23</option>
-				  <option value="24">24</option>
-				  <option value="25">25</option>
-				  <option value="26">26</option>
-				  <option value="27">27</option>
-				  <option value="28">28</option>
-				  <option value="29">29</option>
-				  <option value="30">30</option>
-				  <option value="31">31</option>
-				  <option value="32">32</option>
-				  <option value="33">33</option>
-				  <option value="34">34</option>
-				  <option value="35">35</option>
-				  <option value="36">36</option>
+				  <% 
+				  	for(int i=(int)pageContext.getAttribute("y_min_date"); i<=(int)pageContext.getAttribute("y_max_date"); i++) {
+				  %>
+				  <option value="<%=i%>"><%=i%></option>
+				  <%
+				  }
+				  %>
 				</select>&nbsp;개월&nbsp;&nbsp;&nbsp;<p style="color:#92969c; display:inline;">(계약월수는  ${vo.y_min_date} ~ ${vo.y_max_date}개월 범위내에서 가능합니다.)</p>
 				<br><br><hr></hr>
 				<div style="display:inline; width:30%; text-align:center; margin-right:160px;">비밀번호</div>
@@ -300,7 +285,7 @@
 				<hr></hr><br>
 				<p style="display:inline; margin-right:140px;">출금계좌번호</p>
 				
-                <select name="accounts" class="form-select form-select-lg mb-4" aria-label="Default select example">
+                <select name="accounts" class="form-select form-select-lg mb-4" aria-label="Default select example" onchange="pwWithdrawChk();">
 				  <option selected>계좌번호를 선택해주세요.</option>
 				  <c:forEach items="${list}" var="item">
 				  <option value="${item.account}">${item.account}</option>
@@ -312,7 +297,7 @@
 				<div style="display:inline-block; width:70%;">
 					<div class="form-group" id="newAmount">
                     <div style="display:inline-block;" class="col-sm-1">
-                        <br><input style="padding: 0 0;" type="password" class="form-control" name="pwWithdraw" id="pwChk" data-rule-required="true" maxlength="4" onkeyup="JavaScript:numberComma3(this);">
+                        <br><input style="padding: 0 0;" type="password" class="form-control" name="pwWithdraw" id="pwWithdraw" data-rule-required="true" maxlength="4" onkeyup="JavaScript:numberComma3(this);">
                     </div>
                     <div style="display:inline-block;">
                     <p style="color:#92969c;">(숫자 4자리)</p>

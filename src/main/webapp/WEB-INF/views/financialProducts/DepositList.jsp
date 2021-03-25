@@ -15,13 +15,6 @@
 	    <link rel="stylesheet" href="${path}css/bootstrap.css">
 	    <link rel="stylesheet" href="${path}css/fonts.css">
 	    <link rel="stylesheet" href="${path}css/productList.css" id="main-styles-link">
-	   	<!-- 버튼이동 -->
-	    <script type="text/javascript">
-	    function regFDP() {
-	    	location.href="DepositRegistration.cc?y_name=fdp_simple";
-	    }
-	    </script>
-	    <!-- 버튼이동 -->
 	</head>
   <body>
     <div class="preloader">
@@ -57,71 +50,29 @@
         <div class="container">
           <div class="row">
             <div class="col-lg-9 col-xl-8">
-              <p>총<em>5</em>개의 상품</p>
+              <p>총<em>${list.size()}</em>개의 상품</p>
               <!-- Bootstrap collapse-->
               <div class="card-group-custom card-group-corporate" id="accordion1" role="tablist" aria-multiselectable="false">
                 <!-- Bootstrap card-->
+                <c:forEach items="${list}" var="item">
                 <article id="article" class="card card-custom card-corporate">
                  <div id="goods" class="goods">
-                 <h4 data-prd-cd="1130313506" data-sys-ds-cd="01"><a href="FDPdetail.cc">m-정기예금(복리)</a></h4>
-                 <p class="desc">이자획득을 목적으로 하는 목돈 운용의 대표상품</p>
+                 <h4 data-prd-cd="1130313506" data-sys-ds-cd="01"><a href="FDPdetail.cc">${item.y_name}</a></h4>
+                 <p class="desc">${item.y_summary}</p>
                  </div>
                  <div id="interests" class="interests">
-				<em>연 <strong style="">6.00</strong><span>%</span></em>
-				<p>(최대세전, 12개월 기준)</p>
+				<em>연 <strong style="">${item.y_interest_rate}</strong><span>%</span></em>
+				<p>${item.y_notice}</p>
 				</div>
-                 <div id="btns" class="button button-primary button-round" onclick="regFDP()">가입하기</div>
+                 <div id="btns" class="button button-primary button-round" onclick="location.href='DepositRegistration.cc?y_name=${item.y_name}'">가입하기</div>
                 </article>
-                <article id="article" class="card card-custom card-corporate">
-                 <div id="goods" class="goods">
-                 <h4 data-prd-cd="1130313506" data-sys-ds-cd="01"><a href="FDPdetail.cc">m-정기예금(단리)</a></h4>
-                 <p class="desc">이자획득을 목적으로 하는 목돈 운용의 대표상품</p>
-                 </div>
-                 <div id="interests" class="interests">
-				<em>연 <strong style="">5.00</strong><span>%</span></em>
-				<p>(최대세전, 12개월 기준)</p>
-				</div>
-                 <div id="btns" class="button button-primary button-round" onclick="regFDP()">가입하기</div>
-                </article>
-                <article id="article" class="card card-custom card-corporate">
-                 <div id="goods" class="goods">
-                 <h4 data-prd-cd="1130313506" data-sys-ds-cd="01"><a href="FDPdetail.cc">e-정기예금(복리)</a></h4>
-                 <p class="desc">이자획득을 목적으로 하는 목돈 운용의 대표상품</p>
-                 </div>
-                 <div id="interests" class="interests">
-				<em>연 <strong style="">4.00</strong><span>%</span></em>
-				<p>(최대세전, 12개월 기준)</p>
-				</div>
-                 <div id="btns" class="button button-primary button-round" onclick="regFDP()">가입하기</div>
-                </article>
-                <article id="article" class="card card-custom card-corporate">
-                 <div id="goods" class="goods">
-                 <h4 data-prd-cd="1130313506" data-sys-ds-cd="01"><a href="FDPdetail.cc">e-정기예금(단리)</a></h4>
-                 <p class="desc">이자획득을 목적으로 하는 목돈 운용의 대표상품</p>
-                 </div>
-                 <div id="interests" class="interests">
-				<em>연 <strong style="">3.00</strong><span>%</span></em>
-				<p>(최대세전, 12개월 기준)</p>
-				</div>
-                 <div id="btns" class="button button-primary button-round" onclick="regFDP()">가입하기</div>
-                </article>
-                <article id="article" class="card card-custom card-corporate">
-                 <div id="goods" class="goods">
-                 <h4 data-prd-cd="1130313506" data-sys-ds-cd="01"><a href="FDPdetail.cc">KOS ISA 정기예금</a></h4>
-                 <p class="desc">이자획득을 목적으로 하는 목돈 운용의 대표상품</p>
-                 </div>
-                 <div id="interests" class="interests">
-				<em>연 <strong style="">2.00</strong><span>%</span></em>
-				<p>(최대세전, 12개월 기준)</p>
-				</div>
-                 <div id="btns" class="button button-primary button-round" onclick="regFDP()">가입하기</div>
-                </article>
+                </c:forEach>
               </div>
             </div>
           </div>
         </div>
       </section>
-                <img src="../teamProject/resources/testimage/고객-예금상품조회.png">
+      <img src="../teamProject/resources/testimage/고객-예금상품조회.png">
       <%@ include file="../footer.jsp" %>
     </div>
   </body>

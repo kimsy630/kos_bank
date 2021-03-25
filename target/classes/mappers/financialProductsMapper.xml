@@ -32,11 +32,9 @@
 		where y_name = #{y_name}
 	</select>
 	
-	<!--  
-	<insert id="insertAccount" parameterType="spring.mvc.teamProject.vo.AccountVO">
-      INSERT INTO account_info(account,ID,accountPW)
-      VALUES('33'||'-'||'01'||'-'||LPAD(SEQ_ACCOUNT.NEXTVAL, 6, 0),#{id},#{accountPW})
-   </insert>
-	-->
+	<insert id="insertDepositAccount" parameterType="spring.mvc.teamProject.vo.AccountVO">
+		INSERT INTO account_info(account,ID,accountPW,accountType,acc_state_content)
+		VALUES('33'||'-'||'03'||'-'||LPAD(SEQ_DEPOSIT.NEXTVAL, 6, 0),#{id},#{accountPW},#{accountType},#{acc_state_content})
+	</insert>
 		
 </mapper>

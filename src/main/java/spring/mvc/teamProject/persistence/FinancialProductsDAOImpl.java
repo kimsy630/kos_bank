@@ -50,7 +50,7 @@ public class FinancialProductsDAOImpl implements FinancialProductsDAO{
 	}
 
 	@Override
-	public SavingsVO getDepositDetail(String y_name) {
+	public DepositVO getDepositDetail(String y_name) {
 		
 		return sqlSession.getMapper(FinancialProductsDAO.class).getDepositDetail(y_name);
 	}
@@ -69,7 +69,15 @@ public class FinancialProductsDAOImpl implements FinancialProductsDAO{
 		
 	}
 
+	@Override
+	public int insertDepositAccount(AccountVO vo) {
+		
+		return sqlSession.getMapper(FinancialProductsDAO.class).insertDepositAccount(vo);
+		
+	}
 
+	
+	
 
 	
 	

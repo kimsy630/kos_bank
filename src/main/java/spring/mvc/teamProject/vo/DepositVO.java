@@ -8,6 +8,7 @@ public class DepositVO {
    private String y_summary;
    private Timestamp y_date;
    private double y_interest_rate;
+   private int y_type;
    private int y_max_date;
    private int y_min_date;
    private int y_min_price;
@@ -68,6 +69,12 @@ public class DepositVO {
    }
    public void setY_notice(String y_notice) {
 	    this.y_notice = y_notice;
+   }
+   public int getY_type() {
+		return y_type;
+   }
+   public void setY_type(int y_type) {
+		this.y_type = y_type;
    }
    
 }

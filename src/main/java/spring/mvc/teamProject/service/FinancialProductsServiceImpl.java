@@ -72,7 +72,7 @@ public class FinancialProductsServiceImpl implements FinancialProductsService{
 		
 		String y_name = (String)req.getAttribute("y_name");
 		
-		SavingsVO vo = dao.getSavingsDetail(y_name);
+		DepositVO vo = dao.getDepositDetail(y_name);
 		
 		model.addAttribute("vo", vo);
 		
@@ -87,6 +87,7 @@ public class FinancialProductsServiceImpl implements FinancialProductsService{
 
 	@Override
 	public void DepositAction(HttpServletRequest req, Model model) {
+		
 		
 		
 		
