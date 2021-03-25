@@ -16,5 +16,6 @@ public interface LoanCenterService {
 	public void LoanCloseDetail(HttpServletRequest req,Model model); // 대출해지현황 상세조회
 	public void LoanRateCheck(HttpServletRequest req,Model model); // 대출이자 조회
 	public void LoanPrincipalCheck(HttpServletRequest req,Model model); // 대출원금 조회
+	public void LoanPrincipalCheckIn(HttpServletRequest req,Model model); // 대출이자 예상(내부정보)
 	// ============================================================================
 }

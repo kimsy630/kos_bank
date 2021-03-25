@@ -67,7 +67,8 @@ public class LoanCenterController {
 	//신규대출 신청
 	@RequestMapping("/LoanApplication.cc")
 	public String LoanApplication(HttpServletRequest req,Model model) {
-		/* logger.info("url ==> /LoanApplication"); */
+		logger.info("url ==> /LoanApplication");
+		
 		return "LoanCenter/LoanApplication";
 	}
 	
@@ -87,8 +88,10 @@ public class LoanCenterController {
 	@RequestMapping("/LoanPrincipalCheckIn.cc")
 	public String LoanPrincipalCheckIn(HttpServletRequest req,Model model) {
 		logger.info("url ==> /LoanPrincipalCheckIn");
-		return "LoanCenter/LoanPrincipalCheckIn";
 
+		loanservice.LoanPrincipalCheckIn(req, model);
+		
+		return "LoanCenter/LoanPrincipalCheckIn";
 	}
 	
 	// 박서하
@@ -96,6 +99,7 @@ public class LoanCenterController {
 	@RequestMapping("/LoanPrincipalPay.cc")
 	public String LoanPrincipalPay(HttpServletRequest req,Model model) {
 		logger.info("url ==> /LoanPrincipalPay");
+		
 		return "LoanCenter/LoanPrincipalPay";
 	}
 	
@@ -115,6 +119,7 @@ public class LoanCenterController {
 	@RequestMapping("/LoanRateCheckIn.cc")
 	public String LoanRateCheckIn(HttpServletRequest req,Model model) {
 		logger.info("url ==> /LoanRateCheckIn");
+		
 		return "LoanCenter/LoanRateCheckIn";
 	}
 	

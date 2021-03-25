@@ -54,7 +54,7 @@
                             </tr>
                             <tr>
                                 <td class="text-bold-500">대출금리</td>
-                                <td>연 ${vo.d_interest_rate}% 이내(★확인이 필요함-기준치 잡기★)</td>
+                                <td>연 ${vo.d_interest_rate}%</td>
                             </tr>
                             <tr>
                                 <td class="text-bold-500">대출금액</td>
@@ -70,7 +70,7 @@
                             </tr>
                             <tr>
                                 <td class="text-bold-500">중도상환수수료</td>
-                                <td>${vo.d_explanation3}(★확인이 필요함-기준치 잡기★)</td>
+                                <td>${vo.d_explanation3}</td>
                             </tr>
                         </tbody>
                     </table>

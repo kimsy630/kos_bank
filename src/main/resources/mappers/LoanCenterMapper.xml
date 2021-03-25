@@ -8,7 +8,7 @@
 	<!-- ============================================================================ -->
 	<!-- 박서하 -->
 	<select id="getLoanAccountList" resultType="spring.mvc.teamProject.vo.LoansVO"> <!-- 대출계좌 조회 -->
-		SELECT l.d_name, l.d_repay, l.account, l.d_amount, l.d_end_date, l.d_balance
+		SELECT l.d_name, l.d_repay, l.account, l.d_amount, l.d_end_date, l.d_balance, d_month, d_ERR
 		 FROM account_info i, loans l
 		 WHERE i.account = l.account
 		 AND i.id=#{id}

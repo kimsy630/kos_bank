@@ -80,4 +80,22 @@ public class LoanCenterServiceImpl implements LoanCenterService {
 		model.addAttribute("list", list);
 	} 
 	// ============================================================================
+
+	@Override
+	public void LoanPrincipalCheckIn(HttpServletRequest req, Model model) {
+		
+		System.out.println(req.getParameter("account"));
+		
+		if(req.getParameter("equality") == "on") {
+			System.out.println("여기로도 넘어온다.");
+		}
+		
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("id","hong"); //(String)req.getSession().getAttribute("id");
+		map.put("account", req.getParameter("account"));
+		map.put("d_month", req.getParameter("d_month"));
+		map.put("d_ERR", req.getParameter("d_ERR"));
+		
+		
+	}
 }

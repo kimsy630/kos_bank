@@ -3,7 +3,6 @@ package spring.mvc.teamProject.vo;
 import java.sql.Timestamp;
 
 public class LoansVO {
-	
 	private String d_Key;
 	private String d_name;
 	private String account;
@@ -21,6 +20,7 @@ public class LoansVO {
 	private int d_tran;
 	private int d_tran_rate;
 	private int d_next_rate;
+	private double d_ERR;
 	private int d_ERC;
 	private MembersVO Members;
 	
@@ -125,6 +125,12 @@ public class LoansVO {
 	}
 	public void setD_next_rate(int d_next_rate) {
 		this.d_next_rate = d_next_rate;
+	}
+	public double getD_ERR() {
+		return d_ERR;
+	}
+	public void setD_ERR(double d_ERR) {
+		this.d_ERR = d_ERR;
 	}
 	public int getD_ERC() {
 		return d_ERC;
