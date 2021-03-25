@@ -61,5 +61,15 @@ public class RegisterReleaseServiceImpl implements RegisterReleaseService{
 			System.out.println("list"+list);
 			model.addAttribute("list", list);
 	}
+	
+	// 계좌(정상)리스트
+	@Override
+	public void AccountNomalList(HttpServletRequest req, Model model) {
+		String strId = (String)req.getSession().getAttribute("id");
+		List<AccountVO> list = accountDAO.selectById(strId);
+		System.out.println("list"+list);
+		model.addAttribute("list", list);
+		
+	}
 
 }

@@ -22,6 +22,12 @@
   		 where id = #{id}   		 
   	</select>
   	
+  	<select id="selectNomalById" resultType="spring.mvc.teamProject.vo.AccountVO" parameterType="String">
+  		SELECT *
+  		FROM account_info
+    	WHERE id=#{id} AND accountState='정상'	 
+  	</select>
+  	
   	<select id="AccountPwdCheck" parameterType="String" resultType="int">
   		SELECT accountPW 
   		FROM account_info 
