@@ -15,16 +15,7 @@
 		<!-- ======= Breadcrumbs ======= -->
       	<section class="section section-bredcrumbs">
 	        <div class="container context-dark breadcrumb-wrapper">
-<<<<<<< HEAD
-	          <h1>전체대출상품</h1>
-	          <ul class="breadcrumbs-custom">
-	            <li><a href="#">금융상품</a></li>
-	            <li><a href="LoansProducts.cc">대출상품</a></li>
-	            <li class="active">전체대출상품</li>
-	          </ul>
-=======
-	          <h2>개인대출</h2>
->>>>>>> dev_ksl3
+	          <h2>대출상품</h2>
 	        </div>
       	</section><!-- Breadcrumbs end -->
 		
@@ -40,7 +31,7 @@
 		            </p>
 		            <!-- ======= Button trigger for basic modal ======= -->
 		            <button type="button" class="btn btn-outline-primary block" data-bs-toggle="modal"
-		                data-bs-target="#default" onclick="document.location.href='LoanApplication.cc?d_name=${list.d_name}"'">
+		                data-bs-target="#default" onclick="document.location.href='LoanApplication.cc?d_name=${list.d_name}'">
 		                	신청하기
 		            </button>
 		            <!-- Button trigger for basic modal end -->

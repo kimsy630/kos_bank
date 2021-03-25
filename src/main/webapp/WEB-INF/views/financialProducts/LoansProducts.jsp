@@ -16,7 +16,7 @@
 		<!-- ======= Breadcrumbs ======= -->
       	<section class="section section-bredcrumbs">
 	        <div class="container context-dark breadcrumb-wrapper">
-	          <h2>전체대출상품</h2>
+	          <h2>대출상품</h2>
 	        </div>
       	</section><!-- Breadcrumbs end -->
 		
@@ -24,7 +24,6 @@
 		
 	    <section class="inner-page">
 	    	<div class="container">
-				<h2>전체대출상품</h2><br>
 				<section class="section">
 		            <div class="card">
 		                <div class="card-body">

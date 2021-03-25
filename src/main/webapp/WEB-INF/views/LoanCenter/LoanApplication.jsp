@@ -23,7 +23,6 @@
 		
 	    <section class="inner-page">
 	    	<div class="container">
-				<h2>신규대출</h2><br>
 				<section class="section">
 					<div class="card">
 		                <div class="card-body">

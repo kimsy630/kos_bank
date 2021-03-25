@@ -1,4 +1,4 @@
-package spring.mvc.loan.service;
+package spring.mvc.teamProject.service;
 
 import java.util.List;
 
@@ -8,8 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 
-import spring.mvc.loan.persistence.LoanDAOImpl;
-import spring.mvc.loan.vo.LoanVO;
+import spring.mvc.teamProject.persistence.LoanDAOImpl;
+import spring.mvc.teamProject.vo.LoanVO;
 
 @Service
 public class LoanServiceImpl implements LoanService {

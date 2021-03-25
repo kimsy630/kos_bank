@@ -1,4 +1,4 @@
-package spring.mvc.loan.vo;
+package spring.mvc.teamProject.vo;
 
 import java.sql.Timestamp;
 

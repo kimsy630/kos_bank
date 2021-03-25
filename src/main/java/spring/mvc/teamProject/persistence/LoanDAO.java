@@ -1,10 +1,10 @@
-package spring.mvc.loan.persistence;
+package spring.mvc.teamProject.persistence;
 
 import java.util.List;
 
 import org.springframework.stereotype.Repository;
 
-import spring.mvc.loan.vo.LoanVO;
+import spring.mvc.teamProject.vo.LoanVO;
 
 @Repository
 public interface LoanDAO {

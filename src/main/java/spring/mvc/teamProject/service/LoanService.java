@@ -1,4 +1,4 @@
-package spring.mvc.loan.service;
+package spring.mvc.teamProject.service;
 
 import javax.servlet.http.HttpServletRequest;
 
