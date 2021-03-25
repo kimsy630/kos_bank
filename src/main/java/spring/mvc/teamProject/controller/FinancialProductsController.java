@@ -10,21 +10,18 @@ import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-<<<<<<< HEAD
 import spring.mvc.teamProject.service.FinancialProductsService;
 import spring.mvc.teamProject.service.FinancialProductsServiceImpl;
-=======
 import spring.mvc.loan.service.LoanService;
->>>>>>> dev_psh
-
 @Controller
 public class FinancialProductsController {
 	private static final Logger logger = LoggerFactory.getLogger(FinancialProductsController.class);
 	
 	@Autowired
-<<<<<<< HEAD
 	FinancialProductsService service;
 	
+	@Autowired
+	LoanService loanservice;
 	
 	//개인대출
 	@RequestMapping("/personalLoan.cc")
@@ -32,11 +29,8 @@ public class FinancialProductsController {
 		logger.info("url ==> /personalLoan");
 		return "financialProducts/personalLoan";
 	}
-=======
-	LoanService loanservice;
 	
 	// 박서하
->>>>>>> dev_psh
 	//대출상품
 	@RequestMapping("/LoansProducts.cc")
 	public String LoansProducts(HttpServletRequest req,Model model) {
@@ -46,14 +40,7 @@ public class FinancialProductsController {
 		
 		return "financialProducts/LoansProducts";
 	}
-<<<<<<< HEAD
-	// 최문수
-	//적금상품(Savings)
-	@RequestMapping("/SavingsList.cc")
-	public String ISP(HttpServletRequest req,Model model) {
-		logger.info("url ==> /SavingsList");
-		return "financialProducts/SavingsList";
-	}
+	
 	// 최문수
 	//정기예금(Deposit)
 	@RequestMapping("/DepositList.cc")
@@ -87,8 +74,7 @@ public class FinancialProductsController {
 		//service.SavingsDetail(req, model);
 		
 		return "financialProducts/SavingsRegistration";
-=======
-	
+	}
 	// 박서하
 	//대출상품 상세
 	@RequestMapping("/LoansDetail.cc")
@@ -100,13 +86,6 @@ public class FinancialProductsController {
 		return "financialProducts/LoansDetail";
 	}
 	
-	//적금상품
-	@RequestMapping("/ISP.cc")
-	public String ISP(HttpServletRequest req,Model model) {
-		logger.info("url ==> /ISP");
-		return "financialProducts/ISP";
->>>>>>> dev_psh
-	}
 	// 최문수
 	// 정기예금상품 가입페이지
 	@RequestMapping("/DepositRegistration.cc")

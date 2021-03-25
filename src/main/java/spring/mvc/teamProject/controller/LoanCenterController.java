@@ -15,17 +15,12 @@ import spring.mvc.loan.service.LoanService;
 
 @Controller
 public class LoanCenterController {
-<<<<<<< HEAD
 
 	private static final Logger logger = LoggerFactory.getLogger(LoanCenterController.class); // 박서하 branch test
 
-=======
-	private static final Logger logger = LoggerFactory.getLogger(LoanCenterController.class);
-	
 	@Autowired
 	LoanService loanservice;
 	
->>>>>>> dev_psh
 	// 박서하
 	//대출계좌 조회
 	@RequestMapping("/LoanAccountCheck.cc")
