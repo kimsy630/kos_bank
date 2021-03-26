@@ -2,11 +2,14 @@ package spring.mvc.teamProject.controller;
 
 import java.util.Map;
 
+
 import javax.servlet.http.HttpServletRequest;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.scheduling.annotation.Scheduled;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -114,6 +117,7 @@ public class InquiryTransferController {
 		logger.info("url ==> /ISPAdd");
 		return "InquiryTransfer/ISPAdd";
 	}
+	
 	//자동이체신청 AutoTransferRequest.cc
 	@RequestMapping("/AutoTransferRequest.cc")
 	public String AutoTransferRequest(HttpServletRequest req,Model model) {
