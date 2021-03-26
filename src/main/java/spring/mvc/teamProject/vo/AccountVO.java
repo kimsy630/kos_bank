@@ -40,7 +40,7 @@ public class AccountVO {
       return balance;
    }
    public void setBalance(int balance) {
-      balance = balance;
+	   this.balance = balance;
    }
    public String getAcccountType() {
       return acccountType;

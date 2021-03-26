@@ -12,7 +12,26 @@
          where id = #{id} AND accountType = '입출금' AND accountState = '정상'
 	</select>
 	
-	<select id="getSavingsList" resultType="spring.mvc.teamProject.vo.SavingsVO">
+	<select id="checkPwd" resultType="int">
+		select COUNT(*) 
+		from account_info
+		where account = #{account} AND accountPW = #{accountPW}
+	</select>
+	
+	<select id="checkBalance" resultType="int">
+		<![CDATA[
+		select COUNT(*)
+		from account_info
+		where account = #{account} AND Balance >= #{balance}
+		]]> 
+	</select>
+	
+	<select id="getAccount" resultType="String">
+		SELECT '33'||'-'||'03'||'-'||LPAD(SEQ_ACCOUNT.NEXTVAL,6,0)
+		FROM DUAL
+	</select>
+	
+	<select id="getSavingsList" resultType="spring.mvc.teamProject.vo.savings_productVO">
 		select * from savings_product
 	</select>
 	
@@ -20,7 +39,7 @@
 		select * from deposit_product
 	</select>
 	
-	<select id="getSavingsDetail" resultType="spring.mvc.teamProject.vo.SavingsVO">
+	<select id="getSavingsDetail" resultType="spring.mvc.teamProject.vo.savings_productVO">
 		select * 
 		from savings_product
 		where j_name = #{j_name}
@@ -33,8 +52,13 @@
 	</select>
 	
 	<insert id="insertDepositAccount" parameterType="spring.mvc.teamProject.vo.AccountVO">
-		INSERT INTO account_info(account,ID,accountPW,accountType,acc_state_content)
-		VALUES('33'||'-'||'03'||'-'||LPAD(SEQ_DEPOSIT.NEXTVAL, 6, 0),#{id},#{accountPW},#{accountType},#{acc_state_content})
+		INSERT INTO account_info(account,ID,accountPW,accountType)
+		VALUES(#{account},#{id},#{accountPW},'예금')
+	</insert>
+	
+	<insert id="insertDeposit" parameterType="spring.mvc.teamProject.vo.FixedVO">
+		INSERT INTO fixed_deposit(y_Key, y_name, account, y_rate, y_type, y_balance, y_end_date)
+		VALUES(SEQ_DEPOSIT.NEXTVAL, #{y_name}, #{account}, #{y_rate}, #{y_type}, #{y_balance}, #{y_end_date})
 	</insert>
 		
 </mapper>

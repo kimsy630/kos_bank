@@ -21,6 +21,13 @@
 	    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 	    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
 	    <script>
+	    
+	    window.onload = function() {
+	    	document.fdpForm.money.value = 0;
+	    	document.fdpForm.months.value = '선택';
+	    	document.fdpForm.accounts.value = '선택';
+	    }
+	    
 	    function checkFDP() {
 	    	
 	    	if (document.fdpForm.y_balance.value < ${vo.y_min_price} || !document.fdpForm.money.value) {
@@ -44,7 +51,7 @@
 	    		document.fdpForm.pw.focus();
 	    		return false;
 	    	}
-	    	if (document.fdpForm.accounts.value == '계좌번호를 선택해주세요.') {
+	    	if (document.fdpForm.accounts.value == '선택') {
 	    		alert('출금할 계좌번호를 선택하세요.');
 	    		return false;
 	    	}
@@ -186,6 +193,7 @@
   <input type="hidden" name="y_type" value="${vo.y_type}">
   <input type="hidden" name="ID" value="${sessionScope.id}">
   <input type="hidden" name="y_rate" value="${vo.y_interest_rate}">
+  <input type="hidden" name="y_name" value="${vo.y_name}">
     <div class="preloader">
       <div class="preloader-body">
         <div class="cssload-container">
@@ -216,7 +224,7 @@
               <!-- Bootstrap collapse-->
               <div class="card-group-custom card-group-corporate" id="accordion1" role="tablist" aria-multiselectable="false">
                 <!-- Bootstrap card-->
-                <h3>가입정보</h3><br>
+                <h3>${vo.y_name}</h3><br>
                 <hr></hr><br>
 				<p style="display:inline">비과세종합저축 구분</p>           
                 <div style="display:inline; margin-left:100px;" class="form-check">
@@ -286,7 +294,7 @@
 				<p style="display:inline; margin-right:140px;">출금계좌번호</p>
 				
                 <select name="accounts" class="form-select form-select-lg mb-4" aria-label="Default select example" onchange="pwWithdrawChk();">
-				  <option selected>계좌번호를 선택해주세요.</option>
+				  <option selected>선택</option>
 				  <c:forEach items="${list}" var="item">
 				  <option value="${item.account}">${item.account}</option>
 				  </c:forEach>

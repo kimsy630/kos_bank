@@ -10,10 +10,10 @@ public class FixedVO {
    private String account;
    private Timestamp y_join_date;
    private int y_state;
-   private int y_rate;
+   private double y_rate;
    private int y_type;
    private int y_balance;
-   private Timestamp y_date;
+   private Timestamp y_end_date;
    private AccountVO vo;
    
 public String getY_Key() {
@@ -46,10 +46,10 @@ public int getY_state() {
 public void setY_state(int y_state) {
 	this.y_state = y_state;
 }
-public int getY_rate() {
+public double getY_rate() {
 	return y_rate;
 }
-public void setY_rate(int y_rate) {
+public void setY_rate(double y_rate) {
 	this.y_rate = y_rate;
 }
 public int getY_type() {
@@ -64,11 +64,11 @@ public int getY_balance() {
 public void setY_balance(int y_balance) {
 	this.y_balance = y_balance;
 }
-public Timestamp getY_date() {
-	return y_date;
+public Timestamp getY_end_date() {
+	return y_end_date;
 }
-public void setY_date(Timestamp y_date) {
-	this.y_date = y_date;
+public void setY_end_date(Timestamp y_end_date) {
+	this.y_end_date = y_end_date;
 }
 public AccountVO getVo() {
 	return vo;

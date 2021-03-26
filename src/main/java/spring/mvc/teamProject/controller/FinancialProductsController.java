@@ -46,6 +46,9 @@ public class FinancialProductsController {
 	@RequestMapping("/SavingsList.cc")
 	public String SavingsList(HttpServletRequest req,Model model) {
 		logger.info("url ==> /SavingsList");
+		
+		service.SavingsList(req, model);
+		
 		return "financialProducts/SavingsList";
 	}
 	
@@ -94,10 +97,10 @@ public class FinancialProductsController {
 	public String regISP(HttpServletRequest req,Model model) {
 		logger.info("url ==> /SavingsRegistration");
 		
-		//String j_name = req.getParameter("j_name");
-		//req.setAttribute("j_name", j_name);
-		//service.AccountList(req, model);
-		//service.SavingsDetail(req, model);
+		String j_name = req.getParameter("j_name");
+		req.setAttribute("j_name", j_name);
+		service.AccountList(req, model);
+		service.SavingsDetail(req, model);
 		
 		return "financialProducts/SavingsRegistration";
 	}
@@ -109,7 +112,6 @@ public class FinancialProductsController {
 		logger.info("url ==> /DepositRegistration");
 		
 		String y_name = req.getParameter("y_name");
-		System.out.println("y_name" + y_name);
 		req.setAttribute("y_name", y_name);
 		service.AccountList(req, model);
 		service.DepositDetail(req, model);

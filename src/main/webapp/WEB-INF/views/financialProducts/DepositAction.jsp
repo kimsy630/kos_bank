@@ -10,7 +10,7 @@
 		<script type="text/javascript">
 		setTimeout(function(){
 			alert("출금계좌비밀번호가 틀립니다.");
-			window.history.back();	
+			window.location.href="DepositRegistration.cc?y_name=${y_name}";
 		}, 1000); 
 		</script>
 	</c:when>
@@ -18,7 +18,15 @@
 		<script type="text/javascript">
 		setTimeout(function(){
 			alert("정기예금가입이 완료되었습니다.");
-			window.location.href="main.cc";	
+			window.location.href="DepositRegistration.cc?y_name=${y_name}";	
+		}, 1000); 
+		</script>
+	</c:when>
+	<c:when test="${insertCnt == 2}">
+		<script type="text/javascript">
+		setTimeout(function(){
+			alert("출금계좌 잔고가 부족합니다.");
+			window.history.back();
 		}, 1000); 
 		</script>
 	</c:when>
@@ -26,7 +34,7 @@
 		<script type="text/javascript">
 		setTimeout(function(){
 			alert("정기예금가입에 오류가 발생했습니다.");
-			window.history.back();	
+			window.location.href="DepositRegistration.cc?y_name=${y_name}";
 		}, 1000); 
 		</script>
 	</c:otherwise>

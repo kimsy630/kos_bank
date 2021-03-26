@@ -54,6 +54,7 @@ public class CommonController extends HttpServlet {
 		memberService.idChk(req, model);
 		return "common/idChk";
 	}
+	
 	//idChk.cc
 	/*
 

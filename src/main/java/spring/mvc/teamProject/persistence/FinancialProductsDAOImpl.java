@@ -14,8 +14,9 @@ import org.springframework.stereotype.Repository;
 
 import spring.mvc.teamProject.vo.AccountVO;
 import spring.mvc.teamProject.vo.DepositVO;
+import spring.mvc.teamProject.vo.FixedVO;
 import spring.mvc.teamProject.vo.MembersVO;
-import spring.mvc.teamProject.vo.SavingsVO;
+import spring.mvc.teamProject.vo.savings_productVO;
 
 
 
@@ -30,9 +31,26 @@ public class FinancialProductsDAOImpl implements FinancialProductsDAO{
 		
 		return sqlSession.getMapper(FinancialProductsDAO.class).selectById(id);
 	}
-
+	
 	@Override
-	public List<SavingsVO> getSavingsList() {
+	public int checkPwd(AccountVO vo) {
+		
+		return sqlSession.getMapper(FinancialProductsDAO.class).checkPwd(vo);
+	}
+	
+	@Override
+	public int checkBalance(AccountVO vo) {
+		return sqlSession.getMapper(FinancialProductsDAO.class).checkBalance(vo);
+	}
+	
+	@Override
+	public String getAccount() {
+		
+		return sqlSession.getMapper(FinancialProductsDAO.class).getAccount();
+	}
+	
+	@Override
+	public List<savings_productVO> getSavingsList() {
 		
 		return sqlSession.getMapper(FinancialProductsDAO.class).getSavingsList();
 	}
@@ -44,7 +62,7 @@ public class FinancialProductsDAOImpl implements FinancialProductsDAO{
 	}
 
 	@Override
-	public SavingsVO getSavingsDetail(String j_name) {
+	public savings_productVO getSavingsDetail(String j_name) {
 		
 		return sqlSession.getMapper(FinancialProductsDAO.class).getSavingsDetail(j_name);
 	}
@@ -56,18 +74,12 @@ public class FinancialProductsDAOImpl implements FinancialProductsDAO{
 	}
 
 	@Override
-	public int insertSavings(SavingsVO vo) {
+	public int insertSavings(savings_productVO vo) {
 		
 		return sqlSession.getMapper(FinancialProductsDAO.class).insertSavings(vo);
 		
 	}
 
-	@Override
-	public int insertDeposit(DepositVO vo) {
-		
-		return sqlSession.getMapper(FinancialProductsDAO.class).insertDeposit(vo);
-		
-	}
 
 	@Override
 	public int insertDepositAccount(AccountVO vo) {
@@ -75,6 +87,18 @@ public class FinancialProductsDAOImpl implements FinancialProductsDAO{
 		return sqlSession.getMapper(FinancialProductsDAO.class).insertDepositAccount(vo);
 		
 	}
+	
+	@Override
+	public int insertDeposit(FixedVO vo) {
+		
+		return sqlSession.getMapper(FinancialProductsDAO.class).insertDeposit(vo);
+		
+	}
+
+	
+	
+	
+	
 
 	
 	
