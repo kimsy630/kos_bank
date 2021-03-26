@@ -15,7 +15,7 @@ public class AccountVO {
 	private Timestamp delete_date;
 	private Timestamp sleep_date;
 	private Timestamp new_date;
-   
+    private MembersVO member;
    
    public String getAccount() {
       return account;
@@ -85,7 +85,13 @@ public class AccountVO {
       this.new_date = new_date;
    }
    
-   @Override
+   public MembersVO getMember() {
+		return member;
+	}
+	public void setMember(MembersVO member) {
+		this.member = member;
+	}
+@Override
    public String toString() {
       return "AccountVO [account=" + account + ", id=" + id + ", accountPW=" + accountPW + ", Balance=" + balance
             + ", acccountType=" + acccountType + ", accountState=" + accountState + ", acc_state_content="

@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import spring.mvc.teamProject.vo.AccountVO;
+import spring.mvc.teamProject.vo.MembersVO;
 
 @Repository
 public class RegisterReleaseDAOImpl implements RegisterReleaseDAO{
@@ -45,6 +46,12 @@ public class RegisterReleaseDAOImpl implements RegisterReleaseDAO{
 	@Override
 	public int AccountPwdCheck(String id) {
 		return sqlSession.selectOne("spring.mvc.teamProject.persistence.RegisterReleaseDAO.AccountPwdCheck", id);
+	}
+
+	@Override
+	public String AccountNameChk(String account) {
+		Object o = sqlSession.selectOne("spring.mvc.teamProject.persistence.RegisterReleaseDAO.AccountNameChk", account);
+		return o.toString();
 	}
 
 	

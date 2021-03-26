@@ -21,6 +21,9 @@ public interface RegisterReleaseService {
 	// 계좌(정상)조회
 	public void AccountNomalList(HttpServletRequest req, Model model);
 	
+	// 예금주 조회
+	public void AccountNameChk(HttpServletRequest req, Model model);
+	
 	// 계좌해지
 	public void DeleteAccountService(HttpServletRequest req, Model model);
 	

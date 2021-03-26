@@ -1,5 +1,7 @@
 package spring.mvc.teamProject.controller;
 
+import java.util.Map;
+
 import javax.servlet.http.HttpServletRequest;
 
 import org.slf4j.Logger;
@@ -7,15 +9,22 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
+import spring.mvc.teamProject.service.InquiryTransferService;
 import spring.mvc.teamProject.service.RegisterReleaseService;
+import spring.mvc.teamProject.vo.TransferVO;
 
 @Controller
 public class InquiryTransferController {
 	
 	@Autowired
 	RegisterReleaseService service;
+	
+	@Autowired
+	InquiryTransferService Iservice;
 	
 	private static final Logger logger = LoggerFactory.getLogger(InquiryTransferController.class);
 	
@@ -67,14 +76,32 @@ public class InquiryTransferController {
 		logger.info("url ==> /AllTable");
 		return "InquiryTransfer/AllTable";
 	}
-	
-	//계좌이체 AccountTransfer.cc
+	//김소림
+	//계좌이체 페이지 AccountTransfer.cc
 	@RequestMapping("/AccountTransfer.cc")
 	public String AccountTransfer(HttpServletRequest req,Model model) {
 		logger.info("url ==> /AccountTransfer");
 		service.AccountNomalList(req, model);
 		return "InquiryTransfer/AccountTransfer";
 	}
+	//김소림
+	//계좌이체 ajax페이지 TransferTable.cc
+	@RequestMapping("/TransferTable.cc")
+	public String TransferTable(HttpServletRequest req,Model model) {
+		logger.info("url ==> /TransferTable");
+		Iservice.transferTable(req, model);
+		return "InquiryTransfer/TransferTable";
+	}
+	
+	//김소림
+	//계좌이체 Action TransferTable.cc
+	@RequestMapping("/TransferAction.cc")
+	public String TransferAction(HttpServletRequest req,Model model) {
+		logger.info("url ==> /TransferTable");
+		Iservice.transferAction(req, model);
+		return "InquiryTransfer/TransferAction";
+	}
+					 
 	//다계좌이체 MultiAccountTransfer.cc
 	@RequestMapping("/MultiAccountTransfer.cc")
 	public String MultiAccountTransfer(HttpServletRequest req,Model model) {

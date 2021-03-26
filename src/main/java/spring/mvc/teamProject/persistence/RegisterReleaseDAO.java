@@ -7,6 +7,7 @@ import org.apache.ibatis.annotations.Select;
 import org.springframework.stereotype.Repository;
 
 import spring.mvc.teamProject.vo.AccountVO;
+import spring.mvc.teamProject.vo.MembersVO;
 
 @Repository
 public interface RegisterReleaseDAO{
@@ -21,6 +22,9 @@ public interface RegisterReleaseDAO{
 	
 	// 보유 계좌(정상) 리스트
 	public List<AccountVO> selectNomalById(String id);
+	
+	// 예금주 조회
+	public String AccountNameChk(String account);
 	
 	// 계좌비밀번호 Chk
 	public int AccountPwdCheck(String id);
