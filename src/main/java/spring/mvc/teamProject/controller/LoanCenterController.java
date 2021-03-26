@@ -120,6 +120,8 @@ public class LoanCenterController {
 	public String LoanRateCheckIn(HttpServletRequest req,Model model) {
 		logger.info("url ==> /LoanRateCheckIn");
 		
+		loanservice.LoanRateCheckIn(req, model);
+		
 		return "LoanCenter/LoanRateCheckIn";
 	}
 	

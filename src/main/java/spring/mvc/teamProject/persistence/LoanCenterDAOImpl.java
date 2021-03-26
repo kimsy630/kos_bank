@@ -40,6 +40,12 @@ public class LoanCenterDAOImpl implements LoanCenterDAO {
 		LoansVO vo = sqlSession.selectOne("spring.mvc.teamProject.persistence.LoanCenterDAO.getLoanCloseDetail", map);
 		return vo;
 	}
+
+	@Override
+	public LoansVO getLoanPrincipal(String account) { // 대출원금 예상(내부정보)
+		LoansVO vo = sqlSession.selectOne("spring.mvc.teamProject.persistence.LoanCenterDAO.getLoanPrincipal", account);
+		return vo;
+	}
 	// ============================================================================
 	
 }

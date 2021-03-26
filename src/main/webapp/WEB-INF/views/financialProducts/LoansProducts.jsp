@@ -39,10 +39,10 @@
 				            	<div class="col-lg-9 col-xl-8">
 				              		<p>총<em>${count}</em>개의 상품</p>
 				              		<!-- Bootstrap collapse-->
+					                <c:forEach var="list" items="${list}">
 				              		<div class="card-group-custom card-group-corporate" id="accordion1" role="tablist" aria-multiselectable="false">
 				                		<!-- Bootstrap card-->
 				                		<article id="article" class="card card-custom card-corporate">
-					                		<c:forEach var="list" items="${list}">
 						                 		<div id="goods" class="goods">
 						                 			<h4 data-prd-cd="1130313506" data-sys-ds-cd="01"><a href="LoansDetail.cc?d_name=${list.d_name}">${list.d_name}</a></h4>
 						                 			<p class="desc">${list.d_summary}</p>
@@ -50,10 +50,10 @@
 						                		<div id="interests" class="interests">
 													<em>최대 <strong>${list.d_max_price}</strong><span>억원</span></em>
 												</div>
-						                 		<div id="btns" class="button button-primary button-round"><a href="LoanApplication.cc?d_name=${list.d_name}">신청하기</a></div>
-					                		</c:forEach>
+						                 		<div id="btns" class="button button-primary button-round"><a href="LoanApplication.cc?d_name=${list.d_name}">신청하기</a></div>	
 				                		</article>
 				              		</div>
+				          			</c:forEach>
 				            	</div>
 				          	</div>
 				        </div>

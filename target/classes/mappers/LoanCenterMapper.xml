@@ -8,7 +8,7 @@
 	<!-- ============================================================================ -->
 	<!-- 박서하 -->
 	<select id="getLoanAccountList" resultType="spring.mvc.teamProject.vo.LoansVO"> <!-- 대출계좌 조회 -->
-		SELECT l.d_name, l.d_repay, l.account, l.d_amount, l.d_end_date, l.d_balance, d_month, d_ERR
+		SELECT l.d_name, l.d_repay, l.account, l.d_rate, l.d_amount, l.d_start_date, l.d_end_date, l.d_balance, d_month, d_next_rate, d_ERR
 		 FROM account_info i, loans l
 		 WHERE i.account = l.account
 		 AND i.id=#{id}
@@ -16,7 +16,7 @@
 	</select>
 	
 	<select id="getLoanAccountDetail" resultType="spring.mvc.teamProject.vo.LoansVO"> <!-- 대출계좌 상세조회 -->
-		SELECT l.d_name, l.d_repay, l.d_amount, l.d_balance, l.account, l.d_rate, l.d_start_date, l.d_end_date, d_next_rate
+		SELECT l.d_name, l.d_repay, l.d_amount, l.d_balance, l.d_month, l.account, l.d_rate, l.d_start_date, l.d_end_date, d_next_rate
 		 FROM account_info i, loans l
 		 WHERE i.account = l.account
 		 AND i.id=#{id}
@@ -39,6 +39,12 @@
 		 AND i.id=#{id}
 		 AND l.d_name=#{d_name}
 		 AND l.d_state=2 <!-- d_state=2 : 해지대출계좌 -->
+	</select>
+	
+	<select id="getLoanPrincipal" resultType="spring.mvc.teamProject.vo.LoansVO"> <!-- 대출원금 예상(내부정보) -->
+		SELECT d_amount, d_month, d_ERR
+		 FROM Loans
+		 WHERE account = #{account}
 	</select>
 	<!-- ============================================================================ -->
 </mapper>
