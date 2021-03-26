@@ -68,6 +68,7 @@
                   <thead>
                     <tr>
                       <th>계좌명</th>
+                      
                       <th>계좌번호</th>
                       <th>신규일</th>
                       <th>최근거래일자</th>
@@ -75,72 +76,22 @@
                       <th>업무</th>
                     </tr>
                   </thead>
-                  <tbody>
+                  <c:forEach var="vo" items="${list}">
+                  <c:set var="dto" value="${vo.getAccountTransfer()}"/>
                     <tr>
-                      <td>저축예금</td>
-                      <td>110-451-550731</td>
-                      <td>신규일</td>
-                      <td>2021.03.18</td>
-                      <td><fmt:formatNumber value="1231231" pattern="#,###" />원</td>
+                      <td>${vo.accountType}</td>
+                      <td>${vo.account}</td>
+                      <td>${vo.new_date}</td>
+                      <td>${dto.in_outDate}</td>
+                      <td><fmt:formatNumber value="${vo.balance}" pattern="#,###" />원</td>
                       <td> 
-                      	<div class="button button-round" style= "padding:10px 20px; width:60px; height:40px; font-size:15px; text-align:center; background-color:#fff; display:inline;" onclick="location.href='TransactionDetails.cc'">조회</div>&nbsp;&nbsp;
+                      	<div class="button button-round" style= "padding:10px 20px; width:60px; height:40px; font-size:15px; text-align:center; background-color:#fff; display:inline;" onclick="location.href='TransactionDetails.do'">조회</div>&nbsp;&nbsp;
                       	<div class="button button-round" style= "padding:10px 20px; width:60px; height:40px; font-size:15px; text-align:center; background-color: #435ebe; color:#fff; display:inline;" onclick="location.href='AccountTransfer.cc'">이체</div>
-                      
                       </td>
-                    </tr>
-                    <tr>
-                      <td>저축예금</td>
-                      <td>110-451-550731</td>
-                      <td>신규일</td>
-                      <td>2021.03.18</td>
-                      <td><fmt:formatNumber value="1231231" pattern="#,###" />원</td>
-                      <td> 
-                      	<div class="button button-round" style= "padding:10px 20px; width:60px; height:40px; font-size:15px; text-align:center; background-color:#fff; display:inline;" >조회</div>&nbsp;&nbsp;
-                      	<div class="button button-round" style= "padding:10px 20px; width:60px; height:40px; font-size:15px; text-align:center; background-color: #435ebe; color:#fff; display:inline;">이체</div>
-                      
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>저축예금</td>
-                      <td>110-451-550731</td>
-                      <td>신규일</td>
-                      <td>2021.03.18</td>
-                      <td><fmt:formatNumber value="1231231" pattern="#,###" />원</td>
-                      <td> 
-                      	<div class="button button-round" style= "padding:10px 20px; width:60px; height:40px; font-size:15px; text-align:center; background-color:#fff; display:inline;">조회</div>&nbsp;&nbsp;
-                      	<div class="button button-round" style= "padding:10px 20px; width:60px; height:40px; font-size:15px; text-align:center; background-color: #435ebe; color:#fff; display:inline;">이체</div>
-                      
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>저축예금</td>
-                      <td>110-451-550731</td>
-                      <td>신규일</td>
-                      <td>2021.03.18</td>
-                      <td><fmt:formatNumber value="1231231" pattern="#,###" />원</td>
-                      <td> 
-                      	<div class="button button-round" style= "padding:10px 20px; width:60px; height:40px; font-size:15px; text-align:center; background-color:#fff; display:inline;">조회</div>&nbsp;&nbsp;
-                      	<div class="button button-round" style= "padding:10px 20px; width:60px; height:40px; font-size:15px; text-align:center; background-color: #435ebe; color:#fff; display:inline;">이체</div>
-                      
-                      </td>
-                    </tr>
-                  </tbody>
-                  <tfoot>
-                    <tr>
-                      <td>저축예금</td>
-                      <td>110-451-550731</td>
-                      <td>신규일</td>
-                      <td>2021.03.18</td>
-                      <td><fmt:formatNumber value="1231231" pattern="#,###" />원</td>
-                      <td> 
-                      	<div class="button button-round" style= "padding:10px 20px; width:60px; height:40px; font-size:15px; text-align:center; background-color:#fff; display:inline;">조회</div>&nbsp;&nbsp;
-                      	<div class="button button-round" style= "padding:10px 20px; width:60px; height:40px; font-size:15px; text-align:center; background-color: #435ebe; color:#fff; display:inline;">이체</div>
-                      </td>
-                    </tr>
-                  </tfoot>
+                     </tr>
+                  </c:forEach>
                 </table>
                 
-                <img src="../teamProject/resources/testimage/계좌조회_예금_신탁.png">
               </div>
             </div>
           </div>

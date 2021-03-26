@@ -84,8 +84,8 @@
 	</error-page>
 	<!-- 에러처리 페이지 종료 -->
 	
-	<!-- 6.세션 타임 아웃 설정(20분)-->
+	<!-- 6.세션 타임 아웃 설정(1000분)-->
 	<session-config>
-		<session-timeout>60</session-timeout>
+		<session-timeout>1000</session-timeout>
 	</session-config>
 </web-app>

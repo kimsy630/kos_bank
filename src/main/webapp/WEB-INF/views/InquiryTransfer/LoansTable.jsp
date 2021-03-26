@@ -64,6 +64,7 @@
 		          <div style="background-color: #435ebe; color:#fff; width:1170px; height:2px;"> </div>
 		          <br>
                 <table class="table-custom table-custom-secondary table-custom-hovered" id="acc_table">
+                	
                     <tr>
                       <th>대출명</th>
                       <th>계좌번호</th>
@@ -72,20 +73,22 @@
                       <th>대출잔액(원)</th>
                       <th>업무</th>
                     </tr>
+                    <c:forEach var="vo" items="${list }">
+                    <c:set var="dto" value="${vo.getLoans() }"/>
                     <tr>
-                      <td>저축예금</td>
-                      <td>110-451-550731</td>
-                      <td>신규일</td>
-                      <td>2021.03.18</td>
-                      <td><fmt:formatNumber value="1231231" pattern="#,###" />원</td>
+                      <td>${dto.d_name }</td>
+                      <td>${vo.account }</td>
+                      <td><fmt:formatNumber value="${vo.accountLimit }" pattern="#,###" />원</td>
+                      <td>${dto.d_end_date }</td>
+                      <td><fmt:formatNumber value="${dto.d_balance }" pattern="#,###" />원</td>
                       <td> 
                       	<div class="button button-round" style= "padding:10px; width:80px; height:40px; font-size:12px; text-align:center; background-color:#fff; display:inline;" onclick="location.href='LoanAccountCheck.cc'">상환내역</div>  
                       	<div class="button button-round" style="padding:10px; width:80px; height:40px; font-size:12px; text-align:center; background-color: #435ebe; color:#fff; display:inline;">원금상환</div>
                       
                       </td>
                     </tr>
+                    </c:forEach>
                 </table>
-                <img src="../teamProject/resources/testimage/계좌조회_대출.png">
               </div>
             </div>
           </div>

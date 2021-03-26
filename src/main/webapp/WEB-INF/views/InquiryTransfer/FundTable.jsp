@@ -76,14 +76,17 @@
                   </thead>
                   <tbody>
                     <tr>
-                      <td>저축예금</td>
-                      <td>110-451-550731</td>
-                      <td><fmt:formatNumber value="100000000" pattern="#,###" />원</td>
-                      <td>2021.03.18</td>
-                      <td><fmt:formatNumber value="50000000" pattern="#,###" />원</td>
+                    <c:forEach var="vo" items="${list}">
+                    <c:set var="dto" value="${vo.getFund()}"/>
+                      <td>${vo.accountType}</td>
+                      <td>${vo.account }</td>
+                      <td><fmt:formatNumber value="${dto.f_target_Amount }" pattern="#,###" />원</td>
+                      <td>${dto.f_enddate }</td>
+                      <td><fmt:formatNumber value="${vo.balance }" pattern="#,###" />원</td>
+                      
+                     </c:forEach>
                     </tr>
-                </table>
-                <img src="../teamProject/resources/testimage/계좌조회_펀드.PNG">
+                 </table>
               </div>
             </div>
           </div>

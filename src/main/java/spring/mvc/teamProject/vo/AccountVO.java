@@ -8,16 +8,21 @@ public class AccountVO {
 	private String id;
 	private int accountPW;
 	private int balance;
-	private String acccountType;
+	private String accountType;
 	private String accountState;
 	private String acc_state_content;
-	private int acccountLimit;
+	private int accountLimit;
 	private Timestamp delete_date;
 	private Timestamp sleep_date;
 	private Timestamp new_date;
-   
-   
-   public String getAccount() {
+    private AccountTransferVO AccountTransfer;
+    private LoansVO Loans;
+    private installment_savingsVO installment_savings;
+    private fundVO fund;
+    private DepositVO deposit;
+    
+    
+public String getAccount() {
       return account;
    }
    public void setAccount(String account) {
@@ -40,13 +45,13 @@ public class AccountVO {
       return balance;
    }
    public void setBalance(int balance) {
-      balance = balance;
+      this.balance = balance;
    }
-   public String getAcccountType() {
-      return acccountType;
+   public String getAccountType() {
+      return accountType;
    }
-   public void setAcccountType(String acccountType) {
-      this.acccountType = acccountType;
+   public void setAccountType(String accountType) {
+      this.accountType = accountType;
    }
    public String getAccountState() {
       return accountState;
@@ -60,11 +65,11 @@ public class AccountVO {
    public void setAcc_state_content(String acc_state_content) {
       this.acc_state_content = acc_state_content;
    }
-   public int getAcccountLimit() {
-      return acccountLimit;
+   public int getAccountLimit() {
+      return accountLimit;
    }
-   public void setAcccountLimit(int acccountLimit) {
-      this.acccountLimit = acccountLimit;
+   public void setAccountLimit(int accountLimit) {
+      this.accountLimit = accountLimit;
    }
    public Timestamp getDelete_date() {
       return delete_date;
@@ -85,11 +90,56 @@ public class AccountVO {
       this.new_date = new_date;
    }
    
-   @Override
-   public String toString() {
-      return "AccountVO [account=" + account + ", id=" + id + ", accountPW=" + accountPW + ", Balance=" + balance
-            + ", acccountType=" + acccountType + ", accountState=" + accountState + ", acc_state_content="
-            + acc_state_content + ", acccountLimit=" + acccountLimit + ", delete_date=" + delete_date
-            + ", sleep_date=" + sleep_date + ", new_date=" + new_date + "]";
-   }
+	public AccountTransferVO getAccountTransfer() {
+		return AccountTransfer;
+	}
+	public void setAccountTransfer(AccountTransferVO accountTransfer) {
+		AccountTransfer = accountTransfer;
+	}
+   public LoansVO getLoans() {
+		return Loans;
+	}
+	public void setLoans(LoansVO loans) {
+		Loans = loans;
+	}
+	public installment_savingsVO getInstallment_savings() {
+		return installment_savings;
+	}
+	public void setInstallment_savings(installment_savingsVO installment_savings) {
+		this.installment_savings = installment_savings;
+	}
+	
+	public fundVO getFund() {
+		return fund;
+	}
+	public void setFund(fundVO fund) {
+		this.fund = fund;
+	}
+	
+	public DepositVO getDeposit() {
+		return deposit;
+	}
+	public void setDeposit(DepositVO deposit) {
+		this.deposit = deposit;
+	}
+	
+	@Override
+	public String toString() {
+		return "AccountVO [account=" + account + ", id=" + id + ", accountPW=" + accountPW + ", balance=" + balance
+				+ ", accountType=" + accountType + ", accountState=" + accountState + ", acc_state_content="
+				+ acc_state_content + ", accountLimit=" + accountLimit + ", delete_date=" + delete_date
+				+ ", sleep_date=" + sleep_date + ", new_date=" + new_date
+				+ "\n, AccountTransfer=" + AccountTransfer
+				+ "\n, Loans=" + Loans
+				+ "\n, installment_savings=" + installment_savings 
+				+ "\n, fund=" + fund
+				+ "\n, deposit=" + deposit + "]";
+	}
+	
+
+	
+	
+	
+   
+ 
 }

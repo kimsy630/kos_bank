@@ -74,16 +74,18 @@
                       <th>잔액(원)</th>
                     </tr>
                   </thead>
-                  <tbody>
+                  <c:forEach var="vo" items="${list }">
+                  <c:set var="dto" value="${vo.getInstallment_savings()}"/>
                     <tr>
-                      <td>적금</td>
-                      <td>110-451-550731</td>
-                      <td>2019.01.01</td>
-                      <td>2021.03.18</td>
-                      <td><fmt:formatNumber value="1231231" pattern="#,###" />원</td>
+                      <td>${dto.j_name }</td>
+                      <td>${vo.account }</td>
+                      <td>${dto.j_join_date}</td>
+                      <td>${dto.j_date }</td>
+                      <td><fmt:formatNumber value="${dto.j_balance }" pattern="#,###" />원</td>
                     </tr>
+                    </c:forEach>
                 </table>
-                <img src="../teamProject/resources/testimage/계좌조회_대출.png">
+                
               </div>
             </div>
           </div>

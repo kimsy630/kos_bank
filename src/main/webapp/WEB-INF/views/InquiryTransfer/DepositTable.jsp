@@ -61,7 +61,7 @@
           <div class="row row-offset-1">
             <div class="col-lg-10 col-xxl-9">
               <div class="table-custom-responsive">
-              	<h6>휴면</h6>
+              	<h6>예금</h6>
 		          <div style="background-color: #435ebe; color:#fff; width:1170px; height:2px;"> </div>
 		          <br>
                 <table class="table-custom table-custom-secondary table-custom-hovered" id="acc_table">
@@ -71,23 +71,26 @@
                       <th>계좌번호</th>
                       <th>신규일</th>
                       <th>만기일</th>
-                      <th>잔액(원)</th>
+                      <th>최초예치액</th>
                       <th>종류</th>
                     </tr>
                   </thead>
                   <tbody>
+                    <c:forEach var="vo" items="${list}">
+                  <c:set var="dto" value="${vo.getDeposit()}" />
                     <tr>
-                      <td>저축예금</td>
-                      <td>110-451-550731</td>
-                      <td>2019.01.01</td>
-                      <td>2021.03.18</td>
-                      <td><fmt:formatNumber value="1231231" pattern="#,###" />원</td>
+                      <td>${vo.accountType}</td>
+                      <td>${vo.account }</td>
+                      <td>${dto.y_join_date }</td>
+                      <td>${dto.y_end_date }</td>
+                      <td><fmt:formatNumber value="${dto.y_balance }" pattern="#,###" />원</td>
                       <td>고객요청</td>
                     </tr>
+                    </c:forEach>
                 </table>
-                <img src="../teamProject/resources/testimage/계좌조회_휴면.png">
               </div>
             </div>
           </div>
+          
   </body>
 </html>

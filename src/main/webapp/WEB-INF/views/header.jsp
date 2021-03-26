@@ -53,8 +53,8 @@
                           <li class="rd-megamenu-item">
                             <h6 class="rd-megamenu-title">계좌조회</h6>
                             <ul class="rd-megamenu-list">
-                              <li class="rd-megamenu-list-item"><a class="rd-megamenu-list-link" href="AccountCheck.cc">보유계좌조회</a></li>
-                              <li class="rd-megamenu-list-item"><a class="rd-megamenu-list-link" href="AccountCheck.cc">거래내역 조회</a></li>
+                              <li class="rd-megamenu-list-item"><a class="rd-megamenu-list-link" href="AccountCheck.do">보유계좌조회</a></li>
+                              <li class="rd-megamenu-list-item"><a class="rd-megamenu-list-link" href="AccountCheck.do">거래내역 조회</a></li>
                               <li class="rd-megamenu-list-item"><a class="rd-megamenu-list-link" href="AccountCheck.cc">해지계좌 조회</a></li>
                               <li class="rd-megamenu-list-item"><a class="rd-megamenu-list-link" href="AccountCheck.cc">휴면계좌조회</a></li>
                             </ul>

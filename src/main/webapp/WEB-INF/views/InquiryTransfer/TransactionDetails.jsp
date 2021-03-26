@@ -3,32 +3,9 @@
 <%@ include file = "../setting.jsp"%>
 <!DOCTYPE html>
 <html class="wide wow-animation" lang="en">
-   <meta content="width=device-width, initial-scale=1.0" name="viewport">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
   <head>
     <title>Home</title>
-      <!-- 조회기간 설정 스크립트 -->
-      <script src="http://code.jquery.com/jquery.js"></script>
-      <script type='text/javascript' src='//code.jquery.com/jquery-1.8.3.js'></script>
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.5.0/js/bootstrap-datepicker.min.js"></script>
-		<script>
-		$(function(){
-		    $('#datePicker').datepicker({
-		        calendarWeeks: false,
-		          todayHighlight: true,
-		        autoclose: true,
-		        format: "yyyy-mm-dd",
-		        language: "en"
-		    });
-		    $('#datePicker2').datepicker({
-		        calendarWeeks: false,
-		          todayHighlight: true,
-		        autoclose: true,
-		        format: "yyyy-mm-dd",
-		        language: "en"
-		    });
-		});
-		</script>
-	<!-- 조회기간 설정 스크립트 끝 -->
     <meta name="format-detection" content="telephone=no">
     <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -39,15 +16,36 @@
     <link rel="stylesheet" href="${path}css/bootstrap.css">
     <link rel="stylesheet" href="${path}css/fonts.css">
     <link rel="stylesheet" href="${path}css/style.css" id="main-styles-link">
-    <!--[if lt IE 10]>
-    <div style="background: #212121; padding: 10px 0; box-shadow: 3px 3px 5px 0 rgba(0,0,0,.3); clear: both; text-align:center; position: relative; z-index:1;"><a href="http://windows.microsoft.com/en-US/internet-explorer/"><img src="images/ie8-panel/warning_bar_0000_us.jpg" border="0" height="42" width="820" alt="You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today."></a></div>
-    <script src="js/html5shiv.min.js"></script>
-    <![endif]-->
-    
-    <!-- 조회기간 설정 부트스트랩 설정-->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.5.0/css/bootstrap-datepicker3.min.css">
-    <!-- 끝 -->
   </head>
+
+     <script type="text/javascript">
+    function btnClick(){
+
+	      // _jsonInfo -> '컨트롤러'/basic5_next -> data -> <div id="json_result">에 결과를 뿌린다.
+	      $.ajax({
+	         url: 'TransactionDetails_Table.do?${_csrf.parameterName}=${_csrf.token}',  // '컨트롤러'/매핑주소
+	         type: 'POST',
+	         data: {
+	        	 view_AccountNum: $("#view_AccountNum").val(),
+	        	 start_date: $("#start_date").val(),
+	        	 end_date: $("#end_date").val(),
+	        	 View_Content: $('input[name="View_Content"]:checked').val()
+	         },
+	         success: function(data) {
+	            $('#Tran_result').html(data);
+	         },
+	         error: function() {
+	            alert('오류');
+	         }
+	      });
+    }
+    </script>
+    
+<script>
+	document.getElementById('date').value= new Date().toISOString().slice(0, 7);
+</script>
+
+
   <style>
 	#Transaction_table{
 		width:1170px;
@@ -95,7 +93,7 @@
        <section class="section section-lg bg-default">
         <div class="container">
          
-              	 <form>
+              	 <form action="TransactionDetails_Table.do" method="post" name="TD_From" style="text-align: center;">
               	 	<h6>거래내역조회</h6>
 		          <div style="background-color: #435ebe; color:#fff; width:1170px; height:2px;"> </div>
 		          <br>
@@ -103,9 +101,11 @@
 	                  	<tr>
 	                      <td id="td_head1">조회계좌번호</td>
 	                      <td id="td_body1">
-	                      	<select name="view_AccountNum">
+	                      	<select id="view_AccountNum" name="view_AccountNum">
 	                      		<option value="" selected>--선택 --</option>
-	                      		<option value="1">110-451-123412</option>
+	                      		<c:forEach var="accList" items="${accList }">
+	                      		<option value="${accList}">${accList}</option>
+	                      		</c:forEach>
 	                      	</select>
 	                      </td>
 			                  
@@ -113,13 +113,8 @@
 	                    <tr>
 	                     <td id="td_head1">조회기간</td>
 	                      <td id="td_body1">
-					          <input type="text" class="form-control" id="datePicker" name="start_date" value="2021-01-01" style="width:150px; display: inline; text-align: center;"> ~
-					          <input type="text" class="form-control" id="datePicker2" name="start_date" value="2021-01-01" style="width:150px;  display: inline; text-align: center;">
-					          <input type="button" value="오늘"> 
-					          <input type="button" value="1주일"> 
-					          <input type="button" value="15일"> 
-					          <input type="button" value="1개월">
-					          <input type="button" value="3개월">  
+					          <input type="date" class="form-control" id="start_date"  style="width:150px; display: inline; text-align: center;"> ~
+					          <input type="date" class="form-control" id="end_date"  style="width:150px; display: inline; text-align: center;">
 	                      </td>
 	                    </tr>
 	                    <tr>
@@ -131,103 +126,21 @@
                      	</td>
 	                    </tr>
 	                    <tr>
-	                    <td id="td_head1">조회결과 순서</td>
-	                      <td id="td_body1"><input type="radio" name="View_Result" value="All_List" checked>최근거래순 &nbsp;
-								<input type="radio" name="View_Result" value="Deposit_List" >과거거래순 &nbsp;</td>
-	                    </tr>
-	                    <tr>
 	                      <td  id="td_body1" colspan="2" style="text-align: center;">
-	                      		<div class="button button-round" style= "padding:10px 25px; width:60px; height:40px; font-size:15px; text-align:center; background-color:#fff; display:inline;">조회</div> &nbsp;&nbsp;  
-                      	<div class="button button-round" style="padding:10px 25px; width:60px; height:40px; font-size:15px; text-align:center; background-color:#435ebe; color:#fff; display:inline;" onclick="location.href='AccountTransfer.cc'">이체</div>
+	                      <input id ="btn" onclick="btnClick()" type="button"  class="button button-round" style= "padding:10px 25px; width:90px; height:40px; font-size:15px; text-align:center; background-color:#fff; display: inline;" value="조회"> &nbsp;&nbsp;  
+	                      		<!-- <button id ="btn" type="button"  class="button button-round" style= "padding:10px 25px; width:90px; height:40px; font-size:15px; text-align:center; background-color:#fff; display: inline;">조회</button> &nbsp;&nbsp;   -->
+                      	<div class="button button-round" style="padding:10px 30px; width:90px; height:40px; font-size:15px; text-align:center; background-color:#435ebe; color:#fff; display: inline;" onclick="location.href='AccountTransfer.cc'">이체</div>
 	                      </td>
 	                    </tr>
 	                </table>
+	               
+	                
                 </form>
-                 <section class="section section-lg bg-default">
-              <h6>계좌정보</h6>
-		          <div style="background-color: #435ebe; color:#fff; width:1170px; height:2px;"> </div>
-		          <br>
-                <table class="table-custom table-custom-bordered" id="Transaction_table">
-                    <tr>
-                      <td id="td_head">계좌명(계좌별명)</td>
-                      <td colspan="3"> 저축예금 </td>
-                    </tr>
-                    <tr>
-                      <td id="td_head">고객명</td>
-                      <td id="td_body"></td>
-                      <td id="td_head">계좌번호</td>
-                      <td id="td_body"></td>
-                    </tr>
-                    <tr>
-                      <td id="td_head">계좌잔액(원)</td>
-                      <td id="td_body"></td>
-                      <td id="td_head">출금가능액(원)</td>
-                      <td id="td_body"></td>
-                    </tr>
-                    <tr>
-                      <td id="td_head">신규일자</td>
-                      <td id="td_body">2015.11.11</td>
-                      <td id="td_head"></td>
-                      <td id="td_body"></td>
-                    </tr>
-                    <tr>
-                      <td id="td_head">대출승인액(원)</td>
-                      <td id="td_body">0</td>
-                      <td id="td_head">대출만기일</td>
-                      <td id="td_body"></td>
-                    </tr>
-                </table>
-      		</section>
-      		 <section class="section section-lg bg-default">
-              <h6>거래내역</h6>
-		          <div style="background-color: #435ebe; color:#fff; width:1170px; height:2px;"> </div>
-		          <br>
-                <table class="table-custom table-custom-bordered" id="Transaction_table">
-                <tr>
-                	<td style="width:200px; font-weight: 800;">
-                		입금합계(건수)
-                	</td>
-                	<td style="width:385px; font-weight: 800; text-align: right; color:#435ebe;">
-                		<fmt:formatNumber value="4800" pattern="#,###" />원 (2건)
-                	</td>
-                	<td style="width:200px; font-weight: 800;">
-                		출금합계(건수)
-                	</td>
-                	<td style="width:385px; font-weight: 800; text-align: right; color:#435ebe;">
-                		<fmt:formatNumber value="500000" pattern="#,###" />원 (8건)
-                	</td>
-                </tr>
-                </table>
-                <br>
-                <table class="table-custom table-custom-bordered" id="Transaction_table">
-                <tr>
-                	<td style="font-weight: 800; text-align: center;">거래일자</td>
-                	<td style="font-weight: 800; text-align: center;">거래시간</td>
-                	<td style="font-weight: 800; text-align: center;">보낸사람 명</td>
-                	<td style="font-weight: 800; text-align: center;">출금(원)</td>
-                	<td style="font-weight: 800; text-align: center;">입금(원)</td>
-                	<td style="font-weight: 800; text-align: center;">내용</td>
-                	<td style="font-weight: 800; text-align: center;">잔액(원)</td>
-                	<td style="font-weight: 800; text-align: center;">받는사람 명</td>
-                </tr>
-                <tr>
-                	<td style="text-align: center;">2021-03-18</td>
-                	<td style="text-align: center;">14:03:56</td>
-                	<td style="text-align: center;">유재석</td>
-                	<td style="text-align: center;"><fmt:formatNumber value="5000" pattern="#,###" /></td>
-                	<td style="text-align: center;"></td>
-                	<td style="text-align: center;">맛있는고기집</td>
-                	<td style="text-align: center;"><fmt:formatNumber value="505000" pattern="#,###" /></td>
-                	<td style="text-align: center;">사장님</td>
-                </tr>
-                </table>
-					<br>
-					<div style="width: 1170px; text-align: center;">
-						<div class="button button-round" style="padding:18px 40px; width:60px; height:40px; font-size:15px; text-align:center; background-color:#435ebe; color:#fff; display:inline; " onclick="location.href='AccountCheck.cc'">확인</div>
-					</div>                
-      		</section>
-               
-              </div>
+                
+                <div id="Tran_result">
+                
+                </div>
+          </div>
           </section>
            <%@include file="../footer.jsp" %>
       </div>

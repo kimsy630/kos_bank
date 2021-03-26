@@ -56,13 +56,224 @@
   </style>
   
   <body>
-		<%@include file="AccountTable.jsp" %>  	
-  		<%@include file="LoansTable.jsp" %>
-  		<%@include file="IS_Table.jsp" %>
-  		<%@include file="FundTable.jsp" %>
-  		<%@include file="SleepTable.jsp" %>
-  		<%@include file="StopTable.jsp" %>
-  		<%@include file="FundTable.jsp" %>
+		<!-- AccountTable 입출금 계좌 -->
+		 <div class="row row-offset-1">
+            <div class="col-lg-10 col-xxl-9">
+              <div class="table-custom-responsive">
+	              <h6>입/출금 계좌</h6>
+		          <div style="background-color: #435ebe; color:#fff; width:1170px; height:2px;"> </div>
+		          <br>
+                <table class="table-custom table-custom-secondary table-custom-hovered" id="acc_table">
+                  <thead>
+                    <tr>
+                      <th>계좌명</th>
+                      <th>계좌번호</th>
+                      <th>신규일</th>
+                      <th>최근거래일자</th>
+                      <th>잔액(원)</th>
+                      <th>업무</th>
+                    </tr>
+                  </thead>
+                  <c:forEach var="vo" items="${list1}">
+                  <c:set var="dto" value="${vo.getAccountTransfer()}"/>
+                    <tr>
+                      <td>${vo.accountType}</td>
+                      <td>${vo.account}</td>
+                      <td>${vo.new_date}</td>
+                      <td>${dto.in_outDate}</td>
+                      <td><fmt:formatNumber value="${vo.balance}" pattern="#,###" />원</td>
+                      <td> 
+                      	<div class="button button-round" style= "padding:10px 20px; width:60px; height:40px; font-size:15px; text-align:center; background-color:#fff; display:inline;" onclick="location.href='TransactionDetails.do'">조회</div>&nbsp;&nbsp;
+                      	<div class="button button-round" style= "padding:10px 20px; width:60px; height:40px; font-size:15px; text-align:center; background-color: #435ebe; color:#fff; display:inline;" onclick="location.href='AccountTransfer.cc'">이체</div>
+                      </td>
+                     </tr>
+                  </c:forEach>
+                </table>
+                
+              </div>
+            </div>
+          </div>
+          <br><br><br>
+  		<!-- 대출계좌 LoansTable -->
+  		 <div class="row row-offset-1">
+            <div class="col-lg-10 col-xxl-9">
+              <div class="table-custom-responsive">
+              	<h6>대출</h6>
+		          <div style="background-color: #435ebe; color:#fff; width:1170px; height:2px;"> </div>
+		          <br>
+                <table class="table-custom table-custom-secondary table-custom-hovered" id="acc_table">
+                	
+                    <tr>
+                      <th>대출명</th>
+                      <th>계좌번호</th>
+                      <th>승인한도</th>
+                      <th>만기일</th>
+                      <th>대출잔액(원)</th>
+                      <th>업무</th>
+                    </tr>
+                    <c:forEach var="vo" items="${list2 }">
+                    <c:set var="dto" value="${vo.getLoans() }"/>
+                    <tr>
+                      <td>${dto.d_name }</td>
+                      <td>${vo.account }</td>
+                      <td><fmt:formatNumber value="${vo.accountLimit }" pattern="#,###" />원</td>
+                      <td>${dto.d_end_date }</td>
+                      <td><fmt:formatNumber value="${dto.d_balance }" pattern="#,###" />원</td>
+                      <td> 
+                      	<div class="button button-round" style= "padding:10px; width:80px; height:40px; font-size:12px; text-align:center; background-color:#fff; display:inline;" onclick="location.href='LoanAccountCheck.cc'">상환내역</div>  
+                      	<div class="button button-round" style="padding:10px; width:80px; height:40px; font-size:12px; text-align:center; background-color: #435ebe; color:#fff; display:inline;">원금상환</div>
+                      
+                      </td>
+                    </tr>
+                    </c:forEach>
+                </table>
+              </div>
+            </div>
+          </div>
+          <br><br><br>
+  		<!-- 적금테이플 IS_Table -->
+  		<div class="row row-offset-1">
+            <div class="col-lg-10 col-xxl-9">
+              <div class="table-custom-responsive">
+              	<h6>적금</h6>
+		          <div style="background-color: #435ebe; color:#fff; width:1170px; height:2px;"> </div>
+		          <br>
+                <table class="table-custom table-custom-secondary table-custom-hovered" id="acc_table">
+                  <thead>
+                    <tr>
+                      <th>계좌명</th>
+                      <th>계좌번호</th>
+                      <th>신규일</th>
+                      <th>만기일</th>
+                      <th>잔액(원)</th>
+                    </tr>
+                  </thead>
+                  <c:forEach var="vo" items="${list3 }">
+                  <c:set var="dto" value="${vo.getInstallment_savings()}"/>
+                    <tr>
+                      <td>${dto.j_name }</td>
+                      <td>${vo.account }</td>
+                      <td>${dto.j_join_date}</td>
+                      <td>${dto.j_date }</td>
+                      <td><fmt:formatNumber value="${dto.j_balance }" pattern="#,###" />원</td>
+                    </tr>
+                    </c:forEach>
+                </table>
+                
+              </div>
+            </div>
+          </div>
+  		<br><br><br>
+  		<!-- FundTable -->
+  		 <div class="row row-offset-1">
+            <div class="col-lg-10 col-xxl-9">
+              <div class="table-custom-responsive">
+              	<h6>펀드</h6>
+		          <div style="background-color: #435ebe; color:#fff; width:1170px; height:2px;"> </div>
+		          <br>
+                <table class="table-custom table-custom-secondary table-custom-hovered" id="acc_table">
+                  <thead>
+                    <tr>
+                      <th>계좌명</th>
+                      <th>계좌번호</th>
+                      <th>펀딩목표액</th>
+                      <th>펀딩종료일</th>
+                      <th>잔액(원)</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                    <c:forEach var="vo" items="${list4}">
+                    <c:set var="dto" value="${vo.getFund()}"/>
+                      <td>${vo.accountType}</td>
+                      <td>${vo.account }</td>
+                      <td><fmt:formatNumber value="${dto.f_target_Amount }" pattern="#,###" />원</td>
+                      <td>${dto.f_enddate }</td>
+                      <td><fmt:formatNumber value="${vo.balance }" pattern="#,###" />원</td>
+                      
+                     </c:forEach>
+                    </tr>
+                 </table>
+              </div>
+            </div>
+          </div>
+  		<br><br><br>
+  		<!-- 예금테이블 DepositTable -->
+  		<div class="row row-offset-1">
+            <div class="col-lg-10 col-xxl-9">
+              <div class="table-custom-responsive">
+              	<h6>예금</h6>
+		          <div style="background-color: #435ebe; color:#fff; width:1170px; height:2px;"> </div>
+		          <br>
+                <table class="table-custom table-custom-secondary table-custom-hovered" id="acc_table">
+                  <thead>
+                    <tr>
+                      <th>계좌명</th>
+                      <th>계좌번호</th>
+                      <th>신규일</th>
+                      <th>만기일</th>
+                      <th>최초예치액</th>
+                      <th>종류</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <c:forEach var="vo" items="${list5}">
+                  <c:set var="dto" value="${vo.getDeposit()}" />
+                    <tr>
+                      <td>${vo.accountType}</td>
+                      <td>${vo.account }</td>
+                      <td>${dto.y_join_date }</td>
+                      <td>${dto.y_end_date }</td>
+                      <td><fmt:formatNumber value="${dto.y_balance }" pattern="#,###" />원</td>
+                      <td>고객요청</td>
+                    </tr>
+                    </c:forEach>
+                </table>
+              </div>
+            </div>
+          </div>
+  		<br><br><br>
+  		<!-- 휴면/정지 테이블 StopSleepTable -->
+  		<div class="row row-offset-1">
+            <div class="col-lg-10 col-xxl-9">
+              <div class="table-custom-responsive">
+              	<h6>휴면/정지</h6>
+		          <div style="background-color: #435ebe; color:#fff; width:1170px; height:2px;"> </div>
+		          <br>
+                <table class="table-custom table-custom-secondary table-custom-hovered" id="acc_table">
+                  <thead>
+                    <tr>
+                      <th>계좌명</th>
+                      <th>계좌번호</th>
+                      <th>정지일/휴면일</th>
+                      <th>최근 결제일</th>
+                      <th>잔액(원)</th>
+                      <th>종류</th> <!-- 계좌상태 설명 (왜 정지가 됐는지 -->
+                    </tr>
+                  </thead>
+                  <tbody>
+                  
+                  <c:forEach var="vo" items="${list6 }">
+                  <c:set var="dto" value="${vo.getAccountTransfer() }"/>
+                    <tr>
+                      <td>${vo.accountType }</td>
+                      <td>${vo.account }</td>
+                      <c:if test="${vo.accountState == '정지' }">
+                      	<td>${vo.delete_date }</td>
+                      </c:if>
+                      <c:if test="${vo.accountState == '휴면' }">
+                      	<td>${vo.sleep_date }</td>
+                      </c:if>
+                      <td>${dto.in_outDate }</td>
+                      <td><fmt:formatNumber value="${vo.balance }" pattern="#,###" />원</td>
+                      <td>${vo.accountState }</td>
+                    </tr>
+				  </c:forEach>
+                </table>
+              </div>
+            </div>
+          </div>
+  		<br><br><br>
   	
   </body>
 </html>

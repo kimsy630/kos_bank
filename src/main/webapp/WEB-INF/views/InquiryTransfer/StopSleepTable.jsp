@@ -61,7 +61,7 @@
           <div class="row row-offset-1">
             <div class="col-lg-10 col-xxl-9">
               <div class="table-custom-responsive">
-              	<h6>정지</h6>
+              	<h6>휴면/정지</h6>
 		          <div style="background-color: #435ebe; color:#fff; width:1170px; height:2px;"> </div>
 		          <br>
                 <table class="table-custom table-custom-secondary table-custom-hovered" id="acc_table">
@@ -69,23 +69,31 @@
                     <tr>
                       <th>계좌명</th>
                       <th>계좌번호</th>
-                      <th>정지일</th>
+                      <th>정지일/휴면일</th>
                       <th>최근 결제일</th>
                       <th>잔액(원)</th>
                       <th>종류</th> <!-- 계좌상태 설명 (왜 정지가 됐는지 -->
                     </tr>
                   </thead>
                   <tbody>
+                  
+                  <c:forEach var="vo" items="${list }">
+                  <c:set var="dto" value="${vo.getAccountTransfer() }"/>
                     <tr>
-                      <td>저축예금</td>
-                      <td>110-451-550731</td>
-                      <td>2021.03.20</td>
-                      <td>2021.03.18</td>
-                      <td><fmt:formatNumber value="1231231" pattern="#,###" />원</td>
-                      <td>분실로 인한 요청</td>
+                      <td>${vo.accountType }</td>
+                      <td>${vo.account }</td>
+                      <c:if test="${vo.accountState == '정지' }">
+                      	<td>${vo.delete_date }</td>
+                      </c:if>
+                      <c:if test="${vo.accountState == '휴면' }">
+                      	<td>${vo.sleep_date }</td>
+                      </c:if>
+                      <td>${dto.in_outDate }</td>
+                      <td><fmt:formatNumber value="${vo.balance }" pattern="#,###" />원</td>
+                      <td>${vo.accountState }</td>
                     </tr>
+				  </c:forEach>
                 </table>
-                <img src="../teamProject/resources/testimage/계좌조회_정지.png">
               </div>
             </div>
           </div>
