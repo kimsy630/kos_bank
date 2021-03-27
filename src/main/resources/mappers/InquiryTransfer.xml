@@ -25,9 +25,6 @@
 		<result column="accountState" property="accountState" />
 		<result column="acc_state_content" property="acc_state_content" />
 		<result column="acccountLimit" property="acccountLimit" />
-		<result column="new_date" property="new_date" />
-		<result column="sleep_date" property="sleep_date" />
-		<result column="delete_date" property="delete_date" />
 	</resultMap>
 	
 	<insert id="addMyLog" parameterType="spring.mvc.teamProject.vo.TransferVO">

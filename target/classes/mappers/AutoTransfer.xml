@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+    
+<mapper namespace = "spring.mvc.teamProject.persistence.RegisterReleaseDAO">
+	
+	<!-- 자동이체 신청 -->
+	<insert id="AutoTransferAdd" parameterType="spring.mvc.teamProject.vo.AutoTransferVO">
+		INSERT INTO
+		auto_transfer(jd_key, account, jd_type, jd_autoMoney, jd_outDate,
+		jd_account, jd_inPlace, jd_outCycle, jd_registDate, jd_expirationDate )
+		values(
+		auto_transfer_seq.nextval, #{ account }, #{jd_type}, #{jd_autoMoney},
+		#{jd_outDate}, #{jd_account}, #{jd_inPlace}, #{jd_outCycle}, #{jd_registDate}, #{jd_expirationDate} )
+	</insert>
+	
+	<!-- 자동이체 삭제 -->
+	<delete id="AutoTransferDelete" parameterType="spring.mvc.teamProject.vo.AutoTransferVO" >
+		DELETE from auto_transfer
+		WHERE jd_key = #{ jd_key }
+	</delete>
+	
+	<!-- 자동이체 변경 -->
+	<update id="AutoTransferModify" parameterType="spring.mvc.teamProject.vo.AutoTransferVO" >
+		UPDATE auto_transfer
+		SET 
+		jd_type	= #{jd_type}, 
+		jd_autoMoney = #{jd_autoMoney}, 
+		jd_outDate	= #{jd_outDate}, 
+		jd_account	= #{jd_account}, 
+		jd_inPlace = #{jd_inPlace}, 
+		jd_outCycle	= #{jd_outCycle}, 
+		jd_registDate = #{jd_registDate}
+		WHERE jd_key = #{ jd_key }
+	</update>
+	
+	
+	<!-- 자동이체 실행되는 Mapper -->
+	<!-- 자동이체 정보 조회 -->
+	<select id="selectByDate" resultMap="autoDebitMap">
+		select jd_type, jd_type, jd_autoMoney, jd_account, jd_key
+		from autodebit
+		where set_date = '11'	<!-- setDate 자동이체 설정일 -->
+	</select>
+
+
+	<!-- 자동이체 계좌 출금 -->
+	<update id="autoDebitSend" parameterType="autoDebitVO">
+		update account
+		set
+		balance = balance - #{ setMoney }
+		where acc_no = #{ accNo }
+	</update>
+
+
+	<!-- 자동이체 상대계좌 입금 -->
+	<update id="autoDebitReceive" parameterType="autoDebitVO">
+		update account
+		set
+		balance = balance + #{ setMoney }
+		where acc_no = #{ oppAccNo }
+	</update>
+
+
+	<!-- 자동이체 테이블 last_run_date -->
+	<update id="lastRunDate" parameterType="autoDebitVO">
+		update autodebit
+		set
+		last_run_date = sysdate
+		where autodebit_code = #{ autodebitCode }
+	</update>
+
+	
+	<!-- 자동이체 - 거래내역 로그(출금 거래내역)-->
+	<insert id="sendAutoTrans" parameterType="autoDebitVO">
+		insert into transaction(acc_no, trans_code, memo, withdraw, balance, opp_acc_no, summary)
+		values( #{ accNo }, seq_trans_code.nextval,  #{ category }, #{ setMoney }, 
+		(select balance from account where acc_no = #{ accNo }), #{ oppAccNo }, '자동출금'  )		
+	</insert>
+
+
+	<!-- 자동이체 - 거래내역 로그(입금 거래내역) -->
+	<insert id="receiveAutoTrans" parameterType="autoDebitVO">
+		insert into transaction(acc_no, trans_code, memo, deposit, balance, opp_acc_no, summary)
+		values( #{ oppAccNo }, seq_trans_code.nextval,  #{ category }, #{ setMoney }, 
+		(select balance from account where acc_no = #{ oppAccNo }), #{ accNo }, '자동입금' )
+	</insert>
+	
+	
+	
+</mapper>

@@ -23,6 +23,9 @@ public interface RegisterReleaseDAO{
 	// 보유 계좌(정상) 리스트
 	public List<AccountVO> selectNomalById(String id);
 	
+	// 보유 계좌(입출금) 리스트
+	public List<AccountVO> selectType(String id);
+	
 	// 예금주 조회
 	public String AccountNameChk(String account);
 	

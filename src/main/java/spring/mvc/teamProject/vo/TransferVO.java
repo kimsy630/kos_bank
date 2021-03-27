@@ -2,6 +2,8 @@ package spring.mvc.teamProject.vo;
 
 import com.sun.jmx.snmp.Timestamp;
 
+import oracle.sql.DATE;
+
 public class TransferVO {
 	
 	private int transfer_id;
@@ -10,7 +12,7 @@ public class TransferVO {
 	private String sender_name;
 	private int money;
 	private String in_out;
-	private Timestamp in_outDate;
+	private DATE in_outDate;
 	private String out_comment;
 	private String in_comment;
 	private AccountVO accountvo;
@@ -52,10 +54,10 @@ public class TransferVO {
 	public void setIn_out(String in_out) {
 		this.in_out = in_out;
 	}
-	public Timestamp getIn_outDate() {
+	public DATE getIn_outDate() {
 		return in_outDate;
 	}
-	public void setIn_outDate(Timestamp in_outDate) {
+	public void setIn_outDate(DATE in_outDate) {
 		this.in_outDate = in_outDate;
 	}
 	public String getOut_comment() {
@@ -76,7 +78,6 @@ public class TransferVO {
 	public void setAccountvo(AccountVO accountvo) {
 		this.accountvo = accountvo;
 	}
-	
 	@Override
 	public String toString() {
 		return "TransferVO [transfer_id=" + transfer_id + ", account=" + account + ", sender_account=" + sender_account
@@ -84,6 +85,9 @@ public class TransferVO {
 				+ in_outDate + ", out_comment=" + out_comment + ", in_comment=" + in_comment + ", accountvo="
 				+ accountvo + "]";
 	}
+	
+	
+	
 	
 	
 }

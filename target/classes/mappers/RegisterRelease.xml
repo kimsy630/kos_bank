@@ -14,9 +14,6 @@
 	<result column="accountState" property="accountState" />
 	<result column="acc_state_content" property="acc_state_content" />
 	<result column="acccountLimit" property="acccountLimit" />
-	<result column="new_date" property="new_date" />
-	<result column="sleep_date" property="sleep_date" />
-	<result column="delete_date" property="delete_date" />
 	<collection property="member" resultMap="member" />
 	</resultMap>
 	
@@ -58,6 +55,14 @@
   		JOIN Members m
   		  ON a.id = m.id
     	WHERE a.id=#{id} AND a.accountState='정상'	 
+  	</select>
+  	
+  	<select id="selectType" resultMap="accountMemberList">
+  		SELECT a.*, m.name
+  		FROM account_info a
+  		JOIN Members m
+  		  ON a.id = m.id
+    	WHERE a.id=#{id} AND a.accountType='입출금'	 
   	</select>
   	
   	<select id="AccountNameChk" resultType="String">

@@ -44,6 +44,12 @@ public class RegisterReleaseDAOImpl implements RegisterReleaseDAO{
 	}
 	
 	@Override
+	public List<AccountVO> selectType(String id) {
+		List<AccountVO> accountList = sqlSession.selectList("spring.mvc.teamProject.persistence.RegisterReleaseDAO.selectType", id);
+		return accountList;
+	}
+	
+	@Override
 	public int AccountPwdCheck(String id) {
 		return sqlSession.selectOne("spring.mvc.teamProject.persistence.RegisterReleaseDAO.AccountPwdCheck", id);
 	}

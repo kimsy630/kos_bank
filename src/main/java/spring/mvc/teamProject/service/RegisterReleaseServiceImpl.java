@@ -75,6 +75,18 @@ public class RegisterReleaseServiceImpl implements RegisterReleaseService{
 		model.addAttribute("list", list);
 		
 	}
+	
+	// 계좌(정상)리스트
+		@Override
+		public void AccountInoutType(HttpServletRequest req, Model model) {
+			String strId = (String)req.getSession().getAttribute("id");
+			List<AccountVO> list = accountDAO.selectType(strId);
+			
+			System.out.println("list"+list);
+			model.addAttribute("list", list);
+			
+		}
+	
 	// 예금주 조회
 	@Override
 	public void AccountNameChk(HttpServletRequest req, Model model) {
@@ -85,7 +97,6 @@ public class RegisterReleaseServiceImpl implements RegisterReleaseService{
 
 		System.out.println("name"+name);
 		model.addAttribute("name", name);
-		
 		
 	}
 

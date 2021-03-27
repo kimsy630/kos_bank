@@ -104,6 +104,14 @@ public class InquiryTransferController {
 		Iservice.transferAction(req, model);
 		return "InquiryTransfer/TransferAction";
 	}
+	
+	//김소림
+	//계좌이체 Action TransferChk.cc
+	@RequestMapping("/TransferChk.cc")
+	public String TransferChk(HttpServletRequest req,Model model) {
+		logger.info("url ==> /TransferTable");
+		return "InquiryTransfer/TransferChk";
+	}
 					 
 	//다계좌이체 MultiAccountTransfer.cc
 	@RequestMapping("/MultiAccountTransfer.cc")
@@ -122,6 +130,7 @@ public class InquiryTransferController {
 	@RequestMapping("/AutoTransferRequest.cc")
 	public String AutoTransferRequest(HttpServletRequest req,Model model) {
 		logger.info("url ==> /AutoTransferRequest");
+		service.AccountInoutType(req, model);
 		return "InquiryTransfer/AutoTransferRequest";
 	}
 	//자동이체조회 AutoTransferList.cc
