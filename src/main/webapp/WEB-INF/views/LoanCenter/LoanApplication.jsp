@@ -42,25 +42,27 @@
 		                            <tr>
 		                                <td class="text-bold-500">대출기간</td>
 		                                <td>
-		                                	<select name="year" lengthtype="length">
-											    <option value="1">1</option>
-											    <option value="2">2</option>
-											    <option value="3">3</option>
+		                                	<select name="d_month" lengthtype="length">
+											    <option value="12">1</option>
+											    <option value="24">2</option>
+											    <option value="36">3</option>
+											    <option value="48">4</option>
+											    <option value="60">5</option>
 											</select>
 		                                	년
 		                                </td>
 		                            </tr>
 		                            <tr>
 		                                <td class="text-bold-500">대출금리</td>
-		                                <td><input type="text" name="" value="5" readonly>%</td>
+		                                <td>5%</td>
 		                            </tr>
 		                            <tr>
 		                                <td class="text-bold-500">대출금액</td>
 		                                <td>
 		                                	<select name="amount" lengthtype="length">
-											    <option value="1">1</option>
-											    <option value="2">2</option>
-											    <option value="3">3</option>
+											    <option value="100000000">1</option>
+											    <option value="200000000">2</option>
+											    <option value="300000000">3</option>
 											</select>
 											억원
 		                                </td>

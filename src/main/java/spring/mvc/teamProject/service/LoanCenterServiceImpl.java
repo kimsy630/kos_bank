@@ -109,14 +109,14 @@ public class LoanCenterServiceImpl implements LoanCenterService {
 		} else if(redemption.equals("early")) {
 			Timestamp todayT = Timestamp.valueOf(LocalDateTime.now());
 			Timestamp d_start_dateT = Timestamp.valueOf(d_start_date);
-			Timestamp timestamp_2 = Timestamp.valueOf(d_end_date);
+			Timestamp d_end_dateT = Timestamp.valueOf(d_end_date);
 			
 			Date todayD = new java.sql.Date(todayT.getTime());
 			Date d_start_dateD = new java.sql.Date(d_start_dateT.getTime());
-			Date d_end_dateD = new java.sql.Date(timestamp_2.getTime());
+			Date d_end_dateD = new java.sql.Date(d_end_dateT.getTime());
 			
 			long calRest = d_end_dateD.getTime() - todayD.getTime();
-			long rest = calRest / (24*60*60*1000); 
+			long rest = calRest / (24*60*60*1000);
 			System.out.println("before rest  : " + rest);
 			rest = Math.abs(rest);
 			System.out.println("잔여일자 : "+ rest);
@@ -127,6 +127,13 @@ public class LoanCenterServiceImpl implements LoanCenterService {
 			System.out.println("약정일자 : "+ total);
 			
 			System.out.println("계산 : "+ (float)rest/(float)total);
+			
+			long calCheck = todayD.getTime() - d_start_dateD.getTime(); 
+			long check = calCheck / (24*60*60*1000);
+			
+			if (check > 1095) { // 실행일자로부터 3년 경과 후 중도상환수수료 면제
+				d_ERR = 0;
+			}
 			
 			d_tran = Integer.parseInt(req.getParameter("d_tran"));
 			d_ERC = (int) (d_tran * d_ERR * ((float)rest/(float)total)); // 대출상환금액*수수료율*(잔여일수 / 약정기간)]
