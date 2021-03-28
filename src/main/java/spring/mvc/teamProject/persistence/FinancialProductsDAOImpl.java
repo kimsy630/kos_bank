@@ -1,31 +1,50 @@
 package spring.mvc.teamProject.persistence;
 
 import java.util.List;
-import java.util.Map;
-
-import javax.mail.Message.RecipientType;
-import javax.mail.internet.InternetAddress;
-import javax.mail.internet.MimeMessage;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Repository;
 
 import spring.mvc.teamProject.vo.AccountVO;
 import spring.mvc.teamProject.vo.DepositVO;
+<<<<<<< HEAD
 import spring.mvc.teamProject.vo.FixedVO;
 import spring.mvc.teamProject.vo.MembersVO;
 import spring.mvc.teamProject.vo.installment_savingsVO;
 import spring.mvc.teamProject.vo.savings_productVO;
-
-
+=======
+import spring.mvc.teamProject.vo.Loans_productVO;
+import spring.mvc.teamProject.vo.SavingsVO;
+>>>>>>> dev_psh2
 
 @Repository
 public class FinancialProductsDAOImpl implements FinancialProductsDAO{
 	
 	@Autowired
 	SqlSession sqlSession;
+
+	// ============================================================================
+	// 박서하
+	@Override
+	public int getLoanCount() { // 대출상품 조회
+		int count = sqlSession.selectOne("spring.mvc.teamProject.persistence.FinancialProductsDAO.getLoanCount");
+		return count;
+	}
+	
+	@Override
+	public List<Loans_productVO> getLoanList() { // 대출상품 조회
+		List<Loans_productVO> list = sqlSession.selectList("spring.mvc.teamProject.persistence.FinancialProductsDAO.getLoanList");
+		return list;
+	}
+
+	@Override
+	public Loans_productVO getLoanDetail(String d_name) { // 대출상품 상세조회
+		Loans_productVO vo = sqlSession.selectOne("spring.mvc.teamProject.persistence.FinancialProductsDAO.getLoanDetail", d_name);
+		return vo;
+	}
+
+	// ============================================================================
 
 	@Override
 	public List<AccountVO> selectById(String id) {

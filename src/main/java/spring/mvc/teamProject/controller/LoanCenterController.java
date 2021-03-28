@@ -2,8 +2,6 @@ package spring.mvc.teamProject.controller;
 
 import javax.servlet.http.HttpServletRequest;
 
-import javax.servlet.http.HttpServletRequest;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,7 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import spring.mvc.loan.service.LoanService;
+import spring.mvc.teamProject.service.LoanCenterService;
 
 @Controller
 public class LoanCenterController {
@@ -19,7 +17,7 @@ public class LoanCenterController {
 	private static final Logger logger = LoggerFactory.getLogger(LoanCenterController.class); // 박서하 branch test
 
 	@Autowired
-	LoanService loanservice;
+	LoanCenterService loanservice;
 	
 	// 박서하
 	//대출계좌 조회
@@ -69,7 +67,8 @@ public class LoanCenterController {
 	//신규대출 신청
 	@RequestMapping("/LoanApplication.cc")
 	public String LoanApplication(HttpServletRequest req,Model model) {
-		/* logger.info("url ==> /LoanApplication"); */
+		logger.info("url ==> /LoanApplication");
+		
 		return "LoanCenter/LoanApplication";
 	}
 	
@@ -89,8 +88,10 @@ public class LoanCenterController {
 	@RequestMapping("/LoanPrincipalCheckIn.cc")
 	public String LoanPrincipalCheckIn(HttpServletRequest req,Model model) {
 		logger.info("url ==> /LoanPrincipalCheckIn");
-		return "LoanCenter/LoanPrincipalCheckIn";
 
+		loanservice.LoanPrincipalCheckIn(req, model);
+		
+		return "LoanCenter/LoanPrincipalCheckIn";
 	}
 	
 	// 박서하
@@ -98,6 +99,7 @@ public class LoanCenterController {
 	@RequestMapping("/LoanPrincipalPay.cc")
 	public String LoanPrincipalPay(HttpServletRequest req,Model model) {
 		logger.info("url ==> /LoanPrincipalPay");
+		
 		return "LoanCenter/LoanPrincipalPay";
 	}
 	
@@ -117,6 +119,9 @@ public class LoanCenterController {
 	@RequestMapping("/LoanRateCheckIn.cc")
 	public String LoanRateCheckIn(HttpServletRequest req,Model model) {
 		logger.info("url ==> /LoanRateCheckIn");
+		
+		loanservice.LoanRateCheckIn(req, model);
+		
 		return "LoanCenter/LoanRateCheckIn";
 	}
 	

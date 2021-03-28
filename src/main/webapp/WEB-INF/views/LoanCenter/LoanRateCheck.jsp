@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ include file = "../setting.jsp"%>
 <!DOCTYPE html>
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.9.0/jquery.js"></script>
 <html class="wide wow-animation" lang="en">
   <head>
     <title>Home</title>
@@ -29,66 +30,84 @@
 		    	<div class="container">
 		        	<h3>대출이자 조회/납부</h3><br>
 		        	
-		        	<section class="section">
-			            <div class="card">
-			                <div class="card-body">
-		                        <h5><p>안내 및 유의사항</p></h5>
-		                        <hr>
-		                        <p>이자납입종료일은 고객께서 입력하신 날짜까지 포함되어 계산됩니다.</p>
-		                    </div>
-		                </div>
-			        	
-			          	<br>
-			          				          			          
+		        	<section class="section">	          
 			          	<div class="table-custom-responsive">
-			               	<table class="table-custom table-custom-bordered">
-			                	<colgroup>
-			                    	<col style="width: 15%;">
-			                     	<col style="width: 85%;">
-			                  	</colgroup>
-			                  	<tbody>
-			                    	<tr>
-			                        	<td scope="col">조회계좌</td>
-			                        	<td scope="col">
-											<select name="" lengthtype="length">
-												<c:forEach var="list" items="${list}">
-											    	<option value="${list.account}">${list.account}[${list.d_name}(${list.d_repay})]</option>
-											    </c:forEach>
-											</select>
-										</td>
-			                     	</tr>
-			                     	<tr>
-			                        	<td scope="col" class="borL">이자납부종료월</td>
-			                        	<td scope="col"><input type="month" value="month"></td>
-			                     	</tr>
-			                     	<tr>
-			                        	<td colspan="2" scope="col" class="borL">
-			                        		<div class="row justify-content-lg-center">
-												<a class="button button-round button-primary" href="LoanRateCheckIn.cc" data-caption-animate="fadeInUp" data-caption-delay="450">조회</a>
-											</div>
-										</td>
-			                     	</tr>
-			                  	</tbody>
-			               	</table>
-			               	
-			               	<br><br>
-			               	
-			               	<table class="table-custom table-custom-bordered">
-			                	<colgroup>
-			                    	<col style="width: 15%;">
-			                     	<col style="width: 85%;">
-			                  	</colgroup>
-			                  	<tbody>
-			                  		<tr>
-			                        	<td scope="col">이자(원)</td>
-			                        	<td scope="col">100,000</td>
-			                     	</tr>
-			                  	</tbody>
-			               	</table>
-			               	
-			               	<div class="row justify-content-lg-center">
-								<a class="button button-round button-primary" href="LoanRateInfo.cc" data-caption-animate="fadeInUp" data-caption-delay="450">이자납입</a>
-							</div>
+				          	<form action="#" name="rateForm" method="get" onchange="changeAccount()">
+				               	<table class="table-custom table-custom-bordered">
+				                	<colgroup>
+				                    	<col style="width: 15%;">
+				                     	<col style="width: 85%;">
+				                  	</colgroup>
+				                  	<tbody>
+				                    	<tr>
+				                        	<td scope="col">조회계좌</td>
+				                        	<td scope="col">
+												<select id="selectAccount" name="selectAccount" lengthtype="length">
+													<option value="">계좌를 선택하세요.</option>
+													<c:set value="" var="account" />
+													<c:forEach var="list" items="${list}">
+												    	<option value="${list.account}">${list.account}[${list.d_name}(${list.d_repay})]</option>
+												    	<input type="hidden" name="account" value="${list.account}">
+												    	<input type="hidden" name="d_repay" value="${list.d_repay}">
+												    	<input type="hidden" name="d_rate" value="${list.d_rate}">
+												    	<input type="hidden" name="d_amount" value="${list.d_amount}">
+												    	<input type="hidden" name="d_balance" value="${list.d_balance}">
+												    	<input type="hidden" name="d_next_rate" value="${list.d_next_rate}">
+												    </c:forEach>
+												</select>
+												<script>
+													function changeAccount() {
+														<c:forEach var="vo" items="${list}">
+															if($('#selectAccount').val() == ${vo.account}) {
+																<c:set value="${vo.account}" var="account"/>
+																$('#d_next_rate').html("${vo.d_next_rate}");
+															}
+														</c:forEach>
+													};
+												</script>
+											</td>
+				                     	</tr>
+				                     	<tr>
+				                        	<td scope="col" class="borL">이자실행번호</td>
+				                        	<td scope="col" id="d_next_rate"></td>
+				                     	</tr>
+				                     	<tr>
+				                        	<td colspan="2" scope="col" class="borL">
+				                        		<div class="row justify-content-lg-center">
+													<input type="button" id="LoanRateCheckIn" class="button button-primary button-round" value="조회">
+												</div>
+											</td>
+				                     	</tr>
+				                  	</tbody>
+				               	</table>
+				               	
+				               	<br><br>
+				               	
+				               	<div id="Context">
+				               	
+				               	</div>
+				               	
+				               	<script type="text/javascript">
+				               		$('#LoanRateCheckIn').click(function() {
+				               			if(document.rateForm.selectAccount.value == "") return;
+				               			
+				               			var formData = $("form[name=rateForm]").serialize();
+				               			var URL = "${pageContext.request.contextPath}/LoanRateCheckIn.cc";
+										
+				               			$.ajax({
+				               				type : "get",
+				               				url : URL,
+				               				data : formData,
+				               				error : function() {
+				               					alert('페이지를 찾을 수 없습니다.');
+				               				},
+				               				success : function(data) {
+				               					$('#Context').html(data);
+				               				}
+				               			});
+				               		});
+				               	</script>
+							</form>
 			            </div>
 		            </section>	          	
 		        </div>

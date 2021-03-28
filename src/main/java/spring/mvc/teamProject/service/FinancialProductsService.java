@@ -1,13 +1,18 @@
 package spring.mvc.teamProject.service;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 
 @Service
 public interface FinancialProductsService {
+	// ============================================================================
+	// 박서하
+	public void loanProductsList(HttpServletRequest req,Model model); // 대출상품 조회
+	public void loanProductDetail(HttpServletRequest req,Model model); // 대출상품 상세조회
+	// ============================================================================
+	
 	// 해당 아이디 출금/자동이체용 자유입출금계좌 정보조회
 	public void AccountList(HttpServletRequest req, Model model);
 	// 적금 상품 리스트

@@ -6,13 +6,10 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import spring.mvc.teamProject.service.FinancialProductsService;
-import spring.mvc.teamProject.service.FinancialProductsServiceImpl;
-import spring.mvc.loan.service.LoanService;
 @Controller
 public class FinancialProductsController {
 	private static final Logger logger = LoggerFactory.getLogger(FinancialProductsController.class);
@@ -20,25 +17,26 @@ public class FinancialProductsController {
 	@Autowired
 	FinancialProductsService service;
 	
-	@Autowired
-	LoanService loanservice;
-	
-	//개인대출
-	@RequestMapping("/personalLoan.cc")
-	public String personalLoan(HttpServletRequest req,Model model) {
-		logger.info("url ==> /personalLoan");
-		return "financialProducts/personalLoan";
-	}
-	
 	// 박서하
 	//대출상품
 	@RequestMapping("/LoansProducts.cc")
 	public String LoansProducts(HttpServletRequest req,Model model) {
 		logger.info("url ==> /LoansProducts");
 		
-		loanservice.loanProductsList(req, model);
+		service.loanProductsList(req, model);
 		
 		return "financialProducts/LoansProducts";
+	}
+	
+	// 박서하
+	//대출상품 상세
+	@RequestMapping("/LoansDetail.cc")
+	public String LoansDetail(HttpServletRequest req,Model model) {
+		logger.info("url ==> /LoansDetail");
+		
+		service.loanProductDetail(req, model);
+		
+		return "financialProducts/LoansDetail";
 	}
 	
 	// 최문수
@@ -79,6 +77,7 @@ public class FinancialProductsController {
 				
 		return "financialProducts/DepositDetail";
 	}
+<<<<<<< HEAD
 	
 	// 박서하
 	//대출상품 상세
@@ -91,6 +90,21 @@ public class FinancialProductsController {
 		return "financialProducts/LoansDetail";
 	}
 	
+=======
+	// 최문수
+	// 적금상품 가입페이지
+	@RequestMapping("/SavingsRegistration.cc")
+	public String regISP(HttpServletRequest req,Model model) {
+		logger.info("url ==> /SavingsRegistration");
+		
+		//String j_name = req.getParameter("j_name");
+		//req.setAttribute("j_name", j_name);
+		//service.AccountList(req, model);
+		//service.SavingsDetail(req, model);
+		
+		return "financialProducts/SavingsRegistration";
+	}	
+>>>>>>> dev_psh2
 	// 최문수
 	// 적금상품 가입페이지
 	@RequestMapping("/SavingsRegistration.cc")
