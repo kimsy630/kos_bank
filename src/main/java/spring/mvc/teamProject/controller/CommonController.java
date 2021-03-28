@@ -54,10 +54,10 @@ public class CommonController extends HttpServlet {
 		memberService.idChk(req, model);
 		return "common/idChk";
 	}
+	
+	
 	//idChk.cc
 	/*
-
-	
 	@RequestMapping("/corfirmId.cc")
 	public String corfirmId(HttpServletRequest req,Model model) {
 		logger.info("url ==> /corfirmId");

@@ -45,7 +45,11 @@ public String getAccount() {
       return balance;
    }
    public void setBalance(int balance) {
+<<<<<<< HEAD
       this.balance = balance;
+=======
+	   this.balance = balance;
+>>>>>>> dev_cms
    }
    public String getAccountType() {
       return accountType;

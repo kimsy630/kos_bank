@@ -3,6 +3,7 @@ package spring.mvc.teamProject.vo;
 import java.sql.Timestamp;
 
 public class installment_savingsVO {
+<<<<<<< HEAD
 	private String j_Key;	
 	private String j_name;
 	private String account;
@@ -20,6 +21,27 @@ public class installment_savingsVO {
 		return j_Key;
 	}
 	public void setJ_Key(String j_Key) {
+=======
+	
+   private int j_Key;   
+   private String j_name;
+   private String account;
+   private Timestamp j_join_date;
+   private int j_state;
+   private double j_rate;
+   private int j_money;
+   private int j_type;
+   private int j_balance;
+   private int j_method;
+   private Timestamp j_end_date;
+   private int j_auto_date;
+   
+   
+	public int getJ_Key() {
+		return j_Key;
+	}
+	public void setJ_Key(int j_Key) {
+>>>>>>> dev_cms
 		this.j_Key = j_Key;
 	}
 	public String getJ_name() {
@@ -46,10 +68,17 @@ public class installment_savingsVO {
 	public void setJ_state(int j_state) {
 		this.j_state = j_state;
 	}
+<<<<<<< HEAD
 	public int getJ_rate() {
 		return j_rate;
 	}
 	public void setJ_rate(int j_rate) {
+=======
+	public double getJ_rate() {
+		return j_rate;
+	}
+	public void setJ_rate(double j_rate) {
+>>>>>>> dev_cms
 		this.j_rate = j_rate;
 	}
 	public int getJ_type() {
@@ -70,6 +99,7 @@ public class installment_savingsVO {
 	public void setJ_method(int j_method) {
 		this.j_method = j_method;
 	}
+<<<<<<< HEAD
 	public int getJ_close_type() {
 		return j_close_type;
 	}
@@ -92,3 +122,25 @@ public class installment_savingsVO {
 	
 	
 }
+=======
+	public int getJ_money() {
+		return j_money;
+	}
+	public void setJ_money(int j_money) {
+		this.j_money = j_money;
+	}
+	public int getJ_auto_date() {
+		return j_auto_date;
+	}
+	public void setJ_auto_date(int j_auto_date) {
+		this.j_auto_date = j_auto_date;
+	}
+	public Timestamp getJ_end_date() {
+		return j_end_date;
+	}
+	public void setJ_end_date(Timestamp j_end_date) {
+		this.j_end_date = j_end_date;
+	}
+   
+}
+>>>>>>> dev_cms

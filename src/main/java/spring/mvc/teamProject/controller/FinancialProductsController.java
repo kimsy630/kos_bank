@@ -46,41 +46,38 @@ public class FinancialProductsController {
 	@RequestMapping("/SavingsList.cc")
 	public String SavingsList(HttpServletRequest req,Model model) {
 		logger.info("url ==> /SavingsList");
+		
+		service.SavingsList(req, model);
+		
 		return "financialProducts/SavingsList";
 	}
+	
 	// 최문수
 	//정기예금(Deposit)
 	@RequestMapping("/DepositList.cc")
-	public String FDP(HttpServletRequest req,Model model) {
+	public String DepositList(HttpServletRequest req,Model model) {
 		logger.info("url ==> /DepositList");
+		
+		service.DepositList(req, model);
+		
 		return "financialProducts/DepositList";
 	}
+	
 	// 최문수
 	// 적금상품 상세페이지
 	@RequestMapping("/SavingsDetail.cc")
-	public String ISPdetail(HttpServletRequest req,Model model) {
+	public String SavingsDetail(HttpServletRequest req,Model model) {
 		logger.info("url ==> /SavingsDetail");
 		return "financialProducts/SavingsDetail";
 	}
+	
 	// 최문수
 	// 정기예금상품 상세페이지
 	@RequestMapping("/DepositDetail.cc")
-	public String FDPdetail(HttpServletRequest req,Model model) {
+	public String Depositdetail(HttpServletRequest req,Model model) {
 		logger.info("url ==> /DepositDetail");
+				
 		return "financialProducts/DepositDetail";
-	}
-	// 최문수
-	// 적금상품 가입페이지
-	@RequestMapping("/SavingsRegistration.cc")
-	public String regISP(HttpServletRequest req,Model model) {
-		logger.info("url ==> /SavingsRegistration");
-		
-		//String j_name = req.getParameter("j_name");
-		//req.setAttribute("j_name", j_name);
-		//service.AccountList(req, model);
-		//service.SavingsDetail(req, model);
-		
-		return "financialProducts/SavingsRegistration";
 	}
 	
 	// 박서하
@@ -95,15 +92,29 @@ public class FinancialProductsController {
 	}
 	
 	// 최문수
+	// 적금상품 가입페이지
+	@RequestMapping("/SavingsRegistration.cc")
+	public String regISP(HttpServletRequest req,Model model) {
+		logger.info("url ==> /SavingsRegistration");
+		
+		String j_name = req.getParameter("j_name");
+		req.setAttribute("j_name", j_name);
+		service.AccountList(req, model);
+		service.SavingsDetail(req, model);
+		
+		return "financialProducts/SavingsRegistration";
+	}
+	
+	// 최문수
 	// 정기예금상품 가입페이지
 	@RequestMapping("/DepositRegistration.cc")
-	public String regFDP(HttpServletRequest req,Model model) {
+	public String DepositRegistration(HttpServletRequest req,Model model) {
 		logger.info("url ==> /DepositRegistration");
 		
-		//String y_name = req.getParameter("y_name");
-		//req.setAttribute("y_name", y_name);
-		//service.AccountList(req, model);
-		//service.DepositDetail(req, model);
+		String y_name = req.getParameter("y_name");
+		req.setAttribute("y_name", y_name);
+		service.AccountList(req, model);
+		service.DepositDetail(req, model);
 		
 		return "financialProducts/DepositRegistration";
 	}
@@ -113,7 +124,7 @@ public class FinancialProductsController {
 	public String SavingsAction(HttpServletRequest req,Model model) {
 		logger.info("url ==> /SavingsAction");
 		
-		// service.SavingsAction(req, model);
+		service.SavingsAction(req, model);
 		
 		return "financialProducts/SavingsAction";
 	}
@@ -123,10 +134,11 @@ public class FinancialProductsController {
 	public String DepositAction(HttpServletRequest req,Model model) {
 		logger.info("url ==> /DepositAction");
 		
-		// service.DepositAction(req, model);
+		service.DepositAction(req, model);
 		
 		return "financialProducts/DepositAction";
 	}
+	
 	
 	
 	
