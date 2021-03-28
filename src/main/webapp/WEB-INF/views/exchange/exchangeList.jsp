@@ -5,6 +5,12 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<style type="text/css">
+	th{
+		border-color:rgba(125,125,125,.1);
+		border: solid 1px;
+	}
+</style>
 </head>
 <body>
     <div class="preloader">
@@ -31,53 +37,42 @@
    		https://finance.naver.com/marketindex/ 
    		view-source:https://finance.naver.com/marketindex/
    	        -->
-   	<div class="table-custom-responsive" style =" width:70%; margin: 0 auto;">
+   	<div class="table-custom-responsive" style =" width:70%; margin: 0 auto; ">
                 <table class="table-custom table-custom-secondary table-custom-hovered" style=" text-align: center;">
-                  <thead >
-                    <tr >
+                  <thead>
+                    <tr>
                       <th rowspan="2">통화명</th>
-                      <th rowspan="2">매매기준율</th>
-                      <th colspan="2">현찰</th>
+                      <th colspan="4" >현찰</th>
                       <th colspan="2">송금</th>
-                      <th rowspan="2">미화환산율</th>
+                      <th rowspan="2">매매기준율</th>
+                      <!-- <th rowspan="2">미화환산율</th> -->
                     </tr>
                     <tr>
                     	<th>사실 때</th>
+                    	<th>수수료 율</th>
                     	<th>파실 때</th>
-                    	<th>보내실 떄</th>
-                    	<th>받으실 때</th>
+                    	<th>수수료 율</th>
+                    	<th>보내실 때</th>
+                    	<th>수수료 율</th>
+                    	<!-- <th>보내실 떄</th> -->
+                    	<!-- <th>받으실 때</th> -->
                     </tr>
                   </thead>
                   <tbody>
+                  <c:forEach var="vo" items="${list}">
                   	<tr>
-                  		<td>미국 USD</td>
-                  		<td>1,130.00</td>
-                  		<td>1,149.77</td>
-                  		<td>1,110.23</td>
-                  		<td>1,141.00</td>
-                  		<td>1,119.00</td>
-                  		<td>1.000</td>
+                  		<td>${vo.country_name}</td>
+                  		<td>${vo.buying_cost}</td>
+                  		<td>${vo.bfee_ratio}</td>
+                  		<td>${vo.selling_cost}</td>
+                  		<td>${vo.slfee_ratio}</td>
+                  		<td>${vo.sending_cost}</td>
+                  		<td>${vo.sefee_ratio}</td>
+                  		<td>${vo.dealing_br}</td>
+                  		<!-- <td>1,119.00</td> -->
+                  		<!-- <td>1.000</td> -->
                   	</tr>
-                  	
-                  	<tr>
-                  		<td>유럽연합 EUR</td>
-                  		<td>1,344.00</td>
-                  		<td>1,370.93</td>
-                  		<td>1,317.45</td>
-                  		<td>1,141.00</td>
-                  		<td>1,330.75</td>
-                  		<td>1.190</td>
-                  	</tr>
-                  	
-                  	<tr>			
-                  		<td>일본 JPY (100엔)</td>
-                  		<td>1,038.03</td>
-                  		<td>1,056.19</td>
-                  		<td>1,019.87</td>
-                  		<td>1,048.20</td>
-                  		<td>1,027.86</td>
-                  		<td>0.919</td>
-                  	</tr>
+                  </c:forEach>
                    </tbody>
                 </table>
               </div>

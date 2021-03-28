@@ -149,7 +149,7 @@
                       </li>
                       <c:if test="${id==null}">
                       	<li class="rd-nav-item"><a class="rd-nav-link" href="login.cc">로그인</a>
-			          </c:if>
+                      </c:if>
 			         <c:if test="${id!=null}">
                       	<li class="rd-nav-item">
                       		<a class="rd-nav-link" href="" onclick="document.logoutForm.submit()">로그아웃</a>
