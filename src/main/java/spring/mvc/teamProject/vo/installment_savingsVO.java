@@ -3,25 +3,6 @@ package spring.mvc.teamProject.vo;
 import java.sql.Timestamp;
 
 public class installment_savingsVO {
-<<<<<<< HEAD
-	private String j_Key;	
-	private String j_name;
-	private String account;
-	private Timestamp j_join_date;
-	private int j_state;
-	private int j_rate;
-	private int j_type;
-	private int j_balance;
-	private int j_method;
-	private int j_close_type;
-	private Timestamp j_date;
-	
-	
-	public String getJ_Key() {
-		return j_Key;
-	}
-	public void setJ_Key(String j_Key) {
-=======
 	
    private int j_Key;   
    private String j_name;
@@ -41,7 +22,6 @@ public class installment_savingsVO {
 		return j_Key;
 	}
 	public void setJ_Key(int j_Key) {
->>>>>>> dev_cms
 		this.j_Key = j_Key;
 	}
 	public String getJ_name() {
@@ -68,17 +48,10 @@ public class installment_savingsVO {
 	public void setJ_state(int j_state) {
 		this.j_state = j_state;
 	}
-<<<<<<< HEAD
-	public int getJ_rate() {
-		return j_rate;
-	}
-	public void setJ_rate(int j_rate) {
-=======
 	public double getJ_rate() {
 		return j_rate;
 	}
 	public void setJ_rate(double j_rate) {
->>>>>>> dev_cms
 		this.j_rate = j_rate;
 	}
 	public int getJ_type() {
@@ -99,30 +72,6 @@ public class installment_savingsVO {
 	public void setJ_method(int j_method) {
 		this.j_method = j_method;
 	}
-<<<<<<< HEAD
-	public int getJ_close_type() {
-		return j_close_type;
-	}
-	public void setJ_close_type(int j_close_type) {
-		this.j_close_type = j_close_type;
-	}
-	public Timestamp getJ_date() {
-		return j_date;
-	}
-	public void setJ_date(Timestamp j_date) {
-		this.j_date = j_date;
-	}
-	@Override
-	public String toString() {
-		return "installment_savingsVO [j_Key=" + j_Key + ", j_name=" + j_name + ", account=" + account
-				+ ", j_join_date=" + j_join_date + ", j_state=" + j_state + ", j_rate=" + j_rate + ", j_type=" + j_type
-				+ ", j_balance=" + j_balance + ", j_method=" + j_method + ", j_close_type=" + j_close_type + ", j_date="
-				+ j_date + "]";
-	}
-	
-	
-}
-=======
 	public int getJ_money() {
 		return j_money;
 	}
@@ -143,4 +92,3 @@ public class installment_savingsVO {
 	}
    
 }
->>>>>>> dev_cms
