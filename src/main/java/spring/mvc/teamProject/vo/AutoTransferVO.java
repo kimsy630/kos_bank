@@ -11,13 +11,14 @@ public class AutoTransferVO {
 	private String jd_outDate;
 	private int jd_autoMoney;
 	private String jd_outCycle;
-	private DATE jd_registDate;
-	private DATE jd_expirationDate;
-	private DATE jd_autoCancle;
+	private String jd_registDate;
+	private String jd_expirationDate;
+	private String jd_autoCancle;
 	private String jd_inPlace;
 	private String jd_status; // 정상,해지
-	private DATE jd_autoLastDay;
+	private String jd_autoLastDay;
 	private AccountVO accountvo;
+	
 	public int getJd_key() {
 		return jd_key;
 	}
@@ -60,22 +61,22 @@ public class AutoTransferVO {
 	public void setJd_outCycle(String jd_outCycle) {
 		this.jd_outCycle = jd_outCycle;
 	}
-	public DATE getJd_registDate() {
+	public String getJd_registDate() {
 		return jd_registDate;
 	}
-	public void setJd_registDate(DATE jd_registDate) {
+	public void setJd_registDate(String jd_registDate) {
 		this.jd_registDate = jd_registDate;
 	}
-	public DATE getJd_expirationDate() {
+	public String getJd_expirationDate() {
 		return jd_expirationDate;
 	}
-	public void setJd_expirationDate(DATE jd_expirationDate) {
+	public void setJd_expirationDate(String jd_expirationDate) {
 		this.jd_expirationDate = jd_expirationDate;
 	}
-	public DATE getJd_autoCancle() {
+	public String getJd_autoCancle() {
 		return jd_autoCancle;
 	}
-	public void setJd_autoCancle(DATE jd_autoCancle) {
+	public void setJd_autoCancle(String jd_autoCancle) {
 		this.jd_autoCancle = jd_autoCancle;
 	}
 	public String getJd_inPlace() {
@@ -90,10 +91,10 @@ public class AutoTransferVO {
 	public void setJd_status(String jd_status) {
 		this.jd_status = jd_status;
 	}
-	public DATE getJd_autoLastDay() {
+	public String getJd_autoLastDay() {
 		return jd_autoLastDay;
 	}
-	public void setJd_autoLastDay(DATE jd_autoLastDay) {
+	public void setJd_autoLastDay(String jd_autoLastDay) {
 		this.jd_autoLastDay = jd_autoLastDay;
 	}
 	public AccountVO getAccountvo() {
@@ -102,6 +103,7 @@ public class AutoTransferVO {
 	public void setAccountvo(AccountVO accountvo) {
 		this.accountvo = accountvo;
 	}
+	
 	@Override
 	public String toString() {
 		return "AutoTransferVO [jd_key=" + jd_key + ", account=" + account + ", jd_account=" + jd_account + ", jd_type="
@@ -110,6 +112,8 @@ public class AutoTransferVO {
 				+ ", jd_autoCancle=" + jd_autoCancle + ", jd_inPlace=" + jd_inPlace + ", jd_status=" + jd_status
 				+ ", jd_autoLastDay=" + jd_autoLastDay + ", accountvo=" + accountvo + "]";
 	}
+	
+	
 	
 	
 }

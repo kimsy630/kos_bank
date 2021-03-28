@@ -25,8 +25,9 @@
 					</button>
 				</div>
 					<div class="modal-body">
-					
-						<iframe src="${path }doc/kosbank_manual.pdf" style="width:100%; height:580px;"></iframe>
+						<img src="${path}doc/kosbank_manual-1.jpg" style="width:100%; height:100%;">
+						<img src="${path}doc/kosbank_manual-2.jpg" style="width:100%; height:100%;">
+						<img src="${path}doc/kosbank_manual-3.jpg" style="width:100%; height:100%;">
 					</div>
 				<div class="modal-footer">
 					<button type="button" class="btn btn-outline-info"

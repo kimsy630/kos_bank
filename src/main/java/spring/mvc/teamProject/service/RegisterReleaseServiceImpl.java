@@ -77,15 +77,15 @@ public class RegisterReleaseServiceImpl implements RegisterReleaseService{
 	}
 	
 	// 계좌(정상)리스트
-		@Override
-		public void AccountInoutType(HttpServletRequest req, Model model) {
-			String strId = (String)req.getSession().getAttribute("id");
-			List<AccountVO> list = accountDAO.selectType(strId);
-			
-			System.out.println("list"+list);
-			model.addAttribute("list", list);
-			
-		}
+	@Override
+	public void AccountInoutType(HttpServletRequest req, Model model) {
+		String strId = (String)req.getSession().getAttribute("id");
+		List<AccountVO> list = accountDAO.selectType(strId);
+		
+		System.out.println("list"+list);
+		model.addAttribute("list", list);
+		
+	}
 	
 	// 예금주 조회
 	@Override
@@ -97,6 +97,18 @@ public class RegisterReleaseServiceImpl implements RegisterReleaseService{
 
 		System.out.println("name"+name);
 		model.addAttribute("name", name);
+		
+	}
+	
+	// 예금주 조회
+	@Override
+	public void IdNameChk(HttpServletRequest req, Model model) {
+		String strId = (String)req.getSession().getAttribute("id");
+		String name = accountDAO.IdNameChk(strId);
+		
+		System.out.println("name"+name);
+		model.addAttribute("name",name);
+		model.addAttribute("id",strId);
 		
 	}
 

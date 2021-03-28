@@ -9,7 +9,6 @@
     <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta charset="utf-8">
-    <link rel="icon" href="${csspath}images/favicon.ico" type="image/x-icon">
     <!-- Stylesheets-->
     <link rel="stylesheet" type="pathtext/css" href="//fonts.googleapis.com/css?family=Roboto:100,300,300i,400,700,900">
     <link rel="stylesheet" href="${path}css/bootstrap.css">
@@ -71,6 +70,7 @@ function doCheck() {
 </script>
 <style>
 #content {
+	margin-left:200px;
 	min-height: 500px;
 }
 
@@ -112,7 +112,7 @@ function doCheck() {
       <section class="section section-lg bg-default">
         <div class="container">
           <h3>계좌개설</h3>
-          <br><hr><hr/><br> 
+          <hr/><br> 
             <!--// 헤더 들어가는 부분 -->
 		<!-- Content Row -->
 		<div class="row">
@@ -132,7 +132,7 @@ function doCheck() {
 									<p class="small">계좌가입은 KOS뱅크 계좌만 가능합니다.</p>
 									
 									<form
-										action="AccountRegistration.cc"
+										action="AddAccountAction.cc"
 										method="POST" name="checkForm" onsubmit="return doCheck()">
 									<%-- 약관 동의 --%>
 										<br>
@@ -172,27 +172,28 @@ function doCheck() {
 
 										<%-- button --%>
 										<div class="btn-area">
-											<div class="btn-wrap">
+											<div class="btn-wrap" style="margin-left:100px">
 												<jsp:include page="/WEB-INF/include/pManual.jsp" />
 												<jsp:include page="/WEB-INF/include/noticeRate.jsp" />
 											</div>
 										</div>
-
+										<br>
 										<%-- message --%>
 										<div class="btn-area">
-											<div class="btn-wrap">
+											<div class="btn-wrap" style="margin-left:120px">
 												<label><input type="checkbox" name="lastCheck">
 													본인은 위 안내에 대해 확인하고 이해합니다.</label>
 											</div>
 										</div>
+									<br><br>	
 									<div>
 										<table class="table table-hover" id="content-table">
 											<tr>
 												<th class="name">예금주명</th>
-												<td><input class="input--style-5" name="name"
-													disabled value=${ list.name }></td>
-												<td><input type="hidden" name="id"
-													value=${ list.id }>
+												<td><input class="input--style-5" id="name" name="name"
+													disabled value=${name }></td>
+												<td><input type="hidden" id="id" name="id"
+													value=${id }>
 											</tr>
 											<tr>
 												<th class="bankNM">은행명</th>
@@ -200,27 +201,27 @@ function doCheck() {
 													value="KOS뱅크" disabled></td>
 											</tr>
 											<tr>
-												<th class="accType">통장종류</th>
-												<td><select name="accType">
+												<th class="accountType">통장종류</th>
+												<td><select name="accountType">
 														<option value="입출금 통장">입출금 통장</option>
 														<option value="정기적금">정기적금</option>
 												</select></td>
 											</tr>
 											<tr>
-												<th class="accPwd">계좌 비밀번호</th>
+												<th class="accountPW">계좌 비밀번호</th>
 												<td><input type="password" class="input--style-5"
-													name="accPwd" maxlength="4"></td>
+													id="accountPW" name="accountPW" maxlength="4"></td>
 											</tr>
-										</div>
+										</table>
 											<%-- button 영역 : 버튼 --%>
 											<div class="btn-area">
-												<div class="btn-wrap">
+												<div class="btn-wrap" style="margin-left:250px">
 													<input type="submit" class="btn btn-outline-info" value="확인">
 													<input type="button" class="btn btn-outline-info" value="취소"
 														onclick="javascript:history.go(-1)">
 												</div>
 											</div>
-										</table>
+										</div>
 									</form>
 									<%-- ./계좌가입 form--%>
 

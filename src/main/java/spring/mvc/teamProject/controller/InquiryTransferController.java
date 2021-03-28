@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import spring.mvc.teamProject.service.AutoTransferService;
 import spring.mvc.teamProject.service.InquiryTransferService;
 import spring.mvc.teamProject.service.RegisterReleaseService;
 import spring.mvc.teamProject.vo.TransferVO;
@@ -28,6 +29,9 @@ public class InquiryTransferController {
 	
 	@Autowired
 	InquiryTransferService Iservice;
+	
+	@Autowired
+	AutoTransferService Aservice;
 	
 	private static final Logger logger = LoggerFactory.getLogger(InquiryTransferController.class);
 	
@@ -105,14 +109,6 @@ public class InquiryTransferController {
 		return "InquiryTransfer/TransferAction";
 	}
 	
-	//김소림
-	//계좌이체 Action TransferChk.cc
-	@RequestMapping("/TransferChk.cc")
-	public String TransferChk(HttpServletRequest req,Model model) {
-		logger.info("url ==> /TransferTable");
-		return "InquiryTransfer/TransferChk";
-	}
-					 
 	//다계좌이체 MultiAccountTransfer.cc
 	@RequestMapping("/MultiAccountTransfer.cc")
 	public String MultiAccountTransfer(HttpServletRequest req,Model model) {
@@ -125,7 +121,7 @@ public class InquiryTransferController {
 		logger.info("url ==> /ISPAdd");
 		return "InquiryTransfer/ISPAdd";
 	}
-	
+	//김소림
 	//자동이체신청 AutoTransferRequest.cc
 	@RequestMapping("/AutoTransferRequest.cc")
 	public String AutoTransferRequest(HttpServletRequest req,Model model) {
@@ -133,6 +129,15 @@ public class InquiryTransferController {
 		service.AccountInoutType(req, model);
 		return "InquiryTransfer/AutoTransferRequest";
 	}
+	//김소림
+	//자동이체신청 AutoTransferRequest.
+	@RequestMapping("/AutoTransferRequestAction.cc")
+	public String AutoTransferAction(HttpServletRequest req,Model model) {
+		logger.info("url ==> /AutoTransferRequestAction");
+		Aservice.AutoTransferAdd(req, model);
+		return "InquiryTransfer/AutoTransferRequestAction";
+	}
+		
 	//자동이체조회 AutoTransferList.cc
 	@RequestMapping("/AutoTransferList.cc")
 	public String AutoTransferList(HttpServletRequest req,Model model) {
@@ -145,6 +150,13 @@ public class InquiryTransferController {
 		logger.info("url ==> /AutoTransferChangeRank");
 		return "InquiryTransfer/AutoTransferChangeRank";
 	}
+	
+	// 자동이체 실행 test 
+	@Scheduled(cron="*/10 * * * * *")
+	   public void scheduleTest() {
+	   logger.info("이체 test");
+	   Aservice.AutoTransferPractice();
+   }
 	
 		
 }

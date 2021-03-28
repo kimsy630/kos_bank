@@ -56,7 +56,6 @@ public class InquiryTransferServiceImpl implements InquiryTransferService{
 		System.out.println("sender_name : "+req.getParameter("sender_name"));
 		vo.setOut_comment(req.getParameter("out_comment"));
 		vo.setIn_comment(req.getParameter("in_comment"));
-		System.out.println("vo1 : "+vo);
 		
 		// 내 계좌 이체내역
 		int mylog = IDAO.addMyLog(vo);
@@ -69,6 +68,7 @@ public class InquiryTransferServiceImpl implements InquiryTransferService{
 		
 		System.out.println("mylog : "+mylog);
 		System.out.println("yourlog : "+yourlog);
+		System.out.println("vo2"+vo);
 		model.addAttribute("vo",vo);
 		model.addAttribute("mylog",mylog);
 		model.addAttribute("yourlog",yourlog);

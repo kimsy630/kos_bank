@@ -73,6 +73,12 @@
   		WHERE a.account=#{account} 
   	</select>
   	
+  	<select id="IdNameChk" resultType="String">
+  		SELECT name
+  		FROM Members m
+  		WHERE id=#{id} 
+  	</select>
+  	
   	<select id="AccountPwdCheck" parameterType="String" resultType="int">
   		SELECT accountPW 
   		FROM account_info 

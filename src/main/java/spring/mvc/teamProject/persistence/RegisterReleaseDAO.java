@@ -32,4 +32,7 @@ public interface RegisterReleaseDAO{
 	// 계좌비밀번호 Chk
 	public int AccountPwdCheck(String id);
 	
+	// ID로 회원이름 조회
+	public String IdNameChk(String id);
+	
 }

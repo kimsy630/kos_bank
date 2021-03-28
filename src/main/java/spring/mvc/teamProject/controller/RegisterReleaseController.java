@@ -29,6 +29,7 @@ public class RegisterReleaseController {
 	@RequestMapping("/AccountRegistration.cc")
 	public String AccountRegistration(HttpServletRequest req,Model model) {
 		logger.info("url ==> /AccountRegistration");
+		rService.IdNameChk(req, model);
 		return "registerRelease/AccountRegistration";
 	}
 	//김소림

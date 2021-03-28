@@ -59,6 +59,11 @@ public class RegisterReleaseDAOImpl implements RegisterReleaseDAO{
 		Object o = sqlSession.selectOne("spring.mvc.teamProject.persistence.RegisterReleaseDAO.AccountNameChk", account);
 		return o.toString();
 	}
+	
+	@Override
+	public String IdNameChk(String id) {
+		return sqlSession.selectOne("spring.mvc.teamProject.persistence.RegisterReleaseDAO.IdNameChk", id);
+	}
 
 	
 	

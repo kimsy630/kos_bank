@@ -37,16 +37,8 @@
 			VALUES(SEQ_TRANSFER.NEXTVAL,#{account},#{sender_account},#{in_comment},#{money},'입금')
 	</insert> 
 	
-	  <!-- 내 계좌 잔액 업데이트. 출금 -->
-  	<!-- <update id="withdrawal" parameterType="spring.mvc.teamProject.vo.TransferVO">
-		UPDATE account_transfer
-	  	 SET a.Balance = #{balance} - #{money} 
-	  	FROM account_transfer t
-	  	JOIN account_info a
-	  	  ON a.account = t.account
-	  WHERE a.account = #{account}
-  	</update>  -->
-  <update id="withdrawal" parameterType="spring.mvc.teamProject.vo.TransferVO">
+	<!-- 내 계좌 잔액 업데이트. 출금 -->
+  	<update id="withdrawal" parameterType="spring.mvc.teamProject.vo.TransferVO">
 		UPDATE account_info
 	  	 SET Balance = Balance - #{money} 
 	  	WHERE account = #{account}

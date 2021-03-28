@@ -35,20 +35,22 @@
      <div class="page">
    <%@include file="../header.jsp" %>
     <form style="align:center">
+    
  	<section class="section section-bredcrumbs">
      	<div class="container context-dark breadcrumb-wrapper">
      		<h2>계좌이체</h2>
           <br>
         </div>
       </section>
-    <div class="row row-offset-1">
+      <div class="container">
+   		 <div class="row row-offset-1">
             <div class="col-lg-10 col-xxl-9">
-              <div class="table-custom-responsive" style="width:1200px">
+              <div class="table-custom-responsive" style="width:1100px">
                 <table class="table-custom table-custom-secondary table-custom-hovered">
                   <thead>
+                  <br><br>
                   <h4>이체가 완료되었습니다</h4>
                     <tr>
-                   	<th>이체실행번호</th>
                       <th>출금계좌번호 </th>
                       <th>입금은행</th>
                       <th>입금계좌번호</th>
@@ -61,14 +63,14 @@
                   </thead>
                   <tbody>
                     <tr>
-	                      <td id="account">${vo.account }</td>
+	                      <td id="account"><%=request.getParameter("account")%></td>
 	                      <td>코스뱅크</td>
-	                      <td id="sender_account">${vo.sender_account }</td>
-	                      <td id="out_comment">${vo.out_comment }</td>
-	                      <td id="sender_name">${vo.sender_name}</td>
-	                      <td id="money">${vo.money }</td>
+	                      <td id="sender_account"><%=request.getParameter("sender_account")%></td>
+	                      <td id="out_comment"><%=request.getParameter("out_comment")%></td>
+	                      <td id="sender_name"><%=request.getParameter("sender_name")%></td>
+	                      <td id="money"><%=request.getParameter("money")%></td>
 	                      <td>0원</td>
-	                      <td id="in_comment">${vo.in_comment }</td>
+	                      <td id="in_comment"><%=request.getParameter("in_comment")%></td>
                     </tr>
                   </tbody>
                 </table>
@@ -77,13 +79,13 @@
             </div>
           </div>
           <br><br><br>
-          <div class="form-group" style="margin-left:700px">
+          <div class="form-group" style="margin-left:400px">
 		          <div class="col-lg-offset-2 col-lg-10">
 		             <button type="button" class="btn btn-primary" onclick="location.href='AccountTransfer.cc'" >이체 계속하기</button>
 		             <button type="button" class="btn btn-primary" onclick="location.href='main.cc'">홈으로</button>
 		          </div>
 		       </div>
-    
+    	</div>
   	</form>
   	</div>
       
