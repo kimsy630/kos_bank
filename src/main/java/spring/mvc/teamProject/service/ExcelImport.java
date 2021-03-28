@@ -27,7 +27,7 @@ public class ExcelImport {
 			List<ExchangeVO> exchangeList = new ArrayList<ExchangeVO>();
 		// 웹상에서 업로드 되어 MultipartFile인 경우 바로 InputStream으로 변경하여 사용. 
 		// InputStream inputStream = new ByteArrayInputStream(file.getBytes());
-		String filePath = "D:\\Dev_76\\workspace_python\\data\\test.xlsx";// xlsx 형식 
+		String filePath = "D:\\test.xlsx";// xlsx 형식 
 		// String filePath = "D:\\student.xls"; // xls 형식
 		
 		InputStream inputStream = new FileInputStream(filePath); 
