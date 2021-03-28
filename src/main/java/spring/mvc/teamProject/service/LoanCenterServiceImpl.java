@@ -31,7 +31,7 @@ public class LoanCenterServiceImpl implements LoanCenterService {
 	// 박서하
 	@Override
 	public void LoanAccountCheck(HttpServletRequest req, Model model) { // 대출계좌 조회
-		String id = "hong";//(String)req.getSession().getAttribute("id");
+		String id = (String)req.getSession().getAttribute("id");
 		
 		List<LoansVO> list = dao.getLoanAccountList(id);
 
@@ -41,7 +41,7 @@ public class LoanCenterServiceImpl implements LoanCenterService {
 	@Override
 	public void LoanAccountDetail(HttpServletRequest req, Model model) { // 대출계좌 상세조회
 		Map<String, Object> map = new HashMap<String, Object>();
-		map.put("id","hong"); //(String)req.getSession().getAttribute("id");
+		map.put("id",(String)req.getSession().getAttribute("id")); //;
 		map.put("d_name", req.getParameter("d_name"));
 		
 		LoansVO vo = dao.getLoanAccountDetail(map);
@@ -51,7 +51,7 @@ public class LoanCenterServiceImpl implements LoanCenterService {
 
 	@Override
 	public void LoanCloseCheck(HttpServletRequest req, Model model) { // 대출해지현황 조회
-		String id = "hong";//(String)req.getSession().getAttribute("id");
+		String id = (String)req.getSession().getAttribute("id");
 		
 		List<LoansVO> list = dao.getLoanCloseList(id);
 		
@@ -61,7 +61,7 @@ public class LoanCenterServiceImpl implements LoanCenterService {
 	@Override
 	public void LoanCloseDetail(HttpServletRequest req, Model model) { // 대출해지현황 상세조회
 		Map<String, Object> map = new HashMap<String, Object>();
-		map.put("id","hong"); //(String)req.getSession().getAttribute("id");
+		map.put("id",(String)req.getSession().getAttribute("id")); //;
 		map.put("d_name", req.getParameter("d_name"));
 		
 		LoansVO vo = dao.getLoanCloseDetail(map);
@@ -71,7 +71,7 @@ public class LoanCenterServiceImpl implements LoanCenterService {
 	
 	@Override
 	public void LoanPrincipalCheck(HttpServletRequest req, Model model) { // 대출원금 조회
-		String id = "hong";//(String)req.getSession().getAttribute("id");
+		String id = (String)req.getSession().getAttribute("id");//(String)req.getSession().getAttribute("id");
 		
 		List<LoansVO> list = dao.getLoanAccountList(id);
 		
@@ -151,7 +151,7 @@ public class LoanCenterServiceImpl implements LoanCenterService {
 
 	@Override
 	public void LoanRateCheck(HttpServletRequest req, Model model) { // 대출이자 조회
-		String id = "hong";//(String)req.getSession().getAttribute("id");
+		String id = (String)req.getSession().getAttribute("id");//(String)req.getSession().getAttribute("id");
 		
 		List<LoansVO> list = dao.getLoanAccountList(id);
 		
