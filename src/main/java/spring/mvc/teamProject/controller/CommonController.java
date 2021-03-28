@@ -55,16 +55,11 @@ public class CommonController extends HttpServlet {
 		memberService.idChk(req, model);
 		return "common/idChk";
 	}
-<<<<<<< HEAD
-	
-	
-=======
 	@RequestMapping("/Adminlogout.cc")
 	public String Adminlogout(HttpServletRequest req,HttpServletResponse res) {
 		logger.info("url ==> /Adminlogout");
 		return "common/logout";
 	}
->>>>>>> dev_ksy2
 	//idChk.cc
 	/*
 	@RequestMapping("/corfirmId.cc")
