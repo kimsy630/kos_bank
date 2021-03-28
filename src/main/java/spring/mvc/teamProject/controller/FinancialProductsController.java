@@ -124,7 +124,7 @@ public class FinancialProductsController {
 	public String SavingsAction(HttpServletRequest req,Model model) {
 		logger.info("url ==> /SavingsAction");
 		
-		// service.SavingsAction(req, model);
+		service.SavingsAction(req, model);
 		
 		return "financialProducts/SavingsAction";
 	}
@@ -138,6 +138,7 @@ public class FinancialProductsController {
 		
 		return "financialProducts/DepositAction";
 	}
+	
 	
 	
 	

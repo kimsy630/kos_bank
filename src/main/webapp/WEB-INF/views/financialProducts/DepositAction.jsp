@@ -17,8 +17,8 @@
 	<c:when test="${insertCnt == 1}">
 		<script type="text/javascript">
 		setTimeout(function(){
-			alert("정기예금가입이 완료되었습니다.");
-			window.location.href="DepositRegistration.cc?y_name=${y_name}";	
+			alert("정기예금가입 신청이 완료되었습니다.");
+			window.location.href="main.cc";	
 		}, 1000); 
 		</script>
 	</c:when>
@@ -33,7 +33,7 @@
 	<c:otherwise>
 		<script type="text/javascript">
 		setTimeout(function(){
-			alert("정기예금가입에 오류가 발생했습니다.");
+			alert("정기예금가입 신청에 오류가 발생했습니다.");
 			window.location.href="DepositRegistration.cc?y_name=${y_name}";
 		}, 1000); 
 		</script>

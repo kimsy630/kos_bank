@@ -26,8 +26,13 @@
 		]]> 
 	</select>
 	
-	<select id="getAccount" resultType="String">
+	<select id="getDepositAccount" resultType="String">
 		SELECT '33'||'-'||'03'||'-'||LPAD(SEQ_ACCOUNT.NEXTVAL,6,0)
+		FROM DUAL
+	</select>
+	
+	<select id="getSavingsAccount" resultType="String">
+		SELECT '33'||'-'||'02'||'-'||LPAD(SEQ_ACCOUNT.NEXTVAL,6,0)
 		FROM DUAL
 	</select>
 	
@@ -52,13 +57,28 @@
 	</select>
 	
 	<insert id="insertDepositAccount" parameterType="spring.mvc.teamProject.vo.AccountVO">
-		INSERT INTO account_info(account,ID,accountPW,accountType)
-		VALUES(#{account},#{id},#{accountPW},'예금')
+		INSERT INTO account_info(account,ID,accountPW,accountType,accountState)
+		VALUES(#{account},#{id},#{accountPW},'예금','대기')
 	</insert>
 	
 	<insert id="insertDeposit" parameterType="spring.mvc.teamProject.vo.FixedVO">
 		INSERT INTO fixed_deposit(y_Key, y_name, account, y_rate, y_type, y_balance, y_end_date)
 		VALUES(SEQ_DEPOSIT.NEXTVAL, #{y_name}, #{account}, #{y_rate}, #{y_type}, #{y_balance}, #{y_end_date})
+	</insert>
+	
+	<insert id="insertSavingsAccount" parameterType="spring.mvc.teamProject.vo.AccountVO">
+		INSERT INTO account_info(account,ID,accountPW,accountType,accountState)
+		VALUES(#{account},#{id},#{accountPW},'적금','대기')
+	</insert>
+	
+	<insert id="insertFreeSavings" parameterType="spring.mvc.teamProject.vo.installment_savingsVO">
+		INSERT INTO installment_savings(j_Key, j_name, account, j_rate, j_type, j_method, j_end_date)
+		VALUES(SEQ_SAVINGS.NEXTVAL, #{j_name}, #{account}, #{j_rate}, #{j_type}, #{j_method}, #{j_end_date})
+	</insert>
+	
+	<insert id="insertFixedSavings" parameterType="spring.mvc.teamProject.vo.installment_savingsVO">
+		INSERT INTO installment_savings(j_Key, j_name, account, j_rate, j_money, j_type, j_method, j_end_date, j_auto_date)
+		VALUES(SEQ_SAVINGS.NEXTVAL, #{j_name}, #{account}, #{j_rate}, #{j_money}, #{j_type}, #{j_method}, #{j_end_date}, #{j_auto_date})
 	</insert>
 		
 </mapper>

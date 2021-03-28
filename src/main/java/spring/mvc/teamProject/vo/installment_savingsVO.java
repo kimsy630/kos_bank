@@ -9,11 +9,13 @@ public class installment_savingsVO {
    private String account;
    private Timestamp j_join_date;
    private int j_state;
-   private int j_rate;
+   private double j_rate;
+   private int j_money;
    private int j_type;
    private int j_balance;
    private int j_method;
-   private Timestamp j_date;
+   private Timestamp j_end_date;
+   private int j_auto_date;
    
    
 	public int getJ_Key() {
@@ -46,10 +48,10 @@ public class installment_savingsVO {
 	public void setJ_state(int j_state) {
 		this.j_state = j_state;
 	}
-	public int getJ_rate() {
+	public double getJ_rate() {
 		return j_rate;
 	}
-	public void setJ_rate(int j_rate) {
+	public void setJ_rate(double j_rate) {
 		this.j_rate = j_rate;
 	}
 	public int getJ_type() {
@@ -70,11 +72,23 @@ public class installment_savingsVO {
 	public void setJ_method(int j_method) {
 		this.j_method = j_method;
 	}
-	public Timestamp getJ_date() {
-		return j_date;
+	public int getJ_money() {
+		return j_money;
 	}
-	public void setJ_date(Timestamp j_date) {
-		this.j_date = j_date;
+	public void setJ_money(int j_money) {
+		this.j_money = j_money;
+	}
+	public int getJ_auto_date() {
+		return j_auto_date;
+	}
+	public void setJ_auto_date(int j_auto_date) {
+		this.j_auto_date = j_auto_date;
+	}
+	public Timestamp getJ_end_date() {
+		return j_end_date;
+	}
+	public void setJ_end_date(Timestamp j_end_date) {
+		this.j_end_date = j_end_date;
 	}
    
 }

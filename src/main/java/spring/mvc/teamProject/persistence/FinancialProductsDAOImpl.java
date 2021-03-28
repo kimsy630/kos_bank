@@ -16,6 +16,7 @@ import spring.mvc.teamProject.vo.AccountVO;
 import spring.mvc.teamProject.vo.DepositVO;
 import spring.mvc.teamProject.vo.FixedVO;
 import spring.mvc.teamProject.vo.MembersVO;
+import spring.mvc.teamProject.vo.installment_savingsVO;
 import spring.mvc.teamProject.vo.savings_productVO;
 
 
@@ -44,9 +45,15 @@ public class FinancialProductsDAOImpl implements FinancialProductsDAO{
 	}
 	
 	@Override
-	public String getAccount() {
+	public String getDepositAccount() {
 		
-		return sqlSession.getMapper(FinancialProductsDAO.class).getAccount();
+		return sqlSession.getMapper(FinancialProductsDAO.class).getDepositAccount();
+	}
+
+	@Override
+	public String getSavingsAccount() {
+		
+		return sqlSession.getMapper(FinancialProductsDAO.class).getSavingsAccount();
 	}
 	
 	@Override
@@ -72,14 +79,22 @@ public class FinancialProductsDAOImpl implements FinancialProductsDAO{
 		
 		return sqlSession.getMapper(FinancialProductsDAO.class).getDepositDetail(y_name);
 	}
-
+	
+	
+	
 	@Override
-	public int insertSavings(savings_productVO vo) {
+	public int insertFreeSavings(installment_savingsVO vo) {
 		
-		return sqlSession.getMapper(FinancialProductsDAO.class).insertSavings(vo);
+		return sqlSession.getMapper(FinancialProductsDAO.class).insertFreeSavings(vo);
 		
 	}
-
+	
+	@Override
+	public int insertFixedSavings(installment_savingsVO vo) {
+		
+		return sqlSession.getMapper(FinancialProductsDAO.class).insertFixedSavings(vo);
+		
+	}
 
 	@Override
 	public int insertDepositAccount(AccountVO vo) {
@@ -94,6 +109,15 @@ public class FinancialProductsDAOImpl implements FinancialProductsDAO{
 		return sqlSession.getMapper(FinancialProductsDAO.class).insertDeposit(vo);
 		
 	}
+
+	@Override
+	public int insertSavingsAccount(AccountVO vo) {
+		
+		return sqlSession.getMapper(FinancialProductsDAO.class).insertSavingsAccount(vo);
+		
+	}
+
+	
 
 	
 	

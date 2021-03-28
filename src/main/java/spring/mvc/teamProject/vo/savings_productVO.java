@@ -11,9 +11,9 @@ public class savings_productVO {
    private int j_type;
    private int j_max_date;
    private int j_min_date;
-   private int j_min_price;
    private String j_explanation;
    private String j_notice;
+   private int j_auto_date;
    
 	public String getJ_name() {
 		return j_name;
@@ -57,12 +57,6 @@ public class savings_productVO {
 	public void setJ_min_date(int j_min_date) {
 		this.j_min_date = j_min_date;
 	}
-	public int getJ_min_price() {
-		return j_min_price;
-	}
-	public void setJ_min_price(int j_min_price) {
-		this.j_min_price = j_min_price;
-	}
 	public String getJ_explanation() {
 		return j_explanation;
 	}
@@ -74,6 +68,12 @@ public class savings_productVO {
 	}
 	public void setJ_notice(String j_notice) {
 		this.j_notice = j_notice;
+	}
+	public int getJ_auto_date() {
+		return j_auto_date;
+	}
+	public void setJ_auto_date(int j_auto_date) {
+		this.j_auto_date = j_auto_date;
 	}
    
 }
