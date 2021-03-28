@@ -7,6 +7,7 @@ import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -54,8 +55,16 @@ public class CommonController extends HttpServlet {
 		memberService.idChk(req, model);
 		return "common/idChk";
 	}
+<<<<<<< HEAD
 	
 	
+=======
+	@RequestMapping("/Adminlogout.cc")
+	public String Adminlogout(HttpServletRequest req,HttpServletResponse res) {
+		logger.info("url ==> /Adminlogout");
+		return "common/logout";
+	}
+>>>>>>> dev_ksy2
 	//idChk.cc
 	/*
 	@RequestMapping("/corfirmId.cc")

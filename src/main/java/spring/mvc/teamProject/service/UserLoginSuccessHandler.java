@@ -41,20 +41,21 @@ public class UserLoginSuccessHandler implements AuthenticationSuccessHandler{
 
 		String grade = ((MembersVO)sqlSession.selectOne("spring.mvc.teamProject.persistence.MembersDAO.getMemberInfo", authentication.getName())).getAuthority();
 		int authority=0;
+		String link="/WEB-INF/views/common/index.jsp";
 		//관리자  사업자   일반회원
 		if(grade.equals("ROLE_USER")) {
 			authority=0;
 		}else if(grade.equals("ROLE_MANAGER")){
 			authority=1;
 		}else if(grade.equals("ROLE_ADMIN")){
+			link="/WEB-INF/views/common/reactAdmin.jsp";
 			authority=2;
 		}
 		request.getSession().setAttribute("id", authentication.getName());
 		request.getSession().setAttribute("authority", authority);
+		System.out.println(link);
+		RequestDispatcher rd = request.getRequestDispatcher(link);
 		
-		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/views/common/index.jsp");
-		
-		System.out.println("왜안가 ");
 		//List<CategorysVo> menu =categoryDao.categoryView(null);
 		//request.setAttribute("menu", menu);
 		

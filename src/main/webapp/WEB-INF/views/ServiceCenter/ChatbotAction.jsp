@@ -30,7 +30,9 @@
 				      <section class="section section-lg bg-default">
 				        <div class="container">
 				          <img src="resources/images/chat.jpg"></img>
-				          
+							<script type="text/javascript">
+								location.href='http://localhost:3000/${sessionScope.id}';
+							</script>
 				        </div>
 				      </section>
 				</form>
