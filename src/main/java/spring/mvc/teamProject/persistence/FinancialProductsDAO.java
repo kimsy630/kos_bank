@@ -4,20 +4,14 @@ import java.util.List;
 
 import spring.mvc.teamProject.vo.AccountVO;
 import spring.mvc.teamProject.vo.DepositVO;
-<<<<<<< HEAD
 import spring.mvc.teamProject.vo.FixedVO;
 import spring.mvc.teamProject.vo.MembersVO;
 import spring.mvc.teamProject.vo.installment_savingsVO;
 import spring.mvc.teamProject.vo.savings_productVO;
-=======
 import spring.mvc.teamProject.vo.Loans_productVO;
-import spring.mvc.teamProject.vo.SavingsVO;
->>>>>>> dev_psh2
 
 public interface FinancialProductsDAO{
-<<<<<<< HEAD
 	// 가입을 희망하는 해당 아이디가 보유중인 자유입출금계좌 정보조회
-=======
 	// ============================================================================
 	// 박서하
 	public int getLoanCount(); // 대출상품 조회
@@ -26,7 +20,6 @@ public interface FinancialProductsDAO{
 	// ============================================================================
 	
 	// 해당 아이디 자유입출금계좌 정보조회
->>>>>>> dev_psh2
 	public List<AccountVO> selectById(String id);
 	// 가입폼에 입력한 출금/자동이체용 계좌 비밀번호 일치확인
 	public int checkPwd(AccountVO vo);

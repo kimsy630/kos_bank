@@ -8,15 +8,11 @@ import org.springframework.stereotype.Repository;
 
 import spring.mvc.teamProject.vo.AccountVO;
 import spring.mvc.teamProject.vo.DepositVO;
-<<<<<<< HEAD
 import spring.mvc.teamProject.vo.FixedVO;
 import spring.mvc.teamProject.vo.MembersVO;
 import spring.mvc.teamProject.vo.installment_savingsVO;
 import spring.mvc.teamProject.vo.savings_productVO;
-=======
 import spring.mvc.teamProject.vo.Loans_productVO;
-import spring.mvc.teamProject.vo.SavingsVO;
->>>>>>> dev_psh2
 
 @Repository
 public class FinancialProductsDAOImpl implements FinancialProductsDAO{

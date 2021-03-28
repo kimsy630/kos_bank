@@ -77,34 +77,6 @@ public class FinancialProductsController {
 				
 		return "financialProducts/DepositDetail";
 	}
-<<<<<<< HEAD
-	
-	// 박서하
-	//대출상품 상세
-	@RequestMapping("/LoansDetail.cc")
-	public String LoansDetail(HttpServletRequest req,Model model) {
-		logger.info("url ==> /LoansDetail");
-		
-		loanservice.loanProductDetail(req, model);
-		
-		return "financialProducts/LoansDetail";
-	}
-	
-=======
-	// 최문수
-	// 적금상품 가입페이지
-	@RequestMapping("/SavingsRegistration.cc")
-	public String regISP(HttpServletRequest req,Model model) {
-		logger.info("url ==> /SavingsRegistration");
-		
-		//String j_name = req.getParameter("j_name");
-		//req.setAttribute("j_name", j_name);
-		//service.AccountList(req, model);
-		//service.SavingsDetail(req, model);
-		
-		return "financialProducts/SavingsRegistration";
-	}	
->>>>>>> dev_psh2
 	// 최문수
 	// 적금상품 가입페이지
 	@RequestMapping("/SavingsRegistration.cc")

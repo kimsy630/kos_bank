@@ -21,11 +21,8 @@ import spring.mvc.teamProject.persistence.FinancialProductsDAOImpl;
 import spring.mvc.teamProject.persistence.MembersDAOImpl;
 import spring.mvc.teamProject.vo.AccountVO;
 import spring.mvc.teamProject.vo.DepositVO;
-<<<<<<< HEAD
 import spring.mvc.teamProject.vo.FixedVO;
-=======
 import spring.mvc.teamProject.vo.Loans_productVO;
->>>>>>> dev_psh2
 import spring.mvc.teamProject.vo.MembersVO;
 import spring.mvc.teamProject.vo.installment_savingsVO;
 import spring.mvc.teamProject.vo.savings_productVO;
