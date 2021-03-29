@@ -17,6 +17,7 @@ public class AccountVO {
 	private Timestamp sleep_date;
 	private Timestamp new_date;
     private MembersVO member;
+
 	public String getAccount() {
 		return account;
 	}

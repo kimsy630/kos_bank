@@ -5,6 +5,7 @@ import java.util.Map;
 
 import org.springframework.stereotype.Repository;
 
+import spring.mvc.teamProject.vo.AccountTransferVO;
 import spring.mvc.teamProject.vo.AccountVO;
 import spring.mvc.teamProject.vo.TransferVO;
 
@@ -13,7 +14,7 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface InquiryTransferDAO {
 	//입출금 계좌조회
-	public List<AccountVO> AccountTable(String id);
+	public List<AccountTransferVO> AccountTable(String id);
 	//대출조회
 	public List<AccountVO> LoansTable(String id);
 	//적금조회

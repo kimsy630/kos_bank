@@ -76,8 +76,8 @@
                       <th>업무</th>
                     </tr>
                   </thead>
-                  <c:forEach var="vo" items="${list}">
-                  <c:set var="dto" value="${vo.getAccountTransfer()}"/>
+                  <c:forEach var="dto" items="${list}">
+                  <c:set var="vo" value="${dto.getAccountVO()}"/>
                     <tr>
                       <td>${vo.accountType}</td>
                       <td>${vo.account}</td>

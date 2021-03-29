@@ -12,9 +12,15 @@ public class AccountTransferVO {
 	private Timestamp in_outDate;
 	private String out_comment;
 	private String in_comment;
+	private AccountVO accountVO;
 	
 	
-	
+	public AccountVO getAccountVO() {
+		return accountVO;
+	}
+	public void setAccountVO(AccountVO accountVO) {
+		this.accountVO = accountVO;
+	}
 	public String getTransfer_id() {
 		return transfer_id;
 	}

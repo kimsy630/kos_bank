@@ -200,10 +200,18 @@ public class InquiryTransferController {
 	}
 	//김소림
 	// 자동이체 실행 test 
+<<<<<<< HEAD
 	@Scheduled(cron="0 */5 * * * *")
 	  public void scheduleTest() {
 	   logger.info("이체 test");
 	  Aservice.AutoTransferPractice();
 	}
+=======
+	@Scheduled(cron="* */3 * * * *")
+	   public void scheduleTest() {
+	   //logger.info("이체 test");
+	   //Aservice.AutoTransferPractice();
+   }
+>>>>>>> 46f5b653977c4fa1a2309020a2d67610237a7961
 		
 }

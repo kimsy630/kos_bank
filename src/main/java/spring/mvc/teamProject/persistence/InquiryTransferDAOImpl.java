@@ -7,6 +7,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import spring.mvc.teamProject.vo.AccountTransferVO;
 import spring.mvc.teamProject.vo.AccountVO;
 import spring.mvc.teamProject.vo.TransferVO;
 
@@ -18,7 +19,7 @@ public class InquiryTransferDAOImpl implements InquiryTransferDAO{
 	
 	// 입출금 계좌 조회
 	@Override
-	public List<AccountVO> AccountTable(String id) {
+	public List<AccountTransferVO> AccountTable(String id) {
 		InquiryTransferDAO dao = sqlSession.getMapper(InquiryTransferDAO.class);
 		
 		return dao.AccountTable(id);
