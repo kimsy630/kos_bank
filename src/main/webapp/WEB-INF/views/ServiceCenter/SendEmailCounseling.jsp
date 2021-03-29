@@ -17,7 +17,7 @@
     	<%@ include file="../header.jsp" %>
     	<section class="section section-bredcrumbs">
 	        <div class="container context-dark breadcrumb-wrapper">
-	          <h2>(관리자)이메일 상담 리스트</h2><br>
+	          <h2>고객상담 게시판</h2><br>
 	        </div>
 	     </section>
 			<main id="main" class="main">
