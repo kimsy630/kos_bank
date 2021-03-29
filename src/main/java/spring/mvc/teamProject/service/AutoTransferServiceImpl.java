@@ -19,6 +19,7 @@ public class AutoTransferServiceImpl implements AutoTransferService {
 	
 	@Autowired
 	AutoTransferDAO aDAO;
+	// 김소림
 	// 자동이체 등록
 	@Override
 	public void AutoTransferAdd(HttpServletRequest req, Model model) {
@@ -37,7 +38,7 @@ public class AutoTransferServiceImpl implements AutoTransferService {
 		model.addAttribute("vo", vo);
 		model.addAttribute("insertCnt", insertCnt);
 	}
-	
+	// 김소림
 	// 자동이체 실행
 	@Override
 	public void AutoTransferPractice() {

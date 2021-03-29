@@ -154,13 +154,14 @@ public class InquiryTransferController {
 		Iservice.transferAction(req, model);
 		return "InquiryTransfer/TransferAction";
 	}
-	
+	// 보류
 	//다계좌이체 MultiAccountTransfer.cc
 	@RequestMapping("/MultiAccountTransfer.cc")
 	public String MultiAccountTransfer(HttpServletRequest req,Model model) {
 		logger.info("url ==> /MultiAccountTransfer");
 		return "InquiryTransfer/MultiAccountTransfer";
 	}
+	//김소림
 	//적금추가납입 ISPAdd.cc
 	@RequestMapping("/ISPAdd.cc")
 	public String ISPAdd(HttpServletRequest req,Model model) {
@@ -176,32 +177,33 @@ public class InquiryTransferController {
 		return "InquiryTransfer/AutoTransferRequest";
 	}
 	//김소림
-	//자동이체신청 AutoTransferRequest.
+	//자동이체신청액션 AutoTransferRequest.cc
 	@RequestMapping("/AutoTransferRequestAction.cc")
 	public String AutoTransferAction(HttpServletRequest req,Model model) {
 		logger.info("url ==> /AutoTransferRequestAction");
 		Aservice.AutoTransferAdd(req, model);
 		return "InquiryTransfer/AutoTransferRequestAction";
 	}
-		
+	//김소림(예정)	
 	//자동이체조회 AutoTransferList.cc
 	@RequestMapping("/AutoTransferList.cc")
 	public String AutoTransferList(HttpServletRequest req,Model model) {
 		logger.info("url ==> /AutoTransferList");
 		return "InquiryTransfer/AutoTransferList";
 	}
+	//김소림(예정)
 	//자동이체조회 AutoTransferList.cc
 	@RequestMapping("/AutoTransferChangeRank.cc")
 	public String AutoTransferChangeRank(HttpServletRequest req,Model model) {
 		logger.info("url ==> /AutoTransferChangeRank");
 		return "InquiryTransfer/AutoTransferChangeRank";
 	}
-	
+	//김소림
 	// 자동이체 실행 test 
-	@Scheduled(cron="*/10 * * * * *")
-	   public void scheduleTest() {
+	@Scheduled(cron="0 */5 * * * *")
+	  public void scheduleTest() {
 	   logger.info("이체 test");
-	   //Aservice.AutoTransferPractice();
-   }
+	  Aservice.AutoTransferPractice();
+	}
 		
 }

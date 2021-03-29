@@ -41,7 +41,7 @@ public class InquiryTransferServiceImpl implements InquiryTransferService{
 		
 		model.addAttribute("vo",vo);
 	}
-	
+	// 김소림
 	// 계좌이체 실행
 	@Override
 	public void transferAction(HttpServletRequest req, Model model) {

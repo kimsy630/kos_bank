@@ -43,7 +43,7 @@
 	<select id="selectByDate" resultType="spring.mvc.teamProject.vo.AutoTransferVO">
 		SELECT jd_key, account, jd_autoMoney, jd_account, jd_inPlace, jd_status
 		FROM auto_transfer
-		WHERE jd_outDate = '28'
+		WHERE jd_outDate = '29'
 	</select>
 
 
