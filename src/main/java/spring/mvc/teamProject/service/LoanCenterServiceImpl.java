@@ -41,9 +41,7 @@ public class LoanCenterServiceImpl implements LoanCenterService {
 	@Override
 	public void LoanAccountDetail(HttpServletRequest req, Model model) { // 대출계좌 상세조회
 		Map<String, Object> map = new HashMap<String, Object>();
-		map.put("id",(String)req.getSession().getAttribute("id")); //;
-		map.put("d_name", req.getParameter("d_name"));
-		
+		map.put("account", req.getParameter("account"));
 		LoansVO vo = dao.getLoanAccountDetail(map);
 		
 		model.addAttribute("vo", vo);
@@ -61,8 +59,7 @@ public class LoanCenterServiceImpl implements LoanCenterService {
 	@Override
 	public void LoanCloseDetail(HttpServletRequest req, Model model) { // 대출해지현황 상세조회
 		Map<String, Object> map = new HashMap<String, Object>();
-		map.put("id",(String)req.getSession().getAttribute("id")); //;
-		map.put("d_name", req.getParameter("d_name"));
+		map.put("account", req.getParameter("account"));
 		
 		LoansVO vo = dao.getLoanCloseDetail(map);
 		

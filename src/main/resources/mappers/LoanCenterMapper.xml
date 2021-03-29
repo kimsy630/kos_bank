@@ -19,9 +19,8 @@
 		SELECT l.d_name, l.d_repay, l.d_amount, l.d_balance, l.d_month, l.account, l.d_rate, l.d_start_date, l.d_end_date, d_next_rate
 		 FROM account_info i, loans l
 		 WHERE i.account = l.account
-		 AND i.id=#{id}
-		 AND l.d_name=#{d_name}
-		 AND l.d_state=1 <!-- d_state=1 : 정상대출계좌 -->
+		 AND i.account = #{account}
+		 AND l.d_state=1<!-- d_state=1 : 정상대출계좌 -->
 	</select>
 	
 	<select id="getLoanCloseList" resultType="spring.mvc.teamProject.vo.LoansVO"> <!-- 대출해지현황 조회 -->
@@ -36,11 +35,9 @@
 		SELECT l.d_name, l.d_repay, l.d_amount, l.account, l.d_rate, l.d_start_date, l.d_end_date
 		 FROM account_info i, loans l
 		 WHERE i.account = l.account
-		 AND i.id=#{id}
-		 AND l.d_name=#{d_name}
+		 AND i.account = #{account}
 		 AND l.d_state=2 <!-- d_state=2 : 해지대출계좌 -->
 	</select>
-	
 	<select id="getLoanPrincipal" resultType="spring.mvc.teamProject.vo.LoansVO"> <!-- 대출원금 예상(내부정보) -->
 		SELECT d_amount, d_month, d_ERR
 		 FROM Loans
