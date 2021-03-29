@@ -11,12 +11,12 @@
 	<tr>
 		<th>통화</th>
 		<th>적용환율</th>
-		<c:if test="${changeType eq 'buy'}">
+		<c:if test="${changeType eq 'sell'}">
 		<th>외화금액</th>
 		<th>원화금액</th>
 		</c:if>
 		
-		<c:if test="${changeType eq 'sell'}">
+		<c:if test="${changeType eq 'buy'}">
 		<th>원화금액</th>
 		<th>외화금액</th>
 		</c:if>

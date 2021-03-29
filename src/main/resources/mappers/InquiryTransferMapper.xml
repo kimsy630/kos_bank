@@ -6,6 +6,7 @@
     
 <mapper namespace = "spring.mvc.teamProject.persistence.InquiryTransferDAO">
 
+	
 	<resultMap id="AccountInfo" type="spring.mvc.teamProject.vo.AccountVO">
 		<result column="account" property="account" />
 		<result column="id" property="id" />
@@ -18,14 +19,15 @@
 		<result column="delete_date" property="delete_date" />
 		<result column="sleep_date" property="sleep_date" />
 		<result column="new_date" property="new_date" />
-		<collection property="AccountTransfer" resultMap="AccountTransfer" />		
+	<!-- 	<collection property="AccountTransfer" resultMap="AccountTransfer" />		
 		<collection property="Loans" resultMap="Loans" />	
 		<collection property="installment_savings" resultMap="installment_savings" />
 		<collection property="fund" resultMap="fund" />
-		<collection property="deposit" resultMap="deposit" />
-	</resultMap>
+		<collection property="deposit" resultMap="deposit" /> -->
+	</resultMap> 
+	
 
-
+<!-- 계좌조회 -->
 	<resultMap id="AccountTransfer" type="spring.mvc.teamProject.vo.AccountTransferVO">
 		<result column="transfer_id" property="transfer_id" />
 		<result column="account" property="account" />
@@ -35,12 +37,14 @@
 		<result column="in_outDate" property="in_outDate" />
 		<result column="out_comment" property="out_comment" />
 		<result column="in_comment" property="in_comment" />
+		<collection property="accountVO" resultMap="AccountInfo" />
 	</resultMap>
-	
+	<!-- 대출 -->
 	<resultMap id="Loans" type="spring.mvc.teamProject.vo.LoansVO">
 		<result column="d_Key" property="d_Key" />
 		<result column="d_name" property="d_name" />
 		<result column="d_state" property="d_state" />
+		<result column="d_start_date" property="d_start_date" />
 		<result column="d_end_date" property="d_end_date" />
 		<result column="d_month" property="d_month" />
 		<result column="d_repay" property="d_repay" />
@@ -53,9 +57,11 @@
 		<result column="d_tran" property="d_tran" />
 		<result column="d_tran_rate" property="d_tran_rate" />
 		<result column="d_next_rate" property="d_next_rate" />
+		<result column="d_ERR" property="d_ERR" />
 		<result column="d_ERC" property="d_ERC" />
+		<collection property="accountVO" resultMap="AccountInfo" />
 	</resultMap>
-	
+	<!-- 적금 -->
 	<resultMap id="installment_savings" type="spring.mvc.teamProject.vo.installment_savingsVO">
 		<result column="j_Key" property="j_Key" />
 		<result column="j_name" property="j_name" />
@@ -63,13 +69,15 @@
 		<result column="j_join_date" property="j_join_date" />
 		<result column="j_state" property="j_state" />
 		<result column="j_rate" property="j_rate" />
+		<result column="j_money" property="j_money" />
 		<result column="j_type" property="j_type" />
 		<result column="j_balance" property="j_balance" />
 		<result column="j_method" property="j_method" />
-		<result column="j_close_type" property="j_close_type" />
-		<result column="j_date" property="j_date" />
+		<result column="j_end_date" property="j_end_date" />
+		<result column="j_auto_date" property="j_auto_date" />
+		<collection property="accountVO" resultMap="AccountInfo" />
 	</resultMap>
-	
+	<!-- 펀드 -->
 	<resultMap id="fund" type="spring.mvc.teamProject.vo.fundVO">
 		<result column="f_Key" property="f_Key" />
 		<result column="f_ID" property="f_ID" />
@@ -86,9 +94,10 @@
 		<result column="f_list" property="f_list" />
 		<result column="f_account" property="f_account" />
 		<result column="f_approve" property="f_approve" />
+		<collection property="accountVO" resultMap="AccountInfo" />
 	</resultMap>
-
-	<resultMap id="deposit" type="spring.mvc.teamProject.vo.DepositVO">
+<!-- 예금 -->
+	<resultMap id="deposit" type="spring.mvc.teamProject.vo.FixedVO">
 		<result column="y_Key" property="y_Key" />
 		<result column="y_name" property="y_name" />
 		<result column="account" property="account" />
@@ -98,14 +107,15 @@
 		<result column="y_type" property="y_type" />
 		<result column="y_balance" property="y_balance" />
 		<result column="y_end_date" property="y_end_date" />
+		<collection property="accountVO" resultMap="AccountInfo" />
 	</resultMap>
 	<!-- 입출금 계좌 조회 -->
-	<select id="AccountTable" parameterType="String" resultMap="AccountInfo">
-		SELECT *
-		FROM (SELECT i.accounttype, i.account, i.new_date, t.in_outDate, i.balance ,ROW_NUMBER() OVER(PARTITION BY i.account
+	<select id="AccountTable" parameterType="String" resultMap="AccountTransfer">
+ 		SELECT distinct account , accounttype,new_date,in_outDate,balance
+		FROM (SELECT i.account,i.accounttype, i.new_date, t.in_outDate, i.balance ,ROW_NUMBER() OVER(PARTITION BY i.account
 		    ORDER BY i.account, t.in_outDate desc)as RANKING
 		        FROM account_info i
-		        JOIN account_transfer t
+		       LEFT JOIN account_transfer t
 		          ON i.account = t.account
 		       WHERE i.id = #{id} AND i.accountType='입출금')
 		  WHERE RANKING=1

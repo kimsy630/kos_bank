@@ -24,7 +24,15 @@ public class LoansVO {
 	private double d_ERR;
 	private int d_ERC;
 	private MembersVO Members;
+	private AccountVO accountVO;
 	
+	
+	public AccountVO getAccountVO() {
+		return accountVO;
+	}
+	public void setAccountVO(AccountVO accountVO) {
+		this.accountVO = accountVO;
+	}
 	public String getD_name() {
 		return d_name;
 	}

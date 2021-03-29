@@ -16,8 +16,15 @@ public class installment_savingsVO {
    private int j_method;
    private Timestamp j_end_date;
    private int j_auto_date;
+   private AccountVO accountVO;
    
    
+	public AccountVO getAccountVO() {
+		return accountVO;
+	}
+	public void setAccountVO(AccountVO accountVO) {
+		this.accountVO = accountVO;
+	}
 	public int getJ_Key() {
 		return j_Key;
 	}

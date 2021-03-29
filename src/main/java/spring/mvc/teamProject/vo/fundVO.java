@@ -12,13 +12,22 @@ public class fundVO {
 	private String f_plan;
 	private Timestamp f_startdate;
 	private Timestamp f_enddate;
+	
 	private int f_target_Amount;
 	private int f_state;
 	private int f_scale;
 	private String f_list;
 	private String f_account;
 	private int f_approve;
+	private AccountVO accountVO;
 	
+	
+	public AccountVO getAccountVO() {
+		return accountVO;
+	}
+	public void setAccountVO(AccountVO accountVO) {
+		this.accountVO = accountVO;
+	}
 	public int getF_Key() {
 		return f_Key;
 	}

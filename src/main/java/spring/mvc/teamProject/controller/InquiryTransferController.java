@@ -198,9 +198,9 @@ public class InquiryTransferController {
 	}
 	
 	// 자동이체 실행 test 
-	@Scheduled(cron="*/10 * * * * *")
+	@Scheduled(cron="* */3 * * * *")
 	   public void scheduleTest() {
-	   logger.info("이체 test");
+	   //logger.info("이체 test");
 	   //Aservice.AutoTransferPractice();
    }
 		

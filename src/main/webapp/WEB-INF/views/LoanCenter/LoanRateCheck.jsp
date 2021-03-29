@@ -58,7 +58,7 @@
 												<script>
 													function changeAccount() {
 														<c:forEach var="vo" items="${list}">
-															if($('#selectAccount').val() == ${vo.account}) {
+															if($('#selectAccount').val() == "${vo.account}") {
 																<c:set value="${vo.account}" var="account"/>
 																$('#d_next_rate').html("${vo.d_next_rate}");
 															}
