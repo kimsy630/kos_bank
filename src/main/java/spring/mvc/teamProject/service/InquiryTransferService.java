@@ -8,6 +8,7 @@ import org.springframework.ui.Model;
 @Service
 public interface InquiryTransferService {
 	
+<<<<<<< HEAD
 	//입출금 계좌조회
 	public void AccountTable(HttpServletRequest req, Model model);
 	//대출 조회
@@ -28,4 +29,12 @@ public interface InquiryTransferService {
 	public void TransactionDetails_Table(HttpServletRequest req, Model model);
 	
 	
+=======
+	//계좌이체 입력정보
+	public void transferTable(HttpServletRequest req, Model model);
+	
+	//계좌이체 실행
+	public void transferAction(HttpServletRequest req, Model model);
+
+>>>>>>> dev_ksl
 }

@@ -1,16 +1,28 @@
 package spring.mvc.teamProject.controller;
 
+import java.util.Map;
+
+
 import javax.servlet.http.HttpServletRequest;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.scheduling.annotation.Scheduled;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
+<<<<<<< HEAD
+=======
+import spring.mvc.teamProject.service.AutoTransferService;
+>>>>>>> dev_ksl
 import spring.mvc.teamProject.service.InquiryTransferService;
 import spring.mvc.teamProject.service.RegisterReleaseService;
+import spring.mvc.teamProject.vo.TransferVO;
 
 @Controller
 public class InquiryTransferController {
@@ -19,6 +31,12 @@ public class InquiryTransferController {
 	RegisterReleaseService service;
 	@Autowired
 	InquiryTransferService IT_service;
+	
+	@Autowired
+	InquiryTransferService Iservice;
+	
+	@Autowired
+	AutoTransferService Aservice;
 	
 	private static final Logger logger = LoggerFactory.getLogger(InquiryTransferController.class);
 	
@@ -93,6 +111,7 @@ public class InquiryTransferController {
 		
 		return "InquiryTransfer/AllTable";
 	}
+<<<<<<< HEAD
 	//거래내역 조회 TransactionDetails.do 정하늘
 	@RequestMapping("/TransactionDetails.do")
 	public String TransactionDetails(HttpServletRequest req,Model model) {
@@ -113,12 +132,34 @@ public class InquiryTransferController {
 	}
 	
 	//계좌이체 AccountTransfer.cc
+=======
+	//김소림
+	//계좌이체 페이지 AccountTransfer.cc
+>>>>>>> dev_ksl
 	@RequestMapping("/AccountTransfer.cc")
 	public String AccountTransfer(HttpServletRequest req,Model model) {
 		logger.info("url ==> /AccountTransfer");
 		service.AccountNomalList(req, model);
 		return "InquiryTransfer/AccountTransfer";
 	}
+	//김소림
+	//계좌이체 ajax페이지 TransferTable.cc
+	@RequestMapping("/TransferTable.cc")
+	public String TransferTable(HttpServletRequest req,Model model) {
+		logger.info("url ==> /TransferTable");
+		Iservice.transferTable(req, model);
+		return "InquiryTransfer/TransferTable";
+	}
+	
+	//김소림
+	//계좌이체 Action TransferTable.cc
+	@RequestMapping("/TransferAction.cc")
+	public String TransferAction(HttpServletRequest req,Model model) {
+		logger.info("url ==> /TransferTable");
+		Iservice.transferAction(req, model);
+		return "InquiryTransfer/TransferAction";
+	}
+	
 	//다계좌이체 MultiAccountTransfer.cc
 	@RequestMapping("/MultiAccountTransfer.cc")
 	public String MultiAccountTransfer(HttpServletRequest req,Model model) {
@@ -131,12 +172,23 @@ public class InquiryTransferController {
 		logger.info("url ==> /ISPAdd");
 		return "InquiryTransfer/ISPAdd";
 	}
+	//김소림
 	//자동이체신청 AutoTransferRequest.cc
 	@RequestMapping("/AutoTransferRequest.cc")
 	public String AutoTransferRequest(HttpServletRequest req,Model model) {
 		logger.info("url ==> /AutoTransferRequest");
+		service.AccountInoutType(req, model);
 		return "InquiryTransfer/AutoTransferRequest";
 	}
+	//김소림
+	//자동이체신청 AutoTransferRequest.
+	@RequestMapping("/AutoTransferRequestAction.cc")
+	public String AutoTransferAction(HttpServletRequest req,Model model) {
+		logger.info("url ==> /AutoTransferRequestAction");
+		Aservice.AutoTransferAdd(req, model);
+		return "InquiryTransfer/AutoTransferRequestAction";
+	}
+		
 	//자동이체조회 AutoTransferList.cc
 	@RequestMapping("/AutoTransferList.cc")
 	public String AutoTransferList(HttpServletRequest req,Model model) {
@@ -149,6 +201,13 @@ public class InquiryTransferController {
 		logger.info("url ==> /AutoTransferChangeRank");
 		return "InquiryTransfer/AutoTransferChangeRank";
 	}
+	
+	// 자동이체 실행 test 
+	@Scheduled(cron="*/10 * * * * *")
+	   public void scheduleTest() {
+	   logger.info("이체 test");
+	   Aservice.AutoTransferPractice();
+   }
 	
 		
 }

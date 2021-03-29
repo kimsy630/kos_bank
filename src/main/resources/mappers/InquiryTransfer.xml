@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+    
+<mapper namespace = "spring.mvc.teamProject.persistence.InquiryTransferDAO">
+	<resultMap id="Transfer" type="spring.mvc.teamProject.vo.TransferVO">
+		<result column="account" property="account" />
+		<result column="sender_account" property="sender_account" />
+		<result column="sender_name" property="sender_name" />
+		<result column="money" property="money" />
+		<result column="in_out" property="in_out" />
+		<result column="out_comment" property="out_comment" />
+		<result column="in_comment" property="in_comment" />
+		<collection property="accountMemberList" resultMap="accountMemberList" />
+	</resultMap>
+	
+	<resultMap id="accountMemberList" type="spring.mvc.teamProject.vo.AccountVO">
+		<result column="account" property="account" />
+		<result column="id" property="id" />
+		<result column="accountPW" property="accountPW" />
+		<result column="balance" property="balance" />
+		<result column="acccountType" property="acccountType" />
+		<result column="accountState" property="accountState" />
+		<result column="acc_state_content" property="acc_state_content" />
+		<result column="acccountLimit" property="acccountLimit" />
+	</resultMap>
+	
+	<insert id="addMyLog" parameterType="spring.mvc.teamProject.vo.TransferVO">
+		INSERT INTO account_transfer(transfer_id,account,sender_account,sender_name,money,in_out,out_comment)
+			VALUES(SEQ_TRANSFER.NEXTVAL,#{account},#{sender_account},#{sender_name},#{money},'출금',#{out_comment})
+	</insert>
+	
+	<insert id="addYourLog" parameterType="spring.mvc.teamProject.vo.TransferVO">
+		INSERT INTO account_transfer(transfer_id,account,sender_account,in_comment,money,in_out)
+			VALUES(SEQ_TRANSFER.NEXTVAL,#{account},#{sender_account},#{in_comment},#{money},'입금')
+	</insert> 
+	
+	<!-- 내 계좌 잔액 업데이트. 출금 -->
+  	<update id="withdrawal" parameterType="spring.mvc.teamProject.vo.TransferVO">
+		UPDATE account_info
+	  	 SET Balance = Balance - #{money} 
+	  	WHERE account = #{account}
+  	</update>
+  	
+  	<!-- 상대 계좌 잔액 업데이트. 입금 -->
+  	<update id="deposit" parameterType="spring.mvc.teamProject.vo.TransferVO">
+  		UPDATE account_info
+	  	 SET Balance = Balance + #{money} 
+	  	WHERE account = #{sender_account}
+  	</update>
+	
+	
+     
+</mapper>

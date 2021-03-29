@@ -12,13 +12,15 @@ import javax.servlet.http.HttpServletResponse;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.scheduling.annotation.Scheduled;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import spring.mvc.teamProject.service.MembersService;
-  
+
 @Controller
 public class CommonController extends HttpServlet {
 	private static final Logger logger = LoggerFactory.getLogger(CommonController.class);
@@ -37,7 +39,7 @@ public class CommonController extends HttpServlet {
 		
 		return "common/login";
 	}
-
+	
 	@RequestMapping("/signUp.cc")
 	public String signUp(HttpServletRequest req,Model model) {
 		
@@ -55,11 +57,22 @@ public class CommonController extends HttpServlet {
 		memberService.idChk(req, model);
 		return "common/idChk";
 	}
+<<<<<<< HEAD
 	@RequestMapping("/Adminlogout.cc")
 	public String Adminlogout(HttpServletRequest req,HttpServletResponse res) {
 		logger.info("url ==> /Adminlogout");
 		return "common/logout";
 	}
+=======
+	
+	
+	//@Scheduled(cron="*/10 * * * * *")
+   // public void scheduleTest() {
+   //     logger.info("스케쥴러 테스트중");
+   // }
+	
+	
+>>>>>>> dev_ksl
 	//idChk.cc
 	/*
 	@RequestMapping("/corfirmId.cc")

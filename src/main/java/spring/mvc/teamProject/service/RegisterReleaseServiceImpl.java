@@ -10,18 +10,19 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 
-import spring.mvc.teamProject.persistence.MembersDAOImpl;
-import spring.mvc.teamProject.persistence.RegisterReleaseDAOImpl;
+import spring.mvc.teamProject.persistence.MembersDAO;
+import spring.mvc.teamProject.persistence.RegisterReleaseDAO;
 import spring.mvc.teamProject.vo.AccountVO;
+import spring.mvc.teamProject.vo.MembersVO;
 
 @Service
 public class RegisterReleaseServiceImpl implements RegisterReleaseService{
 	
 	@Autowired
-	private RegisterReleaseDAOImpl accountDAO;
+	RegisterReleaseDAO accountDAO;
 	
 	@Autowired
-	MembersDAOImpl memberDAO;
+	MembersDAO memberDAO;
 	
 	@Override
 	public void AddAccountService(HttpServletRequest req, Model model) {
@@ -29,6 +30,7 @@ public class RegisterReleaseServiceImpl implements RegisterReleaseService{
 		String strId= req.getParameter("id");
 		vo.setId(strId);
 		vo.setAccountPW(Integer.parseInt(req.getParameter("accountPW")));
+		
 		System.out.println("id"+strId);
 		System.out.println("accountPW"+vo.getAccountPW());
 				
@@ -66,9 +68,47 @@ public class RegisterReleaseServiceImpl implements RegisterReleaseService{
 	@Override
 	public void AccountNomalList(HttpServletRequest req, Model model) {
 		String strId = (String)req.getSession().getAttribute("id");
-		List<AccountVO> list = accountDAO.selectById(strId);
+		List<AccountVO> list = accountDAO.selectNomalById(strId);
+		
+		
 		System.out.println("list"+list);
 		model.addAttribute("list", list);
+		
+	}
+	
+	// 계좌(정상)리스트
+	@Override
+	public void AccountInoutType(HttpServletRequest req, Model model) {
+		String strId = (String)req.getSession().getAttribute("id");
+		List<AccountVO> list = accountDAO.selectType(strId);
+		
+		System.out.println("list"+list);
+		model.addAttribute("list", list);
+		
+	}
+	
+	// 예금주 조회
+	@Override
+	public void AccountNameChk(HttpServletRequest req, Model model) {
+		String sender_account = req.getParameter("sender_account");
+		System.out.println("sender_account"+sender_account);
+		String name = accountDAO.AccountNameChk(sender_account);
+		
+
+		System.out.println("name"+name);
+		model.addAttribute("name", name);
+		
+	}
+	
+	// 예금주 조회
+	@Override
+	public void IdNameChk(HttpServletRequest req, Model model) {
+		String strId = (String)req.getSession().getAttribute("id");
+		String name = accountDAO.IdNameChk(strId);
+		
+		System.out.println("name"+name);
+		model.addAttribute("name",name);
+		model.addAttribute("id",strId);
 		
 	}
 

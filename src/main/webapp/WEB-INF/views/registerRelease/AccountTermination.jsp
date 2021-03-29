@@ -111,20 +111,16 @@
                       <td>조회 계좌번호</td>
                       <td>
                       <select id="select_account" onchange="changeAccount()">
-                                        <option value="">계좌를 선택해주세요.</option>
-                                      <c:forEach items="${list }" var="item">
-                                        <option value="${item.balance}">${item.account}</option>
-                                     </c:forEach>
-                                  </select>
-                                
-
-						</td>
+                             <option value="">계좌를 선택해주세요.</option>
+                           <c:forEach items="${list }" var="item">
+                             <option value="${item.balance}" id="account" name="account">${item.account}</option>
+                          </c:forEach>
+                       </select>
+					</td>
                     </tr>
                     <tr>
                     <td scope="col" class="balance">잔액</td>
                      	<td scope="col" id="select_balance">원</td>
-
-                  		 
 		              </table>
               			</div>
               		</div>
