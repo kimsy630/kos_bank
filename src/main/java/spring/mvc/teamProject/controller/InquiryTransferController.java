@@ -16,10 +16,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-<<<<<<< HEAD
-=======
 import spring.mvc.teamProject.service.AutoTransferService;
->>>>>>> dev_ksl
 import spring.mvc.teamProject.service.InquiryTransferService;
 import spring.mvc.teamProject.service.RegisterReleaseService;
 import spring.mvc.teamProject.vo.TransferVO;
@@ -29,6 +26,7 @@ public class InquiryTransferController {
 	
 	@Autowired
 	RegisterReleaseService service;
+	
 	@Autowired
 	InquiryTransferService IT_service;
 	
@@ -111,7 +109,6 @@ public class InquiryTransferController {
 		
 		return "InquiryTransfer/AllTable";
 	}
-<<<<<<< HEAD
 	//거래내역 조회 TransactionDetails.do 정하늘
 	@RequestMapping("/TransactionDetails.do")
 	public String TransactionDetails(HttpServletRequest req,Model model) {
@@ -132,10 +129,8 @@ public class InquiryTransferController {
 	}
 	
 	//계좌이체 AccountTransfer.cc
-=======
 	//김소림
-	//계좌이체 페이지 AccountTransfer.cc
->>>>>>> dev_ksl
+	//계좌이체 페이지 AccountTransfer.cc 
 	@RequestMapping("/AccountTransfer.cc")
 	public String AccountTransfer(HttpServletRequest req,Model model) {
 		logger.info("url ==> /AccountTransfer");
@@ -173,7 +168,7 @@ public class InquiryTransferController {
 		return "InquiryTransfer/ISPAdd";
 	}
 	//김소림
-	//자동이체신청 AutoTransferRequest.cc
+	//자동이체신청 AutoTransferRequest.cc 
 	@RequestMapping("/AutoTransferRequest.cc")
 	public String AutoTransferRequest(HttpServletRequest req,Model model) {
 		logger.info("url ==> /AutoTransferRequest");
@@ -206,8 +201,7 @@ public class InquiryTransferController {
 	@Scheduled(cron="*/10 * * * * *")
 	   public void scheduleTest() {
 	   logger.info("이체 test");
-	   Aservice.AutoTransferPractice();
+	   //Aservice.AutoTransferPractice();
    }
-	
 		
 }

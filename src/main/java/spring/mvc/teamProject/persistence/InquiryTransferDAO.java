@@ -1,12 +1,14 @@
 package spring.mvc.teamProject.persistence;
 
 import java.util.List;
-<<<<<<< HEAD
 import java.util.Map;
 
 import org.springframework.stereotype.Repository;
 
 import spring.mvc.teamProject.vo.AccountVO;
+import spring.mvc.teamProject.vo.TransferVO;
+
+import org.springframework.stereotype.Repository;
 
 @Repository
 public interface InquiryTransferDAO {
@@ -24,20 +26,7 @@ public interface InquiryTransferDAO {
 	public List<AccountVO> StopSleepTable(String id);
 	//거래내역조회
 	public List<AccountVO> TransactionDetails(String id);
-	/*
-	//거래내역조회 -ALL
-	public List<AccountVO> TransactionDetails_Table_ALL(Map<String,Object> map);
-	*/
-=======
 
-import org.springframework.stereotype.Repository;
-
-import spring.mvc.teamProject.vo.TransferVO;
-
-
-@Repository
-public interface InquiryTransferDAO {
-	
 	// 내 계좌 이체내역
 	public int addMyLog(TransferVO transferVO);
 	
@@ -49,6 +38,8 @@ public interface InquiryTransferDAO {
 	
 	// 상대 잔액 추가
 	public int deposit(TransferVO transferVO);
-
->>>>>>> dev_ksl
+	/*
+	//거래내역조회 -ALL
+	public List<AccountVO> TransactionDetails_Table_ALL(Map<String,Object> map);
+	*/
 }

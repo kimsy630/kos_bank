@@ -25,8 +25,8 @@ public class RegisterReleaseController {
 	
 	private static final Logger logger = LoggerFactory.getLogger(RegisterReleaseController.class);
 	//김소림
-	//계좌등록
-	@RequestMapping("/AccountRegistration.cc")
+	//계좌등록 AccountRegistration.do AccountTermination.do
+	@RequestMapping("/AccountRegistration.do")
 	public String AccountRegistration(HttpServletRequest req,Model model) {
 		logger.info("url ==> /AccountRegistration");
 		rService.IdNameChk(req, model);
@@ -42,7 +42,7 @@ public class RegisterReleaseController {
 	}
 	//김소림
 	//계좌해지
-	@RequestMapping("/AccountTermination.cc")
+	@RequestMapping("/AccountTermination.do")
 	public String AccountTermination(HttpServletRequest req,Model model) {
 		logger.info("url ==> /AccountTermination");
 		rService.AccountList(req, model);

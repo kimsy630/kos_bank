@@ -1,17 +1,14 @@
 package spring.mvc.teamProject.persistence;
 
 import java.util.List;
-<<<<<<< HEAD
 import java.util.Map;
-=======
->>>>>>> dev_ksl
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-<<<<<<< HEAD
 import spring.mvc.teamProject.vo.AccountVO;
+import spring.mvc.teamProject.vo.TransferVO;
 
 @Repository
 public class InquiryTransferDAOImpl implements InquiryTransferDAO{
@@ -69,15 +66,6 @@ public class InquiryTransferDAOImpl implements InquiryTransferDAO{
 		return dao.TransactionDetails_Table_ALL(map);
 	}
 */
-=======
-import spring.mvc.teamProject.vo.TransferVO;
-
-@Repository
-public class InquiryTransferDAOImpl implements InquiryTransferDAO{
-
-	@Autowired
-	private SqlSession sqlSession;
-	
 	@Override
 	public int addMyLog(TransferVO transferVO) {
 		return sqlSession.insert("spring.mvc.teamProject.persistence.InquiryTransferDAO.addMyLog", transferVO);
@@ -98,5 +86,4 @@ public class InquiryTransferDAOImpl implements InquiryTransferDAO{
 		return sqlSession.update("spring.mvc.teamProject.persistence.InquiryTransferDAO.deposit", transferVO);
 	}
 
->>>>>>> dev_ksl
 }

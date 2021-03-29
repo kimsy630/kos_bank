@@ -17,7 +17,6 @@ public class TransferVO {
 	private String in_comment;
 	private AccountVO accountvo;
 	
-	
 	public int getTransfer_id() {
 		return transfer_id;
 	}

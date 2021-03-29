@@ -43,8 +43,8 @@
                       <li class="rd-nav-item"><a class="rd-nav-link" href="about.html">등록/해지</a>
                         <!-- RD Navbar Dropdown-->
                         <ul class="rd-menu rd-navbar-dropdown">
-                          <li class="rd-dropdown-item"><a class="rd-dropdown-link" href="AccountRegistration.cc">계좌등록</a></li>
-                          <li class="rd-dropdown-item"><a class="rd-dropdown-link" href="AccountTermination.cc">계좌해지</a></li>
+                          <li class="rd-dropdown-item"><a class="rd-dropdown-link" href="AccountRegistration.do">계좌등록</a></li>
+                          <li class="rd-dropdown-item"><a class="rd-dropdown-link" href="AccountTermination.do">계좌해지</a></li>
                         </ul>
                       </li>
                       <li class="rd-nav-item"><a class="rd-nav-link" href="#">조회/이체</a>

@@ -108,9 +108,6 @@
                   <thead>
                     <tr>
                       <th>출금 계좌번호</th>
-<<<<<<< HEAD
-                      <td>대상 계좌가 없습니다.</td>
-=======
                       	<td>
                       <select name="account">
 						<option value="">선택</option>
@@ -119,7 +116,6 @@
 							</c:forEach>
 						</select>
 						</td>
->>>>>>> dev_ksl
                     </tr>
                   </thead>
                     <tr>
@@ -127,22 +123,6 @@
                       <td><input type="text" id="accountPW" name="accountPW" style="width: 100px"></td>
                     </tr>
                     <tr>
-<<<<<<< HEAD
-                    <th>이체금액</th>
-                      <td><input type="text" id="money" style="width: 150px">
-                      <button input="AddMoney100">100만</button>
-                      <button input="AddMoney50">50만</button>
-                      <button input="AddMoney10">10만</button>
-                      <button input="AddMoney5">5만</button>
-                      <button input="AddMoney1">1만</button>
-                      <button input="AddAllMoney">전액</button><br><br>
-                      <input type="text" id="limitMoney" style="width: 300px">
-                      <button input="limitMoney">이체한도조회</button>
-                      </td>
-                      
-                    </tr>
-             	 </table>
-=======
 	                    <th>이체금액</th>
 	                      <td>
 		                      <input type="text" id="money" name="money" style="width: 150px">
@@ -164,7 +144,6 @@
                    		 </tr>
              		 </table>
              	 </div>
->>>>>>> dev_ksl
               </div>
       		</div>
           </div>
@@ -225,62 +204,8 @@
 		          </div>
 		       </div>
         
-<<<<<<< HEAD
-        <div class="form-group" style="margin-left:700px">
-             <div class="col-lg-offset-2 col-lg-10">
-                <button type="submit" class="btn btn-primary" >이체추가</button>
-             </div>
-        </div>
-         <section class="section section-lg bg-default">
-        <div class="container">
-          <h4>이체정보</h4>
-          <br><hr>
-          <div class="row row-offset-1" style="width:1400px">
-            <div class="col-lg-10 col-xxl-9">
-              <div class="table-custom-responsive">
-                <table class="table-custom table-custom-bordered">
-                  <thead>
-                    <tr>
-                      <td>출금계좌번호 </td>
-                      <td>입금은행</td>
-                      <td>입금계좌번호</td>
-                      <td>받는분</td>
-                      <td>이체금액(원)</td>
-                      <td>수수료(원)</td>
-                      <td>받는분통장표시내용</td>
-                      <td>이체지정일</td>
-                     	<td>취소</td>
-                    </tr>
-                    <tr>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                     	<td><button type="reset">취소</button></td>
-                    </tr>
-                  </thead>
-                      
-             	 </table>
-              </div>
-      		</div>
-          </div>
-        </div>   
-      </section>
-      
-      <div class="form-group" style="margin-left:700px">
-             <div class="col-lg-offset-2 col-lg-10">
-                <button type="submit" class="btn btn-primary" >이체실행</button>
-             </div>
-        </div>
-        
-=======
       		</form> 
        </div>  
->>>>>>> dev_ksl
 	<br><br><br>
 <%@ include file = "../footer.jsp" %>
 </body>

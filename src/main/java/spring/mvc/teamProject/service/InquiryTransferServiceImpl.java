@@ -1,30 +1,22 @@
 package spring.mvc.teamProject.service;
 
-<<<<<<< HEAD
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-=======
 import java.util.ArrayList;
 import java.util.List;
->>>>>>> dev_ksl
-
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 
-<<<<<<< HEAD
 import spring.mvc.teamProject.persistence.InquiryTransferDAOImpl;
-import spring.mvc.teamProject.vo.AccountVO;
-=======
 import spring.mvc.teamProject.persistence.InquiryTransferDAO;
 import spring.mvc.teamProject.persistence.RegisterReleaseDAO;
 import spring.mvc.teamProject.vo.AccountVO;
 import spring.mvc.teamProject.vo.TransferVO;
 
->>>>>>> dev_ksl
 
 @Service
 public class InquiryTransferServiceImpl implements InquiryTransferService{
