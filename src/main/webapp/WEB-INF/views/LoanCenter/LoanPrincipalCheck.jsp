@@ -47,14 +47,16 @@
 											    	<c:set value="" var="account"/>
 													<c:forEach var="list" items="${list}">
 												    	<option value="${list.account}">${list.account}[${list.d_name}(${list.d_repay})]</option>
-												    	<input type="hidden" name="d_amount" value="${list.d_amount}">
-												    	<input type="hidden" name="d_month" value="${list.d_month}">
-												    	<input type="hidden" name="d_ERR" value="${list.d_ERR}">
-												    	<input type="hidden" name="d_balance" value="${list.d_balance}">
-												    	<input type="hidden" name="d_start_date" value="${list.d_start_date}">
-												    	<input type="hidden" name="d_end_date" value="${list.d_end_date}">
 												    </c:forEach>
 											    </select>
+											    <c:forEach var="list" items="${list}">
+											    	<input type="hidden" name="d_amount" value="${list.d_amount}">
+											    	<input type="hidden" name="d_month" value="${list.d_month}">
+											    	<input type="hidden" name="d_ERR" value="${list.d_ERR}">
+											    	<input type="hidden" name="d_balance" value="${list.d_balance}">
+											    	<input type="hidden" name="d_start_date" value="${list.d_start_date}">
+											    	<input type="hidden" name="d_end_date" value="${list.d_end_date}">
+											    </c:forEach>
 											    <script>
 											    	function changeAccount() {
 														<c:forEach var="vo" items="${list}">
