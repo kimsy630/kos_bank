@@ -15,7 +15,7 @@ public interface AutoTransferDAO{
 	public int AutoTransferAdd(AutoTransferVO vo);
 	
 	// 자동이체 정보 조회
-	public List<AutoTransferVO> selectByDate();
+	public List<AutoTransferVO> selectByDate(String day);
 	
 	// 자동이체 계좌 출금
 	public int AutoWithdrawal(AutoTransferVO vo);

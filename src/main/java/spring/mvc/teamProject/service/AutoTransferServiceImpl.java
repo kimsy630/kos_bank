@@ -48,8 +48,8 @@ public class AutoTransferServiceImpl implements AutoTransferService {
 		Date date = new Date();
 		
 		// 자동이체용 당일 날짜 출력 (day값만)
-		String systemDate = format.format(date);
-		System.out.println("testDate : "+systemDate);
+		String day = format.format(date);
+		System.out.println("testDate : "+day);
 		
 		// 자동이체 조건 쿼리
 		int jd_key=0;
@@ -59,7 +59,7 @@ public class AutoTransferServiceImpl implements AutoTransferService {
 		String jd_inPlace = "";
 		String jd_status = "";
 		
-		List<AutoTransferVO> transferInfo = aDAO.selectByDate();
+		List<AutoTransferVO> transferInfo = aDAO.selectByDate(day);
 		
 		System.out.println("자동이체 할 객체 Chk : "+ transferInfo);
 		

@@ -22,16 +22,10 @@ public class AutoTransferDAOImpl implements AutoTransferDAO{
 	
 	// 자동이체 정보 조회
 	@Override
-	public List<AutoTransferVO> selectByDate() {
+	public List<AutoTransferVO> selectByDate(String day) {
 		List<AutoTransferVO> selectByDate = null;
 		// 자동이체 조건 검색 쿼리
-		try {
-			selectByDate = sqlSession.selectList("spring.mvc.teamProject.persistence.AutoTransferDAO.selectByDate");
-			System.out.println("당일날짜 이체할 계좌 리턴====");
-			System.out.println(selectByDate.toString());
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+		selectByDate = sqlSession.selectList("spring.mvc.teamProject.persistence.AutoTransferDAO.selectByDate",day);
 		return selectByDate;
 	}
 	
