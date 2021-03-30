@@ -97,7 +97,7 @@
 		<collection property="accountVO" resultMap="AccountInfo" />
 	</resultMap>
 <!-- 예금 -->
-	<resultMap id="deposit" type="spring.mvc.teamProject.vo.FixedVO">
+	<resultMap id="deposit" type="spring.mvc.teamProject.vo.Fixed_depositVO">
 		<result column="y_Key" property="y_Key" />
 		<result column="y_name" property="y_name" />
 		<result column="account" property="account" />

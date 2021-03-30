@@ -7,8 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import spring.mvc.teamProject.vo.AccountVO;
-import spring.mvc.teamProject.vo.DepositVO;
-import spring.mvc.teamProject.vo.FixedVO;
+import spring.mvc.teamProject.vo.Deposit_productVO;
+import spring.mvc.teamProject.vo.Fixed_depositVO;
 import spring.mvc.teamProject.vo.MembersVO;
 import spring.mvc.teamProject.vo.installment_savingsVO;
 import spring.mvc.teamProject.vo.savings_productVO;
@@ -78,7 +78,7 @@ public class FinancialProductsDAOImpl implements FinancialProductsDAO{
 	}
 
 	@Override
-	public List<DepositVO> getDepositList() {
+	public List<Deposit_productVO> getDepositList() {
 		
 		return sqlSession.getMapper(FinancialProductsDAO.class).getDepositList();
 	}
@@ -90,7 +90,7 @@ public class FinancialProductsDAOImpl implements FinancialProductsDAO{
 	}
 
 	@Override
-	public DepositVO getDepositDetail(String y_name) {
+	public Deposit_productVO getDepositDetail(String y_name) {
 		
 		return sqlSession.getMapper(FinancialProductsDAO.class).getDepositDetail(y_name);
 	}
@@ -119,7 +119,7 @@ public class FinancialProductsDAOImpl implements FinancialProductsDAO{
 	}
 	
 	@Override
-	public int insertDeposit(FixedVO vo) {
+	public int insertDeposit(Fixed_depositVO vo) {
 		
 		return sqlSession.getMapper(FinancialProductsDAO.class).insertDeposit(vo);
 		

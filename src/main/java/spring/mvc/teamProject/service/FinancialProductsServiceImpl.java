@@ -20,8 +20,8 @@ import spring.mvc.teamProject.persistence.FinancialProductsDAO;
 import spring.mvc.teamProject.persistence.FinancialProductsDAOImpl;
 import spring.mvc.teamProject.persistence.MembersDAOImpl;
 import spring.mvc.teamProject.vo.AccountVO;
-import spring.mvc.teamProject.vo.DepositVO;
-import spring.mvc.teamProject.vo.FixedVO;
+import spring.mvc.teamProject.vo.Deposit_productVO;
+import spring.mvc.teamProject.vo.Fixed_depositVO;
 import spring.mvc.teamProject.vo.Loans_productVO;
 import spring.mvc.teamProject.vo.MembersVO;
 import spring.mvc.teamProject.vo.installment_savingsVO;
@@ -79,7 +79,7 @@ public class FinancialProductsServiceImpl implements FinancialProductsService{
 	@Override
 	public void DepositList(HttpServletRequest req, Model model) {
 		
-		List<DepositVO> list = dao.getDepositList();
+		List<Deposit_productVO> list = dao.getDepositList();
 		
 		model.addAttribute("list", list);	
 	}
@@ -99,7 +99,7 @@ public class FinancialProductsServiceImpl implements FinancialProductsService{
 		
 		String y_name = (String)req.getAttribute("y_name");
 		
-		DepositVO vo = dao.getDepositDetail(y_name);
+		Deposit_productVO vo = dao.getDepositDetail(y_name);
 		
 		model.addAttribute("vo", vo);
 		
@@ -116,7 +116,7 @@ public class FinancialProductsServiceImpl implements FinancialProductsService{
 		String j_name; 		// 적금상품이름
 		double j_rate;  	// 이자율
 		int j_money;    	// 적금금액(정액적립식일때만 설정!)
-		int j_type;			// 복리/단리
+		String j_type;			// 복리/단리
 		int accountPW;		// 가입계좌 비밀번호
 		int months;			// 계약월수
 		String accounts;	// 자동이체용 계좌번호(정액적립식일때만 설정!)
@@ -124,13 +124,13 @@ public class FinancialProductsServiceImpl implements FinancialProductsService{
 		String account;		// 개설할 계좌번호
 		int j_auto_date;	// 자동이체날
 		
-		int j_method = Integer.parseInt(req.getParameter("j_method").toString());	// 자유적립식인지 정액적립식인지 판별
+		String j_method = req.getParameter("j_method");	// 자유적립식인지 정액적립식인지 판별
 		
-		if(j_method == 0) {			// 자유적립식일 경우
+		if(j_method == null) {			// 자유적립식일 경우
 			ID = req.getParameter("ID").toString();
 			j_name = req.getParameter("j_name").toString();
 			j_rate = Double.parseDouble(req.getParameter("j_rate").toString());
-			j_type = Integer.parseInt(req.getParameter("j_type").toString());
+			j_type = req.getParameter("j_type").toString();
 			accountPW = Integer.parseInt(req.getParameter("pw").toString());
 			months = Integer.parseInt(req.getParameter("months").toString());
 			
@@ -167,7 +167,7 @@ public class FinancialProductsServiceImpl implements FinancialProductsService{
 			ID = req.getParameter("ID").toString();
 			j_name = req.getParameter("j_name").toString();
 			j_rate = Double.parseDouble(req.getParameter("j_rate").toString());
-			j_type = Integer.parseInt(req.getParameter("j_type").toString());
+			j_type = req.getParameter("j_type").toString();
 			j_money = Integer.parseInt(req.getParameter("j_money").toString());
 			accountPW = Integer.parseInt(req.getParameter("pw").toString());
 			months = Integer.parseInt(req.getParameter("months").toString());
@@ -237,7 +237,7 @@ public class FinancialProductsServiceImpl implements FinancialProductsService{
 	@Override
 	public void DepositAction(HttpServletRequest req, Model model) {
 		
-		FixedVO vo = new FixedVO();
+		Fixed_depositVO vo = new Fixed_depositVO();
 		AccountVO vo2 = new AccountVO();
 		int insertCnt = 3;
 		
@@ -245,7 +245,7 @@ public class FinancialProductsServiceImpl implements FinancialProductsService{
 		String y_name = req.getParameter("y_name").toString(); 							// 예금상품이름
 		double y_rate = Double.parseDouble(req.getParameter("y_rate").toString());  	// 이자율
 		int y_balance = Integer.parseInt(req.getParameter("y_balance").toString()); 	// 최초예치금액
-		int y_type = Integer.parseInt(req.getParameter("y_type").toString());			// 복리/단리
+		String y_type = req.getParameter("y_type").toString();			// 복리/단리
 		int accountPW = Integer.parseInt(req.getParameter("pw").toString());			// 가입계좌 비밀번호
 		int months = Integer.parseInt(req.getParameter("months").toString());			// 계약월수
 		int pwWithdraw = Integer.parseInt(req.getParameter("pwWithdraw").toString());	// 이체용 계좌비밀번호

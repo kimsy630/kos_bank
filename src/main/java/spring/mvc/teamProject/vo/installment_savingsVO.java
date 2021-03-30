@@ -8,12 +8,12 @@ public class installment_savingsVO {
    private String j_name;
    private String account;
    private Timestamp j_join_date;
-   private int j_state;
+   private String j_state;
    private double j_rate;
    private int j_money;
-   private int j_type;
+   private String j_type;
    private int j_balance;
-   private int j_method;
+   private String j_method;
    private Timestamp j_end_date;
    private int j_auto_date;
    private AccountVO accountVO;
@@ -49,10 +49,10 @@ public class installment_savingsVO {
 	public void setJ_join_date(Timestamp j_join_date) {
 		this.j_join_date = j_join_date;
 	}
-	public int getJ_state() {
+	public String getJ_state() {
 		return j_state;
 	}
-	public void setJ_state(int j_state) {
+	public void setJ_state(String j_state) {
 		this.j_state = j_state;
 	}
 	public double getJ_rate() {
@@ -61,10 +61,10 @@ public class installment_savingsVO {
 	public void setJ_rate(double j_rate) {
 		this.j_rate = j_rate;
 	}
-	public int getJ_type() {
+	public String getJ_type() {
 		return j_type;
 	}
-	public void setJ_type(int j_type) {
+	public void setJ_type(String j_type) {
 		this.j_type = j_type;
 	}
 	public int getJ_balance() {
@@ -73,10 +73,10 @@ public class installment_savingsVO {
 	public void setJ_balance(int j_balance) {
 		this.j_balance = j_balance;
 	}
-	public int getJ_method() {
+	public String getJ_method() {
 		return j_method;
 	}
-	public void setJ_method(int j_method) {
+	public void setJ_method(String j_method) {
 		this.j_method = j_method;
 	}
 	public int getJ_money() {

@@ -59,7 +59,7 @@
 		select * from savings_product
 	</select>
 	
-	<select id="getDepositList" resultType="spring.mvc.teamProject.vo.DepositVO">
+	<select id="getDepositList" resultType="spring.mvc.teamProject.vo.Deposit_productVO">
 		select * from deposit_product
 	</select>
 	
@@ -69,7 +69,7 @@
 		where j_name = #{j_name}
 	</select>
 	
-	<select id="getDepositDetail" resultType="spring.mvc.teamProject.vo.DepositVO">
+	<select id="getDepositDetail" resultType="spring.mvc.teamProject.vo.Deposit_productVO">
 		select * 
 		from deposit_product
 		where y_name = #{y_name}
@@ -80,7 +80,7 @@
 		VALUES(#{account},#{id},#{accountPW},'예금','대기')
 	</insert>
 	
-	<insert id="insertDeposit" parameterType="spring.mvc.teamProject.vo.FixedVO">
+	<insert id="insertDeposit" parameterType="spring.mvc.teamProject.vo.Fixed_depositVO">
 		INSERT INTO fixed_deposit(y_Key, y_name, account, y_rate, y_type, y_balance, y_end_date)
 		VALUES(SEQ_DEPOSIT.NEXTVAL, #{y_name}, #{account}, #{y_rate}, #{y_type}, #{y_balance}, #{y_end_date})
 	</insert>

@@ -8,7 +8,7 @@ public class savings_productVO {
    private String j_summary;
    private Timestamp j_date;
    private double j_interest_rate;
-   private int j_type;
+   private String j_type;
    private int j_max_date;
    private int j_min_date;
    private String j_explanation;
@@ -39,10 +39,10 @@ public class savings_productVO {
 	public void setJ_interest_rate(double j_interest_rate) {
 		this.j_interest_rate = j_interest_rate;
 	}
-	public int getJ_type() {
+	public String getJ_type() {
 		return j_type;
 	}
-	public void setJ_type(int j_type) {
+	public void setJ_type(String j_type) {
 		this.j_type = j_type;
 	}
 	public int getJ_max_date() {

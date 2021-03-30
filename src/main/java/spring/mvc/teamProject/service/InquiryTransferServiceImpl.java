@@ -94,7 +94,7 @@ public class InquiryTransferServiceImpl implements InquiryTransferService{
 		System.out.println(list);
 		model.addAttribute("list", list);
 	}
-	//대출 조회 (정하늘) 미완성
+	//대출 조회 (정하늘)
 	@Override
 	public void LoansTable(HttpServletRequest req, Model model) {
 		String strId = (String)req.getSession().getAttribute("id");
@@ -114,7 +114,7 @@ public class InquiryTransferServiceImpl implements InquiryTransferService{
 		
 		model.addAttribute("list", list);
 	}
-	//펀드조회
+	//펀드조회(정하늘)
 	@Override
 	public void fund_Table(HttpServletRequest req, Model model) {
 		String strId = (String)req.getSession().getAttribute("id");
