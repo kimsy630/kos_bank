@@ -67,8 +67,8 @@
 	                     	<tr>
 	                        	<td scope="col">이자자동이체계좌</td>
 	                        	<td scope="col">555-555-555555★확인 필요★</td>
-	                        	<td scope="col">다음이자내는달</td>
-	                        	<td scope="col">${vo.d_next_rate}★실행일자로 바꿀지 고민하기★</td>
+	                        	<td scope="col">이자실행번호</td>
+	                        	<td scope="col">${vo.d_next_rate}</td>
 	                     	</tr>
 	                  	</tbody>
 	               	</table>

@@ -69,10 +69,12 @@ public class LoanCenterController {
 	public String LoanApplication(HttpServletRequest req,Model model) {
 		logger.info("url ==> /LoanApplication");
 		
+		loanservice.LoanApplication(req, model);
+		
 		return "LoanCenter/LoanApplication";
 	}
 	
-
+	// 박서하
 	//대출원금 조회
 	@RequestMapping("/LoanPrincipalCheck.cc")
 	public String LoanPrincipalCheck(HttpServletRequest req,Model model) {

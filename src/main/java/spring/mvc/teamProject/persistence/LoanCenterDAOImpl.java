@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import spring.mvc.teamProject.vo.LoansVO;
+import spring.mvc.teamProject.vo.Loans_productVO;
 
 @Repository
 public class LoanCenterDAOImpl implements LoanCenterDAO {
@@ -44,6 +45,12 @@ public class LoanCenterDAOImpl implements LoanCenterDAO {
 	@Override
 	public LoansVO getLoanPrincipal(String account) { // 대출원금 예상(내부정보)
 		LoansVO vo = sqlSession.selectOne("spring.mvc.teamProject.persistence.LoanCenterDAO.getLoanPrincipal", account);
+		return vo;
+	}
+	
+	@Override
+	public Loans_productVO getLoanApplication(String d_name) {  // 신규대출 신청
+		Loans_productVO vo = sqlSession.selectOne("spring.mvc.teamProject.persistence.LoanCenterDAO.getLoanApplication", d_name);
 		return vo;
 	}
 	// ============================================================================

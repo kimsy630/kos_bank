@@ -38,10 +38,17 @@
 		 AND i.account = #{account}
 		 AND l.d_state=2 <!-- d_state=2 : 해지대출계좌 -->
 	</select>
+	
 	<select id="getLoanPrincipal" resultType="spring.mvc.teamProject.vo.LoansVO"> <!-- 대출원금 예상(내부정보) -->
 		SELECT d_amount, d_month, d_ERR
 		 FROM Loans
 		 WHERE account = #{account}
+	</select>
+	
+	<select id="getLoanApplication" resultType="spring.mvc.teamProject.vo.Loans_productVO"> <!-- 신규대출 신청 -->
+		SELECT d_min_date, d_max_date, d_interest_rate, d_min_price, d_max_price
+		 FROM Loans_product
+		 WHERE d_name = #{d_name}
 	</select>
 	<!-- ============================================================================ -->
 </mapper>

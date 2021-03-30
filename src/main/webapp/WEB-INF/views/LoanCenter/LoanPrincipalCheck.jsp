@@ -1,11 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ include file = "../setting.jsp"%>
-<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.9.0/jquery.js"></script>
 <!DOCTYPE html>
 <html class="wide wow-animation" lang="en">
   <head>
     <title>Home</title>
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.9.0/jquery.js"></script>
   </head>
 	<body>
 	    <div class="preloader">
@@ -42,7 +42,7 @@
 				                  		<tr>
 				                        	<td scope="col">조회계좌</td>
 				                        	<td scope="col">
-											    <select id="selectAccount" name="selectAccount" onchange="changeAccount()">
+											    <select id="selectAccount" name="selectAccount" onchange="checkAccount()">
 											    	<option value="">계좌를 선택하세요.</option>
 											    	<c:set value="" var="account"/>
 													<c:forEach var="list" items="${list}">
@@ -58,7 +58,7 @@
 											    	<input type="hidden" name="d_end_date" value="${list.d_end_date}">
 											    </c:forEach>
 											    <script>
-											    	function changeAccount() {
+											    	function checkAccount() {
 														<c:forEach var="vo" items="${list}">
 															if($('#selectAccount').val() == "${vo.account}") {
 																<c:set value="${vo.account}" var="account"/>
@@ -79,20 +79,16 @@
 					                        	<div class="card-body">
 					                        		<div class="form-check form-check-primary">
 				                                        <input type="radio" class="form-check-input" name="redemption" value="equality" id="equality" checked>
-				                                        <label class="form-check-label" for="equality">
-				                                        	원금균등상환
-				                                        </label>
+				                                        <label class="form-check-label" for="equality">원금균등상환</label>
 				                                        &nbsp;
 				                                        &nbsp;
 				                                        <input type="radio" class="form-check-input" name="redemption" value="early" id="early">
-				                                        <label class="form-check-label" for="early">
-				                                        	중도상환
-				                                        </label>
+				                                        <label class="form-check-label" for="early">중도상환</label>
 		                                    		</div>
 	                                    		</div>
 	                                    		<script type="text/javascript">
 	                                    		$('input[name="redemption"]').change(function() {
-	                                    			if($('input[name=redemption]:checked').val() =="equality"){
+	                                    			if($('input[name=redemption]:checked').val() =="equality") {
 	                                    				$('#money').html("");
 	                                    			}else{
 	                                    				$('#money').html("<input name='d_tran' type='text'>원");
@@ -103,9 +99,7 @@
 				                     	</tr>
 				                     	<tr>
 				                        	<td scope="col">상환원금(원)</td>
-				                        	<td scope="col" id="money">
-				                        		
-											</td>
+				                        	<td scope="col" id="money"></td>
 				                     	</tr>
 				                     	<tr>
 				                        	<td colspan="2" scope="col" class="borL">

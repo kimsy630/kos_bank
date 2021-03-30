@@ -20,6 +20,7 @@ import org.springframework.ui.Model;
 
 import spring.mvc.teamProject.persistence.LoanCenterDAOImpl;
 import spring.mvc.teamProject.vo.LoansVO;
+import spring.mvc.teamProject.vo.Loans_productVO;
 
 @Service
 public class LoanCenterServiceImpl implements LoanCenterService {
@@ -68,7 +69,7 @@ public class LoanCenterServiceImpl implements LoanCenterService {
 	
 	@Override
 	public void LoanPrincipalCheck(HttpServletRequest req, Model model) { // 대출원금 조회
-		String id = (String)req.getSession().getAttribute("id");//(String)req.getSession().getAttribute("id");
+		String id = (String)req.getSession().getAttribute("id");
 		
 		List<LoansVO> list = dao.getLoanAccountList(id);
 		
@@ -148,7 +149,7 @@ public class LoanCenterServiceImpl implements LoanCenterService {
 
 	@Override
 	public void LoanRateCheck(HttpServletRequest req, Model model) { // 대출이자 조회
-		String id = (String)req.getSession().getAttribute("id");//(String)req.getSession().getAttribute("id");
+		String id = (String)req.getSession().getAttribute("id");
 		
 		List<LoansVO> list = dao.getLoanAccountList(id);
 		
@@ -180,4 +181,12 @@ public class LoanCenterServiceImpl implements LoanCenterService {
 		model.addAttribute("vo", vo);
 	}
 	// ============================================================================
+
+	@Override
+	public void LoanApplication(HttpServletRequest req, Model model) { // 신규대출 신청
+		String d_name = req.getParameter("d_name");
+		
+		Loans_productVO vo = dao.getLoanApplication(d_name);
+		model.addAttribute("vo", vo);
+	}
 }

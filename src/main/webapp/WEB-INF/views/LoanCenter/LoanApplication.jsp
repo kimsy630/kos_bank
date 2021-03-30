@@ -6,6 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 </head>
 <body>
 <%@ include file = "../header.jsp" %>
@@ -33,107 +34,98 @@
 						<!-- ======= Table with outer spacing ======= -->
 						<div class="table-responsive">
 		                	<h4><b>가입 신청서</b></h4>
-		                    <table class="table table-lg">
-		                    	<colgroup>
-			                    	<col style="width: 25%;">
-			                     	<col style="width: 75%;">
-			                  	</colgroup>
-		                        <tbody>
-		                            <tr>
-		                                <td class="text-bold-500">대출기간</td>
-		                                <td>
-		                                	<select name="d_month" lengthtype="length">
-											    <option value="12">1</option>
-											    <option value="24">2</option>
-											    <option value="36">3</option>
-											    <option value="48">4</option>
-											    <option value="60">5</option>
-											</select>
-		                                	년
-		                                </td>
-		                            </tr>
-		                            <tr>
-		                                <td class="text-bold-500">대출금리</td>
-		                                <td>5%</td>
-		                            </tr>
-		                            <tr>
-		                                <td class="text-bold-500">대출금액</td>
-		                                <td>
-		                                	<select name="amount" lengthtype="length">
-											    <option value="100000000">1</option>
-											    <option value="200000000">2</option>
-											    <option value="300000000">3</option>
-											</select>
-											억원
-		                                </td>
-		                            </tr>
-		                            <tr>
-		                                <td class="text-bold-500">상환방법</td>
-		                                <td>
-		                                	<select name="repay" lengthtype="length">
-											    <option value="만기일시">만기일시상환방식</option>
-											    <option value="원금균등분할">원금균등분할상환방식</option>
-											</select>
-		                                </td>
-		                            </tr>
-		                            <tr>
-		                            	<td class="text-bold-500">이자납입방법</td>
-		                                <td>
-		                                	<select name="rate" lengthtype="length">
-											    <option value="계좌이체">계좌이체</option>
-											    <option value="자동이체">자동이체</option>
-											</select>
-		                                </td>
-		                            </tr>
-		                            <tr>
-		                            	<td>자동이체 출금 계좌번호(자동이체 체크했을 시 뜨게)</td>
-		                            	<td>
-		                            		<select name="account" lengthtype="length">
-											    <option value="555-555-555555">555-555-555555</option>
-											</select>
-										</td>
-		                            </tr>
-		                            <tr>
-		                            	<td>자동이체출금일자 선택하기(자동이체 체크했을 시 뜨게)</td>
-		                            	<td>
-											<select name="date" lengthtype="length">
-											    <option value="1">1</option>
-											    <option value="2">2</option>
-											    <option value="3">3</option>
-											    <option value="4">4</option>
-											    <option value="5">5</option>
-											    <option value="6">6</option>
-											    <option value="7">7</option>
-											    <option value="8">8</option>
-											    <option value="9">9</option>
-											    <option value="10">10</option>
-											    <option value="11">11</option>
-											    <option value="12">12</option>
-											    <option value="13">13</option>
-											    <option value="14">14</option>
-											    <option value="15">15</option>
-											    <option value="16">16</option>
-											    <option value="17">17</option>
-											    <option value="18">18</option>
-											    <option value="19">19</option>
-											    <option value="20">20</option>
-											    <option value="21">21</option>
-											    <option value="22">22</option>
-											    <option value="23">23</option>
-											    <option value="24">24</option>
-											    <option value="25">25</option>
-											    <option value="26">26</option>
-											    <option value="27">27</option>
-											    <option value="28">28</option>
-											    <option value="29">29</option>
-											    <option value="30">30</option>
-											    <option value="31">31</option>
-											</select>
-											일
-		                            	</td>
-		                            </tr>
-		                        </tbody>
-		                    </table>
+		                	<form action="LoanApplicationAction" name="LoanApplicationForm" onchange="">
+		                		<input type="hidden" name="d_rate" value="${vo.d_interest_rate}">
+			                    <table class="table table-lg">
+			                    	<colgroup>
+				                    	<col style="width: 25%;">
+				                     	<col style="width: 75%;">
+				                  	</colgroup>
+			                        <tbody>
+			                            <tr>
+			                                <td class="text-bold-500">대출기간</td>
+			                                <td>
+			                                	<select name="d_month" lengthtype="length">
+			                                		<c:forEach var="i" begin="${vo.d_min_date}" end="${vo.d_max_date}">
+													   	<option value="${i*12}">${i}</option>
+													</c:forEach>
+												</select>
+			                                	년
+			                                </td>
+			                            </tr>
+			                            <tr>
+			                                <td class="text-bold-500">대출금리</td>
+			                                <td>${vo.d_interest_rate}%</td>
+			                            </tr>
+			                            <tr>
+			                                <td class="text-bold-500">대출금액</td>
+			                                <td>
+			                                	<select name="d_amount" lengthtype="length">
+			                                		<c:forEach var="i"  begin="${vo.d_min_price}" end="${vo.d_max_price}">
+													    <option value="${i*100000000}">${i}</option>
+												    </c:forEach>
+												</select>
+												억원
+			                                </td>
+			                            </tr>
+			                            <tr>
+			                                <td class="text-bold-500">상환방법</td>
+			                                <td>
+			                                	<select name="d_repay" lengthtype="length">
+												    <option value="만기일시">만기일시상환방식</option>
+												    <option value="원금균등분할">원금균등분할상환방식</option>
+												</select>
+			                                </td>
+			                            </tr>
+			                            <tr>
+			                            	<td class="text-bold-500">자동이체신청 여부</td>
+			                                <td>
+	                                    		<select id="autoCheck" name="autoCheck" lengthtype="length" onchange="setDisplay()">
+													<option value="yes" selected>신청</option>
+													<option value="no" >미신청</option>
+												</select>
+												<script type="text/javascript">
+												$("#autoCheck").change(function () {
+													var value = $("#autoCheck option:selected").val();
+													if(value == "yes"){
+													    $("#content").css("display","inline");
+													    $("#content2").css("display","inline");
+													}else{
+														$("#content").css("display","none");
+														$("#content2").css("display","none");
+													}
+												});
+												</script>
+												
+												
+			                                </td>
+			                            </tr>
+			                        	<tr>
+			                            	<td>자동이체 출금 계좌번호</td>
+			                            	<td>
+												<select id="content" name="d_auto_account" lengthtype="length">
+												    <option value="" selected>선택하세요.</option>
+												    <option value="555-555-555555">555-555-555555</option>
+												</select>
+											</td>
+			                            </tr>
+			                            
+			                            <tr>
+			                            	<td>자동이체출금일자</td>
+			                            	<td>
+				                            	<div id="content2">
+					                            	<select name="d_auto_date" lengthtype="length">
+				                                		<c:forEach var="i" begin="1" end="31">
+														    <option value="${i}">${i}</option>
+													    </c:forEach>
+													</select>
+													일
+												</div>
+			                            	</td>
+			                            </tr>
+			                        </tbody>
+			                    </table>
+		                    </form>
 		                </div>
 		                <!-- Table with outer spacing end -->
 						
