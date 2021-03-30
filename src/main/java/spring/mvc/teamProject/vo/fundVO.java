@@ -3,54 +3,32 @@ package spring.mvc.teamProject.vo;
 import java.sql.Timestamp;
 
 public class fundVO {
-	private int f_Key;
-	private String f_ID;
-	private String f_Email;
-	private String f_phone;
+	private int f_num;
+	private String ID;
+	private String account;
 	private String f_title;
 	private String f_content;
-	private String f_plan;
-	private Timestamp f_startdate;
-	private Timestamp f_enddate;
-	
-	private int f_target_Amount;
-	private int f_state;
-	private int f_scale;
-	private String f_list;
-	private String f_account;
+	private String f_start_date;
+	private String f_end_date;
+	private String f_target_money;
+	private String f_category;
 	private int f_approve;
+	private String f_name;
+	private String f_phone;
+	private String f_Email;
+	private String f_filename;
 	private AccountVO accountVO;
-	
-	
-	public AccountVO getAccountVO() {
-		return accountVO;
+	public int getF_num() {
+		return f_num;
 	}
-	public void setAccountVO(AccountVO accountVO) {
-		this.accountVO = accountVO;
+	public void setF_num(int f_num) {
+		this.f_num = f_num;
 	}
-	public int getF_Key() {
-		return f_Key;
+	public String getID() {
+		return ID;
 	}
-	public void setF_Key(int f_Key) {
-		this.f_Key = f_Key;
-	}
-	public String getF_ID() {
-		return f_ID;
-	}
-	public void setF_ID(String f_ID) {
-		this.f_ID = f_ID;
-	}
-	public String getF_Email() {
-		return f_Email;
-	}
-	public void setF_Email(String f_Email) {
-		this.f_Email = f_Email;
-	}
-	public String getF_phone() {
-		return f_phone;
-	}
-	public void setF_phone(String f_phone) {
-		this.f_phone = f_phone;
+	public void setID(String iD) {
+		ID = iD;
 	}
 	public String getF_title() {
 		return f_title;
@@ -64,53 +42,29 @@ public class fundVO {
 	public void setF_content(String f_content) {
 		this.f_content = f_content;
 	}
-	public String getF_plan() {
-		return f_plan;
+	public String getF_start_date() {
+		return f_start_date;
 	}
-	public void setF_plan(String f_plan) {
-		this.f_plan = f_plan;
+	public void setF_start_date(String f_start_date) {
+		this.f_start_date = f_start_date;
 	}
-	public Timestamp getF_startdate() {
-		return f_startdate;
+	public String getF_end_date() {
+		return f_end_date;
 	}
-	public void setF_startdate(Timestamp f_startdate) {
-		this.f_startdate = f_startdate;
+	public void setF_end_date(String f_end_date) {
+		this.f_end_date = f_end_date;
 	}
-	public Timestamp getF_enddate() {
-		return f_enddate;
+	public String getF_target_money() {
+		return f_target_money;
 	}
-	public void setF_enddate(Timestamp f_enddate) {
-		this.f_enddate = f_enddate;
+	public void setF_target_money(String f_target_money) {
+		this.f_target_money = f_target_money;
 	}
-	public int getF_target_Amount() {
-		return f_target_Amount;
+	public String getF_category() {
+		return f_category;
 	}
-	public void setF_target_Amount(int f_target_Amount) {
-		this.f_target_Amount = f_target_Amount;
-	}
-	public int getF_state() {
-		return f_state;
-	}
-	public void setF_state(int f_state) {
-		this.f_state = f_state;
-	}
-	public int getF_scale() {
-		return f_scale;
-	}
-	public void setF_scale(int f_scale) {
-		this.f_scale = f_scale;
-	}
-	public String getF_list() {
-		return f_list;
-	}
-	public void setF_list(String f_list) {
-		this.f_list = f_list;
-	}
-	public String getF_account() {
-		return f_account;
-	}
-	public void setF_account(String f_account) {
-		this.f_account = f_account;
+	public void setF_category(String f_category) {
+		this.f_category = f_category;
 	}
 	public int getF_approve() {
 		return f_approve;
@@ -118,15 +72,42 @@ public class fundVO {
 	public void setF_approve(int f_approve) {
 		this.f_approve = f_approve;
 	}
+	public String getF_name() {
+		return f_name;
+	}
+	public void setF_name(String f_name) {
+		this.f_name = f_name;
+	}
+	public String getF_phone() {
+		return f_phone;
+	}
+	public void setF_phone(String f_phone) {
+		this.f_phone = f_phone;
+	}
+	public String getF_Email() {
+		return f_Email;
+	}
+	public void setF_Email(String f_Email) {
+		this.f_Email = f_Email;
+	}
 	
-	
-	@Override
-	public String toString() {
-		return "fundVO [f_Key=" + f_Key + ", f_ID=" + f_ID + ", f_Email=" + f_Email + ", f_phone=" + f_phone
-				+ ", f_title=" + f_title + ", f_content=" + f_content + ", f_plan=" + f_plan + ", f_startdate="
-				+ f_startdate + ", f_enddate=" + f_enddate + ", f_target_Amount=" + f_target_Amount + ", f_state="
-				+ f_state + ", f_scale=" + f_scale + ", f_list=" + f_list + ", f_account=" + f_account + ", f_approve="
-				+ f_approve + "]";
+	public String getAccount() {
+		return account;
+	}
+	public void setAccount(String account) {
+		this.account = account;
+	}
+	public String getF_filename() {
+		return f_filename;
+	}
+	public void setF_filename(String f_filename) {
+		this.f_filename = f_filename;
+	}
+	public AccountVO getAccountVO() {
+		return accountVO;
+	}
+	public void setAccountVO(AccountVO accountVO) {
+		this.accountVO = accountVO;
 	}
 	
 	

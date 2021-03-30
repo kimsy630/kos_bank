@@ -7,7 +7,10 @@ import org.springframework.stereotype.Repository;
 
 import spring.mvc.teamProject.vo.AccountTransferVO;
 import spring.mvc.teamProject.vo.AccountVO;
+import spring.mvc.teamProject.vo.LoansVO;
 import spring.mvc.teamProject.vo.TransferVO;
+import spring.mvc.teamProject.vo.fundVO;
+import spring.mvc.teamProject.vo.installment_savingsVO;
 
 import org.springframework.stereotype.Repository;
 
@@ -16,11 +19,11 @@ public interface InquiryTransferDAO {
 	//입출금 계좌조회
 	public List<AccountTransferVO> AccountTable(String id);
 	//대출조회
-	public List<AccountVO> LoansTable(String id);
+	public List<LoansVO> LoansTable(String id);
 	//적금조회
-	public List<AccountVO> IS_Table(String id);
+	public List<installment_savingsVO> IS_Table(String id);
 	//펀드조회
-	public List<AccountVO> fund_Table(String id);
+	public List<fundVO> fund_Table(String id);
 	//예금조회
 	public List<AccountVO> DepositTable(String id);
 	//휴면계좌조회

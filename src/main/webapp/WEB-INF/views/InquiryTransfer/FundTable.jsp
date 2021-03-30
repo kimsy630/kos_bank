@@ -75,17 +75,17 @@
                     </tr>
                   </thead>
                   <tbody>
+                    <c:forEach var="dto" items="${list}">
                     <tr>
-                    <c:forEach var="vo" items="${list}">
-                    <c:set var="dto" value="${vo.getFund()}"/>
+                    <c:set var="vo" value="${dto.getAccountVO()}"/>
                       <td>${vo.accountType}</td>
                       <td>${vo.account }</td>
-                      <td><fmt:formatNumber value="${dto.f_target_Amount }" pattern="#,###" />원</td>
-                      <td>${dto.f_enddate }</td>
+                      <td><fmt:formatNumber value="${dto.f_target_money }" pattern="#,###" />원</td>
+                      <td>${dto.f_end_date }</td>
                       <td><fmt:formatNumber value="${vo.balance }" pattern="#,###" />원</td>
                       
-                     </c:forEach>
                     </tr>
+                     </c:forEach>
                  </table>
               </div>
             </div>

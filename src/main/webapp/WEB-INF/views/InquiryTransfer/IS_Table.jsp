@@ -74,13 +74,13 @@
                       <th>잔액(원)</th>
                     </tr>
                   </thead>
-                  <c:forEach var="vo" items="${list }">
-                  <c:set var="dto" value="${vo.getInstallment_savings()}"/>
+                  <c:forEach var="dto" items="${list}">
+                  <c:set var="vo" value="${dto.getAccountVO()}"/>
                     <tr>
                       <td>${dto.j_name }</td>
                       <td>${vo.account }</td>
                       <td>${dto.j_join_date}</td>
-                      <td>${dto.j_date }</td>
+                      <td>${dto.j_end_date }</td>
                       <td><fmt:formatNumber value="${dto.j_balance }" pattern="#,###" />원</td>
                     </tr>
                     </c:forEach>

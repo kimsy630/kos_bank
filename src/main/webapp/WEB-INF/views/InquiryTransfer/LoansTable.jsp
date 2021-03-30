@@ -73,8 +73,8 @@
                       <th>대출잔액(원)</th>
                       <th>업무</th>
                     </tr>
-                    <c:forEach var="vo" items="${list }">
-                    <c:set var="dto" value="${vo.getLoans() }"/>
+                    <c:forEach var="dto" items="${list }">
+                    <c:set var="vo" value="${dto.getAccountVO() }"/>
                     <tr>
                       <td>${dto.d_name }</td>
                       <td>${vo.account }</td>

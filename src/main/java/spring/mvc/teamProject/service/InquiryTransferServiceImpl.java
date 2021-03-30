@@ -16,7 +16,10 @@ import spring.mvc.teamProject.persistence.InquiryTransferDAO;
 import spring.mvc.teamProject.persistence.RegisterReleaseDAO;
 import spring.mvc.teamProject.vo.AccountTransferVO;
 import spring.mvc.teamProject.vo.AccountVO;
+import spring.mvc.teamProject.vo.LoansVO;
 import spring.mvc.teamProject.vo.TransferVO;
+import spring.mvc.teamProject.vo.fundVO;
+import spring.mvc.teamProject.vo.installment_savingsVO;
 
 
 @Service
@@ -96,8 +99,8 @@ public class InquiryTransferServiceImpl implements InquiryTransferService{
 	public void LoansTable(HttpServletRequest req, Model model) {
 		String strId = (String)req.getSession().getAttribute("id");
 		
-		List<AccountVO> list = InquiryTransferDAO.LoansTable(strId);
-		System.out.println(list);
+		List<LoansVO> list = InquiryTransferDAO.LoansTable(strId);
+		System.out.println(list.size());
 		
 		model.addAttribute("list", list);
 	}
@@ -106,7 +109,7 @@ public class InquiryTransferServiceImpl implements InquiryTransferService{
 	public void IS_Table(HttpServletRequest req, Model model) {
 		String strId = (String)req.getSession().getAttribute("id");
 		
-		List<AccountVO> list = InquiryTransferDAO.IS_Table(strId);
+		List<installment_savingsVO> list = InquiryTransferDAO.IS_Table(strId);
 		System.out.println("list => " + list);
 		
 		model.addAttribute("list", list);
@@ -116,7 +119,7 @@ public class InquiryTransferServiceImpl implements InquiryTransferService{
 	public void fund_Table(HttpServletRequest req, Model model) {
 		String strId = (String)req.getSession().getAttribute("id");
 		
-		List<AccountVO> list = InquiryTransferDAO.fund_Table(strId);
+		List<fundVO> list = InquiryTransferDAO.fund_Table(strId);
 		System.out.println("list => " + list);
 		
 		model.addAttribute("list", list);
@@ -148,14 +151,14 @@ public class InquiryTransferServiceImpl implements InquiryTransferService{
 	public void AllTable(HttpServletRequest req, Model model) {
 		String strId = (String)req.getSession().getAttribute("id");
 		
-		//List<AccountVO> list1 = InquiryTransferDAO.AccountTable(strId); //입출금조회
-		List<AccountVO> list2 = InquiryTransferDAO.LoansTable(strId);///대출조회
-		List<AccountVO> list3 = InquiryTransferDAO.IS_Table(strId);	//적금조회
-		List<AccountVO> list4 = InquiryTransferDAO.fund_Table(strId);//펀드조회
+		List<AccountTransferVO> list1 = InquiryTransferDAO.AccountTable(strId); //입출금조회
+		List<LoansVO> list2 = InquiryTransferDAO.LoansTable(strId);///대출조회
+		List<installment_savingsVO> list3 = InquiryTransferDAO.IS_Table(strId);	//적금조회
+		List<fundVO> list4 = InquiryTransferDAO.fund_Table(strId);//펀드조회
 		List<AccountVO> list5 = InquiryTransferDAO.DepositTable(strId);//예금조회
 		List<AccountVO> list6 = InquiryTransferDAO.StopSleepTable(strId);//정지/휴면
 		
-		//model.addAttribute("list1", list1);
+		model.addAttribute("list1", list1);
 		model.addAttribute("list2", list2);
 		model.addAttribute("list3", list3);
 		model.addAttribute("list4", list4);

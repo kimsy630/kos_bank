@@ -41,7 +41,7 @@
 	</resultMap>
 	<!-- 대출 -->
 	<resultMap id="Loans" type="spring.mvc.teamProject.vo.LoansVO">
-		<result column="d_Key" property="d_Key" />
+		<id column="d_Key" property="d_Key" />
 		<result column="d_name" property="d_name" />
 		<result column="d_state" property="d_state" />
 		<result column="d_start_date" property="d_start_date" />
@@ -79,21 +79,21 @@
 	</resultMap>
 	<!-- 펀드 -->
 	<resultMap id="fund" type="spring.mvc.teamProject.vo.fundVO">
-		<result column="f_Key" property="f_Key" />
-		<result column="f_ID" property="f_ID" />
-		<result column="f_Email" property="f_Email" />
-		<result column="f_phone" property="f_phone" />
+		<result column="f_num" property="f_num" />
+		<result column="ID" property="ID" />
 		<result column="f_title" property="f_title" />
 		<result column="f_content" property="f_content" />
-		<result column="f_plan" property="f_plan" />
-		<result column="f_startdate" property="f_startdate" />
-		<result column="f_enddate" property="f_enddate" />
-		<result column="f_target_Amount" property="f_target_Amount" />
-		<result column="f_state" property="f_state" />
-		<result column="f_scale" property="f_scale" />
-		<result column="f_list" property="f_list" />
-		<result column="f_account" property="f_account" />
+		<result column="f_start_date" property="f_start_date" />
+		<result column="f_end_date" property="f_end_date" />
+		<result column="f_target_money" property="f_target_money" />
+		<result column="f_category" property="f_category" />
 		<result column="f_approve" property="f_approve" />
+		<result column="f_name" property="f_name" />
+		<result column="f_phone" property="f_phone" />
+		<result column="f_Email" property="f_Email" />
+		<result column="f_account" property="f_account" />
+		<result column="f_account" property="f_account" />
+		<result column="f_filename" property="f_filename" />
 		<collection property="accountVO" resultMap="AccountInfo" />
 	</resultMap>
 <!-- 예금 -->
@@ -117,22 +117,24 @@
 		        FROM account_info i
 		       LEFT JOIN account_transfer t
 		          ON i.account = t.account
-		       WHERE i.id = #{id} AND i.accountType='입출금')
+		       WHERE i.id = #{id} 
+		         AND i.accountType='입출금')
 		  WHERE RANKING=1
 	</select>
 	
 	
 	<!-- 적금조회 -->
-	<select id="IS_Table" parameterType="String" resultMap="AccountInfo">
-		SELECT i.j_name, a.account, i.j_join_date, i.j_date, i.j_balance
+	<select id="IS_Table" parameterType="String" resultMap="installment_savings">
+		SELECT i.j_name, a.account, i.j_join_date, i.j_end_date, i.j_balance
 		  FROM account_info a
 		   JOIN installment_savings i
 		     ON a.account = i.account
-		WHERE a.id=#{id} AND a.accountType='적금'
+		WHERE a.id=#{id} 
+		  AND a.accountType='적금'
 	</select>
 	
 	<!-- 대출조회 -->
-	<select id="LoansTable" parameterType="String" resultMap="AccountInfo">
+	<select id="LoansTable" parameterType="String" resultMap="Loans">
 		SELECT l.d_name, i.account, i.accountlimit, l.d_end_date, l.d_balance
 		  FROM account_info i
 		   JOIN loans l
@@ -143,11 +145,11 @@
 	</select>
 	
 	<!-- 펀드조회 -->
-	<select id="fund_Table" parameterType="String" resultMap="AccountInfo">
-		SELECT i.accounttype, i.account, f.f_target_amount, f.f_enddate, i.balance
+	<select id="fund_Table" parameterType="String" resultMap="fund">
+		SELECT i.accounttype, i.account, f.f_target_money, f.f_end_date, i.balance
 		  FROM account_info i
 		  JOIN fund f
-		    ON f.f_account = i.account
+		    ON f.account = i.account
 		 WHERE i.id=#{id}
 	 </select>
 	 

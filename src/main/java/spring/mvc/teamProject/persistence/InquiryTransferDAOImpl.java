@@ -9,7 +9,10 @@ import org.springframework.stereotype.Repository;
 
 import spring.mvc.teamProject.vo.AccountTransferVO;
 import spring.mvc.teamProject.vo.AccountVO;
+import spring.mvc.teamProject.vo.LoansVO;
 import spring.mvc.teamProject.vo.TransferVO;
+import spring.mvc.teamProject.vo.fundVO;
+import spring.mvc.teamProject.vo.installment_savingsVO;
 
 @Repository
 public class InquiryTransferDAOImpl implements InquiryTransferDAO{
@@ -26,20 +29,20 @@ public class InquiryTransferDAOImpl implements InquiryTransferDAO{
 	}
 	//대출
 	@Override
-	public List<AccountVO> LoansTable(String id) {
+	public List<LoansVO> LoansTable(String id) {
 		InquiryTransferDAO dao = sqlSession.getMapper(InquiryTransferDAO.class);
 		
 		return dao.LoansTable(id);
 	}
 	//적금
 	@Override
-	public List<AccountVO> IS_Table(String id) {
+	public List<installment_savingsVO> IS_Table(String id) {
 		InquiryTransferDAO dao = sqlSession.getMapper(InquiryTransferDAO.class);
 		return dao.IS_Table(id);
 	}
 	//펀드
 	@Override
-	public List<AccountVO> fund_Table(String id) {
+	public List<fundVO> fund_Table(String id) {
 		InquiryTransferDAO dao = sqlSession.getMapper(InquiryTransferDAO.class);
 		return dao.fund_Table(id);
 	}

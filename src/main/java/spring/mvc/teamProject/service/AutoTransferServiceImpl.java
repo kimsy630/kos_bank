@@ -38,6 +38,7 @@ public class AutoTransferServiceImpl implements AutoTransferService {
 		model.addAttribute("vo", vo);
 		model.addAttribute("insertCnt", insertCnt);
 	}
+	
 	// 김소림
 	// 자동이체 실행
 	@Override
