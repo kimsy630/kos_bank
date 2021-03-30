@@ -123,14 +123,6 @@
 												<option class="" value="26">26</option>
 												<option class="" value="27">27</option>
 												<option class="" value="28">28</option>
-<<<<<<< HEAD
-												<option class="" value="29">29</option>
-												<option class="" value="30">30</option>
-												
-=======
-												<option class="" value="28">29<option>
-												<option class="" value="28">30</option>
->>>>>>> 46f5b653977c4fa1a2309020a2d67610237a7961
 											</select>
 										</div>
 									</div>

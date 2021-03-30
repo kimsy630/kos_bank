@@ -45,6 +45,7 @@ public class InquiryTransferController {
 		
 		return "InquiryTransfer/AccountCheck";
 	}
+	
 	//계좌조회 AccountTable.do 정하늘
 	@RequestMapping("/AccountTable.do")
 	public String AccountTable(HttpServletRequest req,Model model) {
@@ -54,6 +55,7 @@ public class InquiryTransferController {
 
 		return "InquiryTransfer/AccountTable";
 	}
+	
 	//대출 테이블 LoansTable.do 정하늘
 	@RequestMapping("/LoansTable.do")// ajax에 들어갈 페이지
 	public String Loanstable(HttpServletRequest req,Model model) {
@@ -63,6 +65,7 @@ public class InquiryTransferController {
 		
 		return "InquiryTransfer/LoansTable";
 	}
+	
 	//적금 테이블 IS_Table.do 정하늘
 	@RequestMapping("/IS_Table.do")// ajax에 들어갈 페이지   Installment_SavingsTable
 	public String Installment_SavingsTable(HttpServletRequest req,Model model) {
