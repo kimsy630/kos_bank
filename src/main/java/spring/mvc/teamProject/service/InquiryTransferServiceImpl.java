@@ -180,10 +180,7 @@ public class InquiryTransferServiceImpl implements InquiryTransferService{
 		String start_date = req.getParameter("start_date");
 		String end_date = req.getParameter("end_date");
 		String View_Content = req.getParameter("View_Content");
-		start_date = start_date.replace("-", "");
-		start_date = start_date.substring(2);
-		end_date=end_date.replace("-", "");
-		end_date=end_date.substring(2);
+		
 		
 		Map<String,Object> map = new HashMap<String,Object>();
 		map.put("view_AccountNum", view_AccountNum);
@@ -191,14 +188,12 @@ public class InquiryTransferServiceImpl implements InquiryTransferService{
 		map.put("end_date", end_date);
 		map.put("View_Content", View_Content);
 		
-		List<AccountTransferVO> accList = null;
-		
-		System.out.println(map.toString());
+		List<AccountTransferVO> list = null;
 		
 		if(View_Content.equals("All_List") ) {
-			accList = InquiryTransferDAO.TransactionDetails_Table_ALL(map);
-			System.out.println("accList =" + accList);
-			model.addAttribute("accList", accList);
+			list = InquiryTransferDAO.TransactionDetails_Table_ALL(map);
+			System.out.println("list =" + list);
+			model.addAttribute("list", list);
 		}
 		/*
 		else if(View_Content == "Deposit_List") {

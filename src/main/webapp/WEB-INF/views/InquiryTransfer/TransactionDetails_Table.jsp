@@ -93,18 +93,31 @@
                 	<td style="font-weight: 800; text-align: center;">잔액(원)</td>
                 	<td style="font-weight: 800; text-align: center;">받는사람 명</td>
                 </tr>
-                <c:forEach var="dto" items="${list }">
-                <c:set var="vo" value="${dto.getAccountVO()}"/>
+                <c:forEach var="vo" items="${list }">
+                
                 <tr>
-                	<td style="text-align: center;  height: 40px;"></td>
-                	<td style="text-align: center;"></td>
-                	<td style="text-align: center;"></td>
-                	<td style="text-align: center;"></td>
-                	<td style="text-align: center;"></td>
-                	<td style="text-align: center;"></td>
-                	<td style="text-align: center;"></td>
-                	<td style="text-align: center;"></td>
+                	<td style="text-align: center;  height: 40px;"><fmt:formatDate pattern="YYYY-MM-dd" value="${vo.in_outDate }" /></td>
+                	<td style="text-align: center;"><fmt:formatDate pattern="HH:mm:ss" value="${vo.in_outDate }" /></td>
+                	<td style="text-align: center;">${vo.in_comment }</td>
+                	<c:if test="${vo.in_out eq '입금'}">
+                	<td style="text-align: center; color: red; font-weight: 600;"></td>
+                	<td style="text-align: center; color: blue; font-weight: 600;"><fmt:formatNumber value="${vo.money }" pattern="#,###" />원</td>
+				 </c:if>
+				 <c:if test="${vo.in_out eq '출금'}">
+                	<td style="text-align: center; color: red; font-weight: 600;"><fmt:formatNumber value="${vo.money }" pattern="#,###" />원</td>
+                	<td style="text-align: center; color: blue; font-weight: 600;"></td>
+				 </c:if>
+                	<td style="text-align: center;">${vo.in_out }</td>
+                	<td style="text-align: center; font-weight: 600;"><fmt:formatNumber value="${vo.sender_account }" pattern="#,###" />원</td>
+                	<!-- TO_CHAR(balance-summoney) AS sender_account
+					 	==> AccountVO에서 불러올 값이 ammount 1개밖에 없었는데 VO를 못불러와서  
+					 		AccountTransferVO 에서 안쓰는 변수인 sender_account에  넣기위해 별칭을 sender_account로 줘서 해결 하였다..
+					 -->
+                	<td style="text-align: center;">${vo.out_comment }</td>
+                	
                 </tr>
+                 
+                
                 </c:forEach>
                 </table>
 					<br>

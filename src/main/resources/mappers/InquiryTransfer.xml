@@ -29,12 +29,12 @@
 	
 	<insert id="addMyLog" parameterType="spring.mvc.teamProject.vo.TransferVO">
 		INSERT INTO account_transfer(transfer_id,account,sender_account,sender_name,money,in_out,out_comment)
-			VALUES(SEQ_TRANSFER.NEXTVAL,#{account},#{sender_account},#{sender_name},#{money},'출금',#{out_comment})
+		VALUES(SEQ_TRANSFER.NEXTVAL,#{account},#{sender_account},#{sender_name},#{money},'출금',#{out_comment})
 	</insert>
 	
 	<insert id="addYourLog" parameterType="spring.mvc.teamProject.vo.TransferVO">
 		INSERT INTO account_transfer(transfer_id,account,sender_account,in_comment,money,in_out)
-			VALUES(SEQ_TRANSFER.NEXTVAL,#{account},#{sender_account},#{in_comment},#{money},'입금')
+		VALUES(SEQ_TRANSFER.NEXTVAL,#{sender_account},#{account},#{in_comment},#{money},'입금')
 	</insert> 
 	
 	<!-- 내 계좌 잔액 업데이트. 출금 -->

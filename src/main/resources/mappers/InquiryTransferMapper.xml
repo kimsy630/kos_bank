@@ -179,18 +179,20 @@
 		FROM account_info
 		WHERE id=#{id}
 	 </select>
-	 <!-- 거래내역 조회 - ALL -->
-	 <select id="TransactionDetails_Table_ALL" parameterType="java.util.Map" resultMap="AccountTransfer">
+	 <!-- 
+	 	거래내역 조회 - ALL 
+	 	, TO_CHAR(balance-summoney) AS sender_account
+	 	==> AccountVO에서 불러올 값이 ammount 1개밖에 없었는데 VO를 못불러와서  
+	 		AccountTransferVO 에서 안쓰는 변수인 sender_account에  넣기위해 별칭을 sender_account로 줘서 해결 하였다..
+	 -->
+	 <select id="TransactionDetails_Table_ALL" parameterType="java.util.Map" resultType="spring.mvc.teamProject.vo.AccountTransferVO">
 	 	<![CDATA[
-		 	 SELECT day
-			      , time
-			      , money
-			      , balance
-			      , in_comment
-			      , out_comment
-			      , in_out
-			      , in_outdate
-			      , balance-summoney
+		 	 SELECT money
+			     , in_comment
+			     , out_comment
+			     , in_out
+			     , in_outdate
+			     , TO_CHAR(balance-summoney+money) AS sender_account
 			FROM(SELECT day
 			          , time
 			          , money

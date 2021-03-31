@@ -82,8 +82,8 @@
                       <td>${dto.d_end_date }</td>
                       <td><fmt:formatNumber value="${dto.d_balance }" pattern="#,###" />원</td>
                       <td> 
-                      	<div class="button button-round" style= "padding:10px; width:80px; height:40px; font-size:12px; text-align:center; background-color:#fff; display:inline;" onclick="location.href='LoanAccountCheck.cc'">상환내역</div>  
-                      	<div class="button button-round" style="padding:10px; width:80px; height:40px; font-size:12px; text-align:center; background-color: #435ebe; color:#fff; display:inline;">원금상환</div>
+                      	<div class="btn btn-primary" style= "padding:10px; width:80px; height:40px; font-size:12px; text-align:center; background-color:#fff; color:#000; display:inline;" onclick="location.href='LoanAccountCheck.cc'">상환내역</div>  
+                      	<div class="btn btn-primary" style="padding:10px; width:80px; height:40px; font-size:12px; text-align:center; background-color: #435ebe; color:#fff; display:inline;">원금상환</div>
                       
                       </td>
                     </tr>
