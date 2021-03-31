@@ -94,6 +94,7 @@
         <div class="container">
          
               	 <form action="TransactionDetails_Table.do" method="post" name="TD_From" style="text-align: center;">
+              	 <input type="hidden" id="view_AccountNum" value="${param.account}">
               	 	<h6>거래내역조회</h6>
 		          <div style="background-color: #435ebe; color:#fff; width:1170px; height:2px;"> </div>
 		          <br>
@@ -101,14 +102,8 @@
 	                  	<tr>
 	                      <td id="td_head1">조회계좌번호</td>
 	                      <td id="td_body1">
-	                      	<select id="view_AccountNum" name="view_AccountNum">
-	                      		<option value="" selected>--선택 --</option>
-	                      		<c:forEach var="accList" items="${accList }">
-	                      		<option value="${accList}">${accList}</option>
-	                      		</c:forEach>
-	                      	</select>
+	                      	${param.account }
 	                      </td>
-			                  
 	                    </tr>
 	                    <tr>
 	                     <td id="td_head1">조회기간</td>

@@ -9,6 +9,7 @@ import org.springframework.stereotype.Repository;
 
 import spring.mvc.teamProject.vo.AccountTransferVO;
 import spring.mvc.teamProject.vo.AccountVO;
+import spring.mvc.teamProject.vo.Fixed_depositVO;
 import spring.mvc.teamProject.vo.LoansVO;
 import spring.mvc.teamProject.vo.TransferVO;
 import spring.mvc.teamProject.vo.fundVO;
@@ -48,28 +49,28 @@ public class InquiryTransferDAOImpl implements InquiryTransferDAO{
 	}
 	//예금
 	@Override
-	public List<AccountVO> DepositTable(String id) {
+	public List<Fixed_depositVO> DepositTable(String id) {
 		InquiryTransferDAO dao = sqlSession.getMapper(InquiryTransferDAO.class);
 		return dao.DepositTable(id);
 	}
 	//정지휴면
 	@Override
-	public List<AccountVO> StopSleepTable(String id) {
+	public List<AccountTransferVO> StopSleepTable(String id) {
 		InquiryTransferDAO dao = sqlSession.getMapper(InquiryTransferDAO.class);
 		return dao.StopSleepTable(id);
 	}
+	//거래내역 페이지
 	@Override
 	public List<AccountVO> TransactionDetails(String id) {
 		InquiryTransferDAO dao = sqlSession.getMapper(InquiryTransferDAO.class);
 		return dao.TransactionDetails(id);
 	}
-	/*
+	//거래내역조회 -ALL
 	@Override
-	public List<AccountVO> TransactionDetails_Table_ALL(Map<String, Object> map) {
+	public List<AccountTransferVO> TransactionDetails_Table_ALL(Map<String, Object> map) {
 		InquiryTransferDAO dao = sqlSession.getMapper(InquiryTransferDAO.class);
 		return dao.TransactionDetails_Table_ALL(map);
 	}
-*/
 	@Override
 	public int addMyLog(TransferVO transferVO) {
 		return sqlSession.insert("spring.mvc.teamProject.persistence.InquiryTransferDAO.addMyLog", transferVO);

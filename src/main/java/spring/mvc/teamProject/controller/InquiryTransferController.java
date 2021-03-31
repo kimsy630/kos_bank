@@ -126,7 +126,7 @@ public class InquiryTransferController {
 	public String TransactionDetails_Table(HttpServletRequest req,Model model) {
 		logger.info("url ==> /TransactionDetails_Table");
 		
-		//IT_service.TransactionDetails_Table(req, model);
+		IT_service.TransactionDetails_Table(req, model);
 		
 		return "InquiryTransfer/TransactionDetails_Table";
 	}

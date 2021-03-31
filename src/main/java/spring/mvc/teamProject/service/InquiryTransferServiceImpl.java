@@ -16,6 +16,7 @@ import spring.mvc.teamProject.persistence.InquiryTransferDAO;
 import spring.mvc.teamProject.persistence.RegisterReleaseDAO;
 import spring.mvc.teamProject.vo.AccountTransferVO;
 import spring.mvc.teamProject.vo.AccountVO;
+import spring.mvc.teamProject.vo.Fixed_depositVO;
 import spring.mvc.teamProject.vo.LoansVO;
 import spring.mvc.teamProject.vo.TransferVO;
 import spring.mvc.teamProject.vo.fundVO;
@@ -130,7 +131,7 @@ public class InquiryTransferServiceImpl implements InquiryTransferService{
 	public void DepositTable(HttpServletRequest req, Model model) {
 		String strId = (String)req.getSession().getAttribute("id");
 		
-		List<AccountVO> list = InquiryTransferDAO.DepositTable(strId);
+		List<Fixed_depositVO> list = InquiryTransferDAO.DepositTable(strId);
 		System.out.println("list => " + list);
 		
 		model.addAttribute("list", list);
@@ -141,7 +142,7 @@ public class InquiryTransferServiceImpl implements InquiryTransferService{
 	public void StopSleepTable(HttpServletRequest req, Model model) {
 		String strId = (String)req.getSession().getAttribute("id");
 		
-		List<AccountVO> list = InquiryTransferDAO.StopSleepTable(strId);
+		List<AccountTransferVO> list = InquiryTransferDAO.StopSleepTable(strId);
 		System.out.println("list => " + list);
 		
 		model.addAttribute("list", list);
@@ -155,8 +156,8 @@ public class InquiryTransferServiceImpl implements InquiryTransferService{
 		List<LoansVO> list2 = InquiryTransferDAO.LoansTable(strId);///대출조회
 		List<installment_savingsVO> list3 = InquiryTransferDAO.IS_Table(strId);	//적금조회
 		List<fundVO> list4 = InquiryTransferDAO.fund_Table(strId);//펀드조회
-		List<AccountVO> list5 = InquiryTransferDAO.DepositTable(strId);//예금조회
-		List<AccountVO> list6 = InquiryTransferDAO.StopSleepTable(strId);//정지/휴면
+		List<Fixed_depositVO> list5 = InquiryTransferDAO.DepositTable(strId);//예금조회
+		List<AccountTransferVO> list6 = InquiryTransferDAO.StopSleepTable(strId);//정지/휴면
 		
 		model.addAttribute("list1", list1);
 		model.addAttribute("list2", list2);
@@ -189,14 +190,17 @@ public class InquiryTransferServiceImpl implements InquiryTransferService{
 		map.put("start_date", start_date);
 		map.put("end_date", end_date);
 		map.put("View_Content", View_Content);
-		/*
-		List<AccountVO> accList = null;
-		model.addAttribute("accList", accList);
 		
-		if(View_Content == "All_List") {
+		List<AccountTransferVO> accList = null;
+		
+		System.out.println(map.toString());
+		
+		if(View_Content.equals("All_List") ) {
 			accList = InquiryTransferDAO.TransactionDetails_Table_ALL(map);
+			System.out.println("accList =" + accList);
+			model.addAttribute("accList", accList);
 		}
-		
+		/*
 		else if(View_Content == "Deposit_List") {
 			accList = InquiryTransferDAO.TransactionDetails_Deposit(map);
 		}

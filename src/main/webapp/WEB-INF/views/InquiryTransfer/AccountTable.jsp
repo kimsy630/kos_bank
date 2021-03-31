@@ -85,7 +85,7 @@
                       <td>${dto.in_outDate}</td>
                       <td><fmt:formatNumber value="${vo.balance}" pattern="#,###" />원</td>
                       <td> 
-                      	<div class="button button-round" style= "padding:10px 20px; width:60px; height:40px; font-size:15px; text-align:center; background-color:#fff; display:inline;" onclick="location.href='TransactionDetails.do'">조회</div>&nbsp;&nbsp;
+                      	<div class="button button-round" style= "padding:10px 20px; width:60px; height:40px; font-size:15px; text-align:center; background-color:#fff; display:inline;" onclick="location.href='TransactionDetails.do?account=${vo.account}'">조회</div>&nbsp;&nbsp;
                       	<div class="button button-round" style= "padding:10px 20px; width:60px; height:40px; font-size:15px; text-align:center; background-color: #435ebe; color:#fff; display:inline;" onclick="location.href='AccountTransfer.cc'">이체</div>
                       </td>
                      </tr>

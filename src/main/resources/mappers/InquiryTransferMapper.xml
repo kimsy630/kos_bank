@@ -154,7 +154,7 @@
 	 </select>
 	 
 	 <!-- 예금조회 -->
-	 <select id="DepositTable" parameterType="String" resultMap="AccountInfo">
+	 <select id="DepositTable" parameterType="String" resultMap="deposit">
 		SELECT i.accountType, i.account, f.y_join_date, f.y_end_date, f.y_balance
 		  FROM fixed_deposit f
 		  JOIN account_info i 
@@ -163,15 +163,15 @@
 	 </select>
 	 
 	 <!-- 정지/휴면조회 -->
-	 <select id="StopSleepTable" parameterType="String" resultMap="AccountInfo">
+	 <select id="StopSleepTable" parameterType="String" resultMap="AccountTransfer">
 	 	SELECT *
-		FROM (SELECT i.accountType, i.account, i.delete_date, i.sleep_date, t.in_outDate,i.balance, i.accountState ,ROW_NUMBER() OVER(PARTITION BY i.account
+		FROM (SELECT i.accountType, i.account, i.delete_date, i.sleep_date, t.in_outDate,i.balance, i.accountState, i.acc_state_content, ROW_NUMBER() OVER(PARTITION BY i.account
 		                                ORDER BY  i.account,t.in_outDate)as RANKING
 		        FROM account_info i 
 		        LEFT JOIN account_transfer t
 		          ON i.account=t.account
 		        WHERE (i.id = #{id} AND i.accountState='정지') OR (i.id = #{id} AND i.accountState='휴면'))
-		WHERE RANKING=1 
+		WHERE RANKING=1
 	 </select>
 	 <!-- 거래내역 조회 -->
 	  <select id="TransactionDetails" parameterType="String" resultType="String">
@@ -179,21 +179,56 @@
 		FROM account_info
 		WHERE id=#{id}
 	 </select>
-	 
-	 <!-- 정지/휴면조회 
-	 <select id="StopSleepTable" parameterType="java.util.Map" resultMap="AccountInfo">
+	 <!-- 거래내역 조회 - ALL -->
+	 <select id="TransactionDetails_Table_ALL" parameterType="java.util.Map" resultMap="AccountTransfer">
 	 	<![CDATA[
-		 	SELECT *
-			  FROM account_info i
-			  JOIN account_transfer t
-			    ON i.account = i.account
-			 WHERE i.id='1234'
-			   and i.account = #{view_AccountNum}
-			   and t.in_out = #{View_Content}
-			   AND t.in_outdate >TO_DATE(#{start_date}, 'YY-MM-DD')
-			   AND t.in_outdate<TO_DATE(#{end_date}, 'YY-MM-DD')
+		 	 SELECT day
+			      , time
+			      , money
+			      , balance
+			      , in_comment
+			      , out_comment
+			      , in_out
+			      , in_outdate
+			      , balance-summoney
+			FROM(SELECT day
+			          , time
+			          , money
+			          , balance
+			          , in_comment
+			          , out_comment
+			          , in_out
+			          , in_outdate 
+			          , SUM(money) OVER(ORDER BY in_outdate DESC) as summoney
+			     FROM  (select TO_CHAR(t.in_outdate,'YY-MM-DD') as day
+			                 , TO_CHAR(t.in_outdate,'HH24:MI:SS') as time
+			                 , t.money,i.balance,t.in_comment
+			                 , t.out_comment
+			                 , t.in_out
+			                 , t.in_outdate
+			            FROM account_info i
+			              LEFT JOIN account_transfer t
+			               ON i.account=t.account
+			            WHERE i.account=#{view_AccountNum}
+			            AND t.in_out='입금'
+			            UNION
+			            select TO_CHAR(t.in_outdate,'YY-MM-DD')as day
+			                 , TO_CHAR(t.in_outdate,'HH24:MI:SS')as time
+			                 , -t.money,i.balance
+			                 , t.in_comment
+			                 , t.out_comment
+			                 , t.in_out 
+			                 , t.in_outdate
+			            FROM account_info i
+			              LEFT JOIN account_transfer t
+			               ON i.account=t.account
+			            WHERE i.account=#{view_AccountNum}
+			            AND t.in_out='출금'
+			            ))
+			WHERE in_outdate > TO_DATE(#{start_date}, 'YY-MM-DD')
+			AND   in_outdate < TO_DATE(#{end_date}, 'YY-MM-DD')
+			ORDER BY day DESC
+			       , time DESC
 		]]>
 	 </select>
-	 
-     -->
 </mapper>

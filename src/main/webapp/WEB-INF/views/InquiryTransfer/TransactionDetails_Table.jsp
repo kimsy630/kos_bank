@@ -93,6 +93,8 @@
                 	<td style="font-weight: 800; text-align: center;">잔액(원)</td>
                 	<td style="font-weight: 800; text-align: center;">받는사람 명</td>
                 </tr>
+                <c:forEach var="dto" items="${list }">
+                <c:set var="vo" value="${dto.getAccountVO()}"/>
                 <tr>
                 	<td style="text-align: center;  height: 40px;"></td>
                 	<td style="text-align: center;"></td>
@@ -103,6 +105,7 @@
                 	<td style="text-align: center;"></td>
                 	<td style="text-align: center;"></td>
                 </tr>
+                </c:forEach>
                 </table>
 					<br>
 					<div style="width: 1170px; text-align: center;">
