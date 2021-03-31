@@ -99,5 +99,11 @@
 		INSERT INTO installment_savings(j_Key, j_name, account, j_rate, j_money, j_type, j_method, j_end_date, j_auto_date)
 		VALUES(SEQ_SAVINGS.NEXTVAL, #{j_name}, #{account}, #{j_rate}, #{j_money}, #{j_type}, #{j_method}, #{j_end_date}, #{j_auto_date})
 	</insert>
+	
+	<select id="getName" resultType="String">
+		SELECT name 
+		  FROM Members 
+		 WHERE ID = #{ID}
+	</select>
 		
 </mapper>

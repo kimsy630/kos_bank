@@ -16,14 +16,18 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 
+import spring.mvc.teamProject.persistence.AutoTransferDAO;
 import spring.mvc.teamProject.persistence.FinancialProductsDAO;
 import spring.mvc.teamProject.persistence.FinancialProductsDAOImpl;
+import spring.mvc.teamProject.persistence.InquiryTransferDAO;
 import spring.mvc.teamProject.persistence.MembersDAOImpl;
 import spring.mvc.teamProject.vo.AccountVO;
+import spring.mvc.teamProject.vo.AutoTransferVO;
 import spring.mvc.teamProject.vo.Deposit_productVO;
 import spring.mvc.teamProject.vo.Fixed_depositVO;
 import spring.mvc.teamProject.vo.Loans_productVO;
 import spring.mvc.teamProject.vo.MembersVO;
+import spring.mvc.teamProject.vo.TransferVO;
 import spring.mvc.teamProject.vo.installment_savingsVO;
 import spring.mvc.teamProject.vo.savings_productVO;
 
@@ -34,6 +38,15 @@ public class FinancialProductsServiceImpl implements FinancialProductsService{
 	
 	@Autowired
 	FinancialProductsDAO dao;
+	
+	@Autowired
+	InquiryTransferDAO IDAO;
+	
+	@Autowired
+	InquiryTransferService Iservice;
+	
+	@Autowired
+	AutoTransferDAO ADAO;
 	
 	// ============================================================================
 	// 박서하
@@ -104,7 +117,7 @@ public class FinancialProductsServiceImpl implements FinancialProductsService{
 		model.addAttribute("vo", vo);
 		
 	}
-
+	
 	@Override
 	public void SavingsAction(HttpServletRequest req, Model model) {
 		
@@ -116,7 +129,7 @@ public class FinancialProductsServiceImpl implements FinancialProductsService{
 		String j_name; 		// 적금상품이름
 		double j_rate;  	// 이자율
 		int j_money;    	// 적금금액(정액적립식일때만 설정!)
-		String j_type;			// 복리/단리
+		String j_type;		// 복리/단리
 		int accountPW;		// 가입계좌 비밀번호
 		int months;			// 계약월수
 		String accounts;	// 자동이체용 계좌번호(정액적립식일때만 설정!)
@@ -126,7 +139,7 @@ public class FinancialProductsServiceImpl implements FinancialProductsService{
 		
 		String j_method = req.getParameter("j_method");	// 자유적립식인지 정액적립식인지 판별
 		
-		if(j_method == null) {			// 자유적립식일 경우
+		if(j_method == "0") {			// 자유적립식일 경우
 			ID = req.getParameter("ID").toString();
 			j_name = req.getParameter("j_name").toString();
 			j_rate = Double.parseDouble(req.getParameter("j_rate").toString());
@@ -197,13 +210,52 @@ public class FinancialProductsServiceImpl implements FinancialProductsService{
 				return;
 			}
 			
-			account = dao.getSavingsAccount();						// 3.적금계좌개설
+			account = dao.getSavingsAccount();						// 3.DUAL로 계좌번호를 미리 얻어옴	
 			vo2.setAccount(account);
 			vo2.setId(ID);						
 			vo2.setAccountPW(accountPW);
-			insertCnt = dao.insertSavingsAccount(vo2);
+			insertCnt = dao.insertSavingsAccount(vo2);				// 4.적금용 계좌개설
 			
-			if(insertCnt == 1) {	// 적금계좌개설 성공시
+			if(insertCnt == 0) {
+				insertCnt = 3;
+				model.addAttribute("insertCnt", insertCnt);
+				model.addAttribute("j_name", j_name);
+				return;
+			}
+			
+			String name = dao.getName(ID);							// 5.계좌이체용 이름을 얻어온다.
+			
+			TransferVO vo3 = new TransferVO();
+			vo3.setAccount(account);
+			vo3.setSender_account(accounts);
+			vo3.setMoney(j_money);
+			vo3.setSender_name(name);
+			vo3.setOut_comment("적금이체");
+			vo3.setIn_comment("적금이체");
+			
+			IDAO.addMyLog(vo3);										// 6.내 자유입출금 계좌 이체내역
+																		
+			IDAO.addYourLog(vo3);									// 7.적금 계좌 이체내역
+																	
+			insertCnt = IDAO.withdrawal(vo3);						// 8.잔액 감소
+			
+			if(insertCnt == 0) {
+				insertCnt = 4;
+				model.addAttribute("insertCnt", insertCnt);
+				model.addAttribute("j_name", j_name);
+				return;
+			}
+					
+			insertCnt = IDAO.deposit(vo3);							// 9.상대 잔액 추가
+			
+			if(insertCnt == 0) {
+				insertCnt = 4;
+				model.addAttribute("insertCnt", insertCnt);
+				model.addAttribute("j_name", j_name);
+				return;
+			}
+			
+			if(insertCnt == 1) {		// 적금계좌개설후 이체성공시
 				
 				Date date = new Date();
 				long time = date.getTime();
@@ -222,11 +274,34 @@ public class FinancialProductsServiceImpl implements FinancialProductsService{
 				vo.setJ_end_date(ts);
 				vo.setJ_auto_date(j_auto_date);
 				
-				insertCnt = dao.insertFixedSavings(vo);
-				model.addAttribute("insertCnt", insertCnt);
-				return;
+				insertCnt = dao.insertFixedSavings(vo);				// 10.적금테이블에 가입정보삽입
+				
+				if(insertCnt == 0) {	// 적금테이블에 정보삽입 실패시
+					insertCnt = 5;
+					model.addAttribute("insertCnt", insertCnt);
+					model.addAttribute("j_name", j_name);
+					return;
+				}
+				
+				AutoTransferVO vo4 = new AutoTransferVO();
+				vo4.setAccount(accounts);
+				vo4.setJd_account(account);
+				vo4.setJd_type("적금");
+				vo4.setJd_outDate(date);
+				vo4.setJd_autoMoney(j_money);
+				vo4.setJd_outCycle("1개월");
+				vo4.set
+				
+				 
+				insertCnt = ADAO.AutoTransferAdd(vo)
+				
+				
 			}
-			// 계좌개설실패시
+			
+			
+			
+			// 계좌개설후 이체실패시
+			insertCnt = 5;
 			model.addAttribute("insertCnt", insertCnt);
 			model.addAttribute("j_name", j_name);
 			return;
@@ -245,7 +320,7 @@ public class FinancialProductsServiceImpl implements FinancialProductsService{
 		String y_name = req.getParameter("y_name").toString(); 							// 예금상품이름
 		double y_rate = Double.parseDouble(req.getParameter("y_rate").toString());  	// 이자율
 		int y_balance = Integer.parseInt(req.getParameter("y_balance").toString()); 	// 최초예치금액
-		String y_type = req.getParameter("y_type").toString();			// 복리/단리
+		String y_type = req.getParameter("y_type").toString();							// 복리/단리
 		int accountPW = Integer.parseInt(req.getParameter("pw").toString());			// 가입계좌 비밀번호
 		int months = Integer.parseInt(req.getParameter("months").toString());			// 계약월수
 		int pwWithdraw = Integer.parseInt(req.getParameter("pwWithdraw").toString());	// 이체용 계좌비밀번호
@@ -275,29 +350,68 @@ public class FinancialProductsServiceImpl implements FinancialProductsService{
 		vo2.setAccountPW(accountPW);
 		insertCnt = dao.insertDepositAccount(vo2);  			// 3. 예금계좌개설
 		
-		if(insertCnt == 1) {	// 예금계좌개설시
-			Date date = new Date();
-			long time = date.getTime();
-			Timestamp ts = new Timestamp(time);
-			Calendar cal = Calendar.getInstance();
-			cal.setTime(ts);
-			cal.add(Calendar.MONTH, months);
-			ts.setTime(cal.getTime().getTime());
-			
-			vo.setY_name(y_name);
-			vo.setAccount(account);
-			vo.setY_rate(y_rate);
-			vo.setY_type(y_type);
-			vo.setY_balance(y_balance);
-			vo.setY_end_date(ts);
-			
-			insertCnt = dao.insertDeposit(vo);					// 4. 예금테이블에 삽입
+		if(insertCnt == 0) {	// 예금계좌개설 실패시
+			insertCnt = 3;
 			model.addAttribute("insertCnt", insertCnt);
+			model.addAttribute("y_name", y_name);
 			return;
 		}
-		model.addAttribute("insertCnt", insertCnt); // 예금계좌개설실패시
-		model.addAttribute("y_name", y_name);
+		
+		String name = dao.getName(ID);							// 5.계좌이체용 이름을 얻어온다.
+		
+		TransferVO vo3 = new TransferVO();
+		vo3.setAccount(account);
+		vo3.setSender_account(accounts);
+		vo3.setMoney(y_balance);
+		vo3.setSender_name(name);
+		vo3.setOut_comment("정기예금이체");
+		vo3.setIn_comment("정기예금이체");
+		
+		IDAO.addMyLog(vo3);										// 6.내 자유입출금 계좌 이체내역
+																	
+		IDAO.addYourLog(vo3);									// 7.예금 계좌 이체내역
+																
+		insertCnt = IDAO.withdrawal(vo3);						// 8.잔액 감소
+		
+		if(insertCnt == 0) {	// 이체실패시
+			insertCnt = 4;
+			model.addAttribute("insertCnt", insertCnt);
+			model.addAttribute("y_name", y_name);
+			return;
+		}
+		
+		insertCnt = IDAO.deposit(vo3);							// 9.상대 잔액 추가
+		
+		if(insertCnt == 0) {	// 이체실패시
+			insertCnt = 4;			
+			model.addAttribute("insertCnt", insertCnt);
+			model.addAttribute("y_name", y_name);
+			return;
+		}
+		
+		Date date = new Date();
+		long time = date.getTime();
+		Timestamp ts = new Timestamp(time);
+		Calendar cal = Calendar.getInstance();
+		cal.setTime(ts);
+		cal.add(Calendar.MONTH, months);
+		ts.setTime(cal.getTime().getTime());
+		
+		vo.setY_name(y_name);
+		vo.setAccount(account);
+		vo.setY_rate(y_rate);
+		vo.setY_type(y_type);
+		vo.setY_balance(y_balance);
+		vo.setY_end_date(ts);
+		
+		insertCnt = dao.insertDeposit(vo);					// 10. 예금테이블에 삽입
+		if(insertCnt == 0) {	// 예금테이블에 삽입 실패시
+			insertCnt = 5;			
+			model.addAttribute("insertCnt", insertCnt);
+			model.addAttribute("y_name", y_name);
+			return;
+		}
+		model.addAttribute("insertCnt", insertCnt);
 		return;
 	}
-
 }

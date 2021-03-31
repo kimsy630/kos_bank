@@ -95,8 +95,6 @@ public class FinancialProductsDAOImpl implements FinancialProductsDAO{
 		return sqlSession.getMapper(FinancialProductsDAO.class).getDepositDetail(y_name);
 	}
 	
-	
-	
 	@Override
 	public int insertFreeSavings(installment_savingsVO vo) {
 		
@@ -129,6 +127,13 @@ public class FinancialProductsDAOImpl implements FinancialProductsDAO{
 	public int insertSavingsAccount(AccountVO vo) {
 		
 		return sqlSession.getMapper(FinancialProductsDAO.class).insertSavingsAccount(vo);
+		
+	}
+
+	@Override
+	public String getName(String name) {
+		
+		return sqlSession.getMapper(FinancialProductsDAO.class).getName(name);
 		
 	}
 

@@ -47,5 +47,7 @@ public interface FinancialProductsDAO{
 	public int insertDepositAccount(AccountVO vo);
 	// 적금 계좌 만들기
 	public int insertSavingsAccount(AccountVO vo);
+	// 해당 아이디 이름 가져오기(이체할때 보내고 받는 본인의 이름)
+	public String getName(String name);
 	
 }
