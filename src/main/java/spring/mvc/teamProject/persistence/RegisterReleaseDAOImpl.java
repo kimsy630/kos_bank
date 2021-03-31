@@ -50,8 +50,8 @@ public class RegisterReleaseDAOImpl implements RegisterReleaseDAO{
 	}
 	
 	@Override
-	public int AccountPwdCheck(String id) {
-		return sqlSession.selectOne("spring.mvc.teamProject.persistence.RegisterReleaseDAO.AccountPwdCheck", id);
+	public int AccountPwdCheck(String account) {
+		return sqlSession.selectOne("spring.mvc.teamProject.persistence.RegisterReleaseDAO.AccountPwdCheck", account);
 	}
 
 	@Override

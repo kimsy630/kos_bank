@@ -1,6 +1,7 @@
 package spring.mvc.teamProject.persistence;
 
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,13 +15,19 @@ public class AutoTransferDAOImpl implements AutoTransferDAO{
 	@Autowired
 	SqlSession sqlSession;
 	
+	@Override
+	// 자동이체 내역 조회
+	public List<AutoTransferVO> AutoTransferList(String account){
+		return sqlSession.selectList("spring.mvc.teamProject.persistence.AutoTransferDAO.AutoTransferList", account);
+	}
+	
 	// 자동이체 신청
 	@Override
 	public int AutoTransferAdd(AutoTransferVO vo) {
 		return sqlSession.insert("spring.mvc.teamProject.persistence.AutoTransferDAO.AutoTransferAdd", vo);
 	}
 	
-	// 자동이체 정보 조회
+	// 자동이체 정보 조회(이체실행용)
 	@Override
 	public List<AutoTransferVO> selectByDate(String day) {
 		List<AutoTransferVO> selectByDate = null;
@@ -28,7 +35,23 @@ public class AutoTransferDAOImpl implements AutoTransferDAO{
 		selectByDate = sqlSession.selectList("spring.mvc.teamProject.persistence.AutoTransferDAO.selectByDate",day);
 		return selectByDate;
 	}
+	// 자동이체 해지 리스트
+	@Override
+	public List<AutoTransferVO> AutoTransferDeleteList(int jd_key) {
+		return sqlSession.selectList("spring.mvc.teamProject.persistence.AutoTransferDAO.AutoTransferDeleteList", jd_key);
+	}
 	
+	// 자동이체 계좌비밀번호 Chk
+	@Override
+	public int AutoTransferDeleteChk(Map<String,Object> map) {
+		return sqlSession.selectOne("spring.mvc.teamProject.persistence.AutoTransferDAO.AutoTransferDeleteChk",map);
+	}
+	
+	// 자동이체 해지액션
+	@Override	
+	public int AutoTransferDelete(String account) {
+		return sqlSession.update("spring.mvc.teamProject.persistence.AutoTransferDAO.AutoTransferDelete",account);
+	}
 	// 자동이체 계좌 출금
 	@Override
 	public int AutoWithdrawal(AutoTransferVO vo) {

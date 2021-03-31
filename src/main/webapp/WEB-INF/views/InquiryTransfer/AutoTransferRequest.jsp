@@ -63,7 +63,6 @@
                       	<td colspan="4">
                       		<input type="radio" name="Auto_check" value="AutoTransferAdd" checked> 약정
                       		<input type="radio" name="Auto_check" value="AutoTransferModify"> 정정
-                      		<input type="radio" name="Auto_check" value="AutoTransferDelete"> 해지
                      	 </td>
                     </tr>
                   </thead>

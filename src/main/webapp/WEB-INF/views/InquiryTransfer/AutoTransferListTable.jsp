@@ -22,6 +22,13 @@
     <script src="js/html5shiv.min.js"></script>
     <![endif]-->
   </head>
+  <style>
+  
+  #td{
+		text-align: center;
+	}
+	
+  </style>
   <body>
            <br>
           <div class="row row-offset-1">
@@ -30,28 +37,36 @@
                 <table class="table-custom table-custom-secondary table-custom-hovered">
                   <thead>
                     <tr>
-                      <th>출금계좌번호 </th>
-                      <th>입금은행</th>
-                      <th>입금계좌번호</th>
-                      <th>보내는분<br>통장표시내용</th>
-                      <th>받는분</th>
-                      <th>이체금액(원)</th>
-                      <th>수수료(원)</th>
-                      <th>받는분<br>통장표시내용</th>
-                     <th>취소</th>
+                     <th>자동이체번호</th>
+                      <th>금융기관</th>
+                      <th>출금계좌번호</th>
+                      <th>청구기관명</th>
+                      <th>이체지정일</th>
+                      <th>자동이체 시작일</th>
+                      <th>자동이체 만료일</th>
+                      <th></th>
                     </tr>
                   </thead>
                   <tbody>
                     <tr>
-	                      <td id="account">${vo.account }</td>
+                    
+                     <c:forEach var="list" items="${list}">
+	                      <td id="jd_key">${list.jd_key}</td>
 	                      <td>코스뱅크</td>
-	                      <td id="sender_account">${vo.sender_account }</td>
-	                      <td id="out_comment">${vo.out_comment }</td>
-	                      <td id="sender_name">${vo.sender_name}</td>
-	                      <td id="money">${vo.money }</td>
-	                      <td>0원</td>
-	                      <td id="in_comment">${vo.in_comment }</td>
-	                      <td><button type="reset">취소</button></td>
+	                      <td id="account">${list.account}</td>
+	                      <td id="jd_inPlace">${list.jd_inPlace}</td>
+	                      <td id="jd_outDate">매월 ${list.jd_outDate}일</td>
+	                      <td id="jd_registDate">${list.jd_registDate}</td>
+	                      <td id="jd_expirationDate">${list.jd_expirationDate}</td>
+	                      <td>
+	                      	<form action="AutoTransferDelete.cc" method="post"> 	
+	                      		<input type="hidden" value="${list.account}" name="account">
+	                      		<input type="hidden" value="${list.jd_key}" name="jd_key">
+								<input type = "hidden" name = "${_csrf.parameterName}" value = "${_csrf.token}">
+		                     	<button type="submit" class="button button-round" style= "padding:10px 20px; width:80px; height:40px; font-size:15px; text-align:center; background-color: #435ebe; color:#fff; ">해지</button>
+	                      	</form>
+	                      </td>	
+	                  </c:forEach>    
                     </tr>
                   </tbody>
                 </table>

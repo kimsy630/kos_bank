@@ -45,13 +45,13 @@ public class RegisterReleaseController {
 	@RequestMapping("/AccountTermination.do")
 	public String AccountTermination(HttpServletRequest req,Model model) {
 		logger.info("url ==> /AccountTermination");
-		rService.AccountList(req, model);
+		rService.AccountNomalList(req, model);
 		
 		return "registerRelease/AccountTermination";
 	}
 	//김소림
 	//계좌해지액션
-	@RequestMapping("/AccountTerminationAction.cc")
+	@RequestMapping("/AccountTerminationAction.do")
 	public String AccountTerminationAction(HttpServletRequest req,Model model) {
 		logger.info("url ==> /AccountTerminationAction");
 		rService.DeleteAccountService(req, model);
