@@ -1,0 +1,56 @@
+extends  ../_skeleton
+
+//- Includes
+include ../components/_ui-inline-subscribe-form
+
+block variables
+	- var activeCategory = 'pages'
+	- var pageName = 'Single Product'
+
+block page 
+	// Page Header
+	include ../sections/_header-transparent
+
+	+breadcrumbs({
+		category: activeCategory,
+		path: [pageName]
+	})
+
+	// Overview
+	section.section.section-lg
+		.container
+			ul.list-xxl-2
+				li.row.row-30.flex-row-reverse.justify-content-around.justify-content-xl-between
+					.col-md-6.col-lg-5.col-xl-6
+						+png("single-project-1-553x442")
+					.col-md-6.col-lg-5.col-xl-5
+						.text-block-4
+							h2 Overview
+							h6 Lorem ipsum dolor sit amet, scripta legimus quaerendum ex vis, audire nonumes his an. Decore tamquam insolens usu, an duo.
+							p Lorem ipsum dolor sit amet, scripta legimus quaerendum ex vis, audire nonumes his an. Decore tamquam insolens usu, an duo omnium debitis adipiscing, ne postulant. Lorem ipsum dolor sit amet, scripta legimus quaerendum ex vis, audire nonumes his an. Decore tamquam insolens usu, an duo omnium debitis adipiscing, ne postulant.
+
+				li.row.row-30.justify-content-around.justify-content-xl-between
+					.col-md-6.col-lg-5.col-xl-7
+						+jpg("single-project-2-640x440", "img-bordered")
+					.col-md-6.col-lg-5.col-xl-4
+						p Lorem ipsum dolor sit amet, scripta legimus quaerendum ex vis, audire nonumes his an. Decore tamquam insolens usu, an duo omnium debitis adipiscing, ne postulant. Lorem ipsum dolor sit amet, scripta legimus quaerendum ex vis, audire nonumes his an. Decore tamquam insolens usu, an duo omnium debitis adipiscing, ne postulant.
+
+				li.row.row-30.flex-row-reverse.justify-content-around.justify-content-xl-between
+					.col-md-6.col-lg-5.col-xl-7
+						+png("single-project-3-619x162")
+					.col-md-6.col-lg-5.col-xl-4
+						p Lorem ipsum dolor sit amet, scripta legimus quaerendum ex vis, audire nonumes his an. Decore tamquam insolens usu, an duo omnium debitis adipiscing, ne postulant. Lorem ipsum dolor sit amet, scripta legimus quaerendum ex vis, audire nonumes his an. Decore tamquam insolens usu, an duo omnium debitis adipiscing, ne postulant.
+
+				li.row.row-30.justify-content-center
+					.col-md-10.col-xl-8.text-center
+						+blockquote({
+							quote: "Lorem ipsum dolor sit amet, scripta legimus qua erendum ex vis, audire no umes his an. Decore tam quam insole ns usu, an omnium debitis. ipsum dolo. Lorem ipsum dolor sit amet, scripta legimus qua Lorem ipsum dolor sit amet, scripta.",
+							authorName: "Samuel Chapman",
+							authorPosition: "CEO & Founder of Dot Bank"
+						})
+
+	section
+		+jpg("single-project-4-1920x872", "img-responsive")
+
+	// Page Footer
+	include ../sections/_footer-1

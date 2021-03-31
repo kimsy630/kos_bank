@@ -1,0 +1,63 @@
+extends  ../_skeleton
+
+//- Includes
+include ../components/_ui-inline-subscribe-form
+
+block variables
+	- var activeCategory = 'about'
+	- var pageName = 'Single Job'
+
+block page 
+	// Page Header
+	include ../sections/_header-transparent
+
+	+breadcrumbs({
+		category: activeCategory,
+		path: [pageName]
+	})
+
+	// Pricing
+	section.section.section-lg
+		.container
+			.row.row-30.justify-content-between
+				.col-md-6.col-xl-7
+					ul.list-xxl
+						li
+							h5 Overview
+							p Lorem ipsum dolor sit amet, qui tollit laoreet ocurreret id, ne vis melius offendit appetere, ius timeam percipit argumentum id. His mutat nostrum ad, ei qui nostro aeterno recteque, aperiam quaerendum id has. Quod tantas volumus eu eum, mei appetere honestatis an.
+						li
+							h5 Main Responsibilities
+							ul.list-marked
+								li Lorem ipsum dolor sit amet, qui tollit
+								li laoreet ocurreret id, ne vis melius
+								li offendit appetere, ius timeam percipit
+								li argumentum id. His mutat
+						li
+							h5 We Offer
+							ul.list-marked
+								li Lorem ipsum dolor sit amet, qui tollit
+								li laoreet ocurreret id, ne vis melius
+								li offendit appetere, ius timeam percipit
+								li argumentum id. His mutat
+						li
+							a.button.button-lg.button-primary(href="#") Submit CV
+
+				.col-sm-9.col-md-6.col-lg-5.col-xl-4
+					.box-wrap-gray
+						+thumbnail-1({
+							imageName: "single-job-270x270",
+							title: "Deborah Mitchell",
+							link: "#",
+							position: "HR Manager",
+							exeption: "Lorem ipsum dolor sit amet, scripta legimus quaerendum ex vis, audire nonumes his an. Decore tamquam insolens usu, an duo omnium debitis."
+						})
+							.group.group-middle.social-items
+								a.icon.icon-md.icon-gray-400.novi-icon.mdi.mdi-facebook(href='#')
+								a.icon.icon-md.icon-gray-400.novi-icon.mdi.mdi-twitter(href='#')
+								a.icon.icon-md.icon-gray-400.novi-icon.mdi.mdi-instagram(href='#')
+								a.icon.icon-md.icon-gray-400.novi-icon.mdi.mdi-facebook-messenger(href='#')
+								a.icon.icon-md.icon-gray-400.novi-icon.mdi.mdi-linkedin(href='#')
+								a.icon.icon-md.icon-gray-400.novi-icon.mdi.mdi-snapchat(href='#')
+
+	// Page Footer
+	include ../sections/_footer-1

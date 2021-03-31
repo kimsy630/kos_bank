@@ -1,0 +1,419 @@
+extends  ../_skeleton
+
+//- Includes
+include ../components/_ui-progress-bar-linear
+include ../components/_ui-inline-subscribe-form
+
+block variables
+	- var activeCategory = 'home'
+	- var pageName = 'Home 2'
+
+block page
+	// Page Header
+	include ../sections/_header-creative
+
+	// Swiper
+	section.section.swiper-container.swiper-slider.swiper-slider-2(data-loop='true' data-autoplay='5000' data-simulate-touch="false" data-slide-effect="fade")
+		.swiper-wrapper.text-center
+			.swiper-slide.context-dark(data-slide-bg='images/slider-4-1920x1000.jpg')
+				.swiper-slide-caption
+					.container
+						.row.justify-content-lg-center
+							.col-md-12.col-xl-10
+								h1(data-caption-animate='fadeInUp' data-caption-delay='100') Where You Know Your Banker and Your Banker Knows You
+								a.button.button-lg.button-primary(href='about.html' data-caption-animate='fadeInUp' data-caption-delay='450') Learn More
+
+			.swiper-slide.context-dark(data-slide-bg='images/slider-5-1920x1000.jpg' style='background-position: 50% 50%')
+				.swiper-slide-caption
+					.container
+						.row.justify-content-lg-center
+							.col-md-12.col-xl-10
+								h1(data-caption-animate='fadeInUp' data-caption-delay='100') Our Quest to Make Banking Better Starts Here
+								a.button.button-lg.button-primary(href='about.html' data-caption-animate='fadeInUp' data-caption-delay='450') Learn More
+
+			.swiper-slide.context-dark(data-slide-bg='images/slider-6-1920x1000.jpg' style='background-position: 50% 50%')
+				.swiper-slide-caption
+					.container
+						.row.justify-content-lg-center
+							.col-md-12.col-xl-10
+								h1(data-caption-animate='fadeInUp' data-caption-delay='100') The Fastest Way to Send Money Worldwide
+								a.button.button-lg.button-primary(href='about.html' data-caption-animate='fadeInUp' data-caption-delay='450') Learn More
+
+		.swiper-meta
+			ul.links
+				li: a.icon.icon-meta.mdi.mdi-facebook(href="#")
+				li: a.icon.icon-meta.mdi.mdi-twitter(href="#")
+				li: a.icon.icon-meta.mdi.mdi-instagram(href="#")
+				li: a.icon.icon-meta.mdi.mdi-facebook-messenger(href="#")
+				li: a.icon.icon-meta.mdi.mdi-linkedin(href="#")
+				li: a.icon.icon-meta.mdi.mdi-snapchat(href="#")
+
+			.contacts
+				.icon.mdi.mdi-cellphone-iphone
+				.tel: a(href="tel:#") 1-800-1234-567
+				.request: a(href="#") Request a Call Back
+
+			// Swiper Pagination
+			.swiper-pagination
+
+	// Advantages
+	section.section.context-dark
+			.row.row-flex.no-gutters
+				.col-md-6.col-lg-3
+					.blurb-boxed-2
+						.icon.mdi.mdi-credit-card-multiple
+						h6.title More than #[span.font-weight-bold 23 754] Issued Cards
+						p.exeption Our bank is an acknowledged leader in credit card distribution. We issue more than 5000 cards every year.
+
+				.col-md-6.col-lg-3
+					.blurb-boxed-2.blurb-boxed-dark
+						.icon.mdi.mdi-cash
+						h6.title Up to #[span.font-weight-bold 30%] Cashback
+						p.exeption We offer an amazing amount of cashback for payments made with one of our credit cards - Blue, Green, or Orange.
+
+				.col-md-6.col-lg-3
+					.blurb-boxed-2.blurb-boxed-darker
+						.icon.mdi.mdi-credit-card-multiple
+						h6.title Up to #[span.font-weight-bold 25%] for Deposit
+						p.exeption Dot Bank offers various deposit offers in all international currencies with interest rate up to 25% for all regular clients.
+
+				.col-md-6.col-lg-3
+					.blurb-boxed-2.blurb-boxed-darkest
+						p.exeption The Best Choice 2018
+						h5.title Reliable and Secure Credit Cards and Deposits for You
+						a.button.button-lg.button-icon.button-icon-left.button-primary(href="#")
+							span.icon.mdi.mdi-credit-card
+							| Book a Card
+
+	// The Best Banking Choise
+	section.section.section-lg
+		.container
+			.block-lg.text-center
+				h2 The Best Banking Choice
+				p Since our foundation, we have been #1 banking institution for lots of individual and corporate customers, both in the USA and internationally. We provide our clients with a number of benefits.
+
+			.row.row-30.row-xxl-60
+				.col-sm-6.col-md-4.wow.fadeInLeft
+					+blurb-image({
+						icon: "mercury-icon-globe-marker",
+						title: "Various Locations",
+						exeption: "We have offices in many countries including the USA and the UK."
+					})
+				.col-sm-6.col-md-4.wow.fadeInLeft(data-wow-delay="0.1s")
+					+blurb-image({
+						icon: "mercury-icon-touch",
+						title: "Mobile Banking Apps",
+						exeption: "Get instant access to your account on any device using our banking apps."
+					})
+				.col-sm-6.col-md-4.wow.fadeInLeft(data-wow-delay="0.2s")
+					+blurb-image({
+						icon: "mercury-icon-social",
+						title: "Family & Friends Programs",
+						exeption: "Our Bank has special programs with benefits for family members."
+					})
+				.col-sm-6.col-md-4.wow.fadeInLeft(data-wow-delay="0.1s")
+					+blurb-image({
+						icon: "mercury-icon-phone-24",
+						title: "24/7 Support",
+						exeption: "Our Support team is always ready to help you solve any banking issues."
+					})
+				.col-sm-6.col-md-4.wow.fadeInLeft(data-wow-delay="0.2s")
+					+blurb-image({
+						icon: "mercury-icon-case",
+						title: "Personal Profile",
+						exeption: "Register your free personal profile online to begin using our services."
+					})
+				.col-sm-6.col-md-4.wow.fadeInLeft(data-wow-delay="0.3s")
+					+blurb-image({
+						icon: "mercury-icon-gears",
+						title: "Settings",
+						exeption: "Registered clients can edit the banking account settings in 2 clicks."
+					})
+
+	// A Few Words About Our Bank
+	section.section.section-lg.bg-gray-100
+		.container
+			.block-lg.text-center
+				h2 A Few Words About Our Bank
+				p Dot Bank was founded in 1999 to introduce the new level of financial services worldwide. We are still dedicated to the success of our clients, both individual and corporate.
+
+			.row.row-20.justify-content-center.justify-content-lg-between
+				.col-md-10.col-lg-6.wow.fadeIn
+					+jpg("index-1-2-570x352", "img-bordered")
+				.col-md-10.col-lg-6.col-xl-5
+					.text-block-2
+						p At Dot Bank, we are guided by a common purpose to help make financial lives better by connecting clients and communities to the resource they need to be successful. We are driving growth – helping to create jobs, develop communities, foster economic mobility and address society’s biggest challenges – while managing risk and providing a return to our clients and our shareholders.
+						.progress-linear-wrap
+							+progress-bar-linear({
+								title: "Financial Consulting",
+								valueTo: "75"
+							})
+							+progress-bar-linear({
+								title: "Online Reporting",
+								valueTo: "50"
+							})
+						a.button.button-lg.button-primary(href="about.html") More Details
+
+	// Financial Statistics
+	section.section.section-lg.bg-primary-dark
+		.container
+			h2.text-center Financial Statistics
+			.row.row-20.justify-content-center.justify-content-lg-between
+				.col-md-12.col-lg-4.wow.fadeIn
+					+blockquote({
+						quote: "At Dot Bank, we aim to provide top quality banking services to a greater number of individual and corporate customers than any other bank in the USA or abroad. Our clients value data privacy and security of their banking accounts 24/7.",
+						authorName: "Samuel Chapman",
+						authorPosition: "CEO & Founder of Dot Bank"
+					})
+				.col-md-8.col-lg-5.col-xxl-4.wow.fadeIn
+					+svg-gradient()
+					.d3-chart#spline-chart(style='width:100%; margin: 0 auto')
+					p With the development of online banking, our number of customers increased up to 6 million worldwide.
+				.col-md-4.col-lg-3.col-xxl-2
+					.row.row-fix.row-40
+						.col-6.col-md-12
+							.progress-bar-circle-wrap.text-center
+								.progress-bar-circle(data-value='0.5' data-gradient=colors.secondary data-empty-fill=colors.primary data-size='100' data-thickness='2')
+									span
+								p.progress-bar-circle-title Cashback
+						.col-6.col-md-12
+							.progress-bar-circle-wrap.text-center
+								.progress-bar-circle(data-value='1' data-gradient=colors.secondary data-empty-fill=colors.primary data-size='100' data-thickness='2')
+									span
+								p.progress-bar-circle-title Guarantee
+
+	// Testimonials
+	section.section.section-lg.bg-gray-100
+		.container.text-center
+			h2 Testimonials
+			// Owl Carousel
+			.owl-carousel.text-left(data-items='1', data-md-items='2', data-dots='true' data-nav='false' data-stage-padding='0', data-loop='true', data-margin='30', data-mouse-drag="false", data-autoplay="true")
+				+blockquote-boxed({
+					time: "2 days ago",
+					quote: "I choose Dot Bank because I know they share my values of putting community first. Not only do they make banking easy, I see them out volunteering and investing in our community.",
+					imageName: "user-1-64x64",
+					authorName: "Marie Hanson",
+					authorPosition: "Charity Organization Manager"
+				})
+
+				+blockquote-boxed({
+					time: "2 days ago",
+					quote: "When I needed financial assistance to expand my shop, I went directly to Dot Bank. Securing financing helped us renovate and expand my jewelry shop and attract more clients.",
+					imageName: "user-2-64x64",
+					authorName: "Mildred Bates",
+					authorPosition: "Jewelry Shop Owner"
+				})
+
+				+blockquote-boxed({
+					time: "2 days ago",
+					quote: "I choose Dot Bank because I know they share my values of putting community first. Not only do they make banking easy, I see them out volunteering and investing in our community.",
+					imageName: "user-1-64x64",
+					authorName: "Marie Hanson",
+					authorPosition: "Charity Organization Manager"
+				})
+
+				+blockquote-boxed({
+					time: "2 days ago",
+					quote: "When I needed financial assistance to expand my shop, I went directly to Dot Bank. Securing financing helped us renovate and expand my jewelry shop and attract more clients.",
+					imageName: "user-2-64x64",
+					authorName: "Mildred Bates",
+					authorPosition: "Jewelry Shop Owner"
+				})
+
+				+blockquote-boxed({
+					time: "2 days ago",
+					quote: "I choose Dot Bank because I know they share my values of putting community first. Not only do they make banking easy, I see them out volunteering and investing in our community.",
+					imageName: "user-1-64x64",
+					authorName: "Marie Hanson",
+					authorPosition: "Charity Organization Manager"
+				})
+
+				+blockquote-boxed({
+					time: "2 days ago",
+					quote: "When I needed financial assistance to expand my shop, I went directly to Dot Bank. Securing financing helped us renovate and expand my jewelry shop and attract more clients.",
+					imageName: "user-2-64x64",
+					authorName: "Mildred Bates",
+					authorPosition: "Jewelry Shop Owner"
+				})
+
+	// How to Order a New Card
+	section.section.section-lg
+		.container.text-center
+			h2 How to Order a New Card
+			.row.row-40.justify-content-center.number-counter
+				.col-sm-6.col-lg-3.wow.fadeInLeft
+					+blurb-icon-filled({
+						icon: "mercury-icon-card",
+						title: "Online Registration",
+						exeption: "Everything starts with free online registration. Only basic data is needed - name, surname, age etc."
+					})
+
+				.col-sm-6.col-lg-3.wow.fadeInLeft(data-wow-delay="0.1s")
+					+blurb-icon-filled({
+						icon: "mercury-icon-note",
+						title: "Filling Out a Form",
+						exeption: "After the basic registration, you will need to fill out a form to help us determine your financial goals."
+					})
+
+				.col-sm-6.col-lg-3.wow.fadeInLeft(data-wow-delay="0.2s")
+					+blurb-icon-filled({
+						icon: "mercury-icon-partners",
+						title: "Signing an Agreement",
+						exeption: "This stage concludes the procedure of opening an account at Dot Bank to start using your card."
+					})
+
+				.col-sm-6.col-lg-3.wow.fadeInLeft(data-wow-delay="0.3s")
+					+blurb-icon-filled({
+						icon: "mercury-icon-money-3",
+						title: "Using Your Card",
+						exeption: "You can use your card to purchase the products you need or to open a secure deposit with lots of benefits."
+					})
+
+	// Call to action
+	section.section.section-xs.bg-primary-gradient
+		.container
+			.box-cta
+				.box-cta-inner
+					h3 Choose Your #[span.font-weight-bold Bank Card] Now!
+				.box-cta-inner
+					a.button.button-lg.button-primary-dark(href='#') Order Card
+
+	// Frequently Asked Questions
+	section.section.section-lg
+		.container.text-center
+			h2 Frequently Asked Questions
+			.row.row-flex.row-40.number-counter.text-left
+				.col-sm-12.col-lg-4.wow.fadeIn
+					.text-block-lined
+						h5.title What is the currency amount for the Blue Card?
+						p The minimum amount that can be loaded on the card is $100 or equivalent amount in other currency. The maximum amount would be as per Dot Bank guidelines applicable from time to time. You can learn more about it by contacting our consultants using the form on our website or by calling us directly.
+						h5.title What steps do I take if my card gets lost?
+						p If you lose your card please immediately contact our customer support center so that we could issue a new one as fast as possible.
+
+				.col-sm-12.col-lg-4.wow.fadeIn
+					.text-block-lined
+						h5.title Do I have to maintain any minimum balance?
+						p It depends on the card you choose. For example, if you pick an Orange Card, you get a special waiver on the minimum balance requirement.
+						h5.title What security features does the mobile banking have?
+						p Mobile browser-based banking is very similar to PC based internet banking. The respective mobile handset browser replaces a PC browser to access the banking services. Some of the important security measures in place are 128 bit SSL from VeriSign, https:// based access etc.
+
+				.col-sm-12.col-lg-4.wow.fadeIn
+					.text-block-lined
+						h5.title What kind of browser do I need for online banking?
+						p Our Banking System supports all browsers. Some of the most popular ones are Chrome, Opera, Firefox, and Safari. If you are using Internet Explorer make sure the version of your browser is 9.0 or higher.
+						h5.title Can I make online payments to foreign recipients?
+						p Yes, you can! Our bank does not limit any payments to a certain country so whether you are using our online banking system or an app for your device, you can safely transfer any amount of money or purchase services and products.
+
+			.button-wrap-lg
+				a.button.button-lg.button-primary(href="#") View All Asked Questions
+
+	// Latest Blog Posts
+	section.section.section-lg.bg-gray-100
+		.container.text-center
+			h2 Latest Blog Posts
+			.row.row-flex.row-40.justify-content-center.number-counter.text-left.wow.fadeInUp
+				.col-sm-6.col-lg-3
+					+post-classic-2(
+					{
+						imageName: "masonry-blog-1-370x240",
+						title: "7 Banking Services That Can Save Retirees Money",
+						link: "single-post.html",
+						exeption: "Long gone are the days in which you need to visit a branch to do your banking. Today, banks offer an array of services..."
+					},
+					{
+						date: "2 days ago",
+						author: "Martha Ryan",
+						authorLink: "single-post.html"
+					},
+
+					[{"title": "News", "href": "single-post.html"}]
+					)
+
+				.col-sm-6.col-lg-3
+					+post-classic-2(
+					{
+						imageName: "masonry-blog-3-370x240",
+						title: "Stocks Could Surge Another 10% Between Now And 2018, Financial Experts Say",
+						link: "single-post.html",
+						exeption: "Experts point out that the next couple of months could become bumpy as the markets deal with uncertainty over factors such as tax reform, which is..."
+					},
+					{
+						date: "2 days ago",
+						author: "Lawrence Kelly",
+						authorLink: "single-post.html"
+					},
+
+					[{"title": "News", "href": "single-post.html"}]
+					)
+
+				.col-sm-6.col-lg-3
+					+post-classic-2(
+					{
+						imageName: "masonry-blog-5-370x240",
+						title: "Wall Street Analysts Are Nailing It This Year",
+						link: "single-post.html",
+						exeption: "Wall Street analysts have made the right calls so far this year. Analysts' 50 most loved stocks at the start of the year are..."
+					},
+					{
+						date: "2 days ago",
+						author: "Theresa Simpson",
+						authorLink: "single-post.html"
+					},
+
+					[{"title": "News", "href": "single-post.html"}]
+					)
+
+				.col-sm-6.col-lg-3
+					+post-classic-2(
+					{
+						imageName: "masonry-blog-2-370x240",
+						title: "Cash Faces a New Challenger in Zelle, a Mobile Banking Service",
+						link: "single-post.html",
+						exeption: "After six years of laying a foundation, major banks are ready to introduce Zelle, a digital..."
+					},
+					{
+						date: "2 days ago",
+						author: "Lawrence Kelly",
+						authorLink: "single-post.html"
+					},
+
+					[{"title": "News", "href": "single-post.html"}]
+					)
+
+			.button-wrap-lg
+				a.button.button-lg.button-primary(href="masonry-blog.html") View All Blog Posts
+
+	// Pricing
+	section.section.section-lg
+		.container.text-center
+			h2 Pricing
+			.row.no-gutters.justify-content-center
+				.col-md-4
+					+price-box-1({
+						imageName: "pricing-1-202x162",
+						title: "Basic",
+						exeption: "This option is perfect if you have no experience in online banking but would like to have a card for all kinds of payments in selected currencies.",
+						price: "Free",
+						link: "#"
+					})
+				.col-md-4
+					+price-box-1({
+						boxClass: "price-box-1-primary",
+						imageName: "pricing-2-202x162",
+						title: "Standard",
+						exeption: "This offer provides you with extended support for your financial needs and is able to cover the needs of individual and business clients.",
+						price: "$99.00/mo",
+						link: "#"
+					})
+				.col-md-4
+					+price-box-1({
+						imageName: "pricing-3-202x162",
+						title: "Premium",
+						exeption: "This card from Dot Bank proved to be a great financial solution for big companies and international enterprises worldwide.",
+						price: "$199.00/mo",
+						link: "#"
+					})
+
+
+	// Page Footer
+	include ../sections/_footer-2

@@ -1,0 +1,139 @@
+/*
+*
+* Blocks
+*/
+
+%block-center {
+	margin-left: auto;
+	margin-right: auto;
+}
+
+// The block element can be centered horizontally
+//
+.block-center {
+	@extend %block-center;
+}
+
+// Limits block width and block element can be centered horizontally
+//
+.block-sm {
+	@extend %block-center;
+	max-width: 370px;
+}
+
+.block-lg {
+	@extend %block-center;
+	max-width: 540px;
+
+	// Large ≥992px
+	@include media-breakpoint-up(lg) {
+		max-width: 740px;
+	}
+}
+
+// Block center
+.block-center {
+	padding: 10px;
+	&:hover {
+		.block-center-header {
+			background-color: $primary;
+		}
+	}
+}
+
+.block-center-inner {
+}
+
+.block-center-inner-aside {
+}
+
+.block-center-inner-main {
+}
+
+.block-center-title {
+	background-color: $white;
+}
+
+@include media-breakpoint-down(xl) {
+	.block-center {
+		padding: 20px;
+		&:hover {
+			.block-center-header {
+				background-color: $white;
+			}
+		}
+	}
+
+	.block-center-header {
+		background-color: $primary;
+	}
+}
+
+/*
+* Block preview
+*/
+.block-preview {
+	position: relative;
+	padding: 40px 0;
+
+	.title {
+		max-width: 610px;
+		font-weight: 700;
+	}
+
+	.exeption {
+		max-width: 330px;
+		color: $gray-600;
+		letter-spacing: .03em;
+	}
+
+	.cover-image {
+		position: absolute;
+		right: 0;
+		top: 0;
+		bottom: 0;
+		left: 0;
+		background-position: center center;
+		background-size: cover;
+		background-repeat: no-repeat;
+		opacity: .1;
+	}
+
+	> *:not(.cover-image) {
+		position: relative;
+		z-index: 1;
+	}
+
+	* + .title { margin-top: 27px;}
+	* + .exeption { margin-top: 21px;}
+
+	// Medium ≥768px
+	@include media-breakpoint-up(md) {
+	  padding: 60px 0;
+
+		.cover-image {
+			left: 41%;
+			opacity: .2;
+		}
+	}
+
+	// Extra large ≥1200px
+	@include media-breakpoint-up(lg) {
+		padding: 100px 0;
+
+		.cover-image {
+			opacity: 1;
+		}
+
+		* + .title { margin-top: 44px;}
+		* + .exeption { margin-top: 32px;}
+	}
+
+	// Mega large ≥1600px
+	@include media-breakpoint-up(xxl) {
+		padding: 186px 0 206px;
+
+		* + .title { margin-top: 54px;}
+		* + .exeption { margin-top: 42px;}
+	}
+}

@@ -1,0 +1,166 @@
+extends  ../_skeleton
+
+//- Includes
+include ../components/_ui-pagination
+
+block variables
+	- var activeCategory = 'pages'
+	- var pageName = 'Single post'
+
+block page 
+	// Page Header
+	include ../sections/_header-transparent
+
+	+breadcrumbs({
+		category: activeCategory,
+		path: [pageName]
+	})
+
+	// Overview
+	section.section.section-lg.bg-default
+		.container
+			.row.justify-content-center
+				.col-md-10.col-xl-8
+					.post-single-wrap
+						.post-item
+							h2 7 Banking Services That Can Save Retirees Money
+							ul.list-dotted
+								li
+									.post-author
+										.media-wrap
+											+jpg("single-post-author-1-48x48")
+										.author-name Martha Ryan
+								li
+									.post-time June, 16 2018 at 2:12 pm
+								li
+									.post-tag News
+							.subtitle.heading-6 Lorem ipsum dolor sit amet, qui tollit laoreet ocurreret id, ne vis melius offendit appetere, ius timeam percipit argumentum id. His mutat nostrum ad, ei qui nostro aeterno recteque, aperiam quaerendum id has. et.
+							+jpg("single-post-1-770x472", "img-bordered")
+							p Lorem ipsum dolor sit amet, qui tollit laoreet ocurreret id, ne vis melius offendit appetere, ius timeam percipit argumentum id. His mutat nostrum ad, ei qui nostro aeterno recteque, aperiam quaerendum id has. Quod tantas volumus eu eum, mei appetere honestatis an. Dico apeirian qui ad, pri eu munere menandri maluisset. Ei has elit essent mentitum, sed ex vocent maluisset.
+							+blockquote({
+								quote: "Lorem ipsum dolor sit amet, scripta legimus qua erendum ex vis, audire no umes his an. Decore tam quam insole ns usu, an omnium debitis. ipsum dolo. Lorem ipsum dolor sit amet, scripta legimus qua Lorem ipsum dolor sit."
+							})
+							p At eos omnium option disputando, eius nusquam quo at. Ad sit modo nemore diceret, in vel vidit dicat. Eam fierent neglegentur ea. Delectus volutpat at sit, cum etiam copiosae an. Vim in illud nonumy malorum. Nemore democritum cu eos, quo etiam volumus id. Eripuit corrumpit ei quo.
+							p In summo assentior consetetur qui, ea per dolor erroribus expetendis. Causae audire cu est. Quodsi meliore mei ea, at odio euismod pro. Ad mundi indoctum sit. Vel meis instructior in, discere habemus eu usu. Ne eam quas saperet, cu vix homero recteque, no mea eripuit sadipscing.
+							+jpg("single-post-2-770x472", "img-bordered")
+							p Lorem ipsum dolor sit amet, qui tollit laoreet ocurreret id, ne vis melius offendit appetere, ius timeam percipit argumentum id. His mutat nostrum ad, ei qui nostro aeterno recteque, aperiam quaerendum id has. Quod tantas volumus eu eum, mei appetere honestatis an. Dico apeirian qui ad, pri eu munere menandri maluisset. Ei has elit essent mentitum, sed ex vocent maluisset.
+							.group-sm.buttons-group-1
+								a.button.button-icon.button-icon-left.button-round.button-facebook(href="#")
+									span.icon.mdi.mdi-facebook
+									span Share on Facebook
+								a.button.button-icon.button-icon-left.button-round.button-twitter(href="#")
+									span.icon.mdi.mdi-twitter
+									span Share on Twitter
+						.post-item
+							h2 Comments
+							ul.comment-list
+								li
+									.box-comment
+										.box-comment-image
+											+jpg("single-post-comment-1-70x70")
+										.box-comment-body
+											.title Harold Brown
+											.date June, 16 2018 at 2:48 pm
+											.comment Lorem ipsum dolor sit amet, qui tollit laoreet ocurreret id, ne vis melius offendit appetere, ius timeam percipit argumentum id. His mutat nostrum ad, ei qui nostro aeterno recteque, aperiam quaerendum id has. Quod tantas volumus eu eum, mei appetere honestatis an.
+											a.comment-link(href="#") Reply
+									ul.comment-list-reply
+										li
+											.box-comment
+												.box-comment-image
+													+jpg("single-post-comment-2-70x70")
+												.box-comment-body
+													.title Martha Ryan
+													.date June, 16 2018 at 2:48 pm
+													.comment Lorem ipsum dolor sit amet, qui tollit laoreet ocurreret id, ne vis melius offendit appetere, ius timeam percipit argumentum id. His mutat nostrum ad, ei qui nostro aeterno recteque.
+													a.comment-link(href="#") Reply
+								li
+									.box-comment
+										.box-comment-image
+											+jpg("single-post-comment-3-70x70")
+										.box-comment-body
+											.title Melissa Wagner
+											.date June, 16 2018 at 2:48 pm
+											.comment Lorem ipsum dolor sit amet, qui tollit laoreet ocurreret id, ne vis melius offendit appetere, ius timeam percipit argumentum id. His mutat nostrum ad, ei qui nostro aeterno recteque, aperiam quaerendum id has. Quod tantas volumus eu eum, mei appetere honestatis an.
+											a.comment-link(href="#") Reply
+
+						.post-item
+							h2 Leave a Comment
+							form.rd-form.rd-mailform.comment-form
+								.row.row-15
+									.col-md-6
+										.form-wrap
+											input#contact-name.form-input(type='text' name='name' data-constraints='@Required')
+											label.form-label(for='contact-name') Name
+
+									.col-md-6
+										.form-wrap
+											input#contact-email.form-input(type='email' name='email' data-constraints='@Email @Required')
+											label.form-label(for='contact-email') E-mail
+
+									.col-md-12
+										.form-wrap
+											label.form-label(for='contact-message') Message
+											textarea#contact-message.form-input(name='message' data-constraints='@Required')
+
+									.col-md-6
+										button.button.button-primary(type='submit') Submit
+
+	// Latest Blog Posts
+	section.section.section-md.bg-gray-100
+		.container.text-center
+			h2.custom-title: span Recent Blog Posts
+			.row.row-30.row-offset-4.text-left
+				.col-md-6.col-lg-4
+					+post-boxed(
+					{
+						imageName: "grid-blog-1-370x272",
+						title: "Cash Faces a New Challenger in Zelle, a Mobile Banking Service",
+						link: "single-post.html",
+						exeption: "After six years of laying a foundation, major banks are ready to introduce Zelle, a digital payments network that will allow people to send money instantly through..."
+					},
+					{
+						date: "2 days ago",
+						author: "Martha Ryan",
+						authorLink: "single-post.html"
+					},
+
+					[{"title": "News", "href": "single-post.html"}]
+					)
+
+				.col-md-6.col-lg-4
+					+post-boxed(
+					{
+						imageName: "grid-blog-2-370x272",
+						title: "Stocks Could Surge Another 10% Between Now And 2018",
+						link: "single-post.html",
+						exeption: "Experts point out that the next couple of months could become bumpy as the markets deal with uncertainty over factors such as tax reform, which is currently advancing..."
+					},
+					{
+						date: "2 days ago",
+						author: "Martha Ryan",
+						authorLink: "single-post.html"
+					},
+
+					[{"title": "News", "href": "single-post.html"}]
+					)
+
+				.col-md-6.col-lg-4
+					+post-boxed(
+					{
+						imageName: "grid-blog-3-370x272",
+						title: "Wall Street Analysts Are Nailing It This Year",
+						link: "single-post.html",
+						exeption: "Wall Street analysts have made the right calls so far this year. Analysts' 50 most loved stocks at the start of the year are up an average 11.37 percent year-to-date..."
+					},
+					{
+						date: "2 days ago",
+						author: "Martha Ryan",
+						authorLink: "single-post.html"
+					},
+
+					[{"title": "News", "href": "single-post.html"}]
+					)
+
+
+	// Page Footer
+	include ../sections/_footer-1

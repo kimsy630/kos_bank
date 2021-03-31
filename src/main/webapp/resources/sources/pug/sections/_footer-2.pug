@@ -1,0 +1,81 @@
+footer.section.footer-2
+	.container
+		.row.row-40
+			.col-md-6.col-lg-3
+				a.footer-logo(href="index.html")
+					+png(logo.white)
+				p Dot Bank is the leading financial establishment providing high-quality international banking services. We are always ready to partner with you by offering full financial support to individuals and companies worldwide.
+			.col-md-6.col-lg-3
+				h5.title Contact Information
+				ul.contact-box
+					li
+						.unit.unit-horizontal.unit-spacing-xxs
+							.unit-left
+								span.icon.mdi.mdi-map-marker
+							.unit-body
+								a(href="#") 2130 Fulton Street, <br class="veil reveal-lg-inline">San Diego, CA 94117-1080 USA
+					li
+						.unit.unit-horizontal.unit-spacing-xxs
+							.unit-left
+								span.icon.mdi.mdi-phone
+							.unit-body
+								ul.list-phones
+									li: a(href="tel:#") 1-800-1234-567
+									li: a(href="tel:#") 1-800-1234-567
+					li
+						.unit.unit-horizontal.unit-spacing-xxs
+							.unit-left
+								span.icon.mdi.mdi-email-outline
+							.unit-body
+								a(href="mailto:#") info@demolink.org
+				.group-md.group-middle.social-items
+					a.icon.icon-md.novi-icon.mdi.mdi-facebook(href='#')
+					a.icon.icon-md.novi-icon.mdi.mdi-twitter(href='#')
+					a.icon.icon-md.novi-icon.mdi.mdi-instagram(href='#')
+					a.icon.icon-md.novi-icon.mdi.mdi-facebook-messenger(href='#')
+					a.icon.icon-md.novi-icon.mdi.mdi-linkedin(href='#')
+					a.icon.icon-md.novi-icon.mdi.mdi-snapchat(href='#')
+			.col-md-6.col-lg-3
+				h5.title Gallery
+				ul.instafeed.instagram-gallery(data-lightgallery="group")
+					li
+						+instagram-item({
+							image: "insta-gallery-1-72x72",
+							imageOriginal: "insta-gallery-1-original"
+						})
+					li
+						+instagram-item({
+							image: "insta-gallery-2-72x72",
+							imageOriginal: "insta-gallery-2-original"
+						})
+					li
+						+instagram-item({
+							image: "insta-gallery-3-72x72",
+							imageOriginal: "insta-gallery-3-original"
+						})
+					li
+						+instagram-item({
+							image: "insta-gallery-4-72x72",
+							imageOriginal: "insta-gallery-4-original"
+						})
+					li
+						+instagram-item({
+							image: "insta-gallery-5-72x72",
+							imageOriginal: "insta-gallery-5-original"
+						})
+					li
+						+instagram-item({
+							image: "insta-gallery-6-72x72",
+							imageOriginal: "insta-gallery-6-original"
+						})
+			.col-md-6.col-lg-3
+				h5.title Newsletter
+				p Keep up with our always upcoming news and updates. Enter your e-mail and subscribe to our newsletter.
+				// RD Mailform
+				form.rd-form.form-sm.rd-mailform(data-form-output='form-output-global', data-form-type='contact', method='post', action='bat/rd-mailform.php')
+					.form-wrap
+						input#newsletter-email.form-input(type='email' name='email' data-constraints='@Email @Required')
+						label.form-label(for='newsletter-email') Enter your e-mail
+
+					button.button.button-primary(type='submit') Subscribe
+		+rights

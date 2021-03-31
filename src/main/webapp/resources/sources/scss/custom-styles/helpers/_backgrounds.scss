@@ -1,0 +1,82 @@
+/*
+*
+* Backgrounds
+*/
+
+.context-dark {
+	@include context-dark;
+}
+
+%context-dark {
+	@include context-dark;
+
+	p { font-weight: 100; }
+	.text-gray-600 { color: $gray-400; }
+}
+
+%context-light {
+	@include context-light;
+}
+
+/**
+* Light Backgrounds
+*/
+.bg-default {
+	@include bg-behaviour($body-bg);
+}
+
+.bg-gray-100 {
+	@include bg-behaviour($gray-100);
+}
+
+.bg-white {
+	@include bg-behaviour($white);
+}
+
+/**
+* Dark Backgrounds
+*/
+.bg-gray-dark {
+	@extend %context-dark;
+	@include bg-behaviour($gray-700);
+}
+
+/** 
+* Accent Backgrounds
+*/
+.bg-primary {
+	@include bg-behaviour($primary);
+	@extend %context-dark;
+}
+
+.bg-primary-dark {
+	@include bg-behaviour($primary-dark);
+	@extend %context-dark;
+}
+
+.bg-primary-gradient {
+	background-image: linear-gradient(to right, $primary-dark-1, $primary);
+	@extend %context-dark;
+}
+
+/**
+* Background Image
+*/
+.bg-image {
+
+}
+
+[class^='bg-'] {
+	background-size: cover;
+	background-position: center center;
+}
+
+// Desktop only
+//
+html:not(.tablet):not(.mobile) {
+	.bg-fixed {
+		@include media-breakpoint-up(lg) {
+			background-attachment: fixed;
+		}
+	}
+}

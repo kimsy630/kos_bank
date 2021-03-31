@@ -1,0 +1,122 @@
+extends  ../_skeleton
+
+//- Includes
+include ../components/_ui-inline-subscribe-form
+
+block variables
+	- var activeCategory = 'services'
+	- var pageName = 'Services'
+
+block page 
+	// Page Header
+	include ../sections/_header-transparent
+
+	+breadcrumbs({
+		category: activeCategory,
+		path: [pageName]
+	})
+
+	// A Wide Range of Banking & Financial Services
+	section.section.section-lg
+		.container.text-center
+			.row.justify-content-center
+				.col-md-12.col-xl-10
+					h2 A Wide Range of Banking & Financial Services
+					.heading-6.block-lg Lorem ipsum dolor sit amet, qui tollit laoreet ocurreret id, ne vis melius offendit appetere, ius timeam percipit argumentum id. His mutat nostrum ad, ei qui nostro aeterno recteque, aperiam quaerendum id has et.
+					a.button.button-lg.button-primary(href='single-service.html') Read more
+
+	// Services
+	section.section.section-lg.bg-gray-100
+		.container
+			.service-list
+				.row.row-20.service-item
+					.col-md-6
+						+jpg("services-1-540x327")
+					.col-md-6
+						h3.title Personal Banking
+						p.exeption Lorem ipsum dolor sit amet, qui tollit laoreet ocurreret id, ne vis melius offendit appetere, ius timeam percipit argumentum id. His mutat nostrum ad, ei qui nostro aeterno recteque, aperiam quaerendum id has. Quod tantas volumus eu eum, mei.
+						a.button.button-lg.button-primary(href='single-service.html') Learn more
+
+				.row.row-20.service-item
+					.col-md-6
+						+jpg("services-2-540x327")
+					.col-md-6
+						h3.title Private Banking
+						p.exeption Lorem ipsum dolor sit amet, qui tollit laoreet ocurreret id, ne vis melius offendit appetere, ius timeam percipit argumentum id. His mutat nostrum ad, ei qui nostro aeterno recteque, aperiam quaerendum id has. Quod tantas volumus eu eum, mei.
+						a.button.button-lg.button-primary(href='single-service.html') Learn more
+
+				.row.row-20.service-item
+					.col-md-6
+						+jpg("services-3-540x327")
+					.col-md-6
+						h3.title Business Banking
+						p.exeption Lorem ipsum dolor sit amet, qui tollit laoreet ocurreret id, ne vis melius offendit appetere, ius timeam percipit argumentum id. His mutat nostrum ad, ei qui nostro aeterno recteque, aperiam quaerendum id has. Quod tantas volumus eu eum, mei.
+						a.button.button-lg.button-primary(href='single-service.html') Learn more
+
+	// Call to action
+	section.section.section-xs.bg-primary-gradient
+		.container
+			.box-cta
+				.box-cta-inner
+					h3 Choose Your #[span.font-weight-bold Bank Card] Now!
+				.box-cta-inner
+					a.button.button-lg.button-primary-dark(href='single-service.html') Order Card
+
+	// Testimonials
+	section.section.section-xl.bg-gray-100
+		.container.text-center
+			h2 Testimonials
+			// Owl Carousel
+			.owl-carousel.text-left(data-items='1', data-md-items='2', data-dots='true' data-nav='false' data-stage-padding='0', data-loop='false', data-margin='30', data-mouse-drag="false")
+				+blockquote-boxed({
+					time: "2 days ago",
+					quote: "Lorem ipsum dolor sit amet, scripta legimus quaerendum ex vis, audire nonumes his an. Decore tamquam insolens usu, an duo omnium debitis. Lorem ipsum dolor sit.",
+					imageName: "user-1-64x64",
+					authorName: "Marie Hanson",
+					authorPosition: "Charity Organization Manager"
+				})
+
+				+blockquote-boxed({
+					time: "2 days ago",
+					quote: "Lorem ipsum dolor sit amet, scripta legimus quaerendum ex vis, audire nonumes his an. Decore tamquam insolens usu, an duo omnium debitis. Lorem ipsum dolor sit.",
+					imageName: "user-2-64x64",
+					authorName: "Mildred Bates",
+					authorPosition: "Jewelry Shop Owner"
+				})
+
+				+blockquote-boxed({
+					time: "2 days ago",
+					quote: "Lorem ipsum dolor sit amet, scripta legimus quaerendum ex vis, audire nonumes his an. Decore tamquam insolens usu, an duo omnium debitis. Lorem ipsum dolor sit.",
+					imageName: "user-1-64x64",
+					authorName: "Marie Hanson",
+					authorPosition: "Charity Organization Manager"
+				})
+
+				+blockquote-boxed({
+					time: "2 days ago",
+					quote: "Lorem ipsum dolor sit amet, scripta legimus quaerendum ex vis, audire nonumes his an. Decore tamquam insolens usu, an duo omnium debitis. Lorem ipsum dolor sit.",
+					imageName: "user-2-64x64",
+					authorName: "Mildred Bates",
+					authorPosition: "Jewelry Shop Owner"
+				})
+
+				+blockquote-boxed({
+					time: "2 days ago",
+					quote: "Lorem ipsum dolor sit amet, scripta legimus quaerendum ex vis, audire nonumes his an. Decore tamquam insolens usu, an duo omnium debitis. Lorem ipsum dolor sit.",
+					imageName: "user-1-64x64",
+					authorName: "Marie Hanson",
+					authorPosition: "Charity Organization Manager"
+				})
+
+				+blockquote-boxed({
+					time: "2 days ago",
+					quote: "Lorem ipsum dolor sit amet, scripta legimus quaerendum ex vis, audire nonumes his an. Decore tamquam insolens usu, an duo omnium debitis. Lorem ipsum dolor sit.",
+					imageName: "user-2-64x64",
+					authorName: "Mildred Bates",
+					authorPosition: "Jewelry Shop Owner"
+				})
+
+
+
+	// Page Footer
+	include ../sections/_footer-1

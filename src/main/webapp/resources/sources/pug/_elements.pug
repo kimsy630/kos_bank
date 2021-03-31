@@ -1,0 +1,440 @@
+-
+	function getImageSize(name) {
+		try { return name.match('[0-9]+(x)[0-9]+')[0].split('x'); }
+		catch ( error ) {
+			throw new Error('Error in function getImageSize:\n' + error);
+		}
+	}
+
+	//- Get menu branch by category name
+	function getMenuCategory(category) {
+		for (var i = 0; i < menu.length; i++) {
+			if (menu[i].category === category) {
+				return menu[i];
+			}
+		}
+		return undefined;
+	}
+
+	//- Any page title to *.html link
+	function nameToLink(name) {
+		try { return name.trim().replace(/\s/g, '-').replace(/[\(\)]/g, '').toLowerCase() + '.html'; }
+		catch ( error ) {
+			throw new Error('Error in function nameToLink:\n' + error);
+		}
+	}
+
+
+//- Img image
+mixin img(name, className)
+	- var size = getImageSize(name);
+	- var ext = name.split('.')[1];
+
+	img(src='images/' + name, alt='', width=size[0], height=size[1], class=className)
+
+
+//- Jpg image
+mixin jpg(name, className)
+	- var size = getImageSize(name);
+	img(src='images/' + name + '.jpg', alt='', width=size[0], height=size[1], class=className)
+
+
+//- Png image
+mixin png(name, className)
+	- var size = getImageSize(name);
+	img(src='images/' + name + '.png', alt='', width=size[0], height=size[1], class=className)
+
+
+//- Loop without indexing mixin
+mixin loop(count)
+	- for (var i = 0; i < count; i++)
+		block
+
+
+//- Parallax Section
+mixin parallax(obj)
+	section.section.parallax-container(data-parallax-img= obj.img)&attributes(attributes)
+		.parallax-content(class= obj.innerClass)
+			block
+
+
+//- Breadcrumbs 
+mixin breadcrumbs(obj)
+	- var activeItemName= obj.path.pop();
+	- var category = getMenuCategory(obj.category);
+
+	// Breadcrumbs 
+	section.section.section-bredcrumbs
+		.container.context-dark.breadcrumb-wrapper
+			h1=activeItemName
+			ul.breadcrumbs-custom
+				li: a(href='index.html') Home
+				if (typeof(category) !== 'undefined' && (category.title !== activeItemName))
+					li: a(href=category.link ? category.link : nameToLink(category.title))=category.title
+					-for( var i = 0; i < obj.path.length; i++)
+						li: a(href=obj.path[i].link ? obj.path[i].link : nameToLink(obj.path[i].title))=obj.path[i].title
+
+				li.active=activeItemName
+
+
+//- Logo
+mixin logo(modClass)
+	a.brand(href='index.html' class=modClass ? modClass : '')
+		+png(logo.default, 'brand-logo-dark')
+		+png(logo.inverse, 'brand-logo-light')
+
+
+//- Copyright
+mixin rights(modClass)
+	// Rights
+	p.rights(class=modClass ? modClass : '')
+		span &copy;&nbsp; 
+		span.copyright-year
+		span &nbsp;
+		span All rights reserved
+		span .&nbsp;
+		a(href='privacy-policy.html') Privacy Policy
+
+//- Blockquote default
+//- {quote, author, position}
+mixin blockquote(data)
+	blockquote.quote.quote-default
+		.quote-icon.mdi.mdi-format-quote
+		.quote-body
+			q.heading-6= data.quote
+		if (data.authorName)
+			.quote-meta
+				.author: cite= data.authorName
+				.position= data.authorPosition
+
+//- Blockquote boxed
+//- {time, quote, imageName, authorName, authorPosition}
+mixin blockquote-boxed(data)
+	blockquote.quote.quote-boxed
+		.quote-meta
+			ul.list-icons
+				li: .icon.mdi.mdi-star
+				li: .icon.mdi.mdi-star
+				li: .icon.mdi.mdi-star
+				li: .icon.mdi.mdi-star
+				li: .icon.mdi.mdi-star-half
+			.time= data.time
+		q= data.quote
+		.quote-author
+			.author-media
+				+jpg(data.imageName)
+			.author-body
+				.author: cite= data.authorName
+				.position= data.authorPosition
+
+//- Blockquote large
+//- {quote, author, position}
+mixin blockquote-large(data)
+	blockquote.quote.quote-large
+		.quote-meta
+			+jpg(data.authorImage, "img-bordered")
+		.quote-body
+			.author.heading-6: cite= data.authorName
+			.position= data.authorPosition
+			q.heading-5= data.quote
+
+//- Blockquote custom
+//- {quoteClass, quote, imgName, imgClassName, author, department, position}
+mixin blockquote-custom(data, lists)
+	blockquote.quote.quote-custom(class=data.quoteClass)
+		.quote-cloud
+			.quote-icon.mdi.mdi-format-quote
+			if (block)
+				block
+			.quote-body
+				q=data.quote
+		.quote-meta
+			.quote-meta-left
+				+jpg(data.authorImg, "quote-img")
+			.quote-meta-body
+				h6.author: cite=data.authorName
+				.position=data.authorPosition
+
+//- List icon
+//- {icon, title, content}
+mixin list-icon(data)
+	.list-icon(class= data.addClass)
+		.list-icon-title
+			span.icon-item(class= data.icon)
+			.title= data.title
+		.list-icon-body= data.content
+
+//- Counter boxed
+//- {imageName, subtitle, value, valueSub, title, exeption}
+mixin counter-boxed(data)
+	.counter-boxed(class= data.boxClass)
+		.counter-boxed-top
+			.counter-boxed-media
+				+png(data.imageName)
+			.counter-boxed-title
+				.subtitle= data.subtitle
+				.counter-wrap
+					.counter.heading-2= data.value
+					if (data.valueSub)
+						.heading-2= data.valueSub
+				.title.heading-5= data.title
+		.counter-boxed-body
+			.exeption= data.exeption
+
+//- Counter vertical
+//- {imageName, subtitle, value, valueSub, title, exeption}
+mixin counter-vertical(data)
+	.counter-vertical
+		.counter-boxed-media
+			+png(data.imageName)
+		.subtitle= data.subtitle
+		.counter-wrap
+			.counter.heading-2= data.value
+			if (data.valueSub)
+				.heading-2= data.valueSub
+		.title.heading-5= data.title
+		.divider.divider-2
+		.exeption= data.exeption
+
+//- Career box
+//- {title, link, hot}
+mixin box-minimal(data)
+	a.box-minimal(href=data.link)
+		if (data.hot)
+			.hot Hot
+		.box-minimal-title= data.title
+
+//- Thumbnail 1
+//- {imageName, title, link, position, exeption}
+mixin thumbnail-1(data)
+	.thumbnail-1
+		.media-wrap
+			+jpg(data.imageName)
+		.title: a(href=data.link)= data.title
+		.position= data.position
+		p.exeption= data.exeption
+		if (block)
+			block
+
+//- Thumbnail 2
+//- {imageName, title, link, position}
+mixin thumbnail-2(data)
+	.thumbnail-2
+		.media-wrap
+			+jpg(data.imageName)
+		.title: a(href=data.link)= data.title
+		.divider.divider-1
+		.position= data.position
+		if (block)
+			block
+
+//- Price box 1
+//- {boxClass, imageName, title, link, exeption, price}
+mixin price-box-1(data)
+	.price-box-1(class= data.boxClass)
+		.media-wrap
+			+png(data.imageName)
+		.title= data.title
+		p.exeption= data.exeption
+		.heading-3.price= data.price
+		if (block)
+			block
+		a.button.button-lg.button-primary(href=data.link) Book a Card
+
+//- Price box 2
+//- {boxClass, imageName, title, link, exeption, price}
+mixin price-box-2(data)
+	.price-box-2
+		.media-wrap
+			+png(data.imageName)
+		.title= data.title
+		.heading-3.price= data.price
+		if (block)
+			block
+		a.button.button-sm.button-primary(href=data.link) Book a Card
+
+//- Blurb image
+//- {icon, title, exeption}
+mixin blurb-image(data)
+	.blurb-image
+		.icon(class= data.icon)
+		h6.title= data.title
+		p.exeption= data.exeption
+
+//- Blurb boxed
+//- {icon, title, exeption}
+mixin blurb-boxed(data)
+	.blurb-boxed
+		.icon(class= data.icon)
+		h6.title= data.title
+		p.exeption= data.exeption
+
+//- Blurb boxed 3
+//- {icon, title, exeption}
+mixin blurb-boxed-3(data)
+	.blurb-boxed-3
+		.icon(class= data.icon)
+		h6.title= data.title
+		p.exeption= data.exeption
+
+//- Blurb icon bordered
+//- {icon, title, exeption}
+mixin blurb-icon-bordered(data)
+	.blurb-icon-bordered
+		.icon-wrap
+			.icon(class= data.icon)
+				span.index-counter
+		h5.title= data.title
+		p.exeption= data.exeption
+
+//- Blurb icon filled
+//- {icon, title, exeption}
+mixin blurb-icon-filled(data)
+	.blurb-icon-fill
+		.icon(class= data.icon)
+			span.index-counter
+		h5.title= data.title
+		p.exeption= data.exeption
+
+//- Gallery item
+//- {boxClass, imageName, title, link, exeption, price}
+mixin gallery-item(data)
+	a.gallery-item(data-lightgallery="item", href='images/' + data.imageOriginal + '.jpg')
+		+jpg(data.image)
+		.gallery-item-content
+			.heading-5.title= data.title
+			.exeption= data.exeption
+
+//- Instagram item
+//- {boxClass, imageName, title, link, exeption, price}
+mixin instagram-item(data)
+	a.instagram-item(data-lightgallery="item", href='images/' + data.imageOriginal + ".jpg")
+		+jpg(data.image)
+
+//- Post classic
+//- {imageName, title, link, exeption, date, tag.title, tag.link, author, authorLink}
+mixin post-classic(data, meta, tags)
+	article.post-classic
+		a.media-wrapper(href=data.link)
+			+jpg(data.imageName)
+		.post-meta-main
+			.post-meta-item
+				.post-meta
+					.post-meta-item
+						ul.list-tags
+							li
+								each tag, i in tags
+									a(href= tag.href).tag= tag.title
+									- if (i !== (tags.length - 1))
+										= " "
+					.post-meta-item
+						.post-author
+							span by
+							=" "
+							a(href= meta.authorLink)= meta.author
+			.post-meta-item
+				.post-date= meta.date
+		h3.post-title: a(href= data.link)= data.title
+		p.post-exeption= data.exeption
+
+//- Post boxed
+//- {imageName, title, link, exeption, date, tag.title, tag.link, author, authorLink}
+mixin post-boxed(data, meta, tags)
+	article.post-boxed
+		.post-meta
+			.post-meta-item
+				.post-author
+					span by
+					=" "
+					a(href= meta.authorLink)= meta.author
+			.post-meta-item
+				.post-date= meta.date
+		a.media-wrapper(href=data.link)
+			+jpg(data.imageName)
+		.post-body
+			ul.list-tags
+				li
+					each tag, i in tags
+						a(href= tag.href).tag-1= tag.title
+						- if (i !== (tags.length - 1))
+							= " "
+			h6.post-title: a(href= data.link)= data.title
+			p.post-exeption= data.exeption
+
+//- Post classic 2
+//- {imageName, title, link, exeption, date, tag.title, tag.link, author, authorLink}
+mixin post-classic-2(data, meta, tags)
+	article.post-classic-2
+		a.media-wrapper(href=data.link)
+			+jpg(data.imageName)
+		.post-meta-main
+			.post-meta-item
+				ul.list-tags
+					li
+						each tag, i in tags
+							a(href= tag.href).tag= tag.title
+							- if (i !== (tags.length - 1))
+								= " "
+			.post-meta-item
+				.post-author
+					span by
+					=" "
+					a(href= meta.authorLink)= meta.author
+		h6.post-title: a(href= data.link)= data.title
+		p.post-exeption= data.exeption
+		.post-date= meta.date
+
+//- Post modern
+//- {imageName, title, link, exeption, date, tag.title, tag.link, author, authorLink}
+mixin post-modern(data, meta, tags)
+	article.post-modern
+		.media-wrapper
+			a(href=data.link)
+				+jpg(data.imageName)
+			ul.list-tags
+				li
+					each tag, i in tags
+						a(href= tag.href).tag= tag.title
+						- if (i !== (tags.length - 1))
+							= " "
+		.post-body
+			.post-author
+				a(href= meta.authorLink).img-author
+					+jpg(meta.authorImage)
+				.post-author-name= meta.author
+			h5.post-title: a(href= data.link)= data.title
+			p.post-exeption= data.exeption
+			.post-date= meta.date
+
+//- Timeline item
+//- {imageName, title, link, exeption, date}
+mixin timeline(data, meta, tags)
+	.timeline
+		.date= data.date
+		.line
+		a.media-item(href=data.link)
+			+jpg(data.imageName)
+		h6.title= data.title
+		p.exeption= data.exeption
+
+//- Svg gradient block
+mixin svg-gradient()
+	// gradient blocks
+	// gradient primary
+	svg.svg-hidden
+		// gradient
+		lineargradient#linear-gradient-primary(x1="50%" y1="30%" x2="50%" y2="100%")
+			stop(offset='0%', stop-color='#a371f7')
+			stop(offset='100%', stop-color='#fff')
+	// gradient secondary
+	svg.svg-hidden
+		// gradient
+		lineargradient#linear-gradient-secondary(x1="50%" y1="30%" x2="50%" y2="100%")
+			stop(offset='0%', stop-color='#a371f7')
+			stop(offset='100%', stop-color='#130c37')
+
+//- Video box
+//- {background, link}
+mixin video-box(data)
+	a.mfp-link.video-cover(style="background-image: url('images/" + data.background + "');" data-lightbox="iframe" href=data.link)
+		span.icon.mdi.mdi-play-circle-outline

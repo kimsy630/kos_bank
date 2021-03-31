@@ -1,0 +1,143 @@
+/**
+*
+* RD Navbar Classic
+* =====================================================
+*/
+
+.rd-navbar-classic {
+	// Static
+	&.rd-navbar-static {
+		background: $primary-dark;
+		border-bottom: 1px solid transparent;
+
+		// RD Nvabar info
+		.rd-navbar-info {
+			.icon {
+				color: $rd-navbar-color-secondary;
+			}
+
+			a {
+				color: $rd-navbar-nav-color;
+				&:hover { color: $rd-navbar-color-secondary; }
+			}
+		}
+
+		// RD Navbar Nav
+		//
+		// RD Nav item 1-st level
+		.rd-nav-item {
+			&.focus,
+			&.opened {
+				.rd-nav-link {
+					color: $rd-navbar-color-secondary;
+				}
+
+				> .rd-navbar-submenu-toggle {
+					color: $rd-navbar-color-secondary;
+				}
+			}
+
+			&.active {
+				.rd-nav-link {
+					color: $rd-navbar-color-secondary;
+				}
+
+				> .rd-navbar-submenu-toggle {
+					color: $rd-navbar-color-secondary;
+				}
+			}
+
+			> .rd-navbar-submenu-toggle {
+				&:hover {
+					color: $rd-navbar-color-secondary;
+				}
+			}
+		}
+
+		.rd-nav-item + .rd-nav-item {
+			margin-left: 20px;
+		}
+
+		// Rd Nav Link 1-st level
+		.rd-nav-link {
+			&:hover {
+				color: $rd-navbar-color-secondary;
+			}
+		}
+
+		.rd-navbar-aside-outer,
+		.rd-navbar-main-outer {
+			padding-left: $grid-gutter-width / 2;
+			padding-right: $grid-gutter-width / 2;
+		}
+
+		.rd-navbar-aside,
+		.rd-navbar-main {
+			max-width: $rd-navbar-static-width;
+			margin-left: auto;
+			margin-right: auto;
+		}
+
+		.rd-navbar-aside {
+			padding: 10px 0;
+		}
+
+		.rd-navbar-main {
+			position: relative;
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			padding: 20px 0;
+		}
+
+		// Extra large ≥1200px
+		@include media-breakpoint-up(xl) {
+			.rd-nav-item + .rd-nav-item {
+				margin-left: 51px;
+			}
+			.rd-navbar-main {
+				padding: 28px 0;
+			}
+		}
+
+		.rd-navbar-search-toggle {
+			font-size: 18px;
+			color: $rd-navbar-nav-color;
+
+			&:hover {
+				color: $rd-navbar-color-secondary;
+			}
+		}
+
+		// RD Navbar Brand
+		.rd-navbar-panel {
+			display: none;
+		}
+
+		.rd-navbar-main-element {
+			display: flex;
+			align-items: center;
+		}
+
+		&.rd-navbar--is-stuck,
+		&.rd-navbar--is-clone {
+			.rd-navbar-aside-outer {
+				display: none;
+			}
+
+			.rd-navbar-main {
+				padding: 17px 0;
+			}
+
+			.rd-navbar-nav-item {
+				> .rd-navbar-submenu {
+					margin-top: 17px;
+				}
+			}
+		}
+	}
+
+	// Fixed 
+	&.rd-navbar-fixed {
+	}
+}

@@ -1,0 +1,72 @@
+/*
+*
+* Video
+* --------------------------------------------------
+*/
+
+.video-cover {
+  position: relative;
+  display: flex;
+  padding-bottom: 53%;
+  max-width: 720px;
+  overflow: hidden;
+
+  background-position: center;
+  background-size: cover;
+  border-radius: $border-radius-sm;
+
+  &:before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba($primary-dark, 0.4);
+    transition: .3s;
+  }
+
+  .icon {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(1);
+    font-size: 100px;
+    line-height: 1;
+    color: $white;
+    will-change: transform;
+    transition: .2s transform;
+
+    &:hover { transform: translate(-50%, -50%) scale(1.2); }
+  }
+
+  &:hover {
+    &:before { background: rgba($primary-dark, .5); }
+  }
+
+  // Modifier class for 16:9 aspect ratio
+  &-16by9 {
+    padding-bottom: 56.25%;
+  }
+
+  // Modifier class for 4:3 aspect ratio
+  &-4by3 {
+    padding-bottom: 75%;
+  }
+}
+
+// Video frame
+.video-frame {
+  position: relative;
+  padding-bottom: 60%;
+
+  .video-item {
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    height: 100%;
+    width: 100%;
+    border: 0;
+  }
+}

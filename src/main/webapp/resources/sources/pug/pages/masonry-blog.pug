@@ -1,0 +1,128 @@
+extends  ../_skeleton
+
+//- Includes
+include ../components/_ui-pagination
+
+block variables
+	- var activeCategory = 'pages'
+	- var pageName = 'Masonry blog'
+
+block page 
+	// Page Header
+	include ../sections/_header-transparent
+
+	+breadcrumbs({
+		category: activeCategory,
+		path: [pageName]
+	})
+
+	// Overview
+	section.section.section-lg
+		.container
+			.row.row-40
+				.col-md-4
+					+post-classic-2(
+					{
+						imageName: "masonry-blog-1-370x240",
+						title: "7 Banking Services That Can Save Retirees Money",
+						link: "single-post.html",
+						exeption: "Lorem ipsum dolor sit amet, eius qualisque torquatos per ne, inani scriptorem ad duo. No magna definitionem eam, vix option intellegebat ea. Scaevola voluptatibus an mea, eum."
+					},
+					{
+						date: "2 days ago",
+						author: "Martha Ryan",
+						authorLink: "single-post.html"
+					},
+
+					[{"title": "News", "href": "single-post.html"}]
+					)
+
+
+					+post-classic-2(
+					{
+						imageName: "masonry-blog-2-370x240",
+						title: "Wall Street Analysts Are Nailing It This Year",
+						link: "single-post.html",
+						exeption: "Lorem ipsum dolor sit amet, eius qualisque torquatos per ne, inani scriptorem ad duo. No magna definitionem eam, vix option intellegebat ea. Scaevola voluptatibus an mea, eum."
+					},
+					{
+						date: "2 days ago",
+						author: "Martha Ryan",
+						authorLink: "single-post.html"
+					},
+
+					[{"title": "News", "href": "single-post.html"}]
+					)
+
+				.col-md-4
+					+post-classic-2(
+					{
+						imageName: "masonry-blog-3-370x240",
+						title: "Stocks Could Surge Another 10% Between Now And 2018",
+						link: "single-post.html",
+						exeption: "Lorem ipsum dolor sit amet, eius qualisque torquatos per ne, inani scriptorem ad duo. No magna definitionem eam, vix option intellegebat ea. Scaevola voluptatibus an mea, eum tamquam ocurreret philosophia at, nam ad numquam aliquid. Pro impetus tibique expetendis."
+					},
+					{
+						date: "2 days ago",
+						author: "Lawrence Kelly",
+						authorLink: "single-post.html"
+					},
+
+					[{"title": "News", "href": "single-post.html"}]
+					)
+
+
+					+post-classic-2(
+					{
+						imageName: "masonry-blog-4-370x240",
+						title: "US Senators Renew Effort to Outlaw Shell Companies",
+						link: "single-post.html",
+						exeption: "Lorem ipsum dolor sit amet, eius qualisque torquatos per ne, inani scriptorem ad duo. No magna definitionem eam, vix option intellegebat ea. Scaevola voluptatibus an mea, eum tamquam ocurreret philosophia at, nam ad numquam aliquid. Pro impetus tibique expetendis."
+					},
+					{
+						date: "2 days ago",
+						author: "Lawrence Kelly",
+						authorLink: "single-post.html"
+					},
+
+					[{"title": "News", "href": "single-post.html"}]
+					)
+
+				.col-md-4
+					+post-classic-2(
+					{
+						imageName: "masonry-blog-5-370x240",
+						title: "Cash Faces a New Challenger in Zelle, a Mobile Banking Service",
+						link: "single-post.html",
+						exeption: "Lorem ipsum dolor sit amet, eius qualisque torquatos per ne, inani scriptorem ad duo. No magna definitionem eam, vix option intellegebat ea. Scaevola voluptatibus an mea, eum tamquam."
+					},
+					{
+						date: "2 days ago",
+						author: "Theresa Simpson",
+						authorLink: "single-post.html"
+					},
+
+					[{"title": "News", "href": "single-post.html"}]
+					)
+
+
+					+post-classic-2(
+					{
+						imageName: "masonry-blog-6-370x240",
+						title: "Bankers Say Election will not Affect Brexit Plans",
+						link: "single-post.html",
+						exeption: "Lorem ipsum dolor sit amet, eius qualisque torquatos per ne, inani scriptorem ad duo. No magna definitionem eam, vix option intellegebat ea. Scaevola voluptatibus an mea, eum tamquam."
+					},
+					{
+						date: "2 days ago",
+						author: "Theresa Simpson",
+						authorLink: "single-post.html"
+					},
+
+					[{"title": "News", "href": "single-post.html"}]
+					)
+
+			+pagination-bootstrap("", 1, 4)
+
+	// Page Footer
+	include ../sections/_footer-1

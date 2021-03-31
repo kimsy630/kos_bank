@@ -1,0 +1,92 @@
+//
+// One screen page
+// --------------------------------------------------
+.one-screen-page {
+  text-align: center;
+  display: flex;
+
+  &-inner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    min-height: 100vh;
+    width: 100%;
+
+    > * {
+      width: 100%;
+      // fix for IE
+      flex-shrink: 0;
+    }
+  }
+
+  .page-header,
+  .page-content,
+  .page-footer { background-color: transparent; }
+
+  .page-header { padding: calc(1em + 4vh) 0 calc(1em + 2vh); }
+  .page-content { padding: calc(1em + 4vh) 0; }
+  .page-footer { padding: calc(1em + 2vh) 0 calc(1em + 4vh); }
+
+  .group-buttons {
+    @include group(30px, 30px);
+  }
+
+  .rd-navbar-brand { display: block; }
+
+  * + .page-subtitle { margin-top: 6px; }
+  * + .page-description { margin-top: 12px; }
+  * + .button { margin-top: 30px; }
+  * + .block-sm { margin-top: 30px; }
+
+  @include media-breakpoint-up(md) {
+    * + .page-subtitle { margin-top: 0; }
+    * + .page-description { margin-top: 18px; }
+    * + .button { margin-top: 40px; }
+    * + .block-sm { margin-top: 30px; }
+  }
+
+  @include media-breakpoint-up(xl) {
+    * + .page-description { margin-top: 20px; }
+    * + .button { margin-top: 52px; }
+    * + .block-sm { margin-top: 41px; }
+  }
+  @include media-breakpoint-up(xxl) {
+    * + .page-description { margin-top: 25px; }
+    * + .button { margin-top: 64px; }
+    * + .block-sm { margin-top: 50px; }
+    .countdown-wrap + .page-description { margin-top: 38px; }
+  }
+}
+
+
+.one-screen-page-box {
+  position: relative;
+  z-index: 1;
+
+  .page-title {
+    font-size: 100px;
+    font-weight: 700;
+    line-height: 1;
+    color: rgba($white, .1);
+  }
+
+  @include media-breakpoint-up(md) {
+    .page-title {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      z-index: -1;
+      font-size: 400px;
+      color: rgba($white, .05);
+      transform: translate(-50%, -50%);
+    }
+  }
+
+  @include media-breakpoint-up(xl) {
+    .page-title {
+      font-size: 490px;
+      line-height: .75;
+    }
+  }
+}

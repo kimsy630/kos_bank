@@ -1,0 +1,52 @@
+extends  ../_skeleton
+
+block variables
+	- var activeCategory = 'pages'
+	- var pageName = 'Buttons'
+
+block page 
+	// Page Header
+	include ../sections/_header-transparent
+
+	+breadcrumbs({
+		category: activeCategory,
+		path: [pageName]
+	})
+
+	// Button Sizes
+	section.section.section-lg.bg-default
+		.container
+			h2 Button Sizes
+			.group-xl.group-middle.buttons-group
+				.button.button-lg.button-primary Large Size
+				.button.button-primary Default Size
+				.button.button-sm.button-primary Small Size
+
+	// Button Shapes
+	section.section.section-lg.bg-default
+		.container
+			h2 Button Shapes
+			.group-xl.group-middle.buttons-group
+				.button.button-primary.button-circle Circle
+				.button.button-primary.button-round Round
+
+	// Buttons with Icons
+	section.section.section-lg.bg-default
+		.container
+			h2 Buttons with Icons
+			.group-xl.group-middle.buttons-group
+				.button.button-lg.button-icon.button-icon-left.button-primary
+					span.icon.mdi.mdi-credit-card
+					| Book a Card
+
+	// Buttons with Shadow
+	section.section.section-lg.bg-default
+		.container
+			h2 Buttons without Shadow
+			.group-xl.group-middle.buttons-group
+				.button.button-lg.button-primary.button-no-shadow Large size
+				.button.button-primary.button-no-shadow Default size
+				.button.button-sm.button-primary.button-no-shadow Small size
+
+	// Page Footer
+	include ../sections/_footer-1

@@ -1,0 +1,149 @@
+extends  ../_skeleton
+
+//- Includes
+block variables
+	- var activeCategory = 'pages'
+	- var pageName = 'Tables'
+
+block page
+	include ../sections/_header-transparent
+
+	+breadcrumbs({
+		category: activeCategory,
+		path: [pageName]
+	})
+
+	section.section.section-lg.bg-default
+		.container
+			h2 Hover Rows
+			.row.row-offset-1
+				.col-lg-10.col-xxl-9
+					.table-custom-responsive
+						table.table-custom.table-custom-secondary.table-custom-hovered
+							thead
+								tr
+									th Column 1
+									th Column 2
+									th Column 3
+									th Column 4
+
+							tbody
+								tr
+									td Item #1
+									td Description
+									td Subtotal
+									td $3.00
+								tr
+									td Item #2
+									td Description
+									td Discount
+									td $3.00
+								tr
+									td Item #3
+									td Description
+									td Shipping
+									td $3.00
+
+								tr
+									td Item #4
+									td Description
+									td Tax
+									td $4.00
+
+							tfoot
+								tr
+									td All Items
+									td Description
+									td Your Total
+									td $13.00
+
+	section.section.section-lg.bg-default
+		.container
+			h2 Color Header
+			.row.row-offset-1
+				.col-lg-10.col-xxl-9
+					.table-custom-responsive
+						table.table-custom.table-custom-striped.table-custom-primary
+							thead
+								tr
+									th Column 1
+									th Column 2
+									th Column 3
+									th Column 4
+
+							tbody
+								tr
+									td Item #1
+									td Description
+									td Subtotal
+									td $3.00
+								tr
+									td Item #2
+									td Description
+									td Discount
+									td $3.00
+								tr
+									td Item #3
+									td Description
+									td Shipping
+									td $3.00
+
+								tr
+									td Item #4
+									td Description
+									td Tax
+									td $4.00
+
+							tfoot
+								tr
+									td All Items
+									td Description
+									td Your Total
+									td $13.00
+
+	section.section.section-lg.bg-default
+		.container
+			h2 Bordered Table
+			.row.row-offset-1
+				.col-lg-10.col-xxl-9
+					.table-custom-responsive
+						table.table-custom.table-custom-bordered
+							thead
+								tr
+									th Column 1
+									th Column 2
+									th Column 3
+									th Column 4
+
+							tbody
+								tr
+									td Item #1
+									td Description
+									td Subtotal
+									td $3.00
+								tr
+									td Item #2
+									td Description
+									td Discount
+									td $3.00
+								tr
+									td Item #3
+									td Description
+									td Shipping
+									td $3.00
+
+								tr
+									td Item #4
+									td Description
+									td Tax
+									td $4.00
+
+							tfoot
+								tr
+									td All Items
+									td Description
+									td Your Total
+									td $13.00
+
+	// Page Footer
+	include ../sections/_footer-1

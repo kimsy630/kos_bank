@@ -1,0 +1,30 @@
+mixin inline-subscribe-form(obj)
+	-  var uniquePrefix = subscribeFormCounter
+	if (obj.customUnique)
+		- var uniquePrefix = obj.customUnique
+	else
+		- subscribeFormCounter = subscribeFormCounter + 1
+
+
+	// RD Mailform
+	form.rd-form.rd-mailform.rd-form-inline(class=obj.formClass, data-form-output="form-output-global", data-form-type='subscribe', method='post', action='bat/rd-mailform.php')
+		.form-wrap
+			input.form-input(id="subscribe-form-" + uniquePrefix + "-email" type="email" name="email" data-constraints="@Email @Required")
+			label.form-label(for="subscribe-form-" + uniquePrefix + "-email") Your E-mail
+		.form-button
+			button.button.button-primary.button-round(type="submit") Subscribe
+
+mixin inline-subscribe-form-2(obj)
+	-  var uniquePrefix = subscribeFormCounter
+	if (obj.customUnique)
+		- var uniquePrefix = obj.customUnique
+	else
+		- subscribeFormCounter = subscribeFormCounter + 1
+
+
+	// RD Mailform
+	form.rd-form.rd-mailform.rd-form-inline-2(class=obj.formClass, data-form-output="form-output-global", data-form-type='subscribe', method='post', action='bat/rd-mailform.php')
+		.form-wrap
+			input.form-input(id="subscribe-form-" + uniquePrefix + "-email" type="email" name="email" data-constraints="@Email @Required")
+			label.form-label(for="subscribe-form-" + uniquePrefix + "-email") Enter your e-mail
+		button.form-icon-button.mdi.mdi-email-outline(type="submit")

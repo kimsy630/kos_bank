@@ -1,0 +1,32 @@
+extends  ../_skeleton
+
+//- Includes
+include ../components/_ui-inline-subscribe-form
+
+block variables
+	- var activeCategory = 'pages'
+	- var pageName = 'Coming soon'
+
+block page 
+	// Page content
+	section.section.one-screen-page.bg-primary-dark
+		.one-screen-page-inner
+			.page-header: .container
+				// Brand
+				+logo
+
+			.page-content
+				.container
+					.row.justify-content-center
+						.col-md-10.col-xl-8
+							.one-screen-page-box
+								h1.page-subtitle We're Getting Ready to Launch In
+								.countdown-wrap.block-centered
+									// TimeCircles
+									.DateCountdown(data-date='2018-10-01 00:00:00' data-width='0.015' data-bg-width='0.5' data-bg='#fff' data-color='#5428a4')
+								p.heading-6.page-description Our website is under construction, we are working very hard to give you the best experience on our new web site. Stay ready, we`re launching soon.
+								.block-sm
+									+inline-subscribe-form-2({})
+
+			.page-footer: .container
+				+rights

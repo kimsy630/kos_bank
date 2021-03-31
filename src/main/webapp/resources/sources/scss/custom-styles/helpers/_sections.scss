@@ -1,0 +1,248 @@
+/*
+*
+* Sections
+*/
+
+//
+// Section Spacing
+// 
+.section-xs {
+	padding: 25px 0;
+}
+
+.section-sm,
+.section-md,
+.section-lg,
+.section-xl {
+	padding: 50px 0;
+}
+
+// Section collapse
+.section-collapse + .section-collapse {
+	padding-top: 0;
+}
+
+.section-collapse:last-child {
+	padding-bottom: 0;
+}
+
+.section-bg-custom {
+	padding-bottom: 320px;
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: center bottom;
+}
+
+// Section with bottom zero padding
+html [class*='section-'].section-bottom-0 {
+	padding-bottom: 0;
+}
+
+@include media-breakpoint-down(md) {
+	section.section-xs,
+	section.section-sm,
+	section.section-md,
+	section.section-lg,
+	section.section-xl,
+	section.section-xxl {
+		&:first-of-type {
+			padding-top: 40px;
+		}
+	}
+}
+
+@include media-breakpoint-up(md) {
+	.section-xs { padding: 48px 0; }
+	.section-sm { padding: 60px 0; }
+	.section-md { padding: 60px 0; }
+	.section-lg { padding: 60px 0; }
+	.section-bg-custom { padding-bottom: 320px; }
+}
+
+// Large ≥992px
+@include media-breakpoint-up(lg) {
+
+}
+
+@include media-breakpoint-up(xl) {
+	.section-sm { padding: 64px 0; }
+	.section-sm-1 { padding: 73px 0; }
+	.section-sm-2 { padding: 80px 0; }
+	.section-md { padding: 80px 0 90px; }
+	.section-lg { padding: 100px 0; }
+	.section-xl { padding: 100px 0; }
+	.section-bg-custom { padding-bottom: 430px; }
+}
+
+@include media-breakpoint-up(xxl) {
+	.section-md { padding: 100px 0 110px; }
+	.section-lg { padding: 123px 0; }
+	.section-xl { padding: 173px 0; }
+	.section-bg-custom { padding-bottom: 23%; }
+}
+
+//
+// Custom sections
+//
+
+// Custom image section
+.custom-image-section {
+	position: relative;
+
+	.relative-container {
+		position: relative;
+	}
+
+	.image-item {
+		display: none;
+	}
+
+	// Large ≥992px
+	@include media-breakpoint-up(md) {
+		.image-item {
+			position: absolute;
+			bottom: calc(100% + 20px);
+			right: 0;
+			display: block;
+			max-width: 40%;
+		}
+	}
+
+	// Extra large ≥1200px
+	@include media-breakpoint-up(xl) {
+		.image-item {
+			bottom: calc(100% + 70px);
+		}
+	}
+}
+
+// Section single
+.section-single {
+	display: flex;
+	text-align: center;
+
+	p {
+		margin-left: auto;
+		margin-right: auto;
+	}
+
+	* + .rights {
+		margin-top: 35px;
+	}
+	* + .countdown-wrap {
+		margin-top: 35px;
+	}
+	.countdown-wrap + * {
+		margin-top: 35px;
+	}
+
+	@include media-breakpoint-up(lg) {
+		* + .rights {
+			margin-top: 60px;
+		}
+		.countdown-wrap + * {
+			margin-top: 35px;
+		}
+	}
+
+	.rd-mailform-wrap {
+		max-width: 670px;
+		margin-left: auto;
+		margin-right: auto;
+		text-align: center;
+	}
+
+	* + .rd-mailform-wrap {
+		margin-top: 20px;
+	}
+}
+
+.section-single-header {
+	padding: calc(1em + 3vh) 0 calc(1em + 2vh);
+}
+
+.section-single-main {
+	padding: calc(1em + 4vh) 0;
+}
+
+.section-single-footer {
+	padding: calc(1em + 2vh) 0 calc(1em + 3vh);
+}
+
+.section-single-inner {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: space-between;
+	width: 100%;
+	min-height: 100vh;
+
+	> * {
+		width: 100%;
+	}
+}
+
+@supports (display: grid) {
+	.section-single-inner {
+		display: grid;
+		justify-items: center;
+		align-content: space-between;
+		grid-template-columns: 1fr;
+	}
+}
+
+.section-negative {
+	background: $primary-dark;
+
+	.section-negative-inner {
+		position: relative;
+		z-index: 1;
+		margin-top: -10px;
+	}
+
+	// Medium ≥768px
+	@include media-breakpoint-up(md) {
+		.section-negative-inner {
+			margin-top: -56px;
+		}
+	}
+}
+
+/*
+* Relative section (image)
+*/
+.section-image-relative {
+	position: relative;
+
+	.img-custom { display: none; }
+
+	// Extra large ≥1200px
+	@include media-breakpoint-up(xl) {
+		.img-custom {
+			display: block;
+			position: absolute;
+			top: 50%;
+			right: 0;
+			max-width: 50%;
+			height: auto;
+			transform: translateY(-50%);
+		}
+	}
+}
+
+.container-custom {
+	padding-left: 15px;
+	padding-right: 15px;
+
+	// Medium ≥768px
+	@include media-breakpoint-up(md) {
+		padding-left: 30px;
+		padding-right: 30px;
+	}
+
+	// Extra large ≥1200px
+	@include media-breakpoint-up(xl) {
+		padding-left: 60px;
+		padding-right: 60px;
+	}
+}

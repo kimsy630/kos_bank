@@ -1,0 +1,108 @@
+extends  ../_skeleton
+
+//- Includes
+include ../components/_ui-inline-subscribe-form
+
+block variables
+	- var activeCategory = 'pages'
+	- var pageName = 'Masonry Gallery'
+
+block page 
+	// Page Header
+	include ../sections/_header-transparent
+
+	+breadcrumbs({
+		category: activeCategory,
+		path: [pageName]
+	})
+
+	// Your Career Starts Here
+	section.section.section-lg.bg-gray-100
+		.container
+			.row
+				// Isotope Filters
+				.col-lg-12
+					.isotope-filters.isotope-filters-horizontal.isotope-filters-line
+						button.isotope-filters-toggle.button.button-sm.button-primary(data-custom-toggle='#isotope-filters', data-custom-toggle-disable-on-blur="true") Filter
+							span.caret
+						ul.isotope-filters-list#isotope-filters
+							li
+								a.active(data-isotope-filter='*', data-isotope-group='gallery', href='#') All Types
+							li
+								a(data-isotope-filter='Category 1', data-isotope-group='gallery', href='#') Type 1
+							li
+								a(data-isotope-filter='Category 2', data-isotope-group='gallery', href='#') Type 2
+							li
+								a(data-isotope-filter='Category 3', data-isotope-group='gallery', href='#') Type 3
+
+				// Isotope Content
+				.col-lg-12.text-left
+					.isotope(data-isotope-layout='masonry', data-isotope-group='gallery', data-lightgallery="group")
+						.row
+							.col-sm-6.col-lg-4.isotope-item(data-filter='*')
+								+gallery-item({
+									image: "masonry-gallery-1-370x526",
+									imageOriginal: "gallery-original-1-1200x600",
+									title: "Photo #1",
+									exeption: "Dot Bank offers its clients high-quality banking services all over the world."
+								})
+							.col-sm-6.col-lg-4.isotope-item(data-filter='Category 3')
+								+gallery-item({
+									image: "masonry-gallery-2-370x248",
+									imageOriginal: "gallery-original-2-1200x600",
+									title: "Photo #2",
+									exeption: "Dot Bank offers its clients high-quality banking services all over the world."
+								})
+							.col-sm-6.col-lg-4.isotope-item(data-filter='Category 3')
+								+gallery-item({
+									image: "masonry-gallery-3-370x248",
+									imageOriginal: "gallery-original-3-1200x600",
+									title: "Photo #3",
+									exeption: "Dot Bank offers its clients high-quality banking services all over the world."
+								})
+							.col-sm-6.col-lg-4.isotope-item(data-filter='Category 3')
+								+gallery-item({
+									image: "masonry-gallery-4-370x526",
+									imageOriginal: "gallery-original-5-1200x600",
+									title: "Photo #4",
+									exeption: "Dot Bank offers its clients high-quality banking services all over the world."
+								})
+							.col-sm-6.col-lg-4.isotope-item(data-filter='Category 2')
+								+gallery-item({
+									image: "masonry-gallery-5-370x248",
+									imageOriginal: "gallery-original-6-1200x600",
+									title: "Photo #5",
+									exeption: "Dot Bank offers its clients high-quality banking services all over the world."
+								})
+							.col-sm-6.col-lg-4.isotope-item(data-filter='Category 2')
+								+gallery-item({
+									image: "masonry-gallery-6-370x248",
+									imageOriginal: "gallery-original-4-1200x600",
+									title: "Photo #6",
+									exeption: "Dot Bank offers its clients high-quality banking services all over the world."
+								})
+							.col-sm-6.col-lg-4.isotope-item(data-filter='Category 1')
+								+gallery-item({
+									image: "masonry-gallery-7-370x526",
+									imageOriginal: "gallery-original-9-1200x600",
+									title: "Photo #7",
+									exeption: "Dot Bank offers its clients high-quality banking services all over the world."
+								})
+							.col-sm-6.col-lg-4.isotope-item(data-filter='Category 1')
+								+gallery-item({
+									image: "masonry-gallery-8-370x248",
+									imageOriginal: "gallery-original-7-1200x600",
+									title: "Photo #9",
+									exeption: "Dot Bank offers its clients high-quality banking services all over the world."
+								})
+							.col-sm-6.col-lg-4.isotope-item(data-filter='Category 1')
+								+gallery-item({
+									image: "masonry-gallery-9-370x248",
+									imageOriginal: "gallery-original-8-1200x600",
+									title: "Photo #8",
+									exeption: "Dot Bank offers its clients high-quality banking services all over the world."
+								})
+
+
+	// Page Footer
+	include ../sections/_footer-1

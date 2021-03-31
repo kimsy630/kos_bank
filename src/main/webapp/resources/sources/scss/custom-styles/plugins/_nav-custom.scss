@@ -1,0 +1,307 @@
+//
+// Nav custom
+// 
+
+// 
+// Table of Contents:
+// 
+// Tabs Line 
+// Tabs Corporate
+//
+
+// Corporate style
+$tabs-corporate-color: $body-color;
+$tabs-corporate-background: transparent;
+$tabs-corporate-active-color: $primary;
+$tabs-corporate-active-background: $primary;
+$tabs-corporate-border: #e5e7e9;
+
+// Base styles
+.tabs-custom {
+
+	.nav-tabs {
+		font-size: 0;
+		line-height: 0;
+		word-spacing: 0;
+		border: 0;
+
+		&:before,
+		&:after {
+			display: none;
+		}
+
+		&-inline {
+			display: inline-flex;
+		}
+	}
+
+	.nav-item {
+		float: none;
+		border: 0;
+		cursor: pointer;
+		transition: .33s all ease;
+	}
+
+	.nav-link {
+		margin: 0;
+		border-radius: 0;
+		border: 0;
+	}
+
+	.nav-link.active {
+		cursor: default;
+	}
+}
+
+.tab-content > .tab-pane {
+	display: block;
+	visibility: hidden;
+	height: 0;
+	overflow: hidden;
+}
+
+.tab-content > .active {
+	visibility: visible;
+	height: auto;
+	overflow: visible;
+}
+
+// Offsets
+* + .tabs-horizontal.tabs-corporate {
+	margin-top: 25px;
+}
+
+* + .tabs-vertical.tabs-corporate {
+	margin-top: 40px;
+}
+
+@include media-breakpoint-up(md) {
+	* + .tabs-vertical.tabs-corporate {
+		margin-top: 60px;
+	}
+}
+
+@include media-breakpoint-up(xl) {
+	* + .tabs-vertical.tabs-corporate {
+		margin-top: 80px;
+	}
+}
+
+// Tabs line
+.tabs-line {
+	.nav-tabs {
+		position: relative;
+	}
+
+	.nav-link {
+		font-size: $font-size-base;
+		font-weight: inherit;
+		line-height: $line-height-base;
+		text-align: center;
+		vertical-align: middle;
+	}
+
+	* + .tab-content {
+		margin-top: 20px;
+	}
+
+	@include media-breakpoint-down(md) {
+		.nav-tabs {
+			max-width: 100%;
+			border-bottom: 1px solid $tabs-corporate-border;
+		}
+
+		.nav-item {
+			margin-bottom: -1px;
+		}
+
+		.nav-link {
+			padding: 7px 10px;
+			color: $tabs-corporate-color;
+			background: $tabs-corporate-background;
+			border-bottom: 1px solid $tabs-corporate-border;
+		}
+
+		.nav-link:hover,
+		.nav-link.active {
+			color: $tabs-corporate-active-color;
+			background: $tabs-corporate-background;
+			border-color: $primary;
+		}
+	}
+}
+
+.bg-primary-dark {
+	.tabs-horizontal.tabs-line {
+		.nav-tabs { border-color: rgba($gray-100, .3); }
+
+		.nav-link {
+			color: $gray-600;
+			border-color: transparent;
+
+			&:after { background: $secondary; }
+
+			&:hover,
+			&.active {
+				color: $secondary;
+			}
+		}
+	}
+}
+
+@include media-breakpoint-up(md) {
+	//
+	// Horizontal tabs
+	// 
+	.tabs-horizontal {
+		&.tabs-line {
+			.nav-tabs {
+				border: 0;
+				border-bottom: 1px solid $gray-200;
+			}
+
+			.nav-item {
+				display: inline-block;
+
+				&:not(:last-child) {
+					margin-right: 28px;
+				}
+			}
+
+			.nav-link {
+				position: relative;
+				padding: 0 0 7px 0;
+				background-color: transparent;
+				color: $gray-600;
+				border: 0;
+
+				&::after {
+					content: '';
+					position: absolute;
+					bottom: 0;
+					left: 0;
+					height: 1px;
+					width: 0;
+					background: $primary;
+					transition: .22s ease;
+				}
+			}
+
+			.nav-link.active,
+			.nav-link:hover {
+				color: $primary;
+			}
+
+			.nav-link.active {
+				&::after {
+					width: 100%;
+				}
+			}
+
+			* + .tab-content {
+				margin-top: 25px;
+			}
+		}
+	}
+
+	// 
+	// Vertical tabs
+	// 
+	.tabs-vertical {
+		display: flex;
+		align-items: stretch;
+
+		.nav-tabs {
+			display: flex;
+			flex-direction: column;
+			align-items: stretch;
+			flex-shrink: 0;
+			max-width: 50%;
+			min-width: 100px;
+		}
+
+		.nav-item {
+			border: 0;
+			width: 100%;
+			text-align: left;
+		}
+
+		.tab-content {
+			flex-grow: 1;
+		}
+
+		&.tabs-line {
+			.nav-tabs {
+				border: 0;
+				border-right: 1px solid $gray-200;
+			}
+
+			.nav-item {
+				display: block;
+
+				&:not(:last-child) {
+					margin-bottom: 16px;
+				}
+			}
+
+			.nav-link {
+				position: relative;
+				padding: 0 20px 0 0;
+				background-color: transparent;
+				color: $gray-600;
+				border: 0;
+
+				&::after {
+					content: '';
+					position: absolute;
+					bottom: 0;
+					right: -1px;
+					height: 0;
+					width: 1px;
+					background: $primary;
+					transition: .22s ease;
+				}
+			}
+
+			.nav-link.active,
+			.nav-link:hover {
+				color: $primary;
+			}
+
+			.nav-link.active {
+				&::after {
+					height: 100%;
+				}
+			}
+
+			.tab-content {
+				margin-top: 0;
+				margin-left: 25px;
+			}
+		}
+	}
+}
+
+@include media-breakpoint-up(lg) {
+	//
+	// Horizontal tabs
+	// 
+	.tabs-horizontal {
+
+		// Tabs Corporate
+		&.tabs-corporate {
+
+		}
+	}
+
+	// 
+	// Vertical tabs
+	// 
+	.tabs-vertical {
+
+		// Tabs corporate
+		&.tabs-corporate {
+
+		}
+	}
+}
