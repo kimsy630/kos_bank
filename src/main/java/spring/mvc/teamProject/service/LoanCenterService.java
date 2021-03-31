@@ -19,5 +19,6 @@ public interface LoanCenterService {
 	public void LoanPrincipalCheck(HttpServletRequest req,Model model); // 대출원금 조회
 	public void LoanPrincipalCheckIn(HttpServletRequest req,Model model); // 대출원금 예상(내부정보)
 	public void LoanApplication(HttpServletRequest req,Model model); // 신규대출 신청
+	public void LoanApplicationAction(HttpServletRequest req,Model model); // 신규대출 신청 실행
 	// ============================================================================
 }

@@ -7,6 +7,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import spring.mvc.teamProject.vo.AccountVO;
 import spring.mvc.teamProject.vo.LoansVO;
 import spring.mvc.teamProject.vo.Loans_productVO;
 
@@ -49,10 +50,36 @@ public class LoanCenterDAOImpl implements LoanCenterDAO {
 	}
 	
 	@Override
-	public Loans_productVO getLoanApplication(String d_name) {  // 신규대출 신청
+	public Loans_productVO getLoanApplication(String d_name) { // 신규대출 신청
 		Loans_productVO vo = sqlSession.selectOne("spring.mvc.teamProject.persistence.LoanCenterDAO.getLoanApplication", d_name);
 		return vo;
 	}
-	// ============================================================================
 	
+	@Override
+	public List<AccountVO> getCheckingaccount(String id) { // 신규대출 신청(입출금 계좌)
+		List<AccountVO> list = sqlSession.selectList("spring.mvc.teamProject.persistence.LoanCenterDAO.getCheckingaccount", id);
+		return list;
+	}
+	
+	@Override
+	public String getName(String id) { // 신규대출 신청(이름)
+		String name = sqlSession.selectOne("spring.mvc.teamProject.persistence.LoanCenterDAO.getName", id);
+		return name;
+	}
+	
+	@Override
+	public int insertAccount(AccountVO vo) { // 신규대출 신청 실행(계좌 생성)
+		int insertCnt = sqlSession.insert("spring.mvc.teamProject.persistence.LoanCenterDAO.insertAccount", vo);
+		return insertCnt;
+	}
+	
+	@Override
+	public int insertLoan(LoansVO vo) { // 신규대출 신청 실행(대출 생성)
+		int insertCnt = sqlSession.insert("spring.mvc.teamProject.persistence.LoanCenterDAO.insertLoan", vo);
+		return insertCnt;
+	}
+	// ============================================================================
+
+	
+
 }

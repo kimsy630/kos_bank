@@ -11,7 +11,7 @@
 </head>
 <body>
 	<button type="button" class="btn btn-outline-info" data-toggle="modal"
-		data-target="#pManual">은행여신거래기본 약관</button>
+		data-target="#pManual">KOS뱅크 약관안내</button>
 	<div class="modal fade" id="pManual" tabindex="-1" role="dialog"
 		aria-labelledby="myModalLabel">
 		<div class="modal-dialog modal-lg" role="document">
@@ -25,9 +25,14 @@
 					</button>
 				</div>
 					<div class="modal-body">
-						<img src="${path}doc/kosbank_manual-1.jpg" style="width:100%; height:100%;">
-						<img src="${path}doc/kosbank_manual-2.jpg" style="width:100%; height:100%;">
-						<img src="${path}doc/kosbank_manual-3.jpg" style="width:100%; height:100%;">
+						<img src="${path}doc/kosbank_terms-1.png" style="width:100%; height:100%;">
+						<img src="${path}doc/kosbank_terms-2.png" style="width:100%; height:100%;">
+						<img src="${path}doc/kosbank_terms-3.png" style="width:100%; height:100%;">
+						<img src="${path}doc/kosbank_terms-4.png" style="width:100%; height:100%;">
+						<img src="${path}doc/kosbank_terms-5.png" style="width:100%; height:100%;">
+						<img src="${path}doc/kosbank_terms-6.png" style="width:100%; height:100%;">
+						<img src="${path}doc/kosbank_terms-7.png" style="width:100%; height:100%;">
+						<img src="${path}doc/kosbank_terms-8.png" style="width:100%; height:100%;">
 					</div>
 				<div class="modal-footer">
 					<button type="button" class="btn btn-outline-info"

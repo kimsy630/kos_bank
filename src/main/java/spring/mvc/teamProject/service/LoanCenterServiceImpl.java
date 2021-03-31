@@ -5,6 +5,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
@@ -19,6 +20,7 @@ import org.springframework.ui.Model;
 
 
 import spring.mvc.teamProject.persistence.LoanCenterDAOImpl;
+import spring.mvc.teamProject.vo.AccountVO;
 import spring.mvc.teamProject.vo.LoansVO;
 import spring.mvc.teamProject.vo.Loans_productVO;
 
@@ -43,6 +45,7 @@ public class LoanCenterServiceImpl implements LoanCenterService {
 	public void LoanAccountDetail(HttpServletRequest req, Model model) { // 대출계좌 상세조회
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("account", req.getParameter("account"));
+		
 		LoansVO vo = dao.getLoanAccountDetail(map);
 		
 		model.addAttribute("vo", vo);
@@ -154,6 +157,33 @@ public class LoanCenterServiceImpl implements LoanCenterService {
 		List<LoansVO> list = dao.getLoanAccountList(id);
 		
 		model.addAttribute("list", list);
+		
+//		list 자동이체할거 가저온곳;
+//		//계좌이체 성공한 계좌?...   자동이체?
+//		List<String> account = new ArrayList<String>();
+//		List<String> 실패 = new ArrayList<String>();
+//		for(int i=0;i<list.size();i++) {
+//			이자계산 하고 만들어
+//			.
+//			 int updateCnt = dao.계좌이체(list.get(i));
+//
+//			보내기전에 돈있는지 보낼계좌?//실패하면 입금 안하기
+//			 보낸사람 받는사람 출금
+//			 받는사람 보낸사람 입금
+//			 33-09-0000001 <<관리자계좌
+//			 
+//			 if(updateCnt = 1) {
+//				 account.add(list.getAccount());
+//			 }else {
+//				 실패.add(list.getAccount());
+//			 }
+//		}
+//		
+//		for(int i=0;i<account.size();i++) {
+//			dao.성공한거 업데이트 +1  누액도 증가?  (account.get(i));
+//			dao.히스토리 인서트(뭔가 넣고..);
+//		}
+		
 	}
 	
 	@Override
@@ -177,16 +207,64 @@ public class LoanCenterServiceImpl implements LoanCenterService {
 			
 			vo.setD_tran_rate(d_tran_rate);
 		}
-		
 		model.addAttribute("vo", vo);
 	}
 	// ============================================================================
 
 	@Override
 	public void LoanApplication(HttpServletRequest req, Model model) { // 신규대출 신청
+		String id = (String)req.getSession().getAttribute("id");
 		String d_name = req.getParameter("d_name");
 		
-		Loans_productVO vo = dao.getLoanApplication(d_name);
+		Loans_productVO vo = dao.getLoanApplication(d_name); // 신규대출 신청
+		
+		List<AccountVO> list = dao.getCheckingaccount(id); // 신규대출 신청(입출금 계좌)
+		
+		String name = dao.getName(id); // 신규대출 신청(이름)
+		
 		model.addAttribute("vo", vo);
+		model.addAttribute("list", list);
+		model.addAttribute("name", name);
+	}
+
+	@Override
+	public void LoanApplicationAction(HttpServletRequest req, Model model) { // 신규대출 신청 실행
+		AccountVO vo = new AccountVO();
+		
+		vo.setId((String)req.getSession().getAttribute("id"));
+		vo.setAccountPW(Integer.parseInt(req.getParameter("accountPW")));
+		vo.setBalance(Integer.parseInt(req.getParameter("d_amount")));
+		vo.setAccountType(req.getParameter("accountType"));
+		vo.setAccountState("대기");
+		
+		int insertCnt = dao.insertAccount(vo); // 신규대출 신청 실행(계좌 생성)
+		System.out.println("계좌 생성 : " + insertCnt);
+		
+		LoansVO vo2 = new LoansVO();
+		
+		vo2.setD_name(req.getParameter("d_name"));
+		System.out.println("이름: "+vo2.getD_name());
+		vo2.setD_state(0);
+		vo2.setD_month(Integer.parseInt(req.getParameter("d_month")));
+		vo2.setD_repay(req.getParameter("d_repay"));
+		vo2.setD_rate(Double.parseDouble(req.getParameter("d_rate")));
+		vo2.setD_amount(Integer.parseInt(req.getParameter("d_amount")));
+		vo2.setD_balance(Integer.parseInt(req.getParameter("d_amount")));
+		vo2.setD_balance_rate(0); //없앨지 고민 좀 해보자★
+		vo2.setD_loan_balance(0);
+		vo2.setD_loan_rate(0);
+		vo2.setD_tran(0);
+		vo2.setD_tran_rate(0);
+		vo2.setD_next_rate(1);
+		vo2.setD_ERR(1.5);
+		vo2.setD_ERC(0);
+		vo2.setD_auto_account(req.getParameter("d_auto_account"));
+		vo2.setD_auto_date(Integer.parseInt(req.getParameter("d_auto_date")));
+		
+		int insertCnt2 = dao.insertLoan(vo2); // 신규대출 신청 실행(대출 생성)
+		System.out.println("대출 생성 : " + insertCnt2);
+		
+		model.addAttribute("insertCnt", insertCnt);
+		model.addAttribute("insertCnt2", insertCnt2);
 	}
 }

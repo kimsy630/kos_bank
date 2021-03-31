@@ -64,17 +64,6 @@ public class LoanCenterController {
 	}
 	
 	// 박서하
-	//신규대출 신청
-	@RequestMapping("/LoanApplication.cc")
-	public String LoanApplication(HttpServletRequest req,Model model) {
-		logger.info("url ==> /LoanApplication");
-		
-		loanservice.LoanApplication(req, model);
-		
-		return "LoanCenter/LoanApplication";
-	}
-	
-	// 박서하
 	//대출원금 조회
 	@RequestMapping("/LoanPrincipalCheck.cc")
 	public String LoanPrincipalCheck(HttpServletRequest req,Model model) {
@@ -133,6 +122,28 @@ public class LoanCenterController {
 	public String LoanRatePay(HttpServletRequest req,Model model) {
 		logger.info("url ==> /LoanRatePay");
 		return "LoanCenter/LoanRatePay";
+	}
+
+	// 박서하
+	//신규대출 신청
+	@RequestMapping("/LoanApplication.cc")
+	public String LoanApplication(HttpServletRequest req,Model model) {
+		logger.info("url ==> /LoanApplication");
+		
+		loanservice.LoanApplication(req, model);
+		
+		return "LoanCenter/LoanApplication";
+	}
+	
+	// 박서하
+	//신규대출 신청 실행
+	@RequestMapping("/LoanApplicationAction.cc")
+	public String LoanApplicationAction(HttpServletRequest req,Model model) {
+		logger.info("url ==> /LoanApplicationAction");
+		
+		loanservice.LoanApplicationAction(req, model);
+		
+		return "LoanCenter/LoanApplicationAction";
 	}
 	
 }

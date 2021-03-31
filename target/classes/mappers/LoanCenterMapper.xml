@@ -46,9 +46,33 @@
 	</select>
 	
 	<select id="getLoanApplication" resultType="spring.mvc.teamProject.vo.Loans_productVO"> <!-- 신규대출 신청 -->
-		SELECT d_min_date, d_max_date, d_interest_rate, d_min_price, d_max_price
+		SELECT d_name, d_min_date, d_max_date, d_interest_rate, d_min_price, d_max_price
 		 FROM Loans_product
 		 WHERE d_name = #{d_name}
 	</select>
+	
+	<select id="getName" resultType="String"> <!-- 신규대출 신청(이름) -->
+  		SELECT name
+  		 FROM Members m
+  		 WHERE id=#{id}
+  	</select>
+  	
+  	<select id="getCheckingaccount" resultType="spring.mvc.teamProject.vo.AccountVO"> <!-- 신규대출 신청(입출금 계좌) -->
+	  	SELECT *
+  		 FROM account_info
+    	 WHERE id=#{id} AND accountType='입출금' AND accountState ='정상'
+  	</select>
+  	
+  	<insert id="insertAccount" parameterType="spring.mvc.teamProject.vo.AccountVO">
+		INSERT INTO account_info(account, ID, accountPW, Balance, accountType, accountState)
+		 VALUES('33'||'-'||'04'||'-'||LPAD(SEQ_ACCOUNT.NEXTVAL, 6, 0), #{id}, #{accountPW}, #{balance}, #{accountType}, #{accountState}) <!-- mapper에선 전달값 balance 소문자로 적어야 함 -->
+	</insert>
+  	
+	<insert id="insertLoan" parameterType="spring.mvc.teamProject.vo.LoansVO"> <!-- 신규대출 신청 실행(대출 생성) -->
+		INSERT INTO Loans(d_Key, d_name, account, d_state, d_start_date, d_end_date, d_month, d_repay, d_rate, d_amount, d_balance, d_balance_rate, d_loan_balance, d_loan_rate, d_tran, d_tran_rate, d_next_rate, d_ERR, d_ERC, d_auto_account, d_auto_date)
+		 VALUES(SEQ_LOANS.NEXTVAL, #{d_name}, '33'||'-'||'04'||'-'||LPAD(SEQ_ACCOUNT.CURRVAL, 6, 0), #{d_state}, sysdate, add_months(sysdate, #{d_month}), #{d_month}, #{d_repay}, #{d_rate}, #{d_amount}, #{d_balance}, #{d_balance_rate}, #{d_loan_balance}, #{d_loan_rate}, #{d_tran}, #{d_tran_rate}, #{d_next_rate}, #{d_ERR}, #{d_ERC}, #{d_auto_account}, #{d_auto_date})
+	</insert>
+	
+	
 	<!-- ============================================================================ -->
 </mapper>
