@@ -9079,6 +9079,8 @@ html.rd-navbar-fixed-linked .page {
 .rd-navbar-transparent.rd-navbar-static .rd-navbar-main-outer {
 	padding-left: 15px;
 	padding-right: 15px;
+	background-color: #435ebe;
+	
 }
 
 .rd-navbar-transparent.rd-navbar-static .rd-navbar-aside,

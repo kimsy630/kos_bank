@@ -31,8 +31,16 @@ public interface InquiryTransferDAO {
 	public List<AccountTransferVO> StopSleepTable(String id);
 	//거래내역조회
 	public List<AccountVO> TransactionDetails(String id);
-	//거래내역조회 -ALL
+	//거래내역 cnt
+	public int get_transferCnt(Map<String,Object> map2);
+	//거래내역조회 
 	public List<AccountTransferVO> TransactionDetails_Table_ALL(Map<String,Object> map);
+	//거래내역(출금합계)
+	public Map<String,Object> outTran(Map<String,Object> map);
+	//거래내역(입금합계)
+	public Map<String,Object> inTran(Map<String,Object> map);
+	
+	
 		
 	// 내 계좌 이체내역
 	public int addMyLog(TransferVO transferVO);

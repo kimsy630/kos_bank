@@ -19,7 +19,7 @@
   </head>
 
      <script type="text/javascript">
-    function btnClick(){
+    function btnClick(pageNum){
 
 	      // _jsonInfo -> '컨트롤러'/basic5_next -> data -> <div id="json_result">에 결과를 뿌린다.
 	      $.ajax({
@@ -29,7 +29,7 @@
 	        	 view_AccountNum: $("#view_AccountNum").val(),
 	        	 start_date: $("#start_date").val(),
 	        	 end_date: $("#end_date").val(),
-	        	 View_Content: $('input[name="View_Content"]:checked').val()
+	        	 pageNum: pageNum
 	         },
 	         success: function(data) {
 	            $('#Tran_result').html(data);
@@ -111,14 +111,6 @@
 					          <input type="date" class="form-control" id="start_date"  style="width:150px; display: inline; text-align: center;"> ~
 					          <input type="date" class="form-control" id="end_date"  style="width:150px; display: inline; text-align: center;">
 	                      </td>
-	                    </tr>
-	                    <tr>
-	                   <td id="td_head1">조회내용</td>
-	                      <td id="td_body1">
-							<input type="radio" name="View_Content" value="All_List" checked>전체내역 &nbsp;
-							<input type="radio" name="View_Content" value="Deposit_List" >입금내역 &nbsp;
-							<input type="radio" name="View_Content" value="Withdrawal_List" >출금내역
-                     	</td>
 	                    </tr>
 	                    <tr>
 	                      <td  id="td_body1" colspan="2" style="text-align: center;">

@@ -90,5 +90,20 @@ public class InquiryTransferDAOImpl implements InquiryTransferDAO{
 	public int deposit(TransferVO transferVO) {
 		return sqlSession.update("spring.mvc.teamProject.persistence.InquiryTransferDAO.deposit", transferVO);
 	}
+	@Override
+	public int get_transferCnt(Map<String,Object> map2) {
+		InquiryTransferDAO dao = sqlSession.getMapper(InquiryTransferDAO.class);
+		return dao.get_transferCnt(map2);
+	}
+	@Override
+	public Map<String,Object> outTran(Map<String, Object> map) {
+		InquiryTransferDAO dao = sqlSession.getMapper(InquiryTransferDAO.class);
+		return dao.outTran(map);
+	}
+	@Override
+	public Map<String,Object> inTran(Map<String, Object> map) {
+		InquiryTransferDAO dao = sqlSession.getMapper(InquiryTransferDAO.class);
+		return dao.inTran(map);
+	}
 
 }

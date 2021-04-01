@@ -1,1 +1,126 @@
-실행에 필요한 쿼리추가
+<!DOCTYPE html>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+   pageEncoding="UTF-8"%>
+<%@ include file="../../common/setting.jsp"%>
+
+<head>
+
+<c:set var="ajaxPath" value="/univ/resources/ajax/"/> 
+<script src="${ajaxPath}jquery-3.5.1.min.js"></script>
+
+<script type="text/javascript">
+
+function moreList(pageNum) {
+   
+    var header = '${_csrf.headerName}';
+    var token = '${_csrf.token}';
+
+    if(token && header) {
+        $(document).ajaxSend(function(event, xhr, options) {
+            xhr.setRequestHeader(header, token);
+        });
+    }
+
+    
+   $.ajax({
+      url: '${path}employee/view_lecture_list_ajax?'&pageNum=' + pageNum,
+       type: 'POST',
+       data: 'text',
+       success: function(result) {
+          $('#searchResult').html(result);
+       },
+       error: function() {
+          alert('오류발생');
+       }
+   });
+   
+}
+
+</script>
+
+
+</head>
+
+
+<body>
+<br>
+<table class="table table-hover">
+   <thead>
+      <tr>
+         <th>강의코드</th>
+         <th>구분</th>
+         <th>강의명</th>
+         <th>학년</th>
+         <th>학기</th>
+         <th>이수학점</th>
+         <th>담당교수</th>
+         <th>최대인원수</th>
+         <th>강의상태</th>
+         <th></th>
+      </tr>
+   </thead>
+   <tbody>
+      <c:if test="${cnt > 0}">
+      <c:forEach var="dto" items="${dtos}">
+      <tr>
+         <th scope="row">${dto.l_no}</th>
+         
+         <c:choose>
+         <c:when test="${dto.l_finish_check == 1}"><td>교양선택</td></c:when>
+         <c:when test="${dto.l_finish_check == 2}"><td>전공선택</td></c:when>
+         <c:when test="${dto.l_finish_check == 3}"><td>전공필수</td></c:when>
+         <c:when test="${dto.l_finish_check == 4}"><td>교양필수</td></c:when>
+         </c:choose>
+         
+         <td>${dto.l_subject}</td>
+         <td>${dto.l_grade}</td>
+         <td>${dto.l_semester}</td>
+         <td>${dto.l_credit}</td>
+         <td>${dto.l_professor_name}</td>
+         <td>${dto.l_max_people}</td>
+         
+         <c:choose>
+         <c:when test="${dto.l_state == 0}"><td>수강신청</td></c:when>
+         <c:when test="${dto.l_state == 1}"><td>개강</td></c:when>
+         <c:when test="${dto.l_state == 2}"><td>학점입력기간</td></c:when>
+         <c:when test="${dto.l_state == 3}"><td>종강</td></c:when>
+         <c:when test="${dto.l_state == 4}"><td>수강신청기간종료</td></c:when>
+         </c:choose>
+         
+         <th><a class="btn btn-primary waves-effect waves-light" href="${path}employee/change_lecture_info?l_no=${dto.l_no}">수정</a></th>
+      </tr>
+      </c:forEach>
+      </c:if>
+   
+      <!-- 페이지 컨트롤 -->
+      <tr>
+         <th colspan="10">
+            <c:if test="${cnt >0}">
+            
+               <c:if test="${startPage > pageBlock}">
+                  <button class="btn btn-primary waves-effect waves-light" onclick="moreList(${startPage - pageBlock})">&#60;</button>
+               </c:if>
+               
+               <c:forEach var="i" begin="${startPage}" end="${endPage}">
+                  <c:if test="${i == currentPage}">
+                     <span><button class="btn btn-primary waves-effect waves-light active">${i}</button></span>
+                  </c:if>
+                  
+                  <c:if test="${i != currentPage}">
+                     <button class="btn btn-primary waves-effect waves-light" onclick="moreList(${i})"> ${i} </button>
+                  </c:if>
+               </c:forEach>
+               
+               <c:if test="${pageCount > endPage}">
+                  <button class="btn btn-primary waves-effect waves-light" onclick="moreList(${startPage + pageBlock})">&#62;</button>
+               </c:if>
+               
+            </c:if>
+         </th>
+      </tr>
+      
+      
+   </tbody>
+</table>
+
+</body>

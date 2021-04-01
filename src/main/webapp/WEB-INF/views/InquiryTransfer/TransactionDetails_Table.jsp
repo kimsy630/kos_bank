@@ -4,6 +4,7 @@
 <!DOCTYPE html>
 <html class="wide wow-animation" lang="en">
    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+   
 
   <head>
     <title>Home</title>
@@ -71,13 +72,13 @@
                 		입금합계(건수)
                 	</td>
                 	<td style="width:385px; font-weight: 800; text-align: right; color:#435ebe;">
-                		<fmt:formatNumber value="4800" pattern="#,###" />원 (2건)
+                		<fmt:formatNumber value="${inTran.IN_SUM }" pattern="#,###" />원 (${inTran.IN_COUNT }건)
                 	</td>
                 	<td style="width:200px; font-weight: 800;">
                 		출금합계(건수)
                 	</td>
                 	<td style="width:385px; font-weight: 800; text-align: right; color:#435ebe;">
-                		<fmt:formatNumber value="500000" pattern="#,###" />원 (8건)
+                		<fmt:formatNumber value="${outTran.OUT_SUM }" pattern="#,###" />원 (${outTran.OUT_COUNT }건)
                 	</td>
                 </tr>
                 </table>
@@ -114,16 +115,50 @@
 					 		AccountTransferVO 에서 안쓰는 변수인 sender_account에  넣기위해 별칭을 sender_account로 줘서 해결 하였다..
 					 -->
                 	<td style="text-align: center;">${vo.out_comment }</td>
-                	
                 </tr>
                  
-                
                 </c:forEach>
-                </table>
+                </table >
 					<br>
 					<div style="width: 1170px; text-align: center;">
+						<table id="Transaction_table">
+							<tr>
+								<th align="center">
+									<!-- 게시글이 있으면 -->
+									<c:if test="${cnt > 0}">
+									
+										<!-- 처음[◀◀] / 이전블록[◀] -->
+										<c:if test="${startPage > pageBlock}">
+											<a onclick="btnClick()" style="color:black;">[◀◀]</a>
+											<a onclick="btnClick(${startPage - pageBlock})" style="color:black;">[◀]</a>
+										</c:if>
+																				
+										<!-- 블록내의 페이지 번호 -->
+										<c:forEach var="i" begin="${startPage}" end="${endPage}">
+											<c:if test="${i == currentPage}"> <!-- 현재 페이지 색 진하게 -->
+												<span style="color:black;"><b>[${i}]</b></span>
+											</c:if>
+											
+											<c:if test="${i != currentPage}">
+												<a onclick="btnClick(${i})" style="text-decoration:none;color:#bbb"> [${i}] </a>
+											</c:if>
+										
+										</c:forEach>
+										
+										<!-- 다음블록 [▶] / 마지막[▶▶] -->
+										<c:if test="${pageCount > endPage}">
+											<a href="TransactionDetails_Table.do?pageNum=${startPage + pageBlock}" style="color:black;">[▶]</a>
+											<a href="TransactionDetails_Table.do?pageNum=${pageCount}" style="color:black;" >[▶▶]</a>
+										</c:if>
+									</c:if>
+								</th>
+							</tr>
+						</table>
+						<br><br><br>
 						<div class="button button-round" style="padding:18px 40px; width:60px; height:40px; font-size:15px; text-align:center; background-color:#435ebe; color:#fff; display:inline; " onclick="location.href='AccountCheck.do'">확인</div>
+						
 					</div>   
+					
               </div>
             </div>
           </div>

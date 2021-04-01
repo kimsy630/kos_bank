@@ -187,50 +187,80 @@
 	 -->
 	 <select id="TransactionDetails_Table_ALL" parameterType="java.util.Map" resultType="spring.mvc.teamProject.vo.AccountTransferVO">
 	 	<![CDATA[
-		 	 SELECT money
-			     , in_comment
-			     , out_comment
-			     , in_out
-			     , in_outdate
-			     , TO_CHAR(balance-summoney+money) AS sender_account
-			FROM(SELECT day
-			          , time
-			          , money
-			          , balance
-			          , in_comment
-			          , out_comment
-			          , in_out
-			          , in_outdate 
-			          , SUM(money) OVER(ORDER BY in_outdate DESC) as summoney
-			     FROM  (select TO_CHAR(t.in_outdate,'YY-MM-DD') as day
-			                 , TO_CHAR(t.in_outdate,'HH24:MI:SS') as time
-			                 , t.money,i.balance,t.in_comment
-			                 , t.out_comment
-			                 , t.in_out
-			                 , t.in_outdate
-			            FROM account_info i
-			              LEFT JOIN account_transfer t
-			               ON i.account=t.account
-			            WHERE i.account=#{view_AccountNum}
-			            AND t.in_out='입금'
-			            UNION
-			            select TO_CHAR(t.in_outdate,'YY-MM-DD')as day
-			                 , TO_CHAR(t.in_outdate,'HH24:MI:SS')as time
-			                 , -t.money,i.balance
-			                 , t.in_comment
-			                 , t.out_comment
-			                 , t.in_out 
-			                 , t.in_outdate
-			            FROM account_info i
-			              LEFT JOIN account_transfer t
-			               ON i.account=t.account
-			            WHERE i.account=#{view_AccountNum}
-			            AND t.in_out='출금'
-			            ))
-			WHERE in_outdate > TO_DATE(#{start_date}, 'YY-MM-DD')
-			AND   in_outdate < TO_DATE(#{end_date}, 'YY-MM-DD')
-			ORDER BY day DESC
-			       , time DESC
+		 	
+	SELECT *
+FROM (SELECT l.* , ROWNUM rnum
+    FROM(SELECT money
+         , in_comment
+         , out_comment
+         , in_out
+         , in_outdate
+         , TO_CHAR(balance-summoney+money) AS sender_account
+    FROM(SELECT money
+              , balance
+              , in_comment
+              , out_comment
+              , in_out
+              , in_outdate 
+              , SUM(money) OVER(ORDER BY in_outdate DESC) as summoney
+         FROM  (select t.money,i.balance,t.in_comment
+                     , t.out_comment
+                     , t.in_out
+                     , t.in_outdate
+                FROM account_info i
+                  LEFT JOIN account_transfer t
+                   ON i.account=t.account
+                WHERE i.account=#{view_AccountNum}
+                AND t.in_out='입금'
+                UNION
+                select t.money,i.balance
+                     , t.in_comment
+                     , t.out_comment
+                     , t.in_out 
+                     , t.in_outdate
+                FROM account_info i
+                  LEFT JOIN account_transfer t
+                   ON i.account=t.account
+                WHERE i.account=#{view_AccountNum}
+                AND t.in_out='출금' )
+        WHERE in_outdate > TO_DATE(#{start_date}, 'YY-MM-DD')
+        AND   in_outdate < TO_DATE(#{end_date}, 'YY-MM-DD'))
+    ORDER BY in_outdate DESC) l)
+WHERE   rNum >= #{start} AND rNum <= #{end}
 		]]>
 	 </select>
+	 
+		<select id="get_transferCnt" parameterType="java.util.Map" resultType="int">
+		<![CDATA[
+			SELECT COUNT(*) as cnt 
+			  FROM account_info i
+			  JOIN account_transfer t
+			    ON i.account = t.account
+			 WHERE in_outdate > TO_DATE(#{start_date}, 'YY-MM-DD')
+			   AND in_outdate < TO_DATE(#{end_date}, 'YY-MM-DD')
+			   AND i.account =#{view_AccountNum}
+				]]>
+		</select>
+		
+		<select id="inTran" parameterType="java.util.Map" resultType="java.util.Map">
+		<![CDATA[
+			   SELECT SUM(money) AS in_sum, COUNT(*) AS in_count
+				  FROM account_transfer
+				 WHERE account=#{view_AccountNum}
+				   AND in_out='입금'
+				   AND in_outdate > TO_DATE(#{start_date}, 'YY-MM-DD')
+				   AND in_outdate < TO_DATE(#{end_date}, 'YY-MM-DD')
+				   ]]>
+		</select>
+		
+		<select id="outTran" parameterType="java.util.Map" resultType="java.util.Map">
+		<![CDATA[
+			   SELECT SUM(money) AS out_sum, COUNT(*) AS out_count
+				  FROM account_transfer
+				 WHERE account=#{view_AccountNum}
+				   AND in_out='출금'
+				   AND in_outdate > TO_DATE(#{start_date}, 'YY-MM-DD')
+				   AND in_outdate < TO_DATE(#{end_date}, 'YY-MM-DD')
+				   ]]>
+		</select>
 </mapper>

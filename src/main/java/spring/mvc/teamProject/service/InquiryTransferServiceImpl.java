@@ -4,7 +4,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.ArrayList;
-import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,7 +33,6 @@ public class InquiryTransferServiceImpl implements InquiryTransferService{
 	
 	@Override
 	public void transferTable(HttpServletRequest req, Model model) {
-		String strId = (String)req.getSession().getAttribute("id");
 		TransferVO vo = new TransferVO();
 		vo.setAccount(req.getParameter("account"));
 		vo.setSender_account(req.getParameter("sender_account"));
@@ -167,44 +165,125 @@ public class InquiryTransferServiceImpl implements InquiryTransferService{
 		model.addAttribute("list6", list6);
 		
 	}
+	//이체내역 조회
 	@Override
 	public void TransactionDetails(HttpServletRequest req, Model model) {
 		String strId = (String)req.getSession().getAttribute("id");
 		
 		List<AccountVO> accList = InquiryTransferDAO.TransactionDetails(strId);
+		
 		model.addAttribute("accList", accList);
 	}
+	//이체내역 조회 - ALL
 	@Override
 	public void TransactionDetails_Table(HttpServletRequest req, Model model) {
 		String view_AccountNum = req.getParameter("view_AccountNum");
 		String start_date = req.getParameter("start_date");
 		String end_date = req.getParameter("end_date");
-		String View_Content = req.getParameter("View_Content");
 		
+		
+		// 3단계. 화면으로 입력받은 값을 받아온다.
+	      // 페이징
+	      int pageSize = 10;      // 한 페이지당 출력할 글 갯수
+	      int pageBlock = 3;      // 한 블럭당 페이지 갯수
+	      
+	      int cnt = 0;         // 글갯수
+	      int start = 0;         // 현재 페이지 시작 글번호
+	      int end = 0;         // 현재 페이지 마지막 글번호
+	      int number = 0;         // 출력용 글번호
+	      String pageNum = "";    // 페이지 번호
+	      int currentPage = 0;   // 현재 페이지
+	      
+	      int pageCount = 0;      // 페이지 갯수
+	      int startPage = 0;      // 시작페이지
+	      int endPage = 0;      // 마지막 페이지
+	      
+	      Map<String,Object> map2 = new HashMap<String,Object>();
+	      map2.put("start_date", start_date);
+	      map2.put("end_date", end_date);
+	      map2.put("view_AccountNum", view_AccountNum);
+	      
+	      cnt = InquiryTransferDAO.get_transferCnt(map2);
+	      System.out.println("cnt => " + cnt);
+	      
+	      
+	      pageNum = req.getParameter("pageNum");
+	      
+	      if(pageNum == null) {
+	         pageNum = "1";   // 첫페이지를 1페이지로 지정
+	      }
+	      // 글 30건 기준
+	      currentPage = Integer.parseInt(pageNum);   // 현재페이지 : 1
+	      System.out.println("currentPage : " + currentPage);
+	      
+	      // 페이지 갯수 6 = (30 / 5) + (0)
+	      pageCount = (cnt / pageSize) + (cnt % pageSize > 0 ? 1 : 0);  // 페이지갯수 + 나머지 있으면 1페이지 
+	      
+	      // 현재페이지 시작 글번호(페이지별)
+	      // 1 = (1 - 1) * 5 + 1
+	      start = (currentPage - 1) * pageSize + 1;
+	      
+	      // 현재페이지 마지막 글번호(페이지별)
+	      // 5 = 1  + 5 - 1;
+	      end = start + pageSize - 1;
+	      
+	      System.out.println("start : " + start);
+	      System.out.println("end : " + end);
+	      
+	      // 출력용 글번호 / 최종 페이지 => 30번 / 1페이지 
+	      // 30 = 30 - (1 - 1) * 5;
+	      number = cnt - (currentPage - 1) * pageSize;
+	      System.out.println("number : " + number);
+	      System.out.println("pageSize : " + pageSize);
+	      
+	      // 시작페이지
+	      // 1 = (1 / 3) * 3 + 1;
+	      startPage = (currentPage / pageBlock) * pageBlock + 1;
+	      if(currentPage % pageBlock == 0) startPage -= pageBlock;
+	      
+	      System.out.println("startPage : " + startPage);
+	      
+	      // 마지막페이지
+	      endPage = startPage + pageBlock - 1;
+	      if(endPage > pageCount) endPage = pageCount;
+	      
+	      System.out.println("endPage : " + endPage);
+	      
+	      System.out.println("==========================");
+	      
+	      if(cnt > 0) {
 		
 		Map<String,Object> map = new HashMap<String,Object>();
+		map.put("start", start);
+   	 	map.put("end", end);
 		map.put("view_AccountNum", view_AccountNum);
 		map.put("start_date", start_date);
 		map.put("end_date", end_date);
-		map.put("View_Content", View_Content);
+		List<AccountTransferVO> list = InquiryTransferDAO.TransactionDetails_Table_ALL(map);
 		
-		List<AccountTransferVO> list = null;
+		Map<String,Object> outTran = InquiryTransferDAO.outTran(map);
+		System.out.println(outTran.toString());
+		Map<String,Object> inTran = InquiryTransferDAO.inTran(map);
+		System.out.println(inTran.toString());
 		
-		if(View_Content.equals("All_List") ) {
-			list = InquiryTransferDAO.TransactionDetails_Table_ALL(map);
-			System.out.println("list =" + list);
-			model.addAttribute("list", list);
-		}
-		/*
-		else if(View_Content == "Deposit_List") {
-			accList = InquiryTransferDAO.TransactionDetails_Deposit(map);
-		}
-		else if(View_Content == "Withdrawal_List") {
-			accList = InquiryTransferDAO.TransactionDetails_Withdrawal(map);
-		}
+		  model.addAttribute("list", list);	//입출금내역 리스트
+		  
+		  model.addAttribute("outTran", outTran); //출금 갯수(거래요금)
+		  
+		  model.addAttribute("inTran", inTran);		//입금 갯수(거래요금)
+		  
 		
-		model.addAttribute("accList", accList);
-		*/
+		  model.addAttribute("cnt", cnt);           // 글갯수
+	      model.addAttribute("number", number);      // 출력용 글번호
+	      model.addAttribute("pageNum", pageNum);    // 페이지 번호
+	      model.addAttribute("startPage", startPage);    // 시작페이지
+    	  model.addAttribute("endPage", endPage);      // 마지막페이지
+    	  model.addAttribute("pageBlock", pageBlock);   // 한 블럭당 페이지 갯수
+    	  model.addAttribute("pageCount", pageCount);   // 페이지 갯수
+    	  model.addAttribute("currentPage", currentPage);// 현재페이지
+	      }
+		
+		//View_Content
 		
 		
 	}
