@@ -40,7 +40,7 @@
 	</select>
 	
 	<select id="getLoanPrincipal" resultType="spring.mvc.teamProject.vo.LoansVO"> <!-- 대출원금 예상 -->
-		SELECT account, d_amount, d_month, d_ERR, d_balance, d_month, d_start_date, d_end_date
+		SELECT account, d_amount, d_month, d_ERR, d_balance, d_month, d_start_date, d_end_date, d_auto_account
 		 FROM Loans
 		 WHERE account = #{account}
 	</select>

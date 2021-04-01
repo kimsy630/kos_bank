@@ -62,7 +62,9 @@
 		</table>
             	
         <div class="row justify-content-lg-center">
-			<a class="button button-round button-primary" href="LoanPrincipalPay.cc" data-caption-animate="fadeInUp" data-caption-delay="450">상환</a>
+			<a class="button button-round button-primary" 
+				href="LoanPrincipalPay.cc?account=${vo.account}&redemption=${redemption}&d_tran=${vo.d_tran}&d_ERC=${d_ERC}&d_auto_account=${vo.d_auto_account}" 
+				data-caption-animate="fadeInUp" data-caption-delay="450">상환</a>
 		</div>
   	</body>
 </html>

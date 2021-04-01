@@ -91,6 +91,8 @@ public class LoanCenterController {
 	public String LoanPrincipalPay(HttpServletRequest req,Model model) {
 		logger.info("url ==> /LoanPrincipalPay");
 		
+		loanservice.LoanPrincipalPay(req, model);
+		
 		return "LoanCenter/LoanPrincipalPay";
 	}
 	

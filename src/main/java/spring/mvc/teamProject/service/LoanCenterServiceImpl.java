@@ -20,15 +20,20 @@ import org.springframework.ui.Model;
 
 
 import spring.mvc.teamProject.persistence.LoanCenterDAOImpl;
+import spring.mvc.teamProject.persistence.RegisterReleaseDAO;
 import spring.mvc.teamProject.vo.AccountVO;
 import spring.mvc.teamProject.vo.LoansVO;
 import spring.mvc.teamProject.vo.Loans_productVO;
+import spring.mvc.teamProject.vo.TransferVO;
 
 @Service
 public class LoanCenterServiceImpl implements LoanCenterService {
 
 	@Autowired
 	LoanCenterDAOImpl dao;
+	
+	@Autowired
+	RegisterReleaseDAO RDAO;
 	
 	// ============================================================================
 	// 박서하
@@ -83,7 +88,6 @@ public class LoanCenterServiceImpl implements LoanCenterService {
 	@Override
 	public void LoanPrincipalCheckIn(HttpServletRequest req, Model model) { // 대출원금 예상(내부정보)
 		String account = req.getParameter("selectAccount");
-
 		LoansVO vo = dao.getLoanPrincipal(account);
 
 		String redemption = req.getParameter("redemption");
@@ -139,6 +143,7 @@ public class LoanCenterServiceImpl implements LoanCenterService {
 			
 			d_tran = Integer.parseInt(req.getParameter("d_tran"));
 			d_ERC = (int) (d_tran * d_ERR * ((float)rest/(float)total)); // 대출상환금액*수수료율*(잔여일수 / 약정기간)]
+			System.out.println("중도해지수수료: " + d_ERC);
 			
 			d_balance = d_balance - d_tran;
 			
@@ -147,9 +152,61 @@ public class LoanCenterServiceImpl implements LoanCenterService {
 			vo.setD_tran(d_tran);
 		}
 		
-		model.addAttribute("redemption", redemption); model.addAttribute("vo", vo);
+		model.addAttribute("redemption", redemption);
+		model.addAttribute("vo", vo);
 	}
 
+	@Override
+	public void LoanPrincipalPay(HttpServletRequest req, Model model) {
+		String strId = (String)req.getSession().getAttribute("id");
+		
+		List<AccountVO> list= new ArrayList<AccountVO>();
+		
+		list = RDAO.selectById(strId);
+		System.out.println("list : "+list);
+		
+		String account = req.getParameter("account"); // 대출 계좌
+		String d_auto_account = req.getParameter("d_auto_account"); // 출금 계좌
+		
+		String redemption = req.getParameter("redemption"); // 원금상환인지 중도상환인지 여부
+		
+		int d_tran = Integer.parseInt(req.getParameter("d_tran")); // 상환 할 원금
+		int d_ERC = Integer.parseInt(req.getParameter("d_ERC")); // 납입 할 중도상환수수료
+		
+		TransferVO vo = new TransferVO();
+		
+		vo.setAccount(d_auto_account); // 출금 계좌
+		vo.setSender_account(req.getParameter("33-09-000001")); // KOS 본사 계좌
+		
+		vo.setMoney(d_tran + d_ERC);
+		System.out.println("이체 할 총액 : " + vo.getMoney());
+		
+//		vo.setSender_name(req.getParameter("sender_name"));
+//		System.out.println("sender_name : "+req.getParameter("sender_name"));
+//		vo.setOut_comment(req.getParameter("out_comment"));
+//		vo.setIn_comment(req.getParameter("in_comment"));
+//		
+//		// 내 계좌 이체내역
+//		int mylog = IDAO.addMyLog(vo);
+//		// 상대 계좌 입금내역
+//		int yourlog = IDAO.addYourLog(vo);
+//		// 잔액 감소
+//		IDAO.withdrawal(vo);
+//		// 상대 잔액 추가
+//		IDAO.deposit(vo);
+//		
+//		System.out.println("mylog : "+mylog);
+//		System.out.println("yourlog : "+yourlog);
+//		System.out.println("vo2"+vo);
+//		model.addAttribute("vo",vo);
+//		model.addAttribute("mylog",mylog);
+//		model.addAttribute("yourlog",yourlog);
+		
+		
+		
+
+	}
+	
 	@Override
 	public void LoanRateCheck(HttpServletRequest req, Model model) { // 대출이자 조회
 		String id = (String)req.getSession().getAttribute("id");
@@ -212,8 +269,7 @@ public class LoanCenterServiceImpl implements LoanCenterService {
 		
 		model.addAttribute("vo", vo);
 	}
-	// ============================================================================
-
+	
 	@Override
 	public void LoanApplication(HttpServletRequest req, Model model) { // 신규대출 신청
 		String id = (String)req.getSession().getAttribute("id");
@@ -270,4 +326,8 @@ public class LoanCenterServiceImpl implements LoanCenterService {
 		model.addAttribute("insertCnt", insertCnt);
 		model.addAttribute("insertCnt2", insertCnt2);
 	}
+
+	
+	// ============================================================================
+
 }

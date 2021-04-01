@@ -157,6 +157,16 @@ function doCheck() {
 																	</select>
 								                                </td>
 								                            </tr>
+								                        	<tr>
+								                            	<td>출금 계좌번호</td>
+								                            	<td>
+																	<select name="d_auto_account" lengthtype="length">
+																	    <c:forEach var="list" items="${list}">
+																	    	<option value="${list.account}">${list.account}</option>
+																	    </c:forEach>
+																	</select>
+																</td>
+								                            </tr>
 								                            <tr>
 								                            	<td class="text-bold-500">자동이체<br>신청 여부</td>
 								                                <td>
@@ -169,32 +179,19 @@ function doCheck() {
 																		var value = $("#autoCheck option:selected").val();
 																		if(value == "yes"){
 																		    $("#content1").css("display","inline");
-																		    $("#content2").css("display","inline");
 																		}else{
 																			$("#content1").css("display","none");
-																			$("#content2").css("display","none");
 																		}
 																	});
 																	</script>
 								                                </td>
 								                            </tr>
-								                        	<tr>
-								                            	<td>자동이체<br>출금 계좌번호</td>
-								                            	<td>
-																	<select id="content1" name="d_auto_account" lengthtype="length">
-																	    <option value="" selected>선택하세요.</option>
-																	    <c:forEach var="list" items="${list}">
-																	    	<option value="${list.account}">${list.account}</option>
-																	    </c:forEach>
-																	</select>
-																</td>
-								                            </tr>
 								                            <tr>
 								                            	<td>자동이체<br>출금 일자</td>
 								                            	<td>
-								                            		<div id="content2">
+								                            		<div id="content1">
 										                            	<select name="d_auto_date" lengthtype="length">
-									                                		<c:forEach var="i" begin="1" end="31">
+									                                		<c:forEach var="i" begin="0" end="31">
 																			    <option value="${i}">${i}</option>
 																		    </c:forEach>
 																		</select>

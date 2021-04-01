@@ -85,8 +85,5 @@ public class LoanCenterDAOImpl implements LoanCenterDAO {
 		return insertCnt;
 	}
 	// ============================================================================
-
 	
-	
-
 }
