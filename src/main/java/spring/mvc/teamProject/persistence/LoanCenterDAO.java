@@ -18,6 +18,7 @@ public interface LoanCenterDAO {
 	public List<LoansVO> getLoanCloseList(String id); // 대출해지현황 조회
 	public LoansVO getLoanCloseDetail(Map<String, Object> map); // 대출해지현황 상세조회
 	public LoansVO getLoanPrincipal(String account); // 대출원금 예상
+	public int payLoanPrincipal1(LoansVO vo);
 	public LoansVO getLoanRateCheckIn(String account); // 대출이자 예상(내부정보)
 	public Loans_productVO getLoanApplication(String d_name); // 신규대출 신청
 	public String getName(String id); // 신규대출 신청(이름)

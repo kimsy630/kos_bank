@@ -18,11 +18,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 
-
+import spring.mvc.teamProject.persistence.InquiryTransferDAO;
 import spring.mvc.teamProject.persistence.LoanCenterDAOImpl;
 import spring.mvc.teamProject.persistence.RegisterReleaseDAO;
 import spring.mvc.teamProject.vo.AccountVO;
 import spring.mvc.teamProject.vo.LoansVO;
+import spring.mvc.teamProject.vo.Loans_historyVO;
 import spring.mvc.teamProject.vo.Loans_productVO;
 import spring.mvc.teamProject.vo.TransferVO;
 
@@ -31,6 +32,9 @@ public class LoanCenterServiceImpl implements LoanCenterService {
 
 	@Autowired
 	LoanCenterDAOImpl dao;
+	
+	@Autowired
+	InquiryTransferDAO IDAO;
 	
 	@Autowired
 	RegisterReleaseDAO RDAO;
@@ -157,50 +161,112 @@ public class LoanCenterServiceImpl implements LoanCenterService {
 	}
 
 	@Override
-	public void LoanPrincipalPay(HttpServletRequest req, Model model) {
+	public void LoanPrincipalPay(HttpServletRequest req, Model model) { // 대출원금 상환 실행
 		String strId = (String)req.getSession().getAttribute("id");
 		
 		List<AccountVO> list= new ArrayList<AccountVO>();
 		
 		list = RDAO.selectById(strId);
-		System.out.println("list : "+list);
+		System.out.println("list : " + list);
 		
-		String account = req.getParameter("account"); // 대출 계좌
+		// ========================================================================
+		// 계좌이체(원금 상환) 1-1
 		String d_auto_account = req.getParameter("d_auto_account"); // 출금 계좌
 		
-		String redemption = req.getParameter("redemption"); // 원금상환인지 중도상환인지 여부
-		
 		int d_tran = Integer.parseInt(req.getParameter("d_tran")); // 상환 할 원금
-		int d_ERC = Integer.parseInt(req.getParameter("d_ERC")); // 납입 할 중도상환수수료
 		
 		TransferVO vo = new TransferVO();
 		
 		vo.setAccount(d_auto_account); // 출금 계좌
-		vo.setSender_account(req.getParameter("33-09-000001")); // KOS 본사 계좌
+		vo.setSender_account(req.getParameter("33-09-000001")); // KOS 본사 계좌 *하드코딩*
 		
-		vo.setMoney(d_tran + d_ERC);
-		System.out.println("이체 할 총액 : " + vo.getMoney());
+		vo.setMoney(d_tran);
+		System.out.println("이체(할) 원금 : " + vo.getMoney());
 		
-//		vo.setSender_name(req.getParameter("sender_name"));
-//		System.out.println("sender_name : "+req.getParameter("sender_name"));
-//		vo.setOut_comment(req.getParameter("out_comment"));
-//		vo.setIn_comment(req.getParameter("in_comment"));
-//		
-//		// 내 계좌 이체내역
-//		int mylog = IDAO.addMyLog(vo);
-//		// 상대 계좌 입금내역
-//		int yourlog = IDAO.addYourLog(vo);
-//		// 잔액 감소
-//		IDAO.withdrawal(vo);
-//		// 상대 잔액 추가
-//		IDAO.deposit(vo);
-//		
-//		System.out.println("mylog : "+mylog);
-//		System.out.println("yourlog : "+yourlog);
-//		System.out.println("vo2"+vo);
-//		model.addAttribute("vo",vo);
-//		model.addAttribute("mylog",mylog);
-//		model.addAttribute("yourlog",yourlog);
+		vo.setSender_name("");
+		vo.setOut_comment(req.getParameter("원금상환"));
+		vo.setIn_comment(req.getParameter("원금상환"));
+		
+		int mylog = IDAO.addMyLog(vo); // 내 계좌 이체내역
+		int yourlog = IDAO.addYourLog(vo); // 상대 계좌 입금내역
+		IDAO.withdrawal(vo); // 잔액 감소
+		IDAO.deposit(vo); // 상대 잔액 추가
+		
+		System.out.println("원금상환 mylog : " + mylog);
+		System.out.println("원금상환 yourlog : " + yourlog);
+		System.out.println("원금상환 vo : " + vo);
+		
+		// ------------------------------------------------
+		// Loans 변경 1-2
+		int d_Key = Integer.parseInt(req.getParameter("d_Key"));
+		String account = req.getParameter("account"); // 대출 계좌
+		int d_balance = Integer.parseInt(req.getParameter("d_balance"));
+		String redemption = req.getParameter("redemption"); // 원금상환인지 중도상환인지 여부
+		
+		if(mylog == 1 || yourlog == 1) {
+			LoansVO vo3 = new LoansVO();
+			
+			vo3.setAccount(account);
+			vo3.setD_balance(d_balance);
+			vo3.setD_loan_balance(1); // 원금 실행번호(이름 임시임 바꿔줘야함)
+			int updateCnt = dao.payLoanPrincipal1(vo3);
+			
+			// Loans_history 생성 1-3
+			Loans_historyVO vo4 = new Loans_historyVO();
+			
+			vo4.setD_Key(d_Key);
+			if(redemption.equals("equality")) {
+				vo4.setD_his_state("원금");
+			} else if(redemption.equals("early")) {
+				vo4.setD_his_state("중도상환");
+			}
+			vo4.setD_his_amount(d_tran);
+			// DAO insert
+		}
+		
+		// ========================================================================
+		// 계좌이체(중도상환수수료) 2-1
+		int d_ERC = Integer.parseInt(req.getParameter("d_ERC")); // 납입 할 중도상환수수료
+		
+		if (d_ERC != 0) {
+			TransferVO vo2 = new TransferVO();
+			
+			vo2.setAccount(d_auto_account); // 출금 계좌
+			vo2.setSender_account(req.getParameter("33-09-000001")); // KOS 본사 계좌 *하드코딩*
+			
+			vo2.setMoney(d_ERC);
+			System.out.println("이체(할) 중도상환수수료 : " + vo2.getMoney());
+			
+			vo2.setSender_name("");
+			vo2.setOut_comment(req.getParameter("중도상환수수료"));
+			vo2.setIn_comment(req.getParameter("중도상환수수료"));
+			
+			int mylog2 = IDAO.addMyLog(vo2); // 내 계좌 이체내역
+			int yourlog2 = IDAO.addYourLog(vo2); // 상대 계좌 입금내역
+			IDAO.withdrawal(vo2); // 잔액 감소
+			IDAO.deposit(vo2); // 상대 잔액 추가
+			
+			System.out.println("원금상환 mylog : " + mylog2);
+			System.out.println("원금상환 yourlog : " + yourlog2);
+			System.out.println("원금상환 vo : " + vo2);
+			
+			// ------------------------------------------------
+			// Loans_history 생성 2-2
+			Loans_historyVO vo4 = new Loans_historyVO();
+			
+			vo4.setD_Key(d_Key);
+			vo4.setD_his_state("중도상환수수료");
+			vo4.setD_his_amount(d_ERC);
+			// DAO insert
+		}
+		
+		
+
+		
+		
+		model.addAttribute("vo",vo);
+		model.addAttribute("mylog",mylog);
+		model.addAttribute("yourlog",yourlog);
 		
 		
 		

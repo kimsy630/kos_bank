@@ -86,7 +86,7 @@ public class LoanCenterController {
 	}
 	
 	// 박서하
-	//대출원금 상환
+	//대출원금 상환 실행
 	@RequestMapping("/LoanPrincipalPay.cc")
 	public String LoanPrincipalPay(HttpServletRequest req,Model model) {
 		logger.info("url ==> /LoanPrincipalPay");
@@ -123,6 +123,7 @@ public class LoanCenterController {
 	@RequestMapping("/LoanRatePay.cc")
 	public String LoanRatePay(HttpServletRequest req,Model model) {
 		logger.info("url ==> /LoanRatePay");
+				
 		return "LoanCenter/LoanRatePay";
 	}
 

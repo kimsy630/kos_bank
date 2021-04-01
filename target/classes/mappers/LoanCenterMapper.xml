@@ -40,10 +40,13 @@
 	</select>
 	
 	<select id="getLoanPrincipal" resultType="spring.mvc.teamProject.vo.LoansVO"> <!-- 대출원금 예상 -->
-		SELECT account, d_amount, d_month, d_ERR, d_balance, d_month, d_start_date, d_end_date, d_auto_account
+		SELECT d_Key, account, d_amount, d_month, d_ERR, d_balance, d_month, d_start_date, d_end_date, d_auto_account
 		 FROM Loans
 		 WHERE account = #{account}
 	</select>
+	
+	<insert id="payLoanPrincipal1">
+	</insert>
 	
 	<select id="getLoanRateCheckIn" resultType="spring.mvc.teamProject.vo.LoansVO"> <!-- 대출이자 예상(내부정보) -->
 		SELECT account, d_repay, d_rate, d_amount, d_balance

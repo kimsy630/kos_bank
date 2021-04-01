@@ -191,7 +191,8 @@ function doCheck() {
 								                            	<td>
 								                            		<div id="content1">
 										                            	<select name="d_auto_date" lengthtype="length">
-									                                		<c:forEach var="i" begin="0" end="31">
+										                            		<option value="">선택하세요.</option>
+									                                		<c:forEach var="i" begin="1" end="31">
 																			    <option value="${i}">${i}</option>
 																		    </c:forEach>
 																		</select>
