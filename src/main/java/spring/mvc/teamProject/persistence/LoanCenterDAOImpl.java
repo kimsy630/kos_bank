@@ -44,11 +44,17 @@ public class LoanCenterDAOImpl implements LoanCenterDAO {
 	}
 
 	@Override
-	public LoansVO getLoanPrincipal(String account) { // 대출원금 예상(내부정보)
+	public LoansVO getLoanPrincipal(String account) { // 대출원금 예상
 		LoansVO vo = sqlSession.selectOne("spring.mvc.teamProject.persistence.LoanCenterDAO.getLoanPrincipal", account);
 		return vo;
 	}
 	
+	@Override
+	public LoansVO getLoanRateCheckIn(String account) { // 대출이자 예상(내부정보)
+		LoansVO vo = sqlSession.selectOne("spring.mvc.teamProject.persistence.LoanCenterDAO.getLoanRateCheckIn", account);
+		return vo;
+	}
+
 	@Override
 	public Loans_productVO getLoanApplication(String d_name) { // 신규대출 신청
 		Loans_productVO vo = sqlSession.selectOne("spring.mvc.teamProject.persistence.LoanCenterDAO.getLoanApplication", d_name);
@@ -80,6 +86,7 @@ public class LoanCenterDAOImpl implements LoanCenterDAO {
 	}
 	// ============================================================================
 
+	
 	
 
 }

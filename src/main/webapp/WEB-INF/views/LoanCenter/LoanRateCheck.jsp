@@ -2,10 +2,10 @@
     pageEncoding="UTF-8"%>
 <%@ include file = "../setting.jsp"%>
 <!DOCTYPE html>
-<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.9.0/jquery.js"></script>
 <html class="wide wow-animation" lang="en">
 	<head>
     	<title>Home</title>
+    	<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.9.0/jquery.js"></script>
   	</head>
    	<body>
     	<div class="preloader">
@@ -49,14 +49,6 @@
 			                                        	<option value="${list.account}">${list.account}[${list.d_name}(${list.d_repay})]</option>
 			                                       	</c:forEach>
 			                                    </select>
-			                                    <c:forEach var="list" items="${list}">
-			                                    	<input type="hidden" name="account" value="${list.account}">
-			                                        <input type="hidden" name="d_repay" value="${list.d_repay}">
-			                                        <input type="hidden" name="d_rate" value="${list.d_rate}">
-			                                        <input type="hidden" name="d_amount" value="${list.d_amount}">
-			                                        <input type="hidden" name="d_balance" value="${list.d_balance}">
-			                                        <input type="hidden" name="d_next_rate" value="${list.d_next_rate}">
-			                                    </c:forEach>
 			                                    <script>
 			                                    	function checkAccount() {
 			                                        	<c:forEach var="vo" items="${list}">

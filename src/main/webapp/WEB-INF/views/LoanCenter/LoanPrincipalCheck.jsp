@@ -46,43 +46,45 @@
 											    	<option value="">계좌를 선택하세요.</option>
 											    	<c:set value="" var="account"/>
 													<c:forEach var="list" items="${list}">
-												    	<option value="${list.account}">${list.account}[${list.d_name}(${list.d_repay})]</option>
+												    	<option value="${list.account}">${list.account}[${list.d_name}(${list.d_repay})]${list.d_repay}</option>
 												    </c:forEach>
 											    </select>
-											    <c:forEach var="list" items="${list}">
-											    	<input type="hidden" name="d_amount" value="${list.d_amount}">
-											    	<input type="hidden" name="d_month" value="${list.d_month}">
-											    	<input type="hidden" name="d_ERR" value="${list.d_ERR}">
-											    	<input type="hidden" name="d_balance" value="${list.d_balance}">
-											    	<input type="hidden" name="d_start_date" value="${list.d_start_date}">
-											    	<input type="hidden" name="d_end_date" value="${list.d_end_date}">
-											    </c:forEach>
-											    <script>
+											    <script> 
 											    	function checkAccount() {
 														<c:forEach var="vo" items="${list}">
 															if($('#selectAccount').val() == "${vo.account}") {
-																<c:set value="${vo.account}" var="account"/>
-																$('#d_balance').html("${vo.d_balance}");
+																$('#d_balance').html("<fmt:formatNumber value='${vo.d_balance}' pattern='#,###' />");
 															}
+														</c:forEach>
+
+														<c:forEach var="vo3" items="${list}">
+														if($('#selectAccount').val() == "${vo3.account}") {
+															if('원금균등분할' == "${vo3.d_repay}") {
+																$("#d_repay").css("display","block");
+															}else{
+																$("#d_repay").css("display","none");
+																$("input:radio[id='equality']").prop("checked", false);
+															}
+														}
 														</c:forEach>
 											    	};
 											    </script>
 											</td>
 				                     	</tr>
 				                     	<tr>
-				                        	<td scope="col" class="borL">대출잔액</td>
-				                        	<td scope="col" id="d_balance"></td>
+				                        	<td scope="col" class="borL">대출잔액(원)</td>
+				                        	<td scope="col" ><div id="d_balance"></div></td>
 				                     	</tr>
 				                     	<tr>
 				                        	<td scope="col">상환방법</td>
 				                        	<td scope="col">
 					                        	<div class="card-body">
 					                        		<div class="form-check form-check-primary">
-				                                        <input type="radio" class="form-check-input" name="redemption" value="equality" id="equality" checked>
-				                                        <label class="form-check-label" for="equality">원금균등상환</label>
-				                                        &nbsp;
-				                                        &nbsp;
-				                                        <input type="radio" class="form-check-input" name="redemption" value="early" id="early">
+				                        				<div id="d_repay">
+					                        				<input type="radio" class="form-check-input" name="redemption" value="equality" id="equality" checked>
+					                                        <label class="form-check-label" for="equality">원금균등상환</label>
+				                                        </div>
+				                                        <input type="radio" class="form-check-input" name="redemption" value="early" id="early" >
 				                                        <label class="form-check-label" for="early">중도상환</label>
 		                                    		</div>
 	                                    		</div>
@@ -90,6 +92,7 @@
 	                                    		$('input[name="redemption"]').change(function() {
 	                                    			if($('input[name=redemption]:checked').val() =="equality") {
 	                                    				$('#money').html("");
+	                                    				
 	                                    			}else{
 	                                    				$('#money').html("<input name='d_tran' type='text'>원");
 	                                    			}

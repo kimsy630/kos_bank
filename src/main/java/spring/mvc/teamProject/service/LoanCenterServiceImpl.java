@@ -82,24 +82,27 @@ public class LoanCenterServiceImpl implements LoanCenterService {
 	
 	@Override
 	public void LoanPrincipalCheckIn(HttpServletRequest req, Model model) { // 대출원금 예상(내부정보)
-		LoansVO vo = new LoansVO();
-		
 		String account = req.getParameter("selectAccount");
-		int d_balance = Integer.parseInt(req.getParameter("d_balance"));
+
+		LoansVO vo = dao.getLoanPrincipal(account);
+
 		String redemption = req.getParameter("redemption");
+		int d_balance = vo.getD_balance();
+		int d_amount = vo.getD_amount();
+		int d_month = vo.getD_month();
+		double d_ERR = vo.getD_ERR();
+		Timestamp d_start_date = vo.getD_start_date();
+		Timestamp d_end_date = vo.getD_end_date();
+
 		int d_tran = 0;
-		int d_amount = Integer.parseInt(req.getParameter("d_amount"));
-		int d_month = Integer.parseInt(req.getParameter("d_month"));
-		double d_ERR = Double.parseDouble(req.getParameter("d_ERR"));
 		int d_ERC = 0;
-		String d_start_date = req.getParameter("d_start_date");
-		String d_end_date = req.getParameter("d_end_date");
 		
 		vo.setAccount(account);
 		vo.setD_amount(d_amount);
 		vo.setD_month(d_month);
 		
-		if(redemption.equals("equality")) {
+		if(redemption.equals("equality")) { // 원금균등상환만 가능(만기일시는 radio 사라짐)
+			
 			d_tran = d_amount / d_month;
 			d_balance = d_balance - d_tran;
 			
@@ -107,14 +110,12 @@ public class LoanCenterServiceImpl implements LoanCenterService {
 			vo.setD_tran(d_tran);
 			vo.setD_ERC(0);
 			
-		} else if(redemption.equals("early")) {
-			Timestamp todayT = Timestamp.valueOf(LocalDateTime.now());
-			Timestamp d_start_dateT = Timestamp.valueOf(d_start_date);
-			Timestamp d_end_dateT = Timestamp.valueOf(d_end_date);
+		} else if(redemption.equals("early")) { // 중도상환
+			Timestamp today = Timestamp.valueOf(LocalDateTime.now());
 			
-			Date todayD = new java.sql.Date(todayT.getTime());
-			Date d_start_dateD = new java.sql.Date(d_start_dateT.getTime());
-			Date d_end_dateD = new java.sql.Date(d_end_dateT.getTime());
+			Date todayD = new java.sql.Date(today.getTime());
+			Date d_start_dateD = new java.sql.Date(d_start_date.getTime());
+			Date d_end_dateD = new java.sql.Date(d_end_date.getTime());
 			
 			long calRest = d_end_dateD.getTime() - todayD.getTime();
 			long rest = calRest / (24*60*60*1000);
@@ -138,7 +139,7 @@ public class LoanCenterServiceImpl implements LoanCenterService {
 			
 			d_tran = Integer.parseInt(req.getParameter("d_tran"));
 			d_ERC = (int) (d_tran * d_ERR * ((float)rest/(float)total)); // 대출상환금액*수수료율*(잔여일수 / 약정기간)]
-			System.out.println(d_ERC);
+			
 			d_balance = d_balance - d_tran;
 			
 			vo.setD_balance(d_balance);
@@ -146,8 +147,7 @@ public class LoanCenterServiceImpl implements LoanCenterService {
 			vo.setD_tran(d_tran);
 		}
 		
-		model.addAttribute("redemption", redemption);
-		model.addAttribute("vo", vo);
+		model.addAttribute("redemption", redemption); model.addAttribute("vo", vo);
 	}
 
 	@Override
@@ -188,25 +188,28 @@ public class LoanCenterServiceImpl implements LoanCenterService {
 	
 	@Override
 	public void LoanRateCheckIn(HttpServletRequest req, Model model) { // 대출이자 예상(내부정보)
-		LoansVO vo = new LoansVO();
+		String account = req.getParameter("selectAccount");
 		
-		// String account = req.getParameter("selectAccount");
+		LoansVO vo = dao.getLoanRateCheckIn(account);
+		
 		int d_tran_rate = 0;
-		String d_repay = req.getParameter("d_repay");
-		double d_rate = Double.parseDouble(req.getParameter("d_rate"));
-		int d_amount = Integer.parseInt(req.getParameter("d_amount"));
-		int d_balance = Integer.parseInt(req.getParameter("d_balance"));
-		// int d_next_rate = Integer.parseInt(req.getParameter("d_next_rate"));
+		String d_repay = vo.getD_repay();
+		
+		double d_rate = vo.getD_rate();
+		int d_amount = vo.getD_amount();
+		int d_balance = vo.getD_balance();
 		
 		if(d_repay.equals("원금균등분할")) { // 전회차 원금잔액*(금리%12개월)
 			d_tran_rate = (int) (d_balance*((d_rate*0.01)/12));
 			
 			vo.setD_tran_rate(d_tran_rate);
+			
 		} else if(d_repay.equals("만기일시")) { // 대출원금*(금리%12개월)
 			d_tran_rate = (int) (d_amount*((d_rate*0.01)/12));
 			
 			vo.setD_tran_rate(d_tran_rate);
 		}
+		
 		model.addAttribute("vo", vo);
 	}
 	// ============================================================================
