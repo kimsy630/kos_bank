@@ -114,7 +114,9 @@
 	                    </tr>
 	                    <tr>
 	                      <td  id="td_body1" colspan="2" style="text-align: center;">
-	                      <input id ="btn" onclick="btnClick()" type="button"  class="button button-round" style= "padding:10px 25px; width:90px; height:40px; font-size:15px; text-align:center; background-color:#fff; display: inline;" value="조회"> &nbsp;&nbsp;  
+	                      <c:if test="${param.state eq '정상' }">
+	                      	<input id ="btn" onclick="btnClick()" type="button"  class="button button-round" style= "padding:10px 25px; width:90px; height:40px; font-size:15px; text-align:center; background-color:#fff; display: inline;" value="조회"> &nbsp;&nbsp;
+	                      </c:if>  
 	                      		<!-- <button id ="btn" type="button"  class="button button-round" style= "padding:10px 25px; width:90px; height:40px; font-size:15px; text-align:center; background-color:#fff; display: inline;">조회</button> &nbsp;&nbsp;   -->
                       	<div class="button button-round" style="padding:10px 30px; width:90px; height:40px; font-size:15px; text-align:center; background-color:#435ebe; color:#fff; display: inline;" onclick="location.href='AccountTransfer.cc'">이체</div>
 	                      </td>

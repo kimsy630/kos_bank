@@ -111,15 +111,16 @@
 	</resultMap>
 	<!-- 입출금 계좌 조회 -->
 	<select id="AccountTable" parameterType="String" resultMap="AccountTransfer">
- 		SELECT distinct account , accounttype,new_date,in_outDate,balance
-		FROM (SELECT i.account,i.accounttype, i.new_date, t.in_outDate, i.balance ,ROW_NUMBER() OVER(PARTITION BY i.account
+ 		SELECT distinct account , accounttype,new_date,in_outDate,balance, accountstate
+		FROM (SELECT i.account,i.accounttype, i.new_date, t.in_outDate, i.balance, i.accountstate ,ROW_NUMBER() OVER(PARTITION BY i.account
 		    ORDER BY i.account, t.in_outDate desc)as RANKING
 		        FROM account_info i
 		       LEFT JOIN account_transfer t
 		          ON i.account = t.account
-		       WHERE i.id = #{id} 
+		       WHERE i.id = #{id}
 		         AND i.accountType='입출금')
 		  WHERE RANKING=1
+
 	</select>
 	
 	
