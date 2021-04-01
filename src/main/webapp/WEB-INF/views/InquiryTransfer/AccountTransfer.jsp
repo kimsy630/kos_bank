@@ -9,14 +9,36 @@
     
    <!-- ajax 스크립트 -->
     <script type="text/javascript">
-	$(function () {
-    	$("#NameChk").click(function () {
-       	 $.ajax({
+   $(function () {
+       $("#limitChk").click(function () {
+           $.ajax({
+            type : "get",
+            url : "accountLimitChk.cc",
+            //여러개 데이터 보낼 때 Json 방식
+            data : {
+               accountLimit : $("#accountLimit").val(),
+            },
+            success : function(data){
+                //check.jsp에서 DB확인해서 출력은 index에서
+                $("#limitMoney").html(data);
+                //$("#ajaxReturn").html("(ex)사용할 수 있는 ID입니다.");
+            },
+            error : function(){
+                alert("error");
+            }
+        
+           });
+       });
+   });
+   
+   $(function () {
+       $("#NameChk").click(function () {
+           $.ajax({
             type : "get",
             url : "AccountNameChk.cc",
             //여러개 데이터 보낼 때 Json 방식
             data : {
-            	sender_account : $("#sender_account").val(),
+               sender_account : $("#sender_account").val(),
             },
             success : function(data){
                 //check.jsp에서 DB확인해서 출력은 index에서
@@ -27,24 +49,24 @@
                 alert("error");
             }
         
-        	});
-    	});
-	});
-	
-	$(function () {
-    	$("#button").click(function () {
-       	 $.ajax({
+           });
+       });
+   });
+   
+   $(function () {
+       $("#button").click(function () {
+           $.ajax({
             type : "get",
             url : "TransferTable.cc?sender_name="+$("#NameReturn").text(),
             //여러개 데이터 보낼 때 Json 방식
             data : {
-            	account : $("#account").val(),
-            	accountPW : $("#accountPW").val(),
-            	money : $("#money").val(),
-            	out_comment : $("#out_comment").val(),
-            	sender_account : $("#sender_account").val(),
-            	sender_name : $("#sender_name").val(),
-            	in_comment : $("#in_comment").val(),
+               account : $("#account").val(),
+               accountPW : $("#accountPW").val(),
+               money : $("#money").val(),
+               out_comment : $("#out_comment").val(),
+               sender_account : $("#sender_account").val(),
+               sender_name : $("#sender_name").val(),
+               in_comment : $("#in_comment").val(),
             },
             success : function(data){
                 //check.jsp에서 DB확인해서 출력은 index에서
@@ -56,10 +78,148 @@
             }
         
             
-        	});
-    	});
-	});
+           });
+       });
+   });
+   
+   /* 금액 직접 입력시 해당 input 태그 적용 메서드  */
+       var tmpNC = "";
+     function numberComma(obj) {
+         if (tmpNC == obj.value) return;
+         tmpNC = obj.value;
+         obj.value = numberComma2(tmpNC);
+     }
+     function numberComma2(q) {
+         q = q.replace(/\D/g, "");
+         w = parseInt(q);
+        $("#money2").val(w);
+         e = q.length - 3;
+         while (e > 0) {
+             q = q.substr(0, e) + "," + q.substr(e);
+             e -= 3;
+         }
+         return q;
+     }
+    /* 금액 직접 입력시 적용 메서드  */
+   
+   /* 숫자버튼 누를시 적용 메서드  */
+    function numberComma100(obj) {
+       var q = "";
+       var w = "";
+       var e = "";
+       var r = "";
+       var t = "";
+       q = $("#money2").val();
+       if(!$("#money2").val()) {
+          q = '0';
+       }
+       w = q.replace(/,/g ,"");
+       e = parseInt(w);
+       e += obj
+       $("#money").val(e);
+       r = e.toString();
+       t = r.toString().length - 3;
+       while (t > 0) {
+            r = r.substr(0, t) + "," + r.substr(t);
+            t -= 3;
+        }
+       document.getElementById('money2').value = r;
+    }
+   /* 숫자버튼 누를시 적용 메서드  */   
+
+   /* 숫자버튼 위 마우스 올려놓을시 적용 메서드 */
+      $(function() {
+         $("#hundred").on({
+            "mouseover" : function() {
+               $("#hundred").css({"background-color":"#0d6efd"});
+               $("#hundred").css({"color":"white"});
+            },
+            "mouseout" : function() {
+               $("#hundred").css({"background-color":"white"});
+               $("#hundred").css({"color":"#0d6efd"});
+            }
+         });
+         $("#fifty").on({
+            "mouseover" : function() {
+               $("#fifty").css({"background-color":"#0d6efd"});
+               $("#fifty").css({"color":"white"});
+            },
+            "mouseout" : function() {
+               $("#fifty").css({"background-color":"white"});
+               $("#fifty").css({"color":"#0d6efd"});
+            }
+         });
+         $("#ten").on({
+            "mouseover" : function() {
+               $("#ten").css({"background-color":"#0d6efd"});
+               $("#ten").css({"color":"white"});
+            },
+            "mouseout" : function() {
+               $("#ten").css({"background-color":"white"});
+               $("#ten").css({"color":"#0d6efd"});
+            }
+         });
+         $("#five").on({
+            "mouseover" : function() {
+               $("#five").css({"background-color":"#0d6efd"});
+               $("#five").css({"color":"white"});
+            },
+            "mouseout" : function() {
+               $("#five").css({"background-color":"white"});
+               $("#five").css({"color":"#0d6efd"});
+            }
+         });
+         $("#one").on({
+            "mouseover" : function() {
+               $("#one").css({"background-color":"#0d6efd"});
+               $("#one").css({"color":"white"});
+            },
+            "mouseout" : function() {
+               $("#one").css({"background-color":"white"});
+               $("#one").css({"color":"#0d6efd"});
+            }
+         });
+         $("#reset").on({
+            "mouseover" : function() {
+               $("#reset").css({"background-color":"#0d6efd"});
+               $("#reset").css({"color":"white"});
+            },
+            "mouseout" : function() {
+               $("#reset").css({"background-color":"white"});
+               $("#reset").css({"color":"#0d6efd"});
+            }
+         });
+         $("#accountLimit").on({
+            "mouseover" : function() {
+               $("#accountLimit").css({"background-color":"#0d6efd"});
+               $("#accountLimit").css({"color":"white"});
+            },
+            "mouseout" : function() {
+               $("#accountLimit").css({"background-color":"white"});
+               $("#accountLimit").css({"color":"#0d6efd"});
+            }
+         });
+         $("#NameChk").on({
+            "mouseover" : function() {
+               $("#NameChk").css({"background-color":"#0d6efd"});
+               $("#NameChk").css({"color":"white"});
+            },
+            "mouseout" : function() {
+               $("#NameChk").css({"background-color":"white"});
+               $("#NameChk").css({"color":"#0d6efd"});
+            }
+         });
+      });
+   /* 숫자버튼 위 마우스 올려놓을시 적용 메서드 */
 </script>
+ <style>
+       .btn-clipboard {
+       color: #0d6efd;
+       background-color: #fff;
+       border: 1px solid;
+       border-radius: .25rem;
+      }
+</style>
     <!-- ajax 스크립트 끝 -->
     
     <meta name="format-detection" content="telephone=no">
@@ -92,12 +252,13 @@
    <div class="page">
    <%@include file="../header.jsp" %>
     <form action="TransferAction.cc">
- 	<section class="section section-bredcrumbs">
-     	<div class="container context-dark breadcrumb-wrapper">
-     		<h2>계좌이체</h2>
+    <section class="section section-bredcrumbs">
+        <div class="container context-dark breadcrumb-wrapper">
+           <h2>계좌이체</h2>
           <br>
         </div>
       </section>
+      <br><br>
         <div class="container">
           <h4>출금계좌정보</h4>
           <br><hr>
@@ -108,44 +269,53 @@
                   <thead>
                     <tr>
                       <th>출금 계좌번호</th>
-                      	<td>
+                         <td>
                       <select name="account">
-						<option value="">선택</option>
-							<c:forEach items="${list}" var="item">
-								<option value="${item.account}" id="account" name="account">${item.account}</option>
-							</c:forEach>
-						</select>
-						</td>
+                  <option value="">선택</option>
+                     <c:forEach items="${list}" var="item">
+                        <option value="${item.account}" id="account" name="account">${item.account}</option>
+                     </c:forEach>
+                  </select>
+                  </td>
                     </tr>
                   </thead>
                     <tr>
                     <th>계좌비밀번호</th>
-                      <td><input type="text" id="accountPW" name="accountPW" style="width: 100px"></td>
+                      <td><input type="password" id="accountPW" name="accountPW" style="width: 100px"></td>
                     </tr>
                     <tr>
-	                    <th>이체금액</th>
-	                      <td>
-		                      <input type="text" id="money" name="money" style="width: 150px">
-			                      <button input="AddMoney100">100만</button>
-			                      <button input="AddMoney50">50만</button>
-			                      <button input="AddMoney10">10만</button>
-			                      <button input="AddMoney5">5만</button>
-			                      <button input="AddMoney1">1만</button>
-			                      <button input="AddAllMoney">전액</button><br><br>
-		                      <input type="text" id="limitMoney" style="width: 300px">
-		                      <button input="limitMoney">이체한도조회</button>
-                      		</td>
-                    	</tr>
-                  	 <tr> 	
-                    	<th>보내는분 통장 표시내용</th>
-		                      <td>
-		                      	<input type="text" id="out_comment" name="out_comment" style="width: 300px">
-		                      </td>
-                   		 </tr>
-             		 </table>
-             	 </div>
+                       <th>이체금액</th>
+                         <td>
+                              <div>
+                               <input type="hidden" id="money" name="money" style="width: 150px" onkeyup="numberComma(this);">
+                               <input type="text" id="money2" name="money2" style="width: 150px" onkeyup="numberComma(this);">
+                               <button type="button" id="hundred" class="btn-clipboard" data-bs-original-title="Copy to clipboard" onclick="numberComma100(1000000);">100만</button>
+                               <button type="button" id="fifty" class="btn-clipboard" data-bs-original-title="Copy to clipboard" onclick="numberComma100(500000);">50만</button>
+                               <button type="button" id="ten" class="btn-clipboard" data-bs-original-title="Copy to clipboard" onclick="numberComma100(100000);">10만</button>
+                               <button type="button" id="five" class="btn-clipboard" data-bs-original-title="Copy to clipboard" onclick="numberComma100(50000);">5만</button>
+                               <button type="button" id="one" class="btn-clipboard" data-bs-original-title="Copy to clipboard" onclick="numberComma100(10000);">1만</button>
+                               <button type="reset" id="reset" class="btn-clipboard" data-bs-original-title="Copy to clipboard">취소</button>
+                            </div>
+                         </td>
+                  </tr>
+                  <tr>      
+                     <th>이체한도조회</th> 
+                         <td>
+                            <div id="limitMoney" style="width: 300px">
+                            <input id="accountLimitChk" name="accountLimitChk" style="width: 150px">
+                            <button type="button" id="accountLimit" class="btn-clipboard" data-bs-original-title="Copy to clipboard" onclick="limitChk;">이체한도조회</button>
+                            </td>
+                       </tr>
+                      <tr>    
+                       <th>보내는분 통장 표시내용</th>
+                            <td>
+                               <input type="text" id="out_comment" name="out_comment" style="width: 300px">
+                            </td>
+                          </tr>
+                    </table>
+                 </div>
               </div>
-      		</div>
+            </div>
           </div>
         <div class="container">
           <h4>입금계좌정보</h4>
@@ -157,56 +327,53 @@
                   <thead>
                     <tr>
                       <th style="width: 200px">입금은행</th>
-                      		<td>코스뱅크</td>
-                    	</tr>
+                            <td>코스뱅크</td>
+                       </tr>
                     <tr>
                       <th>입금계좌번호</th>
-                      	<td>
-                     	 	<input type="text" id="sender_account" name="sender_account" style="width: 200px">
-                     		 <button type="button" value="NameChk" id="NameChk">예금주 조회</button>
+                         <td>
+                            <input type="text" id="sender_account" name="sender_account" style="width: 200px">
+                            <button type="button" id="NameChk" class="btn-clipboard" data-bs-original-title="Copy to clipboard" value="NameChk">예금주 조회</button>
                         </td>
                     </tr>
                       <tr>
-                      	<th>예금주</th>
-	                      	<td>
-		                      	<div id="NameReturn" value="sender_name"></div>
-	                      	</td>
+                         <th>예금주</th>
+                            <td>
+                               <div id="NameReturn" value="sender_name"></div>
+                            </td>
                       </tr>
                   </thead>
                     <tr>
-                   	 <th>받는분 통장 표시내용</th>
+                       <th>받는분 통장 표시내용</th>
                       <td><input type="text" id="in_comment" name="in_comment" style="width: 300px">
                       </td>
                     </tr>
-             	 </table>
+                 </table>
               </div>
-      		</div>
+            </div>
           </div>
         </div>  
         <br><br>
-			        <div class="form-group" style="margin-left:700px"> 
-			             <div class="col-lg-offset-2 col-lg-10">
-			                <button type="button" class="btn btn-primary" value="button" id="button">이체추가</button>
-			             </div>
-			        </div>
-		         <section class="section section-lg bg-default">
-			        <div class="container">
-				          <h4>이체정보</h4>
-				          <div style="background-color: #435ebe; color:#fff; width:1170px; height:2px;"> </div>
-					          <br>
-					          <div id="ajaxReturn">
-				          </div>
-			        </div>   
-		      	</section>
-		     <div class="form-group" style="margin-left:700px">
-		          <div class="col-lg-offset-2 col-lg-10">
-		             <button type="submit" class="btn btn-primary" >이체실행</button>
-		          </div>
-		       </div>
-        
-      		</form> 
-       </div>  
-	<br><br><br>
+              <div class="form-group" style="margin-left:700px"> 
+                   <div class="col-lg-offset-2 col-lg-10">
+                      <button type="button" class="btn btn-primary" value="button" id="button">이체추가</button>
+                   </div>
+              </div>
+            <section class="section section-lg bg-default">
+              <div class="container">
+                   <h4>이체정보</h4>
+                      <div style="background-color: #435ebe; color:#fff; width:1170px; height:2px;"> </div>
+                      <br>
+                      <div id="ajaxReturn">
+                   </div>
+              </div> 
+              <div class="col-lg-offset-2 col-lg-10" style="text-align:center">
+                      <button type="submit" class="btn btn-primary" >이체실행</button>
+                  </div>  
+            </section>
+        </form> 
+    </div>  
+   <br><br><br>
 <%@ include file = "../footer.jsp" %>
 </body>
 </html>

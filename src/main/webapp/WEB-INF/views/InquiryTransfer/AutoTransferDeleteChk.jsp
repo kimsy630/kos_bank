@@ -9,17 +9,17 @@
 </head>
 <body>
 <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
-<c:if test="${deleteCnt==0}">
+<c:if test="${insertCnt==0}">
 	<script type="text/javascript">
 		alert("해지에 실패했습니다.");
 		window.history.back();
 	</script>
 </c:if>
 	
-<c:if test="${deleteCnt!=0}">
-<script type="text/javascript">
-	alert("해지되었습니다.");
-</script>	
+<c:if test="${insertCnt!=0}">
+	<script type="text/javascript">
+		alert("자동이체가 해지되었습니다.");
+	</script>
 	<c:redirect url = "main.cc">
     </c:redirect>
 </c:if>

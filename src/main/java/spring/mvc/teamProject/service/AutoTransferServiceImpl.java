@@ -2,7 +2,9 @@ package spring.mvc.teamProject.service;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -19,6 +21,21 @@ public class AutoTransferServiceImpl implements AutoTransferService {
 	
 	@Autowired
 	AutoTransferDAO aDAO;
+	
+	// 김소림
+	// 자동이체 조회
+	@Override
+	public void AutoTransferList(HttpServletRequest req, Model model) {
+		String account = req.getParameter("account");
+		
+		List<AutoTransferVO> list = aDAO.AutoTransferList(account);
+		
+		System.out.println("Autolist : "+list);
+		
+		model.addAttribute("list", list);
+		
+	}
+	
 	// 김소림
 	// 자동이체 등록
 	@Override
@@ -95,14 +112,46 @@ public class AutoTransferServiceImpl implements AutoTransferService {
 				// 최근거래내역 UPDATE
 				aDAO.lastRunDate(vo);
 				
-				// 거래내역 로그(출금)
+				// 자동이체내역 로그(출금)
 				aDAO.sendAutoTrans(vo);
 				
-				// 거래내역 로그(입금)
+				// 자동이체내역 로그(입금)
 				aDAO.receiveAutoTrans(vo);
 				
 				i++;
 			}
 		}
 	}
+	
+	// 자동이체 해지 리스트
+	@Override
+	public void AutoTransferDeleteList(HttpServletRequest req, Model model) {
+		int key = Integer.parseInt(req.getParameter("jd_key"));
+		List<AutoTransferVO> list = aDAO.AutoTransferDeleteList(key);
+		System.out.println("Deletelist : "+list);
+		model.addAttribute("list", list);
+	}
+	
+	@Override
+	// 자동이체 해지
+	public void AutoTransferDeleteChk(HttpServletRequest req, Model model) {
+		String account = req.getParameter("account");
+		int accountPW = (Integer.parseInt(req.getParameter("accountPW")));
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("account", account);
+		map.put("accountPW", accountPW);
+		System.out.println("account : "+account);
+		System.out.println("accountPW : "+accountPW);
+		int deleteCnt = aDAO.AutoTransferDeleteChk(map);
+		
+		if(deleteCnt == 1) {
+			int insertCnt = aDAO.AutoTransferDelete(account);
+			System.out.println("insertCnt : "+insertCnt);
+			model.addAttribute("insertCnt",insertCnt);
+		} 
+		
+		
+	}
+
+	
 }

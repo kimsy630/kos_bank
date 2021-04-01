@@ -8,7 +8,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
     <div class="preloader">
       <div class="preloader-body">
         <div class="cssload-container">
@@ -24,7 +23,7 @@
       <%@include file="../header.jsp" %>
           <section class="section section-lg bg-default">
        		<div class="container">
-              	 <form action="AccountTerminationAction.do" method="post" style="width:400px; margin-left:350px; align:center">
+              <form action="AutoTransferDeleteStart.do" method="post" style="width:400px; margin-left:350px; align:center">
               	 <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
               	 <input type="hidden" name="account" value="<%=account%>">
               	 
@@ -38,7 +37,7 @@
 				            </tr>
 	                	</table>
 	                <br><br><br>
-	                <button type="submit" class="btn btn-primary" id="deleteAction" style="margin-left:150px">해지하기</button> 
+	                <button type="submit" class="btn btn-primary" style="margin-left:150px">해지하기</button> 
                 </form>
           	</div>
           </section>
