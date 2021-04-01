@@ -1,6 +1,7 @@
 package spring.mvc.teamProject.service;
 
 import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
@@ -287,11 +288,12 @@ public class FinancialProductsServiceImpl implements FinancialProductsService{
 				vo4.setAccount(accounts);
 				vo4.setJd_account(account);
 				vo4.setJd_type("적금");
-				vo4.setJd_outDate(date);
+				vo4.setJd_outDate(date);	// 사용자설정
 				vo4.setJd_autoMoney(j_money);
 				vo4.setJd_outCycle("1개월");
-				vo4.set
-				
+				Date from = new Date();
+				SimpleDateFormat transFormat = new SimpleDateFormat("yyyy-MM-dd");
+				String to = transFormat.format(from);
 				 
 				insertCnt = ADAO.AutoTransferAdd(vo)
 				

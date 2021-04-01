@@ -319,9 +319,9 @@
 				<hr></hr><br><br>
 				<div>
 				<div id="withdraw">
-				<h3 style="display:inline;">자동이체 계좌정보</h3><p style="color:#92969c; display:inline;">(이체날짜는 매월 ${vo.j_auto_date}일 입니다.)</p><br><br>
+				<h3 style="display:inline;">자동이체 계좌정보</h3><p style="color:#92969c; display:inline;"></p><br><br>
 				<hr></hr><br>
-				<p style="display:inline; margin-right:140px;">자동이체 계좌번호</p>
+				<p style="display:inline; margin-right:110px;">자동이체 계좌번호</p>
                 <select name="accounts" class="form-select form-select-lg mb-4" aria-label="Default select example">
 				  <option selected>선택</option>
 				  <c:forEach items="${list}" var="item">
@@ -329,7 +329,7 @@
 				  </c:forEach>
 				</select>
 				<br><hr></hr>
-				<div style="display:inline; width:30%; text-align:center; margin-right:100px;">자동이체계좌 비밀번호</div>
+				<div style="display:inline; width:30%; text-align:center; margin-right:65px;">자동이체계좌 비밀번호</div>
 				<div style="display:inline-block; width:70%;">
 					<div class="form-group" id="newAmount">
                     <div style="display:inline-block;" class="col-sm-1">
@@ -341,6 +341,46 @@
                 	</div>
 				</div>
 				<hr></hr><br>
+				  	<div style="display:inline; width:30%; text-align:center; margin-right:155px;">자동이체일</div>
+				  	
+				  	
+					<div class="display_table" style="display:inline-block; width:10%;">
+						<div class="input-group mb-3">
+							<select name="jd_outDate" class="custom-select"
+								aria-label="Example select with button addon">
+								<option value="" selected>이체일</option>
+								<option class="" value="1">1</option>
+								<option class="" value="2">2</option>
+								<option class="" value="3">3</option>
+								<option class="" value="4">4</option>
+								<option class="" value="5">5</option>
+								<option class="" value="6">6</option>
+								<option class="" value="7">7</option>
+								<option class="" value="8">8</option>
+								<option class="" value="9">9</option>
+								<option class="" value="10">10</option>
+								<option class="" value="11">11</option>
+								<option class="" value="12">12</option>
+								<option class="" value="13">13</option>
+								<option class="" value="14">14</option>
+								<option class="" value="15">15</option>
+								<option class="" value="16">16</option>
+								<option class="" value="17">17</option>
+								<option class="" value="18">18</option>
+								<option class="" value="19">19</option>
+								<option class="" value="20">20</option>
+								<option class="" value="21">21</option>
+								<option class="" value="22">22</option>
+								<option class="" value="23">23</option>
+								<option class="" value="24">24</option>
+								<option class="" value="25">25</option>
+								<option class="" value="26">26</option>
+								<option class="" value="27">27</option>
+								<option class="" value="28">28</option>
+							</select>
+						</div>
+					</div>
+					<hr></hr><br>
 				</div>
 				<div style="text-align:center;"><button id="btns" class="button button-primary button-round">신청하기</button></div>
               </div>
