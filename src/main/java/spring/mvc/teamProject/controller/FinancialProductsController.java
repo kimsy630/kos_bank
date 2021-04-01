@@ -5,6 +5,7 @@ import javax.servlet.http.HttpServletRequest;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -93,7 +94,7 @@ public class FinancialProductsController {
 	
 	// 최문수
 	// 정기예금상품 가입페이지
-	@RequestMapping("/DepositRegistration.cc")
+	@RequestMapping("/DepositRegistration.do")
 	public String DepositRegistration(HttpServletRequest req,Model model) {
 		logger.info("url ==> /DepositRegistration");
 		
@@ -123,6 +124,14 @@ public class FinancialProductsController {
 		service.DepositAction(req, model);
 		
 		return "financialProducts/DepositAction";
+	}
+	
+	// 최문수
+	// 만기인식용 스케쥴러
+	@Scheduled(cron="0 */1 * * * *")
+	  public void scheduleTest() {
+	   logger.info("만기 test");
+	   service.checkEnd();
 	}
 	
 	

@@ -1,6 +1,8 @@
 package spring.mvc.teamProject.service;
 
 import java.sql.Timestamp;
+import java.text.DateFormat;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -41,13 +43,12 @@ public class FinancialProductsServiceImpl implements FinancialProductsService{
 	FinancialProductsDAO dao;
 	
 	@Autowired
-	InquiryTransferDAO IDAO;
+	InquiryTransferDAO IDAO;	// 계좌이체용
 	
 	@Autowired
 	InquiryTransferService Iservice;
 	
-	@Autowired
-	AutoTransferDAO ADAO;
+	
 	
 	// ============================================================================
 	// 박서하
@@ -118,7 +119,7 @@ public class FinancialProductsServiceImpl implements FinancialProductsService{
 		model.addAttribute("vo", vo);
 		
 	}
-	
+	// 적금개설
 	@Override
 	public void SavingsAction(HttpServletRequest req, Model model) {
 		
@@ -170,7 +171,7 @@ public class FinancialProductsServiceImpl implements FinancialProductsService{
 				vo.setJ_end_date(ts);
 				vo.setJ_method(j_method);
 				
-				insertCnt = dao.insertFreeSavings(vo);					// 2.적금테이블에 삽입
+				insertCnt = dao.insertFreeSavings(vo);				// 2.적금테이블에 삽입
 				model.addAttribute("insertCnt", insertCnt);
 				return;
 			}
@@ -217,7 +218,7 @@ public class FinancialProductsServiceImpl implements FinancialProductsService{
 			vo2.setAccountPW(accountPW);
 			insertCnt = dao.insertSavingsAccount(vo2);				// 4.적금용 계좌개설
 			
-			if(insertCnt == 0) {
+			if(insertCnt == 0) {	// 적금용 계좌개설 실패시
 				insertCnt = 3;
 				model.addAttribute("insertCnt", insertCnt);
 				model.addAttribute("j_name", j_name);
@@ -240,7 +241,7 @@ public class FinancialProductsServiceImpl implements FinancialProductsService{
 																	
 			insertCnt = IDAO.withdrawal(vo3);						// 8.잔액 감소
 			
-			if(insertCnt == 0) {
+			if(insertCnt == 0) { // 실패시(트랜잭션 롤백필요)
 				insertCnt = 4;
 				model.addAttribute("insertCnt", insertCnt);
 				model.addAttribute("j_name", j_name);
@@ -249,68 +250,60 @@ public class FinancialProductsServiceImpl implements FinancialProductsService{
 					
 			insertCnt = IDAO.deposit(vo3);							// 9.상대 잔액 추가
 			
-			if(insertCnt == 0) {
+			if(insertCnt == 0) { // 실패시(트랜잭션 롤백필요)
 				insertCnt = 4;
 				model.addAttribute("insertCnt", insertCnt);
 				model.addAttribute("j_name", j_name);
 				return;
 			}
 			
-			if(insertCnt == 1) {		// 적금계좌개설후 이체성공시
-				
-				Date date = new Date();
-				long time = date.getTime();
-				Timestamp ts = new Timestamp(time);
-				Calendar cal = Calendar.getInstance();
-				cal.setTime(ts);
-				cal.add(Calendar.MONTH, months);
-				ts.setTime(cal.getTime().getTime());
-				
-				vo.setJ_name(j_name);
-				vo.setAccount(account);
-				vo.setJ_rate(j_rate);
-				vo.setJ_type(j_type);
-				vo.setJ_money(j_money);
-				vo.setJ_method(j_method);
-				vo.setJ_end_date(ts);
-				vo.setJ_auto_date(j_auto_date);
-				
-				insertCnt = dao.insertFixedSavings(vo);				// 10.적금테이블에 가입정보삽입
-				
-				if(insertCnt == 0) {	// 적금테이블에 정보삽입 실패시
-					insertCnt = 5;
-					model.addAttribute("insertCnt", insertCnt);
-					model.addAttribute("j_name", j_name);
-					return;
-				}
-				
-				AutoTransferVO vo4 = new AutoTransferVO();
-				vo4.setAccount(accounts);
-				vo4.setJd_account(account);
-				vo4.setJd_type("적금");
-				vo4.setJd_outDate(date);	// 사용자설정
-				vo4.setJd_autoMoney(j_money);
-				vo4.setJd_outCycle("1개월");
-				Date from = new Date();
-				SimpleDateFormat transFormat = new SimpleDateFormat("yyyy-MM-dd");
-				String to = transFormat.format(from);
-				 
-				insertCnt = ADAO.AutoTransferAdd(vo)
-				
-				
+			Date date = new Date();
+			long time = date.getTime();
+			Timestamp ts = new Timestamp(time);
+			Calendar cal = Calendar.getInstance();
+			cal.setTime(ts);
+			cal.add(Calendar.MONTH, months);
+			ts.setTime(cal.getTime().getTime());
+			
+			vo.setJ_name(j_name);
+			vo.setAccount(account);
+			vo.setJ_rate(j_rate);
+			vo.setJ_type(j_type);
+			vo.setJ_money(j_money);
+			vo.setJ_method(j_method);
+			vo.setJ_end_date(ts);
+			vo.setJ_auto_date(j_auto_date);
+			
+			insertCnt = dao.insertFixedSavings(vo);				// 10.적금테이블에 가입정보삽입
+			
+			if(insertCnt == 0) {	// 적금테이블에 정보삽입 실패시
+				insertCnt = 5;
+				model.addAttribute("insertCnt", insertCnt);
+				model.addAttribute("j_name", j_name);
+				return;
 			}
 			
+			AutoTransferVO vo4 = new AutoTransferVO();
+			vo4.setAccount(accounts);								// 출금계좌번호
+			vo4.setJd_account(account);								// 적금계좌번호
+			vo4.setJd_type("적금");									// 적금구분
+			vo4.setJd_outDate(Integer.toString(j_auto_date));		// 사용자 이체날짜설정값
+			vo4.setJd_autoMoney(j_money); 							// 자동이체금액
 			
+			insertCnt = dao.AutoTransferAdd(vo4);
 			
-			// 계좌개설후 이체실패시
-			insertCnt = 5;
+			if(insertCnt == 0) {	// 자동이체 테이블에 정보삽입 실패시
+				insertCnt = 5;
+				model.addAttribute("insertCnt", insertCnt);
+				model.addAttribute("j_name", j_name);
+				return;
+			}
 			model.addAttribute("insertCnt", insertCnt);
 			model.addAttribute("j_name", j_name);
 			return;
 		}
-		
 	}
-		
+	// 정기예금개설
 	@Override
 	public void DepositAction(HttpServletRequest req, Model model) {
 		
@@ -326,10 +319,10 @@ public class FinancialProductsServiceImpl implements FinancialProductsService{
 		int accountPW = Integer.parseInt(req.getParameter("pw").toString());			// 가입계좌 비밀번호
 		int months = Integer.parseInt(req.getParameter("months").toString());			// 계약월수
 		int pwWithdraw = Integer.parseInt(req.getParameter("pwWithdraw").toString());	// 이체용 계좌비밀번호
-		String accounts = req.getParameter("accounts").toString();						// 이체용 계좌번호
+		String sender_account = req.getParameter("accounts").toString();						// 이체용 계좌번호
 		
 		
-		vo2.setAccount(accounts);								// 이체용 계좌번호
+		vo2.setAccount(sender_account);								// 이체용 계좌번호
 		vo2.setAccountPW(pwWithdraw);							// 이체용 계좌비밀번호
 		vo2.setBalance(y_balance);								// 이체용 계좌 조회용 최초예치금액 
 		insertCnt = dao.checkPwd(vo2);							// 1. 출금용 계좌 비밀번호 일치 여부확인
@@ -362,8 +355,8 @@ public class FinancialProductsServiceImpl implements FinancialProductsService{
 		String name = dao.getName(ID);							// 5.계좌이체용 이름을 얻어온다.
 		
 		TransferVO vo3 = new TransferVO();
-		vo3.setAccount(account);
-		vo3.setSender_account(accounts);
+		vo3.setAccount(sender_account);
+		vo3.setSender_account(account);
 		vo3.setMoney(y_balance);
 		vo3.setSender_name(name);
 		vo3.setOut_comment("정기예금이체");
@@ -373,7 +366,7 @@ public class FinancialProductsServiceImpl implements FinancialProductsService{
 																	
 		IDAO.addYourLog(vo3);									// 7.예금 계좌 이체내역
 																
-		insertCnt = IDAO.withdrawal(vo3);						// 8.잔액 감소
+		insertCnt = IDAO.withdrawal(vo3);						// 8.자유입출금 감소
 		
 		if(insertCnt == 0) {	// 이체실패시
 			insertCnt = 4;
@@ -382,7 +375,7 @@ public class FinancialProductsServiceImpl implements FinancialProductsService{
 			return;
 		}
 		
-		insertCnt = IDAO.deposit(vo3);							// 9.상대 잔액 추가
+		insertCnt = IDAO.deposit(vo3);							// 9.예금 잔액 추가
 		
 		if(insertCnt == 0) {	// 이체실패시
 			insertCnt = 4;			
@@ -394,17 +387,36 @@ public class FinancialProductsServiceImpl implements FinancialProductsService{
 		Date date = new Date();
 		long time = date.getTime();
 		Timestamp ts = new Timestamp(time);
+		
 		Calendar cal = Calendar.getInstance();
 		cal.setTime(ts);
 		cal.add(Calendar.MONTH, months);
 		ts.setTime(cal.getTime().getTime());
 		
+		java.sql.Timestamp today = ts;
+		java.text.SimpleDateFormat sdf = new java.text.SimpleDateFormat("yy/MM/dd");
+		String test = sdf.format(today);
+		Date parsedDate = new Date();
+		
+		SimpleDateFormat dateFormat = new SimpleDateFormat("yy/MM/dd");
+		try {
+			parsedDate = dateFormat.parse(test);
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	    Timestamp timestamp = new java.sql.Timestamp(parsedDate.getTime());
+		
+
 		vo.setY_name(y_name);
 		vo.setAccount(account);
 		vo.setY_rate(y_rate);
 		vo.setY_type(y_type);
 		vo.setY_balance(y_balance);
-		vo.setY_end_date(ts);
+		vo.setY_end_date(timestamp);
+		vo.setY_month(months);
+		System.out.println(vo.getY_end_date());
+		
 		
 		insertCnt = dao.insertDeposit(vo);					// 10. 예금테이블에 삽입
 		if(insertCnt == 0) {	// 예금테이블에 삽입 실패시
@@ -415,5 +427,39 @@ public class FinancialProductsServiceImpl implements FinancialProductsService{
 		}
 		model.addAttribute("insertCnt", insertCnt);
 		return;
+	}
+
+	@Override
+	public void checkEnd() {
+		
+		
+		List<Fixed_depositVO> vo = dao.selectDepositEnd();
+		System.out.println(vo.get(0).getY_end_date());
+		if(vo != null) {
+			for(Fixed_depositVO vo2 : vo) {
+				System.out.println(vo2.getY_type());
+					String account = vo2.getAccount();
+					System.out.println(account);
+					double rate = vo2.getY_rate();
+					System.out.println(rate);
+					int balance = vo2.getY_balance();
+					System.out.println(balance);
+					int month = vo2.getY_month();
+					System.out.println(month);
+					int result = (int)(balance*(1+rate*month/12));
+					System.out.println(result);
+					int updateCnt = dao.endDeposit(vo2);
+					System.out.println(updateCnt);
+					if(updateCnt == 1) {
+						AccountVO vo3 = new AccountVO();
+						vo3.setAccount(account);
+						vo3.setBalance(result);
+						dao.returnDeposit(vo3);
+					}
+			}
+		}
+		
+		
+		
 	}
 }

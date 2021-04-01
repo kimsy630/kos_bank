@@ -1,5 +1,6 @@
 package spring.mvc.teamProject.persistence;
 
+import java.sql.Timestamp;
 import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
@@ -7,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import spring.mvc.teamProject.vo.AccountVO;
+import spring.mvc.teamProject.vo.AutoTransferVO;
 import spring.mvc.teamProject.vo.Deposit_productVO;
 import spring.mvc.teamProject.vo.Fixed_depositVO;
 import spring.mvc.teamProject.vo.MembersVO;
@@ -136,6 +138,37 @@ public class FinancialProductsDAOImpl implements FinancialProductsDAO{
 		return sqlSession.getMapper(FinancialProductsDAO.class).getName(name);
 		
 	}
+
+	@Override
+	public int AutoTransferAdd(AutoTransferVO vo) {
+		
+		return sqlSession.getMapper(FinancialProductsDAO.class).AutoTransferAdd(vo);
+		
+	}
+
+	@Override
+	public List<Fixed_depositVO> selectDepositEnd() {
+		
+		return sqlSession.getMapper(FinancialProductsDAO.class).selectDepositEnd();
+		
+	}
+	
+	@Override
+	public int endDeposit(Fixed_depositVO vo) {
+		
+		return sqlSession.getMapper(FinancialProductsDAO.class).endDeposit(vo);
+	}
+
+	@Override
+	public int returnDeposit(AccountVO vo) {
+		
+		return sqlSession.getMapper(FinancialProductsDAO.class).returnDeposit(vo);
+		
+	}
+
+	
+	
+	
 
 	
 

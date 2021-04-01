@@ -14,6 +14,7 @@ public class Fixed_depositVO {
    private String y_type;
    private int y_balance;
    private Timestamp y_end_date;
+   private int y_month;
    private AccountVO accountVO;
 	   
 	public String getY_Key() {
@@ -76,6 +77,11 @@ public class Fixed_depositVO {
 	public void setAccountVO(AccountVO accountVO) {
 		this.accountVO = accountVO;
 	}
-	
+	public int getY_month() {
+		return y_month;
+	}
+   public void setY_month(int y_month) {
+	   this.y_month = y_month;
+	}
 	   
 }

@@ -1,8 +1,11 @@
 package spring.mvc.teamProject.persistence;
 
+import java.sql.Timestamp;
 import java.util.List;
+import java.util.Map;
 
 import spring.mvc.teamProject.vo.AccountVO;
+import spring.mvc.teamProject.vo.AutoTransferVO;
 import spring.mvc.teamProject.vo.Deposit_productVO;
 import spring.mvc.teamProject.vo.Fixed_depositVO;
 import spring.mvc.teamProject.vo.MembersVO;
@@ -49,5 +52,13 @@ public interface FinancialProductsDAO{
 	public int insertSavingsAccount(AccountVO vo);
 	// 해당 아이디 이름 가져오기(이체할때 보내고 받는 본인의 이름)
 	public String getName(String name);
+	// 자동이체 테이블 삽입(정액적립)
+	public int AutoTransferAdd(AutoTransferVO vo);
+	// 만기가 오늘날짜인 예금정보 가져오기
+	public List<Fixed_depositVO> selectDepositEnd();
+	// 예금테이블 상태를 만기로 돌려준다.
+	public int endDeposit(Fixed_depositVO vo);
+	// 만기인 예금 계좌에 만기액을 넣어준다.
+	public int returnDeposit(AccountVO vo); 
 	
 }

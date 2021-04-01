@@ -81,8 +81,8 @@
 	</insert>
 	
 	<insert id="insertDeposit" parameterType="spring.mvc.teamProject.vo.Fixed_depositVO">
-		INSERT INTO fixed_deposit(y_Key, y_name, account, y_rate, y_type, y_balance, y_end_date)
-		VALUES(SEQ_DEPOSIT.NEXTVAL, #{y_name}, #{account}, #{y_rate}, #{y_type}, #{y_balance}, #{y_end_date})
+		INSERT INTO fixed_deposit(y_Key, y_name, account, y_rate, y_type, y_balance, y_end_date, y_month)
+		VALUES(SEQ_DEPOSIT.NEXTVAL, #{y_name}, #{account}, #{y_rate}, #{y_type}, #{y_balance}, #{y_end_date}, #{y_month})
 	</insert>
 	
 	<insert id="insertSavingsAccount" parameterType="spring.mvc.teamProject.vo.AccountVO">
@@ -97,7 +97,7 @@
 	
 	<insert id="insertFixedSavings" parameterType="spring.mvc.teamProject.vo.installment_savingsVO">
 		INSERT INTO installment_savings(j_Key, j_name, account, j_rate, j_money, j_type, j_method, j_end_date, j_auto_date)
-		VALUES(SEQ_SAVINGS.NEXTVAL, #{j_name}, #{account}, #{j_rate}, #{j_money}, #{j_type}, #{j_method}, #{j_end_date}, #{j_auto_date})
+		VALUES(SEQ_SAVINGS.NEXTVAL, #{j_name}, #{account}, #{j_rate}, #{j_money}, #{j_type}, #{j_method}, (TO_TIMESTAMP#{j_end_date}, 'YYYY-MM-DD') #{j_auto_date})
 	</insert>
 	
 	<select id="getName" resultType="String">
@@ -105,5 +105,31 @@
 		  FROM Members 
 		 WHERE ID = #{ID}
 	</select>
-		
+	
+	<insert id="AutoTransferAdd" parameterType="spring.mvc.teamProject.vo.AutoTransferVO">
+		INSERT 
+		INTO auto_transfer
+			(jd_key, account, jd_autoMoney, 
+			jd_outDate,	jd_account, jd_inPlace)
+		VALUES(
+			SEQ_AUTOTRANSFER.nextval, #{account}, #{jd_autoMoney},
+			#{jd_outDate}, #{jd_account}, #{jd_inPlace})
+	</insert> 
+	
+	<select id="selectDepositEnd" resultType="spring.mvc.teamProject.vo.Fixed_depositVO">
+		select * from fixed_deposit where y_end_date = TO_TIMESTAMP(sysdate, 'YYYY-MM-DD')
+	</select>
+	
+	<update id="endDeposit" parameterType="spring.mvc.teamProject.vo.Fixed_depositVO">
+		UPDATE fixed_deposit
+		  SET y_state = '만기'
+		 WHERE account = #{account}
+	</update>
+	
+	<update id="returnDeposit" parameterType="spring.mvc.teamProject.vo.AccountVO">
+		UPDATE account_info 
+		   SET Balance = #{balance}
+		 WHERE account = #{account}
+	</update>
+			
 </mapper>
