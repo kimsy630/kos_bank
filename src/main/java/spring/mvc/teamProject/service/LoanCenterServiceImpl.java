@@ -146,7 +146,7 @@ public class LoanCenterServiceImpl implements LoanCenterService {
 			}
 			
 			d_tran = Integer.parseInt(req.getParameter("d_tran"));
-			d_ERC = (int) (d_tran * d_ERR * ((float)rest/(float)total)); // 대출상환금액*수수료율*(잔여일수 / 약정기간)]
+			d_ERC = (int) (d_tran * d_ERR * ((float)rest/(float)total)); // 대출상환금액*수수료율*(잔여일수 / 약정기간)
 			System.out.println("중도해지수수료: " + d_ERC);
 			
 			d_balance = d_balance - d_tran;
@@ -169,7 +169,7 @@ public class LoanCenterServiceImpl implements LoanCenterService {
 		list = RDAO.selectById(strId);
 		System.out.println("list : " + list);
 		
-		// ========================================================================
+		// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 		// 계좌이체(원금 상환) 1-1
 		String d_auto_account = req.getParameter("d_auto_account"); // 출금 계좌
 		int d_tran = Integer.parseInt(req.getParameter("d_tran")); // 상환 할 원금
@@ -195,7 +195,7 @@ public class LoanCenterServiceImpl implements LoanCenterService {
 		System.out.println("원금상환 yourlog : " + yourlog);
 		System.out.println("원금상환 vo : " + vo);
 		
-		// ------------------------------------------------
+		// -------------------------------------------
 		// Loans 변경 1-2
 		int d_Key = Integer.parseInt(req.getParameter("d_Key"));
 		System.out.println("d_Key :" + d_Key);
@@ -231,7 +231,7 @@ public class LoanCenterServiceImpl implements LoanCenterService {
 			System.out.println("대출상환(납입) 내역 성공 : " + insertCnt);
 		}
 		
-		// ========================================================================
+		// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 		// 계좌이체(중도상환수수료) 2-1
 		int d_ERC = Integer.parseInt(req.getParameter("d_ERC")); // 납입 할 중도상환수수료
 		System.out.println("d_ERC : " + d_ERC);
@@ -257,7 +257,7 @@ public class LoanCenterServiceImpl implements LoanCenterService {
 			System.out.println("원금상환 yourlog : " + yourlog2);
 			System.out.println("원금상환 vo : " + vo2);
 			
-			// ------------------------------------------------
+			// -------------------------------------------
 			// Loans_history 생성 2-2
 			Loans_historyVO vo4 = new Loans_historyVO();
 			
