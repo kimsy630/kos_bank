@@ -12,10 +12,13 @@ public class AccountVO {
 	private String accountType;
 	private String accountState;
 	private String acc_state_content;
-	private int accountLimit;
 	private Timestamp delete_date;
 	private Timestamp sleep_date;
 	private Timestamp new_date;
+	private int accountLimit;
+	private int oneLimit;
+	private int reset_accountLimit;
+	private int reset_oneLimit;
     private MembersVO member;
 
 	public String getAccount() {
@@ -89,6 +92,24 @@ public class AccountVO {
 	}
 	public void setMember(MembersVO member) {
 		this.member = member;
+	}
+	public int getOneLimit() {
+		return oneLimit;
+	}
+	public void setOneLimit(int oneLimit) {
+		this.oneLimit = oneLimit;
+	}
+	public int getReset_accountLimit() {
+		return reset_accountLimit;
+	}
+	public void setReset_accountLimit(int reset_accountLimit) {
+		this.reset_accountLimit = reset_accountLimit;
+	}
+	public int getReset_oneLimit() {
+		return reset_oneLimit;
+	}
+	public void setReset_oneLimit(int reset_oneLimit) {
+		this.reset_oneLimit = reset_oneLimit;
 	}
 	@Override
 	public String toString() {

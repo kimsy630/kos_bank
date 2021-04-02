@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import spring.mvc.teamProject.service.AutoTransferService;
 import spring.mvc.teamProject.service.InquiryTransferService;
+import spring.mvc.teamProject.service.LimitService;
 import spring.mvc.teamProject.service.RegisterReleaseService;
 import spring.mvc.teamProject.vo.TransferVO;
 
@@ -35,6 +36,9 @@ public class InquiryTransferController {
 	
 	@Autowired
 	AutoTransferService Aservice;
+	
+	@Autowired
+	LimitService lservice;
 	
 	private static final Logger logger = LoggerFactory.getLogger(InquiryTransferController.class);
 	
@@ -207,5 +211,41 @@ public class InquiryTransferController {
 	  public void scheduleTest() {
 	   logger.info("이체 test");
 	  Aservice.AutoTransferPractice();
+	}
+	
+	//김세엽
+	//한도변경
+	@RequestMapping("/AccountLimit.do")
+	public String AccountLimit(HttpServletRequest req,Model model) {
+		logger.info("url ==> /AccountLimit");
+		lservice.AccountLimitInfo(req, model);
+		return "InquiryTransfer/AccountLimit";
+	}
+	
+	//김세엽
+	//한도조회ajax
+	@RequestMapping("/AccountLimitSearch.do")
+	public String AccountLimitSearch(HttpServletRequest req,Model model) {
+		logger.info("url ==> /AccountLimitSearch");
+		lservice.AccountLimitSearch(req, model);
+		return "InquiryTransfer/AccountLimitSearch";
+	}
+	
+	//김세엽
+	//이체한도 페이지 ajax
+	@RequestMapping("/AccountLimitChangeView.do")
+	public String AccountLimitChangeView(HttpServletRequest req,Model model) {
+		logger.info("url ==> /AccountLimitChangeView");
+		model.addAttribute("account", req.getParameter("account"));
+		return "InquiryTransfer/AccountLimitChangeView";
+	}
+
+	//김세엽
+	//이체한도신청
+	@RequestMapping("/AccountLimitAction.do")
+	public String AccountLimitAction(HttpServletRequest req,Model model) {
+		logger.info("url ==> /AccountLimitAction");
+		lservice.AccountLimitAction(req, model);
+		return "InquiryTransfer/AccountLimitAction";
 	}
 }

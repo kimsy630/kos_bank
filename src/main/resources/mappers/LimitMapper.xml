@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+    
+<mapper namespace = "spring.mvc.teamProject.persistence.LimitDAO">
+	
+	<resultMap id="AccountInfo" type="spring.mvc.teamProject.vo.AccountVO">
+		<id column="account" property="account" />
+		<result column="id" property="id" />
+		<result column="accountPW" property="accountPW" />
+		<result column="balance" property="balance" />
+		<result column="accountType" property="accountType" />
+		<result column="accountState" property="accountState" />
+		<result column="acc_state_content" property="acc_state_content" />
+		<result column="delete_date" property="delete_date" />
+		<result column="sleep_date" property="sleep_date" />
+		<result column="new_date" property="new_date" />
+		<result column="accountLimit" property="accountLimit" />
+		<result column="oneLimit" property="oneLimit" />
+		<result column="reset_accountLimit" property="reset_accountLimit" />
+		<result column="reset_oneLimit" property="reset_oneLimit" />
+	</resultMap> 
+	<resultMap id="limit" type="spring.mvc.teamProject.vo.LimitVO">
+		<id column="l_key" property="l_key" />
+		<result column="account" property="account" />
+		<result column="l_date" property="l_date" />
+		<result column="l_money" property="l_money" />
+		<result column="l_state" property="l_state" />
+		<collection property="accountvo" resultMap="AccountInfo" />
+	</resultMap>
+	
+	<select id="AccountLimitSearch" resultType="spring.mvc.teamProject.vo.AccountVO">
+		SELECT reset_accountLimit,reset_oneLimit
+		  FROM account_info
+		 WHERE account=#{account}
+	</select>
+	
+	
+	<select id="getAccount" resultType="String">
+		SELECT account
+		  FROM account_info
+		 WHERE id=#{id} AND accountType='입출금'
+	</select>
+	
+	
+	<select id="AccountPwdCheck" resultType="int">
+		SELECT COUNT(*)
+		  FROM account_info
+		 WHERE account=#{account} AND accountPW=#{pwd}
+	</select>
+	
+	
+	<insert id="insertLimit">
+		INSERT INTO limit_info(l_key,account,l_date,l_money,l_state)
+		VALUES(SEQ_LIMIT_INFO.NEXTVAL,#{account},TO_DATE(#{l_date},'YYYY-MM-DD'),#{l_money},'대기')
+	</insert>
+</mapper>
