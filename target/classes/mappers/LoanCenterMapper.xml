@@ -38,14 +38,21 @@
 		 AND i.account = #{account}
 		 AND l.d_state=2 <!-- d_state=2 : 해지대출계좌 -->
 	</select>
-	
+		
 	<select id="getLoanPrincipal" resultType="spring.mvc.teamProject.vo.LoansVO"> <!-- 대출원금 예상 -->
 		SELECT d_Key, account, d_amount, d_month, d_ERR, d_balance, d_month, d_start_date, d_end_date, d_auto_account
 		 FROM Loans
 		 WHERE account = #{account}
 	</select>
 	
-	<insert id="payLoanPrincipal1">
+	<update id="payLoanPrincipal1" parameterType="spring.mvc.teamProject.vo.LoansVO"> <!-- 대출원금 상환 실행(Loans 변경 1-2) -->
+		UPDATE Loans SET d_balance = #{d_balance}, d_loan_balance = #{d_loan_balance}
+		 WHERE account = #{account}
+	</update>
+	
+	<insert id="payLoanPrincipal2" parameterType="spring.mvc.teamProject.vo.Loans_historyVO">
+		INSERT INTO Loans_history (d_his_Key, d_Key, transfer_id, d_his_date, d_his_state, d_his_amount) 
+		 VALUES(SEQ_LOANS_HISTORY.NEXTVAL, #{d_Key}, SEQ_TRANSFER.CURRVAL, sysdate, #{d_his_state}, #{d_his_amount})
 	</insert>
 	
 	<select id="getLoanRateCheckIn" resultType="spring.mvc.teamProject.vo.LoansVO"> <!-- 대출이자 예상(내부정보) -->

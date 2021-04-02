@@ -9,6 +9,7 @@ import org.springframework.stereotype.Repository;
 
 import spring.mvc.teamProject.vo.AccountVO;
 import spring.mvc.teamProject.vo.LoansVO;
+import spring.mvc.teamProject.vo.Loans_historyVO;
 import spring.mvc.teamProject.vo.Loans_productVO;
 
 @Repository
@@ -48,6 +49,18 @@ public class LoanCenterDAOImpl implements LoanCenterDAO {
 		LoansVO vo = sqlSession.selectOne("spring.mvc.teamProject.persistence.LoanCenterDAO.getLoanPrincipal", account);
 		return vo;
 	}
+
+	@Override
+	public int payLoanPrincipal1(LoansVO vo) { // 대출원금 상환 실행(Loans 변경 1-2)
+		int updateCnt = sqlSession.update("spring.mvc.teamProject.persistence.LoanCenterDAO.payLoanPrincipal1", vo);
+		return updateCnt;
+	}
+	
+	@Override
+	public int payLoanPrincipal2(Loans_historyVO vo) { // 대출원금 상환 실행(Loans 변경 1-2)
+		int insertCnt = sqlSession.insert("spring.mvc.teamProject.persistence.LoanCenterDAO.payLoanPrincipal2", vo);
+		return insertCnt;
+	}
 	
 	@Override
 	public LoansVO getLoanRateCheckIn(String account) { // 대출이자 예상(내부정보)
@@ -84,6 +97,7 @@ public class LoanCenterDAOImpl implements LoanCenterDAO {
 		int insertCnt = sqlSession.insert("spring.mvc.teamProject.persistence.LoanCenterDAO.insertLoan", vo);
 		return insertCnt;
 	}
-	// ============================================================================
 	
+	// ============================================================================
+
 }

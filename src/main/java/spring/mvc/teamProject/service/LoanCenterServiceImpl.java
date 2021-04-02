@@ -172,20 +172,19 @@ public class LoanCenterServiceImpl implements LoanCenterService {
 		// ========================================================================
 		// 계좌이체(원금 상환) 1-1
 		String d_auto_account = req.getParameter("d_auto_account"); // 출금 계좌
-		
 		int d_tran = Integer.parseInt(req.getParameter("d_tran")); // 상환 할 원금
 		
 		TransferVO vo = new TransferVO();
 		
 		vo.setAccount(d_auto_account); // 출금 계좌
-		vo.setSender_account(req.getParameter("33-09-000001")); // KOS 본사 계좌 *하드코딩*
+		vo.setSender_account("33-09-000001"); // KOS 본사 계좌 *하드코딩*
 		
 		vo.setMoney(d_tran);
 		System.out.println("이체(할) 원금 : " + vo.getMoney());
 		
 		vo.setSender_name("");
-		vo.setOut_comment(req.getParameter("원금상환"));
-		vo.setIn_comment(req.getParameter("원금상환"));
+		vo.setOut_comment("원금상환");
+		vo.setIn_comment("원금상환");
 		
 		int mylog = IDAO.addMyLog(vo); // 내 계좌 이체내역
 		int yourlog = IDAO.addYourLog(vo); // 상대 계좌 입금내역
@@ -199,17 +198,24 @@ public class LoanCenterServiceImpl implements LoanCenterService {
 		// ------------------------------------------------
 		// Loans 변경 1-2
 		int d_Key = Integer.parseInt(req.getParameter("d_Key"));
+		System.out.println("d_Key :" + d_Key);
 		String account = req.getParameter("account"); // 대출 계좌
+		System.out.println("account :" + account);
 		int d_balance = Integer.parseInt(req.getParameter("d_balance"));
+		System.out.println("d_balance :" + d_balance);
 		String redemption = req.getParameter("redemption"); // 원금상환인지 중도상환인지 여부
+		System.out.println("redemption :" + redemption);
+		int updateCnt = 0;
+		int insertCnt = 0;
 		
 		if(mylog == 1 || yourlog == 1) {
 			LoansVO vo3 = new LoansVO();
 			
 			vo3.setAccount(account);
 			vo3.setD_balance(d_balance);
-			vo3.setD_loan_balance(1); // 원금 실행번호(이름 임시임 바꿔줘야함)
-			int updateCnt = dao.payLoanPrincipal1(vo3);
+			vo3.setD_loan_balance(1); // 원금 실행번호
+			updateCnt = dao.payLoanPrincipal1(vo3);
+			System.out.println("원금상환 성공 : " + updateCnt);
 			
 			// Loans_history 생성 1-3
 			Loans_historyVO vo4 = new Loans_historyVO();
@@ -221,25 +227,26 @@ public class LoanCenterServiceImpl implements LoanCenterService {
 				vo4.setD_his_state("중도상환");
 			}
 			vo4.setD_his_amount(d_tran);
-			// DAO insert
+			insertCnt = dao.payLoanPrincipal2(vo4);
+			System.out.println("대출상환(납입) 내역 성공 : " + insertCnt);
 		}
 		
 		// ========================================================================
 		// 계좌이체(중도상환수수료) 2-1
 		int d_ERC = Integer.parseInt(req.getParameter("d_ERC")); // 납입 할 중도상환수수료
-		
+		System.out.println("d_ERC : " + d_ERC);
 		if (d_ERC != 0) {
 			TransferVO vo2 = new TransferVO();
 			
 			vo2.setAccount(d_auto_account); // 출금 계좌
-			vo2.setSender_account(req.getParameter("33-09-000001")); // KOS 본사 계좌 *하드코딩*
+			vo2.setSender_account("33-09-000001"); // KOS 본사 계좌 *하드코딩*
 			
 			vo2.setMoney(d_ERC);
 			System.out.println("이체(할) 중도상환수수료 : " + vo2.getMoney());
 			
 			vo2.setSender_name("");
-			vo2.setOut_comment(req.getParameter("중도상환수수료"));
-			vo2.setIn_comment(req.getParameter("중도상환수수료"));
+			vo2.setOut_comment("중도상환수수료");
+			vo2.setIn_comment("중도상환수수료");
 			
 			int mylog2 = IDAO.addMyLog(vo2); // 내 계좌 이체내역
 			int yourlog2 = IDAO.addYourLog(vo2); // 상대 계좌 입금내역
@@ -257,20 +264,14 @@ public class LoanCenterServiceImpl implements LoanCenterService {
 			vo4.setD_Key(d_Key);
 			vo4.setD_his_state("중도상환수수료");
 			vo4.setD_his_amount(d_ERC);
-			// DAO insert
-		}
-		
-		
-
-		
+			insertCnt = dao.payLoanPrincipal2(vo4);
+			System.out.println("대출상환(납입) 내역 성공 : " + insertCnt);
+		}		
 		
 		model.addAttribute("vo",vo);
 		model.addAttribute("mylog",mylog);
 		model.addAttribute("yourlog",yourlog);
-		
-		
-		
-
+		model.addAttribute("updateCnt", updateCnt);
 	}
 	
 	@Override
