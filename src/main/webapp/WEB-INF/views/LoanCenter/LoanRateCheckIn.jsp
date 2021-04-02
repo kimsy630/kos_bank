@@ -22,7 +22,8 @@
        	</table>
              	
        	<div class="row justify-content-lg-center">
-			<a class="button button-round button-primary" href="LoanRatePay.cc" data-caption-animate="fadeInUp" data-caption-delay="450">이자납입</a>
+			<a class="button button-round button-primary" 
+				href="LoanRatePay.cc?d_Key=${vo.d_Key}&account=${vo.account}&d_tran_rate=${vo.d_tran_rate}&d_auto_account=${vo.d_auto_account}" data-caption-animate="fadeInUp" data-caption-delay="450">이자납입</a>
 		</div>
   	</body>
 </html>

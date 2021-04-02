@@ -128,7 +128,9 @@ public class LoanCenterController {
 	@RequestMapping("/LoanRatePay.cc")
 	public String LoanRatePay(HttpServletRequest req,Model model) {
 		logger.info("url ==> /LoanRatePay");
-				
+		
+		loanservice.LoanRatePay(req, model);
+		
 		return "LoanCenter/LoanRatePay";
 	}
 

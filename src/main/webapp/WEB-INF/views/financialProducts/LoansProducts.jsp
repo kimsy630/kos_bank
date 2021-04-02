@@ -50,7 +50,7 @@
 						                		<div id="interests" class="interests">
 													<em>최대 <strong>${list.d_max_price}</strong><span>억원</span></em>
 												</div>
-						                 		<div id="btns" class="button button-primary button-round"><a href="LoanApplication.cc?d_name=${list.d_name}">신청하기</a></div>	
+						                 		<div id="btns" class="button button-primary button-round"><a href="LoanApplication.do?d_name=${list.d_name}">신청하기</a></div>	
 				                		</article>
 				              		</div>
 				          			</c:forEach>

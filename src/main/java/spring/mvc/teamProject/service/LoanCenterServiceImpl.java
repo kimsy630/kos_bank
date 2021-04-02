@@ -333,6 +333,74 @@ public class LoanCenterServiceImpl implements LoanCenterService {
 	}
 	
 	// 박서하
+	// 대출이자 납입 실행
+	@Override
+	public void LoanRatePay(HttpServletRequest req, Model model) {
+		String strId = (String)req.getSession().getAttribute("id");
+		
+		List<AccountVO> list= new ArrayList<AccountVO>();
+		
+		list = RDAO.selectById(strId);
+		System.out.println("list : " + list);
+		
+		// -------------------------------------------
+		// 계좌이체(이자 납입) 1-1
+		String d_auto_account = req.getParameter("d_auto_account"); // 출금 계좌
+		int d_tran_rate = Integer.parseInt(req.getParameter("d_tran_rate")); // 상환 할 원금
+		
+		TransferVO vo = new TransferVO();
+		
+		vo.setAccount(d_auto_account); // 출금 계좌
+		vo.setSender_account("33-09-000001"); // KOS 본사 계좌 *하드코딩*
+		
+		vo.setMoney(d_tran_rate);
+		System.out.println("이체(할) 이자 : " + vo.getMoney());
+		
+		vo.setSender_name("");
+		vo.setOut_comment("이자납입");
+		vo.setIn_comment("이자납입");
+		
+		int mylog = IDAO.addMyLog(vo); // 내 계좌 이체내역
+		int yourlog = IDAO.addYourLog(vo); // 상대 계좌 입금내역
+		IDAO.withdrawal(vo); // 잔액 감소
+		IDAO.deposit(vo); // 상대 잔액 추가
+		
+		System.out.println("이자납입 mylog : " + mylog);
+		System.out.println("이자납입 yourlog : " + yourlog);
+		System.out.println("이자납입 vo : " + vo);
+		
+		// -------------------------------------------
+		// Loans 변경 1-2
+		int d_Key = Integer.parseInt(req.getParameter("d_Key"));
+		String account = req.getParameter("account"); // 대출 계좌
+		int updateCnt = 0;
+		int insertCnt = 0;
+		
+		if(mylog == 1 || yourlog == 1) {
+			LoansVO vo3 = new LoansVO();
+			
+			vo3.setAccount(account);
+			vo3.setD_loan_rate(1); // 이자 실행번호
+			updateCnt = dao.payLoanRate1(vo3);
+			System.out.println("이자납입 성공 : " + updateCnt);
+			
+			// Loans_history 생성 1-3
+			Loans_historyVO vo4 = new Loans_historyVO();
+			
+			vo4.setD_Key(d_Key);
+			vo4.setD_his_state("이자");
+			vo4.setD_his_amount(d_tran_rate);
+			insertCnt = dao.payLoanRate2(vo4);
+			System.out.println("대출상환(납입) 내역 성공 : " + insertCnt);
+		}
+		
+		model.addAttribute("vo",vo);
+		model.addAttribute("mylog",mylog);
+		model.addAttribute("yourlog",yourlog);
+		model.addAttribute("updateCnt", updateCnt);
+	}
+	
+	// 박서하
 	// 신규대출 신청
 	@Override
 	public void LoanApplication(HttpServletRequest req, Model model) { 
@@ -649,4 +717,5 @@ public class LoanCenterServiceImpl implements LoanCenterService {
 			}
 		}
 	}
+
 }

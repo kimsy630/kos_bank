@@ -8,7 +8,7 @@
 	<!-- ============================================================================ -->
 	<!-- 박서하 -->
 	<select id="getLoanAccountList" resultType="spring.mvc.teamProject.vo.LoansVO"> <!-- 대출계좌 조회 -->
-		SELECT l.d_name, l.d_repay, l.account, l.d_rate, l.d_amount, l.d_start_date, l.d_end_date, l.d_balance, l.d_month, l.d_next_rate, l.d_ERR
+		SELECT l.d_name, l.d_repay, l.account, l.d_rate, l.d_amount, l.d_start_date, l.d_end_date, l.d_balance, l.d_month, l.d_loan_rate, l.d_ERR
 		 FROM account_info i, loans l
 		 WHERE i.account = l.account
 		 AND i.id=#{id}
@@ -64,7 +64,7 @@
 	</insert>
 	
 	<select id="getLoanRateCheckIn" resultType="spring.mvc.teamProject.vo.LoansVO"> <!-- 대출이자 예상(내부정보) -->
-		SELECT account, d_repay, d_rate, d_amount, d_balance
+		SELECT d_Key, account, d_repay, d_rate, d_amount, d_balance, d_auto_account
 		 FROM Loans
 		 WHERE account = #{account}
 	</select>

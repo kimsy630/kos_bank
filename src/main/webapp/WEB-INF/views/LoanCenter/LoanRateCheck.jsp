@@ -40,7 +40,7 @@
 	                                </colgroup>
 	                                <tbody>
 	                                	<tr>
-	                                    	<td scope="col">조회계좌${list.size()}</td>
+	                                    	<td scope="col">조회계좌</td>
 	                                       	<td scope="col">
 			                                   	<select id="selectAccount" name="selectAccount" lengthtype="length">
 			                                    <option value="">계좌를 선택하세요.</option>
@@ -54,7 +54,7 @@
 			                                        	<c:forEach var="vo" items="${list}">
 			                                            	if($('#selectAccount').val() == "${vo.account}") {
 			                                                	<c:set value="${vo.account}" var="account"/>
-			                                                	$('#d_next_rate').html("${vo.d_next_rate}");
+			                                                	$('#d_loan_rate').html("${vo.d_loan_rate}");
 			                                             	}
 			                                          	</c:forEach>
 			                                       	};
@@ -63,7 +63,7 @@
 	                                    </tr>
 	                                    <tr>
 	                                    	<td scope="col" class="borL">이자실행번호</td>
-	                                       	<td scope="col" id="d_next_rate"></td>
+	                                       	<td scope="col" id="d_loan_rate"></td>
 	                                    </tr>
 	                                    <tr>
 	                                    	<td colspan="2" scope="col" class="borL">

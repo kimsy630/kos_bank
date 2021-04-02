@@ -66,21 +66,26 @@
 	               	
 	               	<br><br>
 	               	
-	               	<h6>거래내역★아직 안건들임★</h6>
+	               	<h6>거래내역</h6>
 		          	<div style="background-color: blue; width:1170px; height:2px;"> </div>
 		          	
 	               	<table class="table-custom table-custom-bordered">
+	                  	<colgroup>
+	                    	<col style="width: 30%;">
+	                     	<col style="width: 35%;">
+	                     	<col style="width: 35%;">
+	                  	</colgroup>
 	                  	<tbody>
 	                     	<tr>
 	                        	<td scope="col">거래일자</td>
 	                        	<td scope="col">거래내용</td>
-	                        	<td scope="col">금액</td>
+	                        	<td scope="col">원금(원)</td>
 	                     	</tr>
 	                     	<c:forEach var="list" items="${list}">
 	                     		<tr>
 		                        	<td scope="col">${list.d_his_date}</td>
 		                        	<td scope="col">${list.d_his_state}</td>
-		                        	<td scope="col">${list.d_his_amount}</td>
+		                        	<td scope="col"><fmt:formatNumber value="${list.d_his_amount}" pattern="#,###" /></td>
 		                     	</tr>
 	                     	</c:forEach>
 	                  	</tbody>
