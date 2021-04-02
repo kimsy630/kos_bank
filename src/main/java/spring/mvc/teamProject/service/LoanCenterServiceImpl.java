@@ -18,10 +18,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 
+import spring.mvc.teamProject.persistence.AutoTransferDAO;
 import spring.mvc.teamProject.persistence.InquiryTransferDAO;
 import spring.mvc.teamProject.persistence.LoanCenterDAOImpl;
 import spring.mvc.teamProject.persistence.RegisterReleaseDAO;
 import spring.mvc.teamProject.vo.AccountVO;
+import spring.mvc.teamProject.vo.AutoTransferVO;
 import spring.mvc.teamProject.vo.LoansVO;
 import spring.mvc.teamProject.vo.Loans_historyVO;
 import spring.mvc.teamProject.vo.Loans_productVO;
@@ -39,10 +41,13 @@ public class LoanCenterServiceImpl implements LoanCenterService {
 	@Autowired
 	RegisterReleaseDAO RDAO;
 	
-	// ============================================================================
+	@Autowired
+	AutoTransferDAO aDAO;
+	
 	// 박서하
+	// 대출계좌 조회
 	@Override
-	public void LoanAccountCheck(HttpServletRequest req, Model model) { // 대출계좌 조회
+	public void LoanAccountCheck(HttpServletRequest req, Model model) {
 		String id = (String)req.getSession().getAttribute("id");
 		
 		List<LoansVO> list = dao.getLoanAccountList(id);
@@ -50,18 +55,25 @@ public class LoanCenterServiceImpl implements LoanCenterService {
 		model.addAttribute("list", list);
 	}
 
+	// 박서하
+	// 대출계좌 상세조회
 	@Override
-	public void LoanAccountDetail(HttpServletRequest req, Model model) { // 대출계좌 상세조회
+	public void LoanAccountDetail(HttpServletRequest req, Model model) { 
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("account", req.getParameter("account"));
 		
 		LoansVO vo = dao.getLoanAccountDetail(map);
 		
+		List<Loans_historyVO> list = dao.getLoanHistoryDetail(req.getParameter("account"));
+		
 		model.addAttribute("vo", vo);
+		model.addAttribute("list", list);
 	}
 
+	// 박서하
+	// 대출해지현황 조회
 	@Override
-	public void LoanCloseCheck(HttpServletRequest req, Model model) { // 대출해지현황 조회
+	public void LoanCloseCheck(HttpServletRequest req, Model model) { 
 		String id = (String)req.getSession().getAttribute("id");
 		
 		List<LoansVO> list = dao.getLoanCloseList(id);
@@ -69,18 +81,25 @@ public class LoanCenterServiceImpl implements LoanCenterService {
 		model.addAttribute("list", list);
 	}
 
+	// 박서하
+	// 대출해지현황 상세조회
 	@Override
-	public void LoanCloseDetail(HttpServletRequest req, Model model) { // 대출해지현황 상세조회
+	public void LoanCloseDetail(HttpServletRequest req, Model model) { 
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("account", req.getParameter("account"));
 		
 		LoansVO vo = dao.getLoanCloseDetail(map);
+
+		List<Loans_historyVO> list = dao.getLoanHistoryDetail(req.getParameter("account"));
 		
 		model.addAttribute("vo", vo);
+		model.addAttribute("list", list);
 	}
 	
+	// 박서하
+	// 대출원금 조회
 	@Override
-	public void LoanPrincipalCheck(HttpServletRequest req, Model model) { // 대출원금 조회
+	public void LoanPrincipalCheck(HttpServletRequest req, Model model) {
 		String id = (String)req.getSession().getAttribute("id");
 		
 		List<LoansVO> list = dao.getLoanAccountList(id);
@@ -88,9 +107,10 @@ public class LoanCenterServiceImpl implements LoanCenterService {
 		model.addAttribute("list", list);
 	} 
 	
-	
+	// 박서하
+	// 대출원금 예상(내부정보)
 	@Override
-	public void LoanPrincipalCheckIn(HttpServletRequest req, Model model) { // 대출원금 예상(내부정보)
+	public void LoanPrincipalCheckIn(HttpServletRequest req, Model model) { 
 		String account = req.getParameter("selectAccount");
 		LoansVO vo = dao.getLoanPrincipal(account);
 
@@ -160,8 +180,10 @@ public class LoanCenterServiceImpl implements LoanCenterService {
 		model.addAttribute("vo", vo);
 	}
 
+	// 박서하
+	// 대출원금 상환 실행
 	@Override
-	public void LoanPrincipalPay(HttpServletRequest req, Model model) { // 대출원금 상환 실행
+	public void LoanPrincipalPay(HttpServletRequest req, Model model) {
 		String strId = (String)req.getSession().getAttribute("id");
 		
 		List<AccountVO> list= new ArrayList<AccountVO>();
@@ -198,13 +220,9 @@ public class LoanCenterServiceImpl implements LoanCenterService {
 		// -------------------------------------------
 		// Loans 변경 1-2
 		int d_Key = Integer.parseInt(req.getParameter("d_Key"));
-		System.out.println("d_Key :" + d_Key);
 		String account = req.getParameter("account"); // 대출 계좌
-		System.out.println("account :" + account);
 		int d_balance = Integer.parseInt(req.getParameter("d_balance"));
-		System.out.println("d_balance :" + d_balance);
 		String redemption = req.getParameter("redemption"); // 원금상환인지 중도상환인지 여부
-		System.out.println("redemption :" + redemption);
 		int updateCnt = 0;
 		int insertCnt = 0;
 		
@@ -274,44 +292,21 @@ public class LoanCenterServiceImpl implements LoanCenterService {
 		model.addAttribute("updateCnt", updateCnt);
 	}
 	
+	// 박서하
+	// 대출이자 조회
 	@Override
-	public void LoanRateCheck(HttpServletRequest req, Model model) { // 대출이자 조회
+	public void LoanRateCheck(HttpServletRequest req, Model model) { 
 		String id = (String)req.getSession().getAttribute("id");
 		
 		List<LoansVO> list = dao.getLoanAccountList(id);
 		
-		model.addAttribute("list", list);
-		
-//		list 자동이체할거 가저온곳;
-//		//계좌이체 성공한 계좌?...   자동이체?
-//		List<String> account = new ArrayList<String>();
-//		List<String> 실패 = new ArrayList<String>();
-//		for(int i=0;i<list.size();i++) {
-//			이자계산 하고 만들어
-//			.
-//			 int updateCnt = dao.계좌이체(list.get(i));
-//
-//			보내기전에 돈있는지 보낼계좌?//실패하면 입금 안하기
-//			 보낸사람 받는사람 출금
-//			 받는사람 보낸사람 입금
-//			 33-09-0000001 <<관리자계좌
-//			 
-//			 if(updateCnt = 1) {
-//				 account.add(list.getAccount());
-//			 }else {
-//				 실패.add(list.getAccount());
-//			 }
-//		}
-//		
-//		for(int i=0;i<account.size();i++) {
-//			dao.성공한거 업데이트 +1  누액도 증가?  (account.get(i));
-//			dao.히스토리 인서트(뭔가 넣고..);
-//		}
-		
+		model.addAttribute("list", list);		
 	}
 	
+	// 박서하
+	// 대출이자 예상(내부정보)
 	@Override
-	public void LoanRateCheckIn(HttpServletRequest req, Model model) { // 대출이자 예상(내부정보)
+	public void LoanRateCheckIn(HttpServletRequest req, Model model) { 
 		String account = req.getParameter("selectAccount");
 		
 		LoansVO vo = dao.getLoanRateCheckIn(account);
@@ -337,8 +332,10 @@ public class LoanCenterServiceImpl implements LoanCenterService {
 		model.addAttribute("vo", vo);
 	}
 	
+	// 박서하
+	// 신규대출 신청
 	@Override
-	public void LoanApplication(HttpServletRequest req, Model model) { // 신규대출 신청
+	public void LoanApplication(HttpServletRequest req, Model model) { 
 		String id = (String)req.getSession().getAttribute("id");
 		String d_name = req.getParameter("d_name");
 		
@@ -353,8 +350,12 @@ public class LoanCenterServiceImpl implements LoanCenterService {
 		model.addAttribute("name", name);
 	}
 
+	// 박서하
+	// 신규대출 신청 실행
 	@Override
-	public void LoanApplicationAction(HttpServletRequest req, Model model) { // 신규대출 신청 실행
+	public void LoanApplicationAction(HttpServletRequest req, Model model) { 
+		// -------------------------------------------
+		// 신규대출 신청 실행(계좌 생성)
 		AccountVO vo = new AccountVO();
 		
 		vo.setId((String)req.getSession().getAttribute("id"));
@@ -363,38 +364,289 @@ public class LoanCenterServiceImpl implements LoanCenterService {
 		vo.setAccountType(req.getParameter("accountType"));
 		vo.setAccountState("대기");
 		
-		int insertCnt = dao.insertAccount(vo); // 신규대출 신청 실행(계좌 생성)
+		int insertCnt = dao.insertAccount(vo);
 		System.out.println("계좌 생성 : " + insertCnt);
 		
+		// -------------------------------------------
+		// 신규대출 신청 실행(대출 생성)
 		LoansVO vo2 = new LoansVO();
 		
 		vo2.setD_name(req.getParameter("d_name"));
-		System.out.println("이름: "+vo2.getD_name());
-		vo2.setD_state(0);
+		vo2.setD_state(0); // 대출상태  : 0 == 신청 단계
 		vo2.setD_month(Integer.parseInt(req.getParameter("d_month")));
 		vo2.setD_repay(req.getParameter("d_repay"));
 		vo2.setD_rate(Double.parseDouble(req.getParameter("d_rate")));
 		vo2.setD_amount(Integer.parseInt(req.getParameter("d_amount")));
 		vo2.setD_balance(Integer.parseInt(req.getParameter("d_amount")));
-		vo2.setD_balance_rate(0); //없앨지 고민 좀 해보자★
-		vo2.setD_loan_balance(0);
-		vo2.setD_loan_rate(0);
+		vo2.setD_balance_rate(0);
+		vo2.setD_loan_balance(1); // 이체(할)원금실행번호 : 1 == 1차 상환예정
+		vo2.setD_loan_rate(1); // 이체(할)이자실행번호 : 1 == 1차 납부예정
 		vo2.setD_tran(0);
 		vo2.setD_tran_rate(0);
-		vo2.setD_next_rate(1);
+		vo2.setD_next_rate(0);
 		vo2.setD_ERR(1.5);
 		vo2.setD_ERC(0);
 		vo2.setD_auto_account(req.getParameter("d_auto_account"));
 		vo2.setD_auto_date(Integer.parseInt(req.getParameter("d_auto_date")));
 		
-		int insertCnt2 = dao.insertLoan(vo2); // 신규대출 신청 실행(대출 생성)
+		int insertCnt2 = dao.insertLoan(vo2);
 		System.out.println("대출 생성 : " + insertCnt2);
 		
+		// -------------------------------------------
+		// 신규대출 신청 실행(자동이체 신청-공통)
+		String account = dao.getLoanAccount();
+		int insertCnt3 = 0;
+		int insertCnt4 = 0;
+		
+		if(vo2.getD_auto_date() != 0) { // 자동이체일 0이면 미신청
+			LoansVO vo3 = dao.getLoanInfo(account);
+			
+			if(vo3.getD_repay().equals("만기일시")) {
+				
+				// -------------------------------------------
+				// 만기일시 이자 계산 1-1
+				
+				double d_rate = vo3.getD_rate();
+				int d_amount = vo3.getD_amount();
+				String d_key = vo3.getD_Key();
+				
+				int d_tran_rate = (int) (d_amount*((d_rate*0.01)/12)); // 대출원금*(금리%12개월)
+							
+				// -------------------------------------------
+				// 만기일시 이자 지동이체 신청 1-2
+
+		        java.text.SimpleDateFormat sdf = new java.text.SimpleDateFormat("yy/MM/dd"); // timestamp형 String으로 변환
+		        
+		        java.sql.Timestamp tD_end_date = vo3.getD_end_date();
+		        String sD_end_date = sdf.format(tD_end_date);
+				System.out.println("string 만기일자" + sD_end_date);
+				
+				java.sql.Timestamp tD_start_date = vo3.getD_start_date();
+		        String sD_start_date = sdf.format(tD_start_date);
+				System.out.println("string 만기일자" + sD_start_date);
+				
+				AutoTransferVO vo4 = new AutoTransferVO();
+				
+				vo4.setAccount(vo3.getD_auto_account());
+				vo4.setJd_autoMoney(d_tran_rate);
+				vo4.setJd_account("33-09-000001"); // KOS 본사 계좌 *하드코딩*
+				vo4.setJd_outCycle("1개월");
+				vo4.setJd_expirationDate(sD_end_date);
+				vo4.setJd_registDate(sD_start_date);
+				vo4.setJd_outDate(String.valueOf(vo3.getD_auto_date()));
+				vo4.setJd_inPlace("KOS뱅크(만기이자)");
+				vo4.setJd_type("대출"+d_key);
+				
+				insertCnt4 = aDAO.AutoTransferAdd2(vo4);
+				System.out.println("vo4 : "+vo4);
+				System.out.println("만기일시 이자 지동이체 신청 성공 : " + insertCnt4);
+				
+			// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+			} else if(vo3.getD_repay().equals("원금균등분할")) {
+				// 원금균등분할 원금 계산 2-1
+				
+				int d_month = vo3.getD_month();
+				int d_amount = vo3.getD_amount();
+				String d_key = vo3.getD_Key();
+				
+				int d_tran = d_amount / d_month;
+				
+				// -------------------------------------------
+				// 원금균등분할 원금 지동이체 신청 2-2
+				
+				java.text.SimpleDateFormat sdf = new java.text.SimpleDateFormat("yy/MM/dd"); // timestamp형 String으로 변환
+		        
+		        java.sql.Timestamp tD_end_date = vo3.getD_end_date();
+		        String sD_end_date = sdf.format(tD_end_date);
+				System.out.println("string 만기일자" + sD_end_date);
+				
+				java.sql.Timestamp tD_start_date = vo3.getD_start_date();
+		        String sD_start_date = sdf.format(tD_start_date);
+				System.out.println("string 만기일자" + sD_start_date);
+				
+				AutoTransferVO vo4 = new AutoTransferVO();
+				
+				vo4.setAccount(vo3.getD_auto_account());
+				vo4.setJd_autoMoney(d_tran);
+				vo4.setJd_account("33-09-000001"); // KOS 본사 계좌 *하드코딩*
+				vo4.setJd_outCycle("1개월");
+				vo4.setJd_expirationDate(sD_end_date);
+				vo4.setJd_registDate(sD_start_date);
+				vo4.setJd_outDate(String.valueOf(vo3.getD_auto_date()));
+				vo4.setJd_inPlace("KOS뱅크(원금원금)");
+				vo4.setJd_type("대출"+d_key);
+				
+				insertCnt3 = aDAO.AutoTransferAdd2(vo4);
+				System.out.println("vo4 : "+vo4);
+				System.out.println("원금균등분할 원금 지동이체 신청 성공 : " + insertCnt3);
+				
+				// -------------------------------------------
+				// 원금균등분할 이자 계산 2-3
+			
+				double d_rate = vo3.getD_rate();
+				int d_balance = vo3.getD_balance();
+				
+				int d_tran_rate = (int) (d_balance*((d_rate*0.01)/12)); // 전회차 원금잔액*(금리%12개월)
+			
+				// -------------------------------------------
+				// 원금균등분할 이자 지동이체 신청 2-4
+				
+				vo4.setAccount(vo3.getD_auto_account());
+				vo4.setJd_autoMoney(d_tran_rate);
+				vo4.setJd_account("33-09-000001"); // KOS 본사 계좌 *하드코딩*
+				vo4.setJd_outCycle("1개월");
+				vo4.setJd_expirationDate(sD_end_date);
+				vo4.setJd_registDate(sD_start_date);
+				vo4.setJd_outDate(String.valueOf(vo3.getD_auto_date()));
+				vo4.setJd_inPlace("KOS뱅크(원금이자)");
+				vo4.setJd_type("대출"+d_key);
+				
+				insertCnt4 = aDAO.AutoTransferAdd2(vo4);
+				System.out.println("vo4 : "+vo4);
+				System.out.println("원금균등분할 이자 지동이체 신청 성공 : " + insertCnt4);
+			 }
+
+		}
+		
+		model.addAttribute("vo", vo);
 		model.addAttribute("insertCnt", insertCnt);
 		model.addAttribute("insertCnt2", insertCnt2);
+		model.addAttribute("insertCnt3", insertCnt3);
+		model.addAttribute("insertCnt4", insertCnt4);
 	}
-
 	
-	// ============================================================================
+	// 박서하
+	// 자동이체 실행
+	@Override
+	public void AutoTransferLoan() {
+		
+		// 날짜포멧 - 지정일 이체를 위해 오늘 일자만 리턴
+		SimpleDateFormat format = new SimpleDateFormat("dd");
+		Date date = new Date();
+		
+		// 자동이체용 당일 날짜 출력 (day값만)
+		String day = format.format(date);
+		System.out.println("testDate : "+day);
+		
+		// 자동이체 조건 쿼리
+		int jd_key=0;
+		String account="";
+		String jd_account="";
+		String jd_type="";
+		int jd_autoMoney=0;
+		String jd_inPlace = "";
+		String jd_status = "";
+		System.out.println(Integer.toString(Integer.parseInt(day)));
+		int num = Integer.parseInt(day);
+		day= Integer.toString(num);
+		List<AutoTransferVO> transferInfo = aDAO.selectByDate(day);
+		
+		System.out.println("자동이체 할 객체 Chk : "+ transferInfo);
+		
+		double d_rate = 0;
+		int d_tran_rate = 0;
+		int d_balance = 0;	
+		String d_Key = "";
+		
+		// 자동이체 실행
+		if(transferInfo != null) {
+			int i = 0;
+			while(i < transferInfo.size()) {
+				AutoTransferVO vo = new AutoTransferVO();
+				
+				// UPDATE 실행
+				jd_key = transferInfo.get(i).getJd_key();
+				account = transferInfo.get(i).getAccount();
+				jd_account = transferInfo.get(i).getJd_account();
+				jd_type = transferInfo.get(i).getJd_type();
+				jd_autoMoney = transferInfo.get(i).getJd_autoMoney();
+				jd_inPlace = transferInfo.get(i).getJd_inPlace();
+				jd_status = transferInfo.get(i).getJd_status();
+				
+				vo.setJd_key(jd_key);
+				vo.setAccount(account);
+				vo.setJd_account(jd_account);
+				vo.setJd_type(jd_type);
+				vo.setJd_autoMoney(jd_autoMoney);
+				vo.setJd_inPlace(jd_inPlace);
+				vo.setJd_status(jd_status);
 
+				System.out.println("vo : "+ vo);
+				
+				// Loans UPDATE 실행
+				d_Key = jd_type.substring(2);
+				System.out.println(jd_type);
+				System.out.println("d_Key 제발 : " + d_Key);
+				LoansVO vo2 = dao.getAutoLoan(d_Key); // 대출계좌
+				
+				d_rate = vo2.getD_rate();
+				d_balance = vo2.getD_balance();
+				
+				// Loans_historyVO UPDATE 실행
+				Loans_historyVO vo3 = new Loans_historyVO();
+								
+				if(jd_inPlace.equals("KOS뱅크(원금이자)")) { // 원금균등분할 이자 계산
+					d_tran_rate = (int) (d_balance*((d_rate*0.01)/12)); // 전회차 원금잔액*(금리%12개월)
+					
+					vo.setJd_autoMoney(d_tran_rate);
+					
+					vo2.setD_loan_rate(1);
+					
+					vo3.setD_Key(Integer.parseInt(d_Key));
+					vo3.setD_his_state("이자");
+					vo3.setD_his_amount(d_tran_rate);
+				} else if(jd_inPlace.equals("KOS뱅크(원금원금)")) {
+					d_balance = d_balance - jd_autoMoney;
+					
+					vo2.setD_balance(d_balance);
+					vo2.setD_loan_balance(1); // 원금 실행번호
+					
+					vo3.setD_Key(Integer.parseInt(d_Key));
+					vo3.setD_his_state("원금");
+					vo3.setD_his_amount(jd_autoMoney);
+				} else if(jd_inPlace.equals("KOS뱅크(만기이자)")) { 
+					vo2.setD_loan_rate(1);
+					
+					vo3.setD_Key(Integer.parseInt(d_Key));
+					vo3.setD_his_state("이자");
+					vo3.setD_his_amount(jd_autoMoney);
+				}
+				
+				// 출금 UPDATE
+				aDAO.AutoWithdrawal(vo);
+				
+				// 입금 UPDATE
+				aDAO.AutoDeposit(vo);
+				
+				// 최근거래내역 UPDATE
+				aDAO.lastRunDate(vo);
+				
+				// 계좌이체 테이블 로그(출금)
+				aDAO.TransferMyLog(vo);
+				
+				// 계좌이체 테이블 로그(입금)
+				aDAO.TransferYourLog(vo);            
+				
+				// 자동이체내역 로그(출금)
+				aDAO.sendAutoTrans(vo);
+				
+				// 자동이체내역 로그(입금)
+				aDAO.receiveAutoTrans(vo);
+				
+				if(jd_inPlace.equals("KOS뱅크(원금원금)")) {
+					// Loans 변경
+					dao.payLoanPrincipal1(vo2);
+					// Loans_history 생성
+					dao.payLoanPrincipal2(vo3);
+				} else {
+					// Loans 변경
+					dao.payLoanRate1(vo2);
+					// Loans_history 생성
+					dao.payLoanRate2(vo3);
+				}
+				
+				i++;
+			}
+		}
+	}
 }

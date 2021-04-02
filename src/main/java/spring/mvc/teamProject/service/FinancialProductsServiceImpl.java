@@ -37,8 +37,9 @@ public class FinancialProductsServiceImpl implements FinancialProductsService{
 	
 	// ============================================================================
 	// 박서하
+	// 대출상품 조회
 	@Override
-	public void loanProductsList(HttpServletRequest req, Model model) { // 대출상품 조회
+	public void loanProductsList(HttpServletRequest req, Model model) { 
 		int count = dao.getLoanCount();
 		
 		List<Loans_productVO> list = dao.getLoanList();
@@ -47,8 +48,10 @@ public class FinancialProductsServiceImpl implements FinancialProductsService{
 		model.addAttribute("list", list);		
 	}
 
+	// 박서하
+	// 대출상품 상세조회
 	@Override
-	public void loanProductDetail(HttpServletRequest req, Model model) { // 대출상품 상세조회
+	public void loanProductDetail(HttpServletRequest req, Model model) { 
 		String d_name = req.getParameter("d_name");
 		
 		Loans_productVO vo = dao.getLoanDetail(d_name);

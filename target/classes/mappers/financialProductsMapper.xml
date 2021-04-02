@@ -16,6 +16,7 @@
 	<select id="getLoanList" resultType="spring.mvc.teamProject.vo.Loans_productVO"> <!-- 대출상품 조회 -->
 		SELECT d_name, d_summary, d_max_price
 		 FROM Loans_product
+		 WHERE D_SUMMARY NOT LIKE '%상품판매종료%' <!-- D_SUMMARY != '상품판매종료' : 정상 대출 -->
 	</select>
 	
 	<select id="getLoanDetail" resultType="spring.mvc.teamProject.vo.Loans_productVO"> <!-- 대출상품 상세조회 -->

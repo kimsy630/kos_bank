@@ -65,17 +65,21 @@
 	                        	<td scope="col"><fmt:formatDate value="${vo.d_end_date}" pattern="yyyy.MM.dd" /></td>
 	                     	</tr>
 	                     	<tr>
-	                        	<td scope="col">이자자동이체계좌</td>
-	                        	<td scope="col">555-555-555555★확인 필요★</td>
+	                        	<td scope="col">원금실행번호</td>
+	                        	<td scope="col">${vo.d_loan_balance}</td>
 	                        	<td scope="col">이자실행번호</td>
-	                        	<td scope="col">${vo.d_next_rate}</td>
+	                        	<td scope="col">${vo.d_loan_rate}</td>
+	                     	</tr>
+	                     	<tr>
+	                        	<td scope="col">출금 계좌번호</td>
+	                        	<td scope="col" colspan="3">${vo.d_auto_account}</td>
 	                     	</tr>
 	                  	</tbody>
 	               	</table>
 	               	
 	               	<br><br>
 	               	
-	               	<h6>거래내역★아직 안건들임★</h6>
+	               	<h6>거래내역</h6>
 		          	<div style="background-color: blue; width:1170px; height:2px;"> </div>
 		          	
 	               	<table class="table-custom table-custom-bordered">
@@ -88,22 +92,16 @@
 	                        	<td scope="col">대출잔액(원)</td>
 	                        	<td scope="col">이자누계(원)</td>
 	                     	</tr>
-	                     	<tr>
-	                        	<td scope="col">2021.03.01</td>
-	                        	<td scope="col">이자납부</td>
-	                        	<td scope="col"></td>
-	                        	<td scope="col">100,000</td>
-	                        	<td scope="col">100,000,000</td>
-	                        	<td scope="col">100,000</td>
-	                     	</tr>
-	                     	<tr>
-	                        	<td scope="col">2021.03.01</td>
-	                        	<td scope="col">원금상환</td>
-	                        	<td scope="col">10,000,000</td>
-	                        	<td scope="col"></td>
-	                        	<td scope="col">90,000,000</td>
-	                        	<td scope="col">100,000</td>
-	                     	</tr>
+	                     	<c:forEach var="list" items="${list}">
+	                     		<tr>
+		                        	<td scope="col">${list.}</td>
+		                        	<td scope="col">이자납부</td>
+		                        	<td scope="col"></td>
+		                        	<td scope="col">100,000</td>
+		                        	<td scope="col">100,000,000</td>
+		                        	<td scope="col">100,000</td>
+		                     	</tr>
+	                     	</c:forEach>
 	                  	</tbody>
 	               	</table>
 		        </div>

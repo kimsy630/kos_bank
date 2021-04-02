@@ -5,10 +5,12 @@ import javax.servlet.http.HttpServletRequest;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import spring.mvc.teamProject.service.AutoTransferService;
 import spring.mvc.teamProject.service.LoanCenterService;
 
 @Controller
@@ -19,8 +21,11 @@ public class LoanCenterController {
 	@Autowired
 	LoanCenterService loanservice;
 	
+	@Autowired
+	AutoTransferService Aservice;
+	
 	// 박서하
-	//대출계좌 조회
+	// 대출계좌 조회
 	@RequestMapping("/LoanAccountCheck.cc")
 	public String LoanAccountCheck(HttpServletRequest req,Model model) {
 		logger.info("url ==> /LoanAccountCheck");
@@ -31,7 +36,7 @@ public class LoanCenterController {
 	}
 	
 	// 박서하
-	//대출계좌 상세조회
+	// 대출계좌 상세조회
 	@RequestMapping("/LoanAccountDetail.cc")
 	public String LoanAccountDetail(HttpServletRequest req,Model model) {
 		logger.info("url ==> /LoanAccountDetail");
@@ -42,7 +47,7 @@ public class LoanCenterController {
 	}
 	
 	// 박서하
-	//대출해지현황 조회
+	// 대출해지현황 조회
 	@RequestMapping("/LoanCloseCheck.cc")
 	public String LoanCloseCheck(HttpServletRequest req,Model model) {
 		logger.info("url ==> /LoanCloseCheck");
@@ -53,7 +58,7 @@ public class LoanCenterController {
 	}
 	
 	// 박서하
-	//대출해지현황 상세조회
+	// 대출해지현황 상세조회
 	@RequestMapping("/LoanCloseDetail.cc")
 	public String LoanCloseDetail(HttpServletRequest req,Model model) {
 		logger.info("url ==> /LoanCloseDetail");
@@ -64,7 +69,7 @@ public class LoanCenterController {
 	}
 	
 	// 박서하
-	//대출원금 조회
+	// 대출원금 조회
 	@RequestMapping("/LoanPrincipalCheck.cc")
 	public String LoanPrincipalCheck(HttpServletRequest req,Model model) {
 		logger.info("url ==> /LoanPrincipalCheck");
@@ -75,7 +80,7 @@ public class LoanCenterController {
 	}
 	
 	// 박서하
-	//대출원금 조회(내부)
+	// 대출원금 조회(내부)
 	@RequestMapping("/LoanPrincipalCheckIn.cc")
 	public String LoanPrincipalCheckIn(HttpServletRequest req,Model model) {
 		logger.info("url ==> /LoanPrincipalCheckIn");
@@ -86,7 +91,7 @@ public class LoanCenterController {
 	}
 	
 	// 박서하
-	//대출원금 상환 실행
+	// 대출원금 상환 실행
 	@RequestMapping("/LoanPrincipalPay.cc")
 	public String LoanPrincipalPay(HttpServletRequest req,Model model) {
 		logger.info("url ==> /LoanPrincipalPay");
@@ -97,7 +102,7 @@ public class LoanCenterController {
 	}
 	
 	// 박서하
-	//대출이자 조회
+	// 대출이자 조회
 	@RequestMapping("/LoanRateCheck.cc")
 	public String LoanRateCheck(HttpServletRequest req,Model model) {
 		logger.info("url ==> /LoanRateCheck");
@@ -108,7 +113,7 @@ public class LoanCenterController {
 	}
 	
 	// 박서하
-	//대출이자 조회(내부)
+	// 대출이자 조회(내부)
 	@RequestMapping("/LoanRateCheckIn.cc")
 	public String LoanRateCheckIn(HttpServletRequest req,Model model) {
 		logger.info("url ==> /LoanRateCheckIn");
@@ -119,7 +124,7 @@ public class LoanCenterController {
 	}
 	
 	// 박서하
-	//대출이자 납부
+	// 대출이자 납부
 	@RequestMapping("/LoanRatePay.cc")
 	public String LoanRatePay(HttpServletRequest req,Model model) {
 		logger.info("url ==> /LoanRatePay");
@@ -128,7 +133,7 @@ public class LoanCenterController {
 	}
 
 	// 박서하
-	//신규대출 신청
+	// 신규대출 신청
 	@RequestMapping("/LoanApplication.cc")
 	public String LoanApplication(HttpServletRequest req,Model model) {
 		logger.info("url ==> /LoanApplication");
@@ -139,7 +144,7 @@ public class LoanCenterController {
 	}
 	
 	// 박서하
-	//신규대출 신청 실행
+	// 신규대출 신청 실행
 	@RequestMapping("/LoanApplicationAction.cc")
 	public String LoanApplicationAction(HttpServletRequest req,Model model) {
 		logger.info("url ==> /LoanApplicationAction");
@@ -149,4 +154,11 @@ public class LoanCenterController {
 		return "LoanCenter/LoanApplicationAction";
 	}
 	
+//	// 박서하
+//	// 자동이체 실행 test 
+//	@Scheduled(cron="0 */5 * * * *")
+//	  public void scheduleTest() {
+//	   logger.info("대출 test");
+//	   loanservice.AutoTransferLoan();
+//	}
 }

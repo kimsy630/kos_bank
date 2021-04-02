@@ -74,27 +74,15 @@
 	                     	<tr>
 	                        	<td scope="col">거래일자</td>
 	                        	<td scope="col">거래내용</td>
-	                        	<td scope="col">원금(원)</td>
-	                        	<td scope="col">이자(원)</td>
-	                        	<td scope="col">대출잔액(원)</td>
-	                        	<td scope="col">이자누계(원)</td>
+	                        	<td scope="col">금액</td>
 	                     	</tr>
-	                     	<tr>
-	                        	<td scope="col">2021.03.01</td>
-	                        	<td scope="col">이자납부</td>
-	                        	<td scope="col"></td>
-	                        	<td scope="col">100,000</td>
-	                        	<td scope="col">100,000,000</td>
-	                        	<td scope="col">100,000</td>
-	                     	</tr>
-	                     	<tr>
-	                        	<td scope="col">2021.03.01</td>
-	                        	<td scope="col">원금상환</td>
-	                        	<td scope="col">10,000,000</td>
-	                        	<td scope="col"></td>
-	                        	<td scope="col">90,000,000</td>
-	                        	<td scope="col">100,000</td>
-	                     	</tr>
+	                     	<c:forEach var="list" items="${list}">
+	                     		<tr>
+		                        	<td scope="col">${list.d_his_date}</td>
+		                        	<td scope="col">${list.d_his_state}</td>
+		                        	<td scope="col">${list.d_his_amount}</td>
+		                     	</tr>
+	                     	</c:forEach>
 	                  	</tbody>
 	               	</table>
 		        </div>

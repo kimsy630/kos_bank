@@ -9,8 +9,12 @@ import org.springframework.ui.Model;
 public interface FinancialProductsService {
 	// ============================================================================
 	// 박서하
-	public void loanProductsList(HttpServletRequest req,Model model); // 대출상품 조회
-	public void loanProductDetail(HttpServletRequest req,Model model); // 대출상품 상세조회
+	// 대출상품 조회
+	public void loanProductsList(HttpServletRequest req,Model model); 
+	
+	// 박서하
+	// 대출상품 상세조회
+	public void loanProductDetail(HttpServletRequest req,Model model);
 	// ============================================================================
 	
 	// 해당 아이디 출금/자동이체용 자유입출금계좌 정보조회

@@ -17,15 +17,6 @@
 		}, 1000); 
 		</script>
 	</c:if>
-	
-	<c:if test="${insertCnt2 != 0}">
-		<script type="text/javascript">
-		setTimeout(function(){
-			alert("대출 신청에 실패했습니다.");
-			window.history.back();
-		}, 1000); 
-		</script>
-	</c:if>
 </c:if>
 
 <c:if test="${insertCnt == 1}">

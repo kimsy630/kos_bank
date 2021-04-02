@@ -111,7 +111,7 @@ function doCheck() {
 										<div class="textarea_wrap">
 						
 											<!-- ======= Table with outer spacing ======= -->
-											<form action="LoanApplicationAction.cc" name="LoanApplicationForm" method="POST" onchange="doCheck()" onsubmit="return doAction();">
+											<form action="LoanApplicationAction.cc" name="LoanApplicationForm" method="POST" onsubmit="return doAction();">
 												<div class="table-responsive">
 								                	<h4><b>가입 신청서</b></h4>
 							                		<input type="hidden" name="d_name" value="${vo.d_name}">
@@ -181,6 +181,7 @@ function doCheck() {
 																		    $("#content1").css("display","inline");
 																		}else{
 																			$("#content1").css("display","none");
+																			$("#d_auto_date").val("0").prop("selected", true);
 																		}
 																	});
 																	</script>
@@ -190,7 +191,7 @@ function doCheck() {
 								                            	<td>자동이체<br>출금 일자</td>
 								                            	<td>
 								                            		<div id="content1">
-										                            	<select name="d_auto_date" lengthtype="length">
+										                            	<select id="d_auto_date" name="d_auto_date" lengthtype="length">
 										                            		<option value="0">선택하세요.</option>
 									                                		<c:forEach var="i" begin="1" end="31">
 																			    <option value="${i}">${i}</option>
@@ -207,42 +208,43 @@ function doCheck() {
 												
 												<br><br>
 												
-												
-								                <%-- 약관 동의 --%>
-												<br>
-												<h5 class="textarea-head-mid">약관동의 및 금리확인</h5>
-												<p class="textarea-head-ex">상품가입 등 금융거래를 위하여 관련 법률과 규정에 따라
-													동의 및 확인이 필요합니다.</p>
-												<table class="table table-bordered" id="content-table2">
-													<tr class="table-highlight" id="tr-head">
-														<th colspan="2" style="text-align: center">대출약관</th>
-													</tr>
-													<tr style="text-align: center; vertical-align: middle;">
-														<td>대출 약관 전체 동의</td>
-														<td><label><input type="checkbox"
-																name="allCheck" onclick="allChk()" id="allCheck">
-																전체동의</label></td>
-													</tr>
-													<tr style="text-align: center; vertical-align: middle;">
-														<td>은행여신거래기본 약관</td>
-														<td><label><input type="checkbox"
-																name="checkTerms"> 약관동의</label></td>
-													</tr>
-												</table>
-						
-												<%-- button --%>
-												<div class="btn-area">
-													<div class="btn-wrap" style="margin-left:100px">
-														<jsp:include page="/WEB-INF/include/pManual2.jsp" />
-														<jsp:include page="/WEB-INF/include/noticeRate2.jsp" />
+												<div onchange="doCheck()">
+									                <%-- 약관 동의 --%>
+													<br>
+													<h5 class="textarea-head-mid">약관동의 및 금리확인</h5>
+													<p class="textarea-head-ex">상품가입 등 금융거래를 위하여 관련 법률과 규정에 따라
+														동의 및 확인이 필요합니다.</p>
+													<table class="table table-bordered" id="content-table2">
+														<tr class="table-highlight" id="tr-head">
+															<th colspan="2" style="text-align: center">대출약관</th>
+														</tr>
+														<tr style="text-align: center; vertical-align: middle;">
+															<td>대출 약관 전체 동의</td>
+															<td><label><input type="checkbox"
+																	name="allCheck" onclick="allChk()" id="allCheck">
+																	전체동의</label></td>
+														</tr>
+														<tr style="text-align: center; vertical-align: middle;">
+															<td>은행여신거래기본 약관</td>
+															<td><label><input type="checkbox"
+																	name="checkTerms"> 약관동의</label></td>
+														</tr>
+													</table>
+							
+													<%-- button --%>
+													<div class="btn-area">
+														<div class="btn-wrap" style="margin-left:100px">
+															<jsp:include page="/WEB-INF/include/pManual2.jsp" />
+															<jsp:include page="/WEB-INF/include/noticeRate2.jsp" />
+														</div>
 													</div>
-												</div>
-												<br>
-												<%-- message --%>
-												<div class="btn-area">
-													<div class="btn-wrap" style="margin-left:120px">
-														<label><input type="checkbox" name="lastCheck">
-															본인은 위 안내에 대해 확인하고 이해합니다.</label>
+													<br>
+													<%-- message --%>
+													<div class="btn-area">
+														<div class="btn-wrap" style="margin-left:120px">
+															<label><input type="checkbox" name="lastCheck">
+																본인은 위 안내에 대해 확인하고 이해합니다.</label>
+														</div>
 													</div>
 												</div>
 												

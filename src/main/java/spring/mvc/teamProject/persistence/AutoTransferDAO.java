@@ -17,6 +17,10 @@ public interface AutoTransferDAO{
 	// 자동이체 신청
 	public int AutoTransferAdd(AutoTransferVO vo);
 	
+	// 박서하
+	// 자동이체 신청(대출용)
+	public int AutoTransferAdd2(AutoTransferVO vo);
+	
 	// 자동이체 정보 조회(자동이체실행용)
 	public List<AutoTransferVO> selectByDate(String day);
 	
@@ -45,4 +49,9 @@ public interface AutoTransferDAO{
 	// 자동이체 해지정보
 	public List<AutoTransferVO> AutoTransferDeleteList(int jd_key);
 	
+	// 계좌이체 내역 log(출금)
+	public int TransferMyLog(AutoTransferVO vo);
+	
+	 // 계좌이체 내역 log(입금)
+    public int TransferYourLog(AutoTransferVO vo);
 }

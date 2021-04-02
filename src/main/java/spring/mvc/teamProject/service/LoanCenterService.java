@@ -21,5 +21,6 @@ public interface LoanCenterService {
 	public void LoanPrincipalPay(HttpServletRequest req,Model model); // 대출원금 상환 실행
 	public void LoanApplication(HttpServletRequest req,Model model); // 신규대출 신청
 	public void LoanApplicationAction(HttpServletRequest req,Model model); // 신규대출 신청 실행
+	public void AutoTransferLoan(); // 자동이체
 	// ============================================================================
 }

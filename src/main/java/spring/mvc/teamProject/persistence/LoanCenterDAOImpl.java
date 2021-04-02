@@ -31,6 +31,12 @@ public class LoanCenterDAOImpl implements LoanCenterDAO {
 		LoansVO vo = sqlSession.selectOne("spring.mvc.teamProject.persistence.LoanCenterDAO.getLoanAccountDetail", map);
 		return vo;
 	}
+
+	@Override
+	public List<Loans_historyVO> getLoanHistoryDetail(String account) { // 대출계좌 상세조회(대출상환(납입) 내역)
+		List<Loans_historyVO> list = sqlSession.selectList("spring.mvc.teamProject.persistence.LoanCenterDAO.getLoanHistoryDetail", account);
+		return list;
+	}
 	
 	@Override
 	public List<LoansVO> getLoanCloseList(String id) { // 대출해지현황 조회
@@ -57,7 +63,7 @@ public class LoanCenterDAOImpl implements LoanCenterDAO {
 	}
 	
 	@Override
-	public int payLoanPrincipal2(Loans_historyVO vo) { // 대출원금 상환 실행(Loans 변경 1-2)
+	public int payLoanPrincipal2(Loans_historyVO vo) { // 대출원금 상환 실행(Loans_history 생성 1-3)
 		int insertCnt = sqlSession.insert("spring.mvc.teamProject.persistence.LoanCenterDAO.payLoanPrincipal2", vo);
 		return insertCnt;
 	}
@@ -68,6 +74,18 @@ public class LoanCenterDAOImpl implements LoanCenterDAO {
 		return vo;
 	}
 
+	@Override
+	public int payLoanRate1(LoansVO vo) { // 대출이자 납입 실행(Loans 변경 1-2)
+		int updateCnt = sqlSession.update("spring.mvc.teamProject.persistence.LoanCenterDAO.payLoanRate1", vo);
+		return updateCnt;
+	}
+	
+	@Override
+	public int payLoanRate2(Loans_historyVO vo) { // 대출이자 납입 실행(Loans_historyVO 생성 1-3)
+		int insertCnt = sqlSession.insert("spring.mvc.teamProject.persistence.LoanCenterDAO.payLoanRate2", vo);
+		return insertCnt;
+	}
+	
 	@Override
 	public Loans_productVO getLoanApplication(String d_name) { // 신규대출 신청
 		Loans_productVO vo = sqlSession.selectOne("spring.mvc.teamProject.persistence.LoanCenterDAO.getLoanApplication", d_name);
@@ -96,6 +114,24 @@ public class LoanCenterDAOImpl implements LoanCenterDAO {
 	public int insertLoan(LoansVO vo) { // 신규대출 신청 실행(대출 생성)
 		int insertCnt = sqlSession.insert("spring.mvc.teamProject.persistence.LoanCenterDAO.insertLoan", vo);
 		return insertCnt;
+	}
+	
+	@Override
+	public String getLoanAccount() { // 신규대출 신청 실행(자동이체 신청-공통)
+		String account = sqlSession.selectOne("spring.mvc.teamProject.persistence.LoanCenterDAO.getLoanAccount");
+		return account;
+	}
+	
+	@Override
+	public LoansVO getLoanInfo(String account) { // 신규대출 신청 실행(자동이체 신청-공통)
+		LoansVO vo = sqlSession.selectOne("spring.mvc.teamProject.persistence.LoanCenterDAO.getLoanInfo", account);
+		return vo;
+	}
+	
+	@Override
+	public LoansVO getAutoLoan(String d_key) { // 자동이체 대출정보
+		LoansVO vo = sqlSession.selectOne("spring.mvc.teamProject.persistence.LoanCenterDAO.getAutoLoan", d_key);
+		return vo;
 	}
 	// ============================================================================
 
