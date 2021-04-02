@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+    
+<mapper namespace = "spring.mvc.teamProject.persistence.FundingDAO">
+
+	<resultMap id="FundingTable" type="spring.mvc.teamProject.vo.FundingVO">
+		<result column="f_num" property="f_num" />
+		<result column="id" property="id" />
+		<result column="account" property="account" />
+		<result column="f_title" property="f_title" />
+		<result column="f_content" property="f_content" />
+		<result column="f_start_date" property="f_start_date" />
+		<result column="f_end_date" property="f_end_date" />
+		<result column="f_target_money" property="f_target_money" />
+		<result column="f_category" property="f_category" />
+		<result column="f_approve" property="f_approve" />
+		<result column="f_name" property="f_name" />
+		<result column="f_phone" property="f_phone" />
+		<result column="f_Email" property="f_Email" />
+		<result column="f_filename" property="f_filename" />
+	</resultMap>
+	
+	<resultMap id="FundCommentTable" type="spring.mvc.teamProject.vo.FundCommentVO">
+		<result column="f_num" property="f_num" />
+		<result column="c_title" property="c_title" />
+		<result column="c_content" property="c_content" />
+		<result column="c_date" property="c_date" />
+		<result column="c_name" property="c_name" />
+	</resultMap>
+	
+	<resultMap id="FundInvestorTable" type="spring.mvc.teamProject.vo.FundInvestorVO">
+		<result column="id" property="id" />
+		<result column="f_num" property="f_num" />
+		<result column="account" property="account" />
+		<result column="f_account" property="f_account" />
+		<result column="f_money" property="f_money" />
+		<result column="f_date" property="f_date" />
+	</resultMap>
+	
+	<resultMap id="AccountTable" type="spring.mvc.teamProject.vo.AccountVO">
+		<result column="account" property="account" />
+		<result column="id" property="id" />
+		<result column="accountPW" property="accountPW" />
+		<result column="balance" property="balance" />
+		<result column="accountType" property="accountType" />
+		<result column="accountState" property="accountState" />
+		<result column="acc_state_content" property="acc_state_content" />
+		<result column="accountLimit" property="accountLimit" />
+		<result column="delete_date" property="delete_date" />
+		<result column="sleep_date" property="sleep_date" />
+		<result column="new_date" property="new_date" />
+	</resultMap>
+	
+	<resultMap id="AccountTransferTable" type="spring.mvc.teamProject.vo.AccountTransferVO">
+		<result column="transfer_id" property="transfer_id" />
+		<result column="account" property="account" />
+		<result column="sender_account" property="sender_account" />
+		<result column="money" property="money" />
+		<result column="in_out" property="in_out" />
+		<result column="in_outDate" property="in_outDate" />
+		<result column="out_comment" property="out_comment" />
+		<result column="in_comment" property="in_comment" />
+	</resultMap>
+	
+	<!-- 펀드 목록 전체 조회 -->
+	<select id="getFundingAllInfo" resultMap="FundingTable">
+		SELECT * 
+		  FROM FUND 
+		 WHERE f_approve = 1
+		 ORDER BY f_num DESC
+	</select>
+	
+	<!-- 펀드 목록 카테고리별 조회 -->
+	<select id="getFundingCategoryInfo" resultMap="FundingTable">
+		SELECT * 
+		  FROM FUND 
+		 WHERE f_approve = 1 AND f_category = #{f_category}
+		 ORDER BY f_num DESC
+	</select>
+	
+	<!-- 펀드 상세내용 조회 -->
+	<select id="getFundingContent"  resultMap="FundingTable">
+		 SELECT * 
+		   FROM FUND 
+		  WHERE f_num = #{f_num}
+	</select>
+	
+	<!-- 펀드 댓글 가져오기 -->
+	<select id="readComment"  resultMap="FundCommentTable">
+		 SELECT *
+		   FROM FUND_COMMENT
+		  WHERE f_num = #{f_num}
+		  ORDER BY c_date DESC
+	</select>
+	
+	<!-- 펀드 댓글 작성 -->
+	<insert id="writeComment">
+		 INSERT INTO FUND_COMMENT
+		 VALUES(#{f_num}, #{c_title}, #{c_content}, SYSDATE, #{c_name})
+	</insert>
+	
+	<!-- 펀드 구매(참자가 정보 등록) -->
+	<insert id="registerInvestor">
+		 INSERT INTO FUND_INVESTOR
+		 VALUES(#{id}, #{f_num}, #{account}, #{f_account}, #{f_money}, SYSDATE)
+	</insert>
+	
+	<!-- 펀드 구매(참가자 계좌에서 출금) -->
+	<update id="withdrawInvestorAccount">
+		UPDATE ACCOUNT_INFO
+		   SET balance = balance - #{f_money}
+		 WHERE ACCOUNT = #{f_account}
+	</update>
+	
+	<!-- 펀드 구매(등록자 계좌에 입금) -->
+	<update id="depositRegistrantAccount">
+		 UPDATE ACCOUNT_INFO
+		   SET balance = balance + #{f_money}
+		 WHERE ACCOUNT = #{account}
+	</update>
+	
+	<!-- 펀드 구매(입금에 대한 이체 history 작성) -->
+	<insert id="depositAccountTransfer">
+		 INSERT INTO ACCOUNT_TRANSFER
+		 VALUES(SEQ_TRANSFER.nextval, #{f_account}, #{account}, #{f_money}, '입금', SYSDATE, '펀드', '펀드', #{f_name})
+	</insert>
+	
+	<!-- 펀드 구매(출금에 대한 history 작성) -->
+	<insert id="withdrawAccountTransfer">
+		 INSERT INTO ACCOUNT_TRANSFER
+		 VALUES(SEQ_TRANSFER.nextval, #{account}, #{f_account}, #{f_money}, '출금', SYSDATE, '펀드', '펀드', #{id})
+	</insert>
+		
+</mapper>

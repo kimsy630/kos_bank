@@ -1,7 +1,5 @@
 package spring.mvc.teamProject.vo;
 
-import java.sql.Timestamp;
-
 public class NoticeVO {
 
 	private int n_num;			//글번호

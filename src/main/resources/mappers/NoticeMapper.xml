@@ -23,14 +23,14 @@
 	</select>
 	
 	<!-- 공지사항 글상세내용 조회 -->
-	<select id="getContent"  resultMap="NoticeTable">
-		SELECT n_num, n_title, n_name, n_date, n_views, n_content 
+	<select id="getNoticeContent"  resultMap="NoticeTable">
+		SELECT n_num, n_title, n_name, n_date, n_views, n_content
 		  FROM notice
 		 WHERE n_num = #{n_num}
 	</select>
 	
 	<!-- 공지사항 글확인시 조회수 증가 -->
-	<update id="setViews">
+	<update id="setNoticeViews">
 		UPDATE notice
 		   SET n_views = n_views + 1  
 		 WHERE n_num = #{n_num}

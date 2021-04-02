@@ -18,7 +18,7 @@ public class AccountVO {
     private AccountTransferVO AccountTransfer;
     private LoansVO Loans;
     private installment_savingsVO installment_savings;
-    private fundVO fund;
+    private FundingVO fund;
     private DepositVO deposit;
     
     
@@ -109,10 +109,10 @@ public String getAccount() {
 		this.installment_savings = installment_savings;
 	}
 	
-	public fundVO getFund() {
+	public FundingVO getFund() {
 		return fund;
 	}
-	public void setFund(fundVO fund) {
+	public void setFund(FundingVO fund) {
 		this.fund = fund;
 	}
 	

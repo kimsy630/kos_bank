@@ -12,9 +12,9 @@ public interface NoticeService {
 	public void getNoticeInfo(HttpServletRequest req, Model model);
 	
 	// 공지사항 글상세내용 조회
-	public void getContent(HttpServletRequest req, Model model);
+	public void getNoticeContent(HttpServletRequest req, Model model);
 	
 	// 공지사항 글확인시 조회수 증가
-	public void setViews(HttpServletRequest req, Model model);
+	public void setNoticeViews(HttpServletRequest req, Model model);
 	
 }

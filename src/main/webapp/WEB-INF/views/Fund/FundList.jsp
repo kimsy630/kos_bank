@@ -15,208 +15,94 @@
     </div>
     <div class="page">
     	<%@ include file="../header.jsp" %>
+    	<script type="text/javascript">
+           	window.onload = function() {
+           		tdClick('전체');
+          	}
+    	</script>
     	<section class="section section-bredcrumbs">
 	        <div class="container context-dark breadcrumb-wrapper">
 	          <h2>펀드 리스트</h2>
 	          <br>
 	        </div>
 	     </section>
-			<main id="Chatbot" class="Chatbot">
+			<main id="FundList.cc" class="FundList.cc">
 			    <div class="container">
-			    <br> <br> <br> <br> <br> <br> <br>
-				<form class="form-signin" action="loginAction.cc" method="post" role="form" >
-					<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
-					
-			    	<!-- Overview-->
-				      <section class="section section-lg">
-				        <div class="container">
-				          <div class="row row-40">
-				            <div class="col-md-4">
-				              <article class="post-classic-2"><a class="media-wrapper" href="FundDetail.cc"><img src="resources/images/masonry-blog-1-370x240.jpg" alt="" width="370" height="240"/></a>
-				              <!-- Linear progress bar-->
-				                <article class="progress-linear">
-				                  <div class="progress-header">
-				                    <p>26,713,000원</p><span class="progress-value">71</span>
-				                  </div>
-				                  <div class="progress-bar-linear-wrap">
-				                    <div class="progress-bar-linear"></div>
-				                  </div>
-				                </article>
-				                <div class="post-meta-main">
-				                  <div class="post-meta-item">
-				                    <ul class="list-tags">
-				                      <li><a class="tag" href="FundDetail.cc">홈리빙</a>
-				                      </li>
-				                    </ul>
-				                  </div>
-				                  <div class="post-meta-item">
-				                    <div class="post-author"><span>by</span> <a href="FundDetail.cc">(주)마스터핏</a>
-				                    </div>
-				                  </div>
-				                </div>
-				                <h6 class="post-title"><a href="FundDetail.cc">인체공학 마사지기가 7만원 대ㅣ서포터 인정! 평점4.8점 밸런스냅 앵콜</a></h6>
-				                <p class="post-exeption">펀드 상품 설명 간략 내용</p>
-				                <div class="post-date">4일 남음</div>
-				              </article>
-				              <article class="post-classic-2"><a class="media-wrapper" href="FundDetail.cc"><img src="resources/images/masonry-blog-2-370x240.jpg" alt="" width="370" height="240"/></a>
-				              <!-- Linear progress bar-->
-				                <article class="progress-linear">
-				                  <div class="progress-header">
-				                    <p>17,827,400원</p><span class="progress-value">65</span>
-				                  </div>
-				                  <div class="progress-bar-linear-wrap">
-				                    <div class="progress-bar-linear"></div>
-				                  </div>
-				                </article>
-				                <div class="post-meta-main">
-				                  <div class="post-meta-item">
-				                    <ul class="list-tags">
-				                      <li><a class="tag" href="FundDetail.cc">홈리빙</a>
-				                      </li>
-				                    </ul>
-				                  </div>
-				                  <div class="post-meta-item">
-				                    <div class="post-author"><span>by</span> <a href="FundDetail.cc">쿼럼바이오헬스케어(주)</a>
-				                    </div>
-				                  </div>
-				                </div>
-				                <h6 class="post-title"><a href="FundDetail.cc">2년만에 컴백, 불소를 첨가하여 강화된 충치예방효과 루투스 더블액션치약</a></h6>
-				                <p class="post-exeption">펀드 상품 설명 간략 내용</p>
-				                <div class="post-date">오늘마감</div>
-				              </article>
-				            </div>
-				            <div class="col-md-4">
-				              <article class="post-classic-2"><a class="media-wrapper" href="FundDetail.cc"><img src="resources/images/masonry-blog-3-370x240.jpg" alt="" width="370" height="240"/></a>
-				              <!-- Linear progress bar-->
-				                <article class="progress-linear">
-				                  <div class="progress-header">
-				                    <p>4,765,600원</p><span class="progress-value">75</span>
-				                  </div>
-				                  <div class="progress-bar-linear-wrap">
-				                    <div class="progress-bar-linear"></div>
-				                  </div>
-				                </article>
-				                <div class="post-meta-main">
-				                  <div class="post-meta-item">
-				                    <ul class="list-tags">
-				                      <li><a class="tag" href="FundDetail.cc">뷰티</a>
-				                      </li>
-				                    </ul>
-				                  </div>
-				                  <div class="post-meta-item">
-				                    <div class="post-author"><span>by</span> <a href="FundDetail.cc">효창</a>
-				                    </div>
-				                  </div>
-				                </div>
-				                <h6 class="post-title"><a href="single-post.html">올인원클렌징 솝바 | 비누만 30년 | 효창</a></h6>
-				                <p class="post-exeption">펀드 상품 설명 간략 내용</p>
-				                <div class="post-date">18일 남음</div>
-				              </article>
-				              <article class="post-classic-2"><a class="media-wrapper" href="FundDetail.cc"><img src="resources/images/masonry-blog-4-370x240.jpg" alt="" width="370" height="240"/></a>
-				              <!-- Linear progress bar-->
-				                <article class="progress-linear">
-				                  <div class="progress-header">
-				                    <p>8,758,500원</p><span class="progress-value">85</span>
-				                  </div>
-				                  <div class="progress-bar-linear-wrap">
-				                    <div class="progress-bar-linear"></div>
-				                  </div>
-				                </article>
-				                <div class="post-meta-main">
-				                  <div class="post-meta-item">
-				                    <ul class="list-tags">
-				                      <li><a class="tag" href="FundDetail.cc">테크·가전</a>
-				                      </li>
-				                    </ul>
-				                  </div>
-				                  <div class="post-meta-item">
-				                    <div class="post-author"><span>by</span> <a href="FundDetail.cc">(주)에스알커머스</a>
-				                    </div>
-				                  </div>
-				                </div>
-				                <h6 class="post-title"><a href="FundDetail.cc">[글로벌10억]블루투스5.2 메인급 스펙 차세대 듀얼 무선이어폰</a></h6>
-				                <p class="post-exeption">펀드 상품 설명 간략 내용</p>
-				                <div class="post-date">25일 남음</div>
-				              </article>
-				            </div>
-				            <div class="col-md-4">
-					            <article class="post-classic-2"><a class="media-wrapper" href="FundDetail.cc"><img src="resources/images/masonry-blog-6-370x240.jpg" alt="" width="370" height="240"/></a>
-					              <!-- Linear progress bar-->
-					                <article class="progress-linear">
-					                  <div class="progress-header">
-					                    <p>9,477,100원</p><span class="progress-value">95</span>
-					                  </div>
-					                  <div class="progress-bar-linear-wrap">
-					                    <div class="progress-bar-linear"></div>
-					                  </div>
-					                </article>
-					                <div class="post-meta-main">
-					                  <div class="post-meta-item">
-					                    <ul class="list-tags">
-					                      <li><a class="tag" href="FundDetail.cc">패션·잡화</a>
-					                      </li>
-					                    </ul>
-					                  </div>
-					                  <div class="post-meta-item">
-					                    <div class="post-author"><span>by</span> <a href="FundDetail.cc">(주)포스팀</a>
-					                    </div>
-					                  </div>
-					                </div>
-					                <h6 class="post-title"><a href="single-post.html">[평점 4.8]미친 착화감 헤어두드 초경량 깃털 블로퍼</a></h6>
-					                <p class="post-exeption">펀드 상품 설명 간략 내용</p>
-					                <div class="post-date">13일 남음</div>
-					              </article>
-				              <article class="post-classic-2"><a class="media-wrapper" href="FundDetail.cc"><img src="resources/images/masonry-blog-6-370x240.jpg" alt="" width="370" height="240"/></a>
-				              <!-- Linear progress bar-->
-				                <article class="progress-linear">
-				                  <div class="progress-header">
-				                    <p>12,967,000원</p><span class="progress-value">59</span>
-				                  </div>
-				                  <div class="progress-bar-linear-wrap">
-				                    <div class="progress-bar-linear"></div>
-				                  </div>
-				                </article>
-				                <div class="post-meta-main">
-				                  <div class="post-meta-item">
-				                    <ul class="list-tags">
-				                      <li><a class="tag" href="FundDetail.cc">테크·가전</a>
-				                      </li>
-				                    </ul>
-				                  </div>
-				                  <div class="post-meta-item">
-				                    <div class="post-author"><span>by</span> <a href="FundDetail.cc">에스디티시스템즈</a>
-				                    </div>
-				                  </div>
-				                </div>
-				                <h6 class="post-title"><a href="FundDetail.cc">스마트폰 충전과 데이터 백업을 동시에! 슬기로운 백업 생활 '큐비 듀오'</a></h6>
-				                <p class="post-exeption">펀드 상품 설명 간략 내용</p>
-				                <div class="post-date">31일 남음</div>
-				              </article>
-				            </div>
-				          </div>
-				          <!-- Bootstrap Pagination-->
-				          <nav class="page-navigation" aria-label="Page navigation">
-				            <ul class="pagination">
-				              <!--li.page-item.page-item-control(class={'disabled': active === 1})-->
-				              <!--	a.page-link(href='#' aria-label="Previous")-->
-				              <!--		span.icon(aria-hidden='true')-->
-				              <li class="page-item active"><span class="page-link">1</span></li>
-				              <li class="page-item"><a class="page-link" href="#">2</a></li>
-				              <li class="page-item"><a class="page-link" href="#">3</a></li>
-				              <li class="page-item"><a class="page-link" href="#">4</a></li>
-				              <!--li.page-item.page-item-control(class={'disabled': (indexes.length === active || indexes === active)})-->
-				              <!--	a.page-link(href='#' aria-label="Next")-->
-				              <!--		span.icon(aria-hidden='true')-->
-				            </ul>
-				          </nav>
-				        </div>
-				      </section>
-				</form>
-				</div>
-				</main>
-                <img src="../teamProject/resources/testimage/펀드_펀드조회.JPG">
+			    <br> <br> 
 				
-			    <br> <br> <br> <br> <br> <br> <br>
+				<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
+				<div class="tabs-custom tabs-horizontal tabs-line" id="tabs-1">
+		           <ul class="nav nav-tabs">
+		             <li class="nav-item" role="presentation"><a class="nav-link active" href="#tabs-1-1" data-toggle="tab" onclick="tdClick('전체')">
+		             	<div><img src="resources/images/f_category_all.jpg"/></div><div>전체</div></a>
+		             </li>
+		             <li class="nav-item" role="presentation"><a class="nav-link" href="#tabs-1-2" data-toggle="tab" onclick="tdClick('테크·가전')">
+		             	<div><img src="resources/images/f_category_tech.jpg"/></div><div>테크·가전</div></a>
+		             </li>
+		             <li class="nav-item" role="presentation"><a class="nav-link" href="#tabs-1-3" data-toggle="tab" onclick="tdClick('패션·잡화')">
+		             	<div><img src="resources/images/f_category_fashion.jpg"/></div><div>패션·잡화</div></a>
+		             </li>
+		             <li class="nav-item" role="presentation"><a class="nav-link" href="#tabs-1-4" data-toggle="tab" onclick="tdClick('뷰티')">
+		             	<div><img src="resources/images/f_category_beauty.jpg"/></div><div>뷰티</div></a>
+		             </li>
+		             <li class="nav-item" role="presentation"><a class="nav-link" href="#tabs-1-5" data-toggle="tab" onclick="tdClick('푸드')">
+		             	<div><img src="resources/images/f_category_food.jpg"/></div><div>푸드</div></a>
+		             </li>
+		             <li class="nav-item" role="presentation"><a class="nav-link" href="#tabs-1-6" data-toggle="tab" onclick="tdClick('홈리빙')">
+		             	<div><img src="resources/images/f_category_home.jpg"/></div><div>홈리빙</div></a>
+		             </li>
+		             <li class="nav-item" role="presentation"><a class="nav-link" href="#tabs-1-7" data-toggle="tab" onclick="tdClick('디자인·소품')">
+		             	<div><img src="resources/images/f_category_design.jpg"/></div><div>디자인·소품</div></a>
+		             </li>
+		             <li class="nav-item" role="presentation"><a class="nav-link" href="#tabs-1-8" data-toggle="tab" onclick="tdClick('여행·레저')">
+		             	<div><img src="resources/images/f_category_trip.jpg"/></div><div>여행·레저</div></a>
+		             </li>
+		             <li class="nav-item" role="presentation"><a class="nav-link" href="#tabs-1-9" data-toggle="tab" onclick="tdClick('스포츠·모빌리티')">
+		             	<div><img src="resources/images/f_category_sports.jpg"/></div><div>스포츠·모빌리티</div></a>
+		             </li>
+		             <li class="nav-item" role="presentation"><a class="nav-link" href="#tabs-1-10" data-toggle="tab" onclick="tdClick('반려동물')">
+		             	<div><img src="resources/images/f_category_pet.jpg"/></div><div>반려동물</div></a>
+		             </li>
+		             <li class="nav-item" role="presentation"><a class="nav-link" href="#tabs-1-11" data-toggle="tab" onclick="tdClick('게임·취미')">
+		            	<div><img src="resources/images/f_category_game.jpg"/></div><div>게임·취미</div></a>
+		             </li>
+		             <li class="nav-item" role="presentation"><a class="nav-link" href="#tabs-1-12" data-toggle="tab" onclick="tdClick('기타')">
+		             	<div><img src="resources/images/f_category_etc.jpg"/></div><div>기타</div></a>
+		             </li>
+		           </ul>
+	           </div>
+			<section class="section section-lg">
+		        <div class="container">
+	           		<div id="FundData"  class="row row-40"></div>
+		        </div>
+           </section>
+	           <script type="text/javascript">
+              	var f_category = '전체';
+              	function tdClick(f_category){
+              		/*"changeType":$("input[name=changeType]:checked").val(),  */
+              		var data = {"f_category" : f_category,
+              				"${_csrf.parameterName}":"${_csrf.token}"};
+              		$.ajax({
+              			url:"FundData.cc", 
+              			type:'POST',
+              			data : data,
+              			success:function(result){
+              				$("#FundData").html(result);
+              			},
+              			error:function(){
+              				alert("ajax 화면 전환 오류");
+              			}
+              		});
+              	}
+	              	
+	            </script>
+		    	
+				
+			</div>
+			</main>
+                
+				
+		    <br> <br> <br> <br>
     	<%@ include file="../footer.jsp" %>
     </div>
   </body>
