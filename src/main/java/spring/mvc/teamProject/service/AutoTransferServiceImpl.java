@@ -75,7 +75,9 @@ public class AutoTransferServiceImpl implements AutoTransferService {
 		int jd_autoMoney=0;
 		String jd_inPlace = "";
 		String jd_status = "";
-		
+		System.out.println(Integer.toString(Integer.parseInt(day)));
+		int num = Integer.parseInt(day);
+		day= Integer.toString(num);
 		List<AutoTransferVO> transferInfo = aDAO.selectByDate(day);
 		
 		System.out.println("자동이체 할 객체 Chk : "+ transferInfo);
@@ -110,6 +112,12 @@ public class AutoTransferServiceImpl implements AutoTransferService {
 				
 				// 최근거래내역 UPDATE
 				aDAO.lastRunDate(vo);
+				
+				// 계좌이체 테이블 로그(출금)
+				aDAO.TransferMyLog(vo);
+				
+				// 계좌이체 테이블 로그(입금)
+				aDAO.TransferYourLog(vo);				
 				
 				// 자동이체내역 로그(출금)
 				aDAO.sendAutoTrans(vo);

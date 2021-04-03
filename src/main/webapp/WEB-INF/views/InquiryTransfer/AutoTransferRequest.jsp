@@ -47,7 +47,7 @@
      <h2>자동이체신청</h2>
         </div>
       </section>
-      <form name="autoAction" method="post" action="AutoTransferDelete.cc" onsubmit="check()">
+      <form name="autoAction" method="post" action="AutoTransferRequestAction.cc" onsubmit="check()">
 					<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
       <section class="section section-lg bg-default">
         <div class="container">
@@ -62,7 +62,6 @@
                       <th >약정구분</th>
                       	<td colspan="4">
                       		<input type="radio" name="Auto_check" value="AutoTransferAdd" checked> 약정
-                      		<input type="radio" name="Auto_check" value="AutoTransferModify"> 정정
                      	 </td>
                     </tr>
                   </thead>
@@ -165,9 +164,9 @@
       		</div>
           </div>
         </div>   
-     
-      			<div class="form-group" style="margin-left:600px">
-                    <div class="col-lg-offset-2 col-lg-10">
+     		<br><br>
+      			<div class="form-group" >
+                    <div class="col-lg-offset-2 col-lg-10" style="text-align:center">
                         <button type="submit" class="btn btn-primary">신청하기</button>
                         <button type="reset" class="btn btn-primary">취소하기</button>
                     </div>

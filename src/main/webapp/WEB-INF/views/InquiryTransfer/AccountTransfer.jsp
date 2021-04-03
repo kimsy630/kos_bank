@@ -9,6 +9,7 @@
     
    <!-- ajax 스크립트 -->
     <script type="text/javascript">
+    var msg = '${msg}';
 	$(function () {
     	$("#limitChk").click(function () {
        	 $.ajax({
@@ -83,24 +84,24 @@
 	});
 	
 	/* 금액 직접 입력시 해당 input 태그 적용 메서드  */
-   	 var tmpNC = "";
-     function numberComma(obj) {
-         if (tmpNC == obj.value) return;
-         tmpNC = obj.value;
-         obj.value = numberComma2(tmpNC);
-     }
-     function numberComma2(q) {
-         q = q.replace(/\D/g, "");
-         w = parseInt(q);
-     	$("#money2").val(w);
-         e = q.length - 3;
-         while (e > 0) {
-             q = q.substr(0, e) + "," + q.substr(e);
-             e -= 3;
-         }
-         return q;
-     }
- 	/* 금액 직접 입력시 적용 메서드  */
+    var tmpNC = "";
+    function numberComma(obj) {
+        if (tmpNC == obj.value) return;
+        tmpNC = obj.value;
+        obj.value = numberComma2(tmpNC);
+    }
+    function numberComma2(s) {
+        s = s.replace(/\D/g, "");
+        q = parseInt(s);
+        document.TransferForm.money.value = q;
+        l = s.length - 3;
+        while (l > 0) {
+            s = s.substr(0, l) + "," + s.substr(l);
+            l -= 3;
+        }
+        return s;
+    }
+	/* 금액 직접 입력시 적용 메서드  */
 	
 	/* 숫자버튼 누를시 적용 메서드  */
     function numberComma100(obj) {
@@ -210,7 +211,94 @@
 				}
 			});
 		});
-	/* 숫자버튼 위 마우스 올려놓을시 적용 메서드 */
+		/* 숫자버튼 위 마우스 올려놓을시 적용 메서드 */	
+		
+        function changeAccount(){
+        	
+			<c:forEach items="${list}" var="item">
+				if ("${item.account}"== $('#account').val()){
+					var q = "";
+		        	var w = "";
+		        	var e = "";
+		        	var r = "";
+		        	var t = "";
+		        	var a = "";
+		        	var b = "";
+		        	var c = "";
+		        	var d = "";
+		        	var f = "";
+		        	var h = "";
+		        	var k = "";
+		        	var i = "";
+		        	
+		        	q = "${item.balance}"; 
+		        	a = "${item.accountLimit}";
+		        	b = "${item.oneLimit}";
+		        	if(!"${item.balance}") {
+		        		q = '0';
+		        	}
+		        	w = q.replace(/,/g ,"");
+		        	e = parseInt(w);
+		        	$('#select_balance2').val(e);
+		        	r = e.toString();
+		        	t = r.toString().length - 3;
+		        	while (t > 0) {
+		                r = r.substr(0, t) + "," + r.substr(t);
+		                t -= 3;
+		            }
+		        	
+		         $('#select_balance').html(r+"원");
+		         $('#select_limit').html("1회한도 : "+b+"원, 일일한도 : "+a+"원" + "<input type='hidden' id='accountLimit' value='"+a+"''>"+ "<input type='hidden' id='oneLimit' value='"+b+"''>");
+		        	if(!"${item.accountLimit}"){
+		        		c = '0';
+		        	}
+		        	d = c.replace(/,/g ,"");
+		        	f = parseInt(d);
+		        	$('#select_limit2').val(f);
+		        	h = f.toString();
+		        	k = h.toString().length - 3;
+		        	while (k > 0) {
+		                h = h.substr(0, k) + "," + r.substr(k);
+		                k -= 3;
+		            }
+				}
+			</c:forEach>
+			 
+         /* $('#select_balance').html($('#select_account').val()+"원"); */
+       }
+		
+		function Transfer() {
+			if (document.TransferForm.accountPW.value.length != 4) {
+	    		alert("4자리 비밀번호로 입력해주세요.");
+	    		document.TransferForm.accountPW.focus();
+	    		return false;
+	    	}
+	    	if (document.getElementById("account").style.display == 'block' && document.TransferForm.account.value == '선택') {
+	    		alert('이체할 계좌번호를 선택하세요.');
+	    		return false;
+	    	}
+	    	if (document.TransferForm.account.value == document.TransferForm.sender_account.value) {
+	    		alert("같은 계좌번호로 이체 할 수 없습니다.");
+	    		return false;
+	    	}
+	    	if (document.TransferForm.select_balance2.value - document.TransferForm.money.value < 0) {
+	    		alert("잔액보다 큰 금액을 이체 할 수 없습니다.");
+	    		return false;
+	    	}
+	    	
+	    	if (document.TransferForm.accountLimit.value - document.TransferForm.money.value < 0){
+	    		alert("일일한도보다 큰 금액을 이체 할 수 없습니다.");
+	    		return false;
+	    	}
+	    	
+	    	if (document.TransferForm.oneLimit.value - document.TransferForm.money.value < 0){
+	    		alert("1회한도보다 큰 금액을 이체 할 수 없습니다.");
+	    		return false;
+	    	}
+	    }
+		
+  
+
 </script>
  <style>
     	.btn-clipboard {
@@ -251,7 +339,8 @@
     
    <div class="page">
    <%@include file="../header.jsp" %>
-    <form action="TransferAction.cc">
+    <form name="TransferForm" method="POST" action="TransferAction.cc" onsubmit="return Transfer();">
+    <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
  	<section class="section section-bredcrumbs">
      	<div class="container context-dark breadcrumb-wrapper">
      		<h2>계좌이체</h2>
@@ -270,23 +359,37 @@
                     <tr>
                       <th>출금 계좌번호</th>
                       	<td>
-                      <select name="account">
-						<option value="">선택</option>
-							<c:forEach items="${list}" var="item">
-								<option value="${item.account}" id="account" name="account">${item.account}</option>
+                      <select name="account" id="account" onchange="changeAccount()">
+						<option value="선택">선택</option>
+							<%-- <c:forEach items="${list}" var="item">
+								<option value="${item.balance}" id="account" name="account">${item.account} </option>
 							</c:forEach>
+							  --%>
+							 <c:forEach items="${list}" var="item">
+								<option value="${item.account}" >${item.account} </option>
+							</c:forEach>
+							 
 						</select>
 						</td>
-                    </tr>
+					<tr>
+						<th scope="col" class="balance">잔액 </th>
+                     	<td scope="col" id="select_balance" name="select_balance" style="color : blue;"></td>
+					</tr>
+					<tr>      
+				      	<th>이체한도조회</th> 
+		                     <td scope="col" id="select_limit" name="select_limit" style="color : blue;"></td>
+                    	</tr>
+                  	 <tr> 	
                   </thead>
                     <tr>
                     <th>계좌비밀번호</th>
-                      <td><input type="text" id="accountPW" name="accountPW" style="width: 100px"></td>
+                      <td><input type="password" id="accountPW" name="accountPW" style="width: 100px"></td>
                     </tr>
                     <tr>
 	                    <th>이체금액</th>
 	                      <td>
 			                     <div>
+			                     <input type="hidden" id="select_balance2" name="select_balance2">
 			                      <input type="hidden" id="money" name="money" style="width: 150px" onkeyup="numberComma(this);">
 			                      <input type="text" id="money2" name="money2" style="width: 150px" onkeyup="numberComma(this);">
 				                	<button type="button" id="hundred" class="btn-clipboard" data-bs-original-title="Copy to clipboard" onclick="numberComma100(1000000);">100만</button>
@@ -298,15 +401,6 @@
 				                </div>
 				             </td>
 				      </tr>
-				      <tr>      
-				      	<th>이체한도조회</th> 
-				             <td>
-		                      <div id="limitMoney" style="width: 300px">
-		                      <input id="accountLimitChk" name="accountLimitChk" style="width: 150px">
-		                      <button type="button" id="accountLimit" class="btn-clipboard" data-bs-original-title="Copy to clipboard" onclick="limitChk;">이체한도조회</button>
-                      		</td>
-                    	</tr>
-                  	 <tr> 	
                     	<th>보내는분 통장 표시내용</th>
 		                      <td>
 		                      	<input type="text" id="out_comment" name="out_comment" style="width: 300px">

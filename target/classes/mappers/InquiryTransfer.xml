@@ -40,7 +40,8 @@
 	<!-- 내 계좌 잔액 업데이트. 출금 -->
   	<update id="withdrawal" parameterType="spring.mvc.teamProject.vo.TransferVO">
 		UPDATE account_info
-	  	 SET Balance = Balance - #{money} 
+	  	 SET Balance = Balance - #{money},
+	  	     accountLimit = accountLimit - #{money}
 	  	WHERE account = #{account}
   	</update>
   	

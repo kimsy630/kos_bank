@@ -243,4 +243,5 @@ public class InquiryTransferController {
 	   logger.info("이체 test");
 	  Aservice.AutoTransferPractice();
 	}
+
 }

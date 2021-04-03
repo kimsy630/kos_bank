@@ -82,5 +82,17 @@ public class AutoTransferDAOImpl implements AutoTransferDAO{
 		return sqlSession.insert("spring.mvc.teamProject.persistence.AutoTransferDAO.receiveAutoTrans", vo);
 	}
 	
+	// 계좌이체 내역 log(출금)
+	@Override
+	public int TransferMyLog(AutoTransferVO vo) {
+		return sqlSession.insert("spring.mvc.teamProject.persistence.AutoTransferDAO.TransferMyLog", vo);
+	}
+	
+	// 계좌이체 내역 log(입금)
+	@Override
+	public int TransferYourLog(AutoTransferVO vo) {
+		return sqlSession.update("spring.mvc.teamProject.persistence.AutoTransferDAO.TransferYourLog", vo);
+	}
+	
 	
 }

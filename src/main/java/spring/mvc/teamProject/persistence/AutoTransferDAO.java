@@ -45,4 +45,10 @@ public interface AutoTransferDAO{
 	// 자동이체 해지정보
 	public List<AutoTransferVO> AutoTransferDeleteList(int jd_key);
 	
+	// 계좌이체 내역 log(출금)
+	public int TransferMyLog(AutoTransferVO vo);
+	
+	// 계좌이체 내역 log(입금)
+	public int TransferYourLog(AutoTransferVO vo);
+	
 }

@@ -7,6 +7,31 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script>
+function changeAccount(){
+	var q = "";
+	var w = "";
+	var e = "";
+	var r = "";
+	var t = "";
+	q = $('#select_account').val();
+	if(!$('#select_account').val()) {
+		q = '0';
+	}
+	w = q.replace(/,/g ,"");
+	e = parseInt(w);
+	r = e.toString();
+	t = r.toString().length - 3;
+	while (t > 0) {
+        r = r.substr(0, t) + "," + r.substr(t);
+        t -= 3;
+    }
+ $('#select_balance').html(r+"원");
+
+ /* $('#select_balance').html($('#select_account').val()+"원"); */
+}
+</script>
 </head>
 <body>
 <style>
@@ -114,9 +139,12 @@
                       <select id="select_account" onchange="changeAccount()">
                              <option value="">계좌를 선택해주세요.</option>
                            <c:forEach items="${list }" var="item">
-                             <option value="${item.balance}" id="account" name="account">${item.account}</option>
-                              <input type="hidden" value="${item.account}" name="account">
-                          </c:forEach>
+                             <option value="${item.balance}" id="account" name="account">${item.account} </option>
+                           </c:forEach>
+                           <c:forEach items="${list }" var="item">
+                           		<input type="hidden" value="${item.account}" name="account">
+                           </c:forEach>
+                            
                        </select>
 					</td>
                     </tr>

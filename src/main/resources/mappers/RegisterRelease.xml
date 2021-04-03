@@ -13,7 +13,10 @@
 	<result column="acccountType" property="acccountType" />
 	<result column="accountState" property="accountState" />
 	<result column="acc_state_content" property="acc_state_content" />
-	<result column="acccountLimit" property="acccountLimit" />
+	<result column="accountLimit" property="accountLimit" />
+	<result column="oneLimit" property="oneLimit" />
+	<result column="reset_accountLimit" property="reset_accountLimit" />
+	<result column="reset_oneLimit" property="reset_oneLimit" />
 	<collection property="member" resultMap="member" />
 	</resultMap>
 	
