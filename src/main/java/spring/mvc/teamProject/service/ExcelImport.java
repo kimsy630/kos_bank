@@ -24,8 +24,7 @@ public class ExcelImport {
 		} 
 	} 
 	public static List<ExchangeVO> getStudentList() throws EncryptedDocumentException, IOException { 
-		PythonImport py=new PythonImport();
-		py.getPythonExchangeWepCrawling();
+		
 		List<ExchangeVO> exchangeList = new ArrayList<ExchangeVO>();
 		// 웹상에서 업로드 되어 MultipartFile인 경우 바로 InputStream으로 변경하여 사용. 
 		// InputStream inputStream = new ByteArrayInputStream(file.getBytes());

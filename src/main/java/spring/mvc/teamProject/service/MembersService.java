@@ -1,5 +1,7 @@
 package spring.mvc.teamProject.service;
 
+import java.util.Map;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -10,5 +12,5 @@ import org.springframework.ui.Model;
 public interface MembersService {
 	public void signUpAction(HttpServletRequest req,Model model);
 	public void idChk(HttpServletRequest req,Model model);
-	
+	public Map<String,Object> androidLogiIn(HttpServletRequest req);
 }
