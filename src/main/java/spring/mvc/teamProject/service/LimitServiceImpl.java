@@ -53,5 +53,17 @@ public class LimitServiceImpl implements LimitService{
 		}
 		model.addAttribute("insertCnt", insertCnt);
 	}
+
+	@Override
+	public void limitSchedule() {
+		List<LimitVO> list = dao.getLimit();
+		
+		for(int i = 0; i< list.size();i++) {
+			Map<String, Object> map = new HashMap<String, Object>();
+			map.put("account",list.get(i).getAccount());
+			map.put("l_money",list.get(i).getL_money());
+			
+		}
+	}
 	
 }

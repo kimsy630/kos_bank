@@ -16,4 +16,6 @@ public interface LimitService {
 	//한도신청
 	public void AccountLimitAction(HttpServletRequest req, Model model);
 	
+	//한도 스캐줄러
+	public void limitSchedule();
 }

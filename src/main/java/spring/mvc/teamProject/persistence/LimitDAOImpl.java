@@ -35,4 +35,19 @@ public class LimitDAOImpl implements LimitDAO{
 	public int insertLimit(Map<String, Object> map) {	
 		return sqlSession.getMapper(LimitDAO.class).insertLimit(map);
 	}
+
+	@Override
+	public List<LimitVO> getLimit() {
+		return sqlSession.getMapper(LimitDAO.class).getLimit();
+	}
+
+	@Override
+	public List<LimitVO> getDeleteLimitList() {
+		return sqlSession.getMapper(LimitDAO.class).getDeleteLimitList();
+	}
+
+	@Override
+	public void accountLimitUpdate(Map<String, Object> map) {
+		 sqlSession.getMapper(LimitDAO.class).accountLimitUpdate(map);
+	}
 }

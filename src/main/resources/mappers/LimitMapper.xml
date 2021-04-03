@@ -56,4 +56,17 @@
 		INSERT INTO limit_info(l_key,account,l_date,l_money,l_state)
 		VALUES(SEQ_LIMIT_INFO.NEXTVAL,#{account},TO_DATE(#{l_date},'YYYY-MM-DD'),#{l_money},'대기')
 	</insert>
+	
+	<select id= "getLimit" resultType="spring.mvc.teamProject.vo.LimitVO">
+		select * 
+		from limit_info
+		where TO_CHAR(sysdate,'YYYY-MM-DD')=TO_CHAR(l_date,'YYYY-MM-DD')
+		 AND l_state='승인'
+	</select>
+	
+	<delete id= "getDeleteLimitList">
+		DELETE limit_info
+		WHERE  TO_CHAR(sysdate,'YYYY-MM-DD')=TO_CHAR(l_date+1,'YYYY-MM-DD')
+	</delete>
+	
 </mapper>

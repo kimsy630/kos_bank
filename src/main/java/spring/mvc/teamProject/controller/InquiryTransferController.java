@@ -248,4 +248,11 @@ public class InquiryTransferController {
 		lservice.AccountLimitAction(req, model);
 		return "InquiryTransfer/AccountLimitAction";
 	}
+	//김소림
+	// 자동이체 실행 test 
+	@Scheduled(cron="0 */5 * * * *")
+	  public void limitSchedule() {
+	   logger.info("limitSchedule");
+	   lservice.limitSchedule();
+	}
 }

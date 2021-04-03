@@ -14,4 +14,10 @@ public interface LimitDAO {
 	public AccountVO AccountLimitSearch(String account);
 	public int AccountPwdCheck(Map<String, Object> map);
 	public int insertLimit(Map<String, Object> map);
+	
+	public List<LimitVO> getLimit();
+	
+	public List<LimitVO>getDeleteLimitList();
+	
+	public void accountLimitUpdate(Map<String,Object> map);
 }
