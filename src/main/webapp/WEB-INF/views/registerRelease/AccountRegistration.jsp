@@ -202,10 +202,7 @@ function doCheck() {
 											</tr>
 											<tr>
 												<th class="accountType">통장종류</th>
-												<td><select name="accountType">
-														<option value="입출금 통장">입출금 통장</option>
-														<option value="정기적금">정기적금</option>
-												</select></td>
+												<td>입출금 통장</td>
 											</tr>
 											<tr>
 												<th class="accountPW">계좌 비밀번호</th>

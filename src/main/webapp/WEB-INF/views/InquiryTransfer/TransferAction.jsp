@@ -19,7 +19,13 @@
 %>	
 <c:if test="${insertCnt==0}">
 	<script type="text/javascript">
-		alert("계좌이체를 실패했습니다.");
+		alert("계좌비밀번호가 다릅니다.");
+		window.history.back();
+	</script>
+</c:if>
+<c:if test="${insertCnt==2}">
+	<script type="text/javascript">
+		alert("계좌비밀번호가 다릅니다.");
 		window.history.back();
 	</script>
 </c:if>

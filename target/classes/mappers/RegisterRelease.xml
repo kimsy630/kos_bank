@@ -13,7 +13,10 @@
 	<result column="acccountType" property="acccountType" />
 	<result column="accountState" property="accountState" />
 	<result column="acc_state_content" property="acc_state_content" />
-	<result column="acccountLimit" property="acccountLimit" />
+	<result column="accountLimit" property="accountLimit" />
+	<result column="oneLimit" property="oneLimit" />
+	<result column="reset_accountLimit" property="reset_accountLimit" />
+	<result column="reset_oneLimit" property="reset_oneLimit" />
 	<collection property="member" resultMap="member" />
 	</resultMap>
 	
@@ -40,7 +43,7 @@
 	<update id ="deleteAccount" parameterType="java.util.Map">
 		UPDATE account_info
 		SET accountState='해지'
-		WHERE accountPW=#{accountPW} AND id=#{id}
+		WHERE accountPW=#{accountPW} AND account=#{account}
 	</update>
 	
 	<select id="selectById" resultType="spring.mvc.teamProject.vo.AccountVO" parameterType="String">
@@ -62,7 +65,7 @@
   		FROM account_info a
   		JOIN Members m
   		  ON a.id = m.id
-    	WHERE a.id=#{id} AND a.accountType='입출금'	 
+    	WHERE a.id=#{id} AND a.accountState='정상'AND a.accountType='입출금'	 
   	</select>
   	
   	<select id="AccountNameChk" resultType="String">
@@ -82,6 +85,6 @@
   	<select id="AccountPwdCheck" parameterType="String" resultType="int">
   		SELECT accountPW 
   		FROM account_info 
-  		WHERE id = #{id}
+  		WHERE account = #{account}
   	</select>
 </mapper>

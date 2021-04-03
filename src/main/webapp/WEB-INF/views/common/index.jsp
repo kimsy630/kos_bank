@@ -18,7 +18,9 @@
       <!-- Swiper-->
       <section class="section swiper-container swiper-slider swiper-slider-3" data-loop="true" data-autoplay="false" data-simulate-touch="false" data-slide-effect="fade">
         <div class="swiper-wrapper">
-          <div class="swiper-slide context-dark" data-slide-bg="${path}images/main2.jpg">
+        	<img alt="" src="${path}images/mainpage1.jpg" style="width: 100%; height: 70%">
+        	<%-- 
+          <div class="swiper-slide context-dark" data-slide-bg="${path}images/mainpage.jpg">
             <div class="swiper-slide-caption">
               <div class="container">
                 <div class="row">
@@ -30,7 +32,7 @@
               </div>
             </div>
           </div>
-          <div class="swiper-slide context-dark" data-slide-bg="${path}images/main1.jpg" style="background-position: 50% 50%;">
+          <div class="swiper-slide context-dark" data-slide-bg="${path}images/mainpage.jpg" style="background-position: 50% 50%;">
             <div class="swiper-slide-caption">
               <div class="container">
                 <div class="row">
@@ -53,7 +55,7 @@
                 </div>
               </div>
             </div>
-          </div>
+          </div> --%>
         </div>
         <!-- Swiper Pagination-->
         <div class="container swiper-pagination-wrap">

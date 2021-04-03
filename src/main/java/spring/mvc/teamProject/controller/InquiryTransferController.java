@@ -187,18 +187,53 @@ public class InquiryTransferController {
 		Aservice.AutoTransferAdd(req, model);
 		return "InquiryTransfer/AutoTransferRequestAction";
 	}
-	//김소림(예정)	
+	//김소림
 	//자동이체조회 AutoTransferList.cc
 	@RequestMapping("/AutoTransferList.cc")
 	public String AutoTransferList(HttpServletRequest req,Model model) {
 		logger.info("url ==> /AutoTransferList");
+		service.AccountNomalList(req, model);
 		return "InquiryTransfer/AutoTransferList";
 	}
+	//김소림
+	//자동이체조회ajax AutoTransferListTable.cc
+	@RequestMapping("/AutoTransferListTable.cc")
+	public String AutoTransferListTable(HttpServletRequest req,Model model) {
+		logger.info("url ==> /AutoTransferListTable");
+		Aservice.AutoTransferList(req, model);
+		return "InquiryTransfer/AutoTransferListTable";
+	}
+	//김소림
+	//자동이체해지 AutoTransferDelete.cc
+	@RequestMapping("/AutoTransferDelete.cc")
+	public String AutoTransferDelete(HttpServletRequest req,Model model) {
+		logger.info("url ==> /AutoTransferDelete");
+		Aservice.AutoTransferDeleteList(req, model);
+		return "InquiryTransfer/AutoTransferDelete";
+	}
+	
+	//김소림
+	//자동이체해지 AutoTransferDeleteAction.do
+	@RequestMapping("/AutoTransferDeleteAction.do")
+	public String AutoTransferDeleteAction(HttpServletRequest req,Model model) {
+		logger.info("url ==> /AutoTransferDeleteAction");
+		return "InquiryTransfer/AccountPWChk";
+	}
+	//김소림
+	//자동이체해지 AutoTransferDeleteStart.do
+	@RequestMapping("/AutoTransferDeleteStart.do")
+	public String AutoTransferDeleteStart(HttpServletRequest req,Model model) {
+		logger.info("url ==> /AutoTransferDeleteStart");
+		Aservice.AutoTransferDeleteChk(req, model);
+		return "InquiryTransfer/AutoTransferDeleteChk";
+	}
+	
 	//김소림(예정)
-	//자동이체조회 AutoTransferList.cc
+	//자동이체순위조정 AutoTransferChangeRank.cc
 	@RequestMapping("/AutoTransferChangeRank.cc")
 	public String AutoTransferChangeRank(HttpServletRequest req,Model model) {
 		logger.info("url ==> /AutoTransferChangeRank");
+		
 		return "InquiryTransfer/AutoTransferChangeRank";
 	}
 	//김소림
@@ -208,4 +243,5 @@ public class InquiryTransferController {
 	   logger.info("이체 test");
 	  Aservice.AutoTransferPractice();
 	}
+
 }

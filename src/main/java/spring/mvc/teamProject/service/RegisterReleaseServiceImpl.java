@@ -41,13 +41,13 @@ public class RegisterReleaseServiceImpl implements RegisterReleaseService{
 
 	@Override
 	public void DeleteAccountService(HttpServletRequest req, Model model) {
-		String strId = (String)req.getSession().getAttribute("id");
-		System.out.println("strId"+strId);
-		int accountPW = accountDAO.AccountPwdCheck(strId);
-		
+		String account = req.getParameter("account");
+		int accountPW = (Integer.parseInt(req.getParameter("accountPW")));
 		Map<String, Object> map = new HashMap<String, Object>();
-		map.put("id", strId);
+		map.put("account", account);
 		map.put("accountPW", accountPW);
+		System.out.println("account : "+account);
+		System.out.println("accountPW : "+accountPW);
 		int deleteCnt = accountDAO.deleteAccount(map);
 		
 		
@@ -71,18 +71,18 @@ public class RegisterReleaseServiceImpl implements RegisterReleaseService{
 		List<AccountVO> list = accountDAO.selectNomalById(strId);
 		
 		
-		System.out.println("list"+list);
+		System.out.println("list1"+list);
 		model.addAttribute("list", list);
 		
 	}
 	
-	// 계좌(정상)리스트
+	// 계좌(정상+입출금)리스트
 	@Override
 	public void AccountInoutType(HttpServletRequest req, Model model) {
 		String strId = (String)req.getSession().getAttribute("id");
 		List<AccountVO> list = accountDAO.selectType(strId);
 		
-		System.out.println("list"+list);
+		System.out.println("list2"+list);
 		model.addAttribute("list", list);
 		
 	}

@@ -34,13 +34,14 @@
 	
 	<insert id="addYourLog" parameterType="spring.mvc.teamProject.vo.TransferVO">
 		INSERT INTO account_transfer(transfer_id,account,sender_account,in_comment,money,in_out)
-			VALUES(SEQ_TRANSFER.NEXTVAL,#{account},#{sender_account},#{in_comment},#{money},'입금')
+			VALUES(SEQ_TRANSFER.NEXTVAL,#{sender_account},#{account},#{in_comment},#{money},'입금')
 	</insert> 
 	
 	<!-- 내 계좌 잔액 업데이트. 출금 -->
   	<update id="withdrawal" parameterType="spring.mvc.teamProject.vo.TransferVO">
 		UPDATE account_info
-	  	 SET Balance = Balance - #{money} 
+	  	 SET Balance = Balance - #{money},
+	  	     accountLimit = accountLimit - #{money}
 	  	WHERE account = #{account}
   	</update>
   	
