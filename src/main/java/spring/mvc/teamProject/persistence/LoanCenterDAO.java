@@ -22,11 +22,15 @@ public interface LoanCenterDAO {
 	public LoansVO getLoanPrincipal(String account); // 대출원금 예상
 	public int payLoanPrincipal1(LoansVO vo); // 대출원금 상환 실행(Loans 변경 1-2)
 	public int payLoanPrincipal2(Loans_historyVO vo); // 대출원금 상환 실행(Loans_history 생성 1-3)
+	public LoansVO checkLoanEnd(String account); // 대출원금 상환완료 확인
+	public int d_amountPayAll(String account); // 대출원금 상환완료 업데이트
+	public int LoanEnd(LoansVO vo); // 대출원금 상환완료 후 해지
 	public LoansVO getLoanRateCheckIn(String account); // 대출이자 예상(내부정보)
 	public int payLoanRate1(LoansVO vo); // 대출이자 납입 실행(Loans 변경 1-2)
 	public int payLoanRate2(Loans_historyVO vo); // 대출이자 납입 실행(Loans_history 생성 1-3)
 	public Loans_productVO getLoanApplication(String d_name); // 신규대출 신청
 	public String getName(String id); // 신규대출 신청(이름)
+	public int checkPwd(AccountVO vo); // 신규대출 신청(입출금계좌 비밀번호 확인)
 	public List<AccountVO> getCheckingaccount(String id); // 신규대출 신청(입출금 계좌)
 	public int insertAccount(AccountVO vo); // 신규대출 신청 실행(계좌 생성)
 	public int insertLoan(LoansVO vo); // 신규대출 신청 실행(대출 생성)

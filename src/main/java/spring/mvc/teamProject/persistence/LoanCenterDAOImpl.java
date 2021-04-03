@@ -69,6 +69,24 @@ public class LoanCenterDAOImpl implements LoanCenterDAO {
 	}
 	
 	@Override
+	public LoansVO checkLoanEnd(String account) { // 대출원금 상환완료 확인
+		LoansVO vo = sqlSession.selectOne("spring.mvc.teamProject.persistence.LoanCenterDAO.checkLoanEnd", account);
+		return vo;
+	}
+	
+	@Override
+	public int d_amountPayAll(String account) { // 대출원금 상환완료 업데이트
+		int updateCnt = sqlSession.update("spring.mvc.teamProject.persistence.LoanCenterDAO.d_amountPayAll", account);
+		return updateCnt;
+	}
+	
+	@Override
+	public int LoanEnd(LoansVO vo) { // 대출원금 상환완료 후 해지
+		int updateCnt = sqlSession.update("spring.mvc.teamProject.persistence.LoanCenterDAO.LoanEnd", vo);
+		return updateCnt;
+	}
+	
+	@Override
 	public LoansVO getLoanRateCheckIn(String account) { // 대출이자 예상(내부정보)
 		LoansVO vo = sqlSession.selectOne("spring.mvc.teamProject.persistence.LoanCenterDAO.getLoanRateCheckIn", account);
 		return vo;
@@ -105,6 +123,11 @@ public class LoanCenterDAOImpl implements LoanCenterDAO {
 	}
 	
 	@Override
+	public int checkPwd(AccountVO vo) { // 신규대출 신청(입출금계좌 비밀번호 확인)		
+		return sqlSession.getMapper(LoanCenterDAO.class).checkPwd(vo);
+	}
+	
+	@Override
 	public int insertAccount(AccountVO vo) { // 신규대출 신청 실행(계좌 생성)
 		int insertCnt = sqlSession.insert("spring.mvc.teamProject.persistence.LoanCenterDAO.insertAccount", vo);
 		return insertCnt;
@@ -135,4 +158,5 @@ public class LoanCenterDAOImpl implements LoanCenterDAO {
 	}
 	// ============================================================================
 
+	
 }

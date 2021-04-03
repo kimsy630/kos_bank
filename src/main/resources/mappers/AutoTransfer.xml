@@ -161,5 +161,16 @@
             WHERE a.account = #{account}
    </insert> 
    
+   <select id="loansSelectByDate" resultType="spring.mvc.teamProject.vo.AutoTransferVO">
+      SELECT *
+      FROM account_info i
+      JOIN auto_transfer a
+       ON i.account = a.account
+      WHERE i.balance > a.jd_automoney
+      AND jd_outDate = #{day}
+      AND jd_type like '대출%'
+   </select>
+   
+   
    
 </mapper>

@@ -101,7 +101,7 @@
 						                      	<td><fmt:formatDate value="${list.d_end_date}" pattern="yyyy.MM.dd" /></td>
 						                      	<td><fmt:formatNumber value="${list.d_balance}" pattern="#,###" />원</td>
 						                      	<td> 
-						                      		<div class="button button-round" style= "padding:10px 20px; width:60px; height:40px; font-size:15px; text-align:center; background-color: #435ebe; color:#fff; display:inline;" onclick="location.href='LoanAccountDetail.cc?account=${list.account}'">조회</div>
+						                      		<div class="button button-round" style= "padding:10px 20px; width:60px; height:40px; font-size:15px; text-align:center; background-color: #435ebe; color:#fff; display:inline;" onclick="location.href='LoanAccountDetail.do?account=${list.account}'">조회</div>
 						                      	</td>
 						                    </tr>
 						                </c:forEach>

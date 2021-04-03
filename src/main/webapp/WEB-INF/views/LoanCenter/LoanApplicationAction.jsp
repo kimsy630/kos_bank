@@ -8,8 +8,8 @@
 <title>Insert title here</title>
 </head>
 <body>
-<c:if test="${insertCnt!=0}">
-	<c:if test="${insertCnt2 == 0}">
+<c:if test="${insertCnt!=1}">
+	<c:if test="${insertCnt2 != 1}">
 		<script type="text/javascript">
 		setTimeout(function(){
 			alert("대출 신청에 실패했습니다.");

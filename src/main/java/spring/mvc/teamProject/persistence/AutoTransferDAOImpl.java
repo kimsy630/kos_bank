@@ -100,6 +100,14 @@ public class AutoTransferDAOImpl implements AutoTransferDAO{
    public int TransferYourLog(AutoTransferVO vo) {
       return sqlSession.update("spring.mvc.teamProject.persistence.AutoTransferDAO.TransferYourLog", vo);
    }
+
+   // 자동이체 정보 조회(자동대출이체실행용)
+	public List<AutoTransferVO> loansSelectByDate(String day) {
+		List<AutoTransferVO> selectByDate = null;
+	      // 자동이체 조건 검색 쿼리
+	      selectByDate = sqlSession.selectList("spring.mvc.teamProject.persistence.AutoTransferDAO.loansSelectByDate",day);
+	      return selectByDate;
+	}
    
    
 }

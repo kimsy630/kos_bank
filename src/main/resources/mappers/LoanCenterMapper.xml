@@ -8,11 +8,12 @@
 	<!-- ============================================================================ -->
 	<!-- 박서하 -->
 	<select id="getLoanAccountList" resultType="spring.mvc.teamProject.vo.LoansVO"> <!-- 대출계좌 조회 -->
-		SELECT l.d_name, l.d_repay, l.account, l.d_rate, l.d_amount, l.d_start_date, l.d_end_date, l.d_balance, l.d_month, l.d_loan_rate, l.d_ERR
+		SELECT l.d_name, l.d_repay, l.account, l.d_rate, l.d_amount, l.d_start_date, l.d_end_date, l.d_balance, l.d_month, l.d_loan_balance, l.d_loan_rate, l.d_ERR, TRUNC(MONTHS_BETWEEN(SYSDATE, l.d_start_date)+1) as d_next_rate, l.d_auto_account
 		 FROM account_info i, loans l
 		 WHERE i.account = l.account
 		 AND i.id=#{id}
 		 AND l.d_state=1 <!-- d_state=1 : 정상대출계좌 -->
+		 ORDER BY l.account
 	</select>
 	
 	<select id="getLoanAccountDetail" resultType="spring.mvc.teamProject.vo.LoansVO"> <!-- 대출계좌 상세조회 -->
@@ -37,6 +38,7 @@
 		 WHERE i.account = l.account
 		 AND i.id=#{id}
 		 AND l.d_state=2 <!-- d_state=2 : 해지대출계좌 -->
+		 ORDER BY l.account
 	</select>
 	
 	<select id="getLoanCloseDetail" resultType="spring.mvc.teamProject.vo.LoansVO"> <!-- 대출해지현황 상세조회 -->
@@ -48,7 +50,7 @@
 	</select>
 		
 	<select id="getLoanPrincipal" resultType="spring.mvc.teamProject.vo.LoansVO"> <!-- 대출원금 예상 -->
-		SELECT d_Key, account, d_amount, d_month, d_ERR, d_balance, d_month, d_start_date, d_end_date, d_auto_account
+		SELECT d_Key, account, d_amount, d_month, d_ERR, d_balance, d_month, d_start_date, d_end_date, d_auto_account, d_loan_rate
 		 FROM Loans
 		 WHERE account = #{account}
 	</select>
@@ -62,6 +64,22 @@
 		INSERT INTO Loans_history (d_his_Key, d_Key, transfer_id, d_his_date, d_his_state, d_his_amount) 
 		 VALUES(SEQ_LOANS_HISTORY.NEXTVAL, #{d_Key}, SEQ_TRANSFER.CURRVAL, sysdate, #{d_his_state}, #{d_his_amount})
 	</insert>
+	
+	<select id="checkLoanEnd" resultType="spring.mvc.teamProject.vo.LoansVO"> <!-- 대출원금 상환완료 확인 -->
+		SELECT d_Key, account, d_repay, d_rate, d_amount, d_balance, d_auto_account, d_loan_balance, d_loan_rate, d_month
+		 FROM Loans
+		 WHERE account = #{account}
+	</select>
+	
+	<update id="d_amountPayAll" parameterType="String"> <!-- 대출원금 상환완료 업데이트 -->
+		UPDATE Loans SET d_loan_balance = d_month + 1
+		 WHERE account = #{account}
+	</update>
+	
+	<update id="LoanEnd" parameterType="spring.mvc.teamProject.vo.LoansVO"> <!-- 대출이자 납입 실행(Loans 변경 1-2) -->
+		UPDATE Loans SET d_state = 2
+		 WHERE account = #{account}
+	</update>
 	
 	<select id="getLoanRateCheckIn" resultType="spring.mvc.teamProject.vo.LoansVO"> <!-- 대출이자 예상(내부정보) -->
 		SELECT d_Key, account, d_repay, d_rate, d_amount, d_balance, d_auto_account
@@ -90,12 +108,18 @@
   		 FROM Members m
   		 WHERE id=#{id}
   	</select>
-  	
+	
   	<select id="getCheckingaccount" resultType="spring.mvc.teamProject.vo.AccountVO"> <!-- 신규대출 신청(입출금 계좌) -->
 	  	SELECT *
   		 FROM account_info
     	 WHERE id=#{id} AND accountType='입출금' AND accountState ='정상'
   	</select>
+  	
+  	<select id="checkPwd" resultType="int"> <!-- 신규대출 신청(입출금계좌 비밀번호 확인) -->
+		select COUNT(*) 
+		from account_info
+		where account = #{account} AND accountPW = #{accountPW}
+	</select>
   	
   	<insert id="insertAccount" parameterType="spring.mvc.teamProject.vo.AccountVO"> <!-- 신규대출 신청 실행(계좌 생성) -->
 		INSERT INTO account_info(account, ID, accountPW, Balance, accountType, accountState)
@@ -119,7 +143,7 @@
 	</select>
 	
 	<select id="getAutoLoan" resultType="spring.mvc.teamProject.vo.LoansVO"> <!-- 자동이체 대출정보 -->
-		SELECT d_Key, account, d_auto_account, d_repay, d_rate, d_amount, d_balance, d_start_date, d_end_date, d_month, d_auto_date
+		SELECT d_Key, account, d_auto_account, d_repay, d_rate, d_amount, d_balance, d_start_date, d_end_date, d_month, d_auto_date, d_state, d_loan_balance, d_loan_rate
 		 FROM Loans
 		 WHERE d_Key = #{d_Key}
 	</select>

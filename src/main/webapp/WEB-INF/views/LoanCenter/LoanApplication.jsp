@@ -11,7 +11,7 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
 <script>	
-function doCheck() {
+	function doCheck() {
 		
 		// 약관 모두 동의여부
 		if($("input:checkbox[name=checkTerms]:checked").length < 4) {
@@ -52,6 +52,13 @@ function doCheck() {
 			document.LoanApplicationForm.accountPW.focus();
 			return false;
 		}
+		
+		var Apassword = document.LoanApplicationForm.pwWithdraw.value;
+		if (Apassword.length < 4) {
+			alert("4자리의 비밀번호를 입력해주세요");
+			document.LoanApplicationForm.pwWithdraw.focus();
+			return false;
+    	}
 	}
 </script>
 <style>
@@ -111,7 +118,7 @@ function doCheck() {
 										<div class="textarea_wrap">
 						
 											<!-- ======= Table with outer spacing ======= -->
-											<form action="LoanApplicationAction.cc" name="LoanApplicationForm" method="POST" onsubmit="return doAction();">
+											<form action="LoanApplicationAction.do" name="LoanApplicationForm" method="POST" onsubmit="return doAction();">
 												<div class="table-responsive">
 								                	<h4><b>가입 신청서</b></h4>
 							                		<input type="hidden" name="d_name" value="${vo.d_name}">
@@ -168,6 +175,14 @@ function doCheck() {
 																</td>
 								                            </tr>
 								                            <tr>
+								                            	<td>출금계좌<br>비밀번호</td>
+								                            	<td>
+																	<div id="withdraw">
+																		<input name="pwWithdraw" id="pwWithdraw" type="password" maxlength="4" onkeyup="JavaScript:numberComma3(this);">
+																	</div>
+																</td>
+								                            </tr>
+								                            <tr>
 								                            	<td class="text-bold-500">자동이체<br>신청 여부</td>
 								                                <td>
 						                                    		<select id="autoCheck" name="autoCheck" lengthtype="length" onchange="setDisplay()">
@@ -205,6 +220,7 @@ function doCheck() {
 								                    </table>
 								                </div>
 								                <!-- Table with outer spacing end -->
+									
 												
 												<br><br>
 												

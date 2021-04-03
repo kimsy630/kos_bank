@@ -23,6 +23,9 @@ public interface AutoTransferDAO{
 	
 	// 자동이체 정보 조회(자동이체실행용)
 	public List<AutoTransferVO> selectByDate(String day);
+
+	// 자동이체 정보 조회(자동대출이체실행용)
+	public List<AutoTransferVO> loansSelectByDate(String day);
 	
 	@Select("SELECT COUNT(*) FROM account_info WHERE account = #{account} AND accountPW=#{accountPW}")
 	// 자동이체 계좌비밀번호 Chk

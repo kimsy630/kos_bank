@@ -113,11 +113,12 @@ public class LoanCenterServiceImpl implements LoanCenterService {
 	public void LoanPrincipalCheckIn(HttpServletRequest req, Model model) { 
 		String account = req.getParameter("selectAccount");
 		LoansVO vo = dao.getLoanPrincipal(account);
-
+		
 		String redemption = req.getParameter("redemption");
 		int d_balance = vo.getD_balance();
 		int d_amount = vo.getD_amount();
 		int d_month = vo.getD_month();
+		int d_loan_rate = vo.getD_loan_rate();
 		double d_ERR = vo.getD_ERR();
 		Timestamp d_start_date = vo.getD_start_date();
 		Timestamp d_end_date = vo.getD_end_date();
@@ -134,46 +135,75 @@ public class LoanCenterServiceImpl implements LoanCenterService {
 			d_tran = d_amount / d_month;
 			d_balance = d_balance - d_tran;
 			
+			if(d_balance < 0) {
+				model.addAttribute("check", 0);
+				return;
+			}
+			
 			vo.setD_balance(d_balance);
 			vo.setD_tran(d_tran);
 			vo.setD_ERC(0);
 			
-		} else if(redemption.equals("early")) { // 중도상환
-			Timestamp today = Timestamp.valueOf(LocalDateTime.now());
+		} else if(redemption.equals("early")) { 
 			
-			Date todayD = new java.sql.Date(today.getTime());
-			Date d_start_dateD = new java.sql.Date(d_start_date.getTime());
-			Date d_end_dateD = new java.sql.Date(d_end_date.getTime());
-			
-			long calRest = d_end_dateD.getTime() - todayD.getTime();
-			long rest = calRest / (24*60*60*1000);
-			System.out.println("before rest  : " + rest);
-			rest = Math.abs(rest);
-			System.out.println("잔여일자 : "+ rest);
-			
-			long calTotal = d_end_dateD.getTime() - d_start_dateD.getTime(); 
-			long total = calTotal / (24*60*60*1000); 
-			total = Math.abs(total);
-			System.out.println("약정일자 : "+ total);
-			
-			System.out.println("계산 : "+ (float)rest/(float)total);
-			
-			long calCheck = todayD.getTime() - d_start_dateD.getTime(); 
-			long check = calCheck / (24*60*60*1000);
-			
-			if (check > 1095) { // 실행일자로부터 3년 경과 후 중도상환수수료 면제
-				d_ERR = 0;
+			if(d_loan_rate > d_month) { // 만기일시상환 (이자를 모두 납부했을 경우)
+				
+				d_tran = Integer.parseInt(req.getParameter("d_tran"));
+				vo.setD_ERC(0);
+				d_balance = d_balance - d_tran;
+				
+				vo.setD_balance(d_balance);
+				vo.setD_ERC(d_ERC);
+				vo.setD_tran(d_tran);
+				
+				if(d_balance < 0) {
+					model.addAttribute("check", 0);
+					return;
+				}
+				
+			} else { // 중도상환
+				
+				Timestamp today = Timestamp.valueOf(LocalDateTime.now());
+				
+				Date todayD = new java.sql.Date(today.getTime());
+				Date d_start_dateD = new java.sql.Date(d_start_date.getTime());
+				Date d_end_dateD = new java.sql.Date(d_end_date.getTime());
+				
+				long calRest = d_end_dateD.getTime() - todayD.getTime();
+				long rest = calRest / (24*60*60*1000);
+				System.out.println("before rest  : " + rest);
+				rest = Math.abs(rest);
+				System.out.println("잔여일자 : "+ rest);
+				
+				long calTotal = d_end_dateD.getTime() - d_start_dateD.getTime(); 
+				long total = calTotal / (24*60*60*1000); 
+				total = Math.abs(total);
+				System.out.println("약정일자 : "+ total);
+				
+				System.out.println("계산 : "+ (float)rest/(float)total);
+				
+				long calCheck = todayD.getTime() - d_start_dateD.getTime(); 
+				long check = calCheck / (24*60*60*1000);
+				
+				if (check > 1095) { // 실행일자로부터 3년 경과 후 중도상환수수료 면제
+					d_ERR = 0;
+				}
+				
+				d_tran = Integer.parseInt(req.getParameter("d_tran"));
+				d_ERC = (int) (d_tran * d_ERR * ((float)rest/(float)total)); // 대출상환금액*수수료율*(잔여일수 / 약정기간)
+				System.out.println("중도해지수수료: " + d_ERC);
+				
+				d_balance = d_balance - d_tran;
+				
+				vo.setD_balance(d_balance);
+				vo.setD_ERC(d_ERC);
+				vo.setD_tran(d_tran);
+				
+				if(d_balance < 0) {
+					model.addAttribute("check", 0);
+					return;
+				}
 			}
-			
-			d_tran = Integer.parseInt(req.getParameter("d_tran"));
-			d_ERC = (int) (d_tran * d_ERR * ((float)rest/(float)total)); // 대출상환금액*수수료율*(잔여일수 / 약정기간)
-			System.out.println("중도해지수수료: " + d_ERC);
-			
-			d_balance = d_balance - d_tran;
-			
-			vo.setD_balance(d_balance);
-			vo.setD_ERC(d_ERC);
-			vo.setD_tran(d_tran);
 		}
 		
 		model.addAttribute("redemption", redemption);
@@ -184,6 +214,22 @@ public class LoanCenterServiceImpl implements LoanCenterService {
 	// 대출원금 상환 실행
 	@Override
 	public void LoanPrincipalPay(HttpServletRequest req, Model model) {
+		AccountVO vo0 = new AccountVO();
+		
+		// -------------------------------------------
+		// 신규대출 신청 실행(입출금계좌 비밀번호 확인)]
+		System.out.println(req.getParameter("pwWithdraw"));
+		int pwWithdraw = Integer.parseInt(req.getParameter("pwWithdraw").toString());
+		String d_auto_account = req.getParameter("d_auto_account");
+
+		vo0.setAccount(d_auto_account);
+		vo0.setAccountPW(pwWithdraw);
+		int checkCnt = dao.checkPwd(vo0);
+		if(checkCnt == 0) {
+			model.addAttribute("updateCnt", 2);
+			return;
+		}
+		
 		String strId = (String)req.getSession().getAttribute("id");
 		
 		List<AccountVO> list= new ArrayList<AccountVO>();
@@ -193,7 +239,7 @@ public class LoanCenterServiceImpl implements LoanCenterService {
 		
 		// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 		// 계좌이체(원금 상환) 1-1
-		String d_auto_account = req.getParameter("d_auto_account"); // 출금 계좌
+		d_auto_account = req.getParameter("d_auto_account"); // 출금 계좌
 		int d_tran = Integer.parseInt(req.getParameter("d_tran")); // 상환 할 원금
 		
 		TransferVO vo = new TransferVO();
@@ -226,13 +272,27 @@ public class LoanCenterServiceImpl implements LoanCenterService {
 		int updateCnt = 0;
 		int insertCnt = 0;
 		
-		if(mylog == 1 || yourlog == 1) {
+		if(mylog == 1 && yourlog == 1) {
 			LoansVO vo3 = new LoansVO();
 			
 			vo3.setAccount(account);
 			vo3.setD_balance(d_balance);
 			vo3.setD_loan_balance(1); // 원금 실행번호
 			updateCnt = dao.payLoanPrincipal1(vo3);
+			
+			vo3 = dao.checkLoanEnd(account);
+			
+			if (d_balance <= 100 ) { // 대출원금을 전액 상환했을 경우 (100원 단위 절삭)
+				dao.d_amountPayAll(account);
+			}
+
+			System.out.println("되라account " + account);
+			System.out.println("account " + vo3.getD_loan_balance() + vo3.getD_month());
+			System.out.println("되라account " +  vo3.getD_loan_rate()  + vo3.getD_month());
+			if(vo3.getD_loan_balance() > vo3.getD_month() && vo3.getD_loan_rate() > vo3.getD_month()) { // 대출원금과 이자를 모두 납부하였을 경우 대출 자동 해지
+				dao.LoanEnd(vo3);
+			}
+			
 			System.out.println("원금상환 성공 : " + updateCnt);
 			
 			// Loans_history 생성 1-3
@@ -336,6 +396,22 @@ public class LoanCenterServiceImpl implements LoanCenterService {
 	// 대출이자 납입 실행
 	@Override
 	public void LoanRatePay(HttpServletRequest req, Model model) {
+		AccountVO vo0 = new AccountVO();
+		
+		// -------------------------------------------
+		// 신규대출 신청 실행(입출금계좌 비밀번호 확인)]
+		System.out.println(req.getParameter("pwWithdraw"));
+		int pwWithdraw = Integer.parseInt(req.getParameter("pwWithdraw").toString());
+		String d_auto_account = req.getParameter("d_auto_account");
+
+		vo0.setAccount(d_auto_account);
+		vo0.setAccountPW(pwWithdraw);
+		int insertCnt = dao.checkPwd(vo0);
+		if(insertCnt == 0) {
+			model.addAttribute("updateCnt", 2);
+			return;
+		}
+		
 		String strId = (String)req.getSession().getAttribute("id");
 		
 		List<AccountVO> list= new ArrayList<AccountVO>();
@@ -345,7 +421,6 @@ public class LoanCenterServiceImpl implements LoanCenterService {
 		
 		// -------------------------------------------
 		// 계좌이체(이자 납입) 1-1
-		String d_auto_account = req.getParameter("d_auto_account"); // 출금 계좌
 		int d_tran_rate = Integer.parseInt(req.getParameter("d_tran_rate")); // 상환 할 원금
 		
 		TransferVO vo = new TransferVO();
@@ -374,9 +449,9 @@ public class LoanCenterServiceImpl implements LoanCenterService {
 		int d_Key = Integer.parseInt(req.getParameter("d_Key"));
 		String account = req.getParameter("account"); // 대출 계좌
 		int updateCnt = 0;
-		int insertCnt = 0;
+		insertCnt = 0;
 		
-		if(mylog == 1 || yourlog == 1) {
+		if(mylog == 1 && yourlog == 1) {
 			LoansVO vo3 = new LoansVO();
 			
 			vo3.setAccount(account);
@@ -421,10 +496,24 @@ public class LoanCenterServiceImpl implements LoanCenterService {
 	// 박서하
 	// 신규대출 신청 실행
 	@Override
-	public void LoanApplicationAction(HttpServletRequest req, Model model) { 
+	public void LoanApplicationAction(HttpServletRequest req, Model model) {
+		AccountVO vo = new AccountVO();
+		
+		// -------------------------------------------
+		// 신규대출 신청 실행(입출금계좌 비밀번호 확인)
+		int pwWithdraw = Integer.parseInt(req.getParameter("pwWithdraw").toString());
+		String d_auto_account = req.getParameter("d_auto_account");
+
+		vo.setAccount(d_auto_account);
+		vo.setAccountPW(pwWithdraw);
+		int insertCnt = dao.checkPwd(vo);
+		if(insertCnt == 0) {
+			model.addAttribute("insertCnt", insertCnt);
+			return;
+		}
+		
 		// -------------------------------------------
 		// 신규대출 신청 실행(계좌 생성)
-		AccountVO vo = new AccountVO();
 		
 		vo.setId((String)req.getSession().getAttribute("id"));
 		vo.setAccountPW(Integer.parseInt(req.getParameter("accountPW")));
@@ -432,7 +521,7 @@ public class LoanCenterServiceImpl implements LoanCenterService {
 		vo.setAccountType(req.getParameter("accountType"));
 		vo.setAccountState("대기");
 		
-		int insertCnt = dao.insertAccount(vo);
+		insertCnt = dao.insertAccount(vo);
 		System.out.println("계좌 생성 : " + insertCnt);
 		
 		// -------------------------------------------
@@ -579,8 +668,6 @@ public class LoanCenterServiceImpl implements LoanCenterService {
 		model.addAttribute("vo", vo);
 		model.addAttribute("insertCnt", insertCnt);
 		model.addAttribute("insertCnt2", insertCnt2);
-		model.addAttribute("insertCnt3", insertCnt3);
-		model.addAttribute("insertCnt4", insertCnt4);
 	}
 	
 	// 박서하
@@ -607,7 +694,7 @@ public class LoanCenterServiceImpl implements LoanCenterService {
 		System.out.println(Integer.toString(Integer.parseInt(day)));
 		int num = Integer.parseInt(day);
 		day= Integer.toString(num);
-		List<AutoTransferVO> transferInfo = aDAO.selectByDate(day);
+		List<AutoTransferVO> transferInfo = aDAO.loansSelectByDate(day);
 		
 		System.out.println("자동이체 할 객체 Chk : "+ transferInfo);
 		
@@ -639,14 +726,28 @@ public class LoanCenterServiceImpl implements LoanCenterService {
 				vo.setJd_inPlace(jd_inPlace);
 				vo.setJd_status(jd_status);
 
-				System.out.println("vo : "+ vo);
+				System.out.println("vo1 : "+ vo);
 				
 				// Loans UPDATE 실행
 				d_Key = jd_type.substring(2);
-				System.out.println(jd_type);
-				System.out.println("d_Key 제발 : " + d_Key);
 				LoansVO vo2 = dao.getAutoLoan(d_Key); // 대출계좌
 				
+				if(vo2.getD_state()!=1) {
+					i++;
+					continue;
+				} else if(vo2.getD_repay().equals("만기일시")) {
+					if(vo2.getD_loan_rate() > vo2.getD_month()) {
+						i++;
+						continue;
+					}
+				} else if(vo2.getD_repay().equals("원금균등분할")) {
+					if(vo2.getD_loan_balance() > vo2.getD_month() && vo2.getD_loan_rate() > vo2.getD_month()) {
+						i++;
+						continue;
+					}
+				}
+				
+				// 대출상태가 정상이면서 원금 혹은 이자를 다 납부하지 않은 대출만 자동이체 실행	
 				d_rate = vo2.getD_rate();
 				d_balance = vo2.getD_balance();
 				
@@ -679,7 +780,7 @@ public class LoanCenterServiceImpl implements LoanCenterService {
 					vo3.setD_his_state("이자");
 					vo3.setD_his_amount(jd_autoMoney);
 				}
-				
+								
 				// 출금 UPDATE
 				aDAO.AutoWithdrawal(vo);
 				
@@ -704,16 +805,36 @@ public class LoanCenterServiceImpl implements LoanCenterService {
 				if(jd_inPlace.equals("KOS뱅크(원금원금)")) {
 					// Loans 변경
 					dao.payLoanPrincipal1(vo2);
+					
 					// Loans_history 생성
 					dao.payLoanPrincipal2(vo3);
-				} else {
+					
+					vo2 = dao.getAutoLoan(d_Key); // 계산식 reset
+					
+					if(vo2.getD_loan_balance() > vo2.getD_month() && vo2.getD_loan_rate() > vo2.getD_month()) { // 대출원금과 이자를 모두 납부하였을 경우 대출 자동 해지
+						
+						dao.LoanEnd(vo2);
+					}
+				} else if(jd_inPlace.equals("KOS뱅크(원금이자)")) {
+					// Loans 변경
+					dao.payLoanRate1(vo2);
+					// Loans_history 생성
+					dao.payLoanRate2(vo3);
+					
+					vo2 = dao.getAutoLoan(d_Key); // 계산식 reset
+					
+					if(vo2.getD_loan_balance() > vo2.getD_month() && vo2.getD_loan_rate() > vo2.getD_month()) { // 대출원금과 이자를 모두 납부하였을 경우 대출 자동 해지
+						
+						dao.LoanEnd(vo2);
+					}
+				} else if(jd_inPlace.equals("KOS뱅크(만기이자)")) {
 					// Loans 변경
 					dao.payLoanRate1(vo2);
 					// Loans_history 생성
 					dao.payLoanRate2(vo3);
 				}
 				
-				i++;
+				i++;					
 			}
 		}
 	}

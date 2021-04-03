@@ -54,6 +54,7 @@
 														<c:forEach var="vo" items="${list}">
 															if($('#selectAccount').val() == "${vo.account}") {
 																$('#d_balance').html("<fmt:formatNumber value='${vo.d_balance}' pattern='#,###' />");
+																$('#d_loan_balance').html("${vo.d_loan_balance}");
 															}
 														</c:forEach>
 
@@ -85,7 +86,7 @@
 					                                        <label class="form-check-label" for="equality">원금균등상환</label>
 				                                        </div>
 				                                        <input type="radio" class="form-check-input" name="redemption" value="early" id="early" >
-				                                        <label class="form-check-label" for="early">중도상환</label>
+				                                        <label class="form-check-label" for="early">중도상환(만기일시상환)</label>
 		                                    		</div>
 	                                    		</div>
 	                                    		<script type="text/javascript">
@@ -105,6 +106,10 @@
 				                        	<td scope="col" id="money"></td>
 				                     	</tr>
 				                     	<tr>
+				                        	<td scope="col">원금실행번호</td>
+				                        	<td scope="col"><div id="d_loan_balance"></div></td>
+				                     	</tr>
+				                     	<tr>
 				                        	<td colspan="2" scope="col" class="borL">
 				                        		<div class="row justify-content-lg-center">
 													<input type="button" id="LoanPrincipalCheckIn" class="button button-primary button-round" value="조회">
@@ -116,7 +121,9 @@
 			               	
 				               	<br><br>
 				               	
-				               	<div id="Context">
+				               	
+			               	</form>
+			               	<div id="Context">
 				               	
 				               	</div>
 				               	
@@ -125,7 +132,7 @@
 				               			if(document.principalForm.selectAccount.value == "") return;
 				               			
 				               			var formData = $("form[name=principalForm]").serialize();
-				               			var URL = "${pageContext.request.contextPath}/LoanPrincipalCheckIn.cc";
+				               			var URL = "${pageContext.request.contextPath}/LoanPrincipalCheckIn.do";
 										
 				               			$.ajax({
 				               				type : "get",
@@ -140,7 +147,6 @@
 				               			});
 				               		});
 				               	</script>
-			               	</form>
 						</div>
 		            </section>	          	
 		        </div>

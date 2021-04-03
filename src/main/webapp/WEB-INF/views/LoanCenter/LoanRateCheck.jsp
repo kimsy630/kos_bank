@@ -6,6 +6,16 @@
 	<head>
     	<title>Home</title>
     	<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.9.0/jquery.js"></script>
+    	<script>
+    	function doAction() {
+    		var Apassword = document.rateForm.pwWithdraw.value;
+    		if (Apassword.length < 4) {
+    			alert("4자리의 비밀번호를 입력해주세요");
+    			document.LoanApplicationForm.pwWithdraw.focus();
+    			return false;
+        	}
+    	}
+    	</script>
   	</head>
    	<body>
     	<div class="preloader">
@@ -32,7 +42,7 @@
                 	 
 	                <section class="section">             
 	                	<div class="table-custom-responsive">
-	                    	<form action="#" name="rateForm" method="get" onchange="checkAccount()">
+	                    	<form action="#" name="rateForm" method="POST" onchange="checkAccount()" onsubmit="return doAction();">
 	                        	<table class="table-custom table-custom-bordered">
 	                            	<colgroup>
 	                                   <col style="width: 15%;">
@@ -54,8 +64,18 @@
 			                                        	<c:forEach var="vo" items="${list}">
 			                                            	if($('#selectAccount').val() == "${vo.account}") {
 			                                                	<c:set value="${vo.account}" var="account"/>
-			                                                	$('#d_loan_rate').html("${vo.d_loan_rate}");
-			                                             	}
+			                                                	if("${vo.d_loan_rate}" > "${vo.d_next_rate}") {
+			                                                		$('#d_loan_rate').html("${vo.d_loan_rate}");
+			                                                		$('#d_auto_account').html("${vo.d_auto_account}");
+			                                                		$('#loansButton1').css("display","inline");
+			                                                		$('.loansButton2').css("display","none");
+			                                                	} else {
+			                                                		$('#d_loan_rate').html("${vo.d_loan_rate}");
+			                                                		$('#d_auto_account').html("${vo.d_auto_account}");
+			                                                		$('#loansButton1').css("display","none");
+			                                                		$('.loansButton2').css("display","inline");
+			                                                	};
+			                                             	};
 			                                          	</c:forEach>
 			                                       	};
 			                                    </script>
@@ -67,8 +87,9 @@
 	                                    </tr>
 	                                    <tr>
 	                                    	<td colspan="2" scope="col" class="borL">
-	                                        	<div class="row justify-content-lg-center">
-	                                       		<input type="button" id="LoanRateCheckIn" class="button button-primary button-round" value="조회">
+                                        	<div class="row justify-content-lg-center" >
+	                                       		<input type="button" id="LoanRateCheckIn" class="button button-primary button-round loansButton2" value="조회">
+                                        		<p id="loansButton1" style="display: none;">이번달 이자는 이미 납부되었습니다.</p>
 	                                    	</div>
 	                                 		</td>
 	                                	</tr>
@@ -77,14 +98,16 @@
 	                              
 	                            <br><br>
 	                            
-	                            <div id="Context"> </div>
+	                            
+	                     	</form>
+	                     	<div id="Context"> </div>
 	                            
 	                            <script type="text/javascript">
 	                            $('#LoanRateCheckIn').click(function() {
 	                                if(document.rateForm.selectAccount.value == "") return;
 	                                
 	                                var formData = $("form[name=rateForm]").serialize();
-	                                var URL = "${pageContext.request.contextPath}/LoanRateCheckIn.cc";
+	                                var URL = "${pageContext.request.contextPath}/LoanRateCheckIn.do";
 	                          
 	                                $.ajax({
 	                                   type : "get",
@@ -99,7 +122,6 @@
 	                                });
 	                             });
 	                            </script>
-	                     	</form>
                     	</div>
                 	</section>                
          		</div>
