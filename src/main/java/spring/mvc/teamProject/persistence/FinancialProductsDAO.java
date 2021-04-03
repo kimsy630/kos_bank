@@ -4,11 +4,13 @@ import java.sql.Timestamp;
 import java.util.List;
 import java.util.Map;
 
+import spring.mvc.teamProject.vo.AccountTransferVO;
 import spring.mvc.teamProject.vo.AccountVO;
 import spring.mvc.teamProject.vo.AutoTransferVO;
 import spring.mvc.teamProject.vo.Deposit_productVO;
 import spring.mvc.teamProject.vo.Fixed_depositVO;
 import spring.mvc.teamProject.vo.MembersVO;
+import spring.mvc.teamProject.vo.TransferVO;
 import spring.mvc.teamProject.vo.installment_savingsVO;
 import spring.mvc.teamProject.vo.savings_productVO;
 import spring.mvc.teamProject.vo.Loans_productVO;
@@ -56,9 +58,21 @@ public interface FinancialProductsDAO{
 	public int AutoTransferAdd(AutoTransferVO vo);
 	// 만기가 오늘날짜인 예금정보 가져오기
 	public List<Fixed_depositVO> selectDepositEnd();
+	// 만기가 오늘날짜인 적금정보 가져오기
+	public List<installment_savingsVO> selectSavingsEnd(); 
 	// 예금테이블 상태를 만기로 돌려준다.
 	public int endDeposit(Fixed_depositVO vo);
+	// 적금테이블 상태를 만기로 돌려준다.
+	public int endSavings(installment_savingsVO vo);
 	// 만기인 예금 계좌에 만기액을 넣어준다.
-	public int returnDeposit(AccountVO vo); 
+	public int returnDeposit(AccountVO vo);
+	// 만기인 적금 계좌에 만기액을 넣어준다.
+	public int returnSavings(AccountVO vo);
+	// 자동이체날인 적금 계좌를 오늘날짜로 조회해서 가져온다.
+	public List<AutoTransferVO> selectByDate(String day);
+	// 자동이체를 실행하면서 적금 테이블 총 납입금액에 원금추가
+	public int addBalance(installment_savingsVO vo);
+	// 계좌이체된 자유적립식 적금 내역조회
+	public List<AccountTransferVO> selectFreeLog(String account);
 	
 }

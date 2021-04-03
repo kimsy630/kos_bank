@@ -34,12 +34,12 @@
 	    	if(document.ispForm.method.value == '2' || document.ispForm.method.value == null) {
 	    		ton.style.display = 'block';
 	    		bon.style.display = 'block';
-	    		document.ispForm.j_method.value = 1;
+	    		document.ispForm.j_method.value = '정액적립';
 	    		
 	    	}else {
 	    		bon.style.display = 'none';
 	    		ton.style.display = 'none';
-	    		document.ispForm.j_method.value = 0;
+	    		document.ispForm.j_method.value = '자유적립';
 	    	};
 	    	
 	    }
@@ -207,7 +207,7 @@
 	    </style>
 	</head>
   <body>
-  <form name="ispForm" method="POST" action="SavingsAction.cc" onsubmit="return checkISP()">
+  <form name="ispForm" method="POST" action="SavingsAction.do" onsubmit="return checkISP()">
   <input type = "hidden" name = "${_csrf.parameterName}" value = "${_csrf.token}">
   <input type="hidden" name="j_money" id="j_money" value="0">
   <input type="hidden" name="j_type" value="${vo.j_type}">
@@ -215,7 +215,6 @@
   <input type="hidden" name="j_rate" value="${vo.j_interest_rate}">
   <input type="hidden" name="j_name" value="${vo.j_name}">
   <input type="hidden" name="j_method" value="">
-  <input type="hidden" name="j_auto_date" value="${vo.j_auto_date}">
     <div class="preloader">
       <div class="preloader-body">
         <div class="cssload-container">
@@ -342,8 +341,6 @@
 				</div>
 				<hr></hr><br>
 				  	<div style="display:inline; width:30%; text-align:center; margin-right:155px;">자동이체일</div>
-				  	
-				  	
 					<div class="display_table" style="display:inline-block; width:10%;">
 						<div class="input-group mb-3">
 							<select name="jd_outDate" class="custom-select"
@@ -389,7 +386,6 @@
         </div>
         </div>
       </section>
-                <img src="../teamProject/resources/testimage/고객-적금상품신청.png">
       <%@ include file="../footer.jsp" %>
     </div>
     </form>

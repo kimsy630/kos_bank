@@ -187,7 +187,7 @@
 	    </style>
 	</head>
   <body>
-  <form name="fdpForm" method="POST" action="DepositAction.cc" onsubmit="return checkFDP()">
+  <form name="fdpForm" method="POST" action="DepositAction.do" onsubmit="return checkFDP()">
   <input type = "hidden" name = "${_csrf.parameterName}" value = "${_csrf.token}">
   <input type="hidden" name="y_balance" id="y_balance" value="0">
   <input type="hidden" name="y_type" value="${vo.y_type}">
@@ -319,7 +319,6 @@
           </div>
         </div>
       </section>
-      <img src="../teamProject/resources/testimage/고객-예금상품신청.png">
       <%@ include file="../footer.jsp" %>
     </div>
     </form>

@@ -28,6 +28,9 @@ public interface FinancialProductsService {
 	// 정기예금상품 가입처리
 	public void DepositAction(HttpServletRequest req, Model model);
 	// 만기인식용 메서드
-	public void checkEnd();
+	public void checkEnd() throws Exception;
+	// 자동이체용 메서드
+	public void autoTransfer();
+	
 	
 }

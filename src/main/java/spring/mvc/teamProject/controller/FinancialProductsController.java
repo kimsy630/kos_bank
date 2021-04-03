@@ -80,7 +80,7 @@ public class FinancialProductsController {
 	}
 	// 최문수
 	// 적금상품 가입페이지
-	@RequestMapping("/SavingsRegistration.cc")
+	@RequestMapping("/SavingsRegistration.do")
 	public String regISP(HttpServletRequest req,Model model) {
 		logger.info("url ==> /SavingsRegistration");
 		
@@ -107,7 +107,7 @@ public class FinancialProductsController {
 	}
 	// 최문수
 	// 적금상품 가입처리
-	@RequestMapping("/SavingsAction.cc")
+	@RequestMapping("/SavingsAction.do")
 	public String SavingsAction(HttpServletRequest req,Model model) {
 		logger.info("url ==> /SavingsAction");
 		
@@ -117,7 +117,7 @@ public class FinancialProductsController {
 	}
 	// 최문수
 	// 정기예금상품 가입처리
-	@RequestMapping("/DepositAction.cc")
+	@RequestMapping("/DepositAction.do")
 	public String DepositAction(HttpServletRequest req,Model model) {
 		logger.info("url ==> /DepositAction");
 		
@@ -128,13 +128,14 @@ public class FinancialProductsController {
 	
 	// 최문수
 	// 만기인식용 스케쥴러
-	@Scheduled(cron="0 */1 * * * *")
-	  public void scheduleTest() {
+	@Scheduled(cron= "*/10 * * * * *")
+	  public void scheduleTest() throws Exception {
 	   logger.info("만기 test");
 	   service.checkEnd();
+	   //service.autoTransfer();
 	}
 	
 	
-	
+
 	
 }

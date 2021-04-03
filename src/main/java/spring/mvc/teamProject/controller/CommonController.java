@@ -39,7 +39,6 @@ public class CommonController extends HttpServlet {
 		
 		return "common/login";
 	}
-	
 	@RequestMapping("/signUp.cc")
 	public String signUp(HttpServletRequest req,Model model) {
 		
@@ -64,12 +63,10 @@ public class CommonController extends HttpServlet {
 		return "common/logout";
 	}
 	
-	
 	//@Scheduled(cron="*/10 * * * * *")
    // public void scheduleTest() {
    //     logger.info("스케쥴러 테스트중");
    // }
-	
 	
 	//idChk.cc
 	/*

@@ -7,11 +7,13 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import spring.mvc.teamProject.vo.AccountTransferVO;
 import spring.mvc.teamProject.vo.AccountVO;
 import spring.mvc.teamProject.vo.AutoTransferVO;
 import spring.mvc.teamProject.vo.Deposit_productVO;
 import spring.mvc.teamProject.vo.Fixed_depositVO;
 import spring.mvc.teamProject.vo.MembersVO;
+import spring.mvc.teamProject.vo.TransferVO;
 import spring.mvc.teamProject.vo.installment_savingsVO;
 import spring.mvc.teamProject.vo.savings_productVO;
 import spring.mvc.teamProject.vo.Loans_productVO;
@@ -154,17 +156,64 @@ public class FinancialProductsDAOImpl implements FinancialProductsDAO{
 	}
 	
 	@Override
+	public List<installment_savingsVO> selectSavingsEnd() {
+		
+		return sqlSession.getMapper(FinancialProductsDAO.class).selectSavingsEnd();
+		
+	}
+	
+	@Override
 	public int endDeposit(Fixed_depositVO vo) {
 		
 		return sqlSession.getMapper(FinancialProductsDAO.class).endDeposit(vo);
 	}
 
 	@Override
+	public int endSavings(installment_savingsVO vo) {
+		
+		return sqlSession.getMapper(FinancialProductsDAO.class).endSavings(vo);
+		
+	}
+	
+	@Override
 	public int returnDeposit(AccountVO vo) {
 		
 		return sqlSession.getMapper(FinancialProductsDAO.class).returnDeposit(vo);
 		
 	}
+	
+	@Override
+	public int returnSavings(AccountVO vo) {
+		
+		return sqlSession.getMapper(FinancialProductsDAO.class).returnSavings(vo);
+		
+	}
+
+	@Override
+	public List<AutoTransferVO> selectByDate(String day) {
+		
+		return sqlSession.getMapper(FinancialProductsDAO.class).selectByDate(day);
+		
+	}
+
+	@Override
+	public int addBalance(installment_savingsVO vo) {
+		
+		return sqlSession.getMapper(FinancialProductsDAO.class).addBalance(vo);
+	}
+
+	@Override
+	public List<AccountTransferVO> selectFreeLog(String account) {
+		
+		return sqlSession.getMapper(FinancialProductsDAO.class).selectFreeLog(account);
+		
+	}
+
+	
+
+	
+
+	
 
 	
 	
