@@ -76,8 +76,8 @@
                     </tr>
                   </thead>
                   <tbody>
-                    <c:forEach var="vo" items="${list}">
-                  <c:set var="dto" value="${vo.getDeposit()}" />
+                    <c:forEach var="dto" items="${list}">
+                  <c:set var="vo" value="${dto.getAccountVO()}" />
                     <tr>
                       <td>${vo.accountType}</td>
                       <td>${vo.account }</td>

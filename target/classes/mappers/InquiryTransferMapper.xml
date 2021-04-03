@@ -111,15 +111,16 @@
 	</resultMap>
 	<!-- 입출금 계좌 조회 -->
 	<select id="AccountTable" parameterType="String" resultMap="AccountTransfer">
- 		SELECT distinct account , accounttype,new_date,in_outDate,balance
-		FROM (SELECT i.account,i.accounttype, i.new_date, t.in_outDate, i.balance ,ROW_NUMBER() OVER(PARTITION BY i.account
+ 		SELECT distinct account , accounttype,new_date,in_outDate,balance, accountstate
+		FROM (SELECT i.account,i.accounttype, i.new_date, t.in_outDate, i.balance, i.accountstate ,ROW_NUMBER() OVER(PARTITION BY i.account
 		    ORDER BY i.account, t.in_outDate desc)as RANKING
 		        FROM account_info i
 		       LEFT JOIN account_transfer t
 		          ON i.account = t.account
-		       WHERE i.id = #{id} 
+		       WHERE i.id = #{id}
 		         AND i.accountType='입출금')
 		  WHERE RANKING=1
+
 	</select>
 	
 	
@@ -154,7 +155,7 @@
 	 </select>
 	 
 	 <!-- 예금조회 -->
-	 <select id="DepositTable" parameterType="String" resultMap="AccountInfo">
+	 <select id="DepositTable" parameterType="String" resultMap="deposit">
 		SELECT i.accountType, i.account, f.y_join_date, f.y_end_date, f.y_balance
 		  FROM fixed_deposit f
 		  JOIN account_info i 
@@ -163,15 +164,15 @@
 	 </select>
 	 
 	 <!-- 정지/휴면조회 -->
-	 <select id="StopSleepTable" parameterType="String" resultMap="AccountInfo">
+	 <select id="StopSleepTable" parameterType="String" resultMap="AccountTransfer">
 	 	SELECT *
-		FROM (SELECT i.accountType, i.account, i.delete_date, i.sleep_date, t.in_outDate,i.balance, i.accountState ,ROW_NUMBER() OVER(PARTITION BY i.account
+		FROM (SELECT i.accountType, i.account, i.delete_date, i.sleep_date, t.in_outDate,i.balance, i.accountState, i.acc_state_content, ROW_NUMBER() OVER(PARTITION BY i.account
 		                                ORDER BY  i.account,t.in_outDate)as RANKING
 		        FROM account_info i 
 		        LEFT JOIN account_transfer t
 		          ON i.account=t.account
 		        WHERE (i.id = #{id} AND i.accountState='정지') OR (i.id = #{id} AND i.accountState='휴면'))
-		WHERE RANKING=1 
+		WHERE RANKING=1
 	 </select>
 	 <!-- 거래내역 조회 -->
 	  <select id="TransactionDetails" parameterType="String" resultType="String">
@@ -179,21 +180,88 @@
 		FROM account_info
 		WHERE id=#{id}
 	 </select>
-	 
-	 <!-- 정지/휴면조회 
-	 <select id="StopSleepTable" parameterType="java.util.Map" resultMap="AccountInfo">
+	 <!-- 
+	 	거래내역 조회 - ALL 
+	 	, TO_CHAR(balance-summoney) AS sender_account
+	 	==> AccountVO에서 불러올 값이 ammount 1개밖에 없었는데 VO를 못불러와서  
+	 		AccountTransferVO 에서 안쓰는 변수인 sender_account에  넣기위해 별칭을 sender_account로 줘서 해결 하였다..
+	 -->
+	 <select id="TransactionDetails_Table_ALL" parameterType="java.util.Map" resultType="spring.mvc.teamProject.vo.AccountTransferVO">
 	 	<![CDATA[
-		 	SELECT *
-			  FROM account_info i
-			  JOIN account_transfer t
-			    ON i.account = i.account
-			 WHERE i.id='1234'
-			   and i.account = #{view_AccountNum}
-			   and t.in_out = #{View_Content}
-			   AND t.in_outdate >TO_DATE(#{start_date}, 'YY-MM-DD')
-			   AND t.in_outdate<TO_DATE(#{end_date}, 'YY-MM-DD')
+		 	
+	SELECT *
+FROM (SELECT l.* , ROWNUM rnum
+    FROM(SELECT money
+         , in_comment
+         , out_comment
+         , in_out
+         , in_outdate
+         , TO_CHAR(balance-summoney+money) AS sender_account
+    FROM(SELECT money
+              , balance
+              , in_comment
+              , out_comment
+              , in_out
+              , in_outdate 
+              , SUM(money) OVER(ORDER BY in_outdate DESC) as summoney
+         FROM  (select t.money,i.balance,t.in_comment
+                     , t.out_comment
+                     , t.in_out
+                     , t.in_outdate
+                FROM account_info i
+                  LEFT JOIN account_transfer t
+                   ON i.account=t.account
+                WHERE i.account=#{view_AccountNum}
+                AND t.in_out='입금'
+                UNION
+                select t.money,i.balance
+                     , t.in_comment
+                     , t.out_comment
+                     , t.in_out 
+                     , t.in_outdate
+                FROM account_info i
+                  LEFT JOIN account_transfer t
+                   ON i.account=t.account
+                WHERE i.account=#{view_AccountNum}
+                AND t.in_out='출금' )
+        WHERE in_outdate > TO_DATE(#{start_date}, 'YY-MM-DD')
+        AND   in_outdate < TO_DATE(#{end_date}, 'YY-MM-DD'))
+    ORDER BY in_outdate DESC) l)
+WHERE   rNum >= #{start} AND rNum <= #{end}
 		]]>
 	 </select>
 	 
-     -->
+		<select id="get_transferCnt" parameterType="java.util.Map" resultType="int">
+		<![CDATA[
+			SELECT COUNT(*) as cnt 
+			  FROM account_info i
+			  JOIN account_transfer t
+			    ON i.account = t.account
+			 WHERE in_outdate > TO_DATE(#{start_date}, 'YY-MM-DD')
+			   AND in_outdate < TO_DATE(#{end_date}, 'YY-MM-DD')
+			   AND i.account =#{view_AccountNum}
+				]]>
+		</select>
+		
+		<select id="inTran" parameterType="java.util.Map" resultType="java.util.Map">
+		<![CDATA[
+			   SELECT SUM(money) AS in_sum, COUNT(*) AS in_count
+				  FROM account_transfer
+				 WHERE account=#{view_AccountNum}
+				   AND in_out='입금'
+				   AND in_outdate > TO_DATE(#{start_date}, 'YY-MM-DD')
+				   AND in_outdate < TO_DATE(#{end_date}, 'YY-MM-DD')
+				   ]]>
+		</select>
+		
+		<select id="outTran" parameterType="java.util.Map" resultType="java.util.Map">
+		<![CDATA[
+			   SELECT SUM(money) AS out_sum, COUNT(*) AS out_count
+				  FROM account_transfer
+				 WHERE account=#{view_AccountNum}
+				   AND in_out='출금'
+				   AND in_outdate > TO_DATE(#{start_date}, 'YY-MM-DD')
+				   AND in_outdate < TO_DATE(#{end_date}, 'YY-MM-DD')
+				   ]]>
+		</select>
 </mapper>

@@ -29,9 +29,9 @@
     			}else{
     				result.innerHTML = "에러발생";
     			}
-    		}else{
+    		}/* else{
     			result.innerHTML = "상태 : "	+ httpRequest.readyState;
-    		}
+    		} */
     	}
     	
     </script>
@@ -136,12 +136,12 @@
           <br>
        		<div class="tabs-custom tabs-horizontal tabs-line" id="tabs-1">
 	           <ul class="nav nav-tabs">
-	             <li class="nav-item" role="presentation"><a class="nav-link active" href="#tabs-1-1" data-toggle="tab" onclick="load('AccountTable.do')">입/출금계좌</a></li>
+	             <li class="nav-item" role="presentation"><a class="nav-link active" href="#tabs-1-1" data-toggle="tab" onclick="load('AccountTable.do')">입/출금</a></li>
 	             <li class="nav-item" role="presentation"><a class="nav-link" href="#tabs-1-2" data-toggle="tab" onclick="load('LoansTable.do')">대출</a></li>
 	             <li class="nav-item" role="presentation"><a class="nav-link" href="#tabs-1-3" data-toggle="tab" onclick="load('IS_Table.do')">적금</a></li><!-- Installment_SavingsTable -->
 	             <li class="nav-item" role="presentation"><a class="nav-link" href="#tabs-1-4" data-toggle="tab" onclick="load('FundTable.do')">펀드</a></li>
 	             <li class="nav-item" role="presentation"><a class="nav-link" href="#tabs-1-5" data-toggle="tab" onclick="load('DepositTable.do')">예금</a></li>
-	             <li class="nav-item" role="presentation"><a class="nav-link" href="#tabs-1-7" data-toggle="tab" onclick="load('StopSleepTable.do')">정지계좌</a></li>
+	             <li class="nav-item" role="presentation"><a class="nav-link" href="#tabs-1-7" data-toggle="tab" onclick="load('StopSleepTable.do')">정지/휴면</a></li>
 	             <li class="nav-item" role="presentation"><a class="nav-link" href="#tabs-1-8" data-toggle="tab" onclick="load('AllTable.do')">전체계좌</a></li>
 	           </ul>
            </div>

@@ -7,6 +7,7 @@ import org.springframework.stereotype.Repository;
 
 import spring.mvc.teamProject.vo.AccountTransferVO;
 import spring.mvc.teamProject.vo.AccountVO;
+import spring.mvc.teamProject.vo.Fixed_depositVO;
 import spring.mvc.teamProject.vo.LoansVO;
 import spring.mvc.teamProject.vo.TransferVO;
 import spring.mvc.teamProject.vo.fundVO;
@@ -25,12 +26,22 @@ public interface InquiryTransferDAO {
 	//펀드조회
 	public List<fundVO> fund_Table(String id);
 	//예금조회
-	public List<AccountVO> DepositTable(String id);
+	public List<Fixed_depositVO> DepositTable(String id);
 	//휴면계좌조회
-	public List<AccountVO> StopSleepTable(String id);
+	public List<AccountTransferVO> StopSleepTable(String id);
 	//거래내역조회
 	public List<AccountVO> TransactionDetails(String id);
-
+	//거래내역 cnt
+	public int get_transferCnt(Map<String,Object> map2);
+	//거래내역조회 
+	public List<AccountTransferVO> TransactionDetails_Table_ALL(Map<String,Object> map);
+	//거래내역(출금합계)
+	public Map<String,Object> outTran(Map<String,Object> map);
+	//거래내역(입금합계)
+	public Map<String,Object> inTran(Map<String,Object> map);
+	
+	
+		
 	// 내 계좌 이체내역
 	public int addMyLog(TransferVO transferVO);
 	
@@ -42,8 +53,6 @@ public interface InquiryTransferDAO {
 	
 	// 상대 잔액 추가
 	public int deposit(TransferVO transferVO);
-	/*
-	//거래내역조회 -ALL
-	public List<AccountVO> TransactionDetails_Table_ALL(Map<String,Object> map);
-	*/
+	
+	
 }

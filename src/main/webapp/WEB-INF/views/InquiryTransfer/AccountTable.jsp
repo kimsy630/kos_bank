@@ -41,11 +41,9 @@
 		width:1170px;
 	}
 	#acc_table th{
-		width:300px;
 		text-align: center;
 	}
 	#acc_table td{
-		width:285px;
 		text-align: center;
 	}
 	
@@ -67,26 +65,29 @@
                 <table class="table-custom table-custom-secondary table-custom-hovered" id="acc_table">
                   <thead>
                     <tr>
-                      <th>계좌명</th>
-                      
-                      <th>계좌번호</th>
-                      <th>신규일</th>
-                      <th>최근거래일자</th>
-                      <th>잔액(원)</th>
-                      <th>업무</th>
+                      <th style="width: 10%;">계좌명</th>
+                      <th style="width: 10%;">상태</th>
+                      <th style="width: 10%;">계좌번호</th>
+                      <th style="width: 15%;">신규일</th>
+                      <th style="width: 15%;">최근거래일자</th>
+                      <th style="width: 10%;">잔액(원)</th>
+                      <th style="width: 15%;">업무</th>
                     </tr>
                   </thead>
                   <c:forEach var="dto" items="${list}">
                   <c:set var="vo" value="${dto.getAccountVO()}"/>
                     <tr>
                       <td>${vo.accountType}</td>
+                      <td>${vo.accountState }</td>
                       <td>${vo.account}</td>
                       <td>${vo.new_date}</td>
                       <td>${dto.in_outDate}</td>
                       <td><fmt:formatNumber value="${vo.balance}" pattern="#,###" />원</td>
                       <td> 
-                      	<div class="button button-round" style= "padding:10px 20px; width:60px; height:40px; font-size:15px; text-align:center; background-color:#fff; display:inline;" onclick="location.href='TransactionDetails.do'">조회</div>&nbsp;&nbsp;
-                      	<div class="button button-round" style= "padding:10px 20px; width:60px; height:40px; font-size:15px; text-align:center; background-color: #435ebe; color:#fff; display:inline;" onclick="location.href='AccountTransfer.cc'">이체</div>
+                      	<div class="btn btn-primary" style= "padding:10px 15px; font-size:15px; text-align:center; background-color:#fff; color:#000; display:inline;" onclick="location.href='TransactionDetails.do?account=${vo.account}&state=${vo.accountState}'">조회</div>&nbsp;&nbsp;
+                      	<c:if test="${vo.accountState eq '정상' }">
+                      		<div class="btn btn-primary" style= "padding:10px 15px; font-size:15px; text-align:center; background-color: #435ebe; color:#fff; display:inline; border: black solid 1px ; " onclick="location.href='AccountTransfer.cc'">이체</div>
+                      	</c:if>
                       </td>
                      </tr>
                   </c:forEach>

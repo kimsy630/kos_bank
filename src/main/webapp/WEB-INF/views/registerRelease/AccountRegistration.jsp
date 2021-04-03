@@ -231,14 +231,14 @@ function doCheck() {
 		</div>
 	</div>
             
-        </script>
-        </div>
-        </div>
-                <!--// 본문 들어가는 부분 -->
-            <hr/>
-            <!-- 푸터 들어가는 부분 -->
-            <%@ include file = "../footer.jsp" %>
-            
-        </div>
+      </script>
+      </div>
+      </div>
+              <!--// 본문 들어가는 부분 -->
+          <hr/>
+          <!-- 푸터 들어가는 부분 -->
+          <%@ include file = "../footer.jsp" %>
+          
+      </div>
 </body>
 </html>

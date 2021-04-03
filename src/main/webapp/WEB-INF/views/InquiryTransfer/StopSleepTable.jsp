@@ -73,12 +73,13 @@
                       <th>최근 결제일</th>
                       <th>잔액(원)</th>
                       <th>종류</th> <!-- 계좌상태 설명 (왜 정지가 됐는지 -->
+                      <th>설명</th>
                     </tr>
                   </thead>
                   <tbody>
                   
-                  <c:forEach var="vo" items="${list }">
-                  <c:set var="dto" value="${vo.getAccountTransfer() }"/>
+                  <c:forEach var="dto" items="${list }">
+                  <c:set var="vo" value="${dto.getAccountVO() }"/>
                     <tr>
                       <td>${vo.accountType }</td>
                       <td>${vo.account }</td>
@@ -91,6 +92,7 @@
                       <td>${dto.in_outDate }</td>
                       <td><fmt:formatNumber value="${vo.balance }" pattern="#,###" />원</td>
                       <td>${vo.accountState }</td>
+                      <td>${vo.acc_state_content }</td>
                     </tr>
 				  </c:forEach>
                 </table>

@@ -4,6 +4,7 @@
 <!DOCTYPE html>
 <html class="wide wow-animation" lang="en">
    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+   
 
   <head>
     <title>Home</title>
@@ -71,13 +72,13 @@
                 		입금합계(건수)
                 	</td>
                 	<td style="width:385px; font-weight: 800; text-align: right; color:#435ebe;">
-                		<fmt:formatNumber value="4800" pattern="#,###" />원 (2건)
+                		<fmt:formatNumber value="${inTran.IN_SUM }" pattern="#,###" />원 (${inTran.IN_COUNT }건)
                 	</td>
                 	<td style="width:200px; font-weight: 800;">
                 		출금합계(건수)
                 	</td>
                 	<td style="width:385px; font-weight: 800; text-align: right; color:#435ebe;">
-                		<fmt:formatNumber value="500000" pattern="#,###" />원 (8건)
+                		<fmt:formatNumber value="${outTran.OUT_SUM }" pattern="#,###" />원 (${outTran.OUT_COUNT }건)
                 	</td>
                 </tr>
                 </table>
@@ -93,21 +94,71 @@
                 	<td style="font-weight: 800; text-align: center;">잔액(원)</td>
                 	<td style="font-weight: 800; text-align: center;">받는사람 명</td>
                 </tr>
+                <c:forEach var="vo" items="${list }">
+                
                 <tr>
-                	<td style="text-align: center;  height: 40px;"></td>
-                	<td style="text-align: center;"></td>
-                	<td style="text-align: center;"></td>
-                	<td style="text-align: center;"></td>
-                	<td style="text-align: center;"></td>
-                	<td style="text-align: center;"></td>
-                	<td style="text-align: center;"></td>
-                	<td style="text-align: center;"></td>
+                	<td style="text-align: center;  height: 40px;"><fmt:formatDate pattern="YYYY-MM-dd" value="${vo.in_outDate }" /></td>
+                	<td style="text-align: center;"><fmt:formatDate pattern="HH:mm:ss" value="${vo.in_outDate }" /></td>
+                	<td style="text-align: center;">${vo.in_comment }</td>
+                	<c:if test="${vo.in_out eq '입금'}">
+                	<td style="text-align: center; color: red; font-weight: 600;"></td>
+                	<td style="text-align: center; color: blue; font-weight: 600;"><fmt:formatNumber value="${vo.money }" pattern="#,###" />원</td>
+				 </c:if>
+				 <c:if test="${vo.in_out eq '출금'}">
+                	<td style="text-align: center; color: red; font-weight: 600;"><fmt:formatNumber value="${vo.money }" pattern="#,###" />원</td>
+                	<td style="text-align: center; color: blue; font-weight: 600;"></td>
+				 </c:if>
+                	<td style="text-align: center;">${vo.in_out }</td>
+                	<td style="text-align: center; font-weight: 600;"><fmt:formatNumber value="${vo.sender_account }" pattern="#,###" />원</td>
+                	<!-- TO_CHAR(balance-summoney) AS sender_account
+					 	==> AccountVO에서 불러올 값이 ammount 1개밖에 없었는데 VO를 못불러와서  
+					 		AccountTransferVO 에서 안쓰는 변수인 sender_account에  넣기위해 별칭을 sender_account로 줘서 해결 하였다..
+					 -->
+                	<td style="text-align: center;">${vo.out_comment }</td>
                 </tr>
-                </table>
+                 
+                </c:forEach>
+                </table >
 					<br>
 					<div style="width: 1170px; text-align: center;">
+						<table id="Transaction_table">
+							<tr>
+								<th align="center">
+									<!-- 게시글이 있으면 -->
+									<c:if test="${cnt > 0}">
+									
+										<!-- 처음[◀◀] / 이전블록[◀] -->
+										<c:if test="${startPage > pageBlock}">
+											<a onclick="btnClick()" style="color:black;">[◀◀]</a>
+											<a onclick="btnClick(${startPage - pageBlock})" style="color:black;">[◀]</a>
+										</c:if>
+																				
+										<!-- 블록내의 페이지 번호 -->
+										<c:forEach var="i" begin="${startPage}" end="${endPage}">
+											<c:if test="${i == currentPage}"> <!-- 현재 페이지 색 진하게 -->
+												<span style="color:black;"><b>[${i}]</b></span>
+											</c:if>
+											
+											<c:if test="${i != currentPage}">
+												<a onclick="btnClick(${i})" style="text-decoration:none;color:#bbb"> [${i}] </a>
+											</c:if>
+										
+										</c:forEach>
+										
+										<!-- 다음블록 [▶] / 마지막[▶▶] -->
+										<c:if test="${pageCount > endPage}">
+											<a href="TransactionDetails_Table.do?pageNum=${startPage + pageBlock}" style="color:black;">[▶]</a>
+											<a href="TransactionDetails_Table.do?pageNum=${pageCount}" style="color:black;" >[▶▶]</a>
+										</c:if>
+									</c:if>
+								</th>
+							</tr>
+						</table>
+						<br><br><br>
 						<div class="button button-round" style="padding:18px 40px; width:60px; height:40px; font-size:15px; text-align:center; background-color:#435ebe; color:#fff; display:inline; " onclick="location.href='AccountCheck.do'">확인</div>
+						
 					</div>   
+					
               </div>
             </div>
           </div>

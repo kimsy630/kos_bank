@@ -1,6 +1,5 @@
 package spring.mvc.teamProject.vo;
 
-import oracle.sql.DATE;
 
 public class AutoTransferVO {
 	

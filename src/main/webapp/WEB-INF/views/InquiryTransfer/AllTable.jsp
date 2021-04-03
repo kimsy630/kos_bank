@@ -74,8 +74,8 @@
                       <th>업무</th>
                     </tr>
                   </thead>
-                  <c:forEach var="vo" items="${list1}">
-                  <c:set var="dto" value="${vo.getAccountTransfer()}"/>
+                  <c:forEach var="dto" items="${list1}">
+                  <c:set var="vo" value="${dto.getAccountVO()}"/>
                     <tr>
                       <td>${vo.accountType}</td>
                       <td>${vo.account}</td>
@@ -111,8 +111,8 @@
                       <th>대출잔액(원)</th>
                       <th>업무</th>
                     </tr>
-                    <c:forEach var="vo" items="${list2 }">
-                    <c:set var="dto" value="${vo.getLoans() }"/>
+                    <c:forEach var="dto" items="${list2 }">
+                    <c:set var="vo" value="${dto.getAccountVO() }"/>
                     <tr>
                       <td>${dto.d_name }</td>
                       <td>${vo.account }</td>
@@ -148,13 +148,13 @@
                       <th>잔액(원)</th>
                     </tr>
                   </thead>
-                  <c:forEach var="vo" items="${list3 }">
-                  <c:set var="dto" value="${vo.getInstallment_savings()}"/>
+                  <c:forEach var="dto" items="${list3 }">
+                  <c:set var="vo" value="${dto.getAccountVO()}"/>
                     <tr>
                       <td>${dto.j_name }</td>
                       <td>${vo.account }</td>
                       <td>${dto.j_join_date}</td>
-                      <td>${dto.j_date }</td>
+                      <td>${dto.j_end_date }</td>
                       <td><fmt:formatNumber value="${dto.j_balance }" pattern="#,###" />원</td>
                     </tr>
                     </c:forEach>
@@ -183,12 +183,12 @@
                   </thead>
                   <tbody>
                     <tr>
-                    <c:forEach var="vo" items="${list4}">
-                    <c:set var="dto" value="${vo.getFund()}"/>
+                    <c:forEach var="dto" items="${list4}">
+                    <c:set var="vo" value="${dto.getAccountVO()}"/>
                       <td>${vo.accountType}</td>
                       <td>${vo.account }</td>
-                      <td><fmt:formatNumber value="${dto.f_target_Amount }" pattern="#,###" />원</td>
-                      <td>${dto.f_enddate }</td>
+                      <td><fmt:formatNumber value="${dto.f_target_money }" pattern="#,###" />원</td>
+                      <td>${dto.f_end_date }</td>
                       <td><fmt:formatNumber value="${vo.balance }" pattern="#,###" />원</td>
                       
                      </c:forEach>
@@ -217,8 +217,8 @@
                     </tr>
                   </thead>
                   <tbody>
-                    <c:forEach var="vo" items="${list5}">
-                  <c:set var="dto" value="${vo.getDeposit()}" />
+                    <c:forEach var="dto" items="${list5}">
+                  <c:set var="vo" value="${dto.getAccountVO()}" />
                     <tr>
                       <td>${vo.accountType}</td>
                       <td>${vo.account }</td>
@@ -253,8 +253,8 @@
                   </thead>
                   <tbody>
                   
-                  <c:forEach var="vo" items="${list6 }">
-                  <c:set var="dto" value="${vo.getAccountTransfer() }"/>
+                  <c:forEach var="dto" items="${list6 }">
+                  <c:set var="vo" value="${dto.getAccountVO() }"/>
                     <tr>
                       <td>${vo.accountType }</td>
                       <td>${vo.account }</td>

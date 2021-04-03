@@ -1,0 +1,39 @@
+SELECT *
+FROM (SELECT l.* , ROWNUM rnum
+    FROM(SELECT money
+         , in_comment
+         , out_comment
+         , in_out
+         , in_outdate
+         , TO_CHAR(balance-summoney+money) AS sender_account
+    FROM(SELECT money
+              , balance
+              , in_comment
+              , out_comment
+              , in_out
+              , in_outdate 
+              , SUM(money) OVER(ORDER BY in_outdate DESC) as summoney
+         FROM  (select t.money,i.balance,t.in_comment
+                     , t.out_comment
+                     , t.in_out
+                     , t.in_outdate
+                FROM account_info i
+                  LEFT JOIN account_transfer t
+                   ON i.account=t.account
+                WHERE i.account=#{view_AccountNum}
+                AND t.in_out='입금'
+                UNION
+                select t.money,i.balance
+                     , t.in_comment
+                     , t.out_comment
+                     , t.in_out 
+                     , t.in_outdate
+                FROM account_info i
+                  LEFT JOIN account_transfer t
+                   ON i.account=t.account
+                WHERE i.account=#{view_AccountNum}
+                AND t.in_out='출금' )
+        WHERE in_outdate > TO_DATE(#{start_date}, 'YY-MM-DD')
+        AND   in_outdate < TO_DATE(#{end_date}, 'YY-MM-DD'))
+    ORDER BY in_outdate DESC) l)
+WHERE   rNum >= #{start} AND rNum <= #{end}

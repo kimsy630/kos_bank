@@ -19,7 +19,7 @@
   </head>
 
      <script type="text/javascript">
-    function btnClick(){
+    function btnClick(pageNum){
 
 	      // _jsonInfo -> '컨트롤러'/basic5_next -> data -> <div id="json_result">에 결과를 뿌린다.
 	      $.ajax({
@@ -29,7 +29,7 @@
 	        	 view_AccountNum: $("#view_AccountNum").val(),
 	        	 start_date: $("#start_date").val(),
 	        	 end_date: $("#end_date").val(),
-	        	 View_Content: $('input[name="View_Content"]:checked').val()
+	        	 pageNum: pageNum
 	         },
 	         success: function(data) {
 	            $('#Tran_result').html(data);
@@ -94,6 +94,7 @@
         <div class="container">
          
               	 <form action="TransactionDetails_Table.do" method="post" name="TD_From" style="text-align: center;">
+              	 <input type="hidden" id="view_AccountNum" value="${param.account}">
               	 	<h6>거래내역조회</h6>
 		          <div style="background-color: #435ebe; color:#fff; width:1170px; height:2px;"> </div>
 		          <br>
@@ -101,14 +102,8 @@
 	                  	<tr>
 	                      <td id="td_head1">조회계좌번호</td>
 	                      <td id="td_body1">
-	                      	<select id="view_AccountNum" name="view_AccountNum">
-	                      		<option value="" selected>--선택 --</option>
-	                      		<c:forEach var="accList" items="${accList }">
-	                      		<option value="${accList}">${accList}</option>
-	                      		</c:forEach>
-	                      	</select>
+	                      	${param.account }
 	                      </td>
-			                  
 	                    </tr>
 	                    <tr>
 	                     <td id="td_head1">조회기간</td>
@@ -118,16 +113,10 @@
 	                      </td>
 	                    </tr>
 	                    <tr>
-	                   <td id="td_head1">조회내용</td>
-	                      <td id="td_body1">
-							<input type="radio" name="View_Content" value="All_List" checked>전체내역 &nbsp;
-							<input type="radio" name="View_Content" value="Deposit_List" >입금내역 &nbsp;
-							<input type="radio" name="View_Content" value="Withdrawal_List" >출금내역
-                     	</td>
-	                    </tr>
-	                    <tr>
 	                      <td  id="td_body1" colspan="2" style="text-align: center;">
-	                      <input id ="btn" onclick="btnClick()" type="button"  class="button button-round" style= "padding:10px 25px; width:90px; height:40px; font-size:15px; text-align:center; background-color:#fff; display: inline;" value="조회"> &nbsp;&nbsp;  
+	                      <c:if test="${param.state eq '정상' }">
+	                      	<input id ="btn" onclick="btnClick()" type="button"  class="button button-round" style= "padding:10px 25px; width:90px; height:40px; font-size:15px; text-align:center; background-color:#fff; display: inline;" value="조회"> &nbsp;&nbsp;
+	                      </c:if>  
 	                      		<!-- <button id ="btn" type="button"  class="button button-round" style= "padding:10px 25px; width:90px; height:40px; font-size:15px; text-align:center; background-color:#fff; display: inline;">조회</button> &nbsp;&nbsp;   -->
                       	<div class="button button-round" style="padding:10px 30px; width:90px; height:40px; font-size:15px; text-align:center; background-color:#435ebe; color:#fff; display: inline;" onclick="location.href='AccountTransfer.cc'">이체</div>
 	                      </td>
