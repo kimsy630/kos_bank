@@ -117,14 +117,12 @@
 		WHERE jd_key = #{jd_key}
 	</update>
 
-	
 	<!-- 자동이체 - 거래내역 로그(출금 거래내역)-->
 	<insert id="sendAutoTrans" parameterType="spring.mvc.teamProject.vo.AutoTransferListVO">
 		INSERT
 		INTO auto_transferList (jd_key,jd_success, jd_inout)
 		VALUES(SEQ_AUTOTRANSFER.nextval, '성공', '자동출금')
 	</insert>
-
 
 	<!-- 자동이체 - 거래내역 로그(입금 거래내역) -->
 	<insert id="receiveAutoTrans" parameterType="spring.mvc.teamProject.vo.AutoTransferListVO">

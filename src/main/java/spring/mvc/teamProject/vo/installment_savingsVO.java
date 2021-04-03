@@ -16,8 +16,8 @@ public class installment_savingsVO {
    private String j_method;
    private Timestamp j_end_date;
    private int j_auto_date;
+   private int j_month;
    private AccountVO accountVO;
-   
    
 	public AccountVO getAccountVO() {
 		return accountVO;
@@ -96,6 +96,12 @@ public class installment_savingsVO {
 	}
 	public void setJ_end_date(Timestamp j_end_date) {
 		this.j_end_date = j_end_date;
+	}
+	public int getJ_month() {
+		return j_month;
+	}
+	public void setJ_month(int j_month) {
+		this.j_month = j_month;
 	}
    
 }

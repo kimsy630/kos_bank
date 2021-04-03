@@ -26,22 +26,22 @@
 	<!-- ============================================================================ -->
 	
 	<select id="selectById" resultType="spring.mvc.teamProject.vo.AccountVO" >
-		 select *
-		 from account_info
-         where id = #{id} AND accountType = '입출금' AND accountState = '정상'
+		 SELECT *
+		   FROM account_info
+          WHERE id = #{id} AND accountType = '입출금' AND accountState = '정상'
 	</select>
 	
 	<select id="checkPwd" resultType="int">
-		select COUNT(*) 
-		from account_info
-		where account = #{account} AND accountPW = #{accountPW}
+		SELECT COUNT(*) 
+		  FROM account_info
+		 WHERE account = #{account} AND accountPW = #{accountPW}
 	</select>
 	
 	<select id="checkBalance" resultType="int">
 		<![CDATA[
-		select COUNT(*)
-		from account_info
-		where account = #{account} AND Balance >= #{balance}
+		SELECT COUNT(*)
+		  FROM account_info
+		 WHERE account = #{account} AND Balance >= #{balance}
 		]]> 
 	</select>
 	
@@ -56,48 +56,129 @@
 	</select>
 	
 	<select id="getSavingsList" resultType="spring.mvc.teamProject.vo.savings_productVO">
-		select * from savings_product
+		SELECT * 
+		  FROM savings_product
 	</select>
 	
 	<select id="getDepositList" resultType="spring.mvc.teamProject.vo.Deposit_productVO">
-		select * from deposit_product
+		SELECT * 
+		  FROM deposit_product
 	</select>
 	
 	<select id="getSavingsDetail" resultType="spring.mvc.teamProject.vo.savings_productVO">
-		select * 
-		from savings_product
-		where j_name = #{j_name}
+		SELECT * 
+		  FROM savings_product
+		 WHERE j_name = #{j_name}
 	</select>
 	
 	<select id="getDepositDetail" resultType="spring.mvc.teamProject.vo.Deposit_productVO">
-		select * 
-		from deposit_product
-		where y_name = #{y_name}
+		SELECT * 
+		  FROM deposit_product
+		 WHERE y_name = #{y_name}
 	</select>
 	
 	<insert id="insertDepositAccount" parameterType="spring.mvc.teamProject.vo.AccountVO">
 		INSERT INTO account_info(account,ID,accountPW,accountType,accountState)
-		VALUES(#{account},#{id},#{accountPW},'예금','대기')
+		VALUES(#{account},#{id},#{accountPW},'예금','정지')
 	</insert>
 	
 	<insert id="insertDeposit" parameterType="spring.mvc.teamProject.vo.Fixed_depositVO">
-		INSERT INTO fixed_deposit(y_Key, y_name, account, y_rate, y_type, y_balance, y_end_date)
-		VALUES(SEQ_DEPOSIT.NEXTVAL, #{y_name}, #{account}, #{y_rate}, #{y_type}, #{y_balance}, #{y_end_date})
+		INSERT INTO fixed_deposit(y_Key, y_name, account, y_rate, y_type, y_balance, y_end_date, y_month)
+		VALUES(SEQ_DEPOSIT.NEXTVAL, #{y_name}, #{account}, #{y_rate}, #{y_type}, #{y_balance}, #{y_end_date}, #{y_month})
 	</insert>
 	
 	<insert id="insertSavingsAccount" parameterType="spring.mvc.teamProject.vo.AccountVO">
 		INSERT INTO account_info(account,ID,accountPW,accountType,accountState)
-		VALUES(#{account},#{id},#{accountPW},'적금','대기')
+		VALUES(#{account},#{id},#{accountPW},'적금','정지')
 	</insert>
 	
 	<insert id="insertFreeSavings" parameterType="spring.mvc.teamProject.vo.installment_savingsVO">
-		INSERT INTO installment_savings(j_Key, j_name, account, j_rate, j_type, j_method, j_end_date)
-		VALUES(SEQ_SAVINGS.NEXTVAL, #{j_name}, #{account}, #{j_rate}, #{j_type}, #{j_method}, #{j_end_date})
+		INSERT INTO installment_savings(j_Key, j_name, account, j_rate, j_type, j_balance, j_method, j_end_date, j_month)
+		VALUES(SEQ_SAVINGS.NEXTVAL, #{j_name}, #{account}, #{j_rate}, #{j_type}, #{j_balance}, #{j_method}, #{j_end_date}, #{j_month})
 	</insert>
 	
 	<insert id="insertFixedSavings" parameterType="spring.mvc.teamProject.vo.installment_savingsVO">
-		INSERT INTO installment_savings(j_Key, j_name, account, j_rate, j_money, j_type, j_method, j_end_date, j_auto_date)
-		VALUES(SEQ_SAVINGS.NEXTVAL, #{j_name}, #{account}, #{j_rate}, #{j_money}, #{j_type}, #{j_method}, #{j_end_date}, #{j_auto_date})
+		INSERT INTO installment_savings(j_Key, j_name, account, j_rate, j_money, j_type, j_balance, j_method, j_end_date, j_auto_date, j_month)
+		VALUES(SEQ_SAVINGS.NEXTVAL, #{j_name}, #{account}, #{j_rate}, #{j_money}, #{j_type}, #{j_balance}, #{j_method}, #{j_end_date}, #{j_auto_date}, #{j_month})
 	</insert>
-		
+	
+	<select id="getName" resultType="String">
+		SELECT name 
+		  FROM Members 
+		 WHERE ID = #{ID}
+	</select>
+	
+	<insert id="AutoTransferAdd" parameterType="spring.mvc.teamProject.vo.AutoTransferVO">
+		INSERT 
+		INTO auto_transfer
+			(jd_key, account, jd_autoMoney, 
+			jd_outDate,	jd_account, jd_type, jd_registDate, jd_inPlace)
+		VALUES( SEQ_AUTOTRANSFER.nextval, #{account}, #{jd_autoMoney},
+			#{jd_outDate}, #{jd_account}, #{jd_type}, TO_DATE(sysdate, 'YYYY-MM-DD'), 'KOS뱅크')
+	</insert> 
+	
+	<select id="selectDepositEnd" resultType="spring.mvc.teamProject.vo.Fixed_depositVO">
+		SELECT f.* 
+		  FROM fixed_deposit f
+		  JOIN account_info a
+		    ON f.account = a.account
+		 WHERE f.y_end_date = TRUNC(sysdate) 
+		   AND f.y_state = '만기전' 
+		   AND a.accountState = '정상'
+	</select>
+	
+	<select id="selectSavingsEnd" resultType="spring.mvc.teamProject.vo.installment_savingsVO">
+		SELECT i.* 
+		  FROM installment_savings i
+		  JOIN account_info a
+		    ON i.account = a.account
+		 WHERE i.j_end_date = TRUNC(sysdate) 
+		   AND i.j_state = '만기전' 
+		   AND a.accountState = '정상'
+	</select>
+	
+	<update id="endDeposit" parameterType="spring.mvc.teamProject.vo.Fixed_depositVO">
+		UPDATE fixed_deposit
+		   SET y_state = '만기'
+		 WHERE account = #{account}
+	</update>
+	
+	<update id="endSavings" parameterType="spring.mvc.teamProject.vo.installment_savingsVO">
+		UPDATE installment_savings
+		   SET j_state = '만기'
+		 WHERE account = #{account}
+	</update>
+	
+	<update id="returnDeposit" parameterType="spring.mvc.teamProject.vo.AccountVO">
+		UPDATE account_info 
+		   SET Balance = #{balance}
+		 WHERE account = #{account}
+	</update>
+	
+	<select id="selectByDate" resultType="spring.mvc.teamProject.vo.AutoTransferVO">
+		SELECT t.*
+  		  FROM auto_transfer t
+  		  JOIN account_info a
+    		ON t.account = a.account
+  		  JOIN installment_savings i
+    		ON a.account = i.account
+ 		 WHERE t.jd_registDate != TO_DATE(TO_CHAR(i.j_join_date, 'YYYY-MM-DD'), 'YYYY-MM-DD')
+ 		   AND t.jd_outDate = #{day}
+	</select>
+	
+	<update id="addBalance" parameterType="spring.mvc.teamProject.vo.installment_savingsVO">
+		UPDATE installment_savings
+		   SET j_balance = j_balance + #{j_money}
+		 WHERE account = #{account}
+	</update>
+	
+	
+	<select id="selectFreeLog" resultType="spring.mvc.teamProject.vo.AccountTransferVO">
+	SELECT money , in_outDate
+	  FROM account_transfer
+	 WHERE account = #{account}
+	   AND in_out = '입금'
+	</select>
+	
+			
 </mapper>

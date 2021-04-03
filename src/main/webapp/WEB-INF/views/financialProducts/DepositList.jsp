@@ -64,7 +64,7 @@
 				<em>연 <strong style="">${item.y_interest_rate}</strong><span>%</span></em>
 				<p>${item.y_notice}</p>
 				</div>
-                 <div id="btns" class="button button-primary button-round" onclick="location.href='DepositRegistration.cc?y_name=${item.y_name}'">가입하기</div>
+                 <div id="btns" class="button button-primary button-round" onclick="location.href='DepositRegistration.do?y_name=${item.y_name}'">가입하기</div>
                 </article>
                 </c:forEach>
               </div>
@@ -72,7 +72,6 @@
           </div>
         </div>
       </section>
-      <img src="../teamProject/resources/testimage/고객-예금상품조회.png">
       <%@ include file="../footer.jsp" %>
     </div>
   </body>

@@ -105,6 +105,7 @@ public class AutoTransferServiceImpl implements AutoTransferService {
 				vo.setJd_status(jd_status);
 				
 				System.out.println("vo : "+ vo);
+				
 				// 출금 UPDATE
 				aDAO.AutoWithdrawal(vo);
 				

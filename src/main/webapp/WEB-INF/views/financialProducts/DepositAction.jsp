@@ -30,6 +30,22 @@
 		}, 1000); 
 		</script>
 	</c:when>
+	<c:when test="${insertCnt == 3}">
+		<script type="text/javascript">
+		setTimeout(function(){
+			alert("예금계좌개설에 실패했습니다.");
+			window.history.back();
+		}, 1000); 
+		</script>
+	</c:when>
+	<c:when test="${insertCnt == 4}">
+		<script type="text/javascript">
+		setTimeout(function(){
+			alert("이체에 실패했습니다. 잔고를 확인해주세요.");
+			window.history.back();
+		}, 1000); 
+		</script>
+	</c:when>
 	<c:otherwise>
 		<script type="text/javascript">
 		setTimeout(function(){
