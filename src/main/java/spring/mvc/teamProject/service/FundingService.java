@@ -4,6 +4,7 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 @Service
 public interface FundingService {
@@ -22,5 +23,8 @@ public interface FundingService {
 	
 	// 키 가져오기
 	public void getKey(HttpServletRequest req, Model model);
+	
+	// 펀드 등록
+	public void addFund(MultipartHttpServletRequest  req, Model model);
 	
 }

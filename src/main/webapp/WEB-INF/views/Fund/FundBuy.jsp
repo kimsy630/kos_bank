@@ -5,17 +5,23 @@
 <%@ page import="java.util.Date" %>
 <%@ page import="java.text.SimpleDateFormat" %>
 
+
+
 <%
 	Date nowTime = new Date();
 	SimpleDateFormat sf = new SimpleDateFormat("yyyy-MM-dd");
 %>
 <!DOCTYPE html>
 <html class="wide wow-animation" lang="en">
+<script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js" ></script>
+<script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.1.5.js"></script>
+
 <script>
 	function ss(){
 	}
 </script>
   <body>
+  
     <div class="preloader">
       <div class="preloader-body">
         <div class="cssload-container">
@@ -145,7 +151,7 @@ KOS BANK는 플랫폼을 제공하는 중개자로 크라우드펀딩을 받는 
                 </div>
                 <div class="form-group">
                     <div class="col-lg-offset-2 col-lg-10">
-                        <button type="submit" class="btn btn-primary">펀딩하기</button>
+                        <button type="submit" class="btn btn-primary">결제하기</button>
                     </div>
                 </div>
             </form>

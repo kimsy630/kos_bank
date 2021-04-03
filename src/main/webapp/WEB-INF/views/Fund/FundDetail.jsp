@@ -55,7 +55,7 @@
 			            	<p style="line-height:1em">
 			            		<progress value='70' max='100' style="width:100% ;"> </progress>
 			            		<font size='3px' color='black' style="font-weight:500; font-family:휴먼모음T">달성도:</font>
-			            		<font size='4px' color='black' style="font-weight:700; font-family:휴먼모음T">&nbsp;&nbsp;70 %</font>
+			            		<font size='4px' color='black' style="font-weight:700; font-family:휴먼모음T">&nbsp;&nbsp;${f_money/fund.f_target_money*100} %</font>
 			            	</p>
 			            	<p>
 			            		<font size='3px' color='black' style="font-weight:500; font-family:휴먼모음T">목표 금액:</font>
@@ -63,11 +63,11 @@
 			            	</p>
 			            	<p>
 			            		<font size='3px' color='black' style="font-weight:500; font-family:휴먼모음T">펀딩 금액:</font>
-			            		<font size='4px' color='black' style="font-weight:700; font-family:휴먼모음T">350,000 원</font>
+			            		<font size='4px' color='black' style="font-weight:700; font-family:휴먼모음T">${f_money}</font>
 			            	</p>
 			            	<p>
 			            		<font size='3px' color='black' style="font-weight:500; font-family:휴먼모음T">참가자:</font>
-			            		<font size='4px' color='black' style="font-weight:700; font-family:휴먼모음T">&nbsp;&nbsp;88 명</font>
+			            		<font size='4px' color='black' style="font-weight:700; font-family:휴먼모음T">&nbsp;&nbsp;${investor_count}</font>
 			            	</p>
 			            	<p>&nbsp;</p>
 			            	<p>&nbsp;</p>
@@ -84,7 +84,7 @@
 			            <div class="col-sm-6 col-lg-3">
 			              <div class="counter-minimal">
 			                <div class="counter-wrap">
-			                  <div class="counter heading-2">350000</div>
+			                  <div class="counter heading-2">${f_money}</div>
 			                  <div class="heading-3">원</div>
 			                </div>
 			                <div class="title heading-5">펀딩 금액</div>
@@ -93,7 +93,7 @@
 			            <div class="col-sm-6 col-lg-3">
 			              <div class="counter-minimal">
 			                <div class="counter-wrap">
-			                  <div class="counter heading-2">88</div>
+			                  <div class="counter heading-2">${investor_count}</div>
 			                  <div class="heading-3">명</div>
 			                </div>
 			                <div class="title heading-5">펀딩 인원</div>
@@ -171,7 +171,7 @@
 			                      <div class="box-comment">
 			                        <div class="box-comment-body">
 			                          <div class="title">
-			                          		${comment.c_name}&emsp;&emsp;&emsp;&emsp;<strong>${comment.c_title}</strong>
+			                          		${comment.c_name}&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<strong>${comment.c_title}</strong>
 			                          </div>
 			                          <div class="date">
 			                          		${comment.c_date}&emsp;&emsp;&emsp;&nbsp;<font color="black">${comment.c_content}</font>

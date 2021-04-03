@@ -8,6 +8,7 @@ import org.springframework.stereotype.Repository;
 import spring.mvc.teamProject.vo.FundingVO;
 import spring.mvc.teamProject.vo.FundCommentVO;
 import spring.mvc.teamProject.vo.FundInvestorVO;
+import spring.mvc.teamProject.vo.MembersVO;
 
 @Repository
 public interface FundingDAO {
@@ -40,8 +41,15 @@ public interface FundingDAO {
 	
 	// 펀드 구매(입금에 대한 이체 history 작성)
 	public int withdrawAccountTransfer(Map<String, Object> map);
-		
 	
+	// 펀드 참가자들 리스트 가져오기
+	public List<FundInvestorVO> getFundInvestorInfo(int f_num);
+		
+	// 펀드 등록
+	public int addFund(Map<String, Object> map);
+	
+	// 구매자 정보 가져오기
+	public List<MembersVO> getMemberInfo(String id);
 	
 	
 }

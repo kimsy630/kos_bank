@@ -10,6 +10,7 @@ import org.springframework.stereotype.Repository;
 import spring.mvc.teamProject.vo.FundingVO;
 import spring.mvc.teamProject.vo.FundCommentVO;
 import spring.mvc.teamProject.vo.FundInvestorVO;
+import spring.mvc.teamProject.vo.MembersVO;
 
 @Repository
 public class FundingDAOImpl implements FundingDAO{
@@ -83,5 +84,27 @@ public class FundingDAOImpl implements FundingDAO{
 	@Override
 	public int withdrawAccountTransfer(Map<String, Object> map) {
 		return sqlSession.getMapper(FundingDAO.class).withdrawAccountTransfer(map);
+	}
+	
+	// 펀드 댓글 가져오기
+	@Override
+	public List<FundInvestorVO> getFundInvestorInfo(int f_num) {
+		FundingDAO dao = sqlSession.getMapper(FundingDAO.class);
+		
+		return dao.getFundInvestorInfo(f_num);
+	}
+	
+	// 펀드 등록
+	@Override
+	public int addFund(Map<String, Object> map) {
+		return sqlSession.getMapper(FundingDAO.class).addFund(map);
+	}
+	
+	// 구매자 정보 가져오기
+	@Override
+	public List<MembersVO> getMemberInfo(String id) {
+		FundingDAO dao = sqlSession.getMapper(FundingDAO.class);
+		
+		return dao.getMemberInfo(id);
 	}
 }

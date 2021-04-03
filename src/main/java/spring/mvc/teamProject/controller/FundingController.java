@@ -1,5 +1,7 @@
 package spring.mvc.teamProject.controller;
 
+import java.io.IOException;
+
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -12,7 +14,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import spring.mvc.teamProject.service.FundingService;
 
@@ -75,10 +79,20 @@ public class FundingController {
 		return "Fund/FundBuyAction";
 	}
 	
-	// 펀드등록 - 펀드를 사용자가 신청하면 관리자가 승인해야 펀드모집이 시작됨
+	// 펀드등록 - 펀드 등록 화면
 	@RequestMapping("/FundAdd.cc")
 	public String FundAdd(HttpServletRequest req,Model model) {
 		logger.info("url ==> /FundAdd");
 		return "Fund/FundAdd";
+	}
+	
+	// 펀드등록 - 펀드 등록 처리
+	@RequestMapping(value= "FundAddAction", method=RequestMethod.POST)
+	public String FundAddAction(MultipartHttpServletRequest req, Model model) throws IOException {
+		logger.info("url ==> /FundAddAction");
+		
+		FS.addFund(req, model);
+		
+		return "Fund/FundAddAction";
 	}
 }

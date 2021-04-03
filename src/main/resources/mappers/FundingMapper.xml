@@ -65,6 +65,21 @@
 		<result column="in_comment" property="in_comment" />
 	</resultMap>
 	
+	<resultMap id="MembersTable" type="spring.mvc.teamProject.vo.MembersVO">
+		<result column="id" property="id" />
+		<result column="pw" property="pw" />
+		<result column="name" property="name" />
+		<result column="jumin" property="jumin" />
+		<result column="job" property="job" />
+		<result column="address" property="address" />
+		<result column="postnum" property="postnum" />
+		<result column="d_address" property="d_address" />
+		<result column="phone" property="phone" />
+		<result column="email" property="email" />
+		<result column="authority" property="authority" />
+		<result column="enabled" property="enabled" />
+	</resultMap>
+	
 	<!-- 펀드 목록 전체 조회 -->
 	<select id="getFundingAllInfo" resultMap="FundingTable">
 		SELECT * 
@@ -133,5 +148,25 @@
 		 INSERT INTO ACCOUNT_TRANSFER
 		 VALUES(SEQ_TRANSFER.nextval, #{account}, #{f_account}, #{f_money}, '출금', SYSDATE, '펀드', '펀드', #{id})
 	</insert>
+	
+	<!-- 펀드 참가자들 리스트 가져오기 -->
+	<select id="getFundInvestorInfo" resultMap="FundInvestorTable">
+		SELECT * 
+		  FROM FUND_INVESTOR 
+		 WHERE F_NUM = #{f_num}
+	</select>
+	
+	<!-- 펀드 등록 -->
+	<insert id="addFund">
+		 INSERT INTO FUND
+		 VALUES(SEQ_FUND.nextval, #{id}, #{account}, #{f_content}, #{f_start_date}, #{f_end_date}, #{f_target_money}, #{f_category}, 0, #{f_name}, #{f_phone}, #{f_Email}, #{f_filename}, #{f_title})
+	</insert>
+	
+	<!-- 구매자 정보 가져오기 -->
+	<select id="getMemberInfo" resultMap="MembersTable">
+		SELECT * 
+		  FROM MEMBERS 
+		 WHERE id = #{id}
+	</select>
 		
 </mapper>
