@@ -110,7 +110,7 @@ public class FinancialProductsServiceImpl implements FinancialProductsService{
 	@Override
 	public void SavingsDetail(HttpServletRequest req, Model model) {
 		
-		String j_name = (String)req.getAttribute("j_name");
+		String j_name = req.getParameter("j_name");
 		
 		savings_productVO vo = dao.getSavingsDetail(j_name);
 		
@@ -120,7 +120,7 @@ public class FinancialProductsServiceImpl implements FinancialProductsService{
 	@Override
 	public void DepositDetail(HttpServletRequest req, Model model) {
 		
-		String y_name = (String)req.getAttribute("y_name");
+		String y_name = req.getParameter("y_name");
 		
 		Deposit_productVO vo = dao.getDepositDetail(y_name);
 		
@@ -435,24 +435,20 @@ public class FinancialProductsServiceImpl implements FinancialProductsService{
 					String account = vo2.getAccount();						// 계좌명
 					double rate = vo2.getJ_rate()*0.01;						// 연이율(이자율)
 					int interest = 0;										// 지급할 이자금액
-					int i=0;
-					
-					SimpleDateFormat sdf = new java.text.SimpleDateFormat("YYYY-MM-dd");
-					String endDate = sdf.format(vo2.getJ_end_date());
-					Date d1 = sdf.parse(endDate);							// 만기일	
+					int i= 0;
+					Date d1 = new Date(vo2.getJ_end_date().getTime());							// 만기일	
 					List<AccountTransferVO> transVO = dao.selectFreeLog(account);	// 1. 자유적립 계좌이체 내역 조회
 					
 					while(i < transVO.size()) {
 						int money = transVO.get(i).getMoney();				// 해당일 납입한 금액
-						Timestamp ts = transVO.get(i).getIn_outDate();
-						Date date = new Date(ts.getTime());
-						String insertDate = sdf.format(date);
-						Date d2 = sdf.parse(insertDate);
+						Date d2 = new Date(transVO.get(i).getIn_outDate().getTime());	// 납입일
 						long diff = d1.getTime() - d2.getTime();
+						System.out.println("diff"+diff);
 						int day = (int)(diff / (1000 * 60 * 60 * 24));		// (만기일 - 해당일)  일수
 						interest += (int)(money * rate / 365 * day);		// 지급 이자를 더한다.
 						i++;
 					}
+					System.out.println("interest"+interest);
 					
 					dao.endSavings(vo2);											// 2. 이 계좌를 만기상태로 변경
 					

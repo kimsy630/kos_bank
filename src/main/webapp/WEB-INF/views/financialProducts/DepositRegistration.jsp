@@ -31,7 +31,7 @@
 	    function checkFDP() {
 	    	
 	    	if (document.fdpForm.y_balance.value < ${vo.y_min_price} || !document.fdpForm.money.value) {
-	    		alert("최소가입금액이상을 입력해주세요.");
+	    		alert("최소예치금액이상을 입력해주세요.");
 				document.fdpForm.y_balance.focus();
 				return false;
 	    	}
@@ -122,6 +122,13 @@
 	        }
 	    /* 숫자버튼 누를시 적용 메서드  */   
 	    
+	    /* 취소버튼 누를시 적용 메서드 */
+    	function numberComma0() {
+    		document.getElementById('money').value=0;
+    		document.ispForm.j_money.value=0;
+    	}
+    	/* 취소버튼 누를시 적용 메서드 */
+	    
 	    /* 숫자버튼 위 마우스 올려놓을시 적용 메서드 */
 	  		$(function() {
 	  			$("#hundred").on({
@@ -174,6 +181,16 @@
 	  					$("#one").css({"color":"#0d6efd"});
 	  				}
 	  			});
+	  			$("#cancel").on({
+	  				"mouseover" : function() {
+	  					$("#cancel").css({"background-color":"#0d6efd"});
+	  					$("#cancel").css({"color":"white"});
+	  				},
+	  				"mouseout" : function() {
+	  					$("#cancel").css({"background-color":"white"});
+	  					$("#cancel").css({"color":"#0d6efd"});
+	  				}
+	  			});
 	  		});
 	  	/* 숫자버튼 위 마우스 올려놓을시 적용 메서드 */
 	    </script>
@@ -211,7 +228,7 @@
           <br>
           <ul class="breadcrumbs-custom">
             <li><a href="index.html">금융상품</a></li>
-            <li><a href="FDP.cc">예금상품</a></li>
+            <li><a href="DepositList.cc">예금상품</a></li>
             <li class="active">가입정보</li>
           </ul>
         </div>
@@ -234,7 +251,7 @@
 				<p style="display:inline; margin-right:190px;">이자율</p>
 				<p style="display:inline;"><fmt:formatNumber value="${vo.y_interest_rate}"/>%</p>
 				<br><br><hr></hr><br>
-				<p style="display:inline; margin-right:145px;">최소가입금액</p>
+				<p style="display:inline; margin-right:145px;">최소예치금액</p>
 				<p style="display:inline;"><fmt:formatNumber value="${vo.y_min_price}"/>원</p>
 				<br><br><hr></hr>
 				<div style="display:inline; width:20%; text-align:center; margin-right:160px; vertical-align:70%">가입금액</div>
@@ -251,6 +268,7 @@
                 	<button type="button" id="ten" class="btn-clipboard" data-bs-original-title="Copy to clipboard" onclick="JavaScript:numberComma100(100000);">10만</button>
                 	<button type="button" id="five" class="btn-clipboard" data-bs-original-title="Copy to clipboard" onclick="JavaScript:numberComma100(50000);">5만</button>
                 	<button type="button" id="one" class="btn-clipboard" data-bs-original-title="Copy to clipboard" onclick="JavaScript:numberComma100(10000);">1만</button>
+                	<button type="button" id="cancel" class="btn-clipboard" data-bs-original-title="Copy to clipboard" onclick="numberComma0();">취소</button>
                 	</div>
 				</div>
 				<br><br><hr></hr><br>
@@ -259,8 +277,9 @@
                 <c:set var="y_max_date" value="${vo.y_max_date}" ></c:set>
                 <select name="months" class="form-select" aria-label="Default select example">
 				  <option selected>선택</option>
+				 
 				  <% 
-				  	for(int i=(int)pageContext.getAttribute("y_min_date"); i<=(int)pageContext.getAttribute("y_max_date"); i++) {
+				  	for(int i= (int)pageContext.getAttribute("y_min_date"); i<=(int)pageContext.getAttribute("y_max_date"); i++) {
 				  %>
 				  <option value="<%=i%>"><%=i%></option>
 				  <%

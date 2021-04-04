@@ -96,7 +96,7 @@ function doAction() {
 		</table>
 	          	
 	    <div class="row justify-content-lg-center">
-	      	<input type="submit" value="이자납입" class="button button-primary button-round">
+	      	<input type="submit" value="원금상환" class="button button-primary button-round">
 		</div>
 	</form>
 </c:if>
