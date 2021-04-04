@@ -29,17 +29,17 @@ public class NoticeServiceImpl implements NoticeService{
 	
 	// 공지사항 글상세내용 조회
 	@Override  
-	public void getContent(HttpServletRequest req, Model model) {
+	public void getNoticeContent(HttpServletRequest req, Model model) {
 		int n_num = Integer.parseInt(req.getParameter("n_num"));
-		List<NoticeVO> list = NoticeDAO.getContent(n_num);
+		List<NoticeVO> list = NoticeDAO.getNoticeContent(n_num);
 		
 		model.addAttribute("list", list);
 	}
 	
 	// 공지사항 글확인시 조회수 증가
 	@Override  
-	public void setViews(HttpServletRequest req, Model model) {
+	public void setNoticeViews(HttpServletRequest req, Model model) {
 		int n_num = Integer.parseInt(req.getParameter("n_num"));
-		NoticeDAO.setViews(n_num);
+		NoticeDAO.setNoticeViews(n_num);
 	}
 }

@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+    
+<mapper namespace = "spring.mvc.teamProject.persistence.CounselingDAO">
+
+	<resultMap id="CounselingTable" type="spring.mvc.teamProject.vo.CounselingVO">
+		<result column="b_num" property="b_num" />
+		<result column="ID" property="ID" />
+		<result column="b_title" property="b_title" />
+		<result column="b_content" property="b_content" />
+		<result column="b_category" property="b_category" />
+		<result column="b_date" property="b_date" />
+		<result column="b_answer_date" property="b_answer_date" />
+		<result column="b_answer_content" property="b_answer_content" />
+		<result column="b_name" property="b_name" />
+		<result column="b_state" property="b_state" />
+	</resultMap>
+	
+	<!-- 고객상담 글목록 조회 -->
+	<select id="getCounselingInfo" resultMap="CounselingTable">
+		SELECT b_num, b_title, ID, b_date, b_category, b_state 
+		  FROM COUNSELING 
+		 ORDER BY b_num DESC
+	</select>
+	
+	<!-- 고객상담 글상세내용 조회 -->
+	<select id="getCounselingContent"  resultMap="CounselingTable">
+		 SELECT b_num, b_title, ID, b_date, b_content, b_category, b_state, b_name, b_answer_date, b_answer_content 
+		   FROM COUNSELING 
+		  WHERE b_num = #{b_num}
+	</select>
+	
+	<!-- 고객상담 글작성 -->
+	<insert id="writeCounselingPost">
+		INSERT INTO COUNSELING(b_num, b_title, ID, b_date, b_content, b_category)
+		VALUES(SEQ_COUNSELING.nextval, #{b_title}, #{ID}, #{b_date}, #{b_content}, #{b_category})
+	</insert>
+	
+	<!-- 고객상담 수정 조회 -->
+	<select id="getCounselingModify" resultMap="CounselingTable">
+		 SELECT b_num, b_title, ID, b_date, b_content, b_category 
+		   FROM COUNSELING 
+		  WHERE b_num = #{b_num}
+	</select>
+	
+	<!-- 고객상담 글수정 -->
+	<update id="setCounselingModify">
+		 UPDATE COUNSELING 
+		    SET b_title = #{b_title}, b_date = #{b_date}, b_category = #{b_category}, b_content = #{b_content} 
+		  WHERE b_num = #{b_num}
+	</update>
+	
+	<!-- 고객상담 글삭제 -->
+	<delete id="setCounselingDelete">
+		 DELETE COUNSELING 
+		  WHERE b_num = #{b_num}
+	</delete>
+	
+	
+	
+</mapper>

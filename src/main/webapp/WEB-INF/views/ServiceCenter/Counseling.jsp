@@ -20,45 +20,59 @@
 	          <h2>상담용 게시판</h2><br>
 	        </div>
 	     </section>
-			<main id="main" class="main">
-			    <div class="container">
-			    <br> <br> <br> <br> <br> <br> <br>
-				<form class="form-signin" action="loginAction.cc" method="post" role="form" >
-					<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
-					
-			    	<!-- Breadcrumbs -->
-				      <section class="section section-lg bg-default">
-				        <div class="container">
-				          <div class="row row-50 justify-content-between">
-				            
-				            <div class="col-md-12 col-lg-12">
-				              <h4>이메일 상담</h4>
-				              <!-- RD Mailform-->
-				              <form class="rd-form rd-mailform"	 data-form-output="form-output-global" data-form-type="contact" method="post" action="bat/rd-mailform.php">
-				                <div class="form-wrap">
-				                  <input class="form-input" id="contact-name" type="text" name="name" data-constraints="@Required">
-				                  <label class="form-label" for="contact-name">Name</label>
-				                </div>
-				                <div class="form-wrap">
-				                  <input class="form-input" id="contact-email" type="email" name="email" data-constraints="@Email @Required">
-				                  <label class="form-label" for="contact-email">E-mail</label>
-				                </div>
-								<div class="form-wrap">
-									<label class="form-label" for="contact-message">Message</label>
-									<textarea class="form-input" id="contact-message"
-										name="message" data-constraints="@Required"></textarea>
-								</div>
-								<button class="button button-primary" type="submit">Send</button>
-				              </form>
-				            </div>
-				          </div>
-				        </div>
-				      </section>
-				</form>
-				</div>
-				</main>
-                <img src="../teamProject/resources/testimage/이메일상담하기.JPG">
-			    <br> <br> <br> <br> <br> <br> <br>
+		    <div class="container">
+		    <br> <br> 
+			<form class="form-signin" action="loginAction.cc" method="post" role="form" >
+				<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
+				
+		    	<section class="section section-lg bg-default">
+		        <div class="container">
+		          <div class="row row-offset-1">
+		            <div class="col-lg-12 col-xxl-12">
+		              <div class="table-custom-responsive">
+		                <table class="table-custom table-custom-secondary table-custom-hovered">
+		                  <thead>
+		                    <tr>
+		                      <th width="10%">글번호</th>
+		                      <th width="10%">분류</th>
+		                      <th width="55%">제목</th>
+		                      <th width="10%">작성자</th>
+		                      <th width="15%">작성일</th>
+		                    </tr>
+		                  </thead>
+		                  
+		                  <tbody>
+		                   <c:forEach var="vo" items="${list}">
+		                   
+		                    <tr>
+		                      <td>${vo.b_num}</td>
+		                      <td>
+		                      	<font color="gray">[${vo.b_category}]</font>
+		                      </td>
+		                      <td>
+		                      	<a href = "CounselingDetail.cc?b_num=${vo.b_num}" style="color:black">
+		                      		<strong>${vo.b_title}</strong>
+		                      		<c:if test="${vo.b_state == 1}"> 
+		                      		<font color="red">&nbsp;&nbsp;&nbsp;-답변완료-</font>
+		                      		</c:if>
+		                      	</a>
+		                      </td>
+		                      <td>${vo.ID}</td>
+		                      <td>${vo.b_date}</td>
+		                    </tr>
+		                    </c:forEach>
+		                  </tbody>
+		                </table>
+		                <input type="button" value="글쓰기" class="button button-primary button-round" onclick="location.href='CounselingWrite.cc'">
+		              </div>
+		            </div>
+		          </div>
+		        </div>
+		      </section>
+			</form>
+			</div>
+			    <br> <br> <br> <br>
+			    
     	<%@ include file="../footer.jsp" %>
     </div>
   </body>

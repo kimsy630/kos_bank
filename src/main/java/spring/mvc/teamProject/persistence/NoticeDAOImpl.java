@@ -24,16 +24,16 @@ public class NoticeDAOImpl implements NoticeDAO{
 	
 	// 공지사항 글상세내용 조회
 	@Override
-	public List<NoticeVO> getContent(int n_num) {
+	public List<NoticeVO> getNoticeContent(int n_num) {
 		NoticeDAO dao = sqlSession.getMapper(NoticeDAO.class);
 		
-		return dao.getContent(n_num);
+		return dao.getNoticeContent(n_num);
 	}
 	
 	// 공지사항 글확인시 조회수 증가
 	@Override
-	public void setViews(int n_num) {
-		sqlSession.getMapper(NoticeDAO.class).setViews(n_num);
+	public void setNoticeViews(int n_num) {
+		sqlSession.getMapper(NoticeDAO.class).setNoticeViews(n_num);
 	}
 	
 }

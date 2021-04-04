@@ -77,10 +77,11 @@
 		<result column="j_auto_date" property="j_auto_date" />
 		<collection property="accountVO" resultMap="AccountInfo" />
 	</resultMap>
-	<!-- 펀드 -->
-	<resultMap id="fund" type="spring.mvc.teamProject.vo.fundVO">
+	
+	<resultMap id="fund" type="spring.mvc.teamProject.vo.FundingVO">
 		<result column="f_num" property="f_num" />
 		<result column="ID" property="ID" />
+		<result column="ACCOUNT" property="ACCOUNT" />
 		<result column="f_title" property="f_title" />
 		<result column="f_content" property="f_content" />
 		<result column="f_start_date" property="f_start_date" />
@@ -91,10 +92,7 @@
 		<result column="f_name" property="f_name" />
 		<result column="f_phone" property="f_phone" />
 		<result column="f_Email" property="f_Email" />
-		<result column="f_account" property="f_account" />
-		<result column="f_account" property="f_account" />
 		<result column="f_filename" property="f_filename" />
-		<collection property="accountVO" resultMap="AccountInfo" />
 	</resultMap>
 <!-- 예금 -->
 	<resultMap id="deposit" type="spring.mvc.teamProject.vo.Fixed_depositVO">
