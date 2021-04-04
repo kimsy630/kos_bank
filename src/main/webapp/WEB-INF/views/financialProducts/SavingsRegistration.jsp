@@ -24,24 +24,33 @@
 	    window.onload = function() {
 	    	var ton = document.getElementById("payment");
 	    	var con = document.getElementById("withdraw");
+	    	var pon = document.getElementById("monthPW");
 	    	con.style.display = 'none';
 	    	ton.style.display = 'none';
+	    	pon.style.display = 'none';
 	    }
 	    
 	    function selectMethod() {
 	    	var bon = document.getElementById("withdraw");
 	    	var ton = document.getElementById("payment");
-	    	if(document.ispForm.method.value == '2' || document.ispForm.method.value == null) {
+	    	var pon = document.getElementById("monthPW");
+	    	if(document.ispForm.method.value == '정액적립') {
 	    		ton.style.display = 'block';
 	    		bon.style.display = 'block';
+	    		pon.style.display = 'block';
 	    		document.ispForm.j_method.value = '정액적립';
 	    		
-	    	}else {
+	    	}else if(document.ispForm.method.value == '자유적립') {
 	    		bon.style.display = 'none';
 	    		ton.style.display = 'none';
+	    		pon.style.display = 'block';
 	    		document.ispForm.j_method.value = '자유적립';
-	    	};
-	    	
+	    	}else if(document.ispForm.method.value == '선택') {
+	    		bon.style.display = 'none';
+	    		ton.style.display = 'none';
+	    		pon.style.display = 'none';
+	    	}
+		    	
 	    }
 	    
 	    
@@ -141,6 +150,14 @@
         }
     /* 숫자버튼 누를시 적용 메서드  */   
     
+    /* 취소버튼 누를시 적용 메서드 */
+    	function numberComma0() {
+    		document.getElementById('money').value=0;
+    		document.ispForm.j_money.value=0;
+    	}
+    	/* 취소버튼 누를시 적용 메서드 */
+    	
+    
     /* 숫자버튼 위 마우스 올려놓을시 적용 메서드 */
   		$(function() {
   			$("#hundred").on({
@@ -193,6 +210,16 @@
   					$("#one").css({"color":"#0d6efd"});
   				}
   			});
+  			$("#cancel").on({
+  				"mouseover" : function() {
+  					$("#cancel").css({"background-color":"#0d6efd"});
+  					$("#cancel").css({"color":"white"});
+  				},
+  				"mouseout" : function() {
+  					$("#cancel").css({"background-color":"white"});
+  					$("#cancel").css({"color":"#0d6efd"});
+  				}
+  			});
   		});
   	/* 숫자버튼 위 마우스 올려놓을시 적용 메서드 */
   	
@@ -232,7 +259,7 @@
           <br>
           <ul class="breadcrumbs-custom">
             <li><a href="index.html">금융상품</a></li>
-            <li><a href="#">적금상품</a></li>
+            <li><a href="SavingsList.cc">적금상품</a></li>
             <li class="active">가입정보</li>
           </ul>
         </div>
@@ -258,8 +285,8 @@
                 <p style="display:inline; margin-right:175px;">적립방법</p>
                 <select class="form-select" aria-label="Default select example" name="method" onchange="selectMethod();">
 				  <option selected>선택</option>
-				  <option value="1">자유적립식</option>
-				  <option value="2">정액적립식</option>
+				  <option value="자유적립">자유적립식</option>
+				  <option value="정액적립">정액적립식</option>
 				</select>
 				<br><br><hr></hr><br>
 				<div id="payment">
@@ -277,10 +304,12 @@
                 	<button type="button" id="ten" class="btn-clipboard" data-bs-original-title="Copy to clipboard" onclick="numberComma100(100000);">10만</button>
                 	<button type="button" id="five" class="btn-clipboard" data-bs-original-title="Copy to clipboard" onclick="numberComma100(50000);">5만</button>
                 	<button type="button" id="one" class="btn-clipboard" data-bs-original-title="Copy to clipboard" onclick="numberComma100(10000);">1만</button>
+                	<button type="button" id="cancel" class="btn-clipboard" data-bs-original-title="Copy to clipboard" onclick="numberComma0();">정정</button>
                 	</div>
 				</div>
 				<br><br><hr></hr><br>
 				</div>
+				<div id="monthPW">
                 <p style="display:inline; margin-right:175px;">가입기간</p>
                 <c:set var="j_min_date" value="${vo.j_min_date}" ></c:set>
                 <c:set var="j_max_date" value="${vo.j_max_date}" ></c:set>
@@ -316,6 +345,7 @@
                 	</div>
 				</div>
 				<hr></hr><br><br>
+				</div>
 				<div>
 				<div id="withdraw">
 				<h3 style="display:inline;">자동이체 계좌정보</h3><p style="color:#92969c; display:inline;"></p><br><br>

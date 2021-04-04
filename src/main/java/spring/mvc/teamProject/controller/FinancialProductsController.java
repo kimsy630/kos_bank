@@ -67,6 +67,9 @@ public class FinancialProductsController {
 	@RequestMapping("/SavingsDetail.cc")
 	public String SavingsDetail(HttpServletRequest req,Model model) {
 		logger.info("url ==> /SavingsDetail");
+		
+		service.SavingsDetail(req, model);
+		
 		return "financialProducts/SavingsDetail";
 	}
 	
@@ -76,6 +79,8 @@ public class FinancialProductsController {
 	public String Depositdetail(HttpServletRequest req,Model model) {
 		logger.info("url ==> /DepositDetail");
 				
+		service.DepositDetail(req, model);
+		
 		return "financialProducts/DepositDetail";
 	}
 	// 최문수
@@ -131,7 +136,7 @@ public class FinancialProductsController {
 	@Scheduled(cron= "*/10 * * * * *")
 	  public void scheduleTest() throws Exception {
 	   logger.info("만기 test");
-	   service.checkEnd();
+	   //service.checkEnd();
 	   //service.autoTransfer();
 	}
 	
