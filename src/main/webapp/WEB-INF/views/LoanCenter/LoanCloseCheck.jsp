@@ -105,7 +105,7 @@
 						                      	<td><fmt:formatDate value="${list.d_start_date}" pattern="yyyy.MM.dd" /></td>
 						                      	<td><fmt:formatDate value="${list.d_end_date}" pattern="yyyy.MM.dd" /></td>
 						                      	<td> 
-						                      		<div class="button button-round" style= "padding:10px; width:60px; height:40px; font-size:15px; text-align:center; background-color:olive; display:inline;" onclick="location.href='LoanCloseDetail.cc?account=${list.account}'">조회</div>
+						                      		<div class="button button-round" style= "padding:10px 20px; width:60px; height:40px; font-size:15px; text-align:center; background-color: #435ebe; color:#fff; display:inline;" onclick="location.href='LoanCloseDetail.do?account=${list.account}'">조회</div>
 						                      	</td>
 						                    </tr>
 					                    </c:forEach>

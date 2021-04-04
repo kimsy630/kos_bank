@@ -141,7 +141,7 @@ public class InquiryTransferController {
 	@RequestMapping("/AccountTransfer.cc")
 	public String AccountTransfer(HttpServletRequest req,Model model) {
 		logger.info("url ==> /AccountTransfer");
-		service.AccountNomalList(req, model);
+		service.AccountInoutLoansType(req, model);
 		return "InquiryTransfer/AccountTransfer";
 	}
 	//김소림
@@ -290,7 +290,7 @@ public class InquiryTransferController {
 		lservice.AccountLimitAction(req, model);
 		return "InquiryTransfer/AccountLimitAction";
 	}
-	//김소림
+	//김세엽
 	// 자동이체 실행 test 
 	@Scheduled(cron="0/10 * * * * *")
 	  public void limitSchedule() {

@@ -24,6 +24,9 @@ public interface RegisterReleaseService {
 	// 입출금 계좌 조회
 	public void AccountInoutType(HttpServletRequest req, Model model);
 	
+	// 계좌(정상+입출금+대출)리스트
+	public void AccountInoutLoansType(HttpServletRequest req, Model model);
+	
 	// 회원 이름 조회
 	public void IdNameChk(HttpServletRequest req, Model model);
 	

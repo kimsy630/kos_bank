@@ -31,7 +31,7 @@
 		            </p>
 		            <!-- ======= Button trigger for basic modal ======= -->
 		            <button type="button" class="btn btn-outline-primary block" data-bs-toggle="modal"
-		                data-bs-target="#default" onclick="document.location.href='LoanApplication.cc?d_name=${list.d_name}'">
+		                data-bs-target="#default" onclick="document.location.href='LoanApplication.do?d_name=${vo.d_name}'">
 		                	신청하기
 		            </button>
 		            <!-- Button trigger for basic modal end -->

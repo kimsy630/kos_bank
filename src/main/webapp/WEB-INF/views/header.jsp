@@ -92,16 +92,16 @@
                         	<li class="rd-megamenu-item">
                             	<h6 class="rd-megamenu-title">대출관리</h6>
                             	<ul class="rd-megamenu-list">
-	                            	<li class="rd-megamenu-list-item"><a class="rd-megamenu-list-link" href="LoanAccountCheck.cc">대출계좌 조회</a></li>
-	                              	<li class="rd-megamenu-list-item"><a class="rd-megamenu-list-link" href="LoanCloseCheck.cc">대출해지현황 조회</a></li>
+	                            	<li class="rd-megamenu-list-item"><a class="rd-megamenu-list-link" href="LoanAccountCheck.do">대출계좌 조회</a></li>
+	                              	<li class="rd-megamenu-list-item"><a class="rd-megamenu-list-link" href="LoanCloseCheck.do">대출해지현황 조회</a></li>
 	                              	<li class="rd-megamenu-list-item"><a class="rd-megamenu-list-link" href="#">신규대출</a></li>
 	                            </ul>
                           	</li>
                           	<li class="rd-megamenu-item">
                             	<h6 class="rd-megamenu-title">대출납부</h6>
                             	<ul class="rd-megamenu-list">
-	                            	<li class="rd-megamenu-list-item"><a class="rd-megamenu-list-link" href="LoanRateCheck.cc">대출이자 조회/납부</a></li>
-	                              	<li class="rd-megamenu-list-item"><a class="rd-megamenu-list-link" href="LoanPrincipalCheck.cc">대출원금 조회/상환</a></li>
+	                            	<li class="rd-megamenu-list-item"><a class="rd-megamenu-list-link" href="LoanRateCheck.do">대출이자 조회/납부</a></li>
+	                              	<li class="rd-megamenu-list-item"><a class="rd-megamenu-list-link" href="LoanPrincipalCheck.do">대출원금 조회/상환</a></li>
 	                            </ul>
                           	</li>
                       	</ul>

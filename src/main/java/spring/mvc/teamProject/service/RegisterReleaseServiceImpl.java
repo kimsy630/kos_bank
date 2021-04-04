@@ -87,6 +87,18 @@ public class RegisterReleaseServiceImpl implements RegisterReleaseService{
 		
 	}
 	
+	// 계좌(정상+입출금+대출)리스트
+	@Override
+	public void AccountInoutLoansType(HttpServletRequest req, Model model) {
+		String strId = (String)req.getSession().getAttribute("id");
+		List<AccountVO> list = accountDAO.selectTransferType(strId);
+		
+		System.out.println("list3"+list);
+		model.addAttribute("list", list);
+		
+	}
+		
+	
 	// 예금주 조회
 	@Override
 	public void AccountNameChk(HttpServletRequest req, Model model) {

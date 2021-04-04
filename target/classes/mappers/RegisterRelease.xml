@@ -68,6 +68,14 @@
     	WHERE a.id=#{id} AND a.accountState='정상'AND a.accountType='입출금'	 
   	</select>
   	
+  	<select id="selectTransferType" resultMap="accountMemberList">
+  		SELECT a.*, m.name
+  		FROM account_info a
+  		JOIN Members m
+  		  ON a.id = m.id
+    	WHERE a.id=#{id} AND a.accountState='정상' AND a.accountType IN ('입출금','대출')
+  	</select>
+  	
   	<select id="AccountNameChk" resultType="String">
   		SELECT m.name
   		FROM Members m

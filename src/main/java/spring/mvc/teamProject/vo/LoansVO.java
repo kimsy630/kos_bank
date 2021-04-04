@@ -4,29 +4,30 @@ import java.sql.Timestamp;
 
 public class LoansVO {
 	//public float EASD=1.5f;
-	private String d_Key;
-	private String d_name;
-	private String account;
-	private int d_state;
-	private Timestamp d_start_date;
-	private Timestamp d_end_date;
-	private int d_month;
-	private String d_repay;
-	private double d_rate;
-	private int d_amount;
-	private int d_balance;
-	private int d_balance_rate;
-	private int d_loan_balance;
-	private int d_loan_rate;
-	private int d_tran;
-	private int d_tran_rate;
-	private int d_next_rate;
-	private double d_ERR;
-	private int d_ERC;
+	private String d_Key; // 대출번호
+	private String d_name; // 대출 상품 이름
+	private String account; // 계좌번호
+	private int d_state; // 대출상태
+	private Timestamp d_start_date; // 대출실행일
+	private Timestamp d_end_date; // 대출만기일
+	private int d_month; // 대출기간
+	private String d_repay; // 상환방법
+	private double d_rate; // 대출금리
+	private int d_amount; // 대출원금
+	private int d_balance; // 대출잔액
+	private int d_balance_rate; // 이자 잔액
+	private int d_loan_balance; // 납입원금누액
+	private int d_loan_rate; // 납입이자누액
+	private int d_tran; // 이체(할)원금
+	private int d_tran_rate; // 이체(할)이자
+	private int d_next_rate; // 이체(할)이자실행번호
+	private double d_ERR; // 중도상환수수료율 (early redemption rate)
+	private int d_ERC; // 중도상환수수료 (early redemption charge)
+	private String d_auto_account; // 자동이체계좌
+	private int d_auto_date; // 자동이체일
 	private MembersVO Members;
 	private AccountVO accountVO;
-	
-	
+		
 	public AccountVO getAccountVO() {
 		return accountVO;
 	}
@@ -146,6 +147,18 @@ public class LoansVO {
 	}
 	public void setD_ERC(int d_ERC) {
 		this.d_ERC = d_ERC;
+	}
+	public String getD_auto_account() {
+		return d_auto_account;
+	}
+	public void setD_auto_account(String d_auto_account) {
+		this.d_auto_account = d_auto_account;
+	}
+	public int getD_auto_date() {
+		return d_auto_date;
+	}
+	public void setD_auto_date(int d_auto_date) {
+		this.d_auto_date = d_auto_date;
 	}
 	public MembersVO getMembers() {
 		return Members;

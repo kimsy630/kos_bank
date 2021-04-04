@@ -11,7 +11,6 @@ import spring.mvc.teamProject.vo.AutoTransferVO;
 
 @Repository
 public class AutoTransferDAOImpl implements AutoTransferDAO{
-	
 	@Autowired
 	SqlSession sqlSession;
 	
@@ -94,5 +93,20 @@ public class AutoTransferDAOImpl implements AutoTransferDAO{
 		return sqlSession.update("spring.mvc.teamProject.persistence.AutoTransferDAO.TransferYourLog", vo);
 	}
 	
-	
+   // 박서하
+   // 자동이체 신청(대출용)
+   @Override
+   public int AutoTransferAdd2(AutoTransferVO vo) {
+      return sqlSession.insert("spring.mvc.teamProject.persistence.AutoTransferDAO.AutoTransferAdd2", vo);
+   }
+   
+   // 자동이체 정보 조회(자동대출이체실행용)
+	public List<AutoTransferVO> loansSelectByDate(String day) {
+		List<AutoTransferVO> selectByDate = null;
+	      // 자동이체 조건 검색 쿼리
+	      selectByDate = sqlSession.selectList("spring.mvc.teamProject.persistence.AutoTransferDAO.loansSelectByDate",day);
+	      return selectByDate;
+	}
+   
+   
 }

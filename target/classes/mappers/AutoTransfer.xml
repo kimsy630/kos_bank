@@ -5,7 +5,6 @@
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
     
 <mapper namespace = "spring.mvc.teamProject.persistence.AutoTransferDAO">
-	
 	<resultMap id="AutoTransfer" type="spring.mvc.teamProject.vo.AutoTransferVO">
 	<result column="jd_key" property="jd_key" />
 	<result column="account" property="account" />
@@ -36,9 +35,9 @@
 	
 	<!-- 자동이체 조회 -->
 	<select id="AutoTransferList" resultMap="AutoTransfer">
-	SELECT *
-	FROM auto_transfer
-	WHERE account = #{account} AND jd_status='정상'
+		SELECT *
+		FROM auto_transfer
+		WHERE account = #{account} AND jd_status='정상'
 	</select>
 	
 	<!-- 자동이체 신청 -->
@@ -52,13 +51,39 @@
 			#{jd_outDate}, #{jd_account}, #{jd_inPlace}, #{jd_outCycle}, TO_DATE(#{jd_registDate}, 'YYYY-MM-DD'), TO_DATE(#{jd_expirationDate}, 'YYYY-MM-DD') )
 	</insert> 
 	
-	<!-- 자동이체 해지 정보조회 -->
-	<select id="AutoTransferDeleteList" resultType="spring.mvc.teamProject.vo.AutoTransferVO">
+	<!-- 박서하 -->
+   <!-- 자동이체 신청(대출용) -->
+      <insert id="AutoTransferAdd2" parameterType="spring.mvc.teamProject.vo.AutoTransferVO">
+      INSERT 
+      INTO auto_transfer
+         (jd_key, account, jd_autoMoney, 
+         jd_outDate,   jd_account, jd_inPlace, jd_outCycle, jd_registDate, jd_expirationDate, jd_type )
+      VALUES(
+         SEQ_AUTOTRANSFER.nextval, #{account}, #{jd_autoMoney},
+         #{jd_outDate}, #{jd_account}, #{jd_inPlace}, #{jd_outCycle}, TO_DATE(#{jd_registDate}, 'YYYY-MM-DD'), TO_DATE(#{jd_expirationDate}, 'YYYY-MM-DD'), #{jd_type} )
+   </insert> 
+	<!-- 자동이체 실행되는 Mapper -->
+	<!-- 자동이체 정보 조회 -->
+	<select id="selectByDate" resultType="spring.mvc.teamProject.vo.AutoTransferVO">
 		SELECT *
-		FROM auto_transfer
-		WHERE jd_key=#{jd_key} AND jd_status='정상'
+		FROM account_info i
+		JOIN auto_transfer a
+		 ON i.account = a.account
+		WHERE i.balance > a.jd_automoney
+		AND jd_outDate = #{day}
 	</select>
-	
+   
+   
+   <select id="loansSelectByDate" resultType="spring.mvc.teamProject.vo.AutoTransferVO">
+      SELECT *
+      FROM account_info i
+      JOIN auto_transfer a
+       ON i.account = a.account
+      WHERE i.balance > a.jd_automoney
+      AND jd_outDate = #{day}
+      AND jd_type like '대출%'
+   </select>
+   
 	<!-- 자동이체 삭제 -->
 	<update id="AutoTransferDelete" >
 		UPDATE auto_transfer
@@ -81,41 +106,31 @@
 	</update> -->
 	
 	
-	<!-- 자동이체 실행되는 Mapper -->
-	<!-- 자동이체 정보 조회 -->
-	<select id="selectByDate" resultType="spring.mvc.teamProject.vo.AutoTransferVO">
-		SELECT *
-		FROM account_info i
-		JOIN auto_transfer a
-		 ON i.account = a.account
-		WHERE i.balance > a.jd_automoney
-		AND jd_outDate = #{day}
-	</select>
+	
+   <!-- 자동이체 계좌 출금 -->
+   <update id="AutoWithdrawal" parameterType="spring.mvc.teamProject.vo.AutoTransferVO">
+      UPDATE account_info
+      SET   Balance=Balance - #{jd_autoMoney}
+      WHERE account = #{account}
+   </update>
+   
+   
+
+   <!-- 자동이체 상대계좌 입금 -->
+   <update id="AutoDeposit" parameterType="spring.mvc.teamProject.vo.AutoTransferVO">
+      UPDATE account_info
+      SET   Balance=Balance + #{jd_autoMoney}
+      WHERE account = #{jd_account}
+   </update>
 
 
-	<!-- 자동이체 계좌 출금 -->
-	<update id="AutoWithdrawal" parameterType="spring.mvc.teamProject.vo.AutoTransferVO">
-		UPDATE account_info
-		SET	Balance=Balance - #{jd_autoMoney}
-		WHERE account = #{account}
-	</update>
-
-
-	<!-- 자동이체 상대계좌 입금 -->
-	<update id="AutoDeposit" parameterType="spring.mvc.teamProject.vo.AutoTransferVO">
-		UPDATE account_info
-		SET	Balance=Balance + #{jd_autoMoney}
-		WHERE account = #{jd_account}
-	</update>
-
-
-	<!-- 자동이체 최근거래일자 -->
-	<update id="lastRunDate" parameterType="spring.mvc.teamProject.vo.AutoTransferVO">
-		UPDATE auto_transfer
-		SET
-		jd_autoLastDay = sysdate
-		WHERE jd_key = #{jd_key}
-	</update>
+   <!-- 자동이체 최근거래일자 -->
+   <update id="lastRunDate" parameterType="spring.mvc.teamProject.vo.AutoTransferVO">
+      UPDATE auto_transfer
+      SET
+      jd_autoLastDay = sysdate
+      WHERE jd_key = #{jd_key}
+   </update>
 
 	<!-- 자동이체 - 거래내역 로그(출금 거래내역)-->
 	<insert id="sendAutoTrans" parameterType="spring.mvc.teamProject.vo.AutoTransferListVO">
@@ -123,13 +138,23 @@
 		INTO auto_transferList (jd_key,jd_success, jd_inout)
 		VALUES(SEQ_AUTOTRANSFER.nextval, '성공', '자동출금')
 	</insert>
-
+	
+	
 	<!-- 자동이체 - 거래내역 로그(입금 거래내역) -->
 	<insert id="receiveAutoTrans" parameterType="spring.mvc.teamProject.vo.AutoTransferListVO">
 		INSERT
 		INTO auto_transferList (jd_key, jd_success, jd_inout)
 		VALUES(SEQ_AUTOTRANSFER.nextval, '성공', '자동입금')
 	</insert>
+   
+   <!-- 자동이체 해지 정보조회 -->
+   <select id="AutoTransferDeleteList" resultType="spring.mvc.teamProject.vo.AutoTransferVO">
+      SELECT *
+      FROM auto_transfer
+      WHERE jd_key=#{jd_key} AND jd_status='정상'
+   </select>
+   
+   
 	
 	<!-- 계좌이체내역 - 거래내역 로그(출금) -->
 	<insert id="TransferMyLog" parameterType="spring.mvc.teamProject.vo.AutoTransferListVO">
@@ -145,5 +170,7 @@
            JOIN members m
             ON m.id=a.id
             WHERE a.account = #{account}
-	</insert>
+   </insert> 
+   
+   
 </mapper>

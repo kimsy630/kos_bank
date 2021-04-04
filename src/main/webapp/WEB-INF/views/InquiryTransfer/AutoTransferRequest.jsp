@@ -62,6 +62,10 @@
                       <th >약정구분</th>
                       	<td colspan="4">
                       		<input type="radio" name="Auto_check" value="AutoTransferAdd" checked> 약정
+<<<<<<< HEAD
+=======
+                      		<input type="radio" name="Auto_check" value="AutoTransferModify"> 정정
+>>>>>>> dev_psh3
                      	 </td>
                     </tr>
                   </thead>

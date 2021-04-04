@@ -3,18 +3,17 @@ package spring.mvc.teamProject.vo;
 import java.sql.Timestamp;
 
 public class Loans_productVO {
-	private String d_name;
-	private Timestamp d_date;
-	private int d_interest_rate;
-	private String d_summary;
-	private int d_max_price;
-	private int d_min_price;
-	private int d_max_date;
-	private int d_min_date;
-	private String d_explanation1;
-	private String d_explanation2;
-	private String d_explanation3;
-	private String d_img;
+	private String d_name; // 대출 상품 이름
+	private Timestamp d_date; // 대출등록일
+	private double d_interest_rate; // 금리
+	private String d_summary; // 대출상품한줄요약
+	private int d_max_price; // 최대대출금액
+	private int d_min_price; // 최소대출금액
+	private int d_max_date; // 최대대출기간
+	private int d_min_date; // 최소대출기간
+	private String d_explanation1; // 상환방법
+	private String d_explanation2; // 유의사항
+	private String d_explanation3; // 부가서비스
 	private LoansVO loan;
 	
 	public String getD_name() {
@@ -29,10 +28,10 @@ public class Loans_productVO {
 	public void setD_date(Timestamp d_date) {
 		this.d_date = d_date;
 	}
-	public int getD_interest_rate() {
+	public double getD_interest_rate() {
 		return d_interest_rate;
 	}
-	public void setD_interest_rate(int d_interest_rate) {
+	public void setD_interest_rate(double d_interest_rate) {
 		this.d_interest_rate = d_interest_rate;
 	}
 	public String getD_summary() {
@@ -82,12 +81,6 @@ public class Loans_productVO {
 	}
 	public void setD_explanation3(String d_explanation3) {
 		this.d_explanation3 = d_explanation3;
-	}
-	public String getD_img() {
-		return d_img;
-	}
-	public void setD_img(String d_img) {
-		this.d_img = d_img;
 	}
 	public LoansVO getLoan() {
 		return loan;

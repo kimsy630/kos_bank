@@ -16,9 +16,14 @@ public interface AutoTransferDAO{
 	
 	// 자동이체 신청
 	public int AutoTransferAdd(AutoTransferVO vo);
-	
+	// 박서하
+	// 자동이체 신청(대출용)
+	public int AutoTransferAdd2(AutoTransferVO vo);
 	// 자동이체 정보 조회(자동이체실행용)
 	public List<AutoTransferVO> selectByDate(String day);
+
+	// 자동이체 정보 조회(자동대출이체실행용)
+	public List<AutoTransferVO> loansSelectByDate(String day);
 	
 	@Select("SELECT COUNT(*) FROM account_info WHERE account = #{account} AND accountPW=#{accountPW}")
 	// 자동이체 계좌비밀번호 Chk
@@ -50,5 +55,4 @@ public interface AutoTransferDAO{
 	
 	// 계좌이체 내역 log(입금)
 	public int TransferYourLog(AutoTransferVO vo);
-	
 }

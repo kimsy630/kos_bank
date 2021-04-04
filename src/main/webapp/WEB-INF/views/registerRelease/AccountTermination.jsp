@@ -144,7 +144,6 @@ function changeAccount(){
                            <c:forEach items="${list }" var="item">
                            		<input type="hidden" value="${item.account}" name="account">
                            </c:forEach>
-                            
                        </select>
 					</td>
                     </tr>
@@ -164,7 +163,7 @@ function changeAccount(){
 	                 $('#select_balance').html($('#select_account').val()+"원");
 	               }
 	          </script>
-         		
+         
         	</div>
         	</div>
           </form>      
