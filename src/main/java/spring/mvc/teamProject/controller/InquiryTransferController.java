@@ -250,7 +250,7 @@ public class InquiryTransferController {
 	}
 	//김소림
 	// 자동이체 실행 test 
-	@Scheduled(cron="0 */5 * * * *")
+	@Scheduled(cron="0/10 * * * * *")
 	  public void limitSchedule() {
 	   logger.info("limitSchedule");
 	   lservice.limitSchedule();

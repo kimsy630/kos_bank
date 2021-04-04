@@ -32,7 +32,7 @@
 	</resultMap>
 	
 	<select id="AccountLimitSearch" resultType="spring.mvc.teamProject.vo.AccountVO">
-		SELECT reset_accountLimit,reset_oneLimit
+		SELECT reset_accountLimit,reset_oneLimit,oneLimit,accountLimit
 		  FROM account_info
 		 WHERE account=#{account}
 	</select>
@@ -66,7 +66,37 @@
 	
 	<delete id= "getDeleteLimitList">
 		DELETE limit_info
-		WHERE  TO_CHAR(sysdate,'YYYY-MM-DD')=TO_CHAR(l_date+1,'YYYY-MM-DD')
+		 WHERE TO_CHAR(sysdate,'YYYY-MM-DD')=TO_CHAR(l_date+1,'YYYY-MM-DD')
+		   AND l_state='늘려줌'
 	</delete>
 	
+	<update id="accountLimitUpdate" >
+		UPDATE account_info
+		   SET accountLimit=#{l_money},oneLimit=#{l_money}
+		 WHERE account = #{account}
+	</update>
+	
+	<update id="LimitUseUpdate" >
+		UPDATE limit_info
+		   SET l_state='늘려줌'
+		 WHERE l_key=#{l_key}
+	</update>
+	
+	<select id="getLimitResetList" resultType="spring.mvc.teamProject.vo.LimitVO">
+		select * 
+		from limit_info
+		WHERE  TO_CHAR(sysdate,'YYYY-MM-DD')=TO_CHAR(l_date+1,'YYYY-MM-DD')
+		 AND l_state='늘려줌'
+	</select>
+	
+	<update id="accountResetUpdate" >
+		UPDATE account_info
+		   SET accountLimit = reset_accountLimit, oneLimit = reset_oneLimit
+		 WHERE account=#{account}
+	</update>
+	
+	<delete id="limitDelete">
+		DELETE limit_info
+		WHERE l_key=#{l_key}
+	</delete>
 </mapper>

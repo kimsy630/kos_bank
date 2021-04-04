@@ -53,16 +53,29 @@ public class LimitServiceImpl implements LimitService{
 		}
 		model.addAttribute("insertCnt", insertCnt);
 	}
-
+	
+	//한도변경 스캐줄러
 	@Override
 	public void limitSchedule() {
-		List<LimitVO> list = dao.getLimit();
 		
+		//늘려줄 한도계좌
+		List<LimitVO> list = dao.getLimit();
 		for(int i = 0; i< list.size();i++) {
 			Map<String, Object> map = new HashMap<String, Object>();
 			map.put("account",list.get(i).getAccount());
 			map.put("l_money",list.get(i).getL_money());
 			
+			int update = dao.accountLimitUpdate(map);
+			if(update==1)
+				dao.LimitUseUpdate(list.get(i).getL_key());
+		}
+		
+		//다시 줄여줄 한도 계좌
+		List<LimitVO> list2 = dao.getLimitResetList();
+		for(int i = 0; i< list2.size();i++) {
+			int update = dao.accountResetUpdate(list2.get(i).getAccount());
+			if(update==1)
+				dao.limitDelete(list2.get(i).getL_key());
 		}
 	}
 	
