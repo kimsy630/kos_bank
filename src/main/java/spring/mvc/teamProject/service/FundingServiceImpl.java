@@ -66,12 +66,12 @@ public class FundingServiceImpl implements FundingService{
 				List<FundingVO> list = FundingDAO.getFundingCategoryInfo(f_category);
 				int cnt = list.size();
 				for(int i = 0; i< cnt; i++) {
+					
 					String str_end_date = list.get(i).getF_end_date();
 					SimpleDateFormat transFormat = new SimpleDateFormat("yyyy-MM-dd");
 					Date end_date = transFormat.parse(str_end_date);
 					Date today = new Date();
-					
-					int compare = today.compareTo(end_date);
+					int compare = end_date.compareTo(today);
 					if(compare < 0) {
 						list.remove(i);
 					}
