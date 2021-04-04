@@ -519,7 +519,7 @@ public class LoanCenterServiceImpl implements LoanCenterService {
 	   vo.setAccountPW(Integer.parseInt(req.getParameter("accountPW")));
 	   vo.setBalance(0); // 처음에는 0원
 	   vo.setAccountType(req.getParameter("accountType"));
-	   vo.setAccountState("대기");
+	   vo.setAccountState("정상");
 	   
 	   insertCnt = dao.insertAccount(vo);
 	   System.out.println("계좌 생성 : " + insertCnt);
