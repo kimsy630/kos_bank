@@ -123,7 +123,7 @@
 		  FROM fixed_deposit f
 		  JOIN account_info a
 		    ON f.account = a.account
-		 WHERE f.y_end_date = TRUNC(sysdate) 
+		 WHERE TRUNC(f.y_end_date) = TRUNC(sysdate) 
 		   AND f.y_state = '만기전' 
 		   AND a.accountState = '정상'
 	</select>
@@ -133,7 +133,7 @@
 		  FROM installment_savings i
 		  JOIN account_info a
 		    ON i.account = a.account
-		 WHERE i.j_end_date = TRUNC(sysdate) 
+		 WHERE TRUNC(i.j_end_date) = TRUNC(sysdate) 
 		   AND i.j_state = '만기전' 
 		   AND a.accountState = '정상'
 	</select>

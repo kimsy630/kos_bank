@@ -64,7 +64,7 @@
                 <c:forEach items="${list}" var="item">
                 <article id="article" class="card card-custom card-corporate">
                  <div id="goods" class="goods">
-                 <h4 data-prd-cd="1130313506" data-sys-ds-cd="01"><a href="FDPdetail.cc">${item.j_name}</a></h4>
+                 <h4 data-prd-cd="1130313506" data-sys-ds-cd="01"><a href="SavingsDetail.cc?j_name=${item.j_name}">${item.j_name}</a></h4>
                  <p class="desc">${item.j_summary}</p>
                  </div>
                  <div id="interests" class="interests">

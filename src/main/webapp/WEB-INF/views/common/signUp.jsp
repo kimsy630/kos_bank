@@ -54,7 +54,6 @@ $(function(){
 			alert('비밀번호를 입력하세요');
 			return false;
 		}else if ($('#pwChk').val()) {
-
 			$('#pwChk').focus();
 			alert('비밀번호를 재확인을 입력하세요');
 			return false;

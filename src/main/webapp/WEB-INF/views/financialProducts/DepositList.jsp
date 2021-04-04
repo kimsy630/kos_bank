@@ -57,7 +57,7 @@
                 <c:forEach items="${list}" var="item">
                 <article id="article" class="card card-custom card-corporate">
                  <div id="goods" class="goods">
-                 <h4 data-prd-cd="1130313506" data-sys-ds-cd="01"><a href="FDPdetail.cc">${item.y_name}</a></h4>
+                 <h4 data-prd-cd="1130313506" data-sys-ds-cd="01"><a href="DepositDetail.cc?y_name=${item.y_name}">${item.y_name}</a></h4>
                  <p class="desc">${item.y_summary}</p>
                  </div>
                  <div id="interests" class="interests">
