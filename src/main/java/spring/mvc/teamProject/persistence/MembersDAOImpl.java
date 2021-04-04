@@ -33,7 +33,7 @@ public class MembersDAOImpl implements MembersDAO{
 
 	@Override
 	public MembersVO getMemberInfo(String id) {
-		return sqlSession.selectOne("spring.mvc.teamProject.persistence.MembersDAO.insertMember",id);
+		return sqlSession.selectOne("spring.mvc.teamProject.persistence.MembersDAO.getMemberInfo",id);
 	}
 	@Override
 	public int idCheck(String id) {//아이디 체크

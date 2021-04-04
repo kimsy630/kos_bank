@@ -118,6 +118,4 @@ public class AccountVO {
             + acc_state_content + ", accountLimit=" + accountLimit + ", delete_date=" + delete_date
             + ", sleep_date=" + sleep_date + ", new_date=" + new_date + ", member=" + member + "]";
    }
-    
-    
 }

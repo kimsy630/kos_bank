@@ -1,6 +1,8 @@
 package spring.mvc.teamProject.controller;
 
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -17,6 +19,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import spring.mvc.teamProject.service.MembersService;
@@ -63,50 +66,11 @@ public class CommonController extends HttpServlet {
 		return "common/logout";
 	}
 	
-	//@Scheduled(cron="*/10 * * * * *")
-   // public void scheduleTest() {
-   //     logger.info("스케쥴러 테스트중");
-   // }
-	
-	//idChk.cc
-	/*
-	@RequestMapping("/corfirmId.cc")
-	public String corfirmId(HttpServletRequest req,Model model) {
-		logger.info("url ==> /corfirmId");
-		categoryService.mainMenu(req, model);
-		memberService.confirmId(req, model);
-		return "common/corfirmId";
+	@RequestMapping(value = "androidLogiIn", method = {RequestMethod.GET,RequestMethod.POST})
+	public @ResponseBody Map<String, Object> androidSignIn(HttpServletRequest req){
+		logger.info("url ==> /androidLogiIn");
+		System.out.println("123123213");
+		Map<String, Object> map =memberService.androidLogiIn(req);
+		return map;
 	}
-	
-	@RequestMapping("/joinAction.cc")
-	public String joinAction(HttpServletRequest req,Model model) {
-		logger.info("url ==> /joinAction");
-		categoryService.mainMenu(req, model);
-		memberService.signInAction(req, model);
-		return "common/joinAction";
-	}
-	
-	@RequestMapping("/emailChk.cc")
-	public String emailChk(HttpServletRequest req,Model model) {
-		logger.info("url ==> /emailChk");
-		categoryService.mainMenu(req, model);
-		memberService.emailChk(req, model);
-		return "common/login";
-	}
-	@RequestMapping("/category.cc")
-	public String category(HttpServletRequest req,Model model) {
-		logger.info("url ==> /category");
-		categoryService.mainMenu(req, model);
-		productService.productCategoryList(req, model);
-		return "common/category";
-	}
-	
-	@RequestMapping("/products.cc")
-	public String products(HttpServletRequest req,Model model) {
-		logger.info("url ==> /category");
-		categoryService.mainMenu(req, model);
-		productService.productInfo(req, model);
-		return "common/products";
-	}
-	*/
 }

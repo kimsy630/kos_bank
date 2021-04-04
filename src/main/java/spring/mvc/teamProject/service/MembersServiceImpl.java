@@ -57,6 +57,33 @@ public class MembersServiceImpl implements MembersService{
 			model.addAttribute("msg","이미 존재하는 아이디 입니다.");
 		}
 	}
+
+	@Override
+	public Map<String, Object> androidLogiIn(HttpServletRequest req) {
+		// 안드로이드에서 전달한 값
+		String id = req.getParameter("id");
+		String pw = req.getParameter("pw");
+		
+		Map<String, String> in = new HashMap<String, String>();
+		in.put("id", id);
+		in.put("pw", pw);
+		//로그인
+		System.out.println(id);
+		MembersVO vo= memberDAO.getMemberInfo(id);
+
+		Map<String, Object> out = new HashMap<String, Object>();
+		if(vo!=null) {
+			if( passwordEncoder.matches(pw,vo.getPw())) {
+				out.put("id",id);
+			}else {
+				out.put("id",null);
+			}
+		}else {
+			out.put("id",null);
+		}
+		
+		return out;
+	}
 	
 	
 
