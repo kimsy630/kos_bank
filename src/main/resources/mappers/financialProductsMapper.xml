@@ -172,7 +172,6 @@
 		 WHERE account = #{account}
 	</update>
 	
-	
 	<select id="selectFreeLog" resultType="spring.mvc.teamProject.vo.AccountTransferVO">
 	SELECT money , in_outDate
 	  FROM account_transfer

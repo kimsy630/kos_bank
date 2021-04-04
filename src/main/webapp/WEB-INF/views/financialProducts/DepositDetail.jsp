@@ -10,11 +10,7 @@
 </head>
 <body>
 <%@ include file = "../header.jsp" %>
-
    <main id="main">
-   		
-   		
-   		
       <!-- ======= Breadcrumbs ======= -->
          <section class="section section-bredcrumbs">
            <div class="container context-dark breadcrumb-wrapper">
@@ -26,9 +22,7 @@
              </ul>
            </div>
          </section><!-- Breadcrumbs end -->
-      
       <br>
-      
        <section class="inner-page">
           <div class="container">
             <div class="card-body">
@@ -44,10 +38,8 @@
                   <!-- Button trigger for basic modal end -->
                </div>
                 <div><br>
-	           <h4>${vo.y_explanation}</h4><br><hr><br>
-	           <h4>${vo.y_notice}</h4>
+	           <h5><b>${vo.y_explanation}</b></h5>
 	           </div><br><hr><br><br>
-            
             <!-- ======= Table with outer spacing ======= -->
                 <div class="table-responsive">
                    <h4><b>상품안내</b></h4><br>
