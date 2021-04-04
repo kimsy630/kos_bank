@@ -31,7 +31,7 @@
 				        <div class="container">
 				          <img src="resources/images/chat.jpg"></img>
 							<script type="text/javascript">
-								location.href='http://localhost:3000/#/ServiceCenter/Chatbot';
+								location.href='http://localhost:3000/#/Chatbot';
 							</script>
 				        </div>
 				      </section>
