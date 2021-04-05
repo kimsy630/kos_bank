@@ -25,14 +25,12 @@
              </ul>
            </div>
          </section><!-- Breadcrumbs end -->
-      
       <br>
-      
        <section class="inner-page">
           <div class="container">
             <div class="card-body">
                   <p>
-                        <h2><b>${vo.j_name}</b></h2><br>
+                        <h3><b>${vo.j_name}</b></h3><br>
                         <h5>${vo.j_summary}</h5>
                   </p>
                   <!-- ======= Button trigger for basic modal ======= -->
@@ -43,8 +41,7 @@
                   <!-- Button trigger for basic modal end -->
                </div>
                 <div><br>
-	           <h4>${vo.j_explanation}</h4><br><hr><br>
-	           <h4>${vo.j_notice}</h4>
+	           <h5><b>${vo.j_explanation}</b></h5>
 	           </div><br><hr><br><br>
             
             <!-- ======= Table with outer spacing ======= -->

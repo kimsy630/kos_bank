@@ -69,7 +69,7 @@
                  </div>
                  <div id="interests" class="interests">
 				<em>연 <strong style="">${item.j_interest_rate}</strong><span>%</span></em>
-				<p>${item.j_notice}</p>
+				<p>(${item.j_notice})</p>
 				</div>
                  <div id="btns" class="button button-primary button-round" onclick="location.href='SavingsRegistration.do?j_name=${item.j_name}'">가입하기</div>
                 </article>

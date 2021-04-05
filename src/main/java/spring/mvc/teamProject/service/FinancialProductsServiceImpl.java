@@ -264,6 +264,8 @@ public class FinancialProductsServiceImpl implements FinancialProductsService{
 			vo4.setJd_account(sender_account);								// 적금계좌번호
 			vo4.setJd_type("적금");											// 적금구분
 			vo4.setJd_outDate(req.getParameter("jd_outDate"));				// 출금일자
+			
+			System.out.println(req.getParameter("jd_outDate"));
 			vo4.setJd_autoMoney(j_money); 									// 자동이체금액
 			
 			insertCnt = dao.AutoTransferAdd(vo4);							// 11.자동이체테이블에 삽입
@@ -376,10 +378,13 @@ public class FinancialProductsServiceImpl implements FinancialProductsService{
 		
 		List<Fixed_depositVO> list = dao.selectDepositEnd();				// 1. 예금테이블에서 오늘날짜가 만기인 계좌들을 찾아옴.
 		List<installment_savingsVO> list2 = dao.selectSavingsEnd();			// 1. 적금테이블에서 오늘날짜가 만기인 계좌들을 찾아옴.
-		
+		System.out.println(1);
 		if(list != null) {
-			for(Fixed_depositVO vo2 : list) {					
+			System.out.println(2);
+			for(Fixed_depositVO vo2 : list) {
+				System.out.println(3);
 				if(vo2.getY_type().equals("단리")) {								// 단/복리 판단
+					System.out.println(4);
 					String account = vo2.getAccount();							// 계좌명
 					double rate = vo2.getY_rate()*0.01;							// 연이율(이자율)
 					int balance = vo2.getY_balance();							// 최초예치금
@@ -387,10 +392,11 @@ public class FinancialProductsServiceImpl implements FinancialProductsService{
 					int interest = (int)(balance*(1+rate*month/12)) - balance;	// 지급할 이자금액
 					
 					dao.endDeposit(vo2);									// 2. 이 계좌를 만기상태로 변경
-					
+					System.out.println(interest);
 					TransferVO vo3 = new TransferVO();
 					vo3.setAccount("33-09-000001");
 					vo3.setSender_account(account);
+					System.out.println(account);
 					vo3.setMoney(interest);
 					vo3.setSender_name("KOS뱅크");
 					vo3.setOut_comment("만기이자지급");
@@ -446,9 +452,10 @@ public class FinancialProductsServiceImpl implements FinancialProductsService{
 						System.out.println("diff"+diff);
 						int day = (int)(diff / (1000 * 60 * 60 * 24));		// (만기일 - 해당일)  일수
 						interest += (int)(money * rate / 365 * day);		// 지급 이자를 더한다.
+						System.out.println("interest"+interest);
 						i++;
 					}
-					System.out.println("interest"+interest);
+					System.out.println("총interest"+interest);
 					
 					dao.endSavings(vo2);											// 2. 이 계좌를 만기상태로 변경
 					

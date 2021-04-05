@@ -42,9 +42,7 @@ public class FundingServiceImpl implements FundingService{
 			
 			try {
 				List<FundingVO> list = FundingDAO.getFundingAllInfo();
-				int cnt = list.size();
-				for(int i = 0; i< cnt; i++) {
-					
+				for(int i = 0; i< list.size(); i++) {
 					String str_end_date = list.get(i).getF_end_date();
 					SimpleDateFormat transFormat = new SimpleDateFormat("yyyy-MM-dd");
 					Date end_date = transFormat.parse(str_end_date);
@@ -52,6 +50,7 @@ public class FundingServiceImpl implements FundingService{
 					int compare = end_date.compareTo(today);
 					if(compare < 0) {
 						list.remove(i);
+						 i--;
 					}
 				}
 				model.addAttribute("list", list);
@@ -64,8 +63,7 @@ public class FundingServiceImpl implements FundingService{
 		else {
 			try {
 				List<FundingVO> list = FundingDAO.getFundingCategoryInfo(f_category);
-				int cnt = list.size();
-				for(int i = 0; i< cnt; i++) {
+				for(int i = 0; i< list.size(); i++) {
 					
 					String str_end_date = list.get(i).getF_end_date();
 					SimpleDateFormat transFormat = new SimpleDateFormat("yyyy-MM-dd");
@@ -74,6 +72,7 @@ public class FundingServiceImpl implements FundingService{
 					int compare = end_date.compareTo(today);
 					if(compare < 0) {
 						list.remove(i);
+						 i--;
 					}
 				}
 				model.addAttribute("list", list);
@@ -211,7 +210,7 @@ public class FundingServiceImpl implements FundingService{
 		// 펀드 구매(은행 계좌에 입금-수수료)
 		Map<String, Object> map5 = new HashMap<String, Object>();
 		map5.put("f_money", fees);
-		map5.put("account", "33-09-0000001");	//은행계좌 33-09-0000001
+		map5.put("account", "33-09-000001");	//은행계좌 33-09-000001
 		int deleteCnt5 = FundingDAO.depositRegistrantAccount(map5);
 		// 펀드 구매(등록자 입금에 대한 이체 history 작성)
 		Map<String, Object> map6 = new HashMap<String, Object>();
@@ -229,7 +228,7 @@ public class FundingServiceImpl implements FundingService{
 		int deleteCnt7 = FundingDAO.withdrawAccountTransfer(map7);
 		// 펀드 구매(은행 입금에 대한 이체 history 작성-수수료)
 		Map<String, Object> map8 = new HashMap<String, Object>();
-		map8.put("f_account", "33-09-0000001");
+		map8.put("f_account", "33-09-000001");
 		map8.put("account", account);
 		map8.put("f_money", fees);
 		map8.put("f_name", f_name);
@@ -237,7 +236,7 @@ public class FundingServiceImpl implements FundingService{
 		// 펀드 구매(등록자 출금에 대한 history 작성-수수료)
 		Map<String, Object> map9 = new HashMap<String, Object>();
 		map9.put("account", account);
-		map9.put("f_account", "33-09-0000001");
+		map9.put("f_account", "33-09-000001");
 		map9.put("f_money", fees);
 		map9.put("id", id);
 		int deleteCnt9 = FundingDAO.withdrawAccountTransfer(map9);
@@ -299,8 +298,6 @@ public class FundingServiceImpl implements FundingService{
          }
          
          strFileName = f_filename.getOriginalFilename();
-	      
-
 	      
 		String id = req.getParameter("id");
 		String account = req.getParameter("account");

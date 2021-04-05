@@ -277,20 +277,23 @@ public class LoanCenterServiceImpl implements LoanCenterService {
 			
 			vo3.setAccount(account);
 			vo3.setD_balance(d_balance);
+			System.out.println("테스트 d_balance" + vo3.getD_balance());
 			vo3.setD_loan_balance(1); // 원금 실행번호
 			updateCnt = dao.payLoanPrincipal1(vo3);
 			
 			vo3 = dao.checkLoanEnd(account);
 			
 			if (d_balance <= 100 ) { // 대출원금을 전액 상환했을 경우 (100원 단위 절삭)
+				System.out.println("들어가긴 한다");
 				dao.d_amountPayAll(account);
+				vo3 = dao.getLoanPrincipal(account);
 			}
-
-			System.out.println("되라account " + account);
-			System.out.println("account " + vo3.getD_loan_balance() + vo3.getD_month());
-			System.out.println("되라account " +  vo3.getD_loan_rate()  + vo3.getD_month());
+			
+			System.out.println("account 원금실행일자 달" + vo3.getD_loan_balance() + vo3.getD_month());
+			System.out.println("account 이자실행일자 달" +  vo3.getD_loan_rate()  + vo3.getD_month());
 			if(vo3.getD_loan_balance() > vo3.getD_month() && vo3.getD_loan_rate() > vo3.getD_month()) { // 대출원금과 이자를 모두 납부하였을 경우 대출 자동 해지
 				dao.LoanEnd(vo3);
+				
 			}
 			
 			System.out.println("원금상환 성공 : " + updateCnt);
@@ -302,7 +305,7 @@ public class LoanCenterServiceImpl implements LoanCenterService {
 			if(redemption.equals("equality")) {
 				vo4.setD_his_state("원금");
 			} else if(redemption.equals("early")) {
-				vo4.setD_his_state("중도상환");
+				vo4.setD_his_state("원금상환");
 			}
 			vo4.setD_his_amount(d_tran);
 			insertCnt = dao.payLoanPrincipal2(vo4);
@@ -494,206 +497,207 @@ public class LoanCenterServiceImpl implements LoanCenterService {
 	}
 
 	// 박서하
-   // 신규대출 신청 실행
-   @Override
-   public void LoanApplicationAction(HttpServletRequest req, Model model) {
-	   AccountVO vo = new AccountVO();
-	   
-	   // -------------------------------------------
-	   // 신규대출 신청 실행(입출금계좌 비밀번호 확인)
-	   int pwWithdraw = Integer.parseInt(req.getParameter("pwWithdraw").toString());
-	   String d_auto_account = req.getParameter("d_auto_account");
-	   
-	   vo.setAccount(d_auto_account);
-	   vo.setAccountPW(pwWithdraw);
-	   int insertCnt = dao.checkPwd(vo);
-	   if(insertCnt == 0) {
-		   model.addAttribute("insertCnt", insertCnt);
-		   return;
-	   }
-	   
-	   // -------------------------------------------
-	   // 신규대출 신청 실행(계좌 생성)
-	   
-	   vo.setId((String)req.getSession().getAttribute("id"));
-	   vo.setAccountPW(Integer.parseInt(req.getParameter("accountPW")));
-	   vo.setBalance(0); // 처음에는 0원
-	   vo.setAccountType(req.getParameter("accountType"));
-	   vo.setAccountState("정상");
-	   
-	   insertCnt = dao.insertAccount(vo);
-	   System.out.println("계좌 생성 : " + insertCnt);
-	   
-	   // -------------------------------------------
-	   // 신규대출 신청 실행(대출 생성)
-	   LoansVO vo2 = new LoansVO();
-	   
-	   vo2.setD_name(req.getParameter("d_name"));
-	   vo2.setD_state(0); // 대출상태  : 0 == 신청 단계
-	   vo2.setD_month(Integer.parseInt(req.getParameter("d_month")));
-	   vo2.setD_repay(req.getParameter("d_repay"));
-	   vo2.setD_rate(Double.parseDouble(req.getParameter("d_rate")));
-	   vo2.setD_amount(Integer.parseInt(req.getParameter("d_amount")));
-	   vo2.setD_balance(Integer.parseInt(req.getParameter("d_amount")));
-	   vo2.setD_balance_rate(0);
-	   vo2.setD_loan_balance(1); // 이체(할)원금실행번호 : 1 == 1차 상환예정
-	   vo2.setD_loan_rate(1); // 이체(할)이자실행번호 : 1 == 1차 납부예정
-	   vo2.setD_tran(0);
-	   vo2.setD_tran_rate(0);
-	   vo2.setD_next_rate(0);
-	   vo2.setD_ERR(1.5);
-	   vo2.setD_ERC(0);
-	   vo2.setD_auto_account(req.getParameter("d_auto_account"));
-	   vo2.setD_auto_date(Integer.parseInt(req.getParameter("d_auto_date")));
-	   
-	   int insertCnt2 = dao.insertLoan(vo2);
-	   System.out.println("대출 생성 : " + insertCnt2);
-	   
-	   LoansVO vo3 = new LoansVO();
-	   
-	   // -------------------------------------------
-	   // 신규대출 신청 실행(자동이체 신청-공통)
-	   String account = dao.getLoanAccount();
-	   int insertCnt3 = 0;
-	   int insertCnt4 = 0;
-	   
-	   if(vo2.getD_auto_date() != 0) { // 자동이체일 0이면 미신청
-		   vo3 = dao.getLoanInfo(account);
-		   
-		   if(vo3.getD_repay().equals("만기일시")) {
-			   
-			   // -------------------------------------------
-			   // 만기일시 이자 계산 1-1
-			   
-			   double d_rate = vo3.getD_rate();
-			   int d_amount = vo3.getD_amount();
-			   String d_key = vo3.getD_Key();
-			   
-			   int d_tran_rate = (int) (d_amount*((d_rate*0.01)/12)); // 대출원금*(금리%12개월)
-			   
-			   // -------------------------------------------
-			   // 만기일시 이자 지동이체 신청 1-2
+	   // 신규대출 신청 실행
+	   @Override
+	   public void LoanApplicationAction(HttpServletRequest req, Model model) {
+	      AccountVO vo = new AccountVO();
+	      
+	      // -------------------------------------------
+	      // 신규대출 신청 실행(입출금계좌 비밀번호 확인)
+	      int pwWithdraw = Integer.parseInt(req.getParameter("pwWithdraw").toString());
+	      String d_auto_account = req.getParameter("d_auto_account");
 
-			   java.text.SimpleDateFormat sdf = new java.text.SimpleDateFormat("yy/MM/dd"); // timestamp형 String으로 변환
-			   
-			   java.sql.Timestamp tD_end_date = vo3.getD_end_date();
-			   String sD_end_date = sdf.format(tD_end_date);
-			   System.out.println("string 만기일자" + sD_end_date);
-			   
-			   java.sql.Timestamp tD_start_date = vo3.getD_start_date();
-			   String sD_start_date = sdf.format(tD_start_date);
-			   System.out.println("string 만기일자" + sD_start_date);
-			   
-			   AutoTransferVO vo4 = new AutoTransferVO();
-			   
-			   vo4.setAccount(vo3.getD_auto_account());
-			   vo4.setJd_autoMoney(d_tran_rate);
-			   vo4.setJd_account("33-09-000001"); // KOS 본사 계좌 *하드코딩*
-			   vo4.setJd_outCycle("1개월");
-			   vo4.setJd_expirationDate(sD_end_date);
-			   vo4.setJd_registDate(sD_start_date);
-			   vo4.setJd_outDate(String.valueOf(vo3.getD_auto_date()));
-			   vo4.setJd_inPlace("KOS뱅크(만기이자)");
-			   vo4.setJd_type("대출"+d_key);
-			   
-			   insertCnt4 = aDAO.AutoTransferAdd2(vo4);
-			   System.out.println("vo4 : "+vo4);
-			   System.out.println("만기일시 이자 지동이체 신청 성공 : " + insertCnt4);
-			   
-			   // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-		   } else if(vo3.getD_repay().equals("원금균등분할")) {
-			   // 원금균등분할 원금 계산 2-1
-			   
-			   int d_month = vo3.getD_month();
-			   int d_amount = vo3.getD_amount();
-			   String d_key = vo3.getD_Key();
-			   
-			   int d_tran = d_amount / d_month;
-            
-			   // -------------------------------------------
-			   // 원금균등분할 원금 지동이체 신청 2-2
-            
-			   java.text.SimpleDateFormat sdf = new java.text.SimpleDateFormat("yy/MM/dd"); // timestamp형 String으로 변환
-              
-			   java.sql.Timestamp tD_end_date = vo3.getD_end_date();
-			   String sD_end_date = sdf.format(tD_end_date);
-			   System.out.println("string 만기일자" + sD_end_date);
-            
-			   java.sql.Timestamp tD_start_date = vo3.getD_start_date();
-			   String sD_start_date = sdf.format(tD_start_date);
-			   System.out.println("string 만기일자" + sD_start_date);
-            
-			   AutoTransferVO vo4 = new AutoTransferVO();
-            
-			   vo4.setAccount(vo3.getD_auto_account());
-			   vo4.setJd_autoMoney(d_tran);
-			   vo4.setJd_account("33-09-000001"); // KOS 본사 계좌 *하드코딩*
-			   vo4.setJd_outCycle("1개월");
-			   vo4.setJd_expirationDate(sD_end_date);
-			   vo4.setJd_registDate(sD_start_date);
-			   vo4.setJd_outDate(String.valueOf(vo3.getD_auto_date()));
-			   vo4.setJd_inPlace("KOS뱅크(원금원금)");
-			   vo4.setJd_type("대출"+d_key);
-            
-			   insertCnt3 = aDAO.AutoTransferAdd2(vo4);
-			   System.out.println("vo4 : "+vo4);
-			   System.out.println("원금균등분할 원금 지동이체 신청 성공 : " + insertCnt3);
-            
-			   // -------------------------------------------
-			   // 원금균등분할 이자 계산 2-3
-         
-			   double d_rate = vo3.getD_rate();
-			   int d_balance = vo3.getD_balance();
-            
-			   int d_tran_rate = (int) (d_balance*((d_rate*0.01)/12)); // 전회차 원금잔액*(금리%12개월)
-         
-			   // -------------------------------------------
-			   // 원금균등분할 이자 지동이체 신청 2-4
-			   
-			   vo4.setAccount(vo3.getD_auto_account());
-			   vo4.setJd_autoMoney(d_tran_rate);
-			   vo4.setJd_account("33-09-000001"); // KOS 본사 계좌 *하드코딩*
-			   vo4.setJd_outCycle("1개월");
-			   vo4.setJd_expirationDate(sD_end_date);
-			   vo4.setJd_registDate(sD_start_date);
-			   vo4.setJd_outDate(String.valueOf(vo3.getD_auto_date()));
-			   vo4.setJd_inPlace("KOS뱅크(원금이자)");
-			   vo4.setJd_type("대출"+d_key);
-            
-			   insertCnt4 = aDAO.AutoTransferAdd2(vo4);
-			   System.out.println("vo4 : "+vo4);
-			   System.out.println("원금균등분할 이자 지동이체 신청 성공 : " + insertCnt4);
-		   }
+	      vo.setAccount(d_auto_account);
+	      vo.setAccountPW(pwWithdraw);
+	      int insertCnt = dao.checkPwd(vo);
+	      if(insertCnt == 0) {
+	         model.addAttribute("insertCnt", insertCnt);
+	         return;
+	      }
+	      
+	      // -------------------------------------------
+	      // 신규대출 신청 실행(계좌 생성)
+	      
+	      vo.setId((String)req.getSession().getAttribute("id"));
+	      vo.setAccountPW(Integer.parseInt(req.getParameter("accountPW")));
+	      vo.setBalance(0); // 처음에는 0원
+	      vo.setAccountType(req.getParameter("accountType"));
+	      vo.setAccountState("대기");
+	      
+	      insertCnt = dao.insertAccount(vo);
+	      System.out.println("계좌 생성 : " + insertCnt);
+	      
+	      // -------------------------------------------
+	      // 신규대출 신청 실행(대출 생성)
+	      LoansVO vo2 = new LoansVO();
+	      
+	      vo2.setD_name(req.getParameter("d_name"));
+	      vo2.setD_state(0); // 대출상태  : 0 == 신청 단계
+	      vo2.setD_month(Integer.parseInt(req.getParameter("d_month")));
+	      vo2.setD_repay(req.getParameter("d_repay"));
+	      vo2.setD_rate(Double.parseDouble(req.getParameter("d_rate")));
+	      vo2.setD_amount(Integer.parseInt(req.getParameter("d_amount")));
+	      vo2.setD_balance(Integer.parseInt(req.getParameter("d_amount")));
+	      vo2.setD_balance_rate(0);
+	      vo2.setD_loan_balance(1); // 이체(할)원금실행번호 : 1 == 1차 상환예정
+	      vo2.setD_loan_rate(1); // 이체(할)이자실행번호 : 1 == 1차 납부예정
+	      vo2.setD_tran(0);
+	      vo2.setD_tran_rate(0);
+	      vo2.setD_next_rate(0);
+	      vo2.setD_ERR(1.5);
+	      vo2.setD_ERC(0);
+	      vo2.setD_auto_account(req.getParameter("d_auto_account"));
+	      vo2.setD_auto_date(Integer.parseInt(req.getParameter("d_auto_date")));
+	      
+	      int insertCnt2 = dao.insertLoan(vo2);
+	      System.out.println("대출 생성 : " + insertCnt2);
+	      
+	      LoansVO vo3 = new LoansVO();
+	      
+	      // -------------------------------------------
+	      // 신규대출 신청 실행(자동이체 신청-공통)
+	      String account = dao.getLoanAccount();
+	      int insertCnt3 = 0;
+	      int insertCnt4 = 0;
+	      
+	      if(vo2.getD_auto_date() != 0) { // 자동이체일 0이면 미신청
+	         vo3 = dao.getLoanInfo(account);
+	         
+	         if(vo3.getD_repay().equals("만기일시")) {
+	            
+	            // -------------------------------------------
+	            // 만기일시 이자 계산 1-1
+	            
+	            double d_rate = vo3.getD_rate();
+	            int d_amount = vo3.getD_amount();
+	            String d_key = vo3.getD_Key();
+	            
+	            int d_tran_rate = (int) (d_amount*((d_rate*0.01)/12)); // 대출원금*(금리%12개월)
+	                     
+	            // -------------------------------------------
+	            // 만기일시 이자 지동이체 신청 1-2
+
+	              java.text.SimpleDateFormat sdf = new java.text.SimpleDateFormat("yy/MM/dd"); // timestamp형 String으로 변환
+	              
+	              java.sql.Timestamp tD_end_date = vo3.getD_end_date();
+	              String sD_end_date = sdf.format(tD_end_date);
+	            System.out.println("string 만기일자" + sD_end_date);
+	            
+	            java.sql.Timestamp tD_start_date = vo3.getD_start_date();
+	              String sD_start_date = sdf.format(tD_start_date);
+	            System.out.println("string 만기일자" + sD_start_date);
+	            
+	            AutoTransferVO vo4 = new AutoTransferVO();
+	            
+	            vo4.setAccount(vo3.getD_auto_account());
+	            vo4.setJd_autoMoney(d_tran_rate);
+	            vo4.setJd_account("33-09-000001"); // KOS 본사 계좌 *하드코딩*
+	            vo4.setJd_outCycle("1개월");
+	            vo4.setJd_expirationDate(sD_end_date);
+	            vo4.setJd_registDate(sD_start_date);
+	            vo4.setJd_outDate(String.valueOf(vo3.getD_auto_date()));
+	            vo4.setJd_inPlace("KOS뱅크(만기이자)");
+	            vo4.setJd_type("대출"+d_key);
+	            
+	            insertCnt4 = aDAO.AutoTransferAdd2(vo4);
+	            System.out.println("vo4 : "+vo4);
+	            System.out.println("만기일시 이자 지동이체 신청 성공 : " + insertCnt4);
+	            
+	         // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	         } else if(vo3.getD_repay().equals("원금균등분할")) {
+	            // 원금균등분할 원금 계산 2-1
+	            
+	            int d_month = vo3.getD_month();
+	            int d_amount = vo3.getD_amount();
+	            String d_key = vo3.getD_Key();
+	            
+	            int d_tran = d_amount / d_month;
+	            
+	            // -------------------------------------------
+	            // 원금균등분할 원금 지동이체 신청 2-2
+	            
+	            java.text.SimpleDateFormat sdf = new java.text.SimpleDateFormat("yy/MM/dd"); // timestamp형 String으로 변환
+	              
+	              java.sql.Timestamp tD_end_date = vo3.getD_end_date();
+	              String sD_end_date = sdf.format(tD_end_date);
+	            System.out.println("string 만기일자" + sD_end_date);
+	            
+	            java.sql.Timestamp tD_start_date = vo3.getD_start_date();
+	              String sD_start_date = sdf.format(tD_start_date);
+	            System.out.println("string 만기일자" + sD_start_date);
+	            
+	            AutoTransferVO vo4 = new AutoTransferVO();
+	            
+	            vo4.setAccount(vo3.getD_auto_account());
+	            vo4.setJd_autoMoney(d_tran);
+	            vo4.setJd_account("33-09-000001"); // KOS 본사 계좌 *하드코딩*
+	            vo4.setJd_outCycle("1개월");
+	            vo4.setJd_expirationDate(sD_end_date);
+	            vo4.setJd_registDate(sD_start_date);
+	            vo4.setJd_outDate(String.valueOf(vo3.getD_auto_date()));
+	            vo4.setJd_inPlace("KOS뱅크(원금원금)");
+	            vo4.setJd_type("대출"+d_key);
+	            
+	            insertCnt3 = aDAO.AutoTransferAdd2(vo4);
+	            System.out.println("vo4 : "+vo4);
+	            System.out.println("원금균등분할 원금 지동이체 신청 성공 : " + insertCnt3);
+	            
+	            // -------------------------------------------
+	            // 원금균등분할 이자 계산 2-3
+	         
+	            double d_rate = vo3.getD_rate();
+	            int d_balance = vo3.getD_balance();
+	            
+	            int d_tran_rate = (int) (d_balance*((d_rate*0.01)/12)); // 전회차 원금잔액*(금리%12개월)
+	         
+	            // -------------------------------------------
+	            // 원금균등분할 이자 지동이체 신청 2-4
+	            
+	            vo4.setAccount(vo3.getD_auto_account());
+	            vo4.setJd_autoMoney(d_tran_rate);
+	            vo4.setJd_account("33-09-000001"); // KOS 본사 계좌 *하드코딩*
+	            vo4.setJd_outCycle("1개월");
+	            vo4.setJd_expirationDate(sD_end_date);
+	            vo4.setJd_registDate(sD_start_date);
+	            vo4.setJd_outDate(String.valueOf(vo3.getD_auto_date()));
+	            vo4.setJd_inPlace("KOS뱅크(원금이자)");
+	            vo4.setJd_type("대출"+d_key);
+	            
+	            insertCnt4 = aDAO.AutoTransferAdd2(vo4);
+	            System.out.println("vo4 : "+vo4);
+	            System.out.println("원금균등분할 이자 지동이체 신청 성공 : " + insertCnt4);
+	          }
+
+	      }
+	      
+	      // -------------------------------------------
+	      // 계좌이체(본사 -> 대출계좌)
+	      
+	      TransferVO vo5 = new TransferVO();
+	      
+	      vo5.setAccount("33-09-000001"); // 출금 계좌(KOS 본사 계좌 *하드코딩*)
+	      vo5.setSender_account(account); // 입금 계좌
+	      
+	      vo5.setMoney(Integer.parseInt(req.getParameter("d_amount")));
+	      System.out.println("이체(할) 원금 : " + vo5.getMoney());
+	      
+	      vo5.setSender_name("");
+	      vo5.setOut_comment("대출생성");
+	      vo5.setIn_comment("대출생성");
+	      
+	      int mylog = IDAO.addMyLog(vo5); // 내 계좌 이체내역
+	      int yourlog = IDAO.addYourLog(vo5); // 상대 계좌 입금내역
+	      IDAO.withdrawal(vo5); // 잔액 감소
+	      IDAO.deposit(vo5); // 상대 잔액 추가
+	      
+	      System.out.println("원금상환 mylog : " + mylog);
+	      System.out.println("원금상환 yourlog : " + yourlog);
+	      System.out.println("원금상환 vo5 : " + vo5);
+	      
+	      model.addAttribute("vo", vo);
+	      model.addAttribute("insertCnt", insertCnt);
+	      model.addAttribute("insertCnt2", insertCnt2);
 	   }
-      
-	   // -------------------------------------------
-	   // 계좌이체(본사 -> 대출계좌)
-      
-	   TransferVO vo5 = new TransferVO();
-      
-	   vo5.setAccount("33-09-000001"); // 출금 계좌(KOS 본사 계좌 *하드코딩*)
-	   vo5.setSender_account(account); // 입금 계좌
-      
-	   vo5.setMoney(Integer.parseInt(req.getParameter("d_amount")));
-	   System.out.println("이체(할) 원금 : " + vo5.getMoney());
-      
-	   vo5.setSender_name("");
-	   vo5.setOut_comment("대출생성");
-	   vo5.setIn_comment("대출생성");
-      
-	   int mylog = IDAO.addMyLog(vo5); // 내 계좌 이체내역
-	   int yourlog = IDAO.addYourLog(vo5); // 상대 계좌 입금내역
-	   IDAO.withdrawal(vo5); // 잔액 감소
-	   IDAO.deposit(vo5); // 상대 잔액 추가
-      
-	   System.out.println("원금상환 mylog : " + mylog);
-	   System.out.println("원금상환 yourlog : " + yourlog);
-	   System.out.println("원금상환 vo5 : " + vo5);
-      
-	   model.addAttribute("vo", vo);
-	   model.addAttribute("insertCnt", insertCnt);
-	   model.addAttribute("insertCnt2", insertCnt2);
-   	}
 	
 	// 박서하
 	// 자동이체 실행

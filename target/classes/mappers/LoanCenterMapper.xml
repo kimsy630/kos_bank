@@ -50,7 +50,7 @@
 	</select>
 		
 	<select id="getLoanPrincipal" resultType="spring.mvc.teamProject.vo.LoansVO"> <!-- 대출원금 예상 -->
-		SELECT d_Key, account, d_amount, d_month, d_ERR, d_balance, d_month, d_start_date, d_end_date, d_auto_account, d_loan_rate
+		SELECT d_Key, account, d_amount, d_month, d_ERR, d_balance, d_month, d_start_date, d_end_date, d_auto_account, d_loan_rate, d_loan_balance
 		 FROM Loans
 		 WHERE account = #{account}
 	</select>
@@ -72,7 +72,7 @@
 	</select>
 	
 	<update id="d_amountPayAll" parameterType="String"> <!-- 대출원금 상환완료 업데이트 -->
-		UPDATE Loans SET d_loan_balance = d_month + 1
+		UPDATE Loans SET d_loan_balance = d_month+1
 		 WHERE account = #{account}
 	</update>
 	
