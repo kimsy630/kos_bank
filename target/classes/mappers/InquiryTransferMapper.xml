@@ -124,7 +124,7 @@
 	
 	<!-- 적금조회 -->
 	<select id="IS_Table" parameterType="String" resultMap="installment_savings">
-		SELECT i.j_name, a.account, i.j_join_date, i.j_end_date, i.j_balance
+		SELECT i.j_name, a.account, i.j_join_date, i.j_end_date, i.j_balance,a.balance
 		  FROM account_info a
 		   JOIN installment_savings i
 		     ON a.account = i.account
@@ -154,7 +154,7 @@
 	 
 	 <!-- 예금조회 -->
 	 <select id="DepositTable" parameterType="String" resultMap="deposit">
-		SELECT i.accountType, i.account, f.y_join_date, f.y_end_date, f.y_balance
+		SELECT i.accountType, i.account, f.y_join_date, f.y_end_date, f.y_balance , i.balance
 		  FROM fixed_deposit f
 		  JOIN account_info i 
 		    ON f.account = i.account

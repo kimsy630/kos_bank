@@ -72,7 +72,7 @@
                       <th>신규일</th>
                       <th>만기일</th>
                       <th>최초예치액</th>
-                      <th>종류</th>
+                      <th>잔액</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -84,7 +84,7 @@
                       <td>${dto.y_join_date }</td>
                       <td>${dto.y_end_date }</td>
                       <td><fmt:formatNumber value="${dto.y_balance }" pattern="#,###" />원</td>
-                      <td>고객요청</td>
+                      <td><fmt:formatNumber value="${vo.balance}" pattern="#,###" />원</td>
                     </tr>
                     </c:forEach>
                 </table>

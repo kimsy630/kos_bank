@@ -81,7 +81,7 @@
                       <td>${vo.account }</td>
                       <td>${dto.j_join_date}</td>
                       <td>${dto.j_end_date }</td>
-                      <td><fmt:formatNumber value="${dto.j_balance }" pattern="#,###" />원</td>
+                      <td><fmt:formatNumber value="${vo.balance }" pattern="#,###" />원</td>
                     </tr>
                     </c:forEach>
                 </table>

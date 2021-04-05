@@ -247,7 +247,7 @@ public class FinancialProductsServiceImpl implements FinancialProductsService{
 		    Timestamp timestamp = new java.sql.Timestamp(parsedDate.getTime());
 			
 			vo.setJ_name(j_name);
-			vo.setAccount(account);
+			vo.setAccount(sender_account);
 			vo.setJ_rate(j_rate);
 			vo.setJ_type(j_type);
 			vo.setJ_money(j_money);
