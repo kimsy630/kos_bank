@@ -158,7 +158,7 @@ public class LoanCenterController {
 	
 	// 박서하
 	// 자동이체 실행 test 
-	@Scheduled(cron="1/5 * * * * *") // 5초 // 5분마다 (cron="0 */5 * * * *")
+	@Scheduled(cron="0 0 0/1 * * *")   // 5초마다 (cron="1/5 * * * * *") // 5분마다 (cron="0 */5 * * * *")
 	  public void scheduleTest() {
 	   logger.info("대출 test");
 	   loanservice.AutoTransferLoan();

@@ -298,11 +298,7 @@ public class LoanCenterServiceImpl implements LoanCenterService {
          Loans_historyVO vo4 = new Loans_historyVO();
          
          vo4.setD_Key(d_Key);
-         if(redemption.equals("equality")) {
-            vo4.setD_his_state("원금");
-         } else if(redemption.equals("early")) {
-            vo4.setD_his_state("원금상환");
-         }
+         vo4.setD_his_state("원금");
          vo4.setD_his_amount(d_tran);
          insertCnt = dao.payLoanPrincipal2(vo4);
          System.out.println("대출상환(납입) 내역 성공 : " + insertCnt);
@@ -405,7 +401,11 @@ public class LoanCenterServiceImpl implements LoanCenterService {
       int d_balance = vo.getD_balance();
       
       if(d_repay.equals("원금균등분할")) { // 전회차 원금잔액*(금리%12개월)
-         d_tran_rate = (int) (d_balance*((d_rate*0.01)/12));
+    	 if (vo.getD_loan_rate() != 1) {
+    		 d_tran_rate = (int) (d_balance*((d_rate*0.01)/12));
+    	 } else {
+    		 d_tran_rate = (int) (d_amount*((d_rate*0.01)/12)); // 실행번호 1일때 원금 기준으로 계산
+    	 }
          
          vo.setD_tran_rate(d_tran_rate);
          
@@ -807,7 +807,11 @@ public class LoanCenterServiceImpl implements LoanCenterService {
             Loans_historyVO vo3 = new Loans_historyVO();
                         
             if(jd_inPlace.equals("KOS뱅크(원금이자)")) { // 원금균등분할 이자 계산
-               d_tran_rate = (int) (d_balance*((d_rate*0.01)/12)); // 전회차 원금잔액*(금리%12개월)
+               if (vo2.getD_loan_rate() != 1) {
+          		 	d_tran_rate = (int) (d_balance*((d_rate*0.01)/12)); // 전회차 원금잔액*(금리%12개월)
+            	} else {
+          	 		d_tran_rate = (int) (vo2.getD_amount()*((d_rate*0.01)/12)); // 실행번호 1일때 원금 기준으로 계산
+          	 	}
                
                vo.setJd_autoMoney(d_tran_rate);
                
@@ -849,10 +853,10 @@ public class LoanCenterServiceImpl implements LoanCenterService {
             aDAO.TransferYourLog(vo);            
             
             // 자동이체내역 로그(출금)
-            aDAO.sendAutoTrans(vo);
+            // aDAO.sendAutoTrans(vo);
             
             // 자동이체내역 로그(입금)
-            aDAO.receiveAutoTrans(vo);
+            // aDAO.receiveAutoTrans(vo);
             
             if(jd_inPlace.equals("KOS뱅크(원금원금)")) {
                // Loans 변경

@@ -15,15 +15,17 @@
 		
 		// 약관 모두 동의여부
 		if($("input:checkbox[name=checkTerms]:checked").length < 4) {
-			alert("약관동의에 동의해주세요");
+			alert("약관동의가 완료되었습니다");
 			$("input:checkbox[name=checkTerms]").focus();
-			return false;
+			return false
 		}
-		
+	}
+	
+	function doCheck2() {	
 		if($("input:checkbox[name=lastCheck]:checked").length < 1) {
-			alert("상품 이해여부 확인을 체크해주세요");
+			alert("상품 이해여부 확인이 완료되었습니다");
 			$("input:checkbox[name=lastCheck]").focus();
-			return false;
+			return false
 		}
 		
 		return true;
@@ -243,10 +245,12 @@
 														<tr style="text-align: center; vertical-align: middle;">
 															<td>은행여신거래기본 약관</td>
 															<td><label><input type="checkbox"
-																	name="checkTerms"> 약관동의</label></td>
+																	id="checkTerms" name="checkTerms"> 약관동의</label></td>
 														</tr>
 													</table>
-							
+												</div>
+												
+												<div onchange="doCheck2()">
 													<%-- button --%>
 													<div class="btn-area">
 														<div class="btn-wrap" style="margin-left:100px">
