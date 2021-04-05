@@ -223,6 +223,65 @@
   		});
   	/* 숫자버튼 위 마우스 올려놓을시 적용 메서드 */
   	
+  	function changeAccount(){
+           
+         <c:forEach items="${list}" var="item">
+            if ("${item.account}"== $('#account').val()){
+                 var q = "";
+                 var w = "";
+                 var e = "";
+                 var r = "";
+                 var t = "";
+                 var a = "";
+                 var b = "";
+                 var c = "";
+                 var d = "";
+                 var f = "";
+                 var h = "";
+                 var k = "";
+                 var i = "";
+                 
+                 q = "${item.balance}"; 
+                 if(!"${item.balance}") {
+                    q = '0';
+                 }
+                 w = q.replace(/,/g ,"");
+                 e = parseInt(w);
+                 r = e.toString();
+                 t = r.toString().length - 3;
+                 while (t > 0) {
+                      r = r.substr(0, t) + "," + r.substr(t);
+                      t -= 3;
+                  }
+               $('#select_balance').html("잔액 :"+r+"원");
+            }
+         </c:forEach>
+          
+       }
+  	
+  	
+  	function changeRate() {
+  		
+  		var month = document.ispForm.months.value;
+  		
+  		if(month >= parseInt(${vo.j_max_date}*0.8)) {
+  			$('#rate').html(${vo.j_interest_rate}.toFixed(1)+"%");
+  			document.ispForm.j_rate.value=${vo.j_interest_rate}.toFixed(1);
+  		}else if(month >= parseInt(${vo.j_max_date}*0.6)) {
+  			$('#rate').html(${vo.j_interest_rate*0.9}.toFixed(1)+"%");
+  			document.ispForm.j_rate.value=${vo.j_interest_rate*0.9}.toFixed(1);
+  		}else if(month >= parseInt(${vo.j_max_date}*0.4)) {
+  			$('#rate').html(${vo.j_interest_rate*0.6}.toFixed(1)+"%");
+  			document.ispForm.j_rate.value=${vo.j_interest_rate*0.6}.toFixed(1);
+  		}else if(month >= parseInt(${vo.j_max_date}*0.2)) {
+  			$('#rate').html(${vo.j_interest_rate*0.3}.toFixed(1)+"%");
+  			document.ispForm.j_rate.value=${vo.j_interest_rate*0.3}.toFixed(1);
+  		}else if(month < parseInt(${vo.j_max_date}*0.2)) {
+  			$('#rate').html(${vo.j_interest_rate*0.1}.toFixed(1)+"%");
+  			document.ispForm.j_rate.value=${vo.j_interest_rate*0.1}.toFixed(1);
+  		}
+  		return;
+  	}
 	    </script>
 	    <style>
     	.btn-clipboard {
@@ -280,7 +339,7 @@
 				</div>
 				<br><br><hr></hr><br>
 				<p style="display:inline; margin-right:190px;">이자율</p>
-				<p style="display:inline;"><fmt:formatNumber value="${vo.j_interest_rate}"/>%</p>
+				<p id="rate" style="display:inline;">${vo.j_interest_rate}%</p>
 				<br><br><hr></hr><br>
                 <p style="display:inline; margin-right:175px;">적립방법</p>
                 <select class="form-select" aria-label="Default select example" name="method" onchange="selectMethod();">
@@ -313,7 +372,7 @@
                 <p style="display:inline; margin-right:175px;">가입기간</p>
                 <c:set var="j_min_date" value="${vo.j_min_date}" ></c:set>
                 <c:set var="j_max_date" value="${vo.j_max_date}" ></c:set>
-                <select name="months" class="form-select" aria-label="Default select example">
+                <select name="months" class="form-select" aria-label="Default select example" onchange="changeRate()">
 				  <option selected>선택</option>
 				  <% 
 				  	for(int i=(int)pageContext.getAttribute("j_min_date"); i<=(int)pageContext.getAttribute("j_max_date"); i++) {
@@ -351,12 +410,13 @@
 				<h3 style="display:inline;">자동이체 계좌정보</h3><p style="color:#92969c; display:inline;"></p><br><br>
 				<hr></hr><br>
 				<p style="display:inline; margin-right:110px;">자동이체 계좌번호</p>
-                <select name="accounts" class="form-select form-select-lg mb-4" aria-label="Default select example">
+                <select name="accounts" id="account" class="form-select form-select-lg mb-4" aria-label="Default select example" onchange="changeAccount()">
 				  <option selected>선택</option>
 				  <c:forEach items="${list}" var="item">
 				  <option value="${item.account}">${item.account}</option>
 				  </c:forEach>
-				</select>
+				</select>&nbsp
+				<div id="select_balance" style="display:inline; color:#0d6efd"></div>
 				<br><hr></hr>
 				<div style="display:inline; width:30%; text-align:center; margin-right:65px;">자동이체계좌 비밀번호</div>
 				<div style="display:inline-block; width:70%;">

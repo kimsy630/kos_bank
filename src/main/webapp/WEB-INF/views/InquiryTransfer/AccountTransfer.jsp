@@ -217,7 +217,8 @@
            
          <c:forEach items="${list}" var="item">
             if ("${item.account}"== $('#account').val()){
-               var q = "";
+            	
+               	 var q = "";
                  var w = "";
                  var e = "";
                  var r = "";
@@ -375,8 +376,8 @@
                   <th scope="col" class="balance">잔액 </th>
                         <td scope="col" id="select_balance" name="select_balance" style="color : blue;"></td>
                </tr>
-               <tr>      
-                     <th>이체한도조회</th> 
+               		   <tr>      
+                       <th>이체한도조회</th> 
                            <td scope="col" id="select_limit" name="select_limit" style="color : blue;"></td>
                        </tr>
                       <tr>    

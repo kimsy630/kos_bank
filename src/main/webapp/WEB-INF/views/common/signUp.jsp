@@ -49,11 +49,11 @@ $(function(){
 			alert('4자리 이상의 아이디를 입력하세요.');
 			$('#id').focus();
 			return false;
-		}else if ($('#pw').val()) {
+		}else if (!$('#pw').val()) {
 			$('#pw').focus();
 			alert('비밀번호를 입력하세요');
 			return false;
-		}else if ($('#pwChk').val()) {
+		}else if (!$('#pwChk').val()) {
 			$('#pwChk').focus();
 			alert('비밀번호를 재확인을 입력하세요');
 			return false;

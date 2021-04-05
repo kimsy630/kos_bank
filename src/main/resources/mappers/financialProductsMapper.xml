@@ -165,6 +165,7 @@
     		ON a.account = i.account
  		 WHERE t.jd_registDate != TO_DATE(TO_CHAR(i.j_join_date, 'YYYY-MM-DD'), 'YYYY-MM-DD')
  		   AND t.jd_outDate = #{day}
+ 		   AND i.j_state = '만기전'
 	</select>
 	
 	<update id="addBalance" parameterType="spring.mvc.teamProject.vo.installment_savingsVO">

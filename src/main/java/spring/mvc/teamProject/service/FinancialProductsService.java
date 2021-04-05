@@ -36,5 +36,4 @@ public interface FinancialProductsService {
 	// 자동이체용 메서드
 	public void autoTransfer();
 	
-	
 }

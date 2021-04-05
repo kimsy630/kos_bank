@@ -35,7 +35,7 @@
                   </p>
                   <!-- ======= Button trigger for basic modal ======= -->
                   <button type="button" class="btn btn-outline-primary block" data-bs-toggle="modal"
-                      data-bs-target="#default" onclick="document.location.href='SavingsRegistration.do?j_name=${item.j_name}'">
+                      data-bs-target="#default" onclick="document.location.href='SavingsRegistration.do?j_name=${vo.j_name}'">
                          	가입신청
                   </button>
                   <!-- Button trigger for basic modal end -->
@@ -86,8 +86,24 @@
                         <td style="text-align:center; background-color:#d9d9d9">금리(연이율)</td>
                      </tr>
                      <tr>
-                        <td style="text-align:center">${vo.j_min_date}개월~${vo.j_max_date}개월</td>
-                        <td style="text-align:center">${vo.j_interest_rate}%</td>
+                        <td style="text-align:center">약정기간의 80% 이상<fmt:parseNumber var= "month" integerOnly= "true" value= "${vo.j_max_date*0.8}" />(${month}달~)</td>
+                        <td style="text-align:center"><fmt:formatNumber var="fmt" value="${vo.j_interest_rate}" pattern="0.0"/>${fmt}%</td>
+                     </tr>
+                     <tr>
+                        <td style="text-align:center">약정기간의 60% 이상<fmt:parseNumber var= "month" integerOnly= "true" value= "${vo.j_max_date*0.6}" />(${month}달~)</td>
+                        <td style="text-align:center"><fmt:formatNumber var="fmt" value="${vo.j_interest_rate*0.9}" pattern="0.0"/>${fmt}%</td>
+                     </tr>
+                     <tr>
+                        <td style="text-align:center">약정기간의 40% 이상<fmt:parseNumber var= "month" integerOnly= "true" value= "${vo.j_max_date*0.4}" />(${month}달~)</td>
+                        <td style="text-align:center"><fmt:formatNumber var="fmt" value="${vo.j_interest_rate*0.6}" pattern="0.0"/>${fmt}%</td>
+                     </tr>
+                     <tr>
+                        <td style="text-align:center">약정기간의 20% 이상<fmt:parseNumber var= "month" integerOnly= "true" value= "${vo.j_max_date*0.2}" />(${month}달~)</td>
+                        <td style="text-align:center"><fmt:formatNumber var="fmt" value="${vo.j_interest_rate*0.3}" pattern="0.0"/>${fmt}%</td>
+                     </tr>
+                     <tr>
+                        <td style="text-align:center">20% 미만<fmt:parseNumber var= "month" integerOnly= "true" value= "${vo.j_max_date*0.2-1}" />(~${month}달)</td>
+                        <td style="text-align:center"><fmt:formatNumber var="fmt" value="${vo.j_interest_rate*0.1}" pattern="0.0"/>${fmt}%</td>
                      </tr>
                   </tbody>
                </table>
