@@ -137,7 +137,7 @@ public class FinancialProductsController {
 	  public void scheduleTest() throws Exception {
 	   logger.info("만기 test");
 	   //service.checkEnd();
-	   //service.autoTransfer();
+	   service.autoTransfer();
 	}
 	
 	

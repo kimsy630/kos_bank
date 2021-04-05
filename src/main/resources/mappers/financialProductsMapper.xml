@@ -79,7 +79,7 @@
 	
 	<insert id="insertDepositAccount" parameterType="spring.mvc.teamProject.vo.AccountVO">
 		INSERT INTO account_info(account,ID,accountPW,accountType,accountState)
-		VALUES(#{account},#{id},#{accountPW},'예금','정지')
+		VALUES(#{account},#{id},#{accountPW},'예금','정상')
 	</insert>
 	
 	<insert id="insertDeposit" parameterType="spring.mvc.teamProject.vo.Fixed_depositVO">
@@ -89,7 +89,7 @@
 	
 	<insert id="insertSavingsAccount" parameterType="spring.mvc.teamProject.vo.AccountVO">
 		INSERT INTO account_info(account,ID,accountPW,accountType,accountState)
-		VALUES(#{account},#{id},#{accountPW},'적금','정지')
+		VALUES(#{account},#{id},#{accountPW},'적금','정상')
 	</insert>
 	
 	<insert id="insertFreeSavings" parameterType="spring.mvc.teamProject.vo.installment_savingsVO">
