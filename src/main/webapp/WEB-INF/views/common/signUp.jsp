@@ -49,18 +49,47 @@ $(function(){
 			alert('4자리 이상의 아이디를 입력하세요.');
 			$('#id').focus();
 			return false;
-		}else if ($('#pw').val()) {
+		}else if (!$('#pw').val()) {
 			$('#pw').focus();
 			alert('비밀번호를 입력하세요');
 			return false;
-		}else if ($('#pwChk').val()) {
+		}else if (!$('#pwChk').val()) {
 			$('#pwChk').focus();
 			alert('비밀번호를 재확인을 입력하세요');
 			return false;
 		}else if ($('#pw').val() != $('#pwChk').val()) {
 			alert('비밀번호가 일치하지 않습니다.');
 			return false;
+		}else if (!$('#name').val()) {
+			alert('이름을 입력해주세요');
+			$('#name').focus()
+			return false;
+		}else if (!$('#jumin1').val()) {
+			alert('주민번호 앞자리를 입력해주세요.');
+			$('#jumin1').focus()
+			return false;
+		}else if (!$('#jumin2').val()) {
+			alert('주민번호 뒷자리를 입력해주세요.');
+			$('#jumin1').focus()
+			return false;
+		}else if (!$('#phone').val()) {
+			alert('핸드폰번호를 입력해주세요.');
+			$('#phone').focus()
+			return false;
+		}else if (!$('#sample4_postcode').val()) {
+			alert('주소를 입력해주세요.');
+			$('#sample4_postcode').focus()
+			return false;
+		}else if (!$('#sample4_detailAddress').val()) {
+			alert('상세주소를 입력해주세요.');
+			$('#sample4_detailAddress').focus()
+			return false;
+		}else if (!$('#job').val()) {
+			alert('직업을 입력해주세요.');
+			$('#job').focus()
+			return false;
 		}
+		$('#jumin').val($('#jumin1').val()+$('#jumin2').val());
 	});
 	
 });
@@ -77,40 +106,45 @@ $(function(){
 	<form action="signUpAction.cc" method="post" class="form-signin" role="form">
 	<input type = "hidden" name = "${_csrf.parameterName}" value = "${_csrf.token}">
 	
-	<div class="container my-5" style="width: 40%; min-width:400px; float:none; margin:0 auto">
+	<div class="container my-5  row" style="width: 40%; min-width:400px; float:none; margin:0 auto">
 		
-		<div class="form-group justify-content-center">
+		<div class="form-group justify-content-center col-lg-12">
 		 	<label for="id"><b>아이디</b></label>
 		 	<input type="text" class="form-control" placeholder="ID" id="id" name="id" ><!--onchange="corfirmId()" -->
 		 	<div id="idChktab"></div>
 		</div>
-		<div class="form-group">
+		<div class="form-group col-lg-12">
 		 	<label for="pw"><b>비밀번호</b></label>
 		 	<input type="password" class="form-control" placeholder="Password" id="pw" name="pw">
 		</div>
-		<div class="form-group">
+		<div class="form-group col-lg-12">
 		 	<label for="pwChk"><b>비밀번호 재확인</b></label>
 		 	<input type="password" class="form-control" placeholder="Password" id="pwChk" name="pwChk">
 		 	<div id="pwChktab"></div>
 		</div>
-		<div class="form-group">
+		<div class="form-group col-lg-12">
 		 	<label for="name"><b>이름</b></label>
 		 	<input type="text" class="form-control" placeholder="이름" id="name" name="name">
 		</div>
-		<div class="form-group">
-			<label for="jumin"><b>주민번호</b></label>
-			<input type="text" class="form-control" placeholder="000000-0000000"id="jumin" name="jumin">
+		<div class="form-group col-lg-6">
+			<label for="jumin" class="col-lg-12"><b>주민번호</b></label>
+			<div class="col-lg-12"><input type="text" class="form-control" placeholder="000000" id="jumin1" name="jumin1" maxlength="6"></div>
 		</div>
-		<div class="form-group">
+		<div class="form-group col-lg-6">
+			<br>
+			<div class="col-lg-12"><input type="password" class="form-control" placeholder="0000000" id="jumin2" name="jumin2" maxlength="7"></div>
+			<input type="hidden" class="form-control" placeholder="0000000"id="jumin" name="jumin">
+		</div>
+		<div class="form-group col-lg-12">
 		 	<label for="phone"><b>전화번호</b></label>
-		 	<input type="text" class="form-control" placeholder="010-0000-0000" id="phone" name="phone">
+		 	<input type="text" class="form-control" placeholder="01000000000" id="phone" name="phone" maxlength="11">
 		</div>
-		<div class="form-group">
+		<div class="form-group col-lg-12">
 		 	<label for="email"><b>이메일</b></label>
 		 	<input type="email" class="form-control" placeholder="Email" id="email" name="email">
 		 	<div id="emailChktab"></div>
 		</div>
-		<div class="form-group addr">
+		<div class="form-group addr col-lg-12">
 			<label for="post"><b>주소</b></label><br>				
 	        <input type="text" id="sample4_postcode" readonly="readonly" placeholder="우편번호" name="postnum">
 			<input type="button" onclick="sample4_execDaumPostcode()" value="우편번호 찾기"><br>
@@ -120,11 +154,11 @@ $(function(){
 			<input type="text" id="sample4_detailAddress" placeholder="상세주소" class="form-control" name="address3">
 			<input type="text" id="sample4_extraAddress" placeholder="참고항목" readonly="readonly" class="form-control" name="address4">
 		</div>
-		<div class="form-group">
+		<div class="form-group col-lg-12"">
 		 	<label for="job"><b>직업</b></label>
 		 	<input type="text" class="form-control" placeholder="직업" id="job" name="job">
 		</div>
-		<div class="form-group text-center">
+		<div class="form-group text-center col-lg-12"">
 		 	<input type="submit" value="가입하기" class="btn-dark">
 		</div>
 	</div>
