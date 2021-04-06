@@ -298,11 +298,7 @@ public class LoanCenterServiceImpl implements LoanCenterService {
          Loans_historyVO vo4 = new Loans_historyVO();
          
          vo4.setD_Key(d_Key);
-         if(redemption.equals("equality")) {
-            vo4.setD_his_state("원금");
-         } else if(redemption.equals("early")) {
-            vo4.setD_his_state("원금상환");
-         }
+         vo4.setD_his_state("원금");
          vo4.setD_his_amount(d_tran);
          insertCnt = dao.payLoanPrincipal2(vo4);
          System.out.println("대출상환(납입) 내역 성공 : " + insertCnt);
@@ -405,7 +401,11 @@ public class LoanCenterServiceImpl implements LoanCenterService {
       int d_balance = vo.getD_balance();
       
       if(d_repay.equals("원금균등분할")) { // 전회차 원금잔액*(금리%12개월)
-         d_tran_rate = (int) (d_balance*((d_rate*0.01)/12));
+        if (vo.getD_loan_rate() != 1) {
+           d_tran_rate = (int) (d_balance*((d_rate*0.01)/12));
+        } else {
+           d_tran_rate = (int) (d_amount*((d_rate*0.01)/12)); // 실행번호 1일때 원금 기준으로 계산
+        }
          
          vo.setD_tran_rate(d_tran_rate);
          
@@ -658,7 +658,7 @@ public class LoanCenterServiceImpl implements LoanCenterService {
                vo4.setJd_expirationDate(sD_end_date);
                vo4.setJd_registDate(sD_start_date);
                vo4.setJd_outDate(String.valueOf(vo3.getD_auto_date()));
-               vo4.setJd_inPlace("KOS뱅크(원금원금)");
+               vo4.setJd_inPlace("KOS뱅크(원금균등)");
                vo4.setJd_type("대출"+d_key);
                
                insertCnt3 = aDAO.AutoTransferAdd2(vo4);
@@ -780,34 +780,26 @@ public class LoanCenterServiceImpl implements LoanCenterService {
 
             System.out.println("vo1 : "+ vo);
             
+            if(jd_status.equals("해지")) {
+                i++;
+                continue;
+            }
+            
             // Loans UPDATE 실행
             d_Key = jd_type.substring(2);
             LoansVO vo2 = dao.getAutoLoan(d_Key); // 대출계좌
-            
-            if(vo2.getD_state()!=1) {
-               i++;
-               continue;
-            } else if(vo2.getD_repay().equals("만기일시")) {
-               if(vo2.getD_loan_rate() > vo2.getD_month()) {
-                  i++;
-                  continue;
-               }
-            } else if(vo2.getD_repay().equals("원금균등분할")) {
-               if(vo2.getD_loan_balance() > vo2.getD_month() && vo2.getD_loan_rate() > vo2.getD_month()) {
-                  i++;
-                  continue;
-               }
-            }
-            
-            // 대출상태가 정상이면서 원금 혹은 이자를 다 납부하지 않은 대출만 자동이체 실행   
             d_rate = vo2.getD_rate();
             d_balance = vo2.getD_balance();
             
             // Loans_historyVO UPDATE 실행
             Loans_historyVO vo3 = new Loans_historyVO();
-                        
+            
             if(jd_inPlace.equals("KOS뱅크(원금이자)")) { // 원금균등분할 이자 계산
-               d_tran_rate = (int) (d_balance*((d_rate*0.01)/12)); // 전회차 원금잔액*(금리%12개월)
+               if (vo2.getD_loan_rate() != 1) {
+                    d_tran_rate = (int) (d_balance*((d_rate*0.01)/12)); // 전회차 원금잔액*(금리%12개월)
+               } else {
+                    d_tran_rate = (int) (vo2.getD_amount()*((d_rate*0.01)/12)); // 실행번호 1일때 원금 기준으로 계산
+                 }
                
                vo.setJd_autoMoney(d_tran_rate);
                
@@ -816,7 +808,7 @@ public class LoanCenterServiceImpl implements LoanCenterService {
                vo3.setD_Key(Integer.parseInt(d_Key));
                vo3.setD_his_state("이자");
                vo3.setD_his_amount(d_tran_rate);
-            } else if(jd_inPlace.equals("KOS뱅크(원금원금)")) {
+            } else if(jd_inPlace.equals("KOS뱅크(원금균등)")) {
                d_balance = d_balance - jd_autoMoney;
                
                vo2.setD_balance(d_balance);
@@ -849,12 +841,12 @@ public class LoanCenterServiceImpl implements LoanCenterService {
             aDAO.TransferYourLog(vo);            
             
             // 자동이체내역 로그(출금)
-            aDAO.sendAutoTrans(vo);
+            // aDAO.sendAutoTrans(vo);
             
             // 자동이체내역 로그(입금)
-            aDAO.receiveAutoTrans(vo);
+            // aDAO.receiveAutoTrans(vo);
             
-            if(jd_inPlace.equals("KOS뱅크(원금원금)")) {
+            if(jd_inPlace.equals("KOS뱅크(원금균등)")) {
                // Loans 변경
                dao.payLoanPrincipal1(vo2);
                
@@ -885,7 +877,16 @@ public class LoanCenterServiceImpl implements LoanCenterService {
                // Loans_history 생성
                dao.payLoanRate2(vo3);
             }
-            
+
+            // 대출상태가 정상이면서 원금 혹은 이자를 다 납부하지 않은 대출만 자동이체 해지
+            if(vo2.getD_state()!=1) {
+               aDAO.AutoTransferDelete(account);
+             } else if(vo2.getD_repay().equals("만기일시")) {
+                aDAO.AutoTransferDelete(account);
+             } else if(vo2.getD_repay().equals("원금균등분할")) {
+                aDAO.AutoTransferDelete(account);
+             }
+             
             i++;               
          }
       }
