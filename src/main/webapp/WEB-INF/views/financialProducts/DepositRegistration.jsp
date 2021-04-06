@@ -252,7 +252,6 @@
 	  		return;
 	  	}
 	  	
-	  	
 	    </script>
 	    <style>
     	.btn-clipboard {

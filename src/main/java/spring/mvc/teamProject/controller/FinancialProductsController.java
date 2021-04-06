@@ -136,14 +136,10 @@ public class FinancialProductsController {
 	@Scheduled(cron= "*/10 * * * * *")
 	  public void scheduleTest() throws Exception {
 	   logger.info("만기 test");
-<<<<<<< HEAD
 	   service.checkEnd();
 	   //service.autoTransfer();
-=======
 	   //service.checkEnd();
 	   service.autoTransfer();
->>>>>>> e5ced4692027b7ebf25e8c646cf8178906eaef06
 	}
-	
 	
 }
