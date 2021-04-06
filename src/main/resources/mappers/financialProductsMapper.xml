@@ -158,14 +158,14 @@
 	
 	<select id="selectByDate" resultType="spring.mvc.teamProject.vo.AutoTransferVO">
 		SELECT t.*
-  		  FROM auto_transfer t
-  		  JOIN account_info a
-    		ON t.account = a.account
-  		  JOIN installment_savings i
-    		ON a.account = i.account
- 		 WHERE t.jd_registDate != TO_DATE(TO_CHAR(i.j_join_date, 'YYYY-MM-DD'), 'YYYY-MM-DD')
- 		   AND t.jd_outDate = #{day}
- 		   AND i.j_state = '만기전'
+		  FROM auto_transfer t
+		  JOIN account_info a
+		    ON t.jd_account = a.account
+		  JOIN installment_savings i
+		    ON t.jd_account = i.account
+		 WHERE TRUNC(sysdate) != TRUNC(i.j_join_date) 
+		   AND t.jd_outDate = #{day}
+		   AND i.j_state = '만기전'
 	</select>
 	
 	<update id="addBalance" parameterType="spring.mvc.teamProject.vo.installment_savingsVO">

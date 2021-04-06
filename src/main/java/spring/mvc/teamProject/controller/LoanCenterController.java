@@ -161,6 +161,6 @@ public class LoanCenterController {
 	@Scheduled(cron="0 0 0/1 * * *")   // 5초마다 (cron="1/5 * * * * *") // 5분마다 (cron="0 */5 * * * *")
 	  public void scheduleTest() {
 	   logger.info("대출 test");
-	   loanservice.AutoTransferLoan();
+	  // loanservice.AutoTransferLoan();
 	}
 }

@@ -245,7 +245,7 @@ public class InquiryTransferController {
 	@Scheduled(cron="0 */1 * * * *")
 	  public void scheduleTest() {
 	   logger.info("이체 test");
-	  Aservice.AutoTransferPractice();
+	  //Aservice.AutoTransferPractice();
 	}
 	//
 	//@Scheduled(cron="0 */5 * * * *")
@@ -295,6 +295,6 @@ public class InquiryTransferController {
 	@Scheduled(cron="0/10 * * * * *")
 	  public void limitSchedule() {
 	   logger.info("limitSchedule");
-	   lservice.limitSchedule();
+	  // lservice.limitSchedule();
 	}
 }
