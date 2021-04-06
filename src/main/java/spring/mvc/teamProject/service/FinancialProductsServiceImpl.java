@@ -230,19 +230,6 @@ public class FinancialProductsServiceImpl implements FinancialProductsService{
 			cal.setTime(ts);
 			cal.add(Calendar.MONTH, months);
 			ts.setTime(cal.getTime().getTime());
-			java.sql.Timestamp today = ts;
-			java.text.SimpleDateFormat sdf = new java.text.SimpleDateFormat("yy/MM/dd");
-			String test = sdf.format(today);
-			
-			Date parsedDate = new Date();
-			
-			SimpleDateFormat dateFormat = new SimpleDateFormat("yy/MM/dd");
-			try {
-				parsedDate = dateFormat.parse(test);
-			} catch (ParseException e) {
-				e.printStackTrace();
-			}
-		    Timestamp timestamp = new java.sql.Timestamp(parsedDate.getTime());
 			
 			vo.setJ_name(j_name);
 			vo.setAccount(sender_account);
@@ -250,7 +237,7 @@ public class FinancialProductsServiceImpl implements FinancialProductsService{
 			vo.setJ_type(j_type);
 			vo.setJ_money(j_money);
 			vo.setJ_method(j_method);
-			vo.setJ_end_date(timestamp);
+			vo.setJ_end_date(ts);
 			vo.setJ_auto_date(jd_outDate);
 			vo.setJ_month(months);
 			vo.setJ_balance(j_money);
@@ -339,10 +326,10 @@ public class FinancialProductsServiceImpl implements FinancialProductsService{
 		Date date = new Date();
 		long time = date.getTime();
 		Timestamp ts = new Timestamp(time);
-		
 		Calendar cal = Calendar.getInstance();
 		cal.setTime(ts);
 		cal.add(Calendar.MONTH, months);
+		
 		ts.setTime(cal.getTime().getTime());
 		java.text.SimpleDateFormat sdf = new java.text.SimpleDateFormat("yy/MM/dd");
 		String test = sdf.format(ts);
@@ -453,7 +440,6 @@ public class FinancialProductsServiceImpl implements FinancialProductsService{
 						System.out.println("interest"+interest);
 						i++;
 					}
-					System.out.println("총interest"+interest);
 					
 					dao.endSavings(vo2);											// 2. 이 계좌를 만기상태로 변경
 					
@@ -468,7 +454,7 @@ public class FinancialProductsServiceImpl implements FinancialProductsService{
 					IDAO.addMyLog(vo3);									
 																				
 					IDAO.addYourLog(vo3);								
-																			
+									
 					IDAO.deposit(vo3);	
 					
 				}else if(vo2.getJ_type().equals("정액적립")) {
