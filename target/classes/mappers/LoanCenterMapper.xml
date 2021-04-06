@@ -82,7 +82,7 @@
 	</update>
 	
 	<select id="getLoanRateCheckIn" resultType="spring.mvc.teamProject.vo.LoansVO"> <!-- 대출이자 예상(내부정보) -->
-		SELECT d_Key, account, d_repay, d_rate, d_amount, d_balance, d_auto_account
+		SELECT d_Key, account, d_repay, d_rate, d_amount, d_balance, d_auto_account, d_loan_rate, d_loan_balance
 		 FROM Loans
 		 WHERE account = #{account}
 	</select>
