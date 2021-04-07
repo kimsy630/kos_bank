@@ -72,7 +72,9 @@
 	                     	</tr>
 	                     	<tr>
 	                        	<td scope="col">출금 계좌번호</td>
-	                        	<td scope="col" colspan="3">${vo.d_auto_account}</td>
+	                        	<td scope="col">${vo.d_auto_account}
+	                        	<td scope="col">자동이체일자</td>
+	                        	<td scope="col">${vo.d_auto_date}일</td>
 	                     	</tr>
 	                  	</tbody>
 	               	</table>
