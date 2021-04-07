@@ -68,20 +68,24 @@
                   <thead>
                     <tr>
                       <th>계좌명</th>
+                      <th>적금방법</th>
                       <th>계좌번호</th>
                       <th>신규일</th>
                       <th>만기일</th>
                       <th>잔액(원)</th>
+                      <th>자동이체금액</th>
                     </tr>
                   </thead>
                   <c:forEach var="dto" items="${list}">
                   <c:set var="vo" value="${dto.getAccountVO()}"/>
                     <tr>
                       <td>${dto.j_name }</td>
+                      <td>${dto.j_method }</td>
                       <td>${vo.account }</td>
                       <td>${dto.j_join_date}</td>
                       <td>${dto.j_end_date }</td>
                       <td><fmt:formatNumber value="${vo.balance }" pattern="#,###" />원</td>
+                      <td><fmt:formatNumber value="${dto.j_money }" pattern="#,###" />원</td>
                     </tr>
                     </c:forEach>
                 </table>

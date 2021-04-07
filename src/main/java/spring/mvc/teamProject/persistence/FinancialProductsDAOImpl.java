@@ -209,30 +209,4 @@ public class FinancialProductsDAOImpl implements FinancialProductsDAO{
 		
 	}
 
-	
-
-	
-
-	
-
-	
-	
-	
-
-	
-
-	
-	
-	
-	
-
-	
-	
-
-	
-	
-	
-	
-	
-
 }

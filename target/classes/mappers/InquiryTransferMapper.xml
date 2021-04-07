@@ -124,7 +124,7 @@
 	
 	<!-- 적금조회 -->
 	<select id="IS_Table" parameterType="String" resultMap="installment_savings">
-		SELECT i.j_name, a.account, i.j_join_date, i.j_end_date, i.j_balance,a.balance
+		SELECT i.j_name, a.account, i.j_join_date, i.j_end_date, i.j_balance, a.balance, i.j_method, i.j_money 
 		  FROM account_info a
 		   JOIN installment_savings i
 		     ON a.account = i.account
@@ -187,7 +187,12 @@
 	 <select id="TransactionDetails_Table_ALL" parameterType="java.util.Map" resultType="spring.mvc.teamProject.vo.AccountTransferVO">
 	 	<![CDATA[
 		 	
-	SELECT *
+	SELECT abs(money) as money
+         , in_comment
+         , out_comment
+         , in_out
+         , in_outdate
+         , sender_account
 FROM (SELECT l.* , ROWNUM rnum
     FROM(SELECT money
          , in_comment
@@ -212,7 +217,7 @@ FROM (SELECT l.* , ROWNUM rnum
                 WHERE i.account=#{view_AccountNum}
                 AND t.in_out='입금'
                 UNION
-                select t.money,i.balance
+                select -t.money,i.balance
                      , t.in_comment
                      , t.out_comment
                      , t.in_out 

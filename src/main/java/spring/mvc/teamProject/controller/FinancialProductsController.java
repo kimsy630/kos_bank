@@ -138,9 +138,8 @@ public class FinancialProductsController {
 	   logger.info("만기 test");
 	   //service.checkEnd();
 	   //service.autoTransfer();
+	   //service.checkEnd();
+	   //service.autoTransfer();
 	}
-	
-	
-
 	
 }

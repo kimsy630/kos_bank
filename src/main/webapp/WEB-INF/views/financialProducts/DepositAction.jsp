@@ -10,7 +10,7 @@
 		<script type="text/javascript">
 		setTimeout(function(){
 			alert("출금계좌비밀번호가 틀립니다.");
-			window.location.href="DepositRegistration.cc?y_name=${y_name}";
+			window.location.href="DepositRegistration.do?y_name=${y_name}";
 		}, 1000); 
 		</script>
 	</c:when>
@@ -50,7 +50,7 @@
 		<script type="text/javascript">
 		setTimeout(function(){
 			alert("정기예금가입 신청에 오류가 발생했습니다.");
-			window.location.href="DepositRegistration.cc?y_name=${y_name}";
+			window.location.href="DepositRegistration.do?y_name=${y_name}";
 		}, 1000); 
 		</script>
 	</c:otherwise>
