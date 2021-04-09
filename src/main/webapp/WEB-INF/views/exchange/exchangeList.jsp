@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>환전</title>
 <style type="text/css">
 	th{
 		border-color:rgba(125,125,125,.1);

@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>적금상품</title>
 </head>
 <body>
 <%@ include file = "../header.jsp" %>

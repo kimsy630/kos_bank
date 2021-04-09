@@ -4,6 +4,7 @@
 <%@ include file = "../setting.jsp"%>
 <!DOCTYPE html>
 <html class="wide wow-animation" lang="en">
+<title>챗봇상담</title>
   <body>
     <div class="preloader">
       <div class="preloader-body">
@@ -29,12 +30,31 @@
 			    	<!-- Buttons with Shadow-->
 				      <section class="section section-lg bg-default">
 				        <div class="container">
-				          <h2>KOS BANK 챗봇이 편리하게 상담을 도와드립니다!</h2>
-				          <div class="group-xl group-middle buttons-group">
-				            <button class="button button-lg button-round button-block button-primary" type="submit">챗봇 상담 시작하기</button> 
-				          </div>
+				          <h3>KOS BANK 챗봇이 편리하게 상담을 도와드립니다!</h3>
 				        </div>
 				      </section>
+				      <!-- Start of UiPath Chatbot widget -->
+				    <script>
+				  window.addEventListener("message", function (event) {
+				      if (event.data.hasOwnProperty("frameSize")) {
+				          const size = event.data.frameSize;
+				          document.getElementById("uipath-chatbot-iframe").style.height = size.height;
+				          document.getElementById("uipath-chatbot-iframe").style.width = size.width;
+				      }
+				  });
+				</script>
+				<iframe src="https://chatbot.uipath.com/web-channel?connectionId=d540286e-65b0-4b90-8c76-7e4aa7a6cd6b"
+				  id="uipath-chatbot-iframe"
+				  style="
+				      z-index: 9999;
+				      position: fixed;
+				      bottom: 0;
+				      right: 0;
+				      height: 212px;
+				      width: 220px;
+				      border: 0;">
+				</iframe>
+				<!-- End of UiPath Chatbot widget -->
 				</form>
 				</div>
 				</main>

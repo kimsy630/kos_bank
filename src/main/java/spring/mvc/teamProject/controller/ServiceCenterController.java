@@ -32,12 +32,6 @@ public class ServiceCenterController {
 		logger.info("url ==> /Chatbot");
 		return "ServiceCenter/Chatbot";
 	}
-	// 챗봇상담 - 리액트 채팅창 URL 연동
-	@RequestMapping("/ChatbotAction.cc")
-	public String ChatbotAction(HttpServletRequest req,Model model) {
-		logger.info("url ==> /ChatbotAction");
-		return "ServiceCenter/ChatbotAction";
-	}
 	// 고객상담 - 글목록 조회
 	@RequestMapping("/Counseling.cc")
 	public String Counseling(HttpServletRequest req,Model model) {

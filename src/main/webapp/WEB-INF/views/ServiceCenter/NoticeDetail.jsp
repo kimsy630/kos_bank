@@ -6,6 +6,7 @@
 
 <!DOCTYPE html>
 <html class="wide wow-animation" lang="en">
+<title>공지사항</title>
   <body>
     <div class="preloader" >
       <div class="preloader-body">

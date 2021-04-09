@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>대출상품</title>
 <link rel="stylesheet" href="${path}css/productList.css" id="main-styles-link">
 </head>
 <body>
