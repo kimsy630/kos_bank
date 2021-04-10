@@ -1,6 +1,5 @@
 package spring.mvc.teamProject.vo;
 
-import java.sql.Timestamp;
 
 public class fundVO {
 	private int f_num;

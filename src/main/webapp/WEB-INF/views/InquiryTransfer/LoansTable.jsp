@@ -79,7 +79,7 @@
                       <td>${dto.d_name }</td>
                       <td>${vo.account }</td>
                       <td><fmt:formatNumber value="${vo.accountLimit }" pattern="#,###" />원</td>
-                      <td>${dto.d_end_date }</td>
+                      <td><fmt:formatDate pattern="YYYY-MM-dd" value="${dto.d_end_date }" /></td>
                       <td><fmt:formatNumber value="${dto.d_balance }" pattern="#,###" />원</td>
                       <td> 
                       	<div class="btn btn-primary" style= "padding:10px; width:80px; height:40px; font-size:12px; text-align:center; background-color:#fff; color:#000; display:inline;" onclick="location.href='LoanAccountCheck.do'">상환내역</div>  

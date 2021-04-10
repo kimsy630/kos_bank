@@ -20,29 +20,60 @@
 
      <script type="text/javascript">
     function btnClick(pageNum){
+    		
+    		$(function(){
+    			var startDate = $('#start_date').val();
+	   	         var endDate = $('#end_date').val();
+	   	         //-을 구분자로 연,월,일로 잘라내어 배열로 반환
+	   	         var startArray = startDate.split('-');
+	   	         var endArray = endDate.split('-');   
+	   	         //배열에 담겨있는 연,월,일을 사용해서 Date 객체 생성
+	   	         var start_date = new Date(startArray[0], startArray[1], startArray[2]);
+	   	         var end_date = new Date(endArray[0], endArray[1], endArray[2]);
+	   	          //날짜를 숫자형태의 날짜 정보로 변환하여 비교한다.
+	   	         if(start_date.getTime() > end_date.getTime()) {
+	   	             alert("종료날짜보다 시작날짜가 작아야합니다.");
+	   	             return false;
+   	         	}
+	   	              
+	   	   // _jsonInfo -> '컨트롤러'/basic5_next -> data -> <div id="json_result">에 결과를 뿌린다.
+	   	      $.ajax({
+	   	         url: 'TransactionDetails_Table.do?${_csrf.parameterName}=${_csrf.token}',  // '컨트롤러'/매핑주소
+	   	         type: 'POST',
+	   	         data: {
+	   	        	 view_AccountNum: $("#view_AccountNum").val(),
+	   	        	 start_date: $("#start_date").val(),
+	   	        	 end_date: $("#end_date").val(),
+	   	        	 pageNum: pageNum
+	   	         },
+	   	         success: function(data) {
+	   	            $('#Tran_result').html(data);
+	   	         },
+	   	         error: function() {
+	   	            alert('오류');
+	   	         }
+	   	      });      
+    		});
+	         
+    		
+    	
 
-	      // _jsonInfo -> '컨트롤러'/basic5_next -> data -> <div id="json_result">에 결과를 뿌린다.
-	      $.ajax({
-	         url: 'TransactionDetails_Table.do?${_csrf.parameterName}=${_csrf.token}',  // '컨트롤러'/매핑주소
-	         type: 'POST',
-	         data: {
-	        	 view_AccountNum: $("#view_AccountNum").val(),
-	        	 start_date: $("#start_date").val(),
-	        	 end_date: $("#end_date").val(),
-	        	 pageNum: pageNum
-	         },
-	         success: function(data) {
-	            $('#Tran_result').html(data);
-	         },
-	         error: function() {
-	            alert('오류');
-	         }
-	      });
+	      
     }
+    
+  //인풋데이트 설정
+	document.getElementById('start_date').value= new Date().toISOString().slice(0, 7);
+	document.getElementById('end_date').value= new Date().toISOString().slice(0, 7);
+	
+	
+	
+	
+    
     </script>
     
 <script>
-	document.getElementById('date').value= new Date().toISOString().slice(0, 7);
+	
+	
 </script>
 
 
@@ -93,7 +124,7 @@
        <section class="section section-lg bg-default">
         <div class="container">
          
-              	 <form action="TransactionDetails_Table.do" method="post" name="TD_From" style="text-align: center;">
+              	 <form action="TransactionDetails_Table.do" id="form" method="post" name="TD_From" style="text-align: center;">
               	 <input type="hidden" id="view_AccountNum" value="${param.account}">
               	 	<h6>거래내역조회</h6>
 		          <div style="background-color: #435ebe; color:#fff; width:1170px; height:2px;"> </div>
@@ -114,11 +145,13 @@
 	                    </tr>
 	                    <tr>
 	                      <td  id="td_body1" colspan="2" style="text-align: center;">
-	                      <c:if test="${param.state eq '정상' }">
+	                      
 	                      	<input id ="btn" onclick="btnClick()" type="button"  class="button button-round" style= "padding:10px 25px; width:90px; height:40px; font-size:15px; text-align:center; background-color:#fff; display: inline;" value="조회"> &nbsp;&nbsp;
-	                      </c:if>  
+	                      
 	                      		<!-- <button id ="btn" type="button"  class="button button-round" style= "padding:10px 25px; width:90px; height:40px; font-size:15px; text-align:center; background-color:#fff; display: inline;">조회</button> &nbsp;&nbsp;   -->
-                      	<div class="button button-round" style="padding:10px 30px; width:90px; height:40px; font-size:15px; text-align:center; background-color:#435ebe; color:#fff; display: inline;" onclick="location.href='AccountTransfer.cc'">이체</div>
+	                      		<c:if test="${param.state eq '정상' }">
+		                      	<div class="button button-round" style="padding:10px 30px; width:90px; height:40px; font-size:15px; text-align:center; background-color:#435ebe; color:#fff; display: inline;" onclick="location.href='AccountTransfer.cc'">이체</div>
+		                      	</c:if>  
 	                      </td>
 	                    </tr>
 	                </table>
