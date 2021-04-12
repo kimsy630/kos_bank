@@ -118,6 +118,7 @@
 		       WHERE i.id = #{id}
 		         AND i.accountType='입출금')
 		  WHERE RANKING=1
+		  ORDER BY in_outDate ASC
 
 	</select>
 	

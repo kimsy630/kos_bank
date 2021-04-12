@@ -82,8 +82,8 @@
                       <td>${dto.j_name }</td>
                       <td>${dto.j_method }</td>
                       <td>${vo.account }</td>
-                      <td>${dto.j_join_date}</td>
-                      <td>${dto.j_end_date }</td>
+                      <td><fmt:formatDate pattern="YYYY-MM-dd" value="${dto.j_join_date}" /></td>
+                      <td><fmt:formatDate pattern="YYYY-MM-dd" value="${dto.j_end_date }" /></td>
                       <td><fmt:formatNumber value="${vo.balance }" pattern="#,###" />원</td>
                       <td><fmt:formatNumber value="${dto.j_money }" pattern="#,###" />원</td>
                     </tr>

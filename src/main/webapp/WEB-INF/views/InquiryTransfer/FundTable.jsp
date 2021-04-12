@@ -81,7 +81,7 @@
                       <td>${vo.accountType}</td>
                       <td>${vo.account }</td>
                       <td><fmt:formatNumber value="${dto.f_target_money }" pattern="#,###" />원</td>
-                      <td>${dto.f_end_date }</td>
+                      <td><fmt:formatDate pattern="YYYY-MM-dd" value="${dto.f_end_date }" /></td>
                       <td><fmt:formatNumber value="${vo.balance }" pattern="#,###" />원</td>
                       
                     </tr>

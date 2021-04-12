@@ -87,9 +87,9 @@
                       	<td>${vo.delete_date }</td>
                       </c:if>
                       <c:if test="${vo.accountState == '휴면' }">
-                      	<td>${vo.sleep_date }</td>
+                      	<td><fmt:formatDate pattern="YYYY-MM-dd" value="${vo.sleep_date }" /></td>
                       </c:if>
-                      <td>${dto.in_outDate }</td>
+                      <td><fmt:formatDate pattern="YYYY-MM-dd" value="${dto.in_outDate }" /></td>
                       <td><fmt:formatNumber value="${vo.balance }" pattern="#,###" />원</td>
                       <td>${vo.accountState }</td>
                       <td>${vo.acc_state_content }</td>

@@ -67,8 +67,8 @@
                     <tr>
                       <th style="width: 10%;">계좌명</th>
                       <th style="width: 10%;">상태</th>
-                      <th style="width: 10%;">계좌번호</th>
-                      <th style="width: 15%;">신규일</th>
+                      <th style="width: 15%;">계좌번호</th>
+                      <th style="width: 10%;">신규일</th>
                       <th style="width: 15%;">최근거래일자</th>
                       <th style="width: 10%;">잔액(원)</th>
                       <th style="width: 15%;">업무</th>
@@ -80,8 +80,8 @@
                       <td>${vo.accountType}</td>
                       <td>${vo.accountState }</td>
                       <td>${vo.account}</td>
-                      <td>${vo.new_date}</td>
-                      <td>${dto.in_outDate}</td>
+                      <td><fmt:formatDate pattern="YYYY-MM-dd" value="${vo.new_date}" /></td>
+                      <td><fmt:formatDate pattern="YYYY-MM-dd" value="${dto.in_outDate}" /><br/><fmt:formatDate pattern="HH:mm:ss" value="${dto.in_outDate}" /></td>
                       <td><fmt:formatNumber value="${vo.balance}" pattern="#,###" />원</td>
                       <td> 
                       	<div class="btn btn-primary" style= "padding:10px 15px; font-size:15px; text-align:center; background-color:#fff; color:#000; display:inline;" onclick="location.href='TransactionDetails.do?account=${vo.account}&state=${vo.accountState}'">조회</div>&nbsp;&nbsp;
