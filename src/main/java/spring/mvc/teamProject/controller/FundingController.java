@@ -95,4 +95,11 @@ public class FundingController {
 		
 		return "Fund/FundAddAction";
 	}
+	// 펀드등록 - 타은행펀드수수료
+		@RequestMapping("/elk.cc")
+		public String elk(HttpServletRequest req,Model model) {
+			logger.info("url ==> /elk");
+			return "Fund/elk";
+		}
+	
 }

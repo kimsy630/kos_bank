@@ -138,6 +138,7 @@
                         <ul class="rd-menu rd-navbar-dropdown">
                           <li class="rd-dropdown-item"><a class="rd-dropdown-link" href="FundList.cc">펀드조회</a></li>
                           <li class="rd-dropdown-item"><a class="rd-dropdown-link" href="FundAdd.cc">펀드등록</a></li>
+                          <li class="rd-dropdown-item"><a class="rd-dropdown-link" href="elk.cc">운용사별 펀드정보</a></li>
                         </ul>
                       </li>
                       <li class="rd-nav-item">
