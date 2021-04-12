@@ -147,6 +147,7 @@
                           <li class="rd-dropdown-item"><a class="rd-dropdown-link" href="Notice.cc">공지사항</a></li>
                           <li class="rd-dropdown-item"><a class="rd-dropdown-link" href="Counseling.cc">고객상담</a></li>
                           <li class="rd-dropdown-item"><a class="rd-dropdown-link" href="Chatbot.cc">챗봇상담</a></li>
+                          <li class="rd-dropdown-item"><a class="rd-dropdown-link" href="ChatCounseling.cc">채팅상담</a></li>
                         </ul>
                       </li>
                       <c:if test="${id==null}">

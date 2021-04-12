@@ -32,6 +32,13 @@ public class ServiceCenterController {
 		logger.info("url ==> /Chatbot");
 		return "ServiceCenter/Chatbot";
 	}
+	// 채팅상담 - 채팅 화면
+	@RequestMapping("/ChatCounseling.cc")
+	public String ChatCounseling(HttpServletRequest req,Model model) {
+		logger.info("url ==> /ChatCounseling");
+		return "ServiceCenter/ChatCounseling";
+	}
+	
 	// 고객상담 - 글목록 조회
 	@RequestMapping("/Counseling.cc")
 	public String Counseling(HttpServletRequest req,Model model) {
