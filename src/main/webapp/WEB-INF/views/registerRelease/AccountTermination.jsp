@@ -28,7 +28,6 @@ function changeAccount(){
         t -= 3;
     }
  $('#select_balance').html(r+"원");
-
  /* $('#select_balance').html($('#select_account').val()+"원"); */
 }
 </script>
@@ -158,12 +157,6 @@ function changeAccount(){
 	                	<button type="submit" class="btn btn-primary" >계좌해지</button>
 	             	</div>
 	        	</div>
-	           <script>
-	                function changeAccount(){
-	                 $('#select_balance').html($('#select_account').val()+"원");
-	               }
-	          </script>
-         
         	</div>
         	</div>
           </form>      

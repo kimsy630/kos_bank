@@ -63,7 +63,9 @@ public class ExchangeServiceImpl implements ExchangeService{
 		try {
 			String country_name=req.getParameter("country_name");
 			String changeType=req.getParameter("changeType");
-			int money=Integer.parseInt(req.getParameter("money"));
+			String str_money=req.getParameter("money");
+			str_money = str_money.replaceAll("\\,", "");
+			int money=Integer.parseInt(str_money);
 			
 			List<ExchangeVO> list = ExcelImport.getStudentList();
 			

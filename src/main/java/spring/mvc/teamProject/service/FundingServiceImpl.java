@@ -305,6 +305,9 @@ public class FundingServiceImpl implements FundingService{
 		String f_start_date = req.getParameter("f_start_date");
 		String f_end_date = req.getParameter("f_end_date");
 		String f_target_money = req.getParameter("f_target_money");
+		//화폐단위 , 자르기
+		f_target_money = f_target_money.replaceAll("\\,", "");
+		
 		String f_category = req.getParameter("f_category");
 		String f_name = req.getParameter("f_name");
 		String f_phone = req.getParameter("f_phone");

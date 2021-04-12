@@ -234,7 +234,10 @@
                  
                  q = "${item.balance}"; 
                  a = "${item.accountLimit}";
+                 a = a.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+                 
                  b = "${item.oneLimit}";
+                 b = b.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
                  if(!"${item.balance}") {
                     q = '0';
                  }

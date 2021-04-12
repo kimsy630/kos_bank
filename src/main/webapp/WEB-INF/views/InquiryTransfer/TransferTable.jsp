@@ -48,7 +48,7 @@
 	                      <td id="sender_account">${vo.sender_account }</td>
 	                      <td id="out_comment">${vo.out_comment }</td>
 	                      <td id="sender_name">${vo.sender_name}</td>
-	                      <td id="money">${vo.money }</td>
+	                      <td id="money"><fmt:formatNumber value="${vo.money }" pattern="#,###" /></td>
 	                      <td>0원</td>
 	                      <td id="in_comment">${vo.in_comment }</td>
 	                      <td><button type="reset">취소</button></td>

@@ -5,8 +5,24 @@
 	src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.9.0/jquery.js"></script>
 <script src="/teamProject/resources/js/request.js"></script>
 
-
 <div class="grid-demonstration-item">
+
+<script type="text/javascript">
+	function inputNumberFormat(obj) {
+	     obj.value = comma(uncomma(obj.value));
+	 }
+
+	 function comma(str) {
+	     str = String(str);
+	     return str.replace(/(\d)(?=(?:\d{3})+(?!\d))/g, '$1,');
+	 }
+
+	 function uncomma(str) {
+	     str = String(str);
+	     return str.replace(/[^\d]+/g, '');
+	 }
+	 
+</script>
 	<script>
 		var changeType = "${ex.country_name}";
 	</script>
@@ -20,7 +36,7 @@
 		</tr>
 		<tr>
 			<th>환전금액<span id="countryname">(한국)</span></th>
-			<td><input type="text" name="money"></td>
+			<td><input type="text" name="money" onkeyup="inputNumberFormat(this)"></td>
 		</tr>
 		<tr>
 			<td colspan="2" style="text-align: center;"><input type="button"

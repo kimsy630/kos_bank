@@ -9,6 +9,25 @@
 	Date nowTime = new Date();
 	SimpleDateFormat sf = new SimpleDateFormat("yyyy-MM-dd");
 %>
+
+<script type="text/javascript">
+	function inputNumberFormat(obj) {
+	     obj.value = comma(uncomma(obj.value));
+	 }
+
+	 function comma(str) {
+	     str = String(str);
+	     return str.replace(/(\d)(?=(?:\d{3})+(?!\d))/g, '$1,');
+	 }
+
+	 function uncomma(str) {
+	     str = String(str);
+	     return str.replace(/[^\d]+/g, '');
+	 }
+	 
+	 
+	 
+</script>
 <!DOCTYPE html>
 <html class="wide wow-animation" lang="en">
 <title>펀드</title>
@@ -74,7 +93,8 @@
 										
 										<tr>
 											<td >목표 금액:</td>
-											<td ><input type="text" class="form-control" id="f_target_money" name="f_target_money" placeholder="목표 금액을 입력하세요." maxlength="20"></td>
+											<td ><input type="text" class="form-control" id="f_target_money" name="f_target_money" placeholder="목표 금액을 입력하세요." maxlength="20" onkeyup="inputNumberFormat(this)" />
+											</td>
 										</tr>
 										
 										<tr>
