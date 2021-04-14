@@ -8,7 +8,7 @@
 	<!-- MyBatis 설정 시작 -->
 	<!-- 컨넥션 풀 -->
 	<bean name = "dataSource" class = "org.springframework.jndi.JndiObjectFactoryBean">
-		<property name="jndiName" value = "java:comp/env/jdbc/teamProject"/>
+		<property name="jndiName" value = "java:comp/env/jdbc/AWS_Kos"/>
 		<property name="resourceRef" value = "true" />
 	</bean>
 	

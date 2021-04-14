@@ -86,7 +86,7 @@
                       <td> 
                       	<div class="btn btn-primary" style= "padding:10px 15px; font-size:15px; text-align:center; background-color:#fff; color:#000; display:inline;" onclick="location.href='TransactionDetails.do?account=${vo.account}&state=${vo.accountState}'">조회</div>&nbsp;&nbsp;
                       	<c:if test="${vo.accountState eq '정상' }">
-                      		<div class="btn btn-primary" style= "padding:10px 15px; font-size:15px; text-align:center; background-color: #435ebe; color:#fff; display:inline; border: black solid 1px ; " onclick="location.href='AccountTransfer.cc'">이체</div>
+                      		<div class="btn btn-primary" style= "padding:10px 15px; font-size:15px; text-align:center; background-color: #435ebe; color:#fff; display:inline; border: black solid 1px ; " onclick="location.href='AccountTransfer.do'">이체</div>
                       	</c:if>
                       </td>
                      </tr>

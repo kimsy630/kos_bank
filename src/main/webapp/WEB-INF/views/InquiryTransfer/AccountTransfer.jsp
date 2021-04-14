@@ -43,11 +43,11 @@
             },
             success : function(data){
                 //check.jsp에서 DB확인해서 출력은 index에서
-                $("#NameReturn").html(data);
+                $("#NameReturn").html(data+"<input type='hidden' id='yg' value='1'>");
                 //$("#ajaxReturn").html("(ex)사용할 수 있는 ID입니다.");
             },
             error : function(){
-                alert("error");
+                alert("존재하지 않는 계좌번호 입니다.");
             }
         
            });
@@ -56,6 +56,7 @@
    
    $(function () {
        $("#button").click(function () {
+    	   if($("#yg").val()==0)return;
            $.ajax({
             type : "get",
             url : "TransferTable.cc?sender_name="+$("#NameReturn").text(),
@@ -407,7 +408,7 @@
                   </tr>
                        <th>보내는분 통장 표시내용</th>
                             <td>
-                               <input type="text" id="out_comment" name="out_comment" style="width: 300px">
+                               <input type="text" id="out_comment" name="out_comment" style="width: 300px" maxlength='12' placeholder="12글자 이하로 입력해주세요">
                             </td>
                           </tr>
                     </table>
@@ -437,13 +438,13 @@
                       <tr>
                          <th>예금주</th>
                             <td>
-                               <div id="NameReturn" value="sender_name"></div>
+                               <div id="NameReturn" value="sender_name"><input type='hidden' id="yg" value='0'></div>
                             </td>
                       </tr>
                   </thead>
                     <tr>
                        <th>받는분 통장 표시내용</th>
-                      <td><input type="text" id="in_comment" name="in_comment" style="width: 300px">
+                      <td><input type="text" id="in_comment" name="in_comment" style="width: 300px" maxlength='12' placeholder="12글자 이하로 입력해주세요">
                       </td>
                     </tr>
                  </table>

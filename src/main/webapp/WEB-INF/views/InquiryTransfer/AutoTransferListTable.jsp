@@ -60,10 +60,10 @@
 	                      <td id="jd_expirationDate">${list.jd_expirationDate}</td>
 	                      <td>
 	                      	<form action="AutoTransferDelete.cc" method="post"> 	
-	                      		<input type="hidden" value="${list.account}" name="account">
+		                     	<button type="submit" class="button button-round" style= "padding:10px 20px; width:80px; height:40px; font-size:15px; text-align:center; background-color: #435ebe; color:#fff; ">해지</button>
+		                     	<input type="hidden" value="${list.account}" name="account">
 	                      		<input type="hidden" value="${list.jd_key}" name="jd_key">
 								<input type = "hidden" name = "${_csrf.parameterName}" value = "${_csrf.token}">
-		                     	<button type="submit" class="button button-round" style= "padding:10px 20px; width:80px; height:40px; font-size:15px; text-align:center; background-color: #435ebe; color:#fff; ">해지</button>
 	                      	</form>
 	                      </td>	
 	                  </c:forEach>    

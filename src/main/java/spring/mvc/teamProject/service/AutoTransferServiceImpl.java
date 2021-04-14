@@ -53,8 +53,13 @@ public class AutoTransferServiceImpl implements AutoTransferService {
 	@Override
 	public void AutoTransferAdd(HttpServletRequest req, Model model) {
 		AutoTransferVO vo = new AutoTransferVO();
+		String str_autoMoney = req.getParameter("jd_autoMoney");
+		
+		str_autoMoney = str_autoMoney.replaceAll("\\,", "");
+		
+		int jd_autoMoney = Integer.parseInt(str_autoMoney);
 		vo.setAccount(req.getParameter("account"));
-		vo.setJd_autoMoney(Integer.parseInt(req.getParameter("jd_autoMoney")));
+		vo.setJd_autoMoney(jd_autoMoney);
 		vo.setJd_account(req.getParameter("jd_account"));
 		vo.setJd_outCycle(req.getParameter("jd_outCycle"));
 		vo.setJd_expirationDate(req.getParameter("jd_expirationDate"));

@@ -36,22 +36,18 @@
                       <th>보내는분<br>통장표시내용</th>
                       <th>받는분</th>
                       <th>이체금액(원)</th>
-                      <th>수수료(원)</th>
                       <th>받는분<br>통장표시내용</th>
-                     <th>취소</th>
                     </tr>
                   </thead>
                   <tbody>
                     <tr>
-	                      <td id="account">${vo.account }</td>
-	                      <td>코스뱅크</td>
-	                      <td id="sender_account">${vo.sender_account }</td>
-	                      <td id="out_comment">${vo.out_comment }</td>
-	                      <td id="sender_name">${vo.sender_name}</td>
-	                      <td id="money"><fmt:formatNumber value="${vo.money }" pattern="#,###" /></td>
-	                      <td>0원</td>
-	                      <td id="in_comment">${vo.in_comment }</td>
-	                      <td><button type="reset">취소</button></td>
+	                      <td id="account" style="width:15%">${vo.account }</td>
+	                      <td style="width:10%" >코스뱅크</td>
+	                      <td id="sender_account" style="width:15%">${vo.sender_account }</td>
+	                      <td id="out_comment" style="width:15%">${vo.out_comment }</td>
+	                      <td id="sender_name" style="width:10%">${vo.sender_name}</td>
+	                      <td id="money" style="width:10%"><fmt:formatNumber value="${vo.money }" pattern="#,###" /></td>
+	                      <td id="in_comment" style="width:15%">${vo.in_comment }</td>	                 
                     </tr>
                   </tbody>
                 </table>

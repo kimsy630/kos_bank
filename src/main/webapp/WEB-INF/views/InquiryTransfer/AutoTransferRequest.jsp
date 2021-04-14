@@ -27,7 +27,21 @@
 		}
 		form.submit();
 	}
+	
+	function inputNumberFormat(obj) {
+	     obj.value = comma(uncomma(obj.value));
+	 }
 
+	 function comma(str) {
+	     str = String(str);
+	     return str.replace(/(\d)(?=(?:\d{3})+(?!\d))/g, '$1,');
+	 }
+
+	 function uncomma(str) {
+	     str = String(str);
+	     return str.replace(/[^\d]+/g, '');
+	 }
+	 
 </script>
 </head>
 <body>
@@ -147,7 +161,7 @@
 							</tr>
                     <tr>
 	                    <th>이체금액</th>
-	                    	<td colspan="4"><input type="text" id="jd_autoMoney" name="jd_autoMoney" style="width:200px" placeholder="금액을 입력해주세요">
+	                    	<td colspan="4"><input type="text" id="jd_autoMoney" name="jd_autoMoney" style="width:200px" placeholder="금액을 입력해주세요" onkeyup="inputNumberFormat(this)">
                     </tr>
                     <tr>
 	                    <th>이체 기관명</th>
