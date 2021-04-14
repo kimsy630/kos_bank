@@ -55,15 +55,14 @@
                             <ul class="rd-megamenu-list">
                               <li class="rd-megamenu-list-item"><a class="rd-megamenu-list-link" href="AccountCheck.do">보유계좌조회</a></li>
                               <li class="rd-megamenu-list-item"><a class="rd-megamenu-list-link" href="AccountCheck.do">거래내역 조회</a></li>
-                              <li class="rd-megamenu-list-item"><a class="rd-megamenu-list-link" href="AccountCheck.cc">해지계좌 조회</a></li>
-                              <li class="rd-megamenu-list-item"><a class="rd-megamenu-list-link" href="AccountCheck.cc">휴면계좌조회</a></li>
+                            
                             </ul>
                           </li>
                           <li class="rd-megamenu-item">
                             <h6 class="rd-megamenu-title">이체</h6>
                             <ul class="rd-megamenu-list">
-                              <li class="rd-megamenu-list-item"><a class="rd-megamenu-list-link" href="AccountTransfer.cc">계좌이체</a></li>
-                              <li class="rd-megamenu-list-item"><a class="rd-megamenu-list-link" href="MultiAccountTransfer.cc">다 계좌이체</a></li>
+                              <li class="rd-megamenu-list-item"><a class="rd-megamenu-list-link" href="AccountTransfer.do">계좌이체</a></li>
+                             <!--  <li class="rd-megamenu-list-item"><a class="rd-megamenu-list-link" href="MultiAccountTransfer.cc">다 계좌이체</a></li>--> 
                               <li class="rd-megamenu-list-item"><a class="rd-megamenu-list-link" href="ISPAdd.cc">적금추가납입</a></li>
                             </ul>
                           </li>
@@ -77,10 +76,8 @@
                           <li class="rd-megamenu-item">
                             <h6 class="rd-megamenu-title">자동이체</h6>
                             <ul class="rd-megamenu-list">
-                              <li class="rd-megamenu-list-item"><a class="rd-megamenu-list-link" href="AutoTransferList.cc">조회/해지</a></li>
-                              <li class="rd-megamenu-list-item"><a class="rd-megamenu-list-link" href="AutoTransferRequest.cc">자동이체 신청</a></li>
-                              <li class="rd-megamenu-list-item"><a class="rd-megamenu-list-link" href="AutoTransferChangeRank.cc">자동이체 우선순위변경</a></li>
-                              <li class="rd-megamenu-list-item"><a class="rd-megamenu-list-link" href="#">자동이체 통합관리</a></li>
+                              <li class="rd-megamenu-list-item"><a class="rd-megamenu-list-link" href="AutoTransferList.do">조회/해지</a></li>
+                              <li class="rd-megamenu-list-item"><a class="rd-megamenu-list-link" href="AutoTransferRequest.do">자동이체 신청</a></li>                              
                             </ul>
                           </li>
                         </ul>
@@ -137,7 +134,7 @@
                         <!-- RD Navbar Dropdown-->
                         <ul class="rd-menu rd-navbar-dropdown">
                           <li class="rd-dropdown-item"><a class="rd-dropdown-link" href="FundList.cc">펀드조회</a></li>
-                          <li class="rd-dropdown-item"><a class="rd-dropdown-link" href="FundAdd.cc">펀드등록</a></li>
+                          <li class="rd-dropdown-item"><a class="rd-dropdown-link" href="FundAdd.do">펀드등록</a></li>
                           <li class="rd-dropdown-item"><a class="rd-dropdown-link" href="elk.cc">운용사별 펀드정보</a></li>
                         </ul>
                       </li>

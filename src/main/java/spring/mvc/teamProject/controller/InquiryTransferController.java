@@ -138,7 +138,7 @@ public class InquiryTransferController {
 	//계좌이체 AccountTransfer.cc
 	//김소림
 	//계좌이체 페이지 AccountTransfer.cc 
-	@RequestMapping("/AccountTransfer.cc")
+	@RequestMapping("/AccountTransfer.do")
 	public String AccountTransfer(HttpServletRequest req,Model model) {
 		logger.info("url ==> /AccountTransfer");
 		service.AccountInoutLoansType(req, model);
@@ -177,7 +177,7 @@ public class InquiryTransferController {
 	}
 	//김소림
 	//자동이체신청 AutoTransferRequest.cc 
-	@RequestMapping("/AutoTransferRequest.cc")
+	@RequestMapping("/AutoTransferRequest.do")
 	public String AutoTransferRequest(HttpServletRequest req,Model model) {
 		logger.info("url ==> /AutoTransferRequest");
 		service.AccountInoutType(req, model);
@@ -193,7 +193,7 @@ public class InquiryTransferController {
 	}
 	//김소림
 	//자동이체조회 AutoTransferList.cc
-	@RequestMapping("/AutoTransferList.cc")
+	@RequestMapping("/AutoTransferList.do")
 	public String AutoTransferList(HttpServletRequest req,Model model) {
 		logger.info("url ==> /AutoTransferList");
 		service.AccountNomalList(req, model);

@@ -80,7 +80,7 @@ public class FundingController {
 	}
 	
 	// 펀드등록 - 펀드 등록 화면
-	@RequestMapping("/FundAdd.cc")
+	@RequestMapping("/FundAdd.do")
 	public String FundAdd(HttpServletRequest req,Model model) {
 		logger.info("url ==> /FundAdd");
 		return "Fund/FundAdd";
