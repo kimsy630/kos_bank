@@ -295,6 +295,6 @@ public class InquiryTransferController {
 	@Scheduled(cron="0/10 * * * * *")
 	  public void limitSchedule() {
 	   logger.info("limitSchedule");
-	  // lservice.limitSchedule();
+	   lservice.limitSchedule();
 	}
 }

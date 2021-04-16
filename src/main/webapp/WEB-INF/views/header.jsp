@@ -53,9 +53,7 @@
                           <li class="rd-megamenu-item">
                             <h6 class="rd-megamenu-title">계좌조회</h6>
                             <ul class="rd-megamenu-list">
-                              <li class="rd-megamenu-list-item"><a class="rd-megamenu-list-link" href="AccountCheck.do">보유계좌조회</a></li>
-                              <li class="rd-megamenu-list-item"><a class="rd-megamenu-list-link" href="AccountCheck.do">거래내역 조회</a></li>
-                            
+                              <li class="rd-megamenu-list-item"><a class="rd-megamenu-list-link" href="AccountCheck.do">보유계좌조회</a></li>                            
                             </ul>
                           </li>
                           <li class="rd-megamenu-item">
@@ -63,7 +61,6 @@
                             <ul class="rd-megamenu-list">
                               <li class="rd-megamenu-list-item"><a class="rd-megamenu-list-link" href="AccountTransfer.do">계좌이체</a></li>
                              <!--  <li class="rd-megamenu-list-item"><a class="rd-megamenu-list-link" href="MultiAccountTransfer.cc">다 계좌이체</a></li>--> 
-                              <li class="rd-megamenu-list-item"><a class="rd-megamenu-list-link" href="ISPAdd.cc">적금추가납입</a></li>
                             </ul>
                           </li>
                           <li class="rd-megamenu-item">
@@ -91,7 +88,6 @@
                             	<ul class="rd-megamenu-list">
 	                            	<li class="rd-megamenu-list-item"><a class="rd-megamenu-list-link" href="LoanAccountCheck.do">대출계좌 조회</a></li>
 	                              	<li class="rd-megamenu-list-item"><a class="rd-megamenu-list-link" href="LoanCloseCheck.do">대출해지현황 조회</a></li>
-	                              	<li class="rd-megamenu-list-item"><a class="rd-megamenu-list-link" href="#">신규대출</a></li>
 	                            </ul>
                           	</li>
                           	<li class="rd-megamenu-item">

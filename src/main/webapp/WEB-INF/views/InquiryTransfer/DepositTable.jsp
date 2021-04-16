@@ -81,9 +81,6 @@
                     <tr>
                       <td>${vo.accountType}</td>
                       <td>${vo.account}</td>
-                      <td>${dto.y_join_date}</td>
-                      <td>${dto.y_end_date}</td>
-                      <td>${vo.account }</td>
                       <td><fmt:formatDate pattern="YYYY-MM-dd" value="${dto.y_join_date }" /></td>
                       <td><fmt:formatDate pattern="YYYY-MM-dd" value="${dto.y_end_date }" /></td>
                       <td><fmt:formatNumber value="${dto.y_balance }" pattern="#,###" />원</td>

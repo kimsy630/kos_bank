@@ -89,7 +89,7 @@ $(function(){
 			$('#job').focus()
 			return false;
 		}
-		$('#jumin').val($('#jumin1').val()+$('#jumin2').val());
+		$('#jumin').val($('#jumin1').val()+"-"+$('#jumin2').val());
 	});
 	
 });

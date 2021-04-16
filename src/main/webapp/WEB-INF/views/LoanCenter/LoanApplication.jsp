@@ -168,6 +168,7 @@
                                                        <td>출금 계좌번호</td>
                                                        <td>
                                                    <select name="d_auto_account" lengthtype="length">
+                                                   		 <option>선택해주세요</option>
                                                        <c:forEach var="list" items="${list}">
                                                           <option value="${list.account}">${list.account}</option>
                                                        </c:forEach>

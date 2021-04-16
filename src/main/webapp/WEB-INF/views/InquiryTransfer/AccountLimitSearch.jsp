@@ -4,19 +4,19 @@
 
   <tr >
     <td>금일 일일한도</td>
-    <td>${ vo.accountLimit}</td>
+    <td><fmt:formatNumber pattern="#,###" value="${ vo.accountLimit}"/></td>
   </tr>
   
  <tr >
     <td>금일 일회한도</td>
-   <td>${ vo.oneLimit}</td>
+   <td><fmt:formatNumber pattern="#,###" value="${vo.oneLimit}"/></td>
   </tr>
  <tr >
-    <td>일일한도</td>
-    <td>${ vo.reset_accountLimit}</td>
+    <td>초기 일일한도</td>
+    <td><fmt:formatNumber pattern="#,###" value="${vo.reset_accountLimit}"/></td>
   </tr>
   
  <tr >
-    <td>일회한도</td>
-   <td>${ vo.reset_oneLimit}</td>
+    <td>초기 일회한도</td>
+   <td><fmt:formatNumber pattern="#,###" value="${vo.reset_oneLimit}"/></td>
   </tr>

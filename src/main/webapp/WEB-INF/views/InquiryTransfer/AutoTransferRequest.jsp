@@ -170,7 +170,6 @@
                     <tr>
                     	<th>입금계좌번호</th>
                     	<td colspan="4">
-	                    	<input type="text" id="jd_bank" name="jd_bank" style="width:100px" placeholder="은행명">
 	                    	<input type="text" name="jd_account" id="jd_account" style="width: 200px">
                     	</td>
                     </tr>
