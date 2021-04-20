@@ -98,7 +98,7 @@
 	                     	</tr>
 	                     	<c:forEach var="list" items="${list}">
 	                     		<tr>
-		                        	<td scope="col">${list.d_his_date}</td>
+		                        	<td scope="col"><fmt:formatDate pattern="YYYY-MM-dd" value="${list.d_his_date}" /></td>
 		                        	<td scope="col">${list.d_his_state}</td>
 		                        	<td scope="col"><fmt:formatNumber value="${list.d_his_amount}" pattern="#,###" /></td>
 		                     	</tr>

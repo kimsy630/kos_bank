@@ -242,7 +242,7 @@ public class InquiryTransferController {
 	}
 	//김소림
 	// 자동이체 실행 test 
-	@Scheduled(cron="0 */1 * * * *")
+	@Scheduled(cron="0/10 * * * * *")
 	  public void scheduleTest() {
 	   logger.info("이체 test");
 	  //Aservice.AutoTransferPractice();

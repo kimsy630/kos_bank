@@ -150,7 +150,7 @@ $(function () {
         <%@include file="../header.jsp" %>
           <section class="section section-bredcrumbs">
      <div class="container context-dark breadcrumb-wrapper">
-     <h2>자동이체조회</h2>
+     <h2>한도변경</h2>
           <br>
         </div>
       </section>

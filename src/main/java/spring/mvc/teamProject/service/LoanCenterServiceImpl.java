@@ -289,7 +289,7 @@ public class LoanCenterServiceImpl implements LoanCenterService {
          
          if(vo3.getD_loan_balance() > vo3.getD_month() && vo3.getD_loan_rate() > vo3.getD_month()) { // 대출원금과 이자를 모두 납부하였을 경우 대출 자동 해지
             dao.LoanEnd(vo3);
-            
+            dao.LoanAccountEnd(vo3.getAccount()); // 계좌(대출) 해지
          }
          
          System.out.println("원금상환 성공 : " + updateCnt);
@@ -350,7 +350,7 @@ public class LoanCenterServiceImpl implements LoanCenterService {
             
             if(vo3.getD_loan_balance() > vo3.getD_month()) { // 대출원금을 중도로 모두 납부하였을 경우 대출 자동 해지
                dao.LoanEnd(vo3);
-               
+               dao.LoanAccountEnd(vo3.getAccount()); // 계좌(대출) 해지
             }
             
             System.out.println("중도상환수수료 납입 성공 : " + updateCnt);
@@ -721,173 +721,194 @@ public class LoanCenterServiceImpl implements LoanCenterService {
          model.addAttribute("insertCnt", insertCnt);
          model.addAttribute("insertCnt2", insertCnt2);
       }
-   
+      
    // 박서하
-   // 자동이체 실행
-   @Override
-   public void AutoTransferLoan() {
-      
-      // 날짜포멧 - 지정일 이체를 위해 오늘 일자만 리턴
-      SimpleDateFormat format = new SimpleDateFormat("dd");
-      Date date = new Date();
-      
-      // 자동이체용 당일 날짜 출력 (day값만)
-      String day = format.format(date);
-      System.out.println("testDate : "+day);
-      
-      // 자동이체 조건 쿼리
-      int jd_key=0;
-      String account="";
-      String jd_account="";
-      String jd_type="";
-      int jd_autoMoney=0;
-      String jd_inPlace = "";
-      String jd_status = "";
-      System.out.println(Integer.toString(Integer.parseInt(day)));
-      int num = Integer.parseInt(day);
-      day= Integer.toString(num);
-      List<AutoTransferVO> transferInfo = aDAO.loansSelectByDate(day);
-      
-      System.out.println("자동이체 할 객체 Chk : "+ transferInfo);
-      
-      double d_rate = 0;
-      int d_tran_rate = 0;
-      int d_balance = 0;   
-      String d_Key = "";
-      
-      // 자동이체 실행
-      if(transferInfo != null) {
-         int i = 0;
-         while(i < transferInfo.size()) {
-            AutoTransferVO vo = new AutoTransferVO();
-            
-            // UPDATE 실행
-            jd_key = transferInfo.get(i).getJd_key();
-            account = transferInfo.get(i).getAccount();
-            jd_account = transferInfo.get(i).getJd_account();
-            jd_type = transferInfo.get(i).getJd_type();
-            jd_autoMoney = transferInfo.get(i).getJd_autoMoney();
-            jd_inPlace = transferInfo.get(i).getJd_inPlace();
-            jd_status = transferInfo.get(i).getJd_status();
-            
-            vo.setJd_key(jd_key);
-            vo.setAccount(account);
-            vo.setJd_account(jd_account);
-            vo.setJd_type(jd_type);
-            vo.setJd_autoMoney(jd_autoMoney);
-            vo.setJd_inPlace(jd_inPlace);
-            vo.setJd_status(jd_status);
+     // 자동이체 실행
+     @Override
+     public void AutoTransferLoan() {
+        
+        // 날짜포멧 - 지정일 이체를 위해 오늘 일자만 리턴
+        SimpleDateFormat format = new SimpleDateFormat("dd");
+        Date date = new Date();
+        
+        // 자동이체용 당일 날짜 출력 (day값만)
+        String day = format.format(date);
+        System.out.println("testDate : "+day);
+        
+        // 자동이체 조건 쿼리
+        int jd_key=0;
+        String account="";
+        String jd_account="";
+        String jd_type="";
+        int jd_autoMoney=0;
+        String jd_inPlace = "";
+        String jd_status = "";
+        System.out.println(Integer.toString(Integer.parseInt(day)));
+        int num = Integer.parseInt(day);
+        day= Integer.toString(num);
+        List<AutoTransferVO> transferInfo = aDAO.loansSelectByDate(day);
+        
+        System.out.println("자동이체 할 객체 Chk : "+ transferInfo);
+        
+        double d_rate = 0;
+        int d_tran_rate = 0;
+        int d_balance = 0;   
+        String d_Key = "";
+        
+        // 자동이체 실행
+        if(transferInfo != null) {
+           int i = 0;
+           while(i < transferInfo.size()) {
+              AutoTransferVO vo = new AutoTransferVO();
+              
+              // UPDATE 실행
+              jd_key = transferInfo.get(i).getJd_key();
+              account = transferInfo.get(i).getAccount();
+              jd_account = transferInfo.get(i).getJd_account();
+              jd_type = transferInfo.get(i).getJd_type();
+              jd_autoMoney = transferInfo.get(i).getJd_autoMoney();
+              jd_inPlace = transferInfo.get(i).getJd_inPlace();
+              jd_status = transferInfo.get(i).getJd_status();
+              
+              vo.setJd_key(jd_key);
+              vo.setAccount(account);
+              vo.setJd_account(jd_account);
+              vo.setJd_type(jd_type);
+              vo.setJd_autoMoney(jd_autoMoney);
+              vo.setJd_inPlace(jd_inPlace);
+              vo.setJd_status(jd_status);
 
-            System.out.println("vo1 : "+ vo);
-            
-            if(jd_status.equals("해지")) {
-                i++;
-                continue;
-            }
-            
-            // Loans UPDATE 실행
-            d_Key = jd_type.substring(2);
-            LoansVO vo2 = dao.getAutoLoan(d_Key); // 대출계좌
-            d_rate = vo2.getD_rate();
-            d_balance = vo2.getD_balance();
-            
-            // Loans_historyVO UPDATE 실행
-            Loans_historyVO vo3 = new Loans_historyVO();
-            
-            if(jd_inPlace.equals("KOS뱅크(원금이자)")) { // 원금균등분할 이자 계산
-               if (vo2.getD_loan_rate() != 1) {
-                    d_tran_rate = (int) (d_balance*((d_rate*0.01)/12)); // 전회차 원금잔액*(금리%12개월)
-               } else {
-                    d_tran_rate = (int) (vo2.getD_amount()*((d_rate*0.01)/12)); // 실행번호 1일때 원금 기준으로 계산
+              System.out.println("vo1 : "+ vo);
+              
+              // Loans UPDATE 실행
+              d_Key = jd_type.substring(2);
+              LoansVO vo2 = dao.getAutoLoan(d_Key); // 대출계좌
+              
+              if(vo2.getD_state()!=1) {
+                 i++;
+                 continue;
+              } else if(vo2.getD_repay().equals("만기일시")) {
+                 if(vo2.getD_loan_rate() > vo2.getD_month()) {
+                    i++;
+                    continue;
                  }
-               
-               vo.setJd_autoMoney(d_tran_rate);
-               
-               vo2.setD_loan_rate(1);
-               
-               vo3.setD_Key(Integer.parseInt(d_Key));
-               vo3.setD_his_state("이자");
-               vo3.setD_his_amount(d_tran_rate);
-            } else if(jd_inPlace.equals("KOS뱅크(원금균등)")) {
-               d_balance = d_balance - jd_autoMoney;
-               
-               vo2.setD_balance(d_balance);
-               vo2.setD_loan_balance(1); // 원금 실행번호
-               
-               vo3.setD_Key(Integer.parseInt(d_Key));
-               vo3.setD_his_state("원금");
-               vo3.setD_his_amount(jd_autoMoney);
-            } else if(jd_inPlace.equals("KOS뱅크(만기이자)")) { 
-               vo2.setD_loan_rate(1);
-               
-               vo3.setD_Key(Integer.parseInt(d_Key));
-               vo3.setD_his_state("이자");
-               vo3.setD_his_amount(jd_autoMoney);
-            }
-                        
-            // 출금 UPDATE
-            aDAO.AutoWithdrawal(vo);
-            
-            // 입금 UPDATE
-            aDAO.AutoDeposit(vo);
-            
-            // 최근거래내역 UPDATE
-            aDAO.lastRunDate(vo);
-            
-            // 계좌이체 테이블 로그(출금)
-            aDAO.TransferMyLog(vo);
-            
-            // 계좌이체 테이블 로그(입금)
-            aDAO.TransferYourLog(vo);            
-            
-            // 자동이체내역 로그(출금)
-            // aDAO.sendAutoTrans(vo);
-            
-            // 자동이체내역 로그(입금)
-            // aDAO.receiveAutoTrans(vo);
-            
-            if(jd_inPlace.equals("KOS뱅크(원금균등)")) {
-               // Loans 변경
-               dao.payLoanPrincipal1(vo2);
-               
-               // Loans_history 생성
-               dao.payLoanPrincipal2(vo3);
-               
-               vo2 = dao.getAutoLoan(d_Key); // 계산식 reset
-               
-               if(vo2.getD_loan_balance() > vo2.getD_month() && vo2.getD_loan_rate() > vo2.getD_month()) { // 대출원금과 이자를 모두 납부하였을 경우 대출 자동 해지
-                  
-                  dao.LoanEnd(vo2);
-               }
-            } else if(jd_inPlace.equals("KOS뱅크(원금이자)")) {
-               // Loans 변경
-               dao.payLoanRate1(vo2);
-               // Loans_history 생성
-               dao.payLoanRate2(vo3);
-               
-               vo2 = dao.getAutoLoan(d_Key); // 계산식 reset
-               
-               if(vo2.getD_loan_balance() > vo2.getD_month() && vo2.getD_loan_rate() > vo2.getD_month()) { // 대출원금과 이자를 모두 납부하였을 경우 대출 자동 해지
-                  
-                  dao.LoanEnd(vo2);
-               }
-            } else if(jd_inPlace.equals("KOS뱅크(만기이자)")) {
-               // Loans 변경
-               dao.payLoanRate1(vo2);
-               // Loans_history 생성
-               dao.payLoanRate2(vo3);
-            }
+              } else if(vo2.getD_repay().equals("원금균등분할")) {
+                 if(vo2.getD_loan_balance() > vo2.getD_month() && vo2.getD_loan_rate() > vo2.getD_month()) {
+                    i++;
+                    continue;
+                 }
+              }
+              
+              // 대출상태가 정상이면서 원금 혹은 이자를 다 납부하지 않은 대출만 자동이체 실행   
+              d_rate = vo2.getD_rate();
+              d_balance = vo2.getD_balance();
+              
+              // Loans_historyVO UPDATE 실행
+              Loans_historyVO vo3 = new Loans_historyVO();
+                          
+              if(jd_inPlace.equals("KOS뱅크(원금이자)")) { // 원금균등분할 이자 계산
+                    if (vo2.getD_loan_rate() != 1) {
+                         d_tran_rate = (int) ((d_balance+(vo2.getD_amount()/vo2.getD_month()))*((d_rate*0.01)/12)); // 전회차 원금잔액*(금리%12개월)
+                    } else {
+                         d_tran_rate = (int) (vo2.getD_amount()*((d_rate*0.01)/12)); // 실행번호 1일때 원금 기준으로 계산
+                      }
+                    
+                    vo.setJd_autoMoney(d_tran_rate);
+                    
+                    vo2.setD_loan_rate(1);
+                    
+                    vo3.setD_Key(Integer.parseInt(d_Key));
+                    vo3.setD_his_state("이자");
+                    vo3.setD_his_amount(d_tran_rate);
+                 } else if(jd_inPlace.equals("KOS뱅크(원금균등)")) {
+                    d_balance = d_balance - jd_autoMoney;
+                    
+                    vo2.setD_balance(d_balance);
+                    vo2.setD_loan_balance(1); // 원금 실행번호
+                    
+                    vo3.setD_Key(Integer.parseInt(d_Key));
+                    vo3.setD_his_state("원금");
+                    vo3.setD_his_amount(jd_autoMoney);
+                 } else if(jd_inPlace.equals("KOS뱅크(만기이자)")) { 
+                    vo2.setD_loan_rate(1);
+                    
+                    vo3.setD_Key(Integer.parseInt(d_Key));
+                    vo3.setD_his_state("이자");
+                    vo3.setD_his_amount(jd_autoMoney);
+                 }
+                             
+                 // 출금 UPDATE
+                 aDAO.AutoWithdrawal(vo);
+                 
+                 // 입금 UPDATE
+                 aDAO.AutoDeposit(vo);
+                 
+                 // 최근거래내역 UPDATE
+                 aDAO.lastRunDate(vo);
+                 
+                 // 계좌이체 테이블 로그(출금)
+                 aDAO.TransferMyLog(vo);
+                 
+                 // 계좌이체 테이블 로그(입금)
+                 aDAO.TransferYourLog(vo);            
+                 
+                 // 자동이체내역 로그(출금)
+                 // aDAO.sendAutoTrans(vo);
+                 
+                 // 자동이체내역 로그(입금)
+                 // aDAO.receiveAutoTrans(vo);
+                 
+                 if(jd_inPlace.equals("KOS뱅크(원금균등)")) {
+                    // Loans 변경
+                    dao.payLoanPrincipal1(vo2);
+                    
+                    // Loans_history 생성
+                    dao.payLoanPrincipal2(vo3);
+                    
+                    vo2 = dao.getAutoLoan(d_Key); // 계산식 reset
+                    
+                    if(vo2.getD_loan_balance() > vo2.getD_month() && vo2.getD_loan_rate() > vo2.getD_month()) { // 대출원금과 이자를 모두 납부하였을 경우 대출 자동 해지
+                       System.out.println("원금실행일자"+vo2.getD_loan_balance()+"달수"+vo2.getD_month()+"이자실행일자"+vo2.getD_month());
+                       dao.LoanEnd(vo2);
+                       dao.LoanAccountEnd(vo2.getAccount()); // 계좌(대출) 해지
+                    }
+                 } else if(jd_inPlace.equals("KOS뱅크(원금이자)")) {
+                    // Loans 변경
+                    dao.payLoanRate1(vo2);
+                    // Loans_history 생성
+                    dao.payLoanRate2(vo3);
+                    
+                    vo2 = dao.getAutoLoan(d_Key); // 계산식 reset
+                    
+                    if(vo2.getD_loan_balance() > vo2.getD_month() && vo2.getD_loan_rate() > vo2.getD_month()) { // 대출원금과 이자를 모두 납부하였을 경우 대출 자동 해지
+                       System.out.println("vo2.getD_loan_balance()"+vo2.getD_loan_balance()+"vo2.getD_month()"+vo2.getD_month()+"vo2.getD_loan_rate()"+vo2.getD_loan_rate());
+                       dao.LoanEnd(vo2);
+                       dao.LoanAccountEnd(vo2.getAccount()); // 계좌(대출) 해지
+                    }
+                 } else if(jd_inPlace.equals("KOS뱅크(만기이자)")) {
+                    // Loans 변경
+                    dao.payLoanRate1(vo2);
+                    // Loans_history 생성
+                    dao.payLoanRate2(vo3);
+                 }
 
-            // 대출상태가 정상이면서 원금 혹은 이자를 다 납부하지 않은 대출만 자동이체 해지
-            if(vo2.getD_state()!=1) {
-               aDAO.AutoTransferDelete(account);
-             } else if(vo2.getD_repay().equals("만기일시")) {
-                aDAO.AutoTransferDelete(account);
-             } else if(vo2.getD_repay().equals("원금균등분할")) {
-                aDAO.AutoTransferDelete(account);
-             }
-             
-            i++;               
+                 vo2 = dao.getAutoLoan(d_Key); // 계산식 reset
+                 
+                 // 대출상태가 2(해지)이거나, 대출상태가 1(정상)이면서 원금 혹은 이자를 다 납부하지 않은 대출만 자동이체 해지
+                 System.out.println("vo2.getD_loan_balance :"+vo2.getD_loan_balance()+" getD_month() : "+vo2.getD_month()+"vo2.getD_loan_rate :"+vo2.getD_loan_rate());
+                 if(vo2.getD_state()==2) {
+                    aDAO.AutoTransferDelete(account);
+                  } else if(vo2.getD_repay().equals("만기일시")) {
+                     if(vo2.getD_loan_rate() > vo2.getD_month()) { // 이자를 모두 납부하였을 경우
+                        aDAO.AutoTransferDelete(account);
+                     }
+                  } else if(vo2.getD_repay().equals("원금균등분할")) {
+                     if(vo2.getD_loan_balance() > vo2.getD_month() && vo2.getD_loan_rate() > vo2.getD_month()) { // 대출원금과 이자를 모두 납부하였을 경우
+                        aDAO.AutoTransferDelete(account);
+                     }
+                  }
+                  
+                 i++;         
          }
       }
    }

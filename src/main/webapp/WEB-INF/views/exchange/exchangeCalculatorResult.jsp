@@ -5,7 +5,7 @@
 	<tr>
 		<th> 환전 결과 </th>
 		<td colspan="3">
-			${changeMoney} 입니다.
+			<fmt:formatNumber value="${changeMoney}" pattern="#,###.###" /> 입니다.
 		</td>
 	</tr>
 	<tr>
@@ -31,7 +31,7 @@
 		<c:if test="${changeType eq 'sell'}">
 			<td>${ex.selling_cost}</td>
 		</c:if>
-		<td>${money}</td>
-		<td>${changeMoney}</td>
+		<td><fmt:formatNumber value="${money}" pattern="#,###" /></td>
+		<td><fmt:formatNumber value="${changeMoney}" pattern="#,###.###" /></td>
 	</tr>
 </table>

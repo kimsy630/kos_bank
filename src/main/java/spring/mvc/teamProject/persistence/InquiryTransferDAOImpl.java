@@ -10,9 +10,9 @@ import org.springframework.stereotype.Repository;
 import spring.mvc.teamProject.vo.AccountTransferVO;
 import spring.mvc.teamProject.vo.AccountVO;
 import spring.mvc.teamProject.vo.Fixed_depositVO;
+import spring.mvc.teamProject.vo.FundingVO;
 import spring.mvc.teamProject.vo.LoansVO;
 import spring.mvc.teamProject.vo.TransferVO;
-import spring.mvc.teamProject.vo.fundVO;
 import spring.mvc.teamProject.vo.installment_savingsVO;
 
 @Repository
@@ -43,7 +43,7 @@ public class InquiryTransferDAOImpl implements InquiryTransferDAO{
 	}
 	//펀드
 	@Override
-	public List<fundVO> fund_Table(String id) {
+	public List<FundingVO> fund_Table(String id) {
 		InquiryTransferDAO dao = sqlSession.getMapper(InquiryTransferDAO.class);
 		return dao.fund_Table(id);
 	}

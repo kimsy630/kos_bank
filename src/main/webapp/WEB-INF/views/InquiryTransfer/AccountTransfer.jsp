@@ -466,8 +466,10 @@
                       <div id="ajaxReturn">
                    </div>
               </div> 
+              <br>
               <div class="col-lg-offset-2 col-lg-10" style="text-align:center">
                       <button type="submit" class="btn btn-primary" >이체실행</button>
+                      <button type="button" class="btn btn-primary"  onclick="window.location='main.cc'">취소</button>
                   </div>  
             </section>
         </form> 

@@ -41,7 +41,7 @@
 	<select id="getAccount" resultType="String">
 		SELECT account
 		  FROM account_info
-		 WHERE id=#{id} AND accountType='입출금'
+		 WHERE id=#{id} AND accountType='입출금' or accountType='대출'
 	</select>
 	
 	

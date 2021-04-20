@@ -25,6 +25,7 @@ public interface LoanCenterDAO {
 	public LoansVO checkLoanEnd(String account); // 대출원금 상환완료 확인
 	public int d_amountPayAll(String account); // 대출원금 상환완료 업데이트
 	public int LoanEnd(LoansVO vo); // 대출원금 상환완료 후 해지
+	public int LoanAccountEnd(String account); // 계좌(대출) 해지
 	public LoansVO getLoanRateCheckIn(String account); // 대출이자 예상(내부정보)
 	public int payLoanRate1(LoansVO vo); // 대출이자 납입 실행(Loans 변경 1-2)
 	public int payLoanRate2(Loans_historyVO vo); // 대출이자 납입 실행(Loans_history 생성 1-3)

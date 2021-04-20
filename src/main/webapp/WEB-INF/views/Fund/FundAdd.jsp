@@ -24,10 +24,8 @@
 	     str = String(str);
 	     return str.replace(/[^\d]+/g, '');
 	 }
-	 
-	 
-	 
 </script>
+
 <!DOCTYPE html>
 <html class="wide wow-animation" lang="en">
 <title>펀드</title>

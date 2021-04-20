@@ -31,6 +31,7 @@ import spring.mvc.teamProject.persistence.RegisterReleaseDAO;
 import spring.mvc.teamProject.vo.AccountTransferVO;
 import spring.mvc.teamProject.vo.AccountVO;
 import spring.mvc.teamProject.vo.Fixed_depositVO;
+import spring.mvc.teamProject.vo.FundingVO;
 import spring.mvc.teamProject.vo.LoansVO;
 import spring.mvc.teamProject.vo.TransferVO;
 import spring.mvc.teamProject.vo.fundVO;
@@ -333,7 +334,7 @@ public class InquiryTransferServiceImpl implements InquiryTransferService{
 	public void fund_Table(HttpServletRequest req, Model model) {
 		String strId = (String)req.getSession().getAttribute("id");
 		
-		List<fundVO> list = InquiryTransferDAO.fund_Table(strId);
+		List<FundingVO> list = InquiryTransferDAO.fund_Table(strId);
 		System.out.println("list => " + list);
 		
 		model.addAttribute("list", list);
@@ -368,7 +369,7 @@ public class InquiryTransferServiceImpl implements InquiryTransferService{
 		List<AccountTransferVO> list1 = InquiryTransferDAO.AccountTable(strId); //입출금조회
 		List<LoansVO> list2 = InquiryTransferDAO.LoansTable(strId);///대출조회
 		List<installment_savingsVO> list3 = InquiryTransferDAO.IS_Table(strId);	//적금조회
-		List<fundVO> list4 = InquiryTransferDAO.fund_Table(strId);//펀드조회
+		List<FundingVO> list4 = InquiryTransferDAO.fund_Table(strId);//펀드조회
 		List<Fixed_depositVO> list5 = InquiryTransferDAO.DepositTable(strId);//예금조회
 		List<AccountTransferVO> list6 = InquiryTransferDAO.StopSleepTable(strId);//정지/휴면
 		

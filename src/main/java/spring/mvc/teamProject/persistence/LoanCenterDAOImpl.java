@@ -85,6 +85,12 @@ public class LoanCenterDAOImpl implements LoanCenterDAO {
 		int updateCnt = sqlSession.update("spring.mvc.teamProject.persistence.LoanCenterDAO.LoanEnd", vo);
 		return updateCnt;
 	}
+
+	@Override
+	public int LoanAccountEnd(String account) { // 계좌(대출) 해지
+		int updateCnt = sqlSession.update("spring.mvc.teamProject.persistence.LoanCenterDAO.LoanAccountEnd", account);
+		return updateCnt;
+	}
 	
 	@Override
 	public LoansVO getLoanRateCheckIn(String account) { // 대출이자 예상(내부정보)

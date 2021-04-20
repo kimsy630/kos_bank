@@ -79,8 +79,8 @@
                     <tr>
                       <td>${vo.accountType}</td>
                       <td>${vo.account}</td>
-                      <td>${vo.new_date}</td>
-                      <td>${dto.in_outDate}</td>
+                      <td><fmt:formatDate pattern="YYYY-MM-dd" value="${vo.new_date}" /></td>
+                      <td><fmt:formatDate pattern="YYYY-MM-dd" value="${dto.in_outDate}" /> &nbsp;<fmt:formatDate pattern="HH:mm" value="${dto.in_outDate}" /></td>
                       <td><fmt:formatNumber value="${vo.balance}" pattern="#,###" />원</td>
                       <td> 
                       	<div class="button button-round" style= "padding:10px 20px; width:60px; height:40px; font-size:15px; text-align:center; background-color:#fff; display:inline;" onclick="location.href='TransactionDetails.do'">조회</div>&nbsp;&nbsp;
@@ -117,7 +117,7 @@
                       <td>${dto.d_name }</td>
                       <td>${vo.account }</td>
                       <td><fmt:formatNumber value="${vo.accountLimit }" pattern="#,###" />원</td>
-                      <td>${dto.d_end_date }</td>
+                      <td><fmt:formatDate pattern="YYYY-MM-dd" value="${dto.d_end_date}" /></td>
                       <td><fmt:formatNumber value="${dto.d_balance }" pattern="#,###" />원</td>
                       <td> 
                       	<div class="button button-round" style= "padding:10px; width:80px; height:40px; font-size:12px; text-align:center; background-color:#fff; display:inline;" onclick="location.href='LoanAccountCheck.cc'">상환내역</div>  
@@ -153,8 +153,8 @@
                     <tr>
                       <td>${dto.j_name }</td>
                       <td>${vo.account }</td>
-                      <td>${dto.j_join_date}</td>
-                      <td>${dto.j_end_date }</td>
+                      <td><fmt:formatDate pattern="YYYY-MM-dd" value="${dto.j_join_date}" /></td>
+                      <td><fmt:formatDate pattern="YYYY-MM-dd" value="${dto.j_end_date}" /></td>
                       <td><fmt:formatNumber value="${dto.j_balance }" pattern="#,###" />원</td>
                     </tr>
                     </c:forEach>
@@ -188,7 +188,7 @@
                       <td>${vo.accountType}</td>
                       <td>${vo.account }</td>
                       <td><fmt:formatNumber value="${dto.f_target_money }" pattern="#,###" />원</td>
-                      <td>${dto.f_end_date }</td>
+                      <td><fmt:formatDate pattern="YYYY-MM-dd" value="${dto.f_end_date}" /></td>
                       <td><fmt:formatNumber value="${vo.balance }" pattern="#,###" />원</td>
                       
                      </c:forEach>
@@ -222,8 +222,8 @@
                     <tr>
                       <td>${vo.accountType}</td>
                       <td>${vo.account }</td>
-                      <td>${dto.y_join_date }</td>
-                      <td>${dto.y_end_date }</td>
+                      <td><fmt:formatDate pattern="YYYY-MM-dd" value="${dto.y_join_date}" /></td>
+                      <td><fmt:formatDate pattern="YYYY-MM-dd" value="${dto.y_end_date}" /></td>
                       <td><fmt:formatNumber value="${dto.y_balance }" pattern="#,###" />원</td>
                       <td>고객요청</td>
                     </tr>
@@ -259,12 +259,12 @@
                       <td>${vo.accountType }</td>
                       <td>${vo.account }</td>
                       <c:if test="${vo.accountState == '정지' }">
-                      	<td>${vo.delete_date }</td>
+                      	<td><fmt:formatDate pattern="YYYY-MM-dd" value="${vo.delete_date}" /> </td>
                       </c:if>
                       <c:if test="${vo.accountState == '휴면' }">
-                      	<td>${vo.sleep_date }</td>
+                      	<td><fmt:formatDate pattern="YYYY-MM-dd" value="${vo.sleep_date}" /></td>
                       </c:if>
-                      <td>${dto.in_outDate }</td>
+                      <td><fmt:formatDate pattern="YYYY-MM-dd" value="${vo.in_outDate}" /></td>
                       <td><fmt:formatNumber value="${vo.balance }" pattern="#,###" />원</td>
                       <td>${vo.accountState }</td>
                     </tr>

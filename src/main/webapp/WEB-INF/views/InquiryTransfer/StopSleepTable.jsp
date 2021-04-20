@@ -84,7 +84,7 @@
                       <td>${vo.accountType }</td>
                       <td>${vo.account }</td>
                       <c:if test="${vo.accountState == '정지' }">
-                      	<td>${vo.delete_date }</td>
+                      	<td><fmt:formatDate pattern="YYYY-MM-dd" value="${vo.delete_date }" /></td>
                       </c:if>
                       <c:if test="${vo.accountState == '휴면' }">
                       	<td><fmt:formatDate pattern="YYYY-MM-dd" value="${vo.sleep_date }" /></td>

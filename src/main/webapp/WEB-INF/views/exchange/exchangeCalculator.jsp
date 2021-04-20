@@ -34,6 +34,8 @@
 		          <div id="test"></div>
 		        </div>
 		    </section>
+		    
+	   	<br><br>
 		    <div class="container" style="height: 400px">
 	          <div class="row row-condensed row-offset-3">
 	            <div class="col-8" id="calculator"> </div> <!--계산기 뜰위치  -->

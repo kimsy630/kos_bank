@@ -81,6 +81,12 @@
        WHERE account = #{account}
    </update>
    
+   <update id ="LoanAccountEnd" parameterType="String"> <!-- 계좌(대출) 해지 -->
+		UPDATE account_info
+		SET accountState='해지'
+		WHERE account=#{account}
+	</update>
+   
    <select id="getLoanRateCheckIn" resultType="spring.mvc.teamProject.vo.LoansVO"> <!-- 대출이자 예상(내부정보) -->
       SELECT d_Key, account, d_repay, d_rate, d_amount, d_balance, d_auto_account, d_loan_rate, d_loan_balance
        FROM Loans

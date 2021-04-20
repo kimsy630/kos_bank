@@ -133,7 +133,7 @@ public class FinancialProductsController {
 	
 	// 최문수
 	// 만기인식용 스케쥴러
-	@Scheduled(cron= "*/10 * * * * *")
+	  @Scheduled(cron="0 0/7 * * * *") // 10초마다 (cron= "*/10 * * * * *")
 	  public void scheduleTest() throws Exception {
 	   logger.info("만기 test");
 	   //service.checkEnd();
@@ -141,5 +141,4 @@ public class FinancialProductsController {
 	   //service.checkEnd();
 	   //service.autoTransfer();
 	}
-	
 }

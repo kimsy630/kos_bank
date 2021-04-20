@@ -374,7 +374,7 @@ public class FinancialProductsServiceImpl implements FinancialProductsService{
                double rate = vo2.getY_rate()*0.01;                     
                int balance = vo2.getY_balance();                     
                int month = vo2.getY_month();                        
-               int interest = (int)(balance*(1+rate*month/12)) - balance;   
+               int interest = (int)((balance*((float)(1+rate*month/12))) - balance);   
                
                dao.endDeposit(vo2);                           
                System.out.println(interest);

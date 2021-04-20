@@ -167,7 +167,10 @@ public class FundingServiceImpl implements FundingService{
 		
 		String id = req.getParameter("id");
 		String f_account = req.getParameter("f_account");
-		int f_money = Integer.parseInt(req.getParameter("f_money"));
+		
+		String str_f_money = req.getParameter("f_money");
+		
+		int f_money = Integer.parseInt(str_f_money.replaceAll("\\,", ""));
 		
 		List<MembersVO> list_member = FundingDAO.getMemberInfo(id);
 		MembersVO vo = list_member.get(0);

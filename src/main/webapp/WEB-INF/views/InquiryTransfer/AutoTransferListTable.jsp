@@ -48,9 +48,8 @@
                     </tr>
                   </thead>
                   <tbody>
-                    <tr>
-                    
                      <c:forEach var="list" items="${list}">
+                    <tr>
 	                      <td id="jd_key">${list.jd_key}</td>
 	                      <td>코스뱅크</td>
 	                      <td id="account">${list.account}</td>
@@ -66,8 +65,8 @@
 								<input type = "hidden" name = "${_csrf.parameterName}" value = "${_csrf.token}">
 	                      	</form>
 	                      </td>	
-	                  </c:forEach>    
                     </tr>
+	                  </c:forEach>    
                   </tbody>
                 </table>
                 

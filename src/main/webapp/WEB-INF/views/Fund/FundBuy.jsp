@@ -20,6 +20,21 @@
 <script>
 	function ss(){
 	}
+	
+	
+	function inputNumberFormat(obj) {
+	     obj.value = comma(uncomma(obj.value));
+	 }
+
+	 function comma(str) {
+	     str = String(str);
+	     return str.replace(/(\d)(?=(?:\d{3})+(?!\d))/g, '$1,');
+	 }
+
+	 function uncomma(str) {
+	     str = String(str);
+	     return str.replace(/[^\d]+/g, '');
+	 }
 </script>
   <body>
   
@@ -147,7 +162,7 @@ KOS BANK는 플랫폼을 제공하는 중개자로 크라우드펀딩을 받는 
                 <div class="form-group" id="divMoney">
                     <label for="inputMoney" class="col-lg-2 control-label">펀딩액</label>
                     <div class="col-lg-5">
-                        <input type="text" class="form-control onlyAlphabetAndNumber" id="f_money" name="f_money" data-rule-required="true" placeholder="금액을 입력해주세요." maxlength="20">
+                        <input type="text" class="form-control onlyAlphabetAndNumber" id="f_money" name="f_money" data-rule-required="true" placeholder="금액을 입력해주세요." maxlength="20" onkeyup="inputNumberFormat(this)">
                     </div>
                 </div>
                 <div class="form-group">

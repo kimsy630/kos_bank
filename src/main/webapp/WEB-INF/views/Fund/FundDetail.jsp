@@ -64,7 +64,7 @@
 			            	</p>
 			            	<p>
 			            		<font size='3px' color='black' style="font-weight:500; font-family:휴먼모음T">펀딩 금액:</font>
-			            		<font size='4px' color='black' style="font-weight:700; font-family:휴먼모음T">${f_money}</font>
+			            		<font size='4px' color='black' style="font-weight:700; font-family:휴먼모음T"><fmt:formatNumber pattern="#,###" value="${f_money}"/></font>
 			            	</p>
 			            	<p>
 			            		<font size='3px' color='black' style="font-weight:500; font-family:휴먼모음T">참가자:</font>
